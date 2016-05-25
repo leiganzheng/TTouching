@@ -1,0 +1,13 @@
+platform :ios, "8.0"
+inhibit_all_warnings!
+pod "SDWebImage"
+pod "OpenUDID"
+pod "REMenu"
+pod "ReactiveCocoa", :inhibit_warnings => true
+pod "Aspects"
+pod "Reachability"
+pod "IQKeyboardManager"
+use_frameworks!
+pod 'Alamofire'
+pod 'Result', :git => 'https://github.com/antitypical/Result.git'
+pod 'Box'
