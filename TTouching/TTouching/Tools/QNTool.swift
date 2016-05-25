@@ -27,10 +27,10 @@ extension QNTool {
             if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, version2: "2.0") != NSComparisonResult.OrderedDescending {
                 repeat { // 用户账号数据迁移，从老数据中获取账号，然后重新登录，需要用户设置密码
                     let key = "GROUP"
-                    if let groupDictionary = getObjectFromUserDefaults(key) as? NSDictionary, let group = QN_Group(groupDictionary) {
-                        saveAccountAndPassword(group.groupId, password: nil)
-                        removeObjectAtUserDefaults(key)
-                    }
+//                    if let groupDictionary = getObjectFromUserDefaults(key) as? NSDictionary, let group = QN_Group(groupDictionary) {
+//                        saveAccountAndPassword(group.groupId, password: nil)
+//                        removeObjectAtUserDefaults(key)
+//                    }
                 } while (false)
                 
                 // 删除被废弃的 key
@@ -46,7 +46,7 @@ extension QNTool {
             
             // 所有版本升级都需要做的操作
             repeat {
-                removeObjectAtUserDefaults(kKeyIsFirstStartApp) // 清空第一次登录操作
+//                removeObjectAtUserDefaults(kKeyIsFirstStartApp) // 清空第一次登录操作
             } while (false)
             
             // 所有操作完成后，更新最低版本号
@@ -76,14 +76,14 @@ extension QNTool {
     :param: timeoutInterval 超时隐藏，如果设置为nil，超时时间是3min
     */
     class func showActivityView(message: String?, inView: UIView? = nil, _ timeoutInterval: NSTimeInterval? = nil) {
-        lyShowActivityView(message, inView: inView, timeoutInterval)
+//        lyShowActivityView(message, inView: inView, timeoutInterval)
     }
     
     /**
     隐藏进度提示框
     */
     class func hiddenActivityView() {
-        lyHiddenActivityView()
+//        lyHiddenActivityView()
     }
     
     /**

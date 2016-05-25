@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		25F33CD55823557745C14C04 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87096C8CD2710D94E131CBC /* Pods.framework */; };
+		BB2804F71CF5A8BD0052CA2C /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2804EF1CF5A8BD0052CA2C /* NSData+AES.m */; };
+		BB2804F81CF5A8BD0052CA2C /* NSString+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2804F11CF5A8BD0052CA2C /* NSString+AES.m */; };
+		BB2804F91CF5A8BD0052CA2C /* LyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2804F31CF5A8BD0052CA2C /* LyActivityView.swift */; };
+		BB2804FA1CF5A8BD0052CA2C /* LyPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2804F41CF5A8BD0052CA2C /* LyPrompt.swift */; };
+		BB2804FB1CF5A8BD0052CA2C /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2804F61CF5A8BD0052CA2C /* ReactiveCocoa.swift */; };
+		BB28050D1CF5A96C0052CA2C /* QN_BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2804FF1CF5A96C0052CA2C /* QN_BaseDataModel.swift */; };
+		BB28050E1CF5A96C0052CA2C /* QN_Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2805001CF5A96C0052CA2C /* QN_Case.swift */; };
+		BB28051E1CF5AC210052CA2C /* QN_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28051D1CF5AC210052CA2C /* QN_Group.swift */; };
+		BB2805201CF5AC430052CA2C /* QN_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28051F1CF5AC430052CA2C /* QN_UserInfo.swift */; };
 		BB7235C31CF5881600DD48DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235C21CF5881600DD48DE /* AppDelegate.swift */; };
 		BB7235C51CF5881700DD48DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235C41CF5881700DD48DE /* ViewController.swift */; };
 		BB7235C81CF5881700DD48DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB7235C61CF5881700DD48DE /* Main.storyboard */; };
@@ -20,8 +29,6 @@
 		BB7235EF1CF58CE800DD48DE /* QNFormatTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235E91CF58CE800DD48DE /* QNFormatTool.swift */; };
 		BB7235F01CF58CE800DD48DE /* QNInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235EA1CF58CE800DD48DE /* QNInterceptor.swift */; };
 		BB7235F11CF58CE800DD48DE /* QNNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235EB1CF58CE800DD48DE /* QNNetworkTool.swift */; };
-		BB7235F21CF58CE800DD48DE /* QNPhoneTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235EC1CF58CE800DD48DE /* QNPhoneTool.swift */; };
-		BB7235F31CF58CE800DD48DE /* QNPushTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235ED1CF58CE800DD48DE /* QNPushTool.swift */; };
 		BB7235F41CF58CE800DD48DE /* QNTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235EE1CF58CE800DD48DE /* QNTool.swift */; };
 		BB7235FA1CF58D0B00DD48DE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235F61CF58D0B00DD48DE /* StringExtension.swift */; };
 		BB7235FB1CF58D0B00DD48DE /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7235F71CF58D0B00DD48DE /* UIImageExtension.swift */; };
@@ -41,6 +48,18 @@
 
 /* Begin PBXFileReference section */
 		98BAB9EFBCC7170B7672DE30 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BB2804EE1CF5A8BD0052CA2C /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		BB2804EF1CF5A8BD0052CA2C /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		BB2804F01CF5A8BD0052CA2C /* NSString+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES.h"; sourceTree = "<group>"; };
+		BB2804F11CF5A8BD0052CA2C /* NSString+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES.m"; sourceTree = "<group>"; };
+		BB2804F31CF5A8BD0052CA2C /* LyActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyActivityView.swift; sourceTree = "<group>"; };
+		BB2804F41CF5A8BD0052CA2C /* LyPrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyPrompt.swift; sourceTree = "<group>"; };
+		BB2804F61CF5A8BD0052CA2C /* ReactiveCocoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoa.swift; sourceTree = "<group>"; };
+		BB2804FF1CF5A96C0052CA2C /* QN_BaseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_BaseDataModel.swift; sourceTree = "<group>"; };
+		BB2805001CF5A96C0052CA2C /* QN_Case.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Case.swift; sourceTree = "<group>"; };
+		BB28051C1CF5AB7A0052CA2C /* TTouching-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TTouching-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB28051D1CF5AC210052CA2C /* QN_Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Group.swift; sourceTree = "<group>"; };
+		BB28051F1CF5AC430052CA2C /* QN_UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_UserInfo.swift; sourceTree = "<group>"; };
 		BB7235BF1CF5881300DD48DE /* TTouching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTouching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7235C21CF5881600DD48DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB7235C41CF5881700DD48DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +76,6 @@
 		BB7235E91CF58CE800DD48DE /* QNFormatTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNFormatTool.swift; sourceTree = "<group>"; };
 		BB7235EA1CF58CE800DD48DE /* QNInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNInterceptor.swift; sourceTree = "<group>"; };
 		BB7235EB1CF58CE800DD48DE /* QNNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNNetworkTool.swift; sourceTree = "<group>"; };
-		BB7235EC1CF58CE800DD48DE /* QNPhoneTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNPhoneTool.swift; sourceTree = "<group>"; };
-		BB7235ED1CF58CE800DD48DE /* QNPushTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNPushTool.swift; sourceTree = "<group>"; };
 		BB7235EE1CF58CE800DD48DE /* QNTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNTool.swift; sourceTree = "<group>"; };
 		BB7235F61CF58D0B00DD48DE /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BB7235F71CF58D0B00DD48DE /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -104,6 +121,55 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BB2804EC1CF5A8BD0052CA2C /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				BB2804ED1CF5A8BD0052CA2C /* AES */,
+				BB2804F21CF5A8BD0052CA2C /* PromptView */,
+				BB2804F51CF5A8BD0052CA2C /* ReactiveCocoa_Swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		BB2804ED1CF5A8BD0052CA2C /* AES */ = {
+			isa = PBXGroup;
+			children = (
+				BB2804EE1CF5A8BD0052CA2C /* NSData+AES.h */,
+				BB2804EF1CF5A8BD0052CA2C /* NSData+AES.m */,
+				BB2804F01CF5A8BD0052CA2C /* NSString+AES.h */,
+				BB2804F11CF5A8BD0052CA2C /* NSString+AES.m */,
+			);
+			path = AES;
+			sourceTree = "<group>";
+		};
+		BB2804F21CF5A8BD0052CA2C /* PromptView */ = {
+			isa = PBXGroup;
+			children = (
+				BB2804F31CF5A8BD0052CA2C /* LyActivityView.swift */,
+				BB2804F41CF5A8BD0052CA2C /* LyPrompt.swift */,
+			);
+			path = PromptView;
+			sourceTree = "<group>";
+		};
+		BB2804F51CF5A8BD0052CA2C /* ReactiveCocoa_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				BB2804F61CF5A8BD0052CA2C /* ReactiveCocoa.swift */,
+			);
+			path = ReactiveCocoa_Swift;
+			sourceTree = "<group>";
+		};
+		BB2804FC1CF5A96C0052CA2C /* DataModule */ = {
+			isa = PBXGroup;
+			children = (
+				BB28051F1CF5AC430052CA2C /* QN_UserInfo.swift */,
+				BB28051D1CF5AC210052CA2C /* QN_Group.swift */,
+				BB2804FF1CF5A96C0052CA2C /* QN_BaseDataModel.swift */,
+				BB2805001CF5A96C0052CA2C /* QN_Case.swift */,
+			);
+			path = DataModule;
+			sourceTree = "<group>";
+		};
 		BB7235B61CF5881200DD48DE = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +193,9 @@
 		BB7235C11CF5881600DD48DE /* TTouching */ = {
 			isa = PBXGroup;
 			children = (
+				BB28051C1CF5AB7A0052CA2C /* TTouching-Bridging-Header.h */,
+				BB2804FC1CF5A96C0052CA2C /* DataModule */,
+				BB2804EC1CF5A8BD0052CA2C /* Lib */,
 				BB7235F51CF58D0B00DD48DE /* Extension */,
 				BB7235E81CF58CE800DD48DE /* Tools */,
 				BB7235E21CF58CBF00DD48DE /* Constents.swift */,
@@ -157,8 +226,6 @@
 				BB7235E91CF58CE800DD48DE /* QNFormatTool.swift */,
 				BB7235EA1CF58CE800DD48DE /* QNInterceptor.swift */,
 				BB7235EB1CF58CE800DD48DE /* QNNetworkTool.swift */,
-				BB7235EC1CF58CE800DD48DE /* QNPhoneTool.swift */,
-				BB7235ED1CF58CE800DD48DE /* QNPushTool.swift */,
 				BB7235EE1CF58CE800DD48DE /* QNTool.swift */,
 			);
 			path = Tools;
@@ -327,21 +394,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2804F71CF5A8BD0052CA2C /* NSData+AES.m in Sources */,
 				BB7235FD1CF58D0B00DD48DE /* UIViewExtension.swift in Sources */,
 				BB7235C51CF5881700DD48DE /* ViewController.swift in Sources */,
 				BB7235F41CF58CE800DD48DE /* QNTool.swift in Sources */,
 				BB7235E61CF58CBF00DD48DE /* QNSharedDatas.swift in Sources */,
 				BB7235E51CF58CBF00DD48DE /* Constents.swift in Sources */,
+				BB28050E1CF5A96C0052CA2C /* QN_Case.swift in Sources */,
+				BB2804FB1CF5A8BD0052CA2C /* ReactiveCocoa.swift in Sources */,
 				BB7235EF1CF58CE800DD48DE /* QNFormatTool.swift in Sources */,
-				BB7235F31CF58CE800DD48DE /* QNPushTool.swift in Sources */,
+				BB2804F81CF5A8BD0052CA2C /* NSString+AES.m in Sources */,
 				BB7235E71CF58CBF00DD48DE /* QNStyleAttribute.swift in Sources */,
 				BB7235F11CF58CE800DD48DE /* QNNetworkTool.swift in Sources */,
 				BB7235FA1CF58D0B00DD48DE /* StringExtension.swift in Sources */,
 				BB7235FB1CF58D0B00DD48DE /* UIImageExtension.swift in Sources */,
+				BB2804F91CF5A8BD0052CA2C /* LyActivityView.swift in Sources */,
 				BB7235F01CF58CE800DD48DE /* QNInterceptor.swift in Sources */,
+				BB2804FA1CF5A8BD0052CA2C /* LyPrompt.swift in Sources */,
 				BB7235C31CF5881600DD48DE /* AppDelegate.swift in Sources */,
+				BB28051E1CF5AC210052CA2C /* QN_Group.swift in Sources */,
 				BB7235FC1CF58D0B00DD48DE /* UIViewControllerExtension.swift in Sources */,
-				BB7235F21CF58CE800DD48DE /* QNPhoneTool.swift in Sources */,
+				BB28050D1CF5A96C0052CA2C /* QN_BaseDataModel.swift in Sources */,
+				BB2805201CF5AC430052CA2C /* QN_UserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +549,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ddd.TTouching;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TTouching/TTouching-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -487,6 +562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ddd.TTouching;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TTouching/TTouching-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -81,45 +81,6 @@ didSet {
 }
 }
 
-// MARK: 未读医疗建议消息
-private let kKeyNotReadSuggestCount = ("NotReadSuggestCount" as NSString).encrypt(g_SecretKey)
-/// 未读医疗建议消息
-var g_NotReadSuggestCount: Int = (getObjectFromUserDefaults(kKeyNotReadSuggestCount) as? Int) ?? 0 {
-didSet {
-    saveObjectToUserDefaults(kKeyNotReadSuggestCount, value: g_NotReadSuggestCount)
-    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
-}
-}
-
-// MARK: 未读月报消息
-private let kKeyNotReadMonthlyReportCount = ("NotReadMonthlyReportCount" as NSString).encrypt(g_SecretKey)
-/// 未读月报消息
-var g_NotReadMonthlyReportCount: Int = (getObjectFromUserDefaults(kKeyNotReadMonthlyReportCount) as? Int) ?? 0 {
-didSet {
-    saveObjectToUserDefaults(kKeyNotReadMonthlyReportCount, value: g_NotReadMonthlyReportCount)
-    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
-}
-}
-
-// MARK: 未读预约消息
-private let kKeyNotReadScheduleMsgCount = ("kKeyNotReadScheduleCount" as NSString).encrypt(g_SecretKey)
-/// 未读预约消息
-var g_NotReadScheduleMsgCount: Int = (getObjectFromUserDefaults(kKeyNotReadScheduleMsgCount) as? Int) ?? 0 {
-didSet {
-    saveObjectToUserDefaults(kKeyNotReadScheduleMsgCount, value: g_NotReadScheduleMsgCount)
-    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
-}
-}
-
-// MARK: - 是否开启电话按钮
-private let kKeyAllowShowPhone = ("AllowShowPhone" as NSString).encrypt(g_SecretKey)
-/// 是否开启电话按钮
-var g_AllowShowPhone: Bool = (getObjectFromUserDefaults(kKeyAllowShowPhone) as? Bool) ?? true {
-didSet {
-    saveObjectToUserDefaults(kKeyAllowShowPhone, value: g_AllowShowPhone)
-}
-}
-
 // MARK: - 本地用户数据 （头像 & 昵称）
 /// 设备对应的本地头像存储地址
 let g_DeviceFacePath = String(format: "%@/Documents/%@.jpg",NSHomeDirectory(), g_UDID)

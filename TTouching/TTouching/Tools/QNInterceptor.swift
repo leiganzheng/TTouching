@@ -99,13 +99,13 @@ class QNInterceptor : NSObject {
                         viewController.navigationController?.navigationBar.translucent = false // 关闭透明度效果
                         UIApplication.sharedApplication().statusBarHidden = false
                         if viewController.navigationController!.viewControllers.count == 1{
-                            if viewController is BindingFamilyViewController || viewController is ForgetPasswordViewController || viewController is BindingIDViewController{
-                                UIApplication.sharedApplication().statusBarStyle = .Default
-                                viewController.navigationController?.navigationBar.barTintColor = navigationTextColor
-                                viewController.navigationController?.navigationBar.tintColor = appThemeColor
-                                viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
-                                return
-                            }
+//                            if viewController is BindingFamilyViewController || viewController is ForgetPasswordViewController || viewController is BindingIDViewController{
+//                                UIApplication.sharedApplication().statusBarStyle = .Default
+//                                viewController.navigationController?.navigationBar.barTintColor = navigationTextColor
+//                                viewController.navigationController?.navigationBar.tintColor = appThemeColor
+//                                viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
+//                                return
+//                            }
                             UIApplication.sharedApplication().statusBarStyle = .LightContent
                             viewController.navigationController?.navigationBar.barTintColor = appThemeColor
                             viewController.navigationController?.navigationBar.tintColor = navigationTextColor
