@@ -1,0 +1,15 @@
+platform :ios, "8.0"
+pod 'OpenUDID'
+pod "REMenu"
+pod "Aspects"
+pod "IQKeyboardManager"
+pod "MGSwipeTableCell"
+pod 'ReactiveCocoa'
+pod 'EaseMobSDKFull', :git => 'https://github.com/easemob/sdk-ios-cocoapods-integration.git'
+pod "MWPhotoBrowser"
+pod 'Reachability'
+use_frameworks!
+pod "SDWebImage"
+pod 'Alamofire'
+pod 'Result', :git => 'https://github.com/antitypical/Result.git'
+pod 'Box'

@@ -1,0 +1,75 @@
+PODS:
+  - Alamofire (3.1.4)
+  - Aspects (1.4.1)
+  - Box (2.0)
+  - DACircularProgress (2.3.1)
+  - EaseMobSDKFull (2.2.1.2)
+  - IQKeyboardManager (3.3.4)
+  - MBProgressHUD (0.9.2)
+  - MGSwipeTableCell (1.5.3)
+  - MWPhotoBrowser (2.1.1):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
+  - OpenUDID (1.0.0)
+  - Reachability (3.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - REMenu (1.10)
+  - Result (1.0.1)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+
+DEPENDENCIES:
+  - Alamofire
+  - Aspects
+  - Box
+  - EaseMobSDKFull (from `https://github.com/easemob/sdk-ios-cocoapods-integration.git`)
+  - IQKeyboardManager
+  - MGSwipeTableCell
+  - MWPhotoBrowser
+  - OpenUDID
+  - Reachability
+  - ReactiveCocoa
+  - REMenu
+  - Result (from `https://github.com/antitypical/Result.git`)
+  - SDWebImage
+
+EXTERNAL SOURCES:
+  EaseMobSDKFull:
+    :git: https://github.com/easemob/sdk-ios-cocoapods-integration.git
+  Result:
+    :git: https://github.com/antitypical/Result.git
+
+CHECKOUT OPTIONS:
+  EaseMobSDKFull:
+    :commit: f27db4da9c6285f91a71811c2d55af8427368dbf
+    :git: https://github.com/easemob/sdk-ios-cocoapods-integration.git
+  Result:
+    :commit: 1a2c456268f4106f1b9b9e107920851f7fd2a8cd
+    :git: https://github.com/antitypical/Result.git
+
+SPEC CHECKSUMS:
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  Box: 70713ca3679e4e11ad4c470e9b58265f506fc659
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  EaseMobSDKFull: f8d6281b9b58b90d5594fe7d40e1529790035d65
+  IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
+  MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
+  OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
+  Result: caef80340451e1f07492fa1e89117f83613bce24
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+
+COCOAPODS: 0.39.0
