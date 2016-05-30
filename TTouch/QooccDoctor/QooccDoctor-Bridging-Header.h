@@ -42,5 +42,4 @@
 #import <EaseMobSDKFull/EaseMob.h>
 #import <EaseMobSDKFull/EMChatVideo.h>
 #import <EaseMobSDKFull/OpenGLView20.h>
-#import "CallViewController.h"
 #endif
