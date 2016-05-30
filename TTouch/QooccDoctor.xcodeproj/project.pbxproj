@@ -176,6 +176,8 @@
 		BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */; };
 		BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */; };
 		BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */; };
+		BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */; };
+		BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */; };
 		BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */; };
 		BBA52F271B9D614A007A3C72 /* nav_data1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F1B1B9D614A007A3C72 /* nav_data1@2x.png */; };
 		BBA52F281B9D614A007A3C72 /* nav_data1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F1C1B9D614A007A3C72 /* nav_data1@3x.png */; };
@@ -440,6 +442,8 @@
 		BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QN_ Schedule.swift"; sourceTree = "<group>"; };
 		BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateWayListViewController.swift; sourceTree = "<group>"; };
+		BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateWayDetailViewController.swift; sourceTree = "<group>"; };
 		BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNTabBarController.swift; sourceTree = "<group>"; };
 		BBA52F1B1B9D614A007A3C72 /* nav_data1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_data1@2x.png"; sourceTree = "<group>"; };
 		BBA52F1C1B9D614A007A3C72 /* nav_data1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_data1@3x.png"; sourceTree = "<group>"; };
@@ -1117,6 +1121,8 @@
 				BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */,
 				BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */,
 				BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */,
+				BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */,
+				BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1405,6 +1411,7 @@
 				BB3C45CD1B465C46008A1213 /* LyPrompt.swift in Sources */,
 				BBCEA98B1B4A183B00A9E478 /* QD_Doctor.swift in Sources */,
 				BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */,
+				BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */,
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				BBF4C7FF1B9E75FD00C2E75B /* GoodAtViewController.swift in Sources */,
 				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
@@ -1464,6 +1471,7 @@
 				BB3C45F01B465C47008A1213 /* TrendChartView.m in Sources */,
 				BB3C46041B465DA0008A1213 /* QNStatistical.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,
+				BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */,
 				BBF4C7F71B9E69B900C2E75B /* PersonInfoViewController.swift in Sources */,
 				BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */,
 				BB3C45F81B465C47008A1213 /* QNPhoneTool.swift in Sources */,

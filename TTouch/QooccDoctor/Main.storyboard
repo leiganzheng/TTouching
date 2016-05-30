@@ -193,6 +193,42 @@
             </objects>
             <point key="canvasLocation" x="-55" y="-715"/>
         </scene>
+        <!--Gate Way List View Controller-->
+        <scene sceneID="LBJ-y4-6Bb">
+            <objects>
+                <viewController storyboardIdentifier="GateWayListViewController" id="Obn-IM-GfV" customClass="GateWayListViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TVv-NX-NZa"/>
+                        <viewControllerLayoutGuide type="bottom" id="YPD-TG-qhR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bx8-Sx-87i">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXi-9o-EqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762" y="-155"/>
+        </scene>
+        <!--Gate Way Detail View Controller-->
+        <scene sceneID="zQE-Yd-Gzp">
+            <objects>
+                <viewController storyboardIdentifier="GateWayDetailViewController" id="aMG-nk-yOZ" customClass="GateWayDetailViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ugj-HQ-lMy"/>
+                        <viewControllerLayoutGuide type="bottom" id="4sj-cZ-KWT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qyn-eG-m6g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Dz-ZB-1Vf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-392" y="-136"/>
+        </scene>
         <!--Left View Controller-->
         <scene sceneID="aWi-oC-f6n">
             <objects>

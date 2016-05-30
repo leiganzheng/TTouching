@@ -29,11 +29,11 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
-    var datas: NSMutableDictionary = NSMutableDictionary(contentsOfFile: cachePath) ?? NSMutableDictionary() {
-        didSet {
-            datas.writeToFile(cachePath, atomically: true)
-        }
-    }
+//    var datas: NSMutableDictionary = NSMutableDictionary(contentsOfFile: cachePath) ?? NSMutableDictionary() {
+//        didSet {
+//            datas.writeToFile(cachePath, atomically: true)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
