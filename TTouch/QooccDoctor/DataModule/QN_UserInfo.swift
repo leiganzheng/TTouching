@@ -25,24 +25,24 @@ class QN_UserInfo: QN_Base {
     var isChecked: Int!         // 消息是否已读 0：未读；1：已读
     private(set) var abnormalState: Int!     // 1 : 亚健康；2：不健康
     
-    private(set) var vipType: VipType! = .Normal// vip级别
+//    private(set) var vipType: VipType! = .Normal// vip级别
     // Vip类型, NOTE:增加VIP等级的时候，要增加相应的VIP等级图片，格式在 image 计算属性中
-    enum VipType : Int {
-        case Normal = 0 // 普通用户
-        case VIP1 = 1   // VIP1
-        case VIP2 = 2   // VIP2
-        case VIP3 = 3   // VIP3
-        case VIP4 = 4   // VIP4
-        case VIP5 = 5   // VIP5
-        case VIP6 = 6   // VIP6
-        case VIP7 = 7   // VIP7
-        case VIP8 = 8   // VIP8
-        case VIP0 = 99  // VIP0
-        
-        var image : UIImage {
-            return UIImage(named: "VIP_" + String(self.rawValue))!
-        }
-    }
+//    enum VipType : Int {
+//        case Normal = 0 // 普通用户
+//        case VIP1 = 1   // VIP1
+//        case VIP2 = 2   // VIP2
+//        case VIP3 = 3   // VIP3
+//        case VIP4 = 4   // VIP4
+//        case VIP5 = 5   // VIP5
+//        case VIP6 = 6   // VIP6
+//        case VIP7 = 7   // VIP7
+//        case VIP8 = 8   // VIP8
+//        case VIP0 = 99  // VIP0
+//        
+//        var image : UIImage {
+////            return UIImage(named: "VIP_" + String(self.rawValue))!
+//        }
+//    }
 
     static func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
         return ["gId":"gId",
@@ -78,9 +78,9 @@ class QN_UserInfo: QN_Base {
         self.isChecked = dictionary["isChecked"]?.integerValue ?? 0
         self.abnormalState = dictionary["abnormalState"]?.integerValue ?? 0
         
-        if let vipTypeInt = dictionary["vipLevel"]?.integerValue, let vipType = VipType(rawValue: vipTypeInt) {
-            self.vipType = vipType
-        }
+//        if let vipTypeInt = dictionary["vipLevel"]?.integerValue, let vipType = VipType(rawValue: vipTypeInt) {
+//            self.vipType = vipType
+//        }
         
         super.init(dictionary)
     }
@@ -99,7 +99,7 @@ class QN_UserInfo: QN_Base {
         dictionary.setValue(self.starType, forKey:"starType")
         dictionary.setValue(self.isChecked, forKey:"isChecked")
         dictionary.setValue(self.isChecked, forKey:"abnormalState")
-        dictionary.setValue(String(self.vipType.rawValue), forKey:"vipType")
+//        dictionary.setValue(String(self.vipType.rawValue), forKey:"vipType")
         return dictionary
     }
     

@@ -174,6 +174,8 @@
 		BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6D71B51BE0C0090018AADC /* Localizable.strings */; };
 		BB7855E71B4BC2340069F7CE /* QD_MedicalAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7855E61B4BC2340069F7CE /* QD_MedicalAdvice.swift */; };
 		BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */; };
+		BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */; };
+		BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */; };
 		BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */; };
 		BBA52F271B9D614A007A3C72 /* nav_data1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F1B1B9D614A007A3C72 /* nav_data1@2x.png */; };
 		BBA52F281B9D614A007A3C72 /* nav_data1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F1C1B9D614A007A3C72 /* nav_data1@3x.png */; };
@@ -436,6 +438,8 @@
 		BB6D71B41BE0C0090018AADC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BB7855E61B4BC2340069F7CE /* QD_MedicalAdvice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QD_MedicalAdvice.swift; sourceTree = "<group>"; };
 		BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QN_ Schedule.swift"; sourceTree = "<group>"; };
+		BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNTabBarController.swift; sourceTree = "<group>"; };
 		BBA52F1B1B9D614A007A3C72 /* nav_data1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_data1@2x.png"; sourceTree = "<group>"; };
 		BBA52F1C1B9D614A007A3C72 /* nav_data1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_data1@3x.png"; sourceTree = "<group>"; };
@@ -1111,6 +1115,8 @@
 				BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */,
 				BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */,
 				BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */,
+				BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */,
+				BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1398,6 +1404,7 @@
 				BB3C45BB1B465C46008A1213 /* UIView+FrameSet.m in Sources */,
 				BB3C45CD1B465C46008A1213 /* LyPrompt.swift in Sources */,
 				BBCEA98B1B4A183B00A9E478 /* QD_Doctor.swift in Sources */,
+				BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */,
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				BBF4C7FF1B9E75FD00C2E75B /* GoodAtViewController.swift in Sources */,
 				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
@@ -1420,6 +1427,7 @@
 				BBA52F341B9D709E007A3C72 /* SettingViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */,
+				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
 				BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */,
 				2BDA91DC1BA3D936007EEC67 /* QN_Department.swift in Sources */,
 				2BFEDA271BFB175800AC0D9E /* EditInfoSelectLeveOneViewController.swift in Sources */,

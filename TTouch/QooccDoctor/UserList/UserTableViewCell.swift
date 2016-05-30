@@ -89,7 +89,7 @@ extension UserTableViewCell {
         self.layoutName(nameStr)
         self.time.text = userInfo.lastMeasureDate
         self.content.text = userInfo.signSumary
-        self.vipLevel.image = userInfo.vipType.image
+//        self.vipLevel.image = userInfo.vipType.image
         self.startType.hidden = userInfo.starType == 1 ? false : true
         if userInfo.isChecked == 0 {
             if userInfo.abnormalState == 1 {

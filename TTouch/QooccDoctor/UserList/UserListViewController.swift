@@ -37,6 +37,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var dataStartArray: NSMutableArray!
     
     private var tableViewController: UITableViewController!
+    private var leftVC: LeftViewController!
+    private var rightVC: RightViewController!
     private var sort: SortType!
     private var pageIndex:NSInteger = 1
     var haveNextData :Bool = true
@@ -72,30 +74,41 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
             self?.updateData()
         })
-        self.myTableView.frame = CGRectMake(0, 36, self.view.bounds.width, self.view.bounds.height - 36)
+        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
-        //搜索
+        
+        self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
+        self.leftVC.view.frame = CGRectMake(-screenWidth,0, screenWidth/2,screenHeight)
+        self.view.addSubview(self.leftVC.view)
+        
+        self.rightVC = RightViewController.CreateFromStoryboard("Main") as! RightViewController
+        self.rightVC.view.frame = CGRectMake(screenWidth,0, screenWidth/2,screenHeight)
+        self.view.addSubview(self.rightVC.view)
+
+        
+        //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
         searchButton.setImage(UIImage(named: "Main_Search"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-//            self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+            
+           self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth/2 ? screenWidth : screenWidth/2)
             return RACSignal.empty()
         })
         rightBarButton.addSubview(searchButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
-        //搜索
+        //left
         let leftBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton1:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
         searchButton1.setImage(UIImage(named: "Main_Search"), forState: UIControlState.Normal)
         searchButton1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            //            self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+            self?.animationWith((self?.leftVC)!, x: self?.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
             return RACSignal.empty()
             })
         leftBarButton.addSubview(searchButton1)
@@ -105,7 +118,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.sort = .DefaultType//默认排序
         self.updateDatasUI(self.datas)
         self.fectchData()
-        self.configHeadView()
+//        self.configHeadView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -362,103 +375,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.tableViewController.refreshControl?.endRefreshing()
     }
     //changed --by zhenghaijie
-    func configHeadView() -> Void {
-        let height:CGFloat = 36
-        let bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width,height))
-        bgView.backgroundColor = defaultBackgroundColor
-        var defaultBtn : UIButton!
-        var vipBtn : UIButton!
-        var startBtn : UIButton!
-        for (var i: CGFloat = 0;i<3;i++) {
-            let button = UIButton(frame: CGRectMake(i*self.view.bounds.width/3, 0, self.view.bounds.width/3, height))
-            button.tag = 100 + Int(i)
-           
-            let updateBtn = { (select : Bool,btn : UIButton) ->Void in
-                if select {
-                    btn.backgroundColor = appThemeColor
-                    btn.setTitleColor(UIColor.whiteColor(),forState: UIControlState.Normal)
-                }
-                else {
-                    btn.backgroundColor = UIColor.whiteColor()
-                    btn.setTitleColor(appThemeColor,forState: UIControlState.Normal)
-                }
-            }
-            if i == 0 {
-                button.setTitle("全部用户", forState: UIControlState.Normal)
-                defaultBtn = button
-            }
-            else if (i == 1) {
-                button.setTitle("VIP用户", forState: UIControlState.Normal)
-                vipBtn = button
-            }
-            else {
-                button.setTitle("备注用户", forState: UIControlState.Normal)
-                startBtn = button
-            }
-            if self.sort.rawValue == button.tag - 100 {
-                updateBtn(true,button)
-            }
-            else {
-                updateBtn(false,button)
-            }
-           
-            button.titleLabel?.textAlignment = NSTextAlignment.Center
-            button.titleLabel!.font = UIFont.systemFontOfSize(12)
-            button.layer.borderColor = appThemeColor.CGColor
-            button.layer.borderWidth = 0.5
-            button.rac_command = RACCommand(signalBlock: { [weak self](obj) -> RACSignal! in
-                if let strongSelf = self {
-                    let btn = obj as! UIButton
-                    if btn.tag - 100 == 0 {//综合排序
-                        strongSelf.sort = .DefaultType
-                        if strongSelf.dataArray.count == 0{
-                             strongSelf.fectchData()
-                        }
-                        else {
-                            if self?.dataArray.count != 0 {
-                                QNTool.hiddenEmptyView(self?.myTableView)
-                            }
-                            strongSelf.myTableView.reloadData()
-                        }
-                        updateBtn(true,defaultBtn)
-                        updateBtn(false,vipBtn)
-                        updateBtn(false,startBtn)
-                    }
-                    else if (btn.tag - 100 == 1) {//VIP用户
-                        strongSelf.sort = .VIPType
-                        if strongSelf.dataVIPArray.count == 0{
-                             strongSelf.myTableView.setContentOffset(CGPointZero, animated: false)
-                            strongSelf.fectchData()
-                        }else{
-                            if self?.dataVIPArray.count != 0 {
-                                QNTool.hiddenEmptyView(self?.myTableView)
-                            }
-                            strongSelf.myTableView.reloadData()
-                        }
-                        updateBtn(false,defaultBtn)
-                        updateBtn(true,vipBtn)
-                        updateBtn(false,startBtn)
-                    }
-                    else {//备注用户
-                        strongSelf.sort = .StartType
-                        if strongSelf.dataStartArray.count == 0{
-                            strongSelf.myTableView.setContentOffset(CGPointZero, animated: false)
-                            strongSelf.fectchData()
-                        }else{
-                            if self?.dataStartArray.count != 0 {
-                                QNTool.hiddenEmptyView(self?.myTableView)
-                            }
-                            strongSelf.myTableView.reloadData()
-                        }
-                        updateBtn(false,defaultBtn)
-                        updateBtn(false,vipBtn)
-                        updateBtn(true,startBtn)
-                    }
-                }
-                return RACSignal.empty()
-                })
-            bgView.addSubview(button)
-        }
-        self.view.addSubview(bgView)
+    func animationWith(vc: UIViewController,x:CGFloat) {
+        UIView .beginAnimations("move", context: nil)
+        UIView.setAnimationDuration(0.5)
+        UIView.setAnimationDelegate(self)
+        vc.view.frame = CGRectMake(x,0, screenWidth/2,screenHeight)
+        UIView.commitAnimations()
+
     }
 }
