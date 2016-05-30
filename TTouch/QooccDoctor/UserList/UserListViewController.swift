@@ -25,10 +25,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var tableViewController: UITableViewController!
     private var leftVC: LeftViewController!
     private var rightVC: RightViewController!
-
-    var myTableView: UITableView! {
-        return self.tableViewController?.tableView
-    }
+    var myTableView: UITableView!
+//    var myTableView: UITableView! {
+//        return self.tableViewController?.tableView
+//    }
 //    var datas: NSMutableDictionary = NSMutableDictionary(contentsOfFile: cachePath) ?? NSMutableDictionary() {
 //        didSet {
 //            datas.writeToFile(cachePath, atomically: true)
@@ -45,14 +45,15 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         
         //数据
         self.dataArray = NSMutableArray()
-        self.titles = ["登出","语言","管理","定时","摇摇","定位","语音"]
-        self.icons = ["user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income"]
-        //列表创建
-        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
-        self.tableViewController.refreshControl = UIRefreshControl()
-        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-        })
-        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
+        self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
+        self.icons = ["user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income"]
+//        //列表创建
+//        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
+//        self.tableViewController.refreshControl = UIRefreshControl()
+//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+//        })
+        self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36))
+//        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None

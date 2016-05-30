@@ -1,5 +1,5 @@
 //
-//  GateWayListViewController.swift
+//  CollectionViewController.swift
 //  QooccDoctor
 //
 //  Created by leiganzheng on 16/5/30.
@@ -9,19 +9,17 @@
 import UIKit
 import ReactiveCocoa
 
-class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
-    private var tableViewController: UITableViewController!
-    var myTableView: UITableView! {
-        return self.tableViewController?.tableView
-    }
+class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
+
+    var titles: NSArray!
+    var icons: NSArray!
+
+    @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.titles = ["IP 地址","物理地址","固件版本"]
+        self.icons = ["user_list_income","user_list_income","user_list_income"]
 
-        //列表创建
-        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
-        self.tableViewController.refreshControl = UIRefreshControl()
-//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-//            })
         self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
@@ -29,46 +27,38 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-        UIApplication.sharedApplication().statusBarHidden = true
-    }
+    
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UserTableViewCell.height
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.titles.count
     }
-    
-    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        return true
-    //    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-//            cell.accessoryType = .DisclosureIndicator
+            //            cell.accessoryType = .DisclosureIndicator
         }
-        cell.textLabel?.text = "T-Touching Gateway";
+        cell.textLabel?.text = self.titles[indexPath.row] as? String
+        cell.imageView?.image = UIImage(named: (self.icons[indexPath.row] as? String)!)
         let searchButton:UIButton = UIButton(type: .DetailDisclosure)
         searchButton.frame = CGRectMake(0, 5, 40, 30)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! UIViewController
-            self?.navigationController?.pushViewController(vc, animated: true)
-            return RACSignal.empty()
-            })
+        
+        return RACSignal.empty()
+        })
         cell.accessoryView = searchButton
         return cell
     }
@@ -79,5 +69,5 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
     }
     
     //MARK:- private method
-
+    
 }

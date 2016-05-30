@@ -103,6 +103,7 @@
 		2BFEDA331BFC27D900AC0D9E /* Login_Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFEDA321BFC27D900AC0D9E /* Login_Location@2x.png */; };
 		2BFEDA351BFC27E600AC0D9E /* Login_Location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
+		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		BB1842931BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */; };
 		BB1842941BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */; };
 		BB1842951BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842921BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png */; };
@@ -350,6 +351,7 @@
 		2BFEDA321BFC27D900AC0D9E /* Login_Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Location@2x.png"; sourceTree = "<group>"; };
 		2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Location@3x.png"; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example1@2x.png"; sourceTree = "<group>"; };
 		BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example2@2x.png"; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 				BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */,
 				BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */,
 				BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */,
+				71BEE5651CFC989B00087201 /* CollectionViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1426,6 +1429,7 @@
 				BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */,
 				BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */,
 				2BFEDA2D1BFB393500AC0D9E /* EditInfoAreaSelectViewController.swift in Sources */,
+				71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */,
 				BB3C45BA1B465C46008A1213 /* CBChartView.m in Sources */,
 				BBF4C8051B9E812A00C2E75B /* QualificationViewController.swift in Sources */,
 				BBF4C7F91B9E6DE300C2E75B /* ChangeNickNameViewController.swift in Sources */,

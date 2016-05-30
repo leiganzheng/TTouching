@@ -7,23 +7,27 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class GateWayDetailViewController: UIViewController , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
     
     private var tableViewController: UITableViewController!
-    var myTableView: UITableView! {
-        return self.tableViewController?.tableView
-    }
+    var titles: NSArray!
+    var myTableView: UITableView!
+//    var myTableView: UITableView! {
+//        return self.tableViewController?.tableView
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.titles = ["IP 地址","物理地址","固件版本"]
         //列表创建
-        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
-        self.tableViewController.refreshControl = UIRefreshControl()
-        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-            })
-        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
+//        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
+//        self.tableViewController.refreshControl = UIRefreshControl()
+//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+//            })
+        self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36))
+//        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -43,7 +47,7 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol, UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.titles.count
     }
     
     //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -51,17 +55,16 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol, UIT
     //    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "UserTableViewCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserTableViewCell!
+        let cellId = "cell"
+        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
-            cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! UserTableViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.Default
-            QNTool.configTableViewCellDefault(cell)
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            //            cell.accessoryType = .DisclosureIndicator
         }
-        //        let title = self.titles[indexPath.row] as! String
-        //        let icon = self.icons[indexPath.row] as! String
-        //        cell.name.text = title
-        //        cell.imageView?.image =   UIImage(named: icon)
+        cell.textLabel?.text = self.titles[indexPath.row] as? String
+        let lb = UILabel(frame: CGRectMake(0,0,80,40))
+        
+        cell.accessoryView = lb
         return cell
     }
     

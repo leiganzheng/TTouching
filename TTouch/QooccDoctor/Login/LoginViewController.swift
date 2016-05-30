@@ -87,6 +87,8 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
                     if self.checkRegisterEditInfo(doctor!) {
                         //进入主界面
                         let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+//                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
+//                        self.navigationController?.pushViewController(vc, animated: true)
                         QNTool.enterRootViewController(vc, animated: true)
                     } else {
                         // 未填写注册信息
@@ -95,7 +97,8 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
                             QNNetworkTool.login(Id: id, Password: password) { (doctor, error, errorMsg) -> Void in
                                 QNTool.hiddenActivityView()
                                 if doctor != nil {
-                                    let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+//                                    let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+                                    let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
                                     QNTool.enterRootViewController(vc, animated: true)
                                 }
                                 else {
