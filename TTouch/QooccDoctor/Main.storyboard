@@ -167,11 +167,11 @@
             </objects>
             <point key="canvasLocation" x="696" y="-1121"/>
         </scene>
-        <!--大门-->
+        <!--摇一摇-->
         <scene sceneID="jzx-vI-T8V">
             <objects>
                 <navigationController id="mV6-PU-5YJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="大门" id="6pO-u3-lO3"/>
+                    <tabBarItem key="tabBarItem" title="摇一摇" id="6pO-u3-lO3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="USt-oD-Yfs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="-529" y="-796"/>
         </scene>
-        <!--大门-->
+        <!--摇一摇-->
         <scene sceneID="RXV-tB-0Tn">
             <objects>
-                <viewController id="5bd-JC-1Hf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShakeViewController" id="5bd-JC-1Hf" customClass="ShakeViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uON-gW-lWY"/>
                         <viewControllerLayoutGuide type="bottom" id="vb9-u8-WwH"/>
@@ -195,13 +195,64 @@
                     <view key="view" contentMode="scaleToFill" id="nhl-3a-iZR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6RX-HO-0Bn">
+                                <rect key="frame" x="251" y="72" width="51" height="31"/>
+                                <color key="onTintColor" red="0.54901960780000003" green="0.43137254899999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </switch>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-fI-fsk">
+                                <rect key="frame" x="0.0" y="112" width="320" height="53"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFH-fi-oSv">
+                                        <rect key="frame" x="266" y="12" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-In-8CY">
+                                        <rect key="frame" x="254" y="0.0" width="1" height="53"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nwU-ML-h11">
+                                <rect key="frame" x="0.0" y="173" width="320" height="53"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fn-Bw-9j3">
+                                        <rect key="frame" x="266" y="12" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxD-Yh-R8F">
+                                        <rect key="frame" x="254" y="0.0" width="1" height="53"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="大门" id="cuv-xG-woG"/>
+                    <navigationItem key="navigationItem" title="摇一摇" id="cuv-xG-woG"/>
+                    <connections>
+                        <outlet property="screenBtn" destination="6fn-Bw-9j3" id="EEj-Xp-YzL"/>
+                        <outlet property="screenView" destination="nwU-ML-h11" id="joC-z0-H9Z"/>
+                        <outlet property="selectButton" destination="6RX-HO-0Bn" id="hdd-Ak-Zj5"/>
+                        <outlet property="zoneBtn" destination="LFH-fi-oSv" id="wWm-G1-Uye"/>
+                        <outlet property="zoneView" destination="tcU-fI-fsk" id="bnM-ak-i6u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iik-VA-Smh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55" y="-715"/>
+            <point key="canvasLocation" x="-100" y="-706"/>
         </scene>
         <!--Gate Way List View Controller-->
         <scene sceneID="LBJ-y4-6Bb">
