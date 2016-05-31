@@ -208,6 +208,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="zoneAction:" destination="5bd-JC-1Hf" eventType="touchUpInside" id="0Yw-6j-vvK"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-In-8CY">
                                         <rect key="frame" x="254" y="0.0" width="1" height="53"/>
@@ -227,6 +230,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="screenAction:" destination="5bd-JC-1Hf" eventType="touchUpInside" id="7CQ-ae-V6P"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxD-Yh-R8F">
                                         <rect key="frame" x="254" y="0.0" width="1" height="53"/>

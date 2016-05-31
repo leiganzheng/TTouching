@@ -13,7 +13,8 @@ class SubCustomView: UIView {
     var count:Int?
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.backgroundColor = UIColor.lightGrayColor()
+        self.updateLayerFrames()
     }
     
     required init(coder: NSCoder) {
@@ -21,7 +22,9 @@ class SubCustomView: UIView {
     }
     
     func updateLayerFrames() {
-        
+        let lb = UILabel(frame: CGRectMake(0,0,100,20))
+        lb.text = "随时"
+        self.addSubview(lb)
     }
 
 }

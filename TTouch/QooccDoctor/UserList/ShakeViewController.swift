@@ -15,6 +15,10 @@ class ShakeViewController: UIViewController {
     @IBOutlet weak var zoneBtn: UIButton!
     @IBOutlet weak var screenView: UIView!
     @IBOutlet weak var screenBtn: UIButton!
+    
+    var zoneSubView: SubCustomView?
+    var screenSubView: SubCustomView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +31,34 @@ class ShakeViewController: UIViewController {
     }
     
 
+    //MARK:- private method
+    func animationWith(v: UIView,x:CGFloat) {
+        UIView .beginAnimations("move", context: nil)
+        UIView.setAnimationDuration(0.5)
+        UIView.setAnimationDelegate(self)
+        v.frame = CGRectMake(x,0, v.frame.size.width,v.frame.size.height)
+        UIView.commitAnimations()
+        
+    }
 
+    @IBAction func zoneAction(sender: AnyObject) {
+        if self.zoneSubView == nil {
+            self.zoneSubView = SubCustomView(frame: CGRectMake(0,self.zoneView.frame.origin.y+53,screenWidth,100))
+//            self.screenView.frame = CGRectMake(0,self.zoneSubView.frame.origin.y+53+100,screenWidth,100)
+            self .animationWith(self.screenView, x: self.zoneSubView!.frame.origin.y+53+53+100)
+            self.view.addSubview(self.zoneSubView!)
+        }else{
+            self.zoneSubView?.removeFromSuperview()
+            self .animationWith(self.screenView, x: self.zoneView.frame.origin.y-53)
+        }
+        
+    }
+    @IBAction func screenAction(sender: AnyObject) {
+        if self.screenSubView == nil {
+            self.screenSubView = SubCustomView(frame: CGRectMake(0,self.screenView.frame.origin.x+53,screenWidth,100))
+        }else{
+            
+        }
+    }
 
 }
