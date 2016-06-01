@@ -71,8 +71,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
         
         //Right
-        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
-        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
+        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
@@ -83,8 +83,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
         //left
-        let leftBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
-        let searchButton1:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
+        let leftBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+        let searchButton1:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton1.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
         searchButton1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.animationWith((self?.leftVC)!, x: self?.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
@@ -102,7 +102,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        QNPhoneTool.hidden = true
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
@@ -130,7 +130,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
         cell.imageView?.image =   UIImage(named: icon)
-        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 40, 30))
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         cell.accessoryView = searchButton
         return cell

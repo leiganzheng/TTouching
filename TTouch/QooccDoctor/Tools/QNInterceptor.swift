@@ -101,8 +101,8 @@ class QNInterceptor : NSObject {
                     }
         
                     // 修改状态栏的样式
-                    UIApplication.sharedApplication().statusBarHidden = false
-                    UIApplication.sharedApplication().statusBarStyle = .Default
+//                    UIApplication.sharedApplication().statusBarHidden = false
+//                    UIApplication.sharedApplication().statusBarStyle = .Default
                 }
             }
             do {

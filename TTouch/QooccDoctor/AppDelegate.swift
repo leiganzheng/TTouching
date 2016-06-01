@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
         UINavigationBar.appearance().barTintColor = appThemeColor
         UINavigationBar.appearance().tintColor = navigationBackgroundColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
+        UIApplication.sharedApplication().statusBarHidden = false
 //        //配置环信sdk
 //        EaseMob.sharedInstance().registerSDKWithAppKey("qoocc-develop#xite", apnsCertName: "")
 //        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

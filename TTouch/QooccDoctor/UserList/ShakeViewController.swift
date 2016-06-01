@@ -44,7 +44,7 @@ class ShakeViewController: UIViewController {
     @IBAction func zoneAction(sender: AnyObject) {
         if self.zoneSubView == nil {
             self.zoneSubView = SubCustomView(frame: CGRectMake(0,self.zoneView.frame.origin.y+53,screenWidth,100))
-//            self.screenView.frame = CGRectMake(0,self.zoneSubView.frame.origin.y+53+100,screenWidth,100)
+            self.zoneSubView?.data = ["客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
             self .animationWith(self.screenView, x: self.zoneSubView!.frame.origin.y+53+53+100)
             self.view.addSubview(self.zoneSubView!)
         }else{

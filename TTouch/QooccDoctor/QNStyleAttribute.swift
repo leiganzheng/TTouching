@@ -42,7 +42,7 @@ let tableViewCellDefaultHeight: CGFloat = 55.0
 //MARK: 默认背景色
 let tableViewCellDefaultBackgroundColor = UIColor.whiteColor()
 //MARK: 默认内容字体
-let tableViewCellDefaultTextFont = UIFont.systemFontOfSize(16)
+let tableViewCellDefaultTextFont = UIFont.systemFontOfSize(18)
 //MARK: 默认内容颜色
 let tableViewCellDefaultTextColor = UIColor(white: 63/255.0, alpha: 1.0)
 //MARK: 默认详情字体

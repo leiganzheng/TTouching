@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class SubCustomView: UIView {
 
-    var count:Int?
+    var data:NSArray?{
+        get {
+            return data
+        }
+        set(newData) {
+            data = newData
+            self.updateLayerFrames()
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.lightGrayColor()
@@ -22,9 +31,15 @@ class SubCustomView: UIView {
     }
     
     func updateLayerFrames() {
-        let lb = UILabel(frame: CGRectMake(0,0,100,20))
-        lb.text = "随时"
-        self.addSubview(lb)
+        for index in 0 ..< data!.count {
+            let button:UIButton = UIButton(frame: CGRectMake(CGFloat(index%2)*(screenWidth/2), CGFloat(index%2)*50,screenWidth/2, 50))
+            button.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
+            button.setTitle("", forState: UIControlState.Normal)
+            button.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+                return RACSignal.empty()
+                })
+
+        }
     }
 
 }

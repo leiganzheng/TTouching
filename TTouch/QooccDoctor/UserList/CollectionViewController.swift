@@ -17,13 +17,14 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titles = ["IP 地址","物理地址","固件版本"]
-        self.icons = ["user_list_income","user_list_income","user_list_income"]
+        self.titles = ["书房","主浴","露台","小孩房","主卧房"]
+        self.icons = ["Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
 
         self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
-        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.myTableView.separatorColor = UIColor.whiteColor()
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)

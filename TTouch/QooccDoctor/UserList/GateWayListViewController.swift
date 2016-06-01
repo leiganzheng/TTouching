@@ -39,7 +39,6 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-        UIApplication.sharedApplication().statusBarHidden = true
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

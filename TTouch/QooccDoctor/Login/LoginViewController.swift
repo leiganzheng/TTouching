@@ -58,7 +58,6 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-        UIApplication.sharedApplication().statusBarHidden = false
     }
     
     // MARK: UITextFieldDelegate
