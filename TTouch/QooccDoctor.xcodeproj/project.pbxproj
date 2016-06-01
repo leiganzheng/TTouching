@@ -94,7 +94,6 @@
 		2BFD038F1BA29C900072CF4D /* login_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFD038D1BA29C900072CF4D /* login_unchecked@2x.png */; };
 		2BFD03921BA2A5550072CF4D /* Login_Close_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFD03901BA2A5550072CF4D /* Login_Close_Normal@2x.png */; };
 		2BFD03931BA2A5550072CF4D /* Login_Close_Normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFD03911BA2A5550072CF4D /* Login_Close_Normal@3x.png */; };
-		2BFD03951BA2A6220072CF4D /* UserAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD03941BA2A6220072CF4D /* UserAgreementViewController.swift */; };
 		2BFEDA271BFB175800AC0D9E /* EditInfoSelectLeveOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFEDA261BFB175800AC0D9E /* EditInfoSelectLeveOneViewController.swift */; };
 		2BFEDA291BFB224E00AC0D9E /* EditInfoEpartmentSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFEDA281BFB224E00AC0D9E /* EditInfoEpartmentSelectViewController.swift */; };
 		2BFEDA2B1BFB390800AC0D9E /* EditInfoHospitalSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFEDA2A1BFB390800AC0D9E /* EditInfoHospitalSelectViewController.swift */; };
@@ -104,6 +103,7 @@
 		2BFEDA351BFC27E600AC0D9E /* Login_Location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
+		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		BB1842931BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */; };
 		BB1842941BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */; };
 		BB1842951BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842921BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png */; };
@@ -344,7 +344,6 @@
 		2BFD038D1BA29C900072CF4D /* login_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_unchecked@2x.png"; sourceTree = "<group>"; };
 		2BFD03901BA2A5550072CF4D /* Login_Close_Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Close_Normal@2x.png"; sourceTree = "<group>"; };
 		2BFD03911BA2A5550072CF4D /* Login_Close_Normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Close_Normal@3x.png"; sourceTree = "<group>"; };
-		2BFD03941BA2A6220072CF4D /* UserAgreementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgreementViewController.swift; sourceTree = "<group>"; };
 		2BFEDA261BFB175800AC0D9E /* EditInfoSelectLeveOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInfoSelectLeveOneViewController.swift; sourceTree = "<group>"; };
 		2BFEDA281BFB224E00AC0D9E /* EditInfoEpartmentSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInfoEpartmentSelectViewController.swift; sourceTree = "<group>"; };
 		2BFEDA2A1BFB390800AC0D9E /* EditInfoHospitalSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInfoHospitalSelectViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +353,7 @@
 		2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Location@3x.png"; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example1@2x.png"; sourceTree = "<group>"; };
 		BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example2@2x.png"; sourceTree = "<group>"; };
@@ -993,7 +993,6 @@
 				BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */,
 				17C5562A1B4B5D8100D042CE /* RegisterViewController.swift */,
 				17E89CC31B4B699200067F28 /* EditInformationViewController.swift */,
-				2BFD03941BA2A6220072CF4D /* UserAgreementViewController.swift */,
 				2BFEDA261BFB175800AC0D9E /* EditInfoSelectLeveOneViewController.swift */,
 				2BFEDA281BFB224E00AC0D9E /* EditInfoEpartmentSelectViewController.swift */,
 				2BFEDA2A1BFB390800AC0D9E /* EditInfoHospitalSelectViewController.swift */,
@@ -1140,6 +1139,7 @@
 				BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */,
 				71BEE5651CFC989B00087201 /* CollectionViewController.swift */,
 				BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */,
+				71BEE5671CFF31B900087201 /* LanguageViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1415,7 +1415,6 @@
 				2B40F8C61C1951AD00DD1F31 /* PhotoBroswerViewController.swift in Sources */,
 				BB3C45C71B465C46008A1213 /* PNPlot.m in Sources */,
 				BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */,
-				2BFD03951BA2A6220072CF4D /* UserAgreementViewController.swift in Sources */,
 				BBF4C84F1B9ED33300C2E75B /* QN_Order.swift in Sources */,
 				2B419AFD1C045CA1002B6DC4 /* AppointmentLocationSetViewController.swift in Sources */,
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
@@ -1431,6 +1430,7 @@
 				BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */,
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				BBF4C7FF1B9E75FD00C2E75B /* GoodAtViewController.swift in Sources */,
+				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
 				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				2B5C4D8A1BFAAFA80018FD3E /* QNPushTool.swift in Sources */,

@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         self.view.addGestureRecognizer(tap)
         // 如果有本地账号了，就自动登录
-        self.autoLogin()
+//        self.autoLogin()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -129,6 +129,20 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
     }
     
+    @IBAction func loginAction(sender: AnyObject) {
+        let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+        actionSheet.addButtonWithTitle("找回密码")
+        actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
+            if let indexInt = index as? Int {
+                switch indexInt {
+                case 1:
+                    self.navigationController?.pushViewController(ForgetPasswordViewController.CreateFromStoryboard("Login") as! UIViewController, animated: true)
+                default: break
+                }
+            }
+        })
+        actionSheet.showInView(self.view)
+    }
     // 判断输入的合法性
     //MARK:TODO
     private func checkAccountPassWord() -> Bool {

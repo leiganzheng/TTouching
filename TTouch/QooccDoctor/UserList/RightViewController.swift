@@ -47,10 +47,6 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         return self.titles.count
     }
     
-    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        return true
-    //    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
@@ -71,7 +67,12 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        if indexPath.row == 0 {
+            QNTool.enterLoginViewController()
+        }
+        if indexPath.row == 6 {
+            
+        }
     }
 
 }

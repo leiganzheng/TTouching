@@ -52,11 +52,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 //        self.tableViewController.refreshControl = UIRefreshControl()
 //        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
 //        })
-        self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36))
+        self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
 //        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
-        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.myTableView.separatorColor = defaultLineColor
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)

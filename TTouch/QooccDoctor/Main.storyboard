@@ -352,6 +352,33 @@
             </objects>
             <point key="canvasLocation" x="-392" y="-136"/>
         </scene>
+        <!--Language View Controller-->
+        <scene sceneID="gUz-IV-PrF">
+            <objects>
+                <viewController storyboardIdentifier="LanguageViewController" id="rah-CL-MiO" customClass="LanguageViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xpg-Bu-U68"/>
+                        <viewControllerLayoutGuide type="bottom" id="nTc-0x-eMc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hJO-Ny-ymt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ErL-28-h52">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="myTableView" destination="ErL-28-h52" id="dUw-A1-oXv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5t-Cd-kQy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="490"/>
+        </scene>
         <!--Left View Controller-->
         <scene sceneID="aWi-oC-f6n">
             <objects>

@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--登录-->
@@ -82,7 +81,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="U7Y-y9-ffO" kind="push" id="Hwv-Uj-QnF"/>
+                                            <action selector="loginAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="wc7-UK-o87"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9v-rC-xj3">
@@ -255,7 +254,7 @@
                             <constraint firstItem="LFn-lE-GtU" firstAttribute="top" secondItem="t4z-yH-NOB" secondAttribute="bottom" constant="26" id="xNb-gk-ViD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="忘记密码" id="Kb2-O2-Hvm"/>
+                    <navigationItem key="navigationItem" title="找回密码" id="Kb2-O2-Hvm"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="textField1" destination="LFn-lE-GtU" id="WgG-q8-PPs"/>
@@ -316,6 +315,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="done:" destination="hmS-AT-iP6" eventType="touchUpInside" id="DL0-oI-GEd"/>
+                                    <segue destination="j2T-8M-QHP" kind="push" id="stc-0s-XkH"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="CJr-pY-eoc">
@@ -325,50 +325,21 @@
                                     <constraint firstAttribute="height" constant="40" id="wj7-dl-qsM"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbe-Mc-aQc">
-                                <rect key="frame" x="270" y="385" width="35" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="CI6-jn-a8T"/>
-                                    <constraint firstAttribute="height" constant="21" id="c0K-ws-5MM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="登录">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginBtnCli:" destination="hmS-AT-iP6" eventType="touchUpInside" id="DGM-B1-QId"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJd-bS-tjd">
-                                <rect key="frame" x="252" y="386" width="21" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="6Ny-RY-eKz"/>
-                                    <constraint firstAttribute="width" constant="21" id="Vld-3M-In3"/>
-                                </constraints>
-                                <state key="normal" title="去">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xKc-7p-Ptz" firstAttribute="width" secondItem="4YQ-ED-PhI" secondAttribute="width" id="1yM-0V-130"/>
-                            <constraint firstItem="pJd-bS-tjd" firstAttribute="top" secondItem="drH-Gv-dwA" secondAttribute="bottom" constant="9" id="5I4-ya-4B4"/>
                             <constraint firstItem="4YQ-ED-PhI" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leading" constant="14" id="5VF-lC-xmP"/>
                             <constraint firstItem="xKc-7p-Ptz" firstAttribute="height" secondItem="4YQ-ED-PhI" secondAttribute="height" id="JwU-oF-Ke7"/>
-                            <constraint firstItem="pbe-Mc-aQc" firstAttribute="top" secondItem="drH-Gv-dwA" secondAttribute="bottom" constant="8" id="Pbq-B8-mav"/>
                             <constraint firstItem="xKc-7p-Ptz" firstAttribute="centerX" secondItem="4YQ-ED-PhI" secondAttribute="centerX" constant="2" id="S8d-eU-XFf"/>
                             <constraint firstItem="drH-Gv-dwA" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leading" constant="14" id="XUt-75-Ng5"/>
                             <constraint firstItem="xKc-7p-Ptz" firstAttribute="top" secondItem="4YQ-ED-PhI" secondAttribute="bottom" constant="20" id="Yse-t0-fwi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pbe-Mc-aQc" secondAttribute="trailing" constant="-1" id="cLi-Vr-mtr"/>
                             <constraint firstAttribute="trailing" secondItem="drH-Gv-dwA" secondAttribute="trailing" constant="16" id="i7S-QV-AQj"/>
                             <constraint firstAttribute="centerX" secondItem="CJr-pY-eoc" secondAttribute="centerX" id="jKK-RQ-2GT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pJd-bS-tjd" secondAttribute="trailing" constant="31" id="rRr-ac-WiM"/>
                             <constraint firstAttribute="trailing" secondItem="4YQ-ED-PhI" secondAttribute="trailing" constant="16" id="xCN-FS-Wmh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TIa-MO-xnM"/>
+                    <navigationItem key="navigationItem" title="短信注册" id="TIa-MO-xnM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="imageView" destination="CJr-pY-eoc" id="jQX-9T-cv0"/>
@@ -486,6 +457,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xql-fb-G94">
                                         <rect key="frame" x="258" y="12" width="49" height="38"/>
                                         <color key="backgroundColor" red="0.4039215686" green="0.71372549019999998" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="photoAction:" destination="j2T-8M-QHP" eventType="touchUpInside" id="iuK-s1-mHs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -531,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dn9-bo-9fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="504"/>
+            <point key="canvasLocation" x="1155" y="494"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="B0X-6a-vJ8">

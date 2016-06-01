@@ -63,6 +63,13 @@ class QNInterceptor : NSObject {
                     if let rootViewController = viewController.navigationController?.viewControllers.first where rootViewController != viewController {
                         viewController.configBackButton()
                     }
+                    if (viewController is ForgetPasswordViewController || viewController is RegisterViewController || viewController is LanguageViewController) {
+                        // 修改导航栏样式
+                        UINavigationBar.appearance().barTintColor = defaultBackgroundGrayColor
+                        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+                        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
+                        
+                    }
                 }
             }
         do {
@@ -99,7 +106,6 @@ class QNInterceptor : NSObject {
                     if !(viewController is QNInterceptorKeyboardProtocol) {
                         IQKeyboardManager.sharedManager().disableInViewControllerClass(viewController.classForCoder)
                     }
-        
                     // 修改状态栏的样式
 //                    UIApplication.sharedApplication().statusBarHidden = false
 //                    UIApplication.sharedApplication().statusBarStyle = .Default

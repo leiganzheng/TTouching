@@ -13,19 +13,17 @@ import UIKit
 *
 *  // MARK: - 忘记密码
 */
-class ForgetPasswordViewController: UIViewController, QNInterceptorNavigationBarShowProtocol {
+class ForgetPasswordViewController: UIViewController,QNInterceptorNavigationBarShowProtocol{
 
     @IBOutlet weak var textField1: UITextField!
     @IBOutlet weak var textField2: UITextField!
-    @IBOutlet weak var textField3: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         RegisterViewController.configTextField(self.textField1)
         RegisterViewController.configTextField(self.textField2)
-        RegisterViewController.configTextField(self.textField3)
         
         // 获取验证码的按钮
         let authCodeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 90*COEFFICIENT_OF_WIDTH_ZOOM, height: self.textField2.bounds.height*COEFFICIENT_OF_HEIGHT_ZOOM))
@@ -62,21 +60,27 @@ class ForgetPasswordViewController: UIViewController, QNInterceptorNavigationBar
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+//        UINavigationBar.appearance().barTintColor = defaultBackgroundGrayColor
+//        UINavigationBar.appearance().tintColor = navigationBackgroundColor
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
+
+    }
     // MARK: 重置密码
     @IBAction func resetPassword(sender: UIButton!){
         if self.check() {
-            QNNetworkTool.resetPassword(self.textField1.text!, authcode: self.textField2.text!, password: self.textField3.text!, completion: { [weak self](succeed, error, errorMsg) -> Void in
-                if let _ = self {
-                    if succeed {
-                        QNTool.showPromptView("密码修改成功，请登录")
-                        self?.navigationController?.popViewControllerAnimated(true)
-                    }
-                    else {
-                        QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
-                    }
-                }
-            })
+//            QNNetworkTool.resetPassword(self.textField1.text!, authcode: self.textField2.text!, password: self.textField3.text!, completion: { [weak self](succeed, error, errorMsg) -> Void in
+//                if let _ = self {
+//                    if succeed {
+//                        QNTool.showPromptView("密码修改成功，请登录")
+//                        self?.navigationController?.popViewControllerAnimated(true)
+//                    }
+//                    else {
+//                        QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
+//                    }
+//                }
+//            })
         }
     }
     
@@ -95,25 +99,13 @@ class ForgetPasswordViewController: UIViewController, QNInterceptorNavigationBar
             return false
         }
         
-        if !QNTool.stringCheck(self.textField3.text, allowAllSpace: true, allowLength: 5) {
-            QNTool.showPromptView("请设置6位及以上的密码！")
-            self.textField3.becomeFirstResponder()
-            return false
-        }
-        return true
+            return true
     }
 
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.textField1 {
             self.textField2.becomeFirstResponder()
-        }
-        else if textField == self.textField2 {
-            self.textField3.becomeFirstResponder()
-        }
-        else if textField == self.textField3 {
-            textField.resignFirstResponder()
-            self.resetPassword(nil)
         }
         
         return true

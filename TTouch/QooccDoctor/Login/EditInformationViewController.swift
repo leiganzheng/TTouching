@@ -21,13 +21,15 @@ import UIKit
 *
 *  // MARK: - 注册的下一步，填写资料
 */
-class EditInformationViewController: UIViewController, QNInterceptorNavigationBarShowProtocol, QNInterceptorKeyboardProtocol, UITextFieldDelegate {
+class EditInformationViewController: UIViewController, QNInterceptorNavigationBarShowProtocol, QNInterceptorKeyboardProtocol, UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
 //    @IBOutlet weak var textField1: UITextField!  //地区
     @IBOutlet weak var textField2: UITextField!  //所属医院
     @IBOutlet weak var textField3: UITextField!  //科室
     @IBOutlet weak var textField4: UITextField!  //职称
     @IBOutlet weak var textField5: UITextField!  //擅长病症
+    
+    var picker: UIImagePickerController?
     
     var isEdit = true
     var pickerView: UIPickerView!
@@ -139,6 +141,19 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
         }
         return selectButton
     }
+    
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+//        // 存储图片
+//        let headImage = self.imageWithImageSimple(image, scaledSize: CGSizeMake(image.size.width, image.size.height))
+//        let headImageData = UIImageJPEGRepresentation(headImage, 0.125)
+//        self.uploadUserFace(headImageData)
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
+    }
     func configTextFieldCli(textFiled : UITextField) {
         let selectBtnCli = UIButton(frame: CGRectMake(textFiled.bounds.origin.x, textFiled.bounds.origin.y, screenWidth -  textFiled.bounds.origin.x * 2 + 30, textFiled.bounds.height))
         selectBtnCli.backgroundColor = UIColor.clearColor()
@@ -151,6 +166,28 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
         textFiled.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (sender) -> Void in
             sender.resignFirstResponder()
         }
+    }
+
+    @IBAction func photoAction(sender: AnyObject) {
+        let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+        actionSheet.addButtonWithTitle("从手机相册选择")
+        actionSheet.addButtonWithTitle("拍照")
+        actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
+            if let indexInt = index as? Int {
+                switch indexInt {
+                case 1, 2:
+                    if self.picker == nil {
+                        self.picker = UIImagePickerController()
+                        self.picker!.delegate = self
+                    }
+                    self.picker!.sourceType = (indexInt == 1) ? .SavedPhotosAlbum : .Camera
+                    self.picker!.allowsEditing = true
+                    self.presentViewController(self.picker!, animated: true, completion: nil)
+                default: break
+                }
+            }
+        })
+        actionSheet.showInView(self.view)
     }
     func selectBtnCli(textFiled : UITextField) {
         if textFiled  == self.textField4 {
