@@ -39,10 +39,10 @@ class QNTabBarController: UITabBarController {
         
         // 修改底部工具条的字体和颜色
         self.tabBar.translucent = false
-        self.tabBar.barTintColor = UIColor.whiteColor()
+        self.tabBar.barTintColor = defaultLineColor
         self.tabBar.tintColor = UINavigationBar.appearance().tintColor
-        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [defaultGrayColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
-        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [ appThemeColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
+//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [defaultLineColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
+//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [ appThemeColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
 
         // 图标配置
         if let _ = self.tabBar.items {

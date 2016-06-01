@@ -76,7 +76,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
-           self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth/2 ? screenWidth : screenWidth/2)
+           self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth : screenWidth-160)
             return RACSignal.empty()
         })
         rightBarButton.addSubview(searchButton)

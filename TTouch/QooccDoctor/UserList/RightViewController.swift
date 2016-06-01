@@ -21,10 +21,16 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.myTableView.frame = CGRectMake(0, 0, screenWidth/2, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
-        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.myTableView.separatorColor = UIColor.whiteColor()
+        
+//        UIView *view = [[UIView alloc] init];
+//        view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"view_bg_ipad.png"]];
+//        self.tableView.backgroundView = view;
+        
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
-        self.myTableView.backgroundColor = UIColor.blackColor()
+        self.myTableView.backgroundColor = appThemeColor
         self.view.addSubview(self.myTableView!)
     }
     
@@ -52,11 +58,12 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor.blackColor()
+        cell.backgroundColor = appThemeColor
         let title = self.titles[indexPath.row] as! NSString
         let icon = self.icons[indexPath.row] as! NSString
         cell.textLabel?.text = title as String
         cell.imageView?.image = UIImage(named: icon as String)
+        cell.backgroundView = UIImageView(image: UIImage(named: "right"))
         
         return cell
     }

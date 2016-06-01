@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
 //        QNPushTool.clear()
 
         // 修改导航栏样式
-        UINavigationBar.appearance().barTintColor = navigationBackgroundColor
+        UINavigationBar.appearance().barTintColor = appThemeColor
         UINavigationBar.appearance().tintColor = navigationBackgroundColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
 //        //配置环信sdk

@@ -20,7 +20,7 @@ let appThemeColor = UIColor(red: 53/255.0, green: 52/255.0, blue: 58/255.0, alph
 
 //MARK:- 导航栏
 //MARK: 导航栏文本颜色
-let navigationTextColor = UIColor(white: 0.0, alpha: 1.0)
+let navigationTextColor = UIColor.whiteColor()
 //MARK: 导航栏背景颜色
 let navigationBackgroundColor = UIColor(white: 1.0, alpha: 1.0)
 //MARK: 导航栏字体（titleView不允许被修改）
