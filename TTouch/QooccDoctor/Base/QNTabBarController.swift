@@ -23,10 +23,10 @@ private enum QNTabBarItem: Int {
     var imageName: String {
         switch self {
         case .Main: return "Room_MasterRoom_icon"
-        case .Location: return "Setup_Location_icon"
+        case .Location: return "T_Setup_Location_icon"
         case .Favite: return "Manage_Collect_icon"
-        case .Voice: return "Setup_Voice_icon"
-        case .Shake: return "Setup_Shack_icon"
+        case .Voice: return "T_Setup_Voice_icon"
+        case .Shake: return "T_Setup_Shack_icon"
         }
     }
 }

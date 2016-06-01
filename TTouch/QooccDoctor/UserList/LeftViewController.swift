@@ -17,13 +17,14 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         super.viewDidLoad()
 
         self.titles = ["灯光","窗帘","动作","空调","监视","保全","音乐","影视"]
-        self.icons = ["user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income"]
+        self.icons = ["Menu_Light_icon1","Menu_Curtain_icon1","Menu_Trigger_icon1","Menu_AirCondition_icon1","Menu_Camera_icon1","Menu_Security_icon1","Menu_Music_icon1","Menu_AV_icon1"]
         self.myTableView.frame = CGRectMake(0, 0, screenWidth/2, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleHeight]
+        self.myTableView.backgroundColor = UIColor.blackColor()
         self.view.addSubview(self.myTableView!)
     }
 
@@ -33,7 +34,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return 54
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,8 +50,9 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            cell.accessoryType = .DisclosureIndicator
         }
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.blackColor()
         let title = self.titles[indexPath.row] as! NSString
         let icon = self.icons[indexPath.row] as! NSString
         cell.textLabel?.text = title as String

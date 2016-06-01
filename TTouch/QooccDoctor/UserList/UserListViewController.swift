@@ -46,7 +46,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         //数据
         self.dataArray = NSMutableArray()
         self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
-        self.icons = ["user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income"]
+        self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
 //        //列表创建
 //        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
 //        self.tableViewController.refreshControl = UIRefreshControl()
@@ -73,7 +73,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
-        searchButton.setImage(UIImage(named: "Main_Search"), forState: UIControlState.Normal)
+        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
            self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth/2 ? screenWidth : screenWidth/2)
@@ -85,7 +85,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         //left
         let leftBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) // Added by LiuYu on 2015-7-13 （在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton1:UIButton = UIButton(frame: CGRectMake(0, 5, 40, 30))
-        searchButton1.setImage(UIImage(named: "Main_Search"), forState: UIControlState.Normal)
+        searchButton1.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
         searchButton1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.animationWith((self?.leftVC)!, x: self?.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
             return RACSignal.empty()
@@ -130,6 +130,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
         cell.imageView?.image =   UIImage(named: icon)
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 40, 30))
+        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
+        cell.accessoryView = searchButton
         return cell
     }
     

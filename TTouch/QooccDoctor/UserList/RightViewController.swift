@@ -16,14 +16,15 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.titles = ["登出","语言","管理","定时","摇摇","定位","语音"]
-        self.icons = ["user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income","user_list_income"]
+        self.titles = ["登出","语言","管理","定时","摇摇","定位","语音","版本"]
+        self.icons = ["Setup_Login_icon1","Setup_Lang_icon1","Setup_Manage_icon1","Setup_Timer_icon1","Setup_Shack_icon1","Setup_Location_icon1","Setup_Voice_icon1","Setup_Version_icon1"]
         self.myTableView.frame = CGRectMake(0, 0, screenWidth/2, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
+        self.myTableView.backgroundColor = UIColor.blackColor()
         self.view.addSubview(self.myTableView!)
     }
     
@@ -33,7 +34,7 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return 54
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,8 +50,9 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            cell.accessoryType = .DisclosureIndicator
         }
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.blackColor()
         let title = self.titles[indexPath.row] as! NSString
         let icon = self.icons[indexPath.row] as! NSString
         cell.textLabel?.text = title as String
