@@ -13,16 +13,20 @@ import UIKit
 // 跳转到订单界面
 // MARK: Tab 分组
 private enum QNTabBarItem: Int {
-    case MedicaData = 0
-    case Task = 1
-    case UserCenter = 2
+    case Main = 0
+    case Location = 1
+    case Favite = 2
+    case Voice = 3
+    case Shake = 4
     
     // 对应的图片名
     var imageName: String {
         switch self {
-        case .MedicaData: return "nav_data"
-        case .Task: return "nav_order"
-        case .UserCenter: return "nav_user"
+        case .Main: return "Room_MasterRoom_icon"
+        case .Location: return "Setup_Location_icon"
+        case .Favite: return "Manage_Collect_icon"
+        case .Voice: return "Setup_Voice_icon"
+        case .Shake: return "Setup_Shack_icon"
         }
     }
 }
@@ -42,23 +46,25 @@ class QNTabBarController: UITabBarController {
 
         // 图标配置
         if let _ = self.tabBar.items {
-            self.itemConfig(QNTabBarItem.MedicaData)
-            self.itemConfig(QNTabBarItem.Task)
-            self.itemConfig(QNTabBarItem.UserCenter)
+            self.itemConfig(QNTabBarItem.Main)
+            self.itemConfig(QNTabBarItem.Location)
+            self.itemConfig(QNTabBarItem.Favite)
+            self.itemConfig(QNTabBarItem.Voice)
+            self.itemConfig(QNTabBarItem.Shake)
         }
-        self.messageCountChanged()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("messageCountChanged"), name: QNNotificationMessageCountChanged, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("jmpAppointmentOrderVc"), name: QNNotificationJMPAppointmentOrder, object: nil)//跳转到预约进度页
-        // 点击通知
-        if isJMPAppointmentOrder {
-            isJMPAppointmentOrder = false
-            for vc in NSArray(array: self.viewControllers!) {
-//                if (vc as! UINavigationController).viewControllers[0] is AppointmentOrderViewController {
-//                    self.selectedViewController = vc as? UIViewController
-//                    self.selectedIndex == 1
-//                }
-            }
-        }
+////        self.messageCountChanged()
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("messageCountChanged"), name: QNNotificationMessageCountChanged, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("jmpAppointmentOrderVc"), name: QNNotificationJMPAppointmentOrder, object: nil)//跳转到预约进度页
+//        // 点击通知
+//        if isJMPAppointmentOrder {
+//            isJMPAppointmentOrder = false
+//            for vc in NSArray(array: self.viewControllers!) {
+////                if (vc as! UINavigationController).viewControllers[0] is AppointmentOrderViewController {
+////                    self.selectedViewController = vc as? UIViewController
+////                    self.selectedIndex == 1
+////                }
+//            }
+//        }
     }
     
     /**
@@ -112,38 +118,8 @@ class QNTabBarController: UITabBarController {
     }
     
     // MARK: 消息总数发生改变时候的处理办法
-    func messageCountChanged() {
-        self.itemConfig(QNTabBarItem.UserCenter, haveDot: (g_NotReadMyMessageCount > 0))
-    }
-    //跳转订单页面
-//    func jmpAppointmentOrderVc() {
-//        let jmp = { ()->Void in
-//            let currentNav = NSArray(array: self.viewControllers!).objectAtIndex(self.selectedIndex) as! UINavigationController
-//            let vcsTmp = NSArray(array: currentNav.viewControllers)
-//            if vcsTmp.objectAtIndex(vcsTmp.count - 1) is AppointmentDetailViewController {
-//                currentNav.popToRootViewControllerAnimated(false)
-//            }
-//            for vc in vcsTmp {
-//                if vc is AppointmentOrderViewController {
-//                    let vcTmp = vc as! AppointmentOrderViewController
-//                    if JMPAppointmentOrderIndex == "0" && vcTmp.newOrderBtn != nil {
-//                        vcTmp.newOrderAction(vcTmp.newOrderBtn)
-//                    } else if JMPAppointmentOrderIndex == "2" && vcTmp.finishOrderBtn != nil {
-//                        vcTmp.finishOderAction(vcTmp.finishOrderBtn)
-//                    }
-//                    return
-//                }
-//            }
-//            currentNav.popToRootViewControllerAnimated(false)
-//        }
-//        if self.selectedIndex == 1 {
-//            jmp()
-//        } else {
-//            //推出页面
-//            let currentNav = NSArray(array: self.viewControllers!).objectAtIndex(self.selectedIndex) as! UINavigationController
-//            currentNav.popToRootViewControllerAnimated(false)
-//            self.selectedIndex = 1
-//            jmp()
-//        }
+//    func messageCountChanged() {
+//        self.itemConfig(QNTabBarItem.UserCenter, haveDot: (g_NotReadMyMessageCount > 0))
 //    }
+
 }

@@ -21,8 +21,8 @@ class ShakeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        QNTool.configViewLayerFrame(zoneView)
+        QNTool.configViewLayerFrame(screenView)
     }
 
     override func didReceiveMemoryWarning() {
