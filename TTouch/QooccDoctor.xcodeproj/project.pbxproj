@@ -104,6 +104,8 @@
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
+		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
+		71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */; };
 		BB1842931BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */; };
 		BB1842941BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */; };
 		BB1842951BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842921BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png */; };
@@ -354,6 +356,8 @@
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
+		71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyEquenmentsViewController.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example1@2x.png"; sourceTree = "<group>"; };
 		BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example2@2x.png"; sourceTree = "<group>"; };
@@ -1140,6 +1144,8 @@
 				71BEE5651CFC989B00087201 /* CollectionViewController.swift */,
 				BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */,
 				71BEE5671CFF31B900087201 /* LanguageViewController.swift */,
+				71BEE56B1D007FBF00087201 /* EquementsViewController.swift */,
+				71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1450,9 +1456,11 @@
 				BBF4C7F91B9E6DE300C2E75B /* ChangeNickNameViewController.swift in Sources */,
 				BB3C45B41B465C46008A1213 /* UIImageExtension.swift in Sources */,
 				BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */,
+				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				BBA52F341B9D709E007A3C72 /* SettingViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */,
+				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
 				BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */,
 				BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */,

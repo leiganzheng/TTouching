@@ -24,7 +24,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        self.myTableView.separatorColor = UIColor.whiteColor()
+        self.myTableView.separatorColor = defaultLineColor
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
@@ -54,8 +54,9 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
         }
         cell.textLabel?.text = self.titles[indexPath.row] as? String
         cell.imageView?.image = UIImage(named: (self.icons[indexPath.row] as? String)!)
-        let searchButton:UIButton = UIButton(type: .DetailDisclosure)
-        searchButton.frame = CGRectMake(0, 5, 40, 30)
+        let searchButton:UIButton = UIButton(type: .Custom)
+        searchButton.frame = CGRectMake(0, 0, 40, 40)
+        searchButton.setImage(UIImage(named: "Manage_Collect_icon2"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
         
         return RACSignal.empty()
