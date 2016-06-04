@@ -9,37 +9,70 @@
 import UIKit
 import ReactiveCocoa
 
-class SubCustomView: UIView {
+class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource{
 
-    var data:NSArray?{
-        get {
-            return data
-        }
-        set(newData) {
-            data = newData
+    var collectionView:UICollectionView?
+    var data:NSArray? {
+        didSet {
             self.updateLayerFrames()
         }
     }
+    var icon:NSArray?
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.lightGrayColor()
-        self.updateLayerFrames()
+        self.backgroundColor = UIColor.whiteColor()
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)!
     }
+    //实现UICollectionViewDataSource
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return self.data!.count
+    }
     
-    func updateLayerFrames() {
-        for index in 0 ..< data!.count {
-            let button:UIButton = UIButton(frame: CGRectMake(CGFloat(index%2)*(screenWidth/2), CGFloat(index%2)*50,screenWidth/2, 50))
-            button.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
-            button.setTitle("", forState: UIControlState.Normal)
-            button.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-                return RACSignal.empty()
-                })
-
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        let identify:String = "Cell"
+        let cell:UICollectionViewCell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(
+            identify, forIndexPath: indexPath)
+        let button:UIButton = UIButton(frame:CGRectMake(0, 0, screenWidth/2, 50))
+        if icon?.count>0 {
+            button.setImage(UIImage(named: (self.icon![indexPath.row] as? String)!), forState: UIControlState.Normal)
         }
+        
+        button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
+        QNTool.configViewLayerFrame(button)
+        cell.contentView.addSubview(button)
+        return cell
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(screenWidth/2-6, 50)
+    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsetsMake(5, 0, 5, 0)
+//    }
+
+    
+    //实现UICollectionViewDataSource
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        NSLog("cell")
+    }
+    func updateLayerFrames() {
+        let height = CGFloat(self.data!.count/2 == 0 ? self.data!.count/2 : self.data!.count/2 + 1)*50
+        self.frame.size.height = height
+        let layout = UICollectionViewFlowLayout()
+       self.collectionView = UICollectionView(frame: CGRectMake(0, 0, screenWidth, height), collectionViewLayout: layout)
+        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+            self.collectionView!.delegate = self;
+        self.collectionView!.dataSource = self;
+        
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
+        self.addSubview(self.collectionView!)
+        self.collectionView?.reloadData()
+        
     }
 
 }

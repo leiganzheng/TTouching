@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         self.view.addGestureRecognizer(tap)
         // 如果有本地账号了，就自动登录
-//        self.autoLogin()
+        self.autoLogin()
     }
 
     override func viewWillAppear(animated: Bool) {
