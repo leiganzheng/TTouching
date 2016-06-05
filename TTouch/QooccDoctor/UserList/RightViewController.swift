@@ -8,10 +8,13 @@
 
 import UIKit
 
+typealias funcBlock = (AnyObject) -> Void
+
 class RightViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var titles: NSArray!
     var icons: NSArray!
+    var bock:funcBlock?
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +73,11 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         if indexPath.row == 0 {
             QNTool.enterLoginViewController()
         }
-        if indexPath.row == 6 {
-            
+        if indexPath.row == 1 {
+            self.bock!(LanguageViewController.CreateFromStoryboard("Main"))
+        }
+        if indexPath.row == 2 {
+            self.bock!(EquementsViewController.CreateFromStoryboard("Main"))
         }
     }
 

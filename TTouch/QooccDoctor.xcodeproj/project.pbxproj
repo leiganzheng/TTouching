@@ -106,6 +106,8 @@
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
 		71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */; };
+		71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF83B41D047568007275FE /* MannageEquementViewController.swift */; };
+		71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF83B61D047630007275FE /* MEquementDetialViewController.swift */; };
 		BB1842931BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */; };
 		BB1842941BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */; };
 		BB1842951BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1842921BA292DB005B1D41 /* user_ExpertAuthenticate_example3@2x.png */; };
@@ -358,6 +360,8 @@
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
 		71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyEquenmentsViewController.swift; sourceTree = "<group>"; };
+		71CF83B41D047568007275FE /* MannageEquementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MannageEquementViewController.swift; sourceTree = "<group>"; };
+		71CF83B61D047630007275FE /* MEquementDetialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MEquementDetialViewController.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB1842901BA292DB005B1D41 /* user_ExpertAuthenticate_example1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example1@2x.png"; sourceTree = "<group>"; };
 		BB1842911BA292DB005B1D41 /* user_ExpertAuthenticate_example2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_example2@2x.png"; sourceTree = "<group>"; };
@@ -1146,6 +1150,8 @@
 				71BEE5671CFF31B900087201 /* LanguageViewController.swift */,
 				71BEE56B1D007FBF00087201 /* EquementsViewController.swift */,
 				71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */,
+				71CF83B41D047568007275FE /* MannageEquementViewController.swift */,
+				71CF83B61D047630007275FE /* MEquementDetialViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1458,6 +1464,7 @@
 				BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				BBA52F341B9D709E007A3C72 /* SettingViewController.swift in Sources */,
+				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
@@ -1480,6 +1487,7 @@
 				2BA824981C059EE4008CAACE /* AddressTableViewCell.swift in Sources */,
 				BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */,
 				17F8635D1B4DFD3000D0A643 /* UserCenterViewController.swift in Sources */,
+				71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */,
 				17F863611B4DFE1100D0A643 /* ChangePasswordViewController.swift in Sources */,
 				BB3C45D21B465C46008A1213 /* UIImageViewWebCacheExtension.swift in Sources */,
 				BB3C45C81B465C46008A1213 /* NSData+AES.m in Sources */,

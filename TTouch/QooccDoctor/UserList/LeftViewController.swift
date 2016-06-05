@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
+typealias funcLBlock = (AnyObject) -> Void
 class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
    
     var titles: NSArray!
     var icons: NSArray!
+    var bock:funcLBlock?
+    
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,9 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.row == 1 {
+            self.bock!(LanguageViewController.CreateFromStoryboard("Main"))
+        }
 
     }
 

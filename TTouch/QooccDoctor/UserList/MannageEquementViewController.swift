@@ -1,21 +1,19 @@
 //
-//  LanguageViewController.swift
+//  MannageEquementViewController.swift
 //  QooccDoctor
 //
-//  Created by leiganzheng on 16/6/1.
+//  Created by leiganzheng on 16/6/5.
 //  Copyright © 2016年 juxi. All rights reserved.
 //
 
 import UIKit
 
-class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
+class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
     
-    var titles: NSArray!
-
     @IBOutlet weak var myTableView: UITableView!
+    var titles: NSArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "语言"
         self.titles = ["简体中文","繁体中文","English"]
     }
 
@@ -23,6 +21,8 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 54
@@ -38,7 +38,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.textLabel?.textColor = UIColor.blackColor()
-//        cell.backgroundColor = appThemeColor
+        //        cell.backgroundColor = appThemeColor
         let title = self.titles[indexPath.row] as! NSString
         cell.textLabel?.text = title as String
         //        cell.contentView.addSubview(UIImageView(image: UIImage(named: "left")))
@@ -51,6 +51,5 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
-
 
 }

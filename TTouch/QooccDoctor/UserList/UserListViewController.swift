@@ -15,8 +15,6 @@ import ReactiveCocoa
 *  //MARK: 用户列表
 */
 
-//用户列表缓存
-private let cachePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("UserListDataCache").absoluteString
 class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     private var dataArray: NSMutableArray!
@@ -26,14 +24,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var leftVC: LeftViewController!
     private var rightVC: RightViewController!
     var myTableView: UITableView!
-//    var myTableView: UITableView! {
-//        return self.tableViewController?.tableView
-//    }
-//    var datas: NSMutableDictionary = NSMutableDictionary(contentsOfFile: cachePath) ?? NSMutableDictionary() {
-//        didSet {
-//            datas.writeToFile(cachePath, atomically: true)
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +37,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.dataArray = NSMutableArray()
         self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
         self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
-//        //列表创建
-//        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
-//        self.tableViewController.refreshControl = UIRefreshControl()
-//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-//        })
+
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
-//        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
@@ -65,10 +50,18 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
         self.leftVC.view.frame = CGRectMake(-screenWidth,0, screenWidth/2,screenHeight)
         self.view.addSubview(self.leftVC.view)
+        self.leftVC.bock = {(vc) -> Void in
+            self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
+            self.navigationController?.hidesBottomBarWhenPushed = true
+        }
         
         self.rightVC = RightViewController.CreateFromStoryboard("Main") as! RightViewController
         self.rightVC.view.frame = CGRectMake(screenWidth,0, screenWidth/2,screenHeight)
         self.view.addSubview(self.rightVC.view)
+        self.rightVC.bock = {(vc) -> Void in
+            self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
+            self.navigationController?.hidesBottomBarWhenPushed = true
+        }
 
         
         //Right
