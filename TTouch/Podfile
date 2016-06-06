@@ -13,3 +13,4 @@ pod "SDWebImage"
 pod 'Alamofire'
 pod 'Result', :git => 'https://github.com/antitypical/Result.git'
 pod 'Box'
+pod 'CocoaAsyncSocket'

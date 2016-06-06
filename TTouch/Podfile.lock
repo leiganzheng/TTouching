@@ -2,6 +2,7 @@ PODS:
   - Alamofire (3.1.4)
   - Aspects (1.4.1)
   - Box (2.0)
+  - CocoaAsyncSocket (7.4.2)
   - DACircularProgress (2.3.1)
   - EaseMobSDKFull (2.2.1.2)
   - IQKeyboardManager (3.3.4)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - Alamofire
   - Aspects
   - Box
+  - CocoaAsyncSocket
   - EaseMobSDKFull (from `https://github.com/easemob/sdk-ios-cocoapods-integration.git`)
   - IQKeyboardManager
   - MGSwipeTableCell
@@ -59,6 +61,7 @@ SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Box: 70713ca3679e4e11ad4c470e9b58265f506fc659
+  CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   EaseMobSDKFull: f8d6281b9b58b90d5594fe7d40e1529790035d65
   IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3

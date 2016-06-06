@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 
-
 // MARK: - 医生服务器地址, 体征数据服务器地址
 private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
     // 正式环境
@@ -517,128 +516,45 @@ extension QNNetworkTool {
     
    }
 
-//MARK:- 用户列表
-extension QNNetworkTool {
-    /**
-    *  监控台用户列表
-    *  @param Id 医生id
-    *  @param sortOrder 排序方式，O : 默认综合排序，1：vip等级优先；2：星标用户优先
-    *  @param start  分页，每一页开始的位置）
-    *  @param limit  分页，每页显示的记录数
-    *  @param completion  结果回调
-    */
-    class func fetchUserList(DoctorId Id: String, Order order: String , Start start: String, Limit limit: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/fetchUserAction!fetchUser.action", parameters: paramsToJsonDataParams(["doctorId" : Id,"sortOrder" : order,"start" : start,"limit" : limit])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(),nil)
-            }
-        }
-    }
-    /**
-    *  医生控制台修改用户备注
-    *  @param ownId 用户id
-    *  @param remak 备注
-    *  @param completion  结果回调
-    */
-    class func changeRemark(OwnId ownId: String, Remark remak: String, completion:  (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/fetchUserAction!updaRemark.action", parameters: paramsToJsonDataParams(["ownerId" : ownId,"remark" : remak])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
+////MARK:- 用户列表
+//extension QNNetworkTool {
+//    /**
+//    *  监控台用户列表
+//    *  @param Id 医生id
+//    *  @param sortOrder 排序方式，O : 默认综合排序，1：vip等级优先；2：星标用户优先
+//    *  @param start  分页，每一页开始的位置）
+//    *  @param limit  分页，每页显示的记录数
+//    *  @param completion  结果回调
+//    */
+//    class func fetchUserList(DoctorId Id: String, Order order: String , Start start: String, Limit limit: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
+//        requestPOST(kServerAddress + "/api/user/fetchUserAction!fetchUser.action", parameters: paramsToJsonDataParams(["doctorId" : Id,"sortOrder" : order,"start" : start,"limit" : limit])) { (_, _, _, dictionary, error) -> Void in
+//            if dictionary != nil {
+//                completion(dictionary, nil, nil)
+//            } else {
+//                completion(nil, self.formatError(),nil)
+//            }
+//        }
+//    }
+//    /**
+//    *  医生控制台修改用户备注
+//    *  @param ownId 用户id
+//    *  @param remak 备注
+//    *  @param completion  结果回调
+//    */
+//    class func changeRemark(OwnId ownId: String, Remark remak: String, completion:  (NSDictionary?, NSError?, String?) -> Void) {
+//        requestPOST(kServerAddress + "/api/user/fetchUserAction!updaRemark.action", parameters: paramsToJsonDataParams(["ownerId" : ownId,"remark" : remak])) { (_, _, _, dictionary, error) -> Void in
+//            if dictionary != nil {
+//                completion(dictionary, nil, nil)
+//            } else {
+//                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
+//            }
+//        }
+//
+//    }
+//
+//}
 
-    }
 
-}
-
-//MARK:- 医疗建议、模版
-extension QNNetworkTool {
-    /**
-    *  医疗建议列表
-    *  @param doctorId 医生id
-    *  @param PageNo 页数
-    *  @param limit 每页显示的记录条数
-    *  @param type 建议的类型，可以忽略（1：心电；2：脉率；3：血氧；4：呼吸率；5：体温；6：血压；7：尿检；8：血糖；100：医疗建议）
-    *  @param completion  结果回调
-    */
-    class func fecthMedicalTemplateList(DoctorId doctorId: String, type: String, PageNo pageNo: String, Limit limit: String ,completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/appTemplateAction!findTemp.action", parameters: paramsToJsonDataParams(["doctorId" : doctorId,"type" : type,"pageNo" : pageNo,"limit" : limit])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
-
-    }
-    /**
-    *  医疗建议模版id获取医疗建议
-    *  @param templateId  模版id
-    *  @param completion  结果回调
-    */
-    class func fecthMedicalTemplate(TemplateId templateId: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "api/user/appTemplateAction!getByTempId.action", parameters: paramsToJsonDataParams(["templateId" : templateId])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-    /**
-    *  医疗建议模版添加和修改
-    *  @param templateId 模版id(若忽略则添加一个新的模版)
-    *  @param doctorId 医生id
-    *  @param content 医疗建议模版内容
-    *  @param title 标题
-    *  @param type 建议的类型，可以忽略（1：心电；2：脉率；3：血氧；4：呼吸率；5：体温；6：血压；7：尿检；8：血糖；100：医疗建议）
-    *  @param completion  结果回调
-    */
-    class func modifyMedicalTemplate(TemplateId templateId: String,DoctorId doctorId: String, Content content: String, Title title: String, Type type: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/appTemplateAction!addTemplate.action", parameters: paramsToJsonDataParams(["templateId" : templateId,"doctorId":doctorId,"content":content,"title":title,"type":type])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-    /**
-    *  删除医疗建议模版
-    *  @param templateIds  模版id数组
-    *  @param completion  结果回调
-    */
-    class func deleMedicalTemplate(TemplateIds templateIds: NSArray, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/appTemplateAction!deleteTemplates.action", parameters: paramsToJsonDataParams(["ids" : templateIds])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-    /**
-    *  医疗建议发送
-    *  @param userId  用户id
-    *  @param content 医疗建议内容
-    *  @param title 标题
-    *  @param completion  结果回调
-    */
-    class func addMedicalAdvice(UserId userId: String,DoctorId doctorId:String, Content content: String, Title title: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/appTemplateAction!pushAdvice.action", parameters: paramsToJsonDataParams(["ownerId" : userId,"doctorId" : doctorId,"content":content,"title":title])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary, nil, nil)
-            } else {
-                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-    
-}
 
 // MARK: - 搜索相关
 extension QNNetworkTool {
@@ -1081,7 +997,28 @@ extension QNNetworkTool {
         }
     }
 }
+extension QNNetworkTool{
+   
+    /**
+      局域网内搜索网关
+     
+     :param: UDP 广播
+     */
+    class func scanLocationNet(udpStr: String) {
 
+    }
+
+    /**
+     网关设置-验证设备管理密码
+     
+     :param: command 指令码:32
+     :param: permit 输入的密码,固定 6 个字符
+     */
+    class func loginLocationNet(command: String,permit: String) {
+       
+    }
+
+}
 
 
 

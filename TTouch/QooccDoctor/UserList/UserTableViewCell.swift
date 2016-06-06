@@ -55,26 +55,26 @@ class UserTableViewCell: MGSwipeTableCell {
             let tf = alert.textFieldAtIndex(0)
             if tf?.text != nil {
                 if tf?.text == user.remark {return}
-                QNNetworkTool.changeRemark(OwnId: user.ownerId, Remark: tf!.text!, completion: { (dictionary, error, errorMessage) -> Void in
-                    if dictionary != nil {
-                        if let code = dictionary?["errorCode"]?.integerValue where code == 0 {
-                            user.remark = tf?.text ?? ""
-                            user.starType = 1
-                            if self.rightButtons.count > 0 {
-                                if let btn = self.rightButtons[0] as? UIButton {
-                                    btn.setTitle(tf?.text, forState: UIControlState.Normal)
-                                }
-                            }
-                            complete()
-                            QNTool.showPromptView("修改备注成功")
-                        }else{
-                            QNTool.showErrorPromptView(dictionary, error: error)
-                        }
-                        
-                    }else {
-                        QNTool.showPromptView("修改备注失败")
-                    }
-                })
+//                QNNetworkTool.changeRemark(OwnId: user.ownerId, Remark: tf!.text!, completion: { (dictionary, error, errorMessage) -> Void in
+//                    if dictionary != nil {
+//                        if let code = dictionary?["errorCode"]?.integerValue where code == 0 {
+//                            user.remark = tf?.text ?? ""
+//                            user.starType = 1
+//                            if self.rightButtons.count > 0 {
+//                                if let btn = self.rightButtons[0] as? UIButton {
+//                                    btn.setTitle(tf?.text, forState: UIControlState.Normal)
+//                                }
+//                            }
+//                            complete()
+//                            QNTool.showPromptView("修改备注成功")
+//                        }else{
+//                            QNTool.showErrorPromptView(dictionary, error: error)
+//                        }
+//                        
+//                    }else {
+//                        QNTool.showPromptView("修改备注失败")
+//                    }
+//                })
             }
         })
         alert.show()
