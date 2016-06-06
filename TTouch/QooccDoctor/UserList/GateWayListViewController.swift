@@ -8,12 +8,14 @@
 
 import UIKit
 import ReactiveCocoa
+import CocoaAsyncSocket
 
-class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
+class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,AsyncUdpSocketDelegate {
     private var tableViewController: UITableViewController!
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
+    var sock:AsyncUdpSocket?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -76,7 +78,32 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
+     //MARK:- private method
+    func onUdpSocket(cbsock:AsyncUdpSocket!,
+                      didReceiveData data: NSData!){
+        print("Recv...")
+        print(data)
+        cbsock.receiveWithTimeout(10, tag: 0)
+    }
+    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
+        
+        return true
+    }
     
     //MARK:- private method
-
+    func fectchData() {
+        if (sock == nil){
+            sock = AsyncUdpSocket(delegate: self)
+        }
+        do{
+//            try sock!.bindToPort(33632)
+//            try sock!.enableBroadcast(true) // Also tried without this line
+            var data = "hello"
+            
+//            sock?.sendData(data, toHost: "", port: 33632, withTimeout: 5000, tag: 1)
+            sock!.receiveWithTimeout(10,tag: 0)
+        } catch {
+            print("error")
+        }
+    }
 }

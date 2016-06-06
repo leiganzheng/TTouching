@@ -997,6 +997,7 @@ extension QNNetworkTool {
         }
     }
 }
+//MARK:-网关控制
 extension QNNetworkTool{
    
     /**
