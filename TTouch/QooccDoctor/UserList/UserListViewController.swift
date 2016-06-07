@@ -25,6 +25,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var rightVC: RightViewController!
     var myTableView: UITableView!
     
+    let Width:CGFloat = 160
+    let Y:CGFloat = 64
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = defaultBackgroundColor
@@ -48,21 +51,27 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.view.addSubview(self.myTableView!)
         
         self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
-        self.leftVC.view.frame = CGRectMake(-screenWidth,0, screenWidth/2,screenHeight)
-        self.view.addSubview(self.leftVC.view)
+        self.leftVC.view.frame = CGRectMake(-screenWidth,Y, Width,screenHeight)
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            appDelegate.window?.addSubview(self.leftVC.view)
+        }
+
         self.leftVC.bock = {(vc) -> Void in
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.navigationController?.hidesBottomBarWhenPushed = true
+            self.animationWith((self.leftVC)!, x: -screenWidth)
         }
         
         self.rightVC = RightViewController.CreateFromStoryboard("Main") as! RightViewController
-        self.rightVC.view.frame = CGRectMake(screenWidth,0, screenWidth/2,screenHeight)
-        self.view.addSubview(self.rightVC.view)
+        self.rightVC.view.frame = CGRectMake(screenWidth,Y, Width,screenHeight)
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            appDelegate.window?.addSubview(self.rightVC.view)
+        }
         self.rightVC.bock = {(vc) -> Void in
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.navigationController?.hidesBottomBarWhenPushed = true
+             self.animationWith((self.leftVC)!, x: screenWidth)
         }
-
         
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
@@ -108,10 +117,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         return self.titles.count
     }
     
-//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "UserTableViewCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserTableViewCell!
@@ -131,7 +136,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-                self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     }
     
@@ -140,7 +145,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         UIView .beginAnimations("move", context: nil)
         UIView.setAnimationDuration(0.5)
         UIView.setAnimationDelegate(self)
-        vc.view.frame = CGRectMake(x,0, screenWidth/2,screenHeight)
+        vc.view.frame = CGRectMake(x,Y,Width,screenHeight)
         UIView.commitAnimations()
 
     }

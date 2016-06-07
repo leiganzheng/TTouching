@@ -171,6 +171,7 @@
 		BB3C465A1B4674C2008A1213 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3C46581B4674C2008A1213 /* Login.storyboard */; };
 		BB3C465B1B4674C2008A1213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3C46591B4674C2008A1213 /* Main.storyboard */; };
 		BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C465C1B4675A5008A1213 /* LoginViewController.swift */; };
+		BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */; };
 		BB6D71891BE0626B0018AADC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D71881BE0626B0018AADC /* MobileCoreServices.framework */; };
 		BB6D718B1BE062950018AADC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D718A1BE062950018AADC /* libsqlite3.dylib */; };
 		BB6D718D1BE062A70018AADC /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D718C1BE062A70018AADC /* libstdc++.6.0.9.dylib */; };
@@ -443,6 +444,7 @@
 		BB3C46581B4674C2008A1213 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = QooccDoctor/Login.storyboard; sourceTree = SOURCE_ROOT; };
 		BB3C46591B4674C2008A1213 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = QooccDoctor/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		BB3C465C1B4675A5008A1213 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementControViewController.swift; sourceTree = "<group>"; };
 		BB6D71881BE0626B0018AADC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BB6D718A1BE062950018AADC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BB6D718C1BE062A70018AADC /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
@@ -1152,6 +1154,7 @@
 				71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */,
 				71CF83B41D047568007275FE /* MannageEquementViewController.swift */,
 				71CF83B61D047630007275FE /* MEquementDetialViewController.swift */,
+				BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1499,6 +1502,7 @@
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				BB3C45C31B465C46008A1213 /* KDGoalBar.m in Sources */,
 				BB3C45EF1B465C47008A1213 /* SUNButtonBoard.m in Sources */,
+				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB3C45C41B465C46008A1213 /* KDGoalBarPercentLayer.m in Sources */,

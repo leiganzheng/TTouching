@@ -64,7 +64,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         let height = CGFloat(self.data!.count/2 == 0 ? self.data!.count/2 : self.data!.count/2 + 1)*50
         self.frame.size.height = height
         let layout = UICollectionViewFlowLayout()
-       self.collectionView = UICollectionView(frame: CGRectMake(0, 0, screenWidth, height), collectionViewLayout: layout)
+        self.collectionView = UICollectionView(frame: CGRectMake(0, 0, screenWidth, height), collectionViewLayout: layout)
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
             self.collectionView!.delegate = self;
         self.collectionView!.dataSource = self;

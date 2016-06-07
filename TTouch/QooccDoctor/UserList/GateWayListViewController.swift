@@ -10,7 +10,7 @@ import UIKit
 import ReactiveCocoa
 import CocoaAsyncSocket
 
-class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,AsyncUdpSocketDelegate {
+class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInterceptorNavigationBarShowProtocol,UITableViewDataSource, UITableViewDelegate,AsyncUdpSocketDelegate {
     private var tableViewController: UITableViewController!
     var myTableView: UITableView! {
         return self.tableViewController?.tableView

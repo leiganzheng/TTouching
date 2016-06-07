@@ -18,22 +18,19 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.clearColor()
         self.titles = ["登出","语言","管理","定时","摇摇","定位","语音","版本"]
         self.icons = ["Setup_Login_icon1","Setup_Lang_icon1","Setup_Manage_icon1","Setup_Timer_icon1","Setup_Shack_icon1","Setup_Location_icon1","Setup_Voice_icon1","Setup_Version_icon1"]
-        self.myTableView.frame = CGRectMake(0, 0, screenWidth/2, self.view.bounds.height - 36)
+        self.myTableView.frame = CGRectMake(0, 44, screenWidth/2, screenHeight )
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.myTableView.separatorColor = UIColor.whiteColor()
         
-//        UIView *view = [[UIView alloc] init];
-//        view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"view_bg_ipad.png"]];
-//        self.tableView.backgroundView = view;
-        
         self.myTableView?.showsVerticalScrollIndicator = false
-        self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
-        self.myTableView.backgroundColor = appThemeColor
+        self.myTableView?.autoresizingMask = [.FlexibleHeight]
+        self.myTableView.backgroundColor = UIColor.clearColor()
+        self.myTableView?.backgroundView = UIImageView(image: UIImage(named: "right"))
         self.view.addSubview(self.myTableView!)
     }
     
@@ -57,12 +54,11 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.backgroundColor = appThemeColor
         let title = self.titles[indexPath.row] as! NSString
         let icon = self.icons[indexPath.row] as! NSString
         cell.textLabel?.text = title as String
         cell.imageView?.image = UIImage(named: icon as String)
-        cell.backgroundView = UIImageView(image: UIImage(named: "right"))
+        cell.backgroundColor = UIColor.clearColor()
         
         return cell
     }

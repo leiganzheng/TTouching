@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 
-class GateWayDetailViewController: UIViewController , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
+class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNInterceptorNavigationBarShowProtocol, UITableViewDataSource, UITableViewDelegate{
     
     private var tableViewController: UITableViewController!
     var titles: NSArray!
@@ -27,7 +27,6 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol, UIT
 //        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
 //            })
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36))
-//        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
