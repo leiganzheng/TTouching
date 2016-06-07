@@ -64,7 +64,6 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row == 0 {
             QNTool.enterLoginViewController()
@@ -74,6 +73,12 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         if indexPath.row == 2 {
             self.bock!(EquementsViewController.CreateFromStoryboard("Main"))
+        }
+        if indexPath.row == 3{
+            self.bock!(TimeMannageViewController.CreateFromStoryboard("Main"))
+        }
+        if indexPath.row == 7{
+            self.bock!(AboutViewController.CreateFromStoryboard("Main"))
         }
     }
 

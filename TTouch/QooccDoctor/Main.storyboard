@@ -729,6 +729,60 @@
             </objects>
             <point key="canvasLocation" x="12" y="2655"/>
         </scene>
+        <!--Time Mannage View Controller-->
+        <scene sceneID="R72-uT-26u">
+            <objects>
+                <viewController storyboardIdentifier="TimeMannageViewController" id="0bX-qO-Gx3" customClass="TimeMannageViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mMF-gM-PIj"/>
+                        <viewControllerLayoutGuide type="bottom" id="3t8-h2-VsC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KWc-Rr-UxG">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WnZ-ho-5NC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27" y="3310"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="OKd-e9-rZo">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" id="DsD-Xj-Vxc" customClass="AboutViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ipp-f2-cqF"/>
+                        <viewControllerLayoutGuide type="bottom" id="SNL-Ec-hmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jH7-c6-Gqo">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="QSC-gm-guh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DsD-Xj-Vxc" id="8HX-bs-gdh"/>
+                                    <outlet property="delegate" destination="DsD-Xj-Vxc" id="Ta2-f9-Efs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SNL-Ec-hmR" firstAttribute="top" secondItem="QSC-gm-guh" secondAttribute="bottom" id="DAq-Xj-BlF"/>
+                            <constraint firstItem="QSC-gm-guh" firstAttribute="top" secondItem="Ipp-f2-cqF" secondAttribute="bottom" id="axP-Yx-ILU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QSC-gm-guh" secondAttribute="trailing" constant="-20" id="h5u-38-out"/>
+                            <constraint firstItem="QSC-gm-guh" firstAttribute="leading" secondItem="jH7-c6-Gqo" secondAttribute="leadingMargin" constant="-20" id="mEo-F8-pIx"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0b4-by-SXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-159" y="3954"/>
+        </scene>
         <!--Left View Controller-->
         <scene sceneID="aWi-oC-f6n">
             <objects>

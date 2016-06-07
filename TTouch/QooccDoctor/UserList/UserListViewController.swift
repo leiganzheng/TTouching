@@ -70,7 +70,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.rightVC.bock = {(vc) -> Void in
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.navigationController?.hidesBottomBarWhenPushed = true
-             self.animationWith((self.leftVC)!, x: screenWidth)
+            self.animationWith((self.rightVC)!, x: screenWidth)
         }
         
         //Right
