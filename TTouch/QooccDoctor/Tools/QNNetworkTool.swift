@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CocoaAsyncSocket
 
 // MARK: - 医生服务器地址, 体征数据服务器地址
 private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
@@ -20,13 +21,17 @@ private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
 /**
 *  //MARK:- 网络处理中心
 */
-class QNNetworkTool: NSObject {
+let addr = "192.168.0.10"
+let port:UInt16 = 35000
+
+class QNNetworkTool: NSObject{
+    
 }
 
 /**
 *  //MARK:- 网络基础处理
 */
-private extension QNNetworkTool {
+private extension QNNetworkTool{
     /**
     //MARK: 生产共有的 URLRequest，如果是到巨细的服务器请求数据，必须使用此方法创建URLRequest
         
@@ -997,15 +1002,31 @@ extension QNNetworkTool {
         }
     }
 }
+
 //MARK:-网关控制
-extension QNNetworkTool{
-   
+typealias CustomBlock = (AnyObject) -> Void
+var FinishBock:CustomBlock?
+extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
     /**
       局域网内搜索网关
      
      :param: UDP 广播
      */
-    class func scanLocationNet(udpStr: String) {
+    class func scanLocationNet(udpStr: String,completion: CustomBlock) {
+         var udpsock = AsyncUdpSocket(delegate: self)
+        if (udpsock == nil){
+            udpsock = AsyncUdpSocket(delegate: self)
+        }
+        do{
+            //            try sock!.bindToPort(33632)
+            //            try sock!.enableBroadcast(true) // Also tried without this line
+            let datastr = "0xFF0x040x330xCA"
+            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
+            udpsock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 5000, tag: 1)
+            udpsock!.receiveWithTimeout(10,tag: 0)
+        } catch {
+            print("error")
+        }
 
     }
 
@@ -1015,10 +1036,105 @@ extension QNNetworkTool{
      :param: command 指令码:32
      :param: permit 输入的密码,固定 6 个字符
      */
-    class func loginLocationNet(command: String,permit: String) {
-       
+    class func loginLocationNet(command: String,permit: String,completion: CustomBlock) {
+       let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+        do {
+            try socket.connectToHost(addr, onPort: port)
+            let request:String = "Arn.Preg:3302:"
+            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            socket.writeData(data, withTimeout: -1.0, tag: 0)
+            socket.readDataWithTimeout(-1.0, tag: 0)
+        } catch let e {
+            completion("")
+            print(e)
+        }
+
+    }
+    /**
+     网关设置-修改设备管理密码
+     
+     :param: command 指令码:33
+     :param: permit_old 输入的密码,固定 6 个字符
+     :param: permit_ new 输入的密码,固定 6 个字符
+     */
+    class func modifyLocationNet(command: String,permitOld: String,permitNew: String,completion: CustomBlock) {
+        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+        do {
+            try socket.connectToHost(addr, onPort: port)
+            let request:String = "Arn.Preg:3302:"
+            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            socket.writeData(data, withTimeout: -1.0, tag: 0)
+            socket.readDataWithTimeout(-1.0, tag: 0)
+        } catch let e {
+            completion("")
+            print(e)
+        }
+        
+    }
+    /**
+     设备管理-获取所有设备信息
+     
+     :param: command 指令码:30
+     */
+    class func equmentslist(command: String,completion: CustomBlock) {
+        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+        do {
+            try socket.connectToHost(addr, onPort: port)
+            let request:String = "Arn.Preg:3302:"
+            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            socket.writeData(data, withTimeout: -1.0, tag: 0)
+            socket.readDataWithTimeout(-1.0, tag: 0)
+        } catch let e {
+            completion("")
+            print(e)
+        }
+        
+    }
+    /**
+     设备管理-修改各设备的信息
+     
+     :param: command 指令码:30
+     */
+    class func modifyEqument(command: String,completion: CustomBlock) {
+        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+        do {
+            try socket.connectToHost(addr, onPort: port)
+            let request:String = "Arn.Preg:3302:"
+            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            socket.writeData(data, withTimeout: -1.0, tag: 0)
+            socket.readDataWithTimeout(-1.0, tag: 0)
+        } catch let e {
+            completion("")
+            print(e)
+        }
+        
     }
 
+
+
+    //MARK:- Delegate method
+    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
+        print("Recv...")
+        print(data)
+        FinishBock!(data!)
+        cbsock.receiveWithTimeout(10, tag: 0)
+    }
+    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
+        FinishBock!(data!)
+        return true
+    }
+    func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
+    {
+        let response = NSString(data: data, encoding: NSUTF8StringEncoding)
+        FinishBock!(response!)
+        print("Received Response")
+    }
+    
+    func socket(socket : GCDAsyncSocket, didConnectToHost host:String, port p:UInt16)
+    {
+        FinishBock!(host)
+        print("Connected to \(host) on port \(p).")
+    }
 }
 
 

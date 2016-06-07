@@ -31,6 +31,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
+        self.fectchData()
 
     }
 
@@ -79,8 +80,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
         
     }
      //MARK:- private method
-    func onUdpSocket(cbsock:AsyncUdpSocket!,
-                      didReceiveData data: NSData!){
+    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
         print("Recv...")
         print(data)
         cbsock.receiveWithTimeout(10, tag: 0)
@@ -92,15 +92,18 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, UITabl
     
     //MARK:- private method
     func fectchData() {
+//        QNNetworkTool.scanLocationNet("") { (res) in
+//            NSLog(res as! String)
+//        }
         if (sock == nil){
             sock = AsyncUdpSocket(delegate: self)
         }
         do{
 //            try sock!.bindToPort(33632)
 //            try sock!.enableBroadcast(true) // Also tried without this line
-            var data = "hello"
-            
-//            sock?.sendData(data, toHost: "", port: 33632, withTimeout: 5000, tag: 1)
+            let datastr = "0xFF0x040x330xCA"
+            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
+            sock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 1, tag: 1)
             sock!.receiveWithTimeout(10,tag: 0)
         } catch {
             print("error")

@@ -91,26 +91,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        APService.registerDeviceToken(deviceToken)
+//        APService.registerDeviceToken(deviceToken)
         // 上传registrationId和deviceTok到我们的服务器
-        g_deviceToken = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "")
-            .stringByReplacingOccurrencesOfString(">", withString: "")
-            .stringByReplacingOccurrencesOfString(" ", withString: "")
-        QNNetworkTool.uploadRegistrationIdAndToken()
+//        g_deviceToken = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "")
+//            .stringByReplacingOccurrencesOfString(">", withString: "")
+//            .stringByReplacingOccurrencesOfString(" ", withString: "")
+//        QNNetworkTool.uploadRegistrationIdAndToken()
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        APService.handleRemoteNotification(userInfo)
-        self.jmpForRemoteNotification(userInfo)
+//        APService.handleRemoteNotification(userInfo)
+//        self.jmpForRemoteNotification(userInfo)
     }
     //IOS7
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        APService.handleRemoteNotification(userInfo)
-        completionHandler(UIBackgroundFetchResult.NewData)
-        self.jmpForRemoteNotification(userInfo)
+//        APService.handleRemoteNotification(userInfo)
+//        completionHandler(UIBackgroundFetchResult.NewData)
+//        self.jmpForRemoteNotification(userInfo)
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        APService.showLocalNotificationAtFront(notification, identifierKey: nil)  //identifierKey用于过滤，nil表示全部通过
+//        APService.showLocalNotificationAtFront(notification, identifierKey: nil)  //identifierKey用于过滤，nil表示全部通过
     }
     
     //MARK: - IChatManagerDelegate
