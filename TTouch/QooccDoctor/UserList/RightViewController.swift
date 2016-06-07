@@ -77,6 +77,9 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         if indexPath.row == 3{
             self.bock!(TimeMannageViewController.CreateFromStoryboard("Main"))
         }
+        if indexPath.row == 4{
+            self.bock!(ShakeViewController.CreateFromStoryboard("Main"))
+        }
         if indexPath.row == 7{
             self.bock!(AboutViewController.CreateFromStoryboard("Main"))
         }

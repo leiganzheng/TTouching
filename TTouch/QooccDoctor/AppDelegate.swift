@@ -24,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
         
         // 开启拦截器
         QNInterceptor.start()
-        
+        UIApplication.sharedApplication().statusBarHidden = false
+        UINavigationBar.appearance().barTintColor = appThemeColor
+        UINavigationBar.appearance().tintColor = navigationBackgroundColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
         // 自动显示app评论框
 //        if !allowShowStartPages {
 //            QNTool.autoShowCommentAppAlertView()
@@ -39,11 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
 //        APService.setupWithOption(launchOptions)
 //        QNPushTool.clear()
 
-        // 修改导航栏样式
-        UINavigationBar.appearance().barTintColor = appThemeColor
-        UINavigationBar.appearance().tintColor = navigationBackgroundColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
-        UIApplication.sharedApplication().statusBarHidden = false
 //        //配置环信sdk
 //        EaseMob.sharedInstance().registerSDKWithAppKey("qoocc-develop#xite", apnsCertName: "")
 //        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -127,17 +125,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, IChatManagerDelegate{
     }
     //MARK: - 推送跳转
     func jmpForRemoteNotification(userInfo: [NSObject : AnyObject]) {
-        if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
-            if let aps = userInfo["aps"] as? NSDictionary,let alert = aps["alert"] as? String {
-                if NSString(string: alert).rangeOfString("预约").location != NSNotFound {
-                    JMPAppointmentOrderIndex = "0"
-                    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationJMPAppointmentOrder, object: nil)
-                } else if NSString(string: alert).rangeOfString("评价").location != NSNotFound {
-                    JMPAppointmentOrderIndex = "2"
-                    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationJMPAppointmentOrder, object: nil)
-                }
-            }
-        }
+//        if UIApplication.sharedApplication().applicationState != UIApplicationState.Active {
+//            if let aps = userInfo["aps"] as? NSDictionary,let alert = aps["alert"] as? String {
+//                if NSString(string: alert).rangeOfString("预约").location != NSNotFound {
+//                    JMPAppointmentOrderIndex = "0"
+//                    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationJMPAppointmentOrder, object: nil)
+//                } else if NSString(string: alert).rangeOfString("评价").location != NSNotFound {
+//                    JMPAppointmentOrderIndex = "2"
+//                    NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationJMPAppointmentOrder, object: nil)
+//                }
+//            }
+//        }
     }
 }
 

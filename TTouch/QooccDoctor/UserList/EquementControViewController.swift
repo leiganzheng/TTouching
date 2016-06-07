@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquementControViewController: UIViewController,UIScrollViewDelegate {
+class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInterceptorProtocol {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -21,7 +21,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.headerView.backgroundColor = defaultBackgroundColor
+        self.title = "窗帘"
         self.buildDataAndUI()
     }
 

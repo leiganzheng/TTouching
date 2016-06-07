@@ -62,9 +62,6 @@ class ForgetPasswordViewController: UIViewController,QNInterceptorNavigationBarS
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        UINavigationBar.appearance().barTintColor = defaultBackgroundGrayColor
-//        UINavigationBar.appearance().tintColor = navigationBackgroundColor
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
 
     }
     // MARK: 重置密码

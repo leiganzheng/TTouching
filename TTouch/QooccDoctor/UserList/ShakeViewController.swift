@@ -40,7 +40,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         UIView .beginAnimations("move", context: nil)
         UIView.setAnimationDuration(0.5)
         UIView.setAnimationDelegate(self)
-        v.frame = CGRectMake(0,x, v.frame.size.width,v.frame.size.height)
+        v.frame = CGRectMake(0,x, v.frame.size.width,screenHeight)
         UIView.commitAnimations()
         
     }

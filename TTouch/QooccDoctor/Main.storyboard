@@ -812,6 +812,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="160" height="568"/>
                     <connections>
@@ -820,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8g4-WX-5e4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="-54"/>
+            <point key="canvasLocation" x="206" y="-77"/>
         </scene>
         <!--Right View Controller-->
         <scene sceneID="acO-jg-6zH">
@@ -859,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGs-C7-FAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387" y="-71"/>
+            <point key="canvasLocation" x="549" y="-68"/>
         </scene>
         <!--定位-->
         <scene sceneID="dWO-wg-K4I">

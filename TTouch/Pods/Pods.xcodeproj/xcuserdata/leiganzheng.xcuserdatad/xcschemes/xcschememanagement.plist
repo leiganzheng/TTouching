@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>CocoaAsyncSocket.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>DACircularProgress.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -92,6 +97,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1EA30C6EF5D74B864948E51038F8C04E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F9912775473A057A1BEE942E87BEDCB</key>
 		<dict>
 			<key>primary</key>
@@ -102,12 +112,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3E46520E0A1AE7B8BB327A1E3F0696BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4531ED24D09877FD2F9582B9D769C58B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4E1263BFF45F6446CF3DE29AE234C893</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EDF3A77D4C1977B25D2D990B1C992F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -138,6 +163,11 @@
 			<true/>
 		</dict>
 		<key>B0F1DB71C347A80A095435479F27CF0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6DF0C3712D0E71ABC052E7E9CBBE9D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +213,11 @@
 			<true/>
 		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7D0798FD84A68D558F84856F53EF0A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

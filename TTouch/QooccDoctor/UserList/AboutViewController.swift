@@ -36,7 +36,7 @@ class AboutViewController: UIViewController ,QNInterceptorProtocol, UITableViewD
         }
 
         cell.textLabel?.text = "版本号"
-        let lb = UILabel(frame:CGRectMake(0,0, 200, cell.contentView.frame.size.width-230) )
+        let lb = UILabel(frame:CGRectMake(0,0, 80, 54) )
         lb.text = "1.0"
         cell.accessoryView = lb
         return cell

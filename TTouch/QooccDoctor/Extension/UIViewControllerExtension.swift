@@ -48,8 +48,8 @@ extension UIViewController {
         fixedSpace.width = -15;
         
         let button = UIButton(frame: CGRectMake(0, 0, 50, 44))
-        button.setImage(UIImage(named: "navigation_back_icon")!.imageWithColor(appThemeColor), forState: .Normal)
-        button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+        button.setImage(UIImage(named: "navigation_back_icon")!.imageWithColor(UIColor.whiteColor()), forState: .Normal)
+        button.addTarget(self, action: #selector(UIViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.navigationItem.leftBarButtonItems = [fixedSpace, UIBarButtonItem(customView: button)]
     }

@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
-class TimeMannageViewController: UIViewController {
+class TimeMannageViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Right
+        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
+        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+
+            return RACSignal.empty()
+            })
+        rightBarButton.addSubview(searchButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +33,5 @@ class TimeMannageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

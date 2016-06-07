@@ -63,32 +63,29 @@ class QNInterceptor : NSObject {
                     if let rootViewController = viewController.navigationController?.viewControllers.first where rootViewController != viewController {
                         viewController.configBackButton()
                     }
-                    if (viewController is ForgetPasswordViewController || viewController is RegisterViewController || viewController is LanguageViewController) {
-                        // 修改导航栏样式
-                        UINavigationBar.appearance().barTintColor = defaultBackgroundGrayColor
-                        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-                        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
-                        
-                    }
                 }
             }
         do {
-           try UIViewController.aspect_hookSelector(Selector("loadView"), withOptions: AspectOptions.PositionAfter, usingBlock: unsafeBitCast(block, AnyObject.self))
+           try UIViewController.aspect_hookSelector(#selector(UIViewController.loadView), withOptions: AspectOptions.PositionAfter, usingBlock: unsafeBitCast(block, AnyObject.self))
         }catch{
             
             }
         
         } while(false)
         
-        // MARK: 拦截 UIViewController 的 viewDidLoad() 方法
-//        do { // 目前没有操作，所以不需要拦截
-//            let block : @objc_block (aspectInfo: AspectInfo) -> Void = { [weak self](aspectInfo: AspectInfo) -> Void in
-//                if let strongSelf = self, let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
-//                    // ...
-//                }
-//            }
-//            UIViewController.aspect_hookSelector(Selector("viewDidLoad"), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self), error: nil)
-//        } while(false)
+         //MARK: 拦截 UIViewController 的 viewDidLoad() 方法
+        repeat { // 目前没有操作，所以不需要拦截
+            let block : @convention(block) (aspectInfo: AspectInfo) -> Void = { [weak self](aspectInfo: AspectInfo) -> Void in
+                if let _ = self, let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
+                   
+                }
+            }
+            do {
+                try UIViewController.aspect_hookSelector(#selector(UIViewController.viewDidLoad), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self))
+            }catch{
+                    
+                }
+        } while(false)
         
         // MARK: 拦截 UIViewController 的 viewWillAppear(animated: Bool) 方法
         repeat {
@@ -106,13 +103,26 @@ class QNInterceptor : NSObject {
                     if !(viewController is QNInterceptorKeyboardProtocol) {
                         IQKeyboardManager.sharedManager().disableInViewControllerClass(viewController.classForCoder)
                     }
-                    // 修改状态栏的样式
+//                    viewController.navigationController?.navigationBar.translucent = false // 关闭透明度效果
 //                    UIApplication.sharedApplication().statusBarHidden = false
-//                    UIApplication.sharedApplication().statusBarStyle = .Default
+//                    if (viewController is ForgetPasswordViewController || viewController is RegisterViewController || viewController is LanguageViewController || viewController is AboutViewController) {
+//                        // 修改导航栏样式
+//                        UINavigationBar.appearance().barTintColor = defaultBackgroundGrayColor
+//                        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+//                        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
+//                        
+//                    }else{
+//                        UINavigationBar.appearance().barTintColor = appThemeColor
+//                        UINavigationBar.appearance().tintColor = navigationBackgroundColor
+//                        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
+//                        
+//                    }
+
+
                 }
             }
             do {
-                try UIViewController.aspect_hookSelector(Selector("viewWillAppear:"), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self))
+                try UIViewController.aspect_hookSelector(#selector(UIViewController.viewWillAppear(_:)), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self))
             }catch{
                 
             }
@@ -127,7 +137,7 @@ class QNInterceptor : NSObject {
                 }
             }
             do {
-                try UIViewController.aspect_hookSelector(Selector("viewWillDisappear:"), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self))
+                try UIViewController.aspect_hookSelector(#selector(UIViewController.viewWillDisappear(_:)), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self))
             }catch{
                 
             }

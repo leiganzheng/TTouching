@@ -17,15 +17,14 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.lightGrayColor()
         self.titles = ["灯光","窗帘","动作","空调","监视","保全","音乐","影视"]
         self.icons = ["Menu_Light_icon1","Menu_Curtain_icon1","Menu_Trigger_icon1","Menu_AirCondition_icon1","Menu_Camera_icon1","Menu_Security_icon1","Menu_Music_icon1","Menu_AV_icon1"]
-        self.myTableView.frame = CGRectMake(0,44, screenWidth/2, screenHeight)
+        self.myTableView.frame = CGRectMake(0,0, screenWidth/2, screenHeight)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.myTableView.separatorColor = UIColor.whiteColor()
-        self.myTableView?.autoresizingMask = [.FlexibleHeight]
         self.myTableView?.showsVerticalScrollIndicator = false
         
         self.myTableView?.backgroundView = UIImageView(image: UIImage(named: "left"))
