@@ -104,7 +104,7 @@ didSet {
 }
 
 //MARK:- 加密解密密钥
-let g_SecretKey = "qoocc"
+let g_SecretKey = "TTouch"
 
 
 

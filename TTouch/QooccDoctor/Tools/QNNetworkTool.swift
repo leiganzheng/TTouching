@@ -366,7 +366,6 @@ extension QNNetworkTool {
         cleanPassword()
         //激光推送设置空字符串 （@""）表示取消之前的设置。
         APService.setAlias("", callbackSelector: nil, object: nil)
-        QNPhoneTool.hidden = true
         QNTool.enterLoginViewController()
     }
     

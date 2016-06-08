@@ -192,7 +192,7 @@ class PersonInfoViewController: UIViewController,QNInterceptorProtocol  ,UITable
                 cell.addSubview(self.goodAtLB)
             }
             let ills = NSMutableString()
-            for var i : Int = 0;i < g_doctor?.illList?.count ;i++ {
+            for var i : Int = 0;i < g_doctor?.illList?.count ;i += 1 {
                 let ill  = g_doctor?.illList?.objectAtIndex(i) as! NSDictionary
                 ills.appendString(ill["illName"] as! String)
                 ills.appendString(" ")
@@ -228,8 +228,8 @@ class PersonInfoViewController: UIViewController,QNInterceptorProtocol  ,UITable
                     }
                 })
                 actionSheet.showInView(self.view)
-            case .ID:
-                self.navigationController?.pushViewController((DoctorIDShowViewController.CreateFromStoryboard("Main") as? UIViewController)!, animated: true)
+            case .ID: break
+               
             case .Resume:
                 self.navigationController?.pushViewController(PersonResumeViewController(), animated: true)
             default: return

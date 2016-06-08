@@ -142,7 +142,7 @@ class UserCenterViewController: UIViewController, UITableViewDataSource, UITable
                     self.qualificationing()
                     return
                 }else{
-                     vc = ReserveBalanceViewController()
+                    
                 }
                
             }
@@ -155,7 +155,7 @@ class UserCenterViewController: UIViewController, UITableViewDataSource, UITable
                     self.qualificationing()
                     return
                 }else{
-                      vc = ConsultingFeesViewController()
+                    
                 }
               
             }

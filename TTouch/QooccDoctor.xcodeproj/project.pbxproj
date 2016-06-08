@@ -50,7 +50,6 @@
 		2B46E9691C0E882D001E1090 /* user_ExpertAuthenticate_Photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B46E9681C0E882D001E1090 /* user_ExpertAuthenticate_Photo@2x.png */; };
 		2B46E96B1C0E8856001E1090 /* user_ExpertAuthenticate_Photo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B46E96A1C0E8856001E1090 /* user_ExpertAuthenticate_Photo@3x.png */; };
 		2B4744191C0464BF00F43B5F /* AddAppointmentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4744181C0464BF00F43B5F /* AddAppointmentLocationViewController.swift */; };
-		2B5C4D8A1BFAAFA80018FD3E /* QNPushTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C4D891BFAAFA80018FD3E /* QNPushTool.swift */; };
 		2B5C4D8E1BFAB8FA0018FD3E /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B5C4D8D1BFAB8FA0018FD3E /* PushConfig.plist */; };
 		2B5E24471BA0202E002A8FC3 /* SelectBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5E24461BA0202E002A8FC3 /* SelectBankViewController.swift */; };
 		2B5E80E41BCCE78C00346DE0 /* UserCenter_HeaderImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5E80E21BCCE78C00346DE0 /* UserCenter_HeaderImage@2x.png */; };
@@ -148,7 +147,6 @@
 		BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45A71B465C46008A1213 /* QNFormatTool.swift */; };
 		BB3C45F61B465C47008A1213 /* QNInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45A81B465C46008A1213 /* QNInterceptor.swift */; };
 		BB3C45F71B465C47008A1213 /* QNNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */; };
-		BB3C45F81B465C47008A1213 /* QNPhoneTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45AA1B465C46008A1213 /* QNPhoneTool.swift */; };
 		BB3C45FA1B465C47008A1213 /* QNTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45AC1B465C46008A1213 /* QNTool.swift */; };
 		BB3C46021B465DA0008A1213 /* Constents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45FD1B465DA0008A1213 /* Constents.swift */; };
 		BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45FE1B465DA0008A1213 /* QNSharedDatas.swift */; };
@@ -208,7 +206,6 @@
 		BBA52F451B9D8014007A3C72 /* btn_advisory_FaceToFace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F411B9D8014007A3C72 /* btn_advisory_FaceToFace@2x.png */; };
 		BBA52F461B9D8014007A3C72 /* btn_advisory_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F421B9D8014007A3C72 /* btn_advisory_phone@2x.png */; };
 		BBA52F471B9D8014007A3C72 /* btn_advisory_phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA52F431B9D8014007A3C72 /* btn_advisory_phone@3x.png */; };
-		BBA52F491B9D81DF007A3C72 /* ConsultingFeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA52F481B9D81DF007A3C72 /* ConsultingFeesViewController.swift */; };
 		BBA82ED11B4E01C00087BACA /* advice_array@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA82EC91B4E01C00087BACA /* advice_array@2x.png */; };
 		BBA82ED21B4E01C00087BACA /* advice_array@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA82ECA1B4E01C00087BACA /* advice_array@3x.png */; };
 		BBA82ED71B4E01C00087BACA /* advice_xiala@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA82ECF1B4E01C00087BACA /* advice_xiala@2x.png */; };
@@ -220,7 +217,6 @@
 		BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */; };
 		BBF4C7F71B9E69B900C2E75B /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */; };
 		BBF4C7F91B9E6DE300C2E75B /* ChangeNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7F81B9E6DE300C2E75B /* ChangeNickNameViewController.swift */; };
-		BBF4C7FB1B9E6E7E00C2E75B /* DoctorIDShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7FA1B9E6E7E00C2E75B /* DoctorIDShowViewController.swift */; };
 		BBF4C7FD1B9E72D900C2E75B /* PersonResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7FC1B9E72D900C2E75B /* PersonResumeViewController.swift */; };
 		BBF4C7FF1B9E75FD00C2E75B /* GoodAtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7FE1B9E75FD00C2E75B /* GoodAtViewController.swift */; };
 		BBF4C8051B9E812A00C2E75B /* QualificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C8041B9E812A00C2E75B /* QualificationViewController.swift */; };
@@ -232,8 +228,6 @@
 		BBF4C8131B9E859100C2E75B /* user_ExpertAuthenticate_HeadPortrait@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C80F1B9E859100C2E75B /* user_ExpertAuthenticate_HeadPortrait@3x.png */; };
 		BBF4C8141B9E859100C2E75B /* user_ExpertAuthenticate_IDcard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C8101B9E859100C2E75B /* user_ExpertAuthenticate_IDcard@3x.png */; };
 		BBF4C8151B9E859100C2E75B /* user_ExpertAuthenticate_WorkPermit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C8111B9E859100C2E75B /* user_ExpertAuthenticate_WorkPermit@3x.png */; };
-		BBF4C8171B9E8BB300C2E75B /* ReserveBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C8161B9E8BB300C2E75B /* ReserveBalanceViewController.swift */; };
-		BBF4C8191B9E8BD500C2E75B /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C8181B9E8BD500C2E75B /* BillingViewController.swift */; };
 		BBF4C81F1B9EC7BA00C2E75B /* order_call1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C81E1B9EC7BA00C2E75B /* order_call1@2x.png */; };
 		BBF4C8211B9EC80C00C2E75B /* order_call1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C8201B9EC80C00C2E75B /* order_call1@3x.png */; };
 		BBF4C8231B9EC82A00C2E75B /* user_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4C8221B9EC82A00C2E75B /* user_delete@2x.png */; };
@@ -307,7 +301,6 @@
 		2B46E9681C0E882D001E1090 /* user_ExpertAuthenticate_Photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_ExpertAuthenticate_Photo@2x.png"; path = "../Appointment/user_ExpertAuthenticate_Photo@2x.png"; sourceTree = "<group>"; };
 		2B46E96A1C0E8856001E1090 /* user_ExpertAuthenticate_Photo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_ExpertAuthenticate_Photo@3x.png"; path = "../Appointment/user_ExpertAuthenticate_Photo@3x.png"; sourceTree = "<group>"; };
 		2B4744181C0464BF00F43B5F /* AddAppointmentLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAppointmentLocationViewController.swift; sourceTree = "<group>"; };
-		2B5C4D891BFAAFA80018FD3E /* QNPushTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNPushTool.swift; sourceTree = "<group>"; };
 		2B5C4D8D1BFAB8FA0018FD3E /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		2B5E24461BA0202E002A8FC3 /* SelectBankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBankViewController.swift; sourceTree = "<group>"; };
 		2B5E80E21BCCE78C00346DE0 /* UserCenter_HeaderImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCenter_HeaderImage@2x.png"; sourceTree = "<group>"; };
@@ -421,7 +414,6 @@
 		BB3C45A71B465C46008A1213 /* QNFormatTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNFormatTool.swift; sourceTree = "<group>"; };
 		BB3C45A81B465C46008A1213 /* QNInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNInterceptor.swift; sourceTree = "<group>"; };
 		BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNNetworkTool.swift; sourceTree = "<group>"; };
-		BB3C45AA1B465C46008A1213 /* QNPhoneTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNPhoneTool.swift; sourceTree = "<group>"; };
 		BB3C45AC1B465C46008A1213 /* QNTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNTool.swift; sourceTree = "<group>"; };
 		BB3C45FB1B465C7D008A1213 /* readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		BB3C45FD1B465DA0008A1213 /* Constents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constents.swift; sourceTree = "<group>"; };
@@ -484,7 +476,6 @@
 		BBA52F411B9D8014007A3C72 /* btn_advisory_FaceToFace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_advisory_FaceToFace@2x.png"; sourceTree = "<group>"; };
 		BBA52F421B9D8014007A3C72 /* btn_advisory_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_advisory_phone@2x.png"; sourceTree = "<group>"; };
 		BBA52F431B9D8014007A3C72 /* btn_advisory_phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_advisory_phone@3x.png"; sourceTree = "<group>"; };
-		BBA52F481B9D81DF007A3C72 /* ConsultingFeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultingFeesViewController.swift; sourceTree = "<group>"; };
 		BBA82EC91B4E01C00087BACA /* advice_array@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "advice_array@2x.png"; sourceTree = "<group>"; };
 		BBA82ECA1B4E01C00087BACA /* advice_array@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "advice_array@3x.png"; sourceTree = "<group>"; };
 		BBA82ECF1B4E01C00087BACA /* advice_xiala@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "advice_xiala@2x.png"; sourceTree = "<group>"; };
@@ -496,7 +487,6 @@
 		BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoViewController.swift; sourceTree = "<group>"; };
 		BBF4C7F81B9E6DE300C2E75B /* ChangeNickNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNickNameViewController.swift; sourceTree = "<group>"; };
-		BBF4C7FA1B9E6E7E00C2E75B /* DoctorIDShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorIDShowViewController.swift; sourceTree = "<group>"; };
 		BBF4C7FC1B9E72D900C2E75B /* PersonResumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonResumeViewController.swift; sourceTree = "<group>"; };
 		BBF4C7FE1B9E75FD00C2E75B /* GoodAtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodAtViewController.swift; sourceTree = "<group>"; };
 		BBF4C8041B9E812A00C2E75B /* QualificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationViewController.swift; sourceTree = "<group>"; };
@@ -508,8 +498,6 @@
 		BBF4C80F1B9E859100C2E75B /* user_ExpertAuthenticate_HeadPortrait@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_HeadPortrait@3x.png"; sourceTree = "<group>"; };
 		BBF4C8101B9E859100C2E75B /* user_ExpertAuthenticate_IDcard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_IDcard@3x.png"; sourceTree = "<group>"; };
 		BBF4C8111B9E859100C2E75B /* user_ExpertAuthenticate_WorkPermit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_ExpertAuthenticate_WorkPermit@3x.png"; sourceTree = "<group>"; };
-		BBF4C8161B9E8BB300C2E75B /* ReserveBalanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReserveBalanceViewController.swift; sourceTree = "<group>"; };
-		BBF4C8181B9E8BD500C2E75B /* BillingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
 		BBF4C81E1B9EC7BA00C2E75B /* order_call1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_call1@2x.png"; sourceTree = "<group>"; };
 		BBF4C8201B9EC80C00C2E75B /* order_call1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_call1@3x.png"; sourceTree = "<group>"; };
 		BBF4C8221B9EC82A00C2E75B /* user_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_delete@2x.png"; sourceTree = "<group>"; };
@@ -624,15 +612,11 @@
 			isa = PBXGroup;
 			children = (
 				17F8635C1B4DFD3000D0A643 /* UserCenterViewController.swift */,
-				BBF4C8181B9E8BD500C2E75B /* BillingViewController.swift */,
-				BBF4C8161B9E8BB300C2E75B /* ReserveBalanceViewController.swift */,
 				BBF4C7F81B9E6DE300C2E75B /* ChangeNickNameViewController.swift */,
 				BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */,
 				17F8635E1B4DFE0800D0A643 /* UserManagerViewController.swift */,
 				17F863601B4DFE1100D0A643 /* ChangePasswordViewController.swift */,
 				BBA52F331B9D709E007A3C72 /* SettingViewController.swift */,
-				BBA52F481B9D81DF007A3C72 /* ConsultingFeesViewController.swift */,
-				BBF4C7FA1B9E6E7E00C2E75B /* DoctorIDShowViewController.swift */,
 				BBF4C7FC1B9E72D900C2E75B /* PersonResumeViewController.swift */,
 				BBF4C7FE1B9E75FD00C2E75B /* GoodAtViewController.swift */,
 				BBF4C8041B9E812A00C2E75B /* QualificationViewController.swift */,
@@ -1034,8 +1018,6 @@
 				BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */,
 				BB3C45A71B465C46008A1213 /* QNFormatTool.swift */,
 				BB3C45A81B465C46008A1213 /* QNInterceptor.swift */,
-				BB3C45AA1B465C46008A1213 /* QNPhoneTool.swift */,
-				2B5C4D891BFAAFA80018FD3E /* QNPushTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1455,13 +1437,10 @@
 				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
-				2B5C4D8A1BFAAFA80018FD3E /* QNPushTool.swift in Sources */,
 				17F8635F1B4DFE0800D0A643 /* UserManagerViewController.swift in Sources */,
-				BBF4C8191B9E8BD500C2E75B /* BillingViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,
 				BB3C45CE1B465C46008A1213 /* ReactiveCocoa.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
-				BBA52F491B9D81DF007A3C72 /* ConsultingFeesViewController.swift in Sources */,
 				BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */,
 				BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */,
 				BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */,
@@ -1488,7 +1467,6 @@
 				2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */,
 				BB3C45B61B465C46008A1213 /* UIViewExtension.swift in Sources */,
 				BB3C45B31B465C46008A1213 /* StringExtension.swift in Sources */,
-				BBF4C7FB1B9E6E7E00C2E75B /* DoctorIDShowViewController.swift in Sources */,
 				2B4744191C0464BF00F43B5F /* AddAppointmentLocationViewController.swift in Sources */,
 				BB3C45C51B465C46008A1213 /* PedometerProgressView.m in Sources */,
 				BB3C45F61B465C47008A1213 /* QNInterceptor.swift in Sources */,
@@ -1515,14 +1493,12 @@
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB3C45C41B465C46008A1213 /* KDGoalBarPercentLayer.m in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
-				BBF4C8171B9E8BB300C2E75B /* ReserveBalanceViewController.swift in Sources */,
 				BB3C45F01B465C47008A1213 /* TrendChartView.m in Sources */,
 				BB3C46041B465DA0008A1213 /* QNStatistical.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,
 				BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */,
 				BBF4C7F71B9E69B900C2E75B /* PersonInfoViewController.swift in Sources */,
 				BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */,
-				BB3C45F81B465C47008A1213 /* QNPhoneTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
