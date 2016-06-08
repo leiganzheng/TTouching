@@ -21,8 +21,6 @@
 		17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5562A1B4B5D8100D042CE /* RegisterViewController.swift */; };
 		17E89CB01B4B654E00067F28 /* Login_Account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAA1B4B654E00067F28 /* Login_Account@2x.png */; };
 		17E89CB11B4B654E00067F28 /* Login_Account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAB1B4B654E00067F28 /* Login_Account@3x.png */; };
-		17E89CB21B4B654E00067F28 /* Login_Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAC1B4B654E00067F28 /* Login_Logo@2x.png */; };
-		17E89CB31B4B654E00067F28 /* Login_Logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAD1B4B654E00067F28 /* Login_Logo@3x.png */; };
 		17E89CB41B4B654E00067F28 /* Login_Password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAE1B4B654E00067F28 /* Login_Password@2x.png */; };
 		17E89CB51B4B654E00067F28 /* Login_Password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CAF1B4B654E00067F28 /* Login_Password@3x.png */; };
 		17E89CBD1B4B65A000067F28 /* Main_Personal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E89CB71B4B65A000067F28 /* Main_Personal@2x.png */; };
@@ -272,8 +270,6 @@
 		17C5562A1B4B5D8100D042CE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		17E89CAA1B4B654E00067F28 /* Login_Account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Account@2x.png"; sourceTree = "<group>"; };
 		17E89CAB1B4B654E00067F28 /* Login_Account@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Account@3x.png"; sourceTree = "<group>"; };
-		17E89CAC1B4B654E00067F28 /* Login_Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Logo@2x.png"; sourceTree = "<group>"; };
-		17E89CAD1B4B654E00067F28 /* Login_Logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Logo@3x.png"; sourceTree = "<group>"; };
 		17E89CAE1B4B654E00067F28 /* Login_Password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Password@2x.png"; sourceTree = "<group>"; };
 		17E89CAF1B4B654E00067F28 /* Login_Password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Password@3x.png"; sourceTree = "<group>"; };
 		17E89CB71B4B65A000067F28 /* Main_Personal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_Personal@2x.png"; sourceTree = "<group>"; };
@@ -579,8 +575,6 @@
 			children = (
 				17E89CAA1B4B654E00067F28 /* Login_Account@2x.png */,
 				17E89CAB1B4B654E00067F28 /* Login_Account@3x.png */,
-				17E89CAC1B4B654E00067F28 /* Login_Logo@2x.png */,
-				17E89CAD1B4B654E00067F28 /* Login_Logo@3x.png */,
 				17E89CAE1B4B654E00067F28 /* Login_Password@2x.png */,
 				17E89CAF1B4B654E00067F28 /* Login_Password@3x.png */,
 				17BD01771B4BB8F9006CE55B /* Regsiter_RightArrow@2x.png */,
@@ -1245,7 +1239,6 @@
 				2BA824A41C05A21D008CAACE /* userCenter_appointment_peoplecount@3x.png in Resources */,
 				BBA52F441B9D8014007A3C72 /* btn_advisory_FaceToFace@3x.png in Resources */,
 				BBF4C8361B9EC9AD00C2E75B /* user_list_ExpertAuthenticate@2x.png in Resources */,
-				17E89CB21B4B654E00067F28 /* Login_Logo@2x.png in Resources */,
 				2BFD038F1BA29C900072CF4D /* login_unchecked@2x.png in Resources */,
 				2B7B9A741C0583C70070BBF2 /* userCenter_appointment_check@3x.png in Resources */,
 				BBA52F291B9D614A007A3C72 /* nav_data2@2x.png in Resources */,
@@ -1288,7 +1281,6 @@
 				2BEC495C1BEC7E46005E0F0C /* btn_advisory_videogray@3x.png in Resources */,
 				17BD017A1B4BB8F9006CE55B /* Regsiter_RightArrow@3x.png in Resources */,
 				BBA52F301B9D614A007A3C72 /* nav_user1@3x.png in Resources */,
-				17E89CB31B4B654E00067F28 /* Login_Logo@3x.png in Resources */,
 				BBA52F321B9D614A007A3C72 /* nav_user2@3x.png in Resources */,
 				17E89CB01B4B654E00067F28 /* Login_Account@2x.png in Resources */,
 				BBA52F471B9D8014007A3C72 /* btn_advisory_phone@3x.png in Resources */,

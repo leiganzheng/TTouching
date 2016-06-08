@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         // 让导航栏支持向右滑动手势
         QNTool.addInteractive(self.navigationController)
         
-        self.imageView.image = UIImage(named: "Login_Logo.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.imageView.image = UIImage(named: "LOGO")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.imageView.tintColor = appThemeColor
         self.imageView.tintAdjustmentMode = .Normal
         
