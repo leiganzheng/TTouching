@@ -67,12 +67,12 @@ class RegisterViewController: UIViewController, QNInterceptorNavigationBarShowPr
         textField.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         textField.layer.cornerRadius = 2
         textField.layer.borderWidth = 0.5
-        textField.layer.borderColor = defaultLineColor.CGColor
+        textField.layer.borderColor = UIColor.whiteColor().CGColor
         
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         textField.leftViewMode = .Always
         
-        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
+        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         textField.rightViewMode = .Always
     }
     

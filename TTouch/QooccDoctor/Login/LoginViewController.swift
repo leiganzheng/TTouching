@@ -18,14 +18,16 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var headerView: UIView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = defaultBackgroundGrayColor
         self.navigationController?.navigationBar.translucent = false // 关闭透明度效果
         // 让导航栏支持向右滑动手势
         QNTool.addInteractive(self.navigationController)
+        QNTool.configViewLayer(self.headerView)
         
         self.imageView.image = UIImage(named: "LOGO")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.imageView.tintColor = appThemeColor
@@ -33,17 +35,28 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         
         RegisterViewController.configTextField(self.accountTextField)
         self.accountTextField.text = g_Account
-        let accountImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
-        accountImageView.contentMode = UIViewContentMode.Center
-        accountImageView.image = UIImage(named: "Login_Account")
-        self.accountTextField.leftView = accountImageView
-            
+        
+        let lb = UILabel(frame: CGRectMake(0, 0, 40, 20))
+        lb.text = "用户"
+        self.accountTextField.leftView = lb
+//        let accountImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
+//        accountImageView.contentMode = UIViewContentMode.Center
+//        accountImageView.image = UIImage(named: "Login_Account")
+//        self.accountTextField.leftView = accountImageView
+        
         RegisterViewController.configTextField(self.passwordTextField)
         self.passwordTextField.secureTextEntry = true
+        
+        
+        let pass = UILabel(frame: CGRectMake(0, 0, 40, 20))
+        pass.text = "密码"
+        self.passwordTextField.leftView = pass
+
+        
         let passwordImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
         passwordImageView.contentMode = UIViewContentMode.Center
         passwordImageView.image = UIImage(named: "Login_Password")
-        self.passwordTextField.leftView = passwordImageView
+//        self.passwordTextField.leftView = passwordImageView
 
         // 键盘消失
         let tap = UITapGestureRecognizer()
@@ -52,7 +65,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         self.view.addGestureRecognizer(tap)
         // 如果有本地账号了，就自动登录
-        self.autoLogin()
+//        self.autoLogin()
     }
 
     override func viewWillAppear(animated: Bool) {
