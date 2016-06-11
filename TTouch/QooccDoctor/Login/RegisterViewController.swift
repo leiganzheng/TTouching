@@ -26,9 +26,18 @@ class RegisterViewController: UIViewController, QNInterceptorNavigationBarShowPr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         RegisterViewController.configTextField(self.textField1)
         RegisterViewController.configTextField(self.textField2)
         
+        let lb = UILabel(frame: CGRectMake(8, 0, 60, 20))
+        lb.text = "手机号"
+        self.textField1.leftView = lb
+        
+        let pass = UILabel(frame: CGRectMake(8, 0, 60, 20))
+        pass.text = "验证码"
+        self.textField2.leftView = pass
+
        
         
         // 获取验证码的按钮
@@ -60,6 +69,7 @@ class RegisterViewController: UIViewController, QNInterceptorNavigationBarShowPr
             self?.view.endEditing(true)
         }
         self.view.addGestureRecognizer(tap)
+        self.view.backgroundColor = defaultBackgroundGrayColor
     }
 
 //     配置输入框，会在其他界面用到
@@ -208,10 +218,10 @@ extension RegisterViewController {
         }
         
         if button.tag == 0 {
-            button.setTitle("获取验证码", forState: .Normal)
-            button.backgroundColor = appThemeColor
-            button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-            button.setTitleColor(UIColor.grayColor(), forState: .Highlighted)
+            button.setTitle("发送验证码", forState: .Normal)
+            button.backgroundColor = UIColor.whiteColor()
+            button.setTitleColor(appThemeColor, forState: .Normal)
+            button.setTitleColor(appThemeColor, forState: .Highlighted)
             button.enabled = true
         }
         else {

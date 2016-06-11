@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--登录-->
@@ -349,11 +350,11 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YQ-ED-PhI">
-                                <rect key="frame" x="14" y="152" width="290" height="35"/>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YQ-ED-PhI">
+                                <rect key="frame" x="15" y="141" width="290" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4YQ-ED-PhI" secondAttribute="height" multiplier="58:7" id="zZa-0j-Az2"/>
+                                    <constraint firstAttribute="height" constant="48" id="Zo6-BH-gme"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -361,20 +362,23 @@
                                     <outlet property="delegate" destination="hmS-AT-iP6" id="qBJ-ta-4DL"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-7p-Ptz">
-                                <rect key="frame" x="16" y="207" width="290" height="35"/>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-7p-Ptz">
+                                <rect key="frame" x="15" y="190" width="290" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="uBN-xe-JtW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="hmS-AT-iP6" id="6Hu-NO-Pfx"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drH-Gv-dwA" userLabel="注册">
-                                <rect key="frame" x="14" y="337" width="290" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drH-Gv-dwA" userLabel="注册">
+                                <rect key="frame" x="15" y="305" width="290" height="48"/>
                                 <color key="backgroundColor" red="0.20784313725490194" green="0.20392156862745098" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="drH-Gv-dwA" secondAttribute="height" multiplier="29:4" id="Xzg-NR-Htb"/>
+                                    <constraint firstAttribute="height" constant="48" id="deY-Jp-44e"/>
                                 </constraints>
                                 <state key="normal" title="下一步">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -389,31 +393,23 @@
                                     <segue destination="j2T-8M-QHP" kind="push" id="stc-0s-XkH"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="CJr-pY-eoc">
-                                <rect key="frame" x="70" y="0.0" width="181" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="181" id="1qR-z3-xsQ"/>
-                                    <constraint firstAttribute="height" constant="40" id="wj7-dl-qsM"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="width" secondItem="4YQ-ED-PhI" secondAttribute="width" id="1yM-0V-130"/>
-                            <constraint firstItem="4YQ-ED-PhI" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leading" constant="14" id="5VF-lC-xmP"/>
-                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="height" secondItem="4YQ-ED-PhI" secondAttribute="height" id="JwU-oF-Ke7"/>
-                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="centerX" secondItem="4YQ-ED-PhI" secondAttribute="centerX" constant="2" id="S8d-eU-XFf"/>
-                            <constraint firstItem="drH-Gv-dwA" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leading" constant="14" id="XUt-75-Ng5"/>
-                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="top" secondItem="4YQ-ED-PhI" secondAttribute="bottom" constant="20" id="Yse-t0-fwi"/>
-                            <constraint firstAttribute="trailing" secondItem="drH-Gv-dwA" secondAttribute="trailing" constant="16" id="i7S-QV-AQj"/>
-                            <constraint firstAttribute="centerX" secondItem="CJr-pY-eoc" secondAttribute="centerX" id="jKK-RQ-2GT"/>
-                            <constraint firstAttribute="trailing" secondItem="4YQ-ED-PhI" secondAttribute="trailing" constant="16" id="xCN-FS-Wmh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="drH-Gv-dwA" secondAttribute="trailing" constant="-5" id="11O-KO-Z0S"/>
+                            <constraint firstItem="4YQ-ED-PhI" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leadingMargin" constant="-5" id="42N-Fi-OWo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xKc-7p-Ptz" secondAttribute="trailing" constant="-5" id="5eQ-4A-ki1"/>
+                            <constraint firstItem="drH-Gv-dwA" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leadingMargin" constant="-5" id="97Y-wQ-sc4"/>
+                            <constraint firstItem="4YQ-ED-PhI" firstAttribute="top" secondItem="OE3-lf-huY" secondAttribute="bottom" constant="141" id="A10-eH-xeJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4YQ-ED-PhI" secondAttribute="trailing" constant="-5" id="KG5-zh-PDu"/>
+                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="top" secondItem="4YQ-ED-PhI" secondAttribute="bottom" constant="1" id="UFF-4q-Q5T"/>
+                            <constraint firstItem="xKc-7p-Ptz" firstAttribute="leading" secondItem="ZfI-Gv-4Ch" secondAttribute="leadingMargin" constant="-5" id="lrC-x0-7Nz"/>
+                            <constraint firstItem="drH-Gv-dwA" firstAttribute="top" secondItem="xKc-7p-Ptz" secondAttribute="bottom" constant="67" id="vmX-sX-h9c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="短信注册" id="TIa-MO-xnM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="imageView" destination="CJr-pY-eoc" id="jQX-9T-cv0"/>
                         <outlet property="textField1" destination="4YQ-ED-PhI" id="zVa-0i-a6U"/>
                         <outlet property="textField2" destination="xKc-7p-Ptz" id="BOB-th-K8m"/>
                     </connections>
