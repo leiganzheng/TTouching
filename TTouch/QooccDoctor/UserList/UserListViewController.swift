@@ -97,7 +97,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             })
         leftBarButton.addSubview(searchButton1)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
-
+        self.customNavView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,7 +112,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-       return UserTableViewCell.height
+       return 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,6 +143,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
     
     //MARK:- private method
+    func customNavView() {
+
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
+        searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
+        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
+
+        self.navigationItem.titleView = searchButton
+    }
     func animationWith(vc: UIViewController,x:CGFloat) {
         UIView .beginAnimations("move", context: nil)
         UIView.setAnimationDuration(0.5)

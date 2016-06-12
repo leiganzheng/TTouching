@@ -9,8 +9,9 @@
 import UIKit
 import ReactiveCocoa
 
-class TimeMannageViewController: UIViewController,QNInterceptorProtocol {
+class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +33,30 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //MARK:- UITableViewDelegate or UITableViewDataSource
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 132
+    }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellId = "cell"
+        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+        }
+        cell.contentView.backgroundColor = UIColor.whiteColor()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+    }
+
 
 }

@@ -37,7 +37,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UserTableViewCell.height
+        return 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

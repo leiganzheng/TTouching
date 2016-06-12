@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         self.view.addGestureRecognizer(tap)
         // 如果有本地账号了，就自动登录
-//        self.autoLogin()
+        self.autoLogin()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -98,10 +98,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
                 if doctor != nil {
                     if self.checkRegisterEditInfo(doctor!) {
                         //进入主界面
-//                        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
-                        self.navigationController?.pushViewController(vc, animated: true)
-//                        QNTool.enterRootViewController(vc, animated: true)
+                        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+//                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
+//                        self.navigationController?.pushViewController(vc, animated: true)
+                        QNTool.enterRootViewController(vc, animated: true)
                     } else {
                         // 未填写注册信息
                         let vc = EditInformationViewController.CreateFromStoryboard("Login") as! EditInformationViewController

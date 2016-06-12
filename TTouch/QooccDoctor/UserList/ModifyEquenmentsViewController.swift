@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ModifyEquenmentsViewController: UIViewController {
+class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "设备管理"
         // Do any additional setup after loading the view.
     }
 

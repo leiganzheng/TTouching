@@ -9,15 +9,16 @@
 import UIKit
 import CocoaAsyncSocket
 
-class EquementsViewController: UIViewController,AsyncSocketDelegate{
+class EquementsViewController: UIViewController,AsyncSocketDelegate,QNInterceptorProtocol{
 
+    
     let addr = "192.168.0.10"
     let port:UInt16 = 35000
     var socket:GCDAsyncSocket!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.title = "设备管理"
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +28,7 @@ class EquementsViewController: UIViewController,AsyncSocketDelegate{
     
 
     @IBAction func loginAction(sender: AnyObject) {
-        self.navigationController?.pushViewController(ModifyEquenmentsViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+//        self.navigationController?.pushViewController(ModifyEquenmentsViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
     }
     func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
     {

@@ -38,11 +38,13 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.textLabel?.textColor = UIColor.blackColor()
-//        cell.backgroundColor = appThemeColor
         let title = self.titles[indexPath.row] as! NSString
         cell.textLabel?.text = title as String
         //        cell.contentView.addSubview(UIImageView(image: UIImage(named: "left")))
-        
+        cell.contentView.backgroundColor = UIColor.whiteColor()
+        let lb = UILabel(frame: CGRectMake(0, 54, self.view.bounds.width, 1))
+        lb.backgroundColor = defaultBackgroundGrayColor
+        cell.contentView.addSubview(lb)
         return cell
     }
     
