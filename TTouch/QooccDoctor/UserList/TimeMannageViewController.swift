@@ -25,7 +25,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
             })
         rightBarButton.addSubview(searchButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
-        
+        self.view.backgroundColor = defaultBackgroundGrayColor
        
     }
 
