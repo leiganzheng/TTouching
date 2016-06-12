@@ -18,18 +18,20 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var sock:AsyncUdpSocket?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "查找网关"
         //列表创建
         self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
         self.tableViewController.refreshControl = UIRefreshControl()
-//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-//            })
-        self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
+        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+            
+            })
+        self.myTableView.frame = CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
+        self.myTableView.backgroundColor = defaultBackgroundGrayColor
         self.view.addSubview(self.myTableView!)
         self.fectchData()
 
@@ -52,17 +54,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         return 3
     }
     
-    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        return true
-    //    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-//            cell.accessoryType = .DisclosureIndicator
         }
+        cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.text = "T-Touching Gateway";
         let searchButton:UIButton = UIButton(type: .DetailDisclosure)
         searchButton.frame = CGRectMake(0, 5, 40, 30)
@@ -72,6 +71,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             return RACSignal.empty()
             })
         cell.accessoryView = searchButton
+        let lb = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
+        lb.backgroundColor = defaultBackgroundGrayColor
+        cell.contentView.addSubview(lb)
         return cell
     }
     

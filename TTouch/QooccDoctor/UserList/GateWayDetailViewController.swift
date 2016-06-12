@@ -12,7 +12,7 @@ import ReactiveCocoa
 class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNInterceptorNavigationBarShowProtocol, UITableViewDataSource, UITableViewDelegate{
     
     private var tableViewController: UITableViewController!
-    var titles: NSArray!
+    var cellTitles: NSArray!
     var myTableView: UITableView!
 //    var myTableView: UITableView! {
 //        return self.tableViewController?.tableView
@@ -20,18 +20,15 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titles = ["IP 地址","物理地址","固件版本"]
-        //列表创建
-//        self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
-//        self.tableViewController.refreshControl = UIRefreshControl()
-//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-//            })
-        self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36))
+        self.cellTitles = ["IP 地址","物理地址","固件版本"]
+        self.title = "网关详情"
+        self.myTableView = UITableView(frame: CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 36))
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
+        self.myTableView?.backgroundColor = defaultBackgroundGrayColor
         self.view.addSubview(self.myTableView!)
     }
 
@@ -46,12 +43,8 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles.count
+        return self.cellTitles.count
     }
-    
-    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    //        return true
-    //    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
@@ -60,10 +53,14 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             //            cell.accessoryType = .DisclosureIndicator
         }
-        cell.textLabel?.text = self.titles[indexPath.row] as? String
+        cell.textLabel?.text = self.cellTitles[indexPath.row] as? String
         let lb = UILabel(frame: CGRectMake(0,0,80,40))
         
         cell.accessoryView = lb
+        let line = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
+        line.backgroundColor = defaultBackgroundGrayColor
+        cell.contentView.addSubview(line)
+
         return cell
     }
     

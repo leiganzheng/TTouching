@@ -98,10 +98,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
                 if doctor != nil {
                     if self.checkRegisterEditInfo(doctor!) {
                         //进入主界面
-                        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-//                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
-//                        self.navigationController?.pushViewController(vc, animated: true)
-                        QNTool.enterRootViewController(vc, animated: true)
+//                        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+//                        QNTool.enterRootViewController(vc, animated: true)
                     } else {
                         // 未填写注册信息
                         let vc = EditInformationViewController.CreateFromStoryboard("Login") as! EditInformationViewController
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     
     @IBAction func loginAction(sender: AnyObject) {
         let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
-        actionSheet.addButtonWithTitle("找回密码")
+        actionSheet.addButtonWithTitle("找回登入密码")
         actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
             if let indexInt = index as? Int {
                 switch indexInt {

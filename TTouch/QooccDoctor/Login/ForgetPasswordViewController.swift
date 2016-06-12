@@ -21,7 +21,7 @@ class ForgetPasswordViewController: UIViewController,QNInterceptorNavigationBarS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = defaultBackgroundGrayColor
         RegisterViewController.configTextField(self.textField1)
         RegisterViewController.configTextField(self.textField2)
         

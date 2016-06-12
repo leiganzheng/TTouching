@@ -65,25 +65,26 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
         assert(self.area != nil, "省市区数据为空，area.txt文件出错啦")
         self.departmentDataArray = QN_Department.getDepartmentData()  //获取科室
         self.illnessDataArray = QN_Disease.getIllData()  //获取病症
-
-        RegisterViewController.configTextField(self.textField2)
-        RegisterViewController.configTextField(self.textField3)
-        RegisterViewController.configTextField(self.textField4)
-        RegisterViewController.configTextField(self.textField5)
-
-        self.textField2.rightView = self.getRightBtn(self.textField2)
-        self.textField3.rightView = self.getRightBtn(self.textField3)
-        self.textField4.rightView = self.getRightBtn(self.textField4)
-        self.textField5.rightView = self.getRightBtn(self.textField5)
-        
-        self.configTextFieldCli(self.textField2)
-        self.configTextFieldCli(self.textField3)
-        self.configTextFieldCli(self.textField4)
-        self.configTextFieldCli(self.textField5)
+//
+//        RegisterViewController.configTextField(self.textField2)
+//        RegisterViewController.configTextField(self.textField3)
+//        RegisterViewController.configTextField(self.textField4)
+//        RegisterViewController.configTextField(self.textField5)
+//
+//        self.textField2.rightView = self.getRightBtn(self.textField2)
+//        self.textField3.rightView = self.getRightBtn(self.textField3)
+//        self.textField4.rightView = self.getRightBtn(self.textField4)
+//        self.textField5.rightView = self.getRightBtn(self.textField5)
+//        
+//        self.configTextFieldCli(self.textField2)
+//        self.configTextFieldCli(self.textField3)
+//        self.configTextFieldCli(self.textField4)
+//        self.configTextFieldCli(self.textField5)
         
         NSNotificationCenter.defaultCenter().rac_addObserverForName(UIKeyboardWillShowNotification, object: nil).subscribeNext { (sender) -> Void in
             self.view.endEditing(true)
         }
+        self.view.backgroundColor = defaultBackgroundGrayColor
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)

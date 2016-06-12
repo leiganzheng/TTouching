@@ -56,7 +56,7 @@ class QNInterceptor : NSObject {
             let block : @convention(block) (aspectInfo: AspectInfo) -> Void = { [weak self](aspectInfo: AspectInfo) -> Void in
                 if let _ = self, let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
                     // 设置统一的背景色
-                    viewController.view.backgroundColor = defaultBackgroundColor
+                    viewController.view.backgroundColor = defaultBackgroundGrayColor
                     // 修改基础配置
                     viewController.edgesForExtendedLayout = UIRectEdge.None
                     // 全部设置成返回按钮，在有导航栏，并且不是导航栏的rootViewController

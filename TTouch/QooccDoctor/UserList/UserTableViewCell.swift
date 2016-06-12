@@ -11,7 +11,7 @@ import MGSwipeTableCell
 
 class UserTableViewCell: MGSwipeTableCell {
 
-    static let height = CGFloat(72) //
+    static let height = CGFloat(46) //
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var name: UILabel!

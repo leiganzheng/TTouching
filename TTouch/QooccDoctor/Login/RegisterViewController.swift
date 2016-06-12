@@ -32,11 +32,11 @@ class RegisterViewController: UIViewController, QNInterceptorNavigationBarShowPr
         
         let lb = UILabel(frame: CGRectMake(8, 0, 60, 20))
         lb.text = "手机号"
-        self.textField1.leftView = lb
+//        self.textField1.leftView = lb
         
         let pass = UILabel(frame: CGRectMake(8, 0, 60, 20))
         pass.text = "验证码"
-        self.textField2.leftView = pass
+//        self.textField2.leftView = pass
 
        
         
