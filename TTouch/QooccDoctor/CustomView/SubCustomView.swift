@@ -38,12 +38,13 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         let cell:UICollectionViewCell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(
             identify, forIndexPath: indexPath)
         let button:UIButton = UIButton(frame:CGRectMake(0, 0, screenWidth/2, 50))
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         if icon?.count>0 {
             button.setImage(UIImage(named: (self.icon![indexPath.row] as? String)!), forState: UIControlState.Normal)
         }
         
         button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
-        QNTool.configViewLayerFrame(button)
+//        QNTool.configViewLayerFrame(button)
         cell.contentView.addSubview(button)
         return cell
     }

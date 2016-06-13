@@ -15,7 +15,7 @@ import ReactiveCocoa
 *  //MARK: 用户列表
 */
 
-class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
+class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var dataArray: NSMutableArray!
     var titles: NSArray!
@@ -25,6 +25,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var leftVC: LeftViewController!
     private var rightVC: RightViewController!
     var myTableView: UITableView!
+    var picker: UIImagePickerController?
     
     let Width:CGFloat = 160
     let Y:CGFloat = 64
@@ -54,12 +55,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         
         self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
         self.leftVC.view.frame = CGRectMake(-screenWidth,Y, Width,screenHeight)
+        print(self.leftVC.view)
+        print(self.leftVC.myTableView)
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.window?.addSubview(self.leftVC.view)
         }
 
         self.leftVC.bock = {(vc) -> Void in
-            self.navigationController?.hidesBottomBarWhenPushed = true
+            self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             
             self.animationWith((self.leftVC)!, x: -screenWidth)
@@ -71,7 +74,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             appDelegate.window?.addSubview(self.rightVC.view)
         }
         self.rightVC.bock = {(vc) -> Void in
-             self.navigationController?.hidesBottomBarWhenPushed = true
+             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
            
             self.animationWith((self.rightVC)!, x: screenWidth)
@@ -133,8 +136,35 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let title = self.titles[indexPath.row] as! String
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
-        cell.imageView?.image =   UIImage(named: icon)
-        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 0, 34, 34))
+//        cell.imageView?.image =   UIImage(named: icon)
+        
+        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
+        logoButton.setImage(UIImage(named: icon), forState: UIControlState.Normal)
+        logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+            actionSheet.addButtonWithTitle("从手机相册选择")
+            actionSheet.addButtonWithTitle("拍照")
+            actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
+                if let indexInt = index as? Int {
+                    switch indexInt {
+                    case 1, 2:
+                        if self!.picker == nil {
+                            self!.picker = UIImagePickerController()
+                            self!.picker!.delegate = self
+                        }
+                        self!.picker!.sourceType = (indexInt == 1) ? .SavedPhotosAlbum : .Camera
+                        self!.picker!.allowsEditing = true
+                        self!.presentViewController(self!.picker!, animated: true, completion: nil)
+                    default: break
+                    }
+                }
+            })
+            actionSheet.showInView(self!.view)
+            return RACSignal.empty()
+            })
+        cell.contentView.addSubview(logoButton)
+        
+        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
@@ -147,6 +177,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         if temp {
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
              v.tag = indexPath.row + 100
+             v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
             v.backgroundColor = defaultBackgroundColor
             cell.contentView.addSubview(v)
         }else{
@@ -171,6 +202,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
         searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+            return RACSignal.empty()
+            })
 
         self.navigationItem.titleView = searchButton
     }

@@ -99,6 +99,7 @@
 		2BFEDA331BFC27D900AC0D9E /* Login_Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFEDA321BFC27D900AC0D9E /* Login_Location@2x.png */; };
 		2BFEDA351BFC27E600AC0D9E /* Login_Location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
+		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
@@ -348,6 +349,7 @@
 		2BFEDA321BFC27D900AC0D9E /* Login_Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Location@2x.png"; sourceTree = "<group>"; };
 		2BFEDA341BFC27E600AC0D9E /* Login_Location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_Location@3x.png"; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */,
 				BB52E6CF1D06C189005020A0 /* TimeMannageViewController.swift */,
 				BB52E6D11D06C2CE005020A0 /* AboutViewController.swift */,
+				716F20181D0F062900E42F06 /* SecurityViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1485,6 +1488,7 @@
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB3C45C41B465C46008A1213 /* KDGoalBarPercentLayer.m in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
+				716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */,
 				BB3C45F01B465C47008A1213 /* TrendChartView.m in Sources */,
 				BB3C46041B465DA0008A1213 /* QNStatistical.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,

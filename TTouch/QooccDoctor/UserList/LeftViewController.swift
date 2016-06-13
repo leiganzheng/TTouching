@@ -63,10 +63,45 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.row == 1 {
-            self.bock!(EquementControViewController.CreateFromStoryboard("Main"))
+        if indexPath.row == 0 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
         }
-
+        if indexPath.row == 1 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
+        if indexPath.row == 2 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
+        if indexPath.row == 3 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
+        if indexPath.row == 4 {
+            let vc = SecurityViewController.CreateFromStoryboard("Main") as! SecurityViewController
+            self.bock!(vc)
+        }
+        if indexPath.row == 5 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
+        if indexPath.row == 6 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
+        if indexPath.row == 7 {
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.customTitle = self.titles![indexPath.row] as? String
+            self.bock!(vc)
+        }
     }
 
 

@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var myTableView: UITableView!
     var titles: NSArray!
+    var icons: NSArray!
+    var flags: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titles = ["简体中文","繁体中文","English"]
+        self.title = "设备管理"
+        //数据
+//        self.dataArray = NSMutableArray()
+        self.titles = ["总控","六场景","单路调光","书房","主浴","露台","小孩房","主卧房"]
+        self.flags = [false,false,false,false,false,false,false,false]
+        self.icons = ["Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1"]
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +34,8 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 54
+        let temp = self.flags[indexPath.row] as! Bool
+        return temp == true ? 200 : 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,11 +47,44 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
-        cell.textLabel?.textColor = UIColor.blackColor()
-        //        cell.backgroundColor = appThemeColor
-        let title = self.titles[indexPath.row] as! NSString
-        cell.textLabel?.text = title as String
-        //        cell.contentView.addSubview(UIImageView(image: UIImage(named: "left")))
+        let title = self.titles[indexPath.row] as! String
+        let icon = self.icons[indexPath.row] as! String
+
+        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 80, 44))
+        logoButton.setTitle(title, forState: .Normal)
+        logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        cell.contentView.addSubview(logoButton)
+        
+        let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
+        logoButton1.setImage(UIImage(named: icon), forState: UIControlState.Normal)
+      
+        cell.contentView.addSubview(logoButton1)
+        
+        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
+        searchButton.setImage(UIImage(named: "Manage_drop down_icon"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            let flag = !(self!.flags[indexPath.row] as! Bool)
+            self!.flags.replaceObjectAtIndex(indexPath.row, withObject: flag)
+            
+            self!.myTableView.reloadData()
+
+            return RACSignal.empty()
+            })
+        cell.contentView.addSubview(searchButton)
+        
+        let temp = self.flags[indexPath.row] as! Bool
+        
+        if temp {
+            let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+            v.tag = indexPath.row + 100
+            v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+            v.backgroundColor = defaultBackgroundColor
+            cell.contentView.addSubview(v)
+        }else{
+            let tempV = cell.contentView.viewWithTag(indexPath.row+100)
+            tempV?.removeFromSuperview()
+        }
+
         
         return cell
     }
@@ -49,7 +92,7 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+
     }
 
 }

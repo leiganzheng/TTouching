@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInterceptorProtocol {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contentView: UIView!
+    
+    var customTitle:String?
+    
     private(set) var  pictureScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
     var titles: NSArray = ["灯光","窗帘","动作","空调","监视","保全","音乐","影视"]
@@ -21,8 +25,19 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "窗帘"
+        self.title = self.customTitle
         self.buildDataAndUI()
+        //Right
+        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
+        searchButton.setImage(UIImage(named: "Manage_Collect_icon1"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            
+            
+            return RACSignal.empty()
+            })
+        rightBarButton.addSubview(searchButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
     }
 
     override func didReceiveMemoryWarning() {

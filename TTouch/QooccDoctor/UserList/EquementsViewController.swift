@@ -19,6 +19,7 @@ class EquementsViewController: UIViewController,AsyncSocketDelegate,QNIntercepto
         super.viewDidLoad()
 
         self.title = "设备管理"
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +29,7 @@ class EquementsViewController: UIViewController,AsyncSocketDelegate,QNIntercepto
     
 
     @IBAction func loginAction(sender: AnyObject) {
-//        self.navigationController?.pushViewController(ModifyEquenmentsViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
     }
     func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
     {

@@ -40,7 +40,7 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 54
+        return 74
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
