@@ -63,8 +63,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         }
         cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.text = "T-Touching Gateway";
-        let searchButton:UIButton = UIButton(type: .DetailDisclosure)
+        let searchButton:UIButton = UIButton(type: .Custom)
         searchButton.frame = CGRectMake(0, 5, 40, 30)
+        searchButton.setImage(UIImage(named: "Manage_information_icon"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! UIViewController
             self?.navigationController?.pushViewController(vc, animated: true)
