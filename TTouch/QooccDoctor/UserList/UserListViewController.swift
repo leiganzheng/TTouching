@@ -20,6 +20,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     private var dataArray: NSMutableArray!
     var titles: NSArray!
     var icons: NSArray!
+    var flags: NSMutableArray!
     private var tableViewController: UITableViewController!
     private var leftVC: LeftViewController!
     private var rightVC: RightViewController!
@@ -39,6 +40,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         //数据
         self.dataArray = NSMutableArray()
         self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
+        self.flags = [false,false,false,false,false,false,false,false]
         self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
 
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
@@ -112,7 +114,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-       return 72
+        let temp = self.flags[indexPath.row] as! Bool
+        return temp == true ? 200 : 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,15 +134,35 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
         cell.imageView?.image =   UIImage(named: icon)
-        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
+        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 0, 34, 34))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        cell.accessoryView = searchButton
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+            return RACSignal.empty()
+            })
+        cell.contentView.addSubview(searchButton)
+        
+        let temp = self.flags[indexPath.row] as! Bool
+    
+        if temp {
+            let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+             v.tag = indexPath.row + 100
+            v.backgroundColor = defaultBackgroundColor
+            cell.contentView.addSubview(v)
+        }else{
+            let tempV = cell.contentView.viewWithTag(indexPath.row+100)
+            tempV?.removeFromSuperview()
+        }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-
+            let flag = !(self.flags[indexPath.row] as! Bool)
+            self.flags.replaceObjectAtIndex(indexPath.row, withObject: flag)
+    
+           self.myTableView.reloadData()
     }
     
     //MARK:- private method
