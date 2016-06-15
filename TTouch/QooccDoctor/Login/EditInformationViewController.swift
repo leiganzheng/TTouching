@@ -178,41 +178,41 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
     }
     func selectBtnCli(textFiled : UITextField) {
         if textFiled  == self.textField4 {
-            //职称
-            let vc = EditInfoSelectLeveOneViewController()
-            vc.type = 1
-            vc.finished = { (str,id) -> Void in
-                self.textField4.text = str
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            //职称
+//            let vc = EditInfoSelectLeveOneViewController()
+//            vc.type = 1
+//            vc.finished = { (str,id) -> Void in
+//                self.textField4.text = str
+//            }
+//            self.navigationController?.pushViewController(vc, animated: true)
         } else if textFiled  == self.textField5 {
-            //擅长病症
-            let vc = EditInfoSelectLeveOneViewController()
-            vc.type = 2
-            vc.finished = { (name,id) -> Void in
-                self.textField5.text = name
-                self.ill_id = id
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            //擅长病症
+//            let vc = EditInfoSelectLeveOneViewController()
+//            vc.type = 2
+//            vc.finished = { (name,id) -> Void in
+//                self.textField5.text = name
+//                self.ill_id = id
+//            }
+//            self.navigationController?.pushViewController(vc, animated: true)
         } else if textFiled  == self.textField3 {
             //科室
-            let vc = EditInfoEpartmentSelectViewController()
-            vc.hospital = self.textField2.text!
-            vc.finished = { (id,name) -> Void in
-                self.textField3.text = name
-                self.dep_id = id
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = EditInfoEpartmentSelectViewController()
+//            vc.hospital = self.textField2.text!
+//            vc.finished = { (id,name) -> Void in
+//                self.textField3.text = name
+//                self.dep_id = id
+//            }
+//            self.navigationController?.pushViewController(vc, animated: true)
         } else if textFiled  == self.textField2 {
             //地区 医院
-            let vc = EditInfoAreaSelectViewController()
-            vc.finished = { (province_id,city_id,name,id) -> Void in
-                self.textField2.text = name
-                self.province_id = province_id
-                self.city_id = city_id
-                self.hospital_id = id
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = EditInfoAreaSelectViewController()
+//            vc.finished = { (province_id,city_id,name,id) -> Void in
+//                self.textField2.text = name
+//                self.province_id = province_id
+//                self.city_id = city_id
+//                self.hospital_id = id
+//            }
+//            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

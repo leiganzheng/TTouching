@@ -136,8 +136,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let title = self.titles[indexPath.row] as! String
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
-//        cell.imageView?.image =   UIImage(named: icon)
-        
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
         logoButton.setImage(UIImage(named: icon), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -168,6 +166,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+            self?.hidesBottomBarWhenPushed = true
             return RACSignal.empty()
             })
         cell.contentView.addSubview(searchButton)
