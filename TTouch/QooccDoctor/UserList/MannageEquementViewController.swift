@@ -20,9 +20,9 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         self.title = "设备管理"
         //数据
 //        self.dataArray = NSMutableArray()
-        self.titles = ["总控","六场景","单路调光","书房","主浴","露台","小孩房","主卧房"]
-        self.flags = [false,false,false,false,false,false,false,false]
-        self.icons = ["Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1","Room_MasterRoom_icon1"]
+        self.titles = ["总控","六场景","单路调光","双路调光","三路开关","六路开关","三/六路开关","六路触点设备","双路窗帘","空调","地暖","新风"]
+        self.flags = [false,false,false,false,false,false,false,false,false,false,false,false]
+        self.icons = ["Manage_ 1ch-Dimmer_icon","Manage_2ch-Curtains_icon","Manage_2ch-Dimmers_icon","Manage_3ch-roads_icon","Manage_3or6ch-roads_icon","Manage_6-scene_icon","Manage_6ch-roads_icon","Manage_6ch-Triggers_icon","Manage_mastercontrol_icon","Menu_Curtain_icon","Menu_Light_icon","Menu_Trigger_icon"]
 
     }
 

@@ -66,21 +66,25 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         if indexPath.row == 0 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Light
             self.bock!(vc)
         }
         if indexPath.row == 1 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Curtain
             self.bock!(vc)
         }
         if indexPath.row == 2 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Action
             self.bock!(vc)
         }
         if indexPath.row == 3 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Air
             self.bock!(vc)
         }
         if indexPath.row == 4 {
@@ -90,16 +94,19 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         if indexPath.row == 5 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Security
             self.bock!(vc)
         }
         if indexPath.row == 6 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Music
             self.bock!(vc)
         }
         if indexPath.row == 7 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.equementType = EquementSign.Movie
             self.bock!(vc)
         }
     }

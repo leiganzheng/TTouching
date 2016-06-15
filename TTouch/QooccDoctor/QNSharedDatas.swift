@@ -106,7 +106,89 @@ didSet {
 //MARK:- 加密解密密钥
 let g_SecretKey = "TTouch"
 
-
+public enum EquementSign: Int{
+    
+    case Light   = 0
+    case Curtain = 1
+    case Action  = 2
+    case Air = 3
+    case Controller  = 4
+    case Security = 5
+    case Music     = 6
+    case Movie    = 7
+    
+//    init(str: String) {
+//        switch str {
+//        case "灯光":
+//            self = Light
+//        case "窗帘":
+//            self = Curtain
+//        case "动作":
+//            self = Action
+//        case "空调":
+//            self = Air
+//        case "监视":
+//            self = Controller
+//        case "保全":
+//            self = Security
+//        case "音乐":
+//            self = Music
+//        case "影视":
+//            self = Movie
+//        
+//        default :
+//            assert(false, "有未知str，不能转换成 EquementSign 枚举类型")
+//            self = Light
+//        }
+//    }
+//    
+//    init(type: Int) {
+//        switch type {
+//        case 0:
+//            self = Light
+//        case 1:
+//            self = Curtain
+//        case 2:
+//            self = Action
+//        case 3:
+//            self = Air
+//        case 4:
+//            self = Controller
+//        case 5:
+//            self = Security
+//        case 6:
+//            self = Music
+//        case 7:
+//            self = Movie
+//        default :
+//            assert(false, "有未知type（Int），不能转换成 EquementSign 枚举类型")
+//            self = Light
+//        }
+//    }
+//    
+//    var titleString : String {
+//        switch self {
+//        case Light:
+//            return "灯光"
+//        case Curtain:
+//            return "窗帘"
+//        case Action:
+//            return "动作"
+//        case Air:
+//            return "空调"
+//        case Controller:
+//            return "监视"
+//        case Security:
+//            return "保全"
+//        case Music:
+//            return "音乐"
+//        case Movie:
+//            return "影视"
+//       
+//        }
+//    }
+    
+}
 
 
 

@@ -15,6 +15,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     @IBOutlet weak var contentView: UIView!
     
     var customTitle:String?
+    var equementType: EquementSign?
     
     private(set) var  pictureScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
@@ -27,6 +28,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         super.viewDidLoad()
         self.title = self.customTitle
         self.buildDataAndUI()
+        self.buildUI()
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
@@ -51,6 +53,33 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         self.contentView.backgroundColor = UIColor(red: (100*CGFloat(self.advertisementCurrent))/255, green: 100/255, blue: 100/255, alpha: 1.0)
     }
     //MARK: private method
+    private func buildUI(){
+        if self.equementType == .Light {
+            let vc = LightViewController.CreateFromStoryboard("Main")
+            self.contentView.addSubview(vc.view)
+            
+        }else if(self.equementType == .Curtain){
+            let vc = CurtainViewController.CreateFromStoryboard("Main")
+            self.contentView.addSubview(vc.view)
+            
+        }else if(self.equementType == .Action){
+           
+        }else if(self.equementType == .Air){
+            
+        }else if(self.equementType == .Controller){
+            let vc = SecurityViewController.CreateFromStoryboard("Main")
+            self.contentView.addSubview(vc.view)
+
+        }else if(self.equementType == .Security){
+            
+        }else if(self.equementType == .Music){
+            
+        }else if(self.equementType == .Movie){
+            
+        }
+
+        
+    }
     private func buildDataAndUI(){
         //数据
         
