@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurtainViewController: UIViewController {
+class CurtainViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +20,23 @@ class CurtainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func openAction(sender: AnyObject) {
     }
-    */
-
+    @IBAction func stopAction(sender: AnyObject) {
+    }
+    @IBAction func closeAction(sender: AnyObject) {
+    }
+    @IBAction func openAction1(sender: AnyObject) {
+    }
+    @IBAction func stopAction1(sender: AnyObject) {
+    }
+    @IBAction func closeAction1(sender: AnyObject) {
+    }
+    @IBAction func upAction(sender: AnyObject) {
+    }
+    @IBAction func stopAction3(sender: AnyObject) {
+    }
+    @IBAction func downAction(sender: AnyObject) {
+    }
+    
 }

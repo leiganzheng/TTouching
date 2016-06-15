@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SecurityViewController: UIViewController {
+class SecurityViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "对讲"
         // Do any additional setup after loading the view.
     }
 

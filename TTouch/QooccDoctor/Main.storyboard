@@ -1163,52 +1163,139 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-S6-ERD">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-S6-ERD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="39.pic_hd" translatesAutoresizingMaskIntoConstraints="NO" id="ACF-qq-5n0">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-WK-W2P">
+                                        <rect key="frame" x="8" y="8" width="49" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="Ved-jp-Kik"/>
+                                            <constraint firstAttribute="width" constant="49" id="wqw-Qs-BLe"/>
+                                        </constraints>
+                                        <state key="normal" image="Manage_camera_icon"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="h9w-WK-W2P" firstAttribute="leading" secondItem="eVg-S6-ERD" secondAttribute="leading" constant="8" id="518-Ek-ddQ"/>
+                                    <constraint firstItem="h9w-WK-W2P" firstAttribute="top" secondItem="eVg-S6-ERD" secondAttribute="top" constant="8" id="Aoj-2d-X9O"/>
+                                    <constraint firstAttribute="trailing" secondItem="ACF-qq-5n0" secondAttribute="trailing" id="G6W-iH-Pno"/>
+                                    <constraint firstAttribute="bottom" secondItem="ACF-qq-5n0" secondAttribute="bottom" id="ID2-Bm-TIH"/>
+                                    <constraint firstItem="ACF-qq-5n0" firstAttribute="top" secondItem="eVg-S6-ERD" secondAttribute="top" id="J8d-4e-f2R"/>
+                                    <constraint firstItem="ACF-qq-5n0" firstAttribute="leading" secondItem="eVg-S6-ERD" secondAttribute="leading" id="cRD-NI-DtV"/>
+                                    <constraint firstAttribute="height" constant="216" id="gso-Zx-1pp"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ks3-SY-Id3">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ks3-SY-Id3">
                                 <rect key="frame" x="0.0" y="231" width="320" height="162"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-nj-3mH">
-                                        <rect key="frame" x="8" y="8" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrc-bS-nV6">
-                                        <rect key="frame" x="183" y="8" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="6" width="160" height="36"/>
+                                        <state key="normal" title="灯光" image="Menu_Light_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jN-MG-eqN">
-                                        <rect key="frame" x="8" y="56" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="56" width="160" height="32"/>
+                                        <state key="normal" title="门锁" image="Manage_Open_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI2-5o-cnd">
-                                        <rect key="frame" x="183" y="56" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="160" y="56" width="160" height="32"/>
+                                        <state key="normal" title="对讲" image="Setup_Voice_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdn-4U-KiI">
-                                        <rect key="frame" x="8" y="105" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="105" width="160" height="32"/>
+                                        <state key="normal" title="报警" image="Manage_Alarm_icon1">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-7a-ktC">
-                                        <rect key="frame" x="183" y="105" width="129" height="32"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="160" y="105" width="160" height="32"/>
+                                        <state key="normal" title="管理中心" image="Manage_call_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrc-bS-nV6">
+                                        <rect key="frame" x="160" y="8" width="160" height="32"/>
+                                        <state key="normal" title="静音" image="Manage_doorbell_icon">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="89P-LO-QU2"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMo-Fy-lxY">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMo-Fy-lxY">
                                 <rect key="frame" x="0.0" y="428" width="320" height="56"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsd-vm-Gwe">
+                                        <rect key="frame" x="193" y="12" width="41" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="41" id="Ad6-Fp-XRx"/>
+                                            <constraint firstAttribute="height" constant="32" id="P9e-Ms-AV2"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Manage_call_icon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogq-CQ-BNk">
+                                        <rect key="frame" x="242" y="12" width="70" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="CuA-kP-5dJ"/>
+                                            <constraint firstAttribute="height" constant="32" id="xpu-DZ-pCh"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Manage_House and the house_icon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHp-dq-IRb">
+                                        <rect key="frame" x="20" y="12" width="135" height="32"/>
+                                        <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Add-3d-v5d"/>
+                                            <constraint firstAttribute="width" constant="135" id="ERc-dh-Qjh"/>
+                                        </constraints>
+                                        <state key="normal" title="01-2101">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ogq-CQ-BNk" secondAttribute="trailing" constant="8" id="3lY-97-SPK"/>
+                                    <constraint firstItem="Ogq-CQ-BNk" firstAttribute="leading" secondItem="Rsd-vm-Gwe" secondAttribute="trailing" constant="8" id="4Su-eF-njD"/>
+                                    <constraint firstAttribute="height" constant="56" id="D65-Cq-Nd6"/>
+                                    <constraint firstItem="eHp-dq-IRb" firstAttribute="top" secondItem="WMo-Fy-lxY" secondAttribute="top" constant="12" id="Xze-bA-BxH"/>
+                                    <constraint firstItem="Ogq-CQ-BNk" firstAttribute="top" secondItem="WMo-Fy-lxY" secondAttribute="top" constant="12" id="nFb-sy-18G"/>
+                                    <constraint firstItem="eHp-dq-IRb" firstAttribute="leading" secondItem="WMo-Fy-lxY" secondAttribute="leading" constant="20" id="trI-c0-WQb"/>
+                                    <constraint firstItem="Rsd-vm-Gwe" firstAttribute="top" secondItem="WMo-Fy-lxY" secondAttribute="top" constant="12" id="y9c-oc-Yxt"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="WMo-Fy-lxY" firstAttribute="leading" secondItem="3g6-2Q-uZL" secondAttribute="leadingMargin" constant="-20" id="3mn-WE-XkQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ks3-SY-Id3" secondAttribute="trailing" constant="-20" id="6fa-DB-TxA"/>
+                            <constraint firstItem="Ks3-SY-Id3" firstAttribute="top" secondItem="eVg-S6-ERD" secondAttribute="bottom" constant="15" id="AgK-IQ-wJx"/>
+                            <constraint firstItem="Ks3-SY-Id3" firstAttribute="leading" secondItem="3g6-2Q-uZL" secondAttribute="leadingMargin" constant="-20" id="QcO-fW-yT7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eVg-S6-ERD" secondAttribute="trailing" constant="-20" id="byR-EA-xRW"/>
+                            <constraint firstItem="eVg-S6-ERD" firstAttribute="leading" secondItem="3g6-2Q-uZL" secondAttribute="leadingMargin" constant="-20" id="glW-iS-LDa"/>
+                            <constraint firstItem="2LD-fr-TAV" firstAttribute="top" secondItem="WMo-Fy-lxY" secondAttribute="bottom" constant="20" id="hxP-Ea-5u3"/>
+                            <constraint firstItem="eVg-S6-ERD" firstAttribute="top" secondItem="9ty-cW-aA6" secondAttribute="bottom" id="oNr-zE-7B5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WMo-Fy-lxY" secondAttribute="trailing" constant="-20" id="y2O-cg-q82"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lze-PT-gJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="4588"/>
+            <point key="canvasLocation" x="-159" y="4597"/>
         </scene>
         <!--Light View Controller-->
         <scene sceneID="rnP-2W-PhP">
@@ -1225,69 +1312,71 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客厅主吊灯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-pt-qaY">
                                 <rect key="frame" x="106" y="36" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycE-gx-eOg">
                                 <rect key="frame" x="24" y="78" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYK-1n-9yp">
                                 <rect key="frame" x="270" y="78" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-7B-42h">
                                 <rect key="frame" x="81" y="88" width="150" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客厅主吊灯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yma-DJ-uBy">
-                                <rect key="frame" x="106" y="133" width="109" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客厅间接照明" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yma-DJ-uBy">
+                                <rect key="frame" x="106" y="133" width="109" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aii-a2-KEI">
                                 <rect key="frame" x="24" y="175" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8f-2a-Wg3">
                                 <rect key="frame" x="270" y="175" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m4Y-aR-G7a">
                                 <rect key="frame" x="81" y="185" width="150" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客厅主吊灯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ps9-KB-ulD">
-                                <rect key="frame" x="102" y="217" width="109" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客厅LED坎灯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ps9-KB-ulD">
+                                <rect key="frame" x="102" y="217" width="109" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqZ-ew-gAF">
                                 <rect key="frame" x="20" y="259" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHi-Ow-O6Q">
                                 <rect key="frame" x="266" y="259" width="26" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yrD-fE-iKT">
                                 <rect key="frame" x="77" y="269" width="150" height="2"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvz-uq-0Kc">
-                                <rect key="frame" x="40" y="350" width="100" height="28"/>
-                                <state key="normal" title="窗侧坎灯" image="Curtain_stop_icon">
+                                <rect key="frame" x="24" y="350" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1295,50 +1384,60 @@
                                 <rect key="frame" x="10" y="389" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jri-o9-CXv">
-                                <rect key="frame" x="40" y="413" width="100" height="28"/>
-                                <state key="normal" title="窗侧坎灯" image="Curtain_stop_icon">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-9r-aoW">
-                                <rect key="frame" x="164" y="410" width="132" height="34"/>
-                                <state key="normal" title="窗侧坎灯">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-iC-zoT">
                                 <rect key="frame" x="10" y="452" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-rL-s1z">
-                                <rect key="frame" x="24" y="466" width="132" height="34"/>
-                                <state key="normal" title="窗侧坎灯">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xY-c7-S3U">
-                                <rect key="frame" x="164" y="466" width="132" height="34"/>
-                                <state key="normal" title="窗侧坎灯">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNX-9q-uGO">
                                 <rect key="frame" x="10" y="508" width="300" height="1"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TJ-x0-cka">
-                                <rect key="frame" x="180" y="350" width="100" height="28"/>
-                                <state key="normal" title="窗侧坎灯" image="Curtain_stop_icon">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="png-VK-FBP">
+                                <rect key="frame" x="186" y="350" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxR-qR-Ubs">
+                                <rect key="frame" x="24" y="408" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFR-cz-AOj">
+                                <rect key="frame" x="186" y="408" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G38-VT-keI">
+                                <rect key="frame" x="24" y="466" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-0q-IoM">
+                                <rect key="frame" x="186" y="466" width="110" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="窗侧坎灯" image="navigation_Options_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1362,122 +1461,253 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="遮阳纱窗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APC-FR-CEd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="遮阳纱窗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APC-FR-CEd">
                                 <rect key="frame" x="10" y="132" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="2YM-ni-QeG"/>
+                                    <constraint firstAttribute="width" constant="73" id="gYZ-Wt-Kha"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj4-eN-Ov2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj4-eN-Ov2">
                                 <rect key="frame" x="117" y="129" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Omy-AQ-cDF"/>
+                                    <constraint firstAttribute="width" constant="60" id="anU-Pg-Auc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="Curtain_open_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="openAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="zCD-tW-FfL"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-q1-DKb">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-q1-DKb">
                                 <rect key="frame" x="197" y="129" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="bNS-BV-ltH"/>
+                                    <constraint firstAttribute="width" constant="36" id="cnO-Pf-dOI"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_stop_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="Mmf-r9-anl"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRx-QT-bft">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRx-QT-bft">
                                 <rect key="frame" x="249" y="129" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="jdr-ot-4x0"/>
+                                    <constraint firstAttribute="height" constant="28" id="pSI-Ju-Eao"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_close_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="jSw-Bi-0n7"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uW-7f-DJ4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uW-7f-DJ4">
                                 <rect key="frame" x="0.0" y="166" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FLx-oS-Sbj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-T0-AP7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-T0-AP7">
                                 <rect key="frame" x="10" y="178" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="9Kq-7R-YUu"/>
+                                    <constraint firstAttribute="width" constant="73" id="LzI-30-kqb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-qz-4KN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-qz-4KN">
                                 <rect key="frame" x="117" y="175" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="ORt-Oi-leq"/>
+                                    <constraint firstAttribute="width" constant="60" id="Ohn-jX-Ytd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="Curtain_open_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="openAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="yeA-MW-U5G"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="al4-zt-2R7">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="al4-zt-2R7">
                                 <rect key="frame" x="197" y="175" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="dRB-gw-Gxd"/>
+                                    <constraint firstAttribute="height" constant="28" id="ycV-hm-6kB"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_stop_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="tia-KE-K2r"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtL-Uf-ndL">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtL-Uf-ndL">
                                 <rect key="frame" x="249" y="175" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Wnh-ZX-dBj"/>
+                                    <constraint firstAttribute="height" constant="28" id="sU0-ci-yKD"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_close_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="closeAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="9UQ-pw-kgE"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zd-Wa-cKW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zd-Wa-cKW">
                                 <rect key="frame" x="0.0" y="212" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Gom-eZ-h7c"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="卷帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsl-IG-BvC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="卷帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsl-IG-BvC">
                                 <rect key="frame" x="10" y="224" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="RSG-r7-Vi0"/>
+                                    <constraint firstAttribute="width" constant="73" id="nI9-qF-BEu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq3-Pd-Ncl">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iq3-Pd-Ncl">
                                 <rect key="frame" x="117" y="221" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ZWf-PE-Qnv"/>
+                                    <constraint firstAttribute="height" constant="28" id="cUE-ah-Rel"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="Curtain_up_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="upAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="Nom-8S-gM5"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oA-gw-LH8">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oA-gw-LH8">
                                 <rect key="frame" x="197" y="221" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="T8P-1B-A6L"/>
+                                    <constraint firstAttribute="height" constant="28" id="v70-YF-77b"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_stop_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopAction3:" destination="nb1-RD-Z77" eventType="touchUpInside" id="wVA-6K-3ds"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-dn-ufD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-dn-ufD">
                                 <rect key="frame" x="249" y="221" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="A2C-jK-P9l"/>
+                                    <constraint firstAttribute="height" constant="28" id="ADn-us-meK"/>
+                                </constraints>
                                 <state key="normal" image="Curtain_down_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="downAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="4xf-LG-7i2"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al2-kb-Klu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al2-kb-Klu">
                                 <rect key="frame" x="0.0" y="258" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FIo-jd-jHm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLs-fP-ksV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLs-fP-ksV">
                                 <rect key="frame" x="0.0" y="102" width="320" height="2"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="xnK-hQ-GTg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-3B-jAK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ej-3B-jAK">
                                 <rect key="frame" x="115" y="31" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="rbO-5l-KPN"/>
+                                    <constraint firstAttribute="width" constant="90" id="val-KP-VRK"/>
+                                </constraints>
                                 <state key="normal" image="Menu_Curtain_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YJd-T0-AP7" firstAttribute="top" secondItem="1uW-7f-DJ4" secondAttribute="bottom" constant="11" id="1IW-Ep-Cl7"/>
+                            <constraint firstItem="YJd-T0-AP7" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-10" id="2As-wg-ZVF"/>
+                            <constraint firstItem="7oA-gw-LH8" firstAttribute="leading" secondItem="iq3-Pd-Ncl" secondAttribute="trailing" constant="20" id="2bI-sE-am7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1uW-7f-DJ4" secondAttribute="trailing" constant="-20" id="48S-7j-y9W"/>
+                            <constraint firstItem="iq3-Pd-Ncl" firstAttribute="top" secondItem="7zd-Wa-cKW" secondAttribute="bottom" constant="8" id="4TQ-iC-l0d"/>
+                            <constraint firstItem="vtL-Uf-ndL" firstAttribute="top" secondItem="1uW-7f-DJ4" secondAttribute="bottom" constant="8" id="4aU-kt-fOx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="al2-kb-Klu" secondAttribute="trailing" constant="-20" id="5Wc-UB-HFy"/>
+                            <constraint firstItem="al4-zt-2R7" firstAttribute="leading" secondItem="ceA-qz-4KN" secondAttribute="trailing" constant="20" id="5gF-ar-rnj"/>
+                            <constraint firstItem="APC-FR-CEd" firstAttribute="top" secondItem="nLs-fP-ksV" secondAttribute="bottom" constant="28" id="A3k-em-Kso"/>
+                            <constraint firstItem="Lqv-q1-DKb" firstAttribute="top" secondItem="nLs-fP-ksV" secondAttribute="bottom" constant="25" id="Dya-vP-OaN"/>
+                            <constraint firstItem="1uW-7f-DJ4" firstAttribute="top" secondItem="ZRx-QT-bft" secondAttribute="bottom" constant="9" id="ELS-4s-uje"/>
+                            <constraint firstItem="0ej-3B-jAK" firstAttribute="centerX" secondItem="dFw-21-ppw" secondAttribute="centerX" id="F3j-IU-ziM"/>
+                            <constraint firstItem="ceA-qz-4KN" firstAttribute="top" secondItem="1uW-7f-DJ4" secondAttribute="bottom" constant="8" id="J84-z0-wWb"/>
+                            <constraint firstItem="7oA-gw-LH8" firstAttribute="top" secondItem="7zd-Wa-cKW" secondAttribute="bottom" constant="8" id="KfZ-mf-0GJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6pK-dn-ufD" secondAttribute="trailing" constant="-9" id="M8Y-4H-8nx"/>
+                            <constraint firstItem="yj4-eN-Ov2" firstAttribute="top" secondItem="nLs-fP-ksV" secondAttribute="bottom" constant="25" id="Rzj-Ic-iKW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nLs-fP-ksV" secondAttribute="trailing" constant="-20" id="TSb-fF-DSo"/>
+                            <constraint firstItem="Lqv-q1-DKb" firstAttribute="leading" secondItem="yj4-eN-Ov2" secondAttribute="trailing" constant="20" id="TYr-UY-6p1"/>
+                            <constraint firstItem="7zd-Wa-cKW" firstAttribute="top" secondItem="vtL-Uf-ndL" secondAttribute="bottom" constant="9" id="WNx-cm-PhL"/>
+                            <constraint firstItem="al2-kb-Klu" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-20" id="Woz-Pw-9ye"/>
+                            <constraint firstItem="1uW-7f-DJ4" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-20" id="XXf-YX-EVe"/>
+                            <constraint firstItem="6pK-dn-ufD" firstAttribute="top" secondItem="7zd-Wa-cKW" secondAttribute="bottom" constant="8" id="YAp-0n-7Bb"/>
+                            <constraint firstItem="al4-zt-2R7" firstAttribute="top" secondItem="1uW-7f-DJ4" secondAttribute="bottom" constant="8" id="brT-3K-GMh"/>
+                            <constraint firstItem="APC-FR-CEd" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-10" id="efG-N2-EOd"/>
+                            <constraint firstItem="vtL-Uf-ndL" firstAttribute="leading" secondItem="al4-zt-2R7" secondAttribute="trailing" constant="16" id="iPM-ak-4nq"/>
+                            <constraint firstItem="ZRx-QT-bft" firstAttribute="leading" secondItem="Lqv-q1-DKb" secondAttribute="trailing" constant="16" id="j2w-lU-n2u"/>
+                            <constraint firstItem="6pK-dn-ufD" firstAttribute="leading" secondItem="7oA-gw-LH8" secondAttribute="trailing" constant="16" id="kB7-hc-r3x"/>
+                            <constraint firstItem="ZRx-QT-bft" firstAttribute="top" secondItem="nLs-fP-ksV" secondAttribute="bottom" constant="25" id="loq-ZI-T5Y"/>
+                            <constraint firstItem="xsl-IG-BvC" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-10" id="peR-UJ-gvS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7zd-Wa-cKW" secondAttribute="trailing" constant="-20" id="pqI-Ch-XkF"/>
+                            <constraint firstItem="0ej-3B-jAK" firstAttribute="top" secondItem="xPB-5V-xAo" secondAttribute="bottom" constant="11" id="pqw-wE-Blq"/>
+                            <constraint firstItem="nLs-fP-ksV" firstAttribute="top" secondItem="0ej-3B-jAK" secondAttribute="bottom" constant="8" id="qE1-Us-7Kf"/>
+                            <constraint firstItem="al2-kb-Klu" firstAttribute="top" secondItem="6pK-dn-ufD" secondAttribute="bottom" constant="9" id="rSA-4T-IpM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vtL-Uf-ndL" secondAttribute="trailing" constant="-9" id="sBS-IA-nr4"/>
+                            <constraint firstItem="7zd-Wa-cKW" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-20" id="sBV-5W-rE8"/>
+                            <constraint firstItem="xsl-IG-BvC" firstAttribute="top" secondItem="7zd-Wa-cKW" secondAttribute="bottom" constant="11" id="vkq-EP-01M"/>
+                            <constraint firstItem="nLs-fP-ksV" firstAttribute="leading" secondItem="dFw-21-ppw" secondAttribute="leadingMargin" constant="-20" id="w3R-eL-Kht"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZRx-QT-bft" secondAttribute="trailing" constant="-9" id="ySh-bv-dvU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5m-E6-wTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="5705"/>
+            <point key="canvasLocation" x="-569" y="5643"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="aWi-oC-f6n">
@@ -1703,13 +1933,23 @@
         </scene>
     </scenes>
     <resources>
+        <image name="39.pic_hd" width="365" height="285"/>
         <image name="Curtain_close_icon" width="60" height="28"/>
         <image name="Curtain_down_icon" width="28" height="28"/>
         <image name="Curtain_open_icon" width="60" height="28"/>
         <image name="Curtain_stop_icon" width="28" height="28"/>
         <image name="Curtain_up_icon" width="28" height="28"/>
+        <image name="Manage_Alarm_icon1" width="32" height="32"/>
+        <image name="Manage_House and the house_icon" width="66" height="20"/>
+        <image name="Manage_Open_icon" width="32" height="32"/>
+        <image name="Manage_call_icon" width="32" height="32"/>
+        <image name="Manage_camera_icon" width="32" height="32"/>
+        <image name="Manage_doorbell_icon" width="32" height="32"/>
         <image name="Manage_drop down_icon" width="24" height="24"/>
         <image name="Menu_Curtain_icon" width="36" height="36"/>
+        <image name="Menu_Light_icon" width="36" height="36"/>
+        <image name="Setup_Voice_icon" width="32" height="32"/>
+        <image name="navigation_Options_icon" width="16" height="16"/>
         <image name="user_HeadPortrait.png" width="64" height="64"/>
     </resources>
 </document>

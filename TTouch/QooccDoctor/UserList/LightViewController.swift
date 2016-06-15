@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LightViewController: UIViewController {
+class LightViewController: UIViewController ,QNInterceptorProtocol{
 
     override func viewDidLoad() {
         super.viewDidLoad()
