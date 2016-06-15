@@ -129,83 +129,7 @@ class UserCenterViewController: UIViewController, UITableViewDataSource, UITable
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        var vc = UIViewController()
-        switch indexPath.section {
-        case 0:
-                vc = PersonInfoViewController()
-        case 1:
-            if g_doctor?.certification == 0 {
-                self.qualification()
-                return
-            }else{
-                if g_doctor?.certification == 2 {
-                    self.qualificationing()
-                    return
-                }else{
-                    
-                }
-               
-            }
-        case 2:
-            if g_doctor?.certification == 0 {
-                self.qualification()
-                return
-            }else{
-                if g_doctor?.certification == 2 {
-                    self.qualificationing()
-                    return
-                }else{
-                    
-                }
-              
-            }
-        case 3:
-            if g_doctor?.certification == 0 {
-                self.qualification()
-                return
-            }else{
-                if g_doctor?.certification == 2 {
-                    self.qualificationing()
-                    return
-                }else{
-//                     vc = AppointmentScheduleViewController()
-                }
-            }
-        case 4:
-            //预约地点
-            if g_doctor?.certification == 0 {
-                self.qualification()
-                return
-            }else{
-                if g_doctor?.certification == 2 {
-                    self.qualificationing()
-                    return
-                }else{
-                    vc = AppointmentLocationSetViewController.CreateFromMainStoryboard() as! AppointmentLocationSetViewController
-                }
-            }
-        case 5:
-            vc = QualificationViewController()
-        case 6:
-            if g_doctor?.certification == 0 {
-                self.qualification()
-                return
-            }else{
-                if g_doctor?.certification == 2 {
-                    self.qualificationing()
-                    return
-                }else{
-                     vc = UserManagerViewController()
-                }
-               
-            }
-        case 7:
-            vc = SettingViewController()
-        default:
-            assert(false, "")
-        }
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     //MARK: private method
     private func qualificationing(){
@@ -214,16 +138,7 @@ class UserCenterViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     private func qualification(){
-        let iphoneAlertView = UIAlertView(title: "资格认证" , message: "请上传认证信息，加快审核!", delegate: nil, cancelButtonTitle: "取消")
-        iphoneAlertView.addButtonWithTitle("前往")
-        iphoneAlertView.rac_buttonClickedSignal().subscribeNext({[weak self] (indexNumber) -> Void in
-            if indexNumber as? Int != 0 {
-                let vc = QualificationViewController()
-                vc.hidesBottomBarWhenPushed = true
-                self!.navigationController?.pushViewController(vc, animated: true)
-            }
-        })
-        iphoneAlertView.show()
+        
     }
     //获取金额
     private func fetchDoctorBalanceInfo() {

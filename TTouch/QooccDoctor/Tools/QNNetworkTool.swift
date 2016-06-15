@@ -308,35 +308,12 @@ extension QNNetworkTool {
                 // 登录成功，保存账号密码到本地
                 saveAccountAndPassword(id, password: password)
                 g_doctor = doctor
-                QNNetworkTool.uploadRegistrationIdAndToken()
 
                 let asyncLogin = { () -> Void in
-                    EaseMob.sharedInstance().chatManager.asyncLoginWithUsername("doctor_\(g_doctor!.doctorId)", password: doctorDic["hxpass"] as! String, completion: { (dic, error) -> Void in
-                        if dic != nil {
-                            print("环信登录成功")
-                            EaseMob.sharedInstance().chatManager.disableAutoLogin!()
-                        }
-                        }, onQueue: nil)
+                    
                 }
                 var asyncLoginCount = 0
-                EaseMob.sharedInstance().chatManager.asyncLoginWithUsername("doctor_\(g_doctor!.doctorId)", password: doctorDic["hxpass"] as! String, completion: { (dic, error) -> Void in
-                    if dic != nil {
-                        print("环信登录成功")
-                        EaseMob.sharedInstance().chatManager.disableAutoLogin!()
-                    }else{
-                        if error != nil {
-                            if asyncLoginCount < 3 {
-                                asyncLogin()
-                                asyncLoginCount += 1
-                            }
-                            if asyncLoginCount == 3 {
-                                g_hxpass = doctorDic["hxpass"] as? String
-                            }
-                            print("环信登录失败:\(error.description)")
-                        }
-                    }
-                    }, onQueue: nil)
-                completion(doctor, nil, nil)
+                               completion(doctor, nil, nil)
             }
             else {
                 completion(nil, error, dictionary?["errorMsg"] as? String)
@@ -365,7 +342,6 @@ extension QNNetworkTool {
         g_doctor = nil
         cleanPassword()
         //激光推送设置空字符串 （@""）表示取消之前的设置。
-        APService.setAlias("", callbackSelector: nil, object: nil)
         QNTool.enterLoginViewController()
     }
     
@@ -434,13 +410,7 @@ extension QNNetworkTool {
                         let commentAlertView = UIAlertView(title: "密码已修改，请重新登录！", message: nil, delegate: nil, cancelButtonTitle:nil)
                         commentAlertView.addButtonWithTitle("好")
                         commentAlertView.rac_buttonClickedSignal().subscribeNext({(indexNumber) -> Void in
-                            EaseMob.sharedInstance().chatManager.asyncLogoffWithUnbindDeviceToken(true, completion: { (dict, error) -> Void in
-                                if error == nil{
-                                    
-                                }else{
-                                    QNTool.showPromptView("环信退出登录失败")
-                                }
-                                }, onQueue: nil)
+                            
                             QNNetworkTool.logout()
                         })
                         commentAlertView.show()
@@ -978,28 +948,6 @@ extension QNNetworkTool {
         }
     }
     
-}
-extension QNNetworkTool {
-    /**
-    上报registration_id和token
-    
-    :param: registrationId
-    :param: token
-    */
-    class func uploadRegistrationIdAndToken(registrationId: String = APService.registrationID(), token: String? = g_deviceToken) {
-        if !g_isLogin { return } // 此接口必须登录
-        if registrationId.characters.count == 0 { return }  // 此接口必须登录极光
-        
-        var params = [String : String]()
-        params["rid"] = registrationId
-        params["token"] = token
-        requestPOST(kServerAddress + "/api/im/message/report", parameters: params) { (_, _, _, dictionary, error) -> Void in
-        }
-        // 上传别名
-        if g_doctor?.doctorId != nil {
-            APService.setAlias("doctor_" + g_doctor!.doctorId!, callbackSelector: nil, object: nil)
-        }
-    }
 }
 
 //MARK:-网关控制

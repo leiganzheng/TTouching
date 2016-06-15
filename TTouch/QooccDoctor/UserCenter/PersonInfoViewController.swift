@@ -205,39 +205,7 @@ class PersonInfoViewController: UIViewController,QNInterceptorProtocol  ,UITable
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 0 {
-            switch Content(rawValue: indexPath.row)! {
-            case .HeadImage:
-                QNStatistical.statistical(QNStatisticalName.TX)
-                let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
-                actionSheet.addButtonWithTitle("从手机相册选择")
-                actionSheet.addButtonWithTitle("拍照")
-                actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
-                    if let indexInt = index as? Int {
-                        switch indexInt {
-                        case 1, 2:
-                            if self.picker == nil {
-                                self.picker = UIImagePickerController()
-                                self.picker!.delegate = self
-                            }
-                            self.picker!.sourceType = (indexInt == 1) ? .SavedPhotosAlbum : .Camera
-                            self.picker!.allowsEditing = true
-                            self.presentViewController(self.picker!, animated: true, completion: nil)
-                        default: break
-                        }
-                    }
-                })
-                actionSheet.showInView(self.view)
-            case .ID: break
-               
-            case .Resume:
-                self.navigationController?.pushViewController(PersonResumeViewController(), animated: true)
-            default: return
-            }
-        }
-        if indexPath.section == 1 && indexPath.row == 3 {
-            self.navigationController?.pushViewController(GoodAtViewController(), animated: true)
-        }
+        
     }
     
     

@@ -16,13 +16,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import <REMenu/REMenuItem.h>
 #import <REMenu/REMenu.h>
-#import "SUNButtonBoard.h"
-#import "KDGoalBar.h"
-#import "TrendChartView.h"
-#import "PedometerProgressView.h"
-#import "CBChartView.h"
-#import "PNLineChartView.h"
-#import "PNPlot.h"
 
 //#import  <CocoaAsyncSocket/AsyncUdpSocket.h>
 
@@ -36,12 +29,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIView+WebCacheOperation.h>
 //END
-#import "MobClick.h"            // 友盟统计
 #import <IQKeyboardManager/IQKeyboardManager.h> // 解决键盘被挡住的问题
-#import "APService.h"           // 极光推送
 
-//环信SDK头文件（包含实时语音版本的SDK）
-#import <EaseMobSDKFull/EaseMob.h>
-#import <EaseMobSDKFull/EMChatVideo.h>
-#import <EaseMobSDKFull/OpenGLView20.h>
 #endif
