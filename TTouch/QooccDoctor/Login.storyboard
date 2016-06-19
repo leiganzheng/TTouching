@@ -659,7 +659,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
-                                            <outlet property="delegate" destination="hmS-AT-iP6" id="gUO-fE-dyf"/>
+                                            <outlet property="delegate" destination="j2T-8M-QHP" id="F6A-HK-3dq"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mHr-LS-azO">
@@ -671,7 +671,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
-                                            <outlet property="delegate" destination="hmS-AT-iP6" id="YbF-7l-WF7"/>
+                                            <outlet property="delegate" destination="j2T-8M-QHP" id="a6w-nV-gFm"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWH-HI-O1i">
@@ -703,7 +703,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
-                                            <outlet property="delegate" destination="hmS-AT-iP6" id="nBL-QE-Ms4"/>
+                                            <outlet property="delegate" destination="j2T-8M-QHP" id="IDb-E0-PwO"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lz7-5C-sRS">
@@ -725,7 +725,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
-                                            <outlet property="delegate" destination="hmS-AT-iP6" id="8gw-1P-I9C"/>
+                                            <outlet property="delegate" destination="j2T-8M-QHP" id="FfR-Pn-IO3"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-r9-f2X">
@@ -757,7 +757,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <connections>
-                                            <outlet property="delegate" destination="hmS-AT-iP6" id="gPF-Tb-81b"/>
+                                            <outlet property="delegate" destination="j2T-8M-QHP" id="qyX-MR-csn"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出生日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKQ-S0-WYu">
@@ -829,6 +829,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="完善注册信息" id="C6k-ef-EP8"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="photoButton" destination="xql-fb-G94" id="42l-aA-3Rr"/>
+                        <outlet property="textField1" destination="mHr-LS-azO" id="a2T-ZQ-sDc"/>
+                        <outlet property="textField2" destination="XhC-kI-4Zs" id="d9v-fc-N1l"/>
+                        <outlet property="textField3" destination="BBx-Ip-rMg" id="dZG-pB-lc7"/>
+                        <outlet property="textField4" destination="BKe-Ua-5g1" id="CaV-0h-HJR"/>
+                        <outlet property="textField5" destination="vOb-yO-v9C" id="k7i-WX-MGx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dn9-bo-9fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

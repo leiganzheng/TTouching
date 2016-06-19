@@ -23,74 +23,87 @@ import UIKit
 */
 class EditInformationViewController: UIViewController, QNInterceptorNavigationBarShowProtocol, QNInterceptorKeyboardProtocol, UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
-//    @IBOutlet weak var textField1: UITextField!  //地区
-    @IBOutlet weak var textField2: UITextField!  //所属医院
-    @IBOutlet weak var textField3: UITextField!  //科室
-    @IBOutlet weak var textField4: UITextField!  //职称
-    @IBOutlet weak var textField5: UITextField!  //擅长病症
+    @IBOutlet weak var textField1: UITextField!  
+    @IBOutlet weak var textField2: UITextField!  
+    @IBOutlet weak var textField3: UITextField!  
+    @IBOutlet weak var textField4: UITextField!  
+    @IBOutlet weak var textField5: UITextField!
+    @IBOutlet weak var photoButton: UIButton!
     
     var picker: UIImagePickerController?
     
-    var isEdit = true
     var pickerView: UIPickerView!
-    var jobPickerView: UIPickerView!  //职称列表
-    var departmentPickerView: UIPickerView!    //科室
-    var illnessPickerView: UIPickerView!       //病症
-    var area: NSArray!
-    let jobDataArray : NSArray = ["助理医师","医师","主治医师","主任医师","副主任医师"]
-    var departmentDataArray : NSMutableArray! = NSMutableArray()
-    var illnessDataArray : NSMutableArray! = NSMutableArray()
-
-    var province_id: String?    // 省 Id
-    var city_id: String?        // 市 Id
-    var ill_id: String?       //病症 Id
-    var dep_id: String?       //科室 Id
-    var hospital_id : String?   //医院 id
     var finished : (() -> Void)!
     
  
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        // 初始化省市区
-        if let areaFilePath = NSBundle.mainBundle().pathForResource("area", ofType: "txt"), let areaData = NSData(contentsOfFile: areaFilePath) {
-           
-            do {
-                self.area = try NSJSONSerialization.JSONObjectWithData(areaData, options: NSJSONReadingOptions()) as? NSArray
-            }catch {
-                
-            }
-            
-        }
-        assert(self.area != nil, "省市区数据为空，area.txt文件出错啦")
-        self.departmentDataArray = QN_Department.getDepartmentData()  //获取科室
-        self.illnessDataArray = QN_Disease.getIllData()  //获取病症
-
-        
-        NSNotificationCenter.defaultCenter().rac_addObserverForName(UIKeyboardWillShowNotification, object: nil).subscribeNext { (sender) -> Void in
-            self.view.endEditing(true)
-        }
+        self.photoButton.layer.masksToBounds = true
+        self.photoButton.layer.cornerRadius = self.photoButton.frame.size.width/2
         self.view.backgroundColor = defaultBackgroundGrayColor
+        let path_sandox = NSHomeDirectory()
+        let imagePath = path_sandox.stringByAppendingString("/Documents/profile.png")
+        let image = UIImage(contentsOfFile: imagePath)
+        self.photoButton.setImage(image, forState: .Normal)
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         
     }
-    // 省市区
-    @IBAction func showAreaSelectView(sender: AnyObject!) {
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 320, height: 400))
-        self.view.addSubview(pickerView)
+
+
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        // 存储图片
+        let headImage = self.imageWithImageSimple(image, scaledSize: CGSizeMake(image.size.width, image.size.height))
+        let path_sandox = NSHomeDirectory()
+        let imagePath = path_sandox.stringByAppendingString("/Documents/profile.png")
+        UIImagePNGRepresentation(headImage)?.writeToURL(NSURL(string: imagePath)!, atomically: true)
+        self.photoButton.setImage(image, forState: .Normal)
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
+    }
+ //MARK: UITextFieldDelegate
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField  == self.textField4 {
+            
+        } else if textField  == self.textField5 {
+            let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+            actionSheet.addButtonWithTitle("男")
+            actionSheet.addButtonWithTitle("女")
+            actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
+                if let indexInt = index as? Int {
+                    switch indexInt {
+                    case 1:
+                       self.textField5.text = "男"
+                    case 2:
+                        self.textField5.text = "女"
+                    default: break
+                    }
+                }
+            })
+            actionSheet.showInView(self.view)
+
+            
+        } else if textField  == self.textField3 {
+            
+        } else if textField  == self.textField2 {
+            
+        }
+
+    }
+    //MARK: --Private Method
     // 提交用户信息
     @IBAction func done(sender: UIButton!) {
         if self.check() {
             QNTool.showActivityView(nil, inView: self.view)
-           
+            
         }
     }
     
-    //MARK: --Private Method
     // 判断输入的合法性
     private func check() -> Bool {
         
@@ -113,46 +126,17 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
             QNTool.showPromptView("请选择擅长疾病！")
             return false
         }
-
+        
         return true
     }
     
-    func getRightBtn(textFiled : UITextField) -> UIButton {
-        let selectButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: textFiled.bounds.height*COEFFICIENT_OF_HEIGHT_ZOOM))
-        selectButton.layer.borderWidth = 0.5
-        selectButton.layer.borderColor = defaultLineColor.CGColor
-        selectButton.backgroundColor = UIColor.whiteColor()
-        selectButton.setImage(UIImage(named: "Regsiter_RightArrow"), forState: .Normal)
-        selectButton.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (sender) -> Void in
-            self.selectBtnCli(textFiled)
-        }
-        return selectButton
-    }
-    
-    //MARK: UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-//        // 存储图片
-//        let headImage = self.imageWithImageSimple(image, scaledSize: CGSizeMake(image.size.width, image.size.height))
-//        let headImageData = UIImageJPEGRepresentation(headImage, 0.125)
-//        self.uploadUserFace(headImageData)
-        self.picker?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.picker?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    func configTextFieldCli(textFiled : UITextField) {
-        let selectBtnCli = UIButton(frame: CGRectMake(textFiled.bounds.origin.x, textFiled.bounds.origin.y, screenWidth -  textFiled.bounds.origin.x * 2 + 30, textFiled.bounds.height))
-        selectBtnCli.backgroundColor = UIColor.clearColor()
-        textFiled.addSubview(selectBtnCli)
-        selectBtnCli.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (sender) -> Void in
-            self.selectBtnCli(textFiled)
-        }
-        //不弹出键盘
-        
-        textFiled.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (sender) -> Void in
-            sender.resignFirstResponder()
-        }
+    // 压缩图片
+    private func imageWithImageSimple(image: UIImage, scaledSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(scaledSize)
+        image.drawInRect(CGRectMake(0,0,scaledSize.width,scaledSize.height))
+        let  newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage;
     }
 
     @IBAction func photoAction(sender: AnyObject) {
@@ -176,43 +160,4 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
         })
         actionSheet.showInView(self.view)
     }
-    func selectBtnCli(textFiled : UITextField) {
-        if textFiled  == self.textField4 {
-//            //职称
-//            let vc = EditInfoSelectLeveOneViewController()
-//            vc.type = 1
-//            vc.finished = { (str,id) -> Void in
-//                self.textField4.text = str
-//            }
-//            self.navigationController?.pushViewController(vc, animated: true)
-        } else if textFiled  == self.textField5 {
-//            //擅长病症
-//            let vc = EditInfoSelectLeveOneViewController()
-//            vc.type = 2
-//            vc.finished = { (name,id) -> Void in
-//                self.textField5.text = name
-//                self.ill_id = id
-//            }
-//            self.navigationController?.pushViewController(vc, animated: true)
-        } else if textFiled  == self.textField3 {
-            //科室
-//            let vc = EditInfoEpartmentSelectViewController()
-//            vc.hospital = self.textField2.text!
-//            vc.finished = { (id,name) -> Void in
-//                self.textField3.text = name
-//                self.dep_id = id
-//            }
-//            self.navigationController?.pushViewController(vc, animated: true)
-        } else if textFiled  == self.textField2 {
-            //地区 医院
-//            let vc = EditInfoAreaSelectViewController()
-//            vc.finished = { (province_id,city_id,name,id) -> Void in
-//                self.textField2.text = name
-//                self.province_id = province_id
-//                self.city_id = city_id
-//                self.hospital_id = id
-//            }
-//            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-}
+   }

@@ -21,6 +21,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     var titles: NSArray!
     var icons: NSArray!
     var flags: NSMutableArray!
+    var tempButton:UIButton?
     private var tableViewController: UITableViewController!
     private var leftVC: LeftViewController!
     private var rightVC: RightViewController!
@@ -139,6 +140,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
         logoButton.setImage(UIImage(named: icon), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            self?.tempButton = input as! UIButton
             let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
             actionSheet.addButtonWithTitle("从手机相册选择")
             actionSheet.addButtonWithTitle("拍照")
@@ -194,8 +196,29 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
            self.myTableView.reloadData()
     }
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        // 存储图片
+        let headImage = self.imageWithImageSimple(image, scaledSize: CGSizeMake(image.size.width, image.size.height))
+        //        let headImageData = UIImageJPEGRepresentation(headImage, 0.125)
+        //        self.uploadUserFace(headImageData)
+        self.tempButton?.setImage(headImage, forState: .Normal)
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.picker?.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     //MARK:- private method
+    // 压缩图片
+    private func imageWithImageSimple(image: UIImage, scaledSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(scaledSize)
+        image.drawInRect(CGRectMake(0,0,scaledSize.width,scaledSize.height))
+        let  newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage;
+    }
     func customNavView() {
 
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
