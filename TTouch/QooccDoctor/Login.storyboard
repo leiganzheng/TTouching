@@ -40,6 +40,9 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="traditionalAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="IW4-Lp-UvC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-UB-Oa7">
                                         <rect key="frame" x="127" y="151" width="68" height="16"/>
@@ -53,6 +56,9 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="simplifiedAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="Hs2-Mb-sEW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Iq-Q9-l3c">
                                         <rect key="frame" x="241" y="151" width="60" height="16"/>
@@ -66,6 +72,9 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="engAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="LR6-Tc-3vt"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir0-g1-fiP">
                                         <rect key="frame" x="20" y="204" width="280" height="160"/>
@@ -94,6 +103,9 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="inhomeAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="gQD-dI-PAW"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8U-pb-jfd">
                                                 <rect key="frame" x="15" y="60" width="250" height="1"/>
@@ -127,6 +139,9 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="remberAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="mhG-aC-Fbx"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBZ-r8-qda">
                                                 <rect key="frame" x="15" y="64" width="250" height="49"/>
@@ -248,10 +263,15 @@
                     <navigationItem key="navigationItem" id="MSV-s2-qJo"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="EngBtn" destination="0Iq-Q9-l3c" id="hZI-Kl-Gzd"/>
                         <outlet property="accountTextField" destination="Qyw-Cr-LRm" id="yjn-JB-3H3"/>
                         <outlet property="headerView" destination="Ir0-g1-fiP" id="2kg-X1-fpv"/>
                         <outlet property="imageView" destination="2yQ-DJ-qHl" id="N3A-vJ-KEa"/>
+                        <outlet property="inHomeBtn" destination="Boe-WW-1Lg" id="PiV-Gv-KXr"/>
                         <outlet property="passwordTextField" destination="WBZ-r8-qda" id="Kca-3O-zpL"/>
+                        <outlet property="remberPBtn" destination="YTk-3I-g0b" id="R91-RI-xGE"/>
+                        <outlet property="simplifiedBtn" destination="BPe-UB-Oa7" id="ePI-T1-FYl"/>
+                        <outlet property="traditionalBtn" destination="zr9-dB-V9r" id="d9l-MT-hqi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0F-Jv-FHe" userLabel="First Responder" sceneMemberID="firstResponder"/>

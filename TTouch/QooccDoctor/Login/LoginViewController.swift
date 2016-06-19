@@ -19,7 +19,11 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var headerView: UIView!
-
+    @IBOutlet weak var traditionalBtn: UIButton!
+    @IBOutlet weak var simplifiedBtn: UIButton!
+    @IBOutlet weak var EngBtn: UIButton!
+    @IBOutlet weak var remberPBtn: UIButton!
+    @IBOutlet weak var inHomeBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +43,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         let lb = UILabel(frame: CGRectMake(0, 0, 40, 20))
         lb.text = "用户"
         self.accountTextField.leftView = lb
-//        let accountImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
-//        accountImageView.contentMode = UIViewContentMode.Center
-//        accountImageView.image = UIImage(named: "Login_Account")
-//        self.accountTextField.leftView = accountImageView
-        
+
         RegisterViewController.configTextField(self.passwordTextField)
         self.passwordTextField.secureTextEntry = true
         
@@ -64,6 +64,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
             self?.view.endEditing(true)
         }
         self.view.addGestureRecognizer(tap)
+        
+        let lArray = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages")
+        let currentLanguage = lArray?.objectAtIndex(0) as! String
+        self.settingLangue(currentLanguage)
         // 如果有本地账号了，就自动登录
         self.autoLogin()
     }
@@ -141,7 +145,37 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
             self.login(account, password: password)
         }
     }
+
     
+    @IBAction func inhomeAction(sender: AnyObject) {
+        let btn = sender as! UIButton
+        btn.selected = !sender.selected
+        let icon = (btn.selected==true) ? "navigation_Options_icon_s" : "navigation_Options_icon"
+        btn.setImage(UIImage(named: icon), forState: .Normal)
+
+    }
+    @IBAction func remberAction(sender: AnyObject) {
+        let btn = sender as! UIButton
+        btn.selected = !sender.selected
+        let icon = (btn.selected==true) ? "navigation_Options_icon_s" : "navigation_Options_icon"
+        btn.setImage(UIImage(named: icon), forState: .Normal)
+    }
+    @IBAction func engAction(sender: AnyObject) {
+        self.EngBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+        self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+    }
+    @IBAction func simplifiedAction(sender: AnyObject) {
+        self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+        self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+    }
+    @IBAction func traditionalAction(sender: AnyObject) {
+        self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+        self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+    }
+
     @IBAction func loginAction(sender: AnyObject) {
         let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
         actionSheet.addButtonWithTitle("找回登入密码")
@@ -155,6 +189,23 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
             }
         })
         actionSheet.showInView(self.view)
+    }
+    private func settingLangue(langue: String){
+//        zh-Hans-CN、zh-Hant-CN、en-CN
+        if langue == "zh-Hans-CN" {
+            self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+            self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+
+        }else if langue == "zh-Hant-CN" {
+            self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+            self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        }else{
+            self.EngBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+            self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        }
     }
     // 判断输入的合法性
     //MARK:TODO
