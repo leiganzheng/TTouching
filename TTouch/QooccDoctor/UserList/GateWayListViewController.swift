@@ -16,23 +16,37 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         return self.tableViewController?.tableView
     }
     var sock:AsyncUdpSocket?
+    var flags:NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "查找网关"
         //列表创建
         self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
         self.tableViewController.refreshControl = UIRefreshControl()
-        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ (input) -> Void in
             
             })
-        self.myTableView.frame = CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 36)
+        self.myTableView.frame = CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 48)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
         self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView?.showsVerticalScrollIndicator = false
-        self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
+        self.myTableView?.autoresizingMask = [.FlexibleWidth]
         self.myTableView.backgroundColor = defaultBackgroundGrayColor
         self.view.addSubview(self.myTableView!)
+        
+        let searchButton:UIButton = UIButton(frame: CGRectMake(10, screenHeight - 160, screenWidth-20, 48))
+        searchButton.setTitle("选择", forState: UIControlState.Normal)
+        searchButton.backgroundColor = appThemeColor
+        QNTool.configViewLayer(searchButton)
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+            QNTool.enterRootViewController(vc, animated: true)
+            return RACSignal.empty()
+            })
+        self.view.addSubview(searchButton)
+        
+        self.flags = [false,true,false]
         self.fectchData()
 
     }
@@ -63,6 +77,11 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         }
         cell.contentView.backgroundColor = UIColor.whiteColor()
         cell.textLabel?.text = "T-Touching Gateway";
+        
+        let flag = self.flags[indexPath.row] as! Bool
+        let icon = (flag==true) ? "pic_hd" : "Menu_Trigger_icon1"
+        cell.imageView?.image = UIImage(named: icon)
+        
         let searchButton:UIButton = UIButton(type: .Custom)
         searchButton.frame = CGRectMake(0, 5, 40, 30)
         searchButton.setImage(UIImage(named: "Manage_information_icon"), forState: .Normal)
@@ -80,7 +99,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        for index in 0 ..< 3 {
+            if index == indexPath.row {
+                self.flags.replaceObjectAtIndex(index, withObject: true)
+            }else{
+                self.flags.replaceObjectAtIndex(index, withObject: false)
+            }
+        }
+        self.myTableView.reloadData()
     }
      //MARK:- private method
     func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){

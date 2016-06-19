@@ -555,7 +555,7 @@
 				TargetAttributes = {
 					BB3C44F11B465BDB008A1213 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 5ZL8PD3L6E;
+						DevelopmentTeam = Y52XLS57AB;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -843,7 +843,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qoocc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9cd00e5-5246-4a32-b5e0-1f201733954d";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
 			};
 			name = Debug;
@@ -871,7 +871,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qoocc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9cd00e5-5246-4a32-b5e0-1f201733954d";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
 			};
 			name = Release;
