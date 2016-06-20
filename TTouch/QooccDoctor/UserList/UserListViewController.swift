@@ -137,6 +137,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let title = self.titles[indexPath.row] as! String
         let icon = self.icons[indexPath.row] as! String
         cell.name.text = title
+        
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
         logoButton.setImage(UIImage(named: icon), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -185,7 +186,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             let tempV = cell.contentView.viewWithTag(indexPath.row+100)
             tempV?.removeFromSuperview()
         }
-        
+        let lb = UILabel(frame: CGRectMake(0, 71, self.view.bounds.width, 1))
+        lb.backgroundColor = defaultBackgroundGrayColor
+        cell.contentView.addSubview(lb)
         return cell
     }
     

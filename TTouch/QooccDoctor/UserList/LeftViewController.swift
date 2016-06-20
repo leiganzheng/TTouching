@@ -98,15 +98,11 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
             self.bock!(vc)
         }
         if indexPath.row == 6 {
-            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
-            vc.customTitle = self.titles![indexPath.row] as? String
-            vc.equementType = EquementSign.Music
+            let vc = MusicViewController.CreateFromStoryboard("Main") as! MusicViewController
             self.bock!(vc)
         }
         if indexPath.row == 7 {
-            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
-            vc.customTitle = self.titles![indexPath.row] as? String
-            vc.equementType = EquementSign.Movie
+            let vc = MovieViewController.CreateFromStoryboard("Main") as! MovieViewController
             self.bock!(vc)
         }
     }

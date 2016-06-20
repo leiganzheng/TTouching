@@ -32,7 +32,7 @@
                 <outlet property="logo" destination="aru-OV-8YU" id="c7p-4I-Jgf"/>
                 <outlet property="name" destination="pjE-z7-iww" id="pbs-N4-zcD"/>
             </connections>
-            <point key="canvasLocation" x="332" y="178"/>
+            <point key="canvasLocation" x="329" y="133"/>
         </tableViewCell>
     </objects>
 </document>

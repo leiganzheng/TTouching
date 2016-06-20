@@ -90,7 +90,10 @@ class RegisterViewController: UIViewController, QNInterceptorNavigationBarShowPr
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    }
     @IBAction func userAgreeBtnCli(sender: UIButton) {
       self.agreeBtn.selected = !self.agreeBtn.selected
     }

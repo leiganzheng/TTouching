@@ -62,7 +62,7 @@ class ForgetPasswordViewController: UIViewController,QNInterceptorNavigationBarS
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     // MARK: 重置密码
     @IBAction func resetPassword(sender: UIButton!){

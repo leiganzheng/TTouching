@@ -40,7 +40,7 @@ class CustomDatePickerViewController: UIViewController, QNInterceptorProtocol {
     private func buildUI(){
         self.datePicker = UIDatePicker(frame: CGRectMake(0, 45, self.view.bounds.size.width, 320))
         self.datePicker!.backgroundColor = UIColor.whiteColor()
-        
+        self.datePicker?.datePickerMode = .Date
         
         self.headerView = UIView(frame: CGRectMake(0,self.view.bounds.size.height - 248, self.view.bounds.size.width, kbuttonHeight+1+self.datePicker!.frame.size.height))
         self.headerView!.backgroundColor = UIColor.whiteColor()
@@ -52,13 +52,13 @@ class CustomDatePickerViewController: UIViewController, QNInterceptorProtocol {
         cancel.backgroundColor = UIColor.whiteColor()
         cancel.setTitle("取消", forState: UIControlState.Normal)
         cancel.setTitleColor(UIColor(red: 153.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1), forState: UIControlState.Normal)
-        cancel.addTarget(self, action: "cancelButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        cancel.addTarget(self, action: #selector(CustomDatePickerViewController.cancelButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
         
         let confirm = UIButton(frame: CGRectMake(self.view.bounds.size.width-kbuttonWidth, 0, kbuttonWidth, kbuttonHeight))
         confirm.backgroundColor = UIColor.whiteColor()
         confirm.setTitle("确定", forState: UIControlState.Normal)
         confirm.setTitleColor(UIColor(red: 255/255.0, green: 139/255.0, blue: 139/255.0, alpha: 1), forState: UIControlState.Normal)
-        confirm.addTarget(self, action: "confirmButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        confirm.addTarget(self, action: #selector(CustomDatePickerViewController.confirmButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
 
         self.headerView?.addSubview(line)
         self.headerView?.addSubview(cancel)
@@ -88,7 +88,7 @@ class CustomDatePickerViewController: UIViewController, QNInterceptorProtocol {
     func confirmButtonClicked(){
         let dateFormatter = NSDateFormatter()
         // 为日期格式器设置格式字符串
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         // 使用日期格式器格式化日期、时间
         let dateString = dateFormatter.stringFromDate(self.datePicker!.date)
         self.removeDatePicker(dateString)
