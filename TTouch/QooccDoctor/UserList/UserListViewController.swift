@@ -70,7 +70,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         }
         
         self.rightVC = RightViewController.CreateFromStoryboard("Main") as! RightViewController
-        self.rightVC.view.frame = CGRectMake(screenWidth,Y, Width,screenHeight)
+        self.rightVC.view.frame = CGRectMake(screenWidth+10,Y, Width,screenHeight)
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.window?.addSubview(self.rightVC.view)
         }
@@ -87,7 +87,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
-           self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth : screenWidth-160)
+           self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
             return RACSignal.empty()
         })
         rightBarButton.addSubview(searchButton)

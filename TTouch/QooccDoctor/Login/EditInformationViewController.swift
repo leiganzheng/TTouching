@@ -29,7 +29,7 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
     @IBOutlet weak var textField4: UITextField!  
     @IBOutlet weak var textField5: UITextField!
     @IBOutlet weak var photoButton: UIButton!
-    
+    private(set) var customDate:CustomDatePickerViewController? //日期
     var picker: UIImagePickerController?
     
     var pickerView: UIPickerView!
@@ -45,6 +45,12 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
         let imagePath = path_sandox.stringByAppendingString("/Documents/profile.png")
         let image = UIImage(contentsOfFile: imagePath)
         self.photoButton.setImage(image, forState: .Normal)
+        // 键盘消失
+        let tap = UITapGestureRecognizer()
+        tap.rac_gestureSignal().subscribeNext { [weak self](tap) -> Void in
+            self?.view.endEditing(true)
+        }
+        self.view.addGestureRecognizer(tap)
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
@@ -69,8 +75,17 @@ class EditInformationViewController: UIViewController, QNInterceptorNavigationBa
  //MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField  == self.textField4 {
-            
+            textField.resignFirstResponder()
+            self.customDate = CustomDatePickerViewController()
+            self.customDate?.datePickerFinish = { (dateString)->Void in
+                if dateString != ""{
+                    self.textField4.text = dateString as String
+                }
+                self.customDate?.view.removeFromSuperview()
+            }
+            UIApplication.sharedApplication().keyWindow?.addSubview(self.customDate!.view)
         } else if textField  == self.textField5 {
+            textField.resignFirstResponder()
             let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
             actionSheet.addButtonWithTitle("男")
             actionSheet.addButtonWithTitle("女")

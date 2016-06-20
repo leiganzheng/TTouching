@@ -29,6 +29,7 @@
 		71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E261D104FA9000E0A34 /* CurtainViewController.swift */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
+		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
 		BB3C45AE1B465C46008A1213 /* QN_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451C1B465C46008A1213 /* QN_Group.swift */; };
@@ -123,6 +124,7 @@
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
+		BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePickerViewController.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3C44F71B465BDB008A1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 		BBCEA9871B4A102900A9E478 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */,
 				BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */,
 				BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */,
 				BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */,
@@ -678,6 +681,7 @@
 				71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */,
 				BB3C45B41B465C46008A1213 /* UIImageExtension.swift in Sources */,
 				BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */,
+				BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
