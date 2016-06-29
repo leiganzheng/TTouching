@@ -30,6 +30,12 @@
 		71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E281D1827EC000E0A34 /* MusicViewController.swift */; };
 		71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E2A1D1827F6000E0A34 /* MovieViewController.swift */; };
 		71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E2C1D183B76000E0A34 /* NewClockViewController.swift */; };
+		71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E311D241777000E0A34 /* MainControViewController.swift */; };
+		71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E331D2418B1000E0A34 /* SixViewController.swift */; };
+		71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E351D2418EB000E0A34 /* CutainControViewController.swift */; };
+		71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */; };
+		71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E391D241905000E0A34 /* DoubleLightViewController.swift */; };
+		71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
@@ -127,6 +133,12 @@
 		71D76E281D1827EC000E0A34 /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		71D76E2A1D1827F6000E0A34 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		71D76E2C1D183B76000E0A34 /* NewClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewClockViewController.swift; sourceTree = "<group>"; };
+		71D76E311D241777000E0A34 /* MainControViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControViewController.swift; sourceTree = "<group>"; };
+		71D76E331D2418B1000E0A34 /* SixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixViewController.swift; sourceTree = "<group>"; };
+		71D76E351D2418EB000E0A34 /* CutainControViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutainControViewController.swift; sourceTree = "<group>"; };
+		71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigleLightViewController.swift; sourceTree = "<group>"; };
+		71D76E391D241905000E0A34 /* DoubleLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLightViewController.swift; sourceTree = "<group>"; };
+		71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeOrSixViewController.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
@@ -260,6 +272,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		71D76E301D241717000E0A34 /* EquementMannager */ = {
+			isa = PBXGroup;
+			children = (
+				71D76E311D241777000E0A34 /* MainControViewController.swift */,
+				71D76E331D2418B1000E0A34 /* SixViewController.swift */,
+				71D76E351D2418EB000E0A34 /* CutainControViewController.swift */,
+				71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */,
+				71D76E391D241905000E0A34 /* DoubleLightViewController.swift */,
+				71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */,
+			);
+			path = EquementMannager;
+			sourceTree = "<group>";
+		};
 		BB2578D11CFD7DB50037CA9B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +327,7 @@
 				BB3C45211B465C46008A1213 /* Extension */,
 				BB2578D11CFD7DB50037CA9B /* CustomView */,
 				BB3C45A01B465C46008A1213 /* Login */,
+				71D76E301D241717000E0A34 /* EquementMannager */,
 				BBCEA9871B4A102900A9E478 /* UserList */,
 				17F8635B1B4DFD2000D0A643 /* UserCenter */,
 				BB3C45261B465C46008A1213 /* Librarys */,
@@ -682,6 +708,7 @@
 				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
+				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,
 				BB3C45CE1B465C46008A1213 /* ReactiveCocoa.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
@@ -695,10 +722,12 @@
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
+				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
 				2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
 				71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */,
+				71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */,
 				BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */,
 				BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */,
 				2BDA91DC1BA3D936007EEC67 /* QN_Department.swift in Sources */,
@@ -710,6 +739,7 @@
 				BB3C45F61B465C47008A1213 /* QNInterceptor.swift in Sources */,
 				BB3C45F71B465C47008A1213 /* QNNetworkTool.swift in Sources */,
 				BB3C45D01B465C46008A1213 /* GifParser.swift in Sources */,
+				71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */,
 				BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */,
 				17F8635D1B4DFD3000D0A643 /* UserCenterViewController.swift in Sources */,
 				71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */,
@@ -721,12 +751,14 @@
 				BB52E6D01D06C189005020A0 /* TimeMannageViewController.swift in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
+				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
 				71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */,
 				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
 				71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
+				71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */,
 				716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,
 				BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */,

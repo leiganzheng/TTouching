@@ -1274,6 +1274,78 @@
             </objects>
             <point key="canvasLocation" x="-159" y="3954"/>
         </scene>
+        <!--Main Contro View Controller-->
+        <scene sceneID="LOJ-Hg-gsf">
+            <objects>
+                <viewController storyboardIdentifier="MainControViewController" id="OpK-XY-YDB" customClass="MainControViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pnx-ID-kf0"/>
+                        <viewControllerLayoutGuide type="bottom" id="dM9-Be-3gb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S1M-Mq-huP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhU-md-leT">
+                                <rect key="frame" x="20" y="41" width="27" height="27"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总控" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5E-wG-iUf">
+                                <rect key="frame" x="67" y="44" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDe-fK-kjG">
+                                <rect key="frame" x="0.0" y="98" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S1 情景一">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsD-nA-Eqo">
+                                <rect key="frame" x="160" y="98" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S2 情景二">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOi-a6-5Uo">
+                                <rect key="frame" x="160" y="188" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S6 OFF">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlT-fX-xaX">
+                                <rect key="frame" x="0.0" y="141" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S3 情景三">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTi-me-O3l">
+                                <rect key="frame" x="0.0" y="188" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S5 ON">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJ2-px-I3w">
+                                <rect key="frame" x="160" y="141" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S4 情景四">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYl-XR-FpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="180" y="3847"/>
+        </scene>
         <!--Security View Controller-->
         <scene sceneID="rdU-Ol-obj">
             <objects>
@@ -1419,6 +1491,472 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lze-PT-gJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159" y="4597"/>
+        </scene>
+        <!--Cutain Contro View Controller-->
+        <scene sceneID="Zef-5X-CMV">
+            <objects>
+                <viewController storyboardIdentifier="CutainControViewController" id="tFq-UC-NHR" customClass="CutainControViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vRT-Vd-Mju"/>
+                        <viewControllerLayoutGuide type="bottom" id="dnV-Q9-oGV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CPG-Uf-wJE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="遮阳纱窗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAs-gG-iPx">
+                                <rect key="frame" x="10" y="121" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="Arf-aa-Vr3"/>
+                                    <constraint firstAttribute="height" constant="22" id="kwr-5A-yZt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faf-pG-xsB">
+                                <rect key="frame" x="117" y="118" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="YgX-sE-0Y0"/>
+                                    <constraint firstAttribute="width" constant="60" id="sOh-qY-q7S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_open_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="3Vq-Eh-P1o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qky-uz-EQU">
+                                <rect key="frame" x="197" y="118" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="1dF-1w-9QP"/>
+                                    <constraint firstAttribute="width" constant="36" id="dxl-8p-Zlb"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="tj1-wB-Wb8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AES-8n-amO">
+                                <rect key="frame" x="249" y="118" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Y4K-jx-3w9"/>
+                                    <constraint firstAttribute="width" constant="60" id="nlc-TC-AGT"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_close_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="aAl-F9-1bx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4s-D5-jct">
+                                <rect key="frame" x="0.0" y="155" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bez-F1-eig"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnh-mC-6W1">
+                                <rect key="frame" x="10" y="167" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="cOi-5s-L3c"/>
+                                    <constraint firstAttribute="height" constant="22" id="sfa-H8-MNQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-V8-yr2">
+                                <rect key="frame" x="117" y="164" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="VfO-bt-ysq"/>
+                                    <constraint firstAttribute="height" constant="28" id="wFc-b0-o2r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_open_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="Wzp-QN-uEz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzU-tn-mqe">
+                                <rect key="frame" x="197" y="164" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="8CM-Ui-DEP"/>
+                                    <constraint firstAttribute="height" constant="28" id="YSI-nz-S9j"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="0W4-UN-r7h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLc-C0-xi8">
+                                <rect key="frame" x="249" y="164" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="TD2-Hb-Jf3"/>
+                                    <constraint firstAttribute="height" constant="28" id="wKp-so-E0s"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_close_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="jON-bH-gK1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyi-mB-1U1">
+                                <rect key="frame" x="0.0" y="201" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="mUE-Qz-0cR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="卷帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biP-aD-Oje">
+                                <rect key="frame" x="10" y="213" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="VdN-oT-NGf"/>
+                                    <constraint firstAttribute="width" constant="73" id="kyK-fL-TfX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-zM-bED">
+                                <rect key="frame" x="117" y="210" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="J9B-1F-Soq"/>
+                                    <constraint firstAttribute="height" constant="28" id="m2v-mX-Hvh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_up_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="rww-ED-Kvc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-d6-Njf">
+                                <rect key="frame" x="197" y="210" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="fzC-NR-8tK"/>
+                                    <constraint firstAttribute="width" constant="36" id="kmT-Rt-5yH"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction3:" destination="nb1-RD-Z77" eventType="touchUpInside" id="GHz-pF-ImX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7as-xH-zbI">
+                                <rect key="frame" x="249" y="210" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="LP7-GI-by8"/>
+                                    <constraint firstAttribute="height" constant="28" id="wZs-qQ-okn"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_down_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="kC4-wC-mOO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVV-Jf-Lak">
+                                <rect key="frame" x="0.0" y="247" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="2Xu-WP-KWZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-UN-qTw">
+                                <rect key="frame" x="0.0" y="91" width="320" height="2"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Ura-xk-e0Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEP-x0-bls">
+                                <rect key="frame" x="115" y="20" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="AAw-JL-vvU"/>
+                                    <constraint firstAttribute="width" constant="90" id="TYh-yO-oTa"/>
+                                </constraints>
+                                <state key="normal" image="Menu_Curtain_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v07-hn-fzu">
+                                <rect key="frame" x="-32" y="514" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Qed-os-6Lq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="遮阳纱窗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is8-SW-tKS">
+                                <rect key="frame" x="10" y="357" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="pj8-zK-NCl"/>
+                                    <constraint firstAttribute="width" constant="73" id="vL5-ZK-R3T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-iz-YQw">
+                                <rect key="frame" x="117" y="354" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="QiM-ue-GVg"/>
+                                    <constraint firstAttribute="width" constant="60" id="xnH-Z8-3MQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_open_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="7WI-o7-FrY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2a-Nf-MOB">
+                                <rect key="frame" x="197" y="354" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="3jG-5G-fHs"/>
+                                    <constraint firstAttribute="width" constant="36" id="ja8-sh-pUt"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="EaX-uG-qbQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1n-QO-CZk">
+                                <rect key="frame" x="249" y="354" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="hO8-be-ufF"/>
+                                    <constraint firstAttribute="width" constant="60" id="lSf-Iy-9sE"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_close_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="5dn-Kx-XPi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mS-tx-7yy">
+                                <rect key="frame" x="0.0" y="391" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="BiN-sv-u11"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMu-PI-NH9">
+                                <rect key="frame" x="10" y="403" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="Dzt-Na-QFM"/>
+                                    <constraint firstAttribute="height" constant="22" id="JjT-Gd-uaH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uA-mK-gy2">
+                                <rect key="frame" x="117" y="400" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="68p-p2-d08"/>
+                                    <constraint firstAttribute="height" constant="28" id="swO-Qa-js9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_open_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="pdn-kR-Nb2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-kh-W00">
+                                <rect key="frame" x="197" y="400" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="IU2-m9-j0c"/>
+                                    <constraint firstAttribute="height" constant="28" id="JsH-aV-fvF"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="jLo-gT-2MC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcB-DC-Bu2">
+                                <rect key="frame" x="249" y="400" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="BSF-NV-dsS"/>
+                                    <constraint firstAttribute="height" constant="28" id="o0J-rt-g0F"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_close_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeAction1:" destination="nb1-RD-Z77" eventType="touchUpInside" id="CqC-0z-bmx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuq-sL-Xvx">
+                                <rect key="frame" x="0.0" y="437" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="glb-ld-ELe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="卷帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHj-G9-TmV">
+                                <rect key="frame" x="10" y="449" width="73" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="4kg-3p-zGQ"/>
+                                    <constraint firstAttribute="width" constant="73" id="tYO-X1-a9P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys9-RQ-izy">
+                                <rect key="frame" x="117" y="446" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="f28-Ng-9Gn"/>
+                                    <constraint firstAttribute="height" constant="28" id="vd2-p9-YG2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="Curtain_up_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="upAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="fRX-4h-yLO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1a-gx-x0N">
+                                <rect key="frame" x="197" y="446" width="36" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="Ee7-Ql-lr7"/>
+                                    <constraint firstAttribute="height" constant="28" id="cjs-kk-i6y"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_stop_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction3:" destination="nb1-RD-Z77" eventType="touchUpInside" id="cT2-Ok-LB8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-2f-XsL">
+                                <rect key="frame" x="249" y="446" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="0nw-Jn-kp5"/>
+                                    <constraint firstAttribute="width" constant="60" id="4KL-rq-Rxh"/>
+                                </constraints>
+                                <state key="normal" image="Curtain_down_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downAction:" destination="nb1-RD-Z77" eventType="touchUpInside" id="Z6o-0c-VFN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scx-jW-7VH">
+                                <rect key="frame" x="0.0" y="327" width="320" height="2"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="yRm-zR-IDy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIP-tg-rSW">
+                                <rect key="frame" x="115" y="256" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Jlj-bF-G3z"/>
+                                    <constraint firstAttribute="height" constant="63" id="N8G-ab-qMe"/>
+                                </constraints>
+                                <state key="normal" image="Menu_Curtain_icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jzU-tn-mqe" firstAttribute="leading" secondItem="Gyi-V8-yr2" secondAttribute="trailing" constant="20" id="0nn-LN-PyN"/>
+                            <constraint firstItem="jzU-tn-mqe" firstAttribute="top" secondItem="T4s-D5-jct" secondAttribute="bottom" constant="8" id="1ZZ-9M-UcZ"/>
+                            <constraint firstItem="Ozb-zM-bED" firstAttribute="top" secondItem="gyi-mB-1U1" secondAttribute="bottom" constant="8" id="2Ar-RT-7O7"/>
+                            <constraint firstItem="v07-hn-fzu" firstAttribute="top" secondItem="ldx-2f-XsL" secondAttribute="bottom" constant="9" id="3MJ-5N-hdm"/>
+                            <constraint firstItem="7as-xH-zbI" firstAttribute="leading" secondItem="UYX-d6-Njf" secondAttribute="trailing" constant="16" id="9Lc-RZ-8Wr"/>
+                            <constraint firstItem="p1n-QO-CZk" firstAttribute="leading" secondItem="D2a-Nf-MOB" secondAttribute="trailing" constant="16" id="BcL-Rh-udN"/>
+                            <constraint firstItem="biP-aD-Oje" firstAttribute="top" secondItem="gyi-mB-1U1" secondAttribute="bottom" constant="11" id="DTA-Dk-TW6"/>
+                            <constraint firstItem="U1a-gx-x0N" firstAttribute="top" secondItem="xuq-sL-Xvx" secondAttribute="bottom" constant="8" id="HCg-Pl-suG"/>
+                            <constraint firstItem="EHj-G9-TmV" firstAttribute="top" secondItem="xuq-sL-Xvx" secondAttribute="bottom" constant="11" id="K1s-Ie-6P4"/>
+                            <constraint firstItem="AES-8n-amO" firstAttribute="leading" secondItem="Qky-uz-EQU" secondAttribute="trailing" constant="16" id="Kz2-P3-oo6"/>
+                            <constraint firstItem="nMu-PI-NH9" firstAttribute="top" secondItem="5mS-tx-7yy" secondAttribute="bottom" constant="11" id="L0A-I6-N39"/>
+                            <constraint firstItem="gyi-mB-1U1" firstAttribute="top" secondItem="sLc-C0-xi8" secondAttribute="bottom" constant="9" id="L6l-Ab-TtB"/>
+                            <constraint firstItem="6j7-kh-W00" firstAttribute="top" secondItem="5mS-tx-7yy" secondAttribute="bottom" constant="8" id="OFB-7W-y6o"/>
+                            <constraint firstItem="Scx-jW-7VH" firstAttribute="top" secondItem="wIP-tg-rSW" secondAttribute="bottom" constant="8" id="Q9a-76-muD"/>
+                            <constraint firstItem="ldx-2f-XsL" firstAttribute="leading" secondItem="U1a-gx-x0N" secondAttribute="trailing" constant="16" id="QJz-bP-v0R"/>
+                            <constraint firstItem="EcB-DC-Bu2" firstAttribute="top" secondItem="5mS-tx-7yy" secondAttribute="bottom" constant="8" id="QY6-0q-gYe"/>
+                            <constraint firstItem="Ys9-RQ-izy" firstAttribute="top" secondItem="xuq-sL-Xvx" secondAttribute="bottom" constant="8" id="SYb-uj-lpe"/>
+                            <constraint firstItem="UYX-d6-Njf" firstAttribute="leading" secondItem="Ozb-zM-bED" secondAttribute="trailing" constant="20" id="SYd-7M-rFV"/>
+                            <constraint firstItem="UYX-d6-Njf" firstAttribute="top" secondItem="gyi-mB-1U1" secondAttribute="bottom" constant="8" id="Smr-Pb-eLM"/>
+                            <constraint firstItem="YAs-gG-iPx" firstAttribute="top" secondItem="hEf-UN-qTw" secondAttribute="bottom" constant="28" id="WXa-wu-94I"/>
+                            <constraint firstItem="is8-SW-tKS" firstAttribute="top" secondItem="Scx-jW-7VH" secondAttribute="bottom" constant="28" id="WbL-Yh-OaU"/>
+                            <constraint firstItem="TVV-Jf-Lak" firstAttribute="top" secondItem="7as-xH-zbI" secondAttribute="bottom" constant="9" id="b5i-nQ-1Gj"/>
+                            <constraint firstItem="FiA-iz-YQw" firstAttribute="top" secondItem="Scx-jW-7VH" secondAttribute="bottom" constant="25" id="bWU-vc-w6u"/>
+                            <constraint firstItem="U1a-gx-x0N" firstAttribute="leading" secondItem="Ys9-RQ-izy" secondAttribute="trailing" constant="20" id="byz-u3-8Nz"/>
+                            <constraint firstItem="6j7-kh-W00" firstAttribute="leading" secondItem="0uA-mK-gy2" secondAttribute="trailing" constant="20" id="cCM-yC-Uad"/>
+                            <constraint firstItem="T4s-D5-jct" firstAttribute="top" secondItem="AES-8n-amO" secondAttribute="bottom" constant="9" id="eMZ-zj-o2W"/>
+                            <constraint firstItem="D2a-Nf-MOB" firstAttribute="leading" secondItem="FiA-iz-YQw" secondAttribute="trailing" constant="20" id="eaS-je-TSf"/>
+                            <constraint firstItem="Hnh-mC-6W1" firstAttribute="top" secondItem="T4s-D5-jct" secondAttribute="bottom" constant="11" id="ekH-WX-Ohj"/>
+                            <constraint firstItem="Qky-uz-EQU" firstAttribute="top" secondItem="hEf-UN-qTw" secondAttribute="bottom" constant="25" id="gJK-PN-SQj"/>
+                            <constraint firstItem="AES-8n-amO" firstAttribute="top" secondItem="hEf-UN-qTw" secondAttribute="bottom" constant="25" id="hDG-vn-PPY"/>
+                            <constraint firstItem="faf-pG-xsB" firstAttribute="top" secondItem="hEf-UN-qTw" secondAttribute="bottom" constant="25" id="hUK-9H-yZN"/>
+                            <constraint firstItem="0uA-mK-gy2" firstAttribute="top" secondItem="5mS-tx-7yy" secondAttribute="bottom" constant="8" id="iDV-SH-1MT"/>
+                            <constraint firstItem="D2a-Nf-MOB" firstAttribute="top" secondItem="Scx-jW-7VH" secondAttribute="bottom" constant="25" id="iTY-qF-xed"/>
+                            <constraint firstItem="sLc-C0-xi8" firstAttribute="top" secondItem="T4s-D5-jct" secondAttribute="bottom" constant="8" id="n6h-8B-YcG"/>
+                            <constraint firstItem="Gyi-V8-yr2" firstAttribute="top" secondItem="T4s-D5-jct" secondAttribute="bottom" constant="8" id="oSV-pO-nNB"/>
+                            <constraint firstItem="p1n-QO-CZk" firstAttribute="top" secondItem="Scx-jW-7VH" secondAttribute="bottom" constant="25" id="rhJ-8z-03N"/>
+                            <constraint firstItem="hEf-UN-qTw" firstAttribute="top" secondItem="rEP-x0-bls" secondAttribute="bottom" constant="8" id="sVh-On-W35"/>
+                            <constraint firstItem="sLc-C0-xi8" firstAttribute="leading" secondItem="jzU-tn-mqe" secondAttribute="trailing" constant="16" id="w8d-XW-WdE"/>
+                            <constraint firstItem="ldx-2f-XsL" firstAttribute="top" secondItem="xuq-sL-Xvx" secondAttribute="bottom" constant="8" id="xqQ-QO-2KE"/>
+                            <constraint firstItem="Qky-uz-EQU" firstAttribute="leading" secondItem="faf-pG-xsB" secondAttribute="trailing" constant="20" id="yDa-aW-xJI"/>
+                            <constraint firstItem="xuq-sL-Xvx" firstAttribute="top" secondItem="EcB-DC-Bu2" secondAttribute="bottom" constant="9" id="yJp-cY-2JO"/>
+                            <constraint firstItem="EcB-DC-Bu2" firstAttribute="leading" secondItem="6j7-kh-W00" secondAttribute="trailing" constant="16" id="yo0-1p-KdE"/>
+                            <constraint firstItem="5mS-tx-7yy" firstAttribute="top" secondItem="p1n-QO-CZk" secondAttribute="bottom" constant="9" id="yxw-bj-rtd"/>
+                            <constraint firstItem="7as-xH-zbI" firstAttribute="top" secondItem="gyi-mB-1U1" secondAttribute="bottom" constant="8" id="z8T-1n-PjP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egh-ya-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="249" y="4497"/>
         </scene>
         <!--Light View Controller-->
         <scene sceneID="rnP-2W-PhP">
@@ -2124,6 +2662,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haW-wq-X1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="363" y="535"/>
+        </scene>
+        <!--Six View Controller-->
+        <scene sceneID="hav-3r-htR">
+            <objects>
+                <viewController storyboardIdentifier="SixViewController" id="ISI-hy-0AZ" customClass="SixViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xbi-Jj-cYe"/>
+                        <viewControllerLayoutGuide type="bottom" id="uI6-Xz-I7e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WxH-cq-z2s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UZ-C0-59U">
+                                <rect key="frame" x="20" y="41" width="27" height="27"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="六情景" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H18-hh-bWC">
+                                <rect key="frame" x="67" y="44" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bI-gl-CBE">
+                                <rect key="frame" x="0.0" y="98" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S1 情景一">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0p-MM-HFe">
+                                <rect key="frame" x="160" y="98" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S2 情景二">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGx-lV-E7c">
+                                <rect key="frame" x="160" y="188" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S6 OFF">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK6-81-d7G">
+                                <rect key="frame" x="0.0" y="141" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S3 情景三">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-Sv-qgl">
+                                <rect key="frame" x="0.0" y="188" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S5 ON">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-gg-HsM">
+                                <rect key="frame" x="160" y="141" width="160" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="S4 情景四">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpE-2K-bZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="3847"/>
         </scene>
     </scenes>
     <resources>
