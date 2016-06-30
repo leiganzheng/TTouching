@@ -96,7 +96,33 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            let vc = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = SixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
 
+        case 2:
+            let vc = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        case 3:
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        case 4:
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            break;
+        }
+            
+    
     }
 
 }
