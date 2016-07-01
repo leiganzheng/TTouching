@@ -148,6 +148,20 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let d = Device(address: "0", dev_type: 1, work_status: 31, dev_name: "总控设备", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_ 1ch-Dimmer_icon")
         //六情景
         let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        
+          let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        
+        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+
+        
+          let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Dimmers_icon")
+        
+          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_3ch-roads_icon")
+        
+          let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_3or6ch-roads_icon")
+        //自定义
+          let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_6-scene_icon")
+        
          let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_information_icon")
         //创建表
         DBManager.shareInstance().createTable("T_Device")
@@ -164,6 +178,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             DBManager.shareInstance().add(d);
             DBManager.shareInstance().add(sixD);
             DBManager.shareInstance().add(noPattern);
+            DBManager.shareInstance().add(curtain);
+            DBManager.shareInstance().add(curtain1);
+            DBManager.shareInstance().add(sigle);
+            DBManager.shareInstance().add(double);
+            DBManager.shareInstance().add(threeOrSix);
+            DBManager.shareInstance().add(sixControl);
         }
        
         

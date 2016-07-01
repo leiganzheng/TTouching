@@ -165,6 +165,40 @@ class DBManager: NSObject {
         return devices
         
     }
+    // MARK: >> 查
+    func selectDataNotRepeat() -> Array<Device> {
+        dbBase.open();
+        var devices=[Device]()
+        
+        if let rs = dbBase.executeQuery("select address,dev_type,work_status,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+            while rs.next() {
+                
+                let address:String = rs.stringForColumn("address")
+                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                let work_status:Int = Int(rs.intForColumn("work_status"))
+                
+                let dev_name:String = rs.stringForColumn("dev_name")
+                let dev_status:Int = Int(rs.intForColumn("dev_status"))
+                let dev_area:String = rs.stringForColumn("dev_area")
+                
+                let belong_area:String = rs.stringForColumn("belong_area")
+                let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
+                let icon_url:String = rs.stringForColumn("icon_url")
+                
+                let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+                devices.append(d)
+            }
+        } else {
+            
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+        dbBase.close();
+        
+        return devices
+        
+    }
+
 
 
     // MARK: >> 保证线程安全

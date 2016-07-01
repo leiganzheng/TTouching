@@ -52,7 +52,7 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         let d = self.data[indexPath.row] as! Device
         
 
-        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 80, 44))
+        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
         logoButton.setTitle(d.dev_name!, forState: .Normal)
         logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         cell.contentView.addSubview(logoButton)
@@ -99,15 +99,14 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
     //MARK://-Private method
     func fetchData(){
         //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-        for d in arr {
-            self.data.addObject(d)
+        let arr:Array<Device> = DBManager.shareInstance().selectDataNotRepeat()
+
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type != 100  {
+                self.data.addObject(element)
+            }
+            
         }
-        
-//        for (index, element): (Int, Device) in arr.enumerate(){
-//            self.data.addObject(element)
-//            print("Device:\(element.address!)", terminator: "");
-//        }
         self.myTableView.reloadData()
         
     }

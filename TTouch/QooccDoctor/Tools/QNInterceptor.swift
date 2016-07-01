@@ -101,7 +101,7 @@ class QNInterceptor : NSObject {
                     
                     // 键盘遮挡解决方案
                     if !(viewController is QNInterceptorKeyboardProtocol) {
-                        IQKeyboardManager.sharedManager().disableInViewControllerClass(viewController.classForCoder)
+//                        IQKeyboardManager.sharedManager().disableInViewControllerClass(viewController.classForCoder)
                     }
 //                    viewController.navigationController?.navigationBar.translucent = false // 关闭透明度效果
 //                    UIApplication.sharedApplication().statusBarHidden = false

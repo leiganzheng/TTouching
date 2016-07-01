@@ -1627,6 +1627,9 @@
                                 <state key="normal" image="Menu_Curtain_icon">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectePatternAction:" destination="tFq-UC-NHR" eventType="touchUpInside" id="rLV-XX-SAU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="遮阳纱窗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is8-SW-tKS">
                                 <rect key="frame" x="10" y="312" width="73" height="22"/>
