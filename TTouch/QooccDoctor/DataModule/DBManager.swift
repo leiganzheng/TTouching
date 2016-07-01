@@ -2,7 +2,7 @@
 //  PersonManager.swift
 //  SaupFMDB
 //
-//  Created by 卲 鵬 on 15/9/1.
+//  Created by lei on 15/9/1.
 //  Copyright (c) 2015年 pshao. All rights reserved.
 //
 

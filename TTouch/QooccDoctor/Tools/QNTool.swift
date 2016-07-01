@@ -31,10 +31,10 @@ extension QNTool {
             if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, version2: "2.0") != NSComparisonResult.OrderedDescending {
                 repeat { // 用户账号数据迁移，从老数据中获取账号，然后重新登录，需要用户设置密码
                     let key = "GROUP"
-                    if let groupDictionary = getObjectFromUserDefaults(key) as? NSDictionary, let group = QN_Group(groupDictionary) {
-                        saveAccountAndPassword(group.groupId, password: nil)
-                        removeObjectAtUserDefaults(key)
-                    }
+//                    if let groupDictionary = getObjectFromUserDefaults(key) as? NSDictionary, let group = QN_Group(groupDictionary) {
+//                        saveAccountAndPassword(group.groupId, password: nil)
+//                        removeObjectAtUserDefaults(key)
+//                    }
                 } while (false)
                 
                 // 删除被废弃的 key

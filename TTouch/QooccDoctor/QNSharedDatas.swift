@@ -38,10 +38,6 @@ func cleanPassword() {
     removeObjectAtUserDefaults(kKeyPassword)
 }
 
-//MARK: 当前账户信息有变更时的通知
-var g_isLogin: Bool { return g_doctor != nil }    // 是否登录
-//MARK: g_doctor 当登录账号
-var g_doctor: QD_Doctor?
 //MARK: g_currentUser 当选中用户
 var g_currentUser: QN_UserInfo?
 

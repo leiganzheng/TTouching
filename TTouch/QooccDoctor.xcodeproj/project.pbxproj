@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5562A1B4B5D8100D042CE /* RegisterViewController.swift */; };
 		17E89CC41B4B699200067F28 /* EditInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E89CC31B4B699200067F28 /* EditInformationViewController.swift */; };
-		17F8635D1B4DFD3000D0A643 /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8635C1B4DFD3000D0A643 /* UserCenterViewController.swift */; };
 		2B40F8C61C1951AD00DD1F31 /* PhotoBroswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B40F8C51C1951AD00DD1F31 /* PhotoBroswerViewController.swift */; };
 		2B5E24471BA0202E002A8FC3 /* SelectBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5E24461BA0202E002A8FC3 /* SelectBankViewController.swift */; };
 		2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6938CB1C18071C00E63045 /* ImageSingleZoomViewController.swift */; };
 		2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B856D561BA16B3F001D3380 /* CustomPickView.swift */; };
-		2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B866A6C1BA1370D009A346D /* QN_Disease.swift */; };
-		2BDA91DC1BA3D936007EEC67 /* QN_Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA91DB1BA3D936007EEC67 /* QN_Department.swift */; };
-		2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFEDA2E1BFC1A1900AC0D9E /* QN_Area.swift */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
@@ -51,7 +47,6 @@
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
-		BB3C45AE1B465C46008A1213 /* QN_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451C1B465C46008A1213 /* QN_Group.swift */; };
 		BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */; };
 		BB3C45B31B465C46008A1213 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45221B465C46008A1213 /* StringExtension.swift */; };
 		BB3C45B41B465C46008A1213 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C45231B465C46008A1213 /* UIImageExtension.swift */; };
@@ -81,7 +76,6 @@
 		BB3C46401B466196008A1213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C463F1B466196008A1213 /* QuartzCore.framework */; };
 		BB3C46421B46619D008A1213 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C46411B46619D008A1213 /* UIKit.framework */; };
 		BB3C46441B4661B3008A1213 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C46431B4661B3008A1213 /* SystemConfiguration.framework */; };
-		BB3C464B1B466856008A1213 /* QN_CheckData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C464A1B466856008A1213 /* QN_CheckData.swift */; };
 		BB3C464E1B466AC4008A1213 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C464C1B466AC4008A1213 /* libz.1.2.5.dylib */; };
 		BB3C464F1B466AC4008A1213 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C464D1B466AC4008A1213 /* libz.dylib */; };
 		BB3C46511B466AD6008A1213 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C46501B466AD6008A1213 /* libicucore.dylib */; };
@@ -102,8 +96,6 @@
 		BB6D71931BE062DD0018AADC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D71921BE062DD0018AADC /* libxml2.dylib */; };
 		BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */; };
 		BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6D71B51BE0C0090018AADC /* Localizable.strings */; };
-		BB7855E71B4BC2340069F7CE /* QD_MedicalAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7855E61B4BC2340069F7CE /* QD_MedicalAdvice.swift */; };
-		BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */; };
 		BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */; };
 		BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */; };
 		BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */; };
@@ -112,24 +104,17 @@
 		BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */; };
 		BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */; };
 		BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */; };
-		BBCEA98B1B4A183B00A9E478 /* QD_Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98A1B4A183B00A9E478 /* QD_Doctor.swift */; };
 		BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */; };
-		BBF4C7F71B9E69B900C2E75B /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */; };
-		BBF4C84F1B9ED33300C2E75B /* QN_Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4C84E1B9ED33300C2E75B /* QN_Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		178138031B4691B400535E94 /* QooccDoctor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QooccDoctor-Prefix.pch"; sourceTree = "<group>"; };
 		17C5562A1B4B5D8100D042CE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		17E89CC31B4B699200067F28 /* EditInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInformationViewController.swift; sourceTree = "<group>"; };
-		17F8635C1B4DFD3000D0A643 /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
 		2B40F8C51C1951AD00DD1F31 /* PhotoBroswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBroswerViewController.swift; sourceTree = "<group>"; };
 		2B5E24461BA0202E002A8FC3 /* SelectBankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBankViewController.swift; sourceTree = "<group>"; };
 		2B6938CB1C18071C00E63045 /* ImageSingleZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSingleZoomViewController.swift; sourceTree = "<group>"; };
 		2B856D561BA16B3F001D3380 /* CustomPickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickView.swift; sourceTree = "<group>"; };
-		2B866A6C1BA1370D009A346D /* QN_Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Disease.swift; sourceTree = "<group>"; };
-		2BDA91DB1BA3D936007EEC67 /* QN_Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Department.swift; sourceTree = "<group>"; };
-		2BFEDA2E1BFC1A1900AC0D9E /* QN_Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Area.swift; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +158,6 @@
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3C44F71B465BDB008A1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB3C451B1B465C46008A1213 /* QN_Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Base.swift; sourceTree = "<group>"; };
-		BB3C451C1B465C46008A1213 /* QN_Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Group.swift; sourceTree = "<group>"; };
 		BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_UserInfo.swift; sourceTree = "<group>"; };
 		BB3C45221B465C46008A1213 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		BB3C45231B465C46008A1213 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -207,7 +191,6 @@
 		BB3C46411B46619D008A1213 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB3C46431B4661B3008A1213 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB3C46491B4666F9008A1213 /* QooccDoctor-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QooccDoctor-Bridging-Header.h"; sourceTree = "<group>"; };
-		BB3C464A1B466856008A1213 /* QN_CheckData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_CheckData.swift; sourceTree = "<group>"; };
 		BB3C464C1B466AC4008A1213 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		BB3C464D1B466AC4008A1213 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BB3C46501B466AD6008A1213 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -229,8 +212,6 @@
 		BB6D71A71BE0AF970018AADC /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		BB6D71B41BE0C0090018AADC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		BB7855E61B4BC2340069F7CE /* QD_MedicalAdvice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QD_MedicalAdvice.swift; sourceTree = "<group>"; };
-		BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QN_ Schedule.swift"; sourceTree = "<group>"; };
 		BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateWayListViewController.swift; sourceTree = "<group>"; };
@@ -239,10 +220,7 @@
 		BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		BBCEA98A1B4A183B00A9E478 /* QD_Doctor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QD_Doctor.swift; path = ../Tools/QD_Doctor.swift; sourceTree = "<group>"; };
 		BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
-		BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoViewController.swift; sourceTree = "<group>"; };
-		BBF4C84E1B9ED33300C2E75B /* QN_Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QN_Order.swift; sourceTree = "<group>"; };
 		BE0462F1F9121DDCE3F3E669 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -279,8 +257,6 @@
 		17F8635B1B4DFD2000D0A643 /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
-				17F8635C1B4DFD3000D0A643 /* UserCenterViewController.swift */,
-				BBF4C7F61B9E69B900C2E75B /* PersonInfoViewController.swift */,
 				2B5E24461BA0202E002A8FC3 /* SelectBankViewController.swift */,
 				2B856D561BA16B3F001D3380 /* CustomPickView.swift */,
 				2B6938CB1C18071C00E63045 /* ImageSingleZoomViewController.swift */,
@@ -417,17 +393,8 @@
 			children = (
 				BB319C101D26018C0071F443 /* Device.swift */,
 				BB319C111D26018C0071F443 /* DBManager.swift */,
-				BB7F39941BA15D88008301C9 /* QN_ Schedule.swift */,
-				BBCEA98A1B4A183B00A9E478 /* QD_Doctor.swift */,
 				BB3C451B1B465C46008A1213 /* QN_Base.swift */,
-				BB3C451C1B465C46008A1213 /* QN_Group.swift */,
 				BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */,
-				BB3C464A1B466856008A1213 /* QN_CheckData.swift */,
-				BB7855E61B4BC2340069F7CE /* QD_MedicalAdvice.swift */,
-				BBF4C84E1B9ED33300C2E75B /* QN_Order.swift */,
-				2B866A6C1BA1370D009A346D /* QN_Disease.swift */,
-				2BDA91DB1BA3D936007EEC67 /* QN_Department.swift */,
-				2BFEDA2E1BFC1A1900AC0D9E /* QN_Area.swift */,
 			);
 			path = DataModule;
 			sourceTree = "<group>";
@@ -750,21 +717,16 @@
 			files = (
 				2B40F8C61C1951AD00DD1F31 /* PhotoBroswerViewController.swift in Sources */,
 				BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */,
-				BBF4C84F1B9ED33300C2E75B /* QN_Order.swift in Sources */,
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
 				BB3C45FA1B465C47008A1213 /* QNTool.swift in Sources */,
 				71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */,
 				17E89CC41B4B699200067F28 /* EditInformationViewController.swift in Sources */,
-				BB3C464B1B466856008A1213 /* QN_CheckData.swift in Sources */,
-				BB3C45AE1B465C46008A1213 /* QN_Group.swift in Sources */,
 				BB3C45CD1B465C46008A1213 /* LyPrompt.swift in Sources */,
-				BBCEA98B1B4A183B00A9E478 /* QD_Doctor.swift in Sources */,
 				BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */,
 				BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */,
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
-				2B866A6D1BA1370D009A346D /* QN_Disease.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
@@ -784,7 +746,6 @@
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
-				2BFEDA2F1BFC1A1900AC0D9E /* QN_Area.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
@@ -792,7 +753,6 @@
 				71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */,
 				BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */,
 				BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */,
-				2BDA91DC1BA3D936007EEC67 /* QN_Department.swift in Sources */,
 				BB3C45CB1B465C46008A1213 /* LyInputViewController.swift in Sources */,
 				BB3C46051B465DA0008A1213 /* QNStyleAttribute.swift in Sources */,
 				2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */,
@@ -805,12 +765,10 @@
 				71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */,
 				BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */,
 				BB319C131D26018C0071F443 /* DBManager.swift in Sources */,
-				17F8635D1B4DFD3000D0A643 /* UserCenterViewController.swift in Sources */,
 				71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */,
 				BB3C45D21B465C46008A1213 /* UIImageViewWebCacheExtension.swift in Sources */,
 				BB3C45C81B465C46008A1213 /* NSData+AES.m in Sources */,
 				BB3C46021B465DA0008A1213 /* Constents.swift in Sources */,
-				BB7855E71B4BC2340069F7CE /* QD_MedicalAdvice.swift in Sources */,
 				BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */,
 				2B5E24471BA0202E002A8FC3 /* SelectBankViewController.swift in Sources */,
 				BB319C211D26077A0071F443 /* FMDatabase.m in Sources */,
@@ -830,8 +788,6 @@
 				716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,
 				BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */,
-				BBF4C7F71B9E69B900C2E75B /* PersonInfoViewController.swift in Sources */,
-				BB7F39951BA15D88008301C9 /* QN_ Schedule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
