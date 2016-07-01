@@ -99,7 +99,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         return
 //        if !self.checkAccountPassWord() {return}
 //        if let id = self.accountTextField.text, let password = self.passwordTextField.text {
-            QNTool.showActivityView("正在登录...")
+//            QNTool.showActivityView("正在登录...")
 //            QNNetworkTool.login(Id: id, Password: password) { (doctor, error, errorMsg) -> Void in
 //                QNTool.hiddenActivityView()
 //                if doctor != nil {

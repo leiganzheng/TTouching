@@ -32,33 +32,54 @@ class DBManager: NSObject {
     override init() {
         
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
-        let path = (documentsFolder as NSString).stringByAppendingPathComponent("test.sqlite")
+        let path = (documentsFolder as NSString).stringByAppendingPathComponent("TTouching.sqlite")
         self.dbPath = path
         //创建数据库
         dbBase =  FMDatabase(path: self.dbPath as String)
         
         print("path: ---- \(self.dbPath)", terminator: "")
         
+//        //打开数据库
+//        if dbBase.open(){
+//            
+//            let createSql:String = "CREATE TABLE IF NOT EXISTS T_Device (address TEXT,dev_type INTEGER, work_status INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);"
+//            
+//            if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
+//                
+//                print("数据库创建成功！", terminator: "")
+//            
+//            }else{
+//                
+//                print("数据库创建失败！failed:\(dbBase.lastErrorMessage())", terminator: "")
+//            
+//            }
+//        }else{
+//                print("Unable to open database!", terminator: "")
+//        
+//        }
+    }
+    // MARK: >> 建立数据表
+    func createTable(name: String) {
         //打开数据库
         if dbBase.open(){
             
-            let createSql:String = "CREATE TABLE IF NOT EXISTS T_Device (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pid integer,name TEXT,height REAL)"
+            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT,dev_type INTEGER, work_status INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);",name) as String
             
             if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
                 
                 print("数据库创建成功！", terminator: "")
-            
+                
             }else{
                 
                 print("数据库创建失败！failed:\(dbBase.lastErrorMessage())", terminator: "")
-            
+                
             }
         }else{
-                print("Unable to open database!", terminator: "")
-        
+            print("Unable to open database!", terminator: "")
+            
         }
+
     }
-    
     
     // MARK: >> 增
     func add(d:Device) {
@@ -83,7 +104,7 @@ class DBManager: NSObject {
         
         dbBase.open();
         
-        if !self.dbBase.executeUpdate("delete from T_Device where pid = (?)", withArgumentsInArray: [d.address!]) {
+        if !self.dbBase.executeUpdate("delete from T_Device where address = (?)", withArgumentsInArray: [d.address!]) {
             print("删除1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("删除1条数据成功！: \(d.address)")
@@ -116,7 +137,7 @@ class DBManager: NSObject {
         dbBase.open();
         var devices=[Device]()
         
-            if let rs = dbBase.executeQuery("select address from T_Device", withArgumentsInArray: nil) {
+            if let rs = dbBase.executeQuery("select address,dev_type,work_status,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let address:String = rs.stringForColumn("address")

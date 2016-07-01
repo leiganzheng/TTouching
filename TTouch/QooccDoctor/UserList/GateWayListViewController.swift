@@ -47,7 +47,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.view.addSubview(searchButton)
         
         self.flags = [false,true,false]
-        self.fectchData()
+//        self.fectchData()
+        self.exeDB()
 
     }
 
@@ -142,21 +143,32 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
     }
     func exeDB(){
-//        增：   DBManager.shareInstance().add(Device(pid: 2, name: "清澈", height: 1.75));
+
+        //总控
+        let d = Device(address: "0", dev_type: 1, work_status: 31, dev_name: "总控设备", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_ 1ch-Dimmer_icon")
+        //六情景
+        let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        //创建表
+        DBManager.shareInstance().createTable("T_Device")
+        //增：
+        DBManager.shareInstance().add(d);
+        DBManager.shareInstance().add(sixD);
         
-        //删：   DBManager.shareInstance().deleteData(Device(pid: 1, name: nil, height: nil));
+        //删： 
+//        DBManager.shareInstance().deleteData(Device(pid: 1, name: nil, height: nil));
         
-        //改：   DBManager.shareInstance().update(Device(pid: 2, name: "清幽", height: 1.80));
+        //改：  
+//        DBManager.shareInstance().update(Device(pid: 2, name: "清幽", height: 1.80));
         
         //保证线程安全: 增+查
         //      PersonManager.shareInstance().safeaddPerson(Device(pid: 2, name: "清泠", height: 1.80));
         
-        //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-        
-        for (index, element): (Int, Device) in arr.enumerate(){
-            print("Device:\(element.address!)", terminator: "");
-        }
+//        //查
+//        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+//        
+//        for (index, element): (Int, Device) in arr.enumerate(){
+//            print("Device:\(element.address!)", terminator: "");
+//        }
 
     }
 }

@@ -44,6 +44,9 @@
 		BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BB319C1C1D26077A0071F443 /* FMDatabaseQueue.m */; };
 		BB319C251D26077A0071F443 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB319C1F1D26077A0071F443 /* FMResultSet.m */; };
 		BB319C261D26077A0071F443 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB319C201D26077A0071F443 /* Info.plist */; };
+		BB319C281D2644DF0071F443 /* DeviceHideDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C271D2644DF0071F443 /* DeviceHideDB.swift */; };
+		BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C291D2645E30071F443 /* PatternDB.swift */; };
+		BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C2B1D2646770071F443 /* YaoDBModel.swift */; };
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
@@ -153,6 +156,9 @@
 		BB319C1E1D26077A0071F443 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		BB319C1F1D26077A0071F443 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		BB319C201D26077A0071F443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB319C271D2644DF0071F443 /* DeviceHideDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHideDB.swift; sourceTree = "<group>"; };
+		BB319C291D2645E30071F443 /* PatternDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternDB.swift; sourceTree = "<group>"; };
+		BB319C2B1D2646770071F443 /* YaoDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YaoDBModel.swift; sourceTree = "<group>"; };
 		BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDatePickerViewController.swift; path = ../UserList/CustomDatePickerViewController.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -394,6 +400,9 @@
 				BB319C101D26018C0071F443 /* Device.swift */,
 				BB3C451B1B465C46008A1213 /* QN_Base.swift */,
 				BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */,
+				BB319C271D2644DF0071F443 /* DeviceHideDB.swift */,
+				BB319C291D2645E30071F443 /* PatternDB.swift */,
+				BB319C2B1D2646770071F443 /* YaoDBModel.swift */,
 			);
 			path = DataModule;
 			sourceTree = "<group>";
@@ -721,6 +730,7 @@
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
 				BB3C45FA1B465C47008A1213 /* QNTool.swift in Sources */,
 				71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */,
+				BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */,
 				17E89CC41B4B699200067F28 /* EditInformationViewController.swift in Sources */,
 				BB3C45CD1B465C46008A1213 /* LyPrompt.swift in Sources */,
 				BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */,
@@ -746,6 +756,7 @@
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
+				BB319C281D2644DF0071F443 /* DeviceHideDB.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
@@ -776,6 +787,7 @@
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
+				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
 				71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */,
 				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
