@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         let currentLanguage = lArray?.objectAtIndex(0) as! String
         self.settingLangue(currentLanguage)
         // 如果有本地账号了，就自动登录
-        self.autoLogin()
+//        self.autoLogin()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -94,6 +94,9 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     }
     
     func login() {
+        let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        return
         if !self.checkAccountPassWord() {return}
         if let id = self.accountTextField.text, let password = self.passwordTextField.text {
             QNTool.showActivityView("正在登录...")

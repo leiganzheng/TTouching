@@ -79,11 +79,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Result.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,17 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1EA30C6EF5D74B864948E51038F8C04E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2F9912775473A057A1BEE942E87BEDCB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3E46520E0A1AE7B8BB327A1E3F0696BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,17 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4531ED24D09877FD2F9582B9D769C58B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4E1263BFF45F6446CF3DE29AE234C893</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EDF3A77D4C1977B25D2D990B1C992F6</key>
+		<key>4FFFCB15D8BCD33F200F5B02C30B05B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>576769490BC39710A4C0FA6C515520F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94624EC6C9739263AA965CFE2D8933F5</key>
+		<key>6FC3B864758B74AC1E22A18DE5344A74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6DF0C3712D0E71ABC052E7E9CBBE9D4</key>
+		<key>75EA03BEA31311AE296A996F9C7CB1DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>94624EC6C9739263AA965CFE2D8933F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
