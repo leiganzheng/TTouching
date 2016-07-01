@@ -140,7 +140,7 @@
 		BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		BB319C0D1D26014A0071F443 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		BB319C101D26018C0071F443 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		BB319C111D26018C0071F443 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		BB319C111D26018C0071F443 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBManager.swift; path = ../DataModule/DBManager.swift; sourceTree = "<group>"; };
 		BB319C151D26077A0071F443 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		BB319C161D26077A0071F443 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		BB319C171D26077A0071F443 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -392,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				BB319C101D26018C0071F443 /* Device.swift */,
-				BB319C111D26018C0071F443 /* DBManager.swift */,
 				BB3C451B1B465C46008A1213 /* QN_Base.swift */,
 				BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */,
 			);
@@ -502,6 +501,7 @@
 		BB3C45A61B465C46008A1213 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BB319C111D26018C0071F443 /* DBManager.swift */,
 				BB3C45AC1B465C46008A1213 /* QNTool.swift */,
 				BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */,
 				BB3C45A71B465C46008A1213 /* QNFormatTool.swift */,

@@ -138,4 +138,25 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             print("error")
         }
     }
+    func deviceList() {
+        
+    }
+    func exeDB(){
+//        增：   DBManager.shareInstance().add(Device(pid: 2, name: "清澈", height: 1.75));
+        
+        //删：   DBManager.shareInstance().deleteData(Device(pid: 1, name: nil, height: nil));
+        
+        //改：   DBManager.shareInstance().update(Device(pid: 2, name: "清幽", height: 1.80));
+        
+        //保证线程安全: 增+查
+        //      PersonManager.shareInstance().safeaddPerson(Device(pid: 2, name: "清泠", height: 1.80));
+        
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (index, element): (Int, Device) in arr.enumerate(){
+            print("Device:\(element.address!)", terminator: "");
+        }
+
+    }
 }

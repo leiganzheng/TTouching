@@ -42,7 +42,7 @@ class DBManager: NSObject {
         //打开数据库
         if dbBase.open(){
             
-            let createSql:String = "CREATE TABLE IF NOT EXISTS T_Person (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pid integer,name TEXT,height REAL)"
+            let createSql:String = "CREATE TABLE IF NOT EXISTS T_Device (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, pid integer,name TEXT,height REAL)"
             
             if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
                 
@@ -61,16 +61,16 @@ class DBManager: NSObject {
     
     
     // MARK: >> 增
-    func addPerson(p:Device) {
+    func add(d:Device) {
         
         dbBase.open();
         
-        let arr:[AnyObject] = [p.pid!,p.name!,p.height!];
+        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
         
-        if !self.dbBase.executeUpdate("insert into T_Person (pid ,name, height) values (?, ?, ?)", withArgumentsInArray: arr) {
+        if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?, ?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
-                print("添加1条数据成功！: \(p.pid)")
+                print("添加1条数据成功！: \(d.address)")
 
         }
         
@@ -79,14 +79,14 @@ class DBManager: NSObject {
     
     
     // MARK: >> 删
-    func deletePerson(p:Device) {
+    func deleteData(d:Device) {
         
         dbBase.open();
         
-        if !self.dbBase.executeUpdate("delete from T_Person where pid = (?)", withArgumentsInArray: [p.pid!]) {
+        if !self.dbBase.executeUpdate("delete from T_Device where pid = (?)", withArgumentsInArray: [d.address!]) {
             print("删除1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
-            print("删除1条数据成功！: \(p.pid)")
+            print("删除1条数据成功！: \(d.address)")
             
         }
         dbBase.close();
@@ -95,16 +95,16 @@ class DBManager: NSObject {
     }
     
     // MARK: >> 改
-    func updatePerson(p:Device) {
+    func update(d:Device) {
         dbBase.open();
 
-        let arr:[AnyObject] = [p.name!,p.height!,p.pid!];
+        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
   
         
-        if !self.dbBase .executeUpdate("update T_Person set name = (?), height = (?) where pid = (?)", withArgumentsInArray:arr) {
+        if !self.dbBase .executeUpdate("update T_Device set dev_type = (?), work_status = (?) where address = (?)", withArgumentsInArray:arr) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
-            print("修改1条数据成功！: \(p.pid)")
+            print("修改1条数据成功！: \(d.address)")
             
         }
         dbBase.close();
@@ -112,19 +112,27 @@ class DBManager: NSObject {
     }
     
     // MARK: >> 查
-    func selectPersons() -> Array<Device> {
+    func selectDatas() -> Array<Device> {
         dbBase.open();
-        var persons=[Device]()
+        var devices=[Device]()
         
-            if let rs = dbBase.executeQuery("select pid, name, height from T_Person", withArgumentsInArray: nil) {
+            if let rs = dbBase.executeQuery("select address from T_Device", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let pid:NSNumber = NSNumber(int:rs.intForColumn("pid"))
-                    let name:String = rs.stringForColumn("name") as String
-                    let height:Double = rs.doubleForColumn("height") as Double
+                    let address:String = rs.stringForColumn("address")
+                    let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                    let work_status:Int = Int(rs.intForColumn("work_status"))
                     
-                    let p:Device = Device(pid: pid, name: name, height: height)
-                    persons.append(p)
+                    let dev_name:String = rs.stringForColumn("dev_name")
+                    let dev_status:Int = Int(rs.intForColumn("dev_status"))
+                    let dev_area:String = rs.stringForColumn("dev_area")
+                    
+                    let belong_area:String = rs.stringForColumn("belong_area")
+                    let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
+                    let icon_url:String = rs.stringForColumn("icon_url")
+                    
+                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+                    devices.append(d)
                 }
             } else {
                 
@@ -133,7 +141,7 @@ class DBManager: NSObject {
             }
         dbBase.close();
 
-        return persons
+        return devices
         
     }
 
@@ -142,7 +150,7 @@ class DBManager: NSObject {
     // TODO: 示例-增,查
     //FMDatabaseQueue这么设计的目的是让我们避免发生并发访问数据库的问题，因为对数据库的访问可能是随机的（在任何时候）、不同线程间（不同的网络回调等）的请求。内置一个Serial队列后，FMDatabaseQueue就变成线程安全了，所有的数据库访问都是同步执行，而且这比使用@synchronized或NSLock要高效得多。
     
-    func safeaddPerson(p:Device){
+    func safeadd(d:Device){
         
         // 创建，最好放在一个单例的类中
         let queue:FMDatabaseQueue = FMDatabaseQueue(path: self.dbPath)
@@ -151,23 +159,42 @@ class DBManager: NSObject {
             
             //You can do something in here...
             db.open();
+            let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
             
-            //增
-            let arr:[AnyObject] = [p.pid!,p.name!,p.height!];
-    
-            if !self.dbBase.executeUpdate("insert into T_Person (pid ,name, height) values (?, ?, ?)", withArgumentsInArray: arr) {
+            if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?, ?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(db.lastErrorMessage())")
             }else{
-                print("添加1条数据成功！: \(p.pid)")
+                print("添加1条数据成功！: \(d.address)")
                 
             }
+
+//            //增
+//            let arr:[AnyObject] = [p.pid!,p.name!,p.height!];
+//    
+//            if !self.dbBase.executeUpdate("insert into T_Device (pid ,name, height) values (?, ?, ?)", withArgumentsInArray: arr) {
+//                print("添加1条数据失败！: \(db.lastErrorMessage())")
+//            }else{
+//                print("添加1条数据成功！: \(p.pid)")
+//                
+//            }
             //查
-            if let rs = db.executeQuery("select pid, name, height from T_Person", withArgumentsInArray: nil) {
+            if let rs = db.executeQuery("select address from T_Device", withArgumentsInArray: nil) {
                 while rs.next() {
-                    let pid:Int32 = rs.intForColumn("pid") as Int32
-                    let name:String = rs.stringForColumn("name") as String
-                    let height:Double = rs.doubleForColumn("height") as Double
-                    print("pid:\(pid),name:\(name)", terminator: "");
+                    let address:String = rs.stringForColumn("address")
+                    let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                    let work_status:Int = Int(rs.intForColumn("work_status"))
+                    
+                    let dev_name:String = rs.stringForColumn("dev_name")
+                    let dev_status:Int = Int(rs.intForColumn("dev_status"))
+                    let dev_area:String = rs.stringForColumn("dev_area")
+                    
+                    let belong_area:String = rs.stringForColumn("belong_area")
+                    let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
+                    let icon_url:String = rs.stringForColumn("icon_url")
+                    
+                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+
+                    print("address:\(d.address),name:\(d.dev_name)", terminator: "");
                 }
             } else {
                 print("查询失败 failed: \(db.lastErrorMessage())")
