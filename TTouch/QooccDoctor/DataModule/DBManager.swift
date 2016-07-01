@@ -63,7 +63,7 @@ class DBManager: NSObject {
         //打开数据库
         if dbBase.open(){
             
-            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT,dev_type INTEGER, work_status INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);",name) as String
+            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT INTEGER NOT NULL PRIMARY KEY ,dev_type INTEGER, work_status INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);",name) as String
             
             if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
                 

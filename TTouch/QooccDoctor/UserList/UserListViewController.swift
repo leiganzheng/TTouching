@@ -18,8 +18,9 @@ import ReactiveCocoa
 class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var dataArray: NSMutableArray!
-    var titles: NSArray!
-    var icons: NSArray!
+    var data: NSMutableArray = NSMutableArray()
+//    var titles: NSArray!
+//    var icons: NSArray!
     var flags: NSMutableArray!
     var tempButton:UIButton?
     private var tableViewController: UITableViewController!
@@ -40,10 +41,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         QNTool.addInteractive(self.navigationController)
         
         //数据
-        self.dataArray = NSMutableArray()
-        self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
-        self.flags = [false,false,false,false,false,false,false,false]
-        self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
+       
+//        self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
+//        self.flags = [false,false,false,false,false,false,false,false]
+//        self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
 
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         self.myTableView?.delegate = self
@@ -104,6 +105,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         leftBarButton.addSubview(searchButton1)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         self.customNavView()
+        self.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,7 +125,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles.count
+        return self.data.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -134,14 +136,13 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             cell.selectionStyle = UITableViewCellSelectionStyle.Default
             QNTool.configTableViewCellDefault(cell)
         }
-        let title = self.titles[indexPath.row] as! String
-        let icon = self.icons[indexPath.row] as! String
-        cell.name.text = title
+        let d = self.data[indexPath.row] as! Device
+        cell.name.text = d.dev_name!
         
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
-        logoButton.setImage(UIImage(named: icon), forState: UIControlState.Normal)
+        logoButton.setImage(UIImage(named: d.icon_url!), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            self?.tempButton = input as! UIButton
+            self?.tempButton = input as? UIButton
             let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
             actionSheet.addButtonWithTitle("从手机相册选择")
             actionSheet.addButtonWithTitle("拍照")
@@ -214,6 +215,24 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
 
     //MARK:- private method
+    func fetchData(){
+        self.dataArray = NSMutableArray()
+        self.flags = NSMutableArray()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 1 || element.dev_type == 2 || element.dev_type == 100 {
+                self.data.addObject(element)
+                self.flags.addObject(false)
+            }
+            
+            print("Device:\(element.address!)", terminator: "");
+        }
+        self.myTableView.reloadData()
+        
+    }
+
     // 压缩图片
     private func imageWithImageSimple(image: UIImage, scaledSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(scaledSize)

@@ -148,11 +148,24 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let d = Device(address: "0", dev_type: 1, work_status: 31, dev_name: "总控设备", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_ 1ch-Dimmer_icon")
         //六情景
         let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+         let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_information_icon")
         //创建表
         DBManager.shareInstance().createTable("T_Device")
-        //增：
-        DBManager.shareInstance().add(d);
-        DBManager.shareInstance().add(sixD);
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+//        for (index, element): (Int, Device) in arr.enumerate(){
+//            print("Device:\(element.address!)", terminator: "");
+//        }
+        if arr.count>0 {
+            
+        }else{
+            //增：
+            DBManager.shareInstance().add(d);
+            DBManager.shareInstance().add(sixD);
+            DBManager.shareInstance().add(noPattern);
+        }
+       
         
         //删： 
 //        DBManager.shareInstance().deleteData(Device(pid: 1, name: nil, height: nil));
