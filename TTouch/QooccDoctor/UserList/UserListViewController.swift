@@ -217,7 +217,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     //MARK:- private method
     func fetchData(){
         self.dataArray = NSMutableArray()
+        self.data.removeAllObjects()
         self.flags = NSMutableArray()
+        self.flags.removeAllObjects()
         //查
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
 

@@ -15,6 +15,7 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
     var data: NSMutableArray = NSMutableArray()
     var icons: NSArray!
     var flags: NSMutableArray!
+    var VC: UIViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
@@ -70,26 +71,26 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            let vc = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
         case 1:
-            let vc = SixViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = SixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
 
         case 2:
-            let vc = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
 
         case 3:
-            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
 
         case 4:
-            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
         case 5:
-            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
         default:
             break;
         }

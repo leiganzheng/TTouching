@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 
 #import "IQNSArray+Sort.h"
-#import "IQUIScrollView+Additions.h"
 #import "IQUITextFieldView+Additions.h"
 #import "IQUIView+Hierarchy.h"
 #import "IQUIViewController+Additions.h"
@@ -10,6 +9,7 @@
 #import "IQKeyboardManagerConstantsInternal.h"
 #import "IQKeyboardManager.h"
 #import "IQKeyboardReturnKeyHandler.h"
+#import "IQSegmentedNextPrevious.h"
 #import "IQTextView.h"
 #import "IQBarButtonItem.h"
 #import "IQTitleBarButtonItem.h"

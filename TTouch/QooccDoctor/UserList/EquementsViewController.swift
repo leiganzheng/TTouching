@@ -42,6 +42,10 @@ class EquementsViewController: UIViewController,AsyncSocketDelegate,QNIntercepto
         print("Connected to \(host) on port \(p).")
     }
     //MARK:- private method
+    @IBAction func tst(sender: AnyObject) {
+        
+        
+    }
     func fectchData() {
         
         socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())

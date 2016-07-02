@@ -7,14 +7,17 @@
 //
 
 import UIKit
-import Popover
+import ReactiveCocoa
 
-class CutainControViewController: UIViewController {
+class CutainControViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var myCustomTableView: UITableView!
+    var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor =  defaultBackgroundColor
+        self.myCustomTableView.backgroundColor = UIColor.clearColor()
+        self.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,36 +25,70 @@ class CutainControViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func selectePatternAction(sender: AnyObject) {
+
+    //MARK:- UITableViewDelegate or UITableViewDataSource
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 168
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellId = "curtainCell"
+        var cell: UITableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId)
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            //            cell.accessoryType = .DisclosureIndicator
+        }
+        let d = self.data[indexPath.row] as? Device
+        let btn = cell.contentView.viewWithTag(100) as! UIButton
+        btn.setTitle(d?.dev_name!, forState: .Normal)
+        let btn1 = cell.contentView.viewWithTag(101) as! UIButton
+
+        btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+
+            self?.selectedPattern(btn1)
+            return RACSignal.empty()
+           
+            })
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let btn = sender as! UIButton
+    }
+    //MARK:- private method
+    func fetchData(){
+        self.data = NSMutableArray()
+        self.data.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
-        let startPoint = CGPoint(x: btn.frame.origin.x+btn.frame.size.width/2, y: btn.frame.origin.y+btn.frame.size.height)
-        let aView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 180))
-        let popover = Popover()
-        popover.show(aView, point: startPoint)
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 7 {
+                self.data.addObject(element)
+            }
+            
+            print("Device:\(element.address!)", terminator: "");
+        }
+        self.myCustomTableView.reloadData()
         
-//        let width = self.view.frame.width / 4
-//        let aView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: width))
-//        let options = [
-//            .Type(.Up),
-//            .CornerRadius(width / 2),
-//            .AnimationIn(0.3),
-//            .BlackOverlayColor(UIColor.redColor()),
-//            .ArrowSize(CGSizeZero)
-//            ] as [PopoverOption]
-//        let popover = Popover(options: options, showHandler: nil, dismissHandler: nil)
-//        popover.show(aView, fromView: sender as! UIButton)
     }
 
-    /*
-    // MARK: - Navigation
+    func selectedPattern(sender:UIButton) {
+        let vc = DemoTableController(style: .Plain)
+        let popover = FPPopoverController(viewController: vc)
+        popover.contentSize = CGSizeMake(150, 200)
+        popover.tint = FPPopoverWhiteTint
+        popover.alpha = 0.5
+        popover.border = false
+        popover.arrowDirection = FPPopoverArrowDirectionAny
+        popover.presentPopoverFromView(sender)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -1,7 +1,7 @@
 //
 //  IQTitleBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-16 Iftekhar Qurashi.
+// Copyright (c) 2013-15 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,10 @@
 #import "IQKeyboardManagerConstantsInternal.h"
 #import <UIKit/UILabel.h>
 
+#ifndef NSFoundationVersionNumber_iOS_5_1
+    #define NSTextAlignmentCenter UITextAlignmentCenter
+#endif
+
 @implementation IQTitleBarButtonItem
 {
     UIView *_titleView;
@@ -34,23 +38,31 @@
 @synthesize font = _font;
 
 
--(nonnull instancetype)initWithTitle:(nullable NSString *)title
+-(instancetype)initWithFrame:(CGRect)frame title:(NSString *)title
 {
     self = [super init];
     if (self)
     {
-        _titleView = [[UIView alloc] init];
+        _titleView = [[UIView alloc] initWithFrame:frame];
         _titleView.backgroundColor = [UIColor clearColor];
-        _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        _titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.numberOfLines = 0;
-        [_titleLabel setTextColor:[UIColor grayColor]];
+        _titleLabel = [[UILabel alloc] initWithFrame:_titleView.bounds];
+        
+        if (IQ_IS_IOS7_OR_GREATER)
+        {
+            [_titleLabel setTextColor:[UIColor lightGrayColor]];
+        }
+        else
+        {
+            [_titleLabel setTextColor:[UIColor whiteColor]];
+        }
+        
         [_titleLabel setBackgroundColor:[UIColor clearColor]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
-        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        [_titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [self setTitle:title];
-        [self setFont:[UIFont systemFontOfSize:13.0]];
+        [self setFont:[UIFont boldSystemFontOfSize:12.0]];
         [_titleView addSubview:_titleLabel];
         
         self.customView = _titleView;
@@ -62,15 +74,7 @@
 -(void)setFont:(UIFont *)font
 {
     _font = font;
-    
-    if (font)
-    {
-        _titleLabel.font = font;
-    }
-    else
-    {
-        _titleLabel.font = [UIFont systemFontOfSize:13];
-    }
+    [_titleLabel setFont:font];
 }
 
 -(void)setTitle:(NSString *)title

@@ -40,6 +40,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            
             let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
             QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
@@ -151,12 +152,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
           let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
         
-        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: "Manage_2ch-Curtains_icon")
 
         
           let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Dimmers_icon")
         
-          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_3ch-roads_icon")
+          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: "Manage_3ch-roads_icon")
         
           let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_3or6ch-roads_icon")
         //自定义

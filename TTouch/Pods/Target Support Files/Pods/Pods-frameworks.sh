@@ -94,11 +94,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/MGSwipeTableCell.framework"
   install_framework "Pods/MWPhotoBrowser.framework"
   install_framework "Pods/OpenUDID.framework"
-  install_framework "Pods/Popover.framework"
   install_framework "Pods/REMenu.framework"
   install_framework "Pods/Reachability.framework"
   install_framework "Pods/ReactiveCocoa.framework"
-  install_framework "Pods/Result.framework"
   install_framework "Pods/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -112,10 +110,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/MGSwipeTableCell.framework"
   install_framework "Pods/MWPhotoBrowser.framework"
   install_framework "Pods/OpenUDID.framework"
-  install_framework "Pods/Popover.framework"
   install_framework "Pods/REMenu.framework"
   install_framework "Pods/Reachability.framework"
   install_framework "Pods/ReactiveCocoa.framework"
-  install_framework "Pods/Result.framework"
   install_framework "Pods/SDWebImage.framework"
 fi

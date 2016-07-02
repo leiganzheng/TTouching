@@ -47,6 +47,10 @@
 		BB319C281D2644DF0071F443 /* DeviceHideDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C271D2644DF0071F443 /* DeviceHideDB.swift */; };
 		BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C291D2645E30071F443 /* PatternDB.swift */; };
 		BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C2B1D2646770071F443 /* YaoDBModel.swift */; };
+		BB347F811D274D41005CEE95 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F7C1D274D41005CEE95 /* FPPopoverController.m */; };
+		BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F7E1D274D41005CEE95 /* FPPopoverView.m */; };
+		BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F801D274D41005CEE95 /* FPTouchView.m */; };
+		BB347F861D2755A6005CEE95 /* DemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F851D2755A6005CEE95 /* DemoTableController.m */; };
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
@@ -159,6 +163,15 @@
 		BB319C271D2644DF0071F443 /* DeviceHideDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHideDB.swift; sourceTree = "<group>"; };
 		BB319C291D2645E30071F443 /* PatternDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternDB.swift; sourceTree = "<group>"; };
 		BB319C2B1D2646770071F443 /* YaoDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YaoDBModel.swift; sourceTree = "<group>"; };
+		BB347F7A1D274D41005CEE95 /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		BB347F7B1D274D41005CEE95 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		BB347F7C1D274D41005CEE95 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		BB347F7D1D274D41005CEE95 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		BB347F7E1D274D41005CEE95 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		BB347F7F1D274D41005CEE95 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		BB347F801D274D41005CEE95 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		BB347F841D2755A6005CEE95 /* DemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableController.h; sourceTree = "<group>"; };
+		BB347F851D2755A6005CEE95 /* DemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableController.m; sourceTree = "<group>"; };
 		BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDatePickerViewController.swift; path = ../UserList/CustomDatePickerViewController.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -330,6 +343,22 @@
 			path = fmdb;
 			sourceTree = "<group>";
 		};
+		BB347F791D274D41005CEE95 /* FPPopover */ = {
+			isa = PBXGroup;
+			children = (
+				BB347F841D2755A6005CEE95 /* DemoTableController.h */,
+				BB347F851D2755A6005CEE95 /* DemoTableController.m */,
+				BB347F7A1D274D41005CEE95 /* ARCMacros.h */,
+				BB347F7B1D274D41005CEE95 /* FPPopoverController.h */,
+				BB347F7C1D274D41005CEE95 /* FPPopoverController.m */,
+				BB347F7D1D274D41005CEE95 /* FPPopoverView.h */,
+				BB347F7E1D274D41005CEE95 /* FPPopoverView.m */,
+				BB347F7F1D274D41005CEE95 /* FPTouchView.h */,
+				BB347F801D274D41005CEE95 /* FPTouchView.m */,
+			);
+			path = FPPopover;
+			sourceTree = "<group>";
+		};
 		BB3C44E91B465BDB008A1213 = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +450,7 @@
 		BB3C45261B465C46008A1213 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				BB347F791D274D41005CEE95 /* FPPopover */,
 				BB319C141D26077A0071F443 /* fmdb */,
 				BB319C0B1D26014A0071F443 /* SwiftExtensions */,
 				BB6D71A61BE0AF970018AADC /* MBProgressHUD */,
@@ -726,9 +756,12 @@
 			files = (
 				2B40F8C61C1951AD00DD1F31 /* PhotoBroswerViewController.swift in Sources */,
 				BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */,
+				BB347F811D274D41005CEE95 /* FPPopoverController.m in Sources */,
+				BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */,
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
 				BB3C45FA1B465C47008A1213 /* QNTool.swift in Sources */,
+				BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */,
 				71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */,
 				BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */,
 				17E89CC41B4B699200067F28 /* EditInformationViewController.swift in Sources */,
@@ -738,6 +771,7 @@
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
+				BB347F861D2755A6005CEE95 /* DemoTableController.m in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,

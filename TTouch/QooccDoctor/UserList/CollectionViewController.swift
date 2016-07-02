@@ -11,15 +11,12 @@ import ReactiveCocoa
 
 class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
 
-    var titles: NSArray!
-    var icons: NSArray!
+    var data: NSMutableArray!
 
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titles = ["书房","主浴","露台","小孩房","主卧房"]
-        self.icons = ["Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
-
+    
         self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
@@ -28,6 +25,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
+        self.fetchData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +39,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles.count
+        return self.data.count
     }
 
     
@@ -52,13 +50,17 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             //            cell.accessoryType = .DisclosureIndicator
         }
-        cell.textLabel?.text = self.titles[indexPath.row] as? String
-        cell.imageView?.image = UIImage(named: (self.icons[indexPath.row] as? String)!)
+        let d = self.data[indexPath.row] as? Device
+        cell.textLabel?.text = d?.dev_name!
+        
         let searchButton:UIButton = UIButton(type: .Custom)
         searchButton.frame = CGRectMake(0, 0, 40, 40)
         searchButton.setImage(UIImage(named: "Manage_Collect_icon2"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-        
+            if d?.is_favourited == 0 {
+                self?.data.removeObject(d!)
+            }
+            self?.myTableView .reloadData()
         return RACSignal.empty()
         })
         cell.accessoryView = searchButton
@@ -71,5 +73,20 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     //MARK:- private method
-    
+    func fetchData(){
+        self.data = NSMutableArray()
+        self.data.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.is_favourited == 0 {
+                self.data.addObject(element)
+            }
+            
+        }
+        self.myTableView.reloadData()
+        
+    }
+
 }
