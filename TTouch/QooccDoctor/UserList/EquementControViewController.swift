@@ -15,12 +15,13 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     @IBOutlet weak var contentView: UIView!
     
     var customTitle:String?
+    var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
     
     private(set) var  pictureScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
-    var titles: NSArray = ["灯光","窗帘","动作","空调","监视","保全","音乐","影视"]
-    var icons: NSArray = ["Menu_Light_icon2","Menu_Curtain_icon2","Menu_Trigger_icon2","Menu_AirCondition_icon2","Menu_Camera_icon2","Menu_Security_icon2","Menu_Music_icon2","Menu_AV_icon2"]
+    var titles: NSArray = ["未分区域","六情景"]
+    var icons: NSArray = ["Menu_Light_icon2","Menu_Curtain_icon2"]
    
     let width:CGFloat = screenWidth/5
     

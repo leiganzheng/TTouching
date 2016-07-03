@@ -239,7 +239,7 @@
     if(windows.count > 0)
     {
           _parentView=nil;
-        _window = [windows objectAtIndex:0];
+        _window = [windows objectAtIndex:1];
         //keep the first subview
         if(_window.subviews.count > 0)
         {

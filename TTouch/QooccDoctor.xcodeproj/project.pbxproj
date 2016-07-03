@@ -32,6 +32,11 @@
 		71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */; };
 		71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E391D241905000E0A34 /* DoubleLightViewController.swift */; };
 		71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */; };
+		71D76E461D28C20B000E0A34 /* SixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E451D28C20B000E0A34 /* SixTableViewCell.swift */; };
+		71D76E481D28C49C000E0A34 /* CurtainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E471D28C49C000E0A34 /* CurtainTableViewCell.swift */; };
+		71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E491D28C4A5000E0A34 /* SingleTableViewCell.swift */; };
+		71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */; };
+		71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
 		BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */; };
@@ -141,6 +146,11 @@
 		71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigleLightViewController.swift; sourceTree = "<group>"; };
 		71D76E391D241905000E0A34 /* DoubleLightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLightViewController.swift; sourceTree = "<group>"; };
 		71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeOrSixViewController.swift; sourceTree = "<group>"; };
+		71D76E451D28C20B000E0A34 /* SixTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTableViewCell.swift; sourceTree = "<group>"; };
+		71D76E471D28C49C000E0A34 /* CurtainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurtainTableViewCell.swift; sourceTree = "<group>"; };
+		71D76E491D28C4A5000E0A34 /* SingleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTableViewCell.swift; sourceTree = "<group>"; };
+		71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTableViewCell.swift; sourceTree = "<group>"; };
+		71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThressOrSixTableViewCell.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
@@ -302,6 +312,11 @@
 				71D76E371D2418FA000E0A34 /* SigleLightViewController.swift */,
 				71D76E391D241905000E0A34 /* DoubleLightViewController.swift */,
 				71D76E3B1D24191E000E0A34 /* ThreeOrSixViewController.swift */,
+				71D76E451D28C20B000E0A34 /* SixTableViewCell.swift */,
+				71D76E471D28C49C000E0A34 /* CurtainTableViewCell.swift */,
+				71D76E491D28C4A5000E0A34 /* SingleTableViewCell.swift */,
+				71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */,
+				71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */,
 			);
 			path = EquementMannager;
 			sourceTree = "<group>";
@@ -772,6 +787,7 @@
 				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				BB347F861D2755A6005CEE95 /* DemoTableController.m in Sources */,
+				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,
@@ -787,6 +803,7 @@
 				BB319C251D26077A0071F443 /* FMResultSet.m in Sources */,
 				BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
+				71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */,
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
@@ -794,8 +811,11 @@
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
+				71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */,
+				71D76E481D28C49C000E0A34 /* CurtainTableViewCell.swift in Sources */,
 				71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */,
 				71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */,
+				71D76E461D28C20B000E0A34 /* SixTableViewCell.swift in Sources */,
 				BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */,
 				BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */,
 				BB3C45CB1B465C46008A1213 /* LyInputViewController.swift in Sources */,

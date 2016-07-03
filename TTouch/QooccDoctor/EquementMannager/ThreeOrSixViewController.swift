@@ -13,6 +13,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
+     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,14 +41,14 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
-        var cell: UITableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId)
+        var cell: ThressOrSixTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? ThressOrSixTableViewCell
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell = ThressOrSixTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             //            cell.accessoryType = .DisclosureIndicator
         }
         let d = self.data[indexPath.row] as? Device
        
-        let btn1 = cell.contentView.viewWithTag(101) as! UIButton
+        let btn1 = cell.patern
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             

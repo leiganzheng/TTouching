@@ -57,8 +57,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         
         self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
         self.leftVC.view.frame = CGRectMake(-screenWidth,Y, Width,screenHeight)
-        print(self.leftVC.view)
-        print(self.leftVC.myTableView)
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.window?.addSubview(self.leftVC.view)
         }
@@ -169,7 +167,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+            vc.flag = "0"
+            self?.navigationController?.pushViewController(vc, animated: true)
             self?.hidesBottomBarWhenPushed = true
             return RACSignal.empty()
             })

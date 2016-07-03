@@ -12,6 +12,7 @@ import ReactiveCocoa
 class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCustomTableView: UITableView!
+     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +41,42 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
-        var cell: UITableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId)
+        var cell: SingleTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? SingleTableViewCell
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            //            cell.accessoryType = .DisclosureIndicator
+            cell = SingleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         let d = self.data[indexPath.row] as? Device
-        
-        let btn1 = cell.contentView.viewWithTag(101) as! UIButton
+        let btn = cell.name
+        btn.setTitle(d?.dev_name!, forState: .Normal)
+        let gesture = UILongPressGestureRecognizer()
+        btn.addGestureRecognizer(gesture)
+        gesture.rac_gestureSignal().subscribeNext { (obj) in
+            let title = "修改名字"
+            let cancelButtonTitle = "取消"
+            let otherButtonTitle = "确定"
+            
+            let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+            
+            
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
+                
+            }
+            let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
+                let textField = (alertController.textFields?.first)! as UITextField
+                btn.setTitle(textField.text, forState: .Normal)
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(otherAction)
+            self.presentViewController(alertController, animated: true) {
+                
+            }
+            
+        }
+
+        let btn1 = cell.partern
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
@@ -66,15 +95,39 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
-        //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-        
-        for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 8 {
-                self.data.addObject(element)
+        if self.flag == "1"{
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            
+            for (_, element): (Int, Device) in arr.enumerate(){
+                if element.dev_type == 8 {
+                    self.data.addObject(element)
+                }
+                
+            }
+
+        }else if self.flag == "0"{
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            
+            for (_, element): (Int, Device) in arr.enumerate(){
+                if element.dev_area == "45774" {
+                    self.data.addObject(element)
+                }
+                
+            }
+
+        }else if self.flag == "2"{
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            
+            for (_, element): (Int, Device) in arr.enumerate(){
+                if element.dev_area == "45774" {
+                    self.data.addObject(element)
+                }
+                
             }
             
-            print("Device:\(element.address!)", terminator: "");
         }
         self.myCustomTableView.reloadData()
         

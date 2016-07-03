@@ -40,13 +40,41 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
-        var cell: UITableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            //            cell.accessoryType = .DisclosureIndicator
+        var cell: SixTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? SixTableViewCell
+        if cell == nil{
+            cell = SixTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         let d = self.data[indexPath.row] as? Device
-        
+        let btn = cell.name
+        btn.setTitle(d?.dev_name!, forState: .Normal)
+        let gesture = UILongPressGestureRecognizer()
+        btn.addGestureRecognizer(gesture)
+        gesture.rac_gestureSignal().subscribeNext { (obj) in
+            let title = "修改名字"
+            let cancelButtonTitle = "取消"
+            let otherButtonTitle = "确定"
+            
+            let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+            
+            
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
+                
+            }
+            let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
+                let textField = (alertController.textFields?.first)! as UITextField
+                btn.setTitle(textField.text, forState: .Normal)
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(otherAction)
+            self.presentViewController(alertController, animated: true) {
+                
+            }
+            
+        }
+
         return cell
     }
     
