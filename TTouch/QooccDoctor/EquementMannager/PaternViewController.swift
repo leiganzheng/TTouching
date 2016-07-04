@@ -38,7 +38,7 @@ class PaternViewController: UIViewController , UITableViewDataSource, UITableVie
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 72
+        return 44
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

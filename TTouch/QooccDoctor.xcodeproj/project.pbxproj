@@ -55,7 +55,6 @@
 		BB347F811D274D41005CEE95 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F7C1D274D41005CEE95 /* FPPopoverController.m */; };
 		BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F7E1D274D41005CEE95 /* FPPopoverView.m */; };
 		BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F801D274D41005CEE95 /* FPTouchView.m */; };
-		BB347F861D2755A6005CEE95 /* DemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F851D2755A6005CEE95 /* DemoTableController.m */; };
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
@@ -183,8 +182,6 @@
 		BB347F7E1D274D41005CEE95 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
 		BB347F7F1D274D41005CEE95 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		BB347F801D274D41005CEE95 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
-		BB347F841D2755A6005CEE95 /* DemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableController.h; sourceTree = "<group>"; };
-		BB347F851D2755A6005CEE95 /* DemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableController.m; sourceTree = "<group>"; };
 		BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDatePickerViewController.swift; path = ../UserList/CustomDatePickerViewController.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -370,8 +367,6 @@
 		BB347F791D274D41005CEE95 /* FPPopover */ = {
 			isa = PBXGroup;
 			children = (
-				BB347F841D2755A6005CEE95 /* DemoTableController.h */,
-				BB347F851D2755A6005CEE95 /* DemoTableController.m */,
 				BB347F7A1D274D41005CEE95 /* ARCMacros.h */,
 				BB347F7B1D274D41005CEE95 /* FPPopoverController.h */,
 				BB347F7C1D274D41005CEE95 /* FPPopoverController.m */,
@@ -796,7 +791,6 @@
 				BB3C465D1B4675A5008A1213 /* LoginViewController.swift in Sources */,
 				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
-				BB347F861D2755A6005CEE95 /* DemoTableController.m in Sources */,
 				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,

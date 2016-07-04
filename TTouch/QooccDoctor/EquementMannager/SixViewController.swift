@@ -100,14 +100,5 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         
     }
     
-    func selectedPattern(sender:UIButton) {
-        let vc = DemoTableController(style: .Plain)
-        let popover = FPPopoverController(viewController: vc)
-        popover.contentSize = CGSizeMake(150, 200)
-        popover.tint = FPPopoverWhiteTint
-        popover.alpha = 0.5
-        popover.border = false
-        popover.arrowDirection = FPPopoverArrowDirectionAny
-        popover.presentPopoverFromView(sender)
-    }
+    
 }

@@ -17,10 +17,13 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
+    var sixVC:SixPaternViewController?
+    var unAeraVC:UnAeraViewController?
     
     private(set) var  pictureScrollView:UIScrollView?
     private(set) var  contentScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
+    private(set) var  contentCurrent:NSInteger = 0
     var titles: NSArray = ["未分区域","六情景"]
     var icons: NSArray = ["Menu_Light_icon2","Menu_Curtain_icon2"]
    
@@ -50,9 +53,15 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     }
     //MARK:- Delegate or DataSource
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        self.advertisementCurrent = NSInteger(scrollView.contentOffset.x / width)
-        self.title = self.titles[self.advertisementCurrent] as? String
-        self.contentView.backgroundColor = UIColor(red: (100*CGFloat(self.advertisementCurrent))/255, green: 100/255, blue: 100/255, alpha: 1.0)
+        if scrollView == self.pictureScrollView{
+            self.advertisementCurrent = NSInteger(scrollView.contentOffset.x / width)
+            self.title = self.titles[self.advertisementCurrent] as? String
+            self.contentScrollView?.setContentOffset(CGPointMake(CGFloat(self.advertisementCurrent)*screenWidth, 0), animated: true)
+        }
+        if scrollView == self.contentScrollView {
+            self.contentCurrent = NSInteger(scrollView.contentOffset.x / screenWidth)
+            self.pictureScrollView?.setContentOffset(CGPointMake(CGFloat(self.contentCurrent)*width, 0), animated: true)
+        }
     }
 
     //MARK: private method
@@ -73,18 +82,18 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         self.contentScrollView?.backgroundColor = defaultBackgroundColor
         self.contentScrollView?.contentSize = CGSizeMake( screenWidth*CGFloat(self.icons.count), 0)
         var index = 0
-        for  iconN in self.icons {
+        for  _ in self.icons {
             index = index+1
-            if index == 0 {
-                let vc = UnAeraViewController.CreateFromStoryboard("Main")
-                vc.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
-                self.contentScrollView!.addSubview(vc.view)
-            }
             if index == 1 {
-                let vc = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
-                vc!.flag = self.flag
-                vc!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
-                self.contentScrollView!.addSubview(vc!.view)
+                self.unAeraVC = UnAeraViewController.CreateFromStoryboard("Main") as? UnAeraViewController
+                self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
+                self.contentScrollView!.addSubview(self.unAeraVC!.view)
+            }
+            if index == 2 {
+                self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
+                self.sixVC!.flag = self.flag
+                self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
+                self.contentScrollView!.addSubview(self.sixVC!.view)
 
             }
             
@@ -115,6 +124,12 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             button.frame = CGRectMake(width * CGFloat(index-1),0 ,width, (self.pictureScrollView?.frame.size.height)!)
             button.backgroundColor = UIColor.clearColor()
             button.setImage(UIImage(named:iconN as! String), forState: .Normal)
+            button.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+                    
+                
+                    return RACSignal.empty()
+                    })
+
             self.pictureScrollView!.addSubview(button)
           
         }
