@@ -111,7 +111,8 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let popover = FPPopoverController(viewController: vc)
         vc.bock = {(device) -> Void in
             //修改数据库
-            NSLog("chenggongxuanzhe")
+//            let d = device as? Device
+//            DBManager.shareInstance().update((d?.dev_area)!, type: (d?.dev_type)!)
             popover.dismissPopoverAnimated(true)
         }
         
