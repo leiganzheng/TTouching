@@ -10,8 +10,10 @@ import UIKit
 
 class ThressOrSixTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var isopen: UIButton!
     @IBOutlet weak var name: UIButton!
     @IBOutlet weak var patern: UIButton!
+    @IBOutlet weak var paternLB: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,7 +21,7 @@ class ThressOrSixTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        QNTool.configViewLayerFrame(self.paternLB)
         // Configure the view for the selected state
     }
 

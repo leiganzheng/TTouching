@@ -128,7 +128,34 @@ class DBManager: NSObject {
         dbBase.close();
 
     }
-    
+    // MARK: >> 改
+    func updateName(name:String,type:String) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update T_Device set dev_name = (?) WHERE address = ? ", name,type) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+        dbBase.close();
+        
+    }
+    // MARK: >> 改
+    func updateIcon(image:NSData,type:String) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update T_Device set icon_url = (?) WHERE address = ? ", image,type) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+        dbBase.close();
+        
+    }
+
+
     // MARK: >> 查
     func selectDatas() -> Array<Device> {
         dbBase.open();
@@ -147,7 +174,7 @@ class DBManager: NSObject {
                     
                     let belong_area:String = rs.stringForColumn("belong_area")
                     let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
-                    let icon_url:String = rs.stringForColumn("icon_url")
+                    let icon_url:NSData = rs.dataForColumn("icon_url")
                     
                     let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
                     devices.append(d)
@@ -180,7 +207,7 @@ class DBManager: NSObject {
                 
                 let belong_area:String = rs.stringForColumn("belong_area")
                 let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
-                let icon_url:String = rs.stringForColumn("icon_url")
+                let icon_url:NSData = rs.dataForColumn("icon_url")
                 
                 let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
                 devices.append(d)
@@ -242,7 +269,7 @@ class DBManager: NSObject {
                     
                     let belong_area:String = rs.stringForColumn("belong_area")
                     let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
-                    let icon_url:String = rs.stringForColumn("icon_url")
+                    let icon_url:NSData = rs.dataForColumn("icon_url")
                     
                     let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
 

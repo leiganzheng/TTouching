@@ -23,8 +23,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         //列表创建
         self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
         self.tableViewController.refreshControl = UIRefreshControl()
-        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ (input) -> Void in
-            
+        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+            self?.fectchData()
             })
         self.myTableView.frame = CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 48)
         self.myTableView?.delegate = self
@@ -48,7 +48,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.view.addSubview(searchButton)
         
         self.flags = [false,true,false]
-//        self.fectchData()
+       self.tableViewController.refreshControl?.beginRefreshing()
+        self.fectchData()
         self.exeDB()
 
     }
@@ -125,17 +126,18 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     func fectchData() {
 //        QNNetworkTool.scanLocationNet("") { (res) in
 //            NSLog(res as! String)
+//            self.tableViewController.refreshControl?.endRefreshing()
 //        }
         if (sock == nil){
             sock = AsyncUdpSocket(delegate: self)
         }
         do{
 //            try sock!.bindToPort(33632)
-//            try sock!.enableBroadcast(true) // Also tried without this line
+            try sock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
             sock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 1, tag: 1)
-            sock!.receiveWithTimeout(10,tag: 0)
+            sock!.receiveWithTimeout(1,tag: 0)
         } catch {
             print("error")
         }
@@ -146,24 +148,32 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     func exeDB(){
 
         //总控
-        let d = Device(address: "0", dev_type: 1, work_status: 31, dev_name: "总控设备", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_ 1ch-Dimmer_icon")
+        let image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)
+        let d = Device(address: "0", dev_type: 1, work_status: 31, dev_name: "总控设备", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: image)
         //六情景
-        let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        let image1 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
+        let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
         
-          let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Curtains_icon")
+        let image2 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
+          let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image2)
         
-        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: "Manage_2ch-Curtains_icon")
+        let image3 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
+        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: image3)
 
+        let image4 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+          let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image4)
         
-          let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_2ch-Dimmers_icon")
+        let image5 = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)
+          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: image5)
         
-          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: "Manage_3ch-roads_icon")
+        let image6 = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)
+          let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image6)
         
-          let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_3or6ch-roads_icon")
-        //自定义
-          let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: "Manage_6-scene_icon")
+        let image7 = UIImageJPEGRepresentation(UIImage(named:"Manage_information_icon" )!, 1)
+          let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image7)
         
-         let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: "Manage_information_icon")
+        let image8 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+         let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: image8)
         //创建表
         DBManager.shareInstance().createTable("T_Device")
         //查

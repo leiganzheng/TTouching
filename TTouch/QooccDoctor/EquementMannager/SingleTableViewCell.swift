@@ -13,6 +13,7 @@ class SingleTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UIButton!
     @IBOutlet weak var partern: UIButton!
     @IBOutlet weak var isOpen: UIButton!
+    @IBOutlet weak var parternLB: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +21,7 @@ class SingleTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        QNTool.configViewLayerFrame(self.parternLB)
         // Configure the view for the selected state
     }
 

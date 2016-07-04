@@ -58,7 +58,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         cell.contentView.addSubview(logoButton)
         
         let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
-        logoButton1.setImage(UIImage(named: d.icon_url!), forState: UIControlState.Normal)
+        logoButton1.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
         
         cell.contentView.addSubview(logoButton1)
         

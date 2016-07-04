@@ -19,8 +19,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     private var dataArray: NSMutableArray!
     var data: NSMutableArray = NSMutableArray()
-//    var titles: NSArray!
-//    var icons: NSArray!
+
     var flags: NSMutableArray!
     var tempButton:UIButton?
     private var tableViewController: UITableViewController!
@@ -132,13 +131,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         if cell == nil {
             cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! UserTableViewCell
             cell.selectionStyle = UITableViewCellSelectionStyle.Default
-            QNTool.configTableViewCellDefault(cell)
         }
         let d = self.data[indexPath.row] as! Device
         cell.name.text = d.dev_name!
         
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
-        logoButton.setImage(UIImage(named: d.icon_url!), forState: UIControlState.Normal)
+
+        
+        logoButton.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.tempButton = input as? UIButton
             let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
@@ -205,8 +205,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         // 存储图片
         let headImage = self.imageWithImageSimple(image, scaledSize: CGSizeMake(image.size.width, image.size.height))
-        //        let headImageData = UIImageJPEGRepresentation(headImage, 0.125)
+            let headImageData = UIImageJPEGRepresentation(headImage, 0.125)
         //        self.uploadUserFace(headImageData)
+        let cell = self.tempButton?.superview?.superview as! UITableViewCell
+        let index = self.myTableView.indexPathForCell(cell)
+        let d = self.data[index!.row] as! Device
+        DBManager.shareInstance().updateIcon(headImageData!, type: d.address!)
         self.tempButton?.setImage(headImage, forState: .Normal)
         self.picker?.dismissViewControllerAnimated(true, completion: nil)
     }

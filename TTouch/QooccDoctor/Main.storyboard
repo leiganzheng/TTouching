@@ -1607,7 +1607,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mb-7Y-KTj">
-                                                    <rect key="frame" x="219" y="13" width="90" height="17"/>
+                                                    <rect key="frame" x="278" y="14" width="22" height="17"/>
                                                     <state key="normal" image="Menu_Curtain_icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1622,12 +1622,19 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xV-yh-9pq">
+                                                    <rect key="frame" x="204" y="12" width="72" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="UYk-Hy-gNK" id="bxJ-CY-CHW"/>
                                             <outlet property="name" destination="zsk-5Q-02U" id="vHA-db-IRh"/>
                                             <outlet property="partern" destination="1Mb-7Y-KTj" id="xkb-OC-0Y8"/>
+                                            <outlet property="paternLB" destination="5xV-yh-9pq" id="q64-hD-4dp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1652,7 +1659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egh-ya-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="249" y="4497"/>
+            <point key="canvasLocation" x="208" y="4462"/>
         </scene>
         <!--Light View Controller-->
         <scene sceneID="rnP-2W-PhP">
@@ -1832,12 +1839,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHt-93-aJT">
-                                                    <rect key="frame" x="215" y="13" width="90" height="17"/>
-                                                    <state key="normal" image="Menu_Curtain_icon">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c29-oo-Uws">
                                                     <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -1864,12 +1865,25 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zck-A4-iC2">
+                                                    <rect key="frame" x="281" y="14" width="22" height="17"/>
+                                                    <state key="normal" image="Menu_Curtain_icon">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95u-h9-My4">
+                                                    <rect key="frame" x="207" y="12" width="72" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="c29-oo-Uws" id="bRP-zb-vHM"/>
                                             <outlet property="name" destination="S6i-sd-2IG" id="MSK-lA-8sS"/>
-                                            <outlet property="partern" destination="eHt-93-aJT" id="Mj7-33-uZg"/>
+                                            <outlet property="partern" destination="zck-A4-iC2" id="0t1-Su-Igo"/>
+                                            <outlet property="parternLB" destination="95u-h9-My4" id="hvk-Nv-HWl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2510,7 +2524,7 @@
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </slider>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-5L-dkt">
-                                                    <rect key="frame" x="215" y="13" width="90" height="17"/>
+                                                    <rect key="frame" x="283" y="13" width="22" height="17"/>
                                                     <state key="normal" image="Menu_Curtain_icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -2525,12 +2539,19 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS4-cT-iYF">
+                                                    <rect key="frame" x="203" y="12" width="72" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="gdf-eq-Vth" id="J94-XA-Cn8"/>
                                             <outlet property="name" destination="tED-bQ-QCj" id="njI-pd-CMh"/>
                                             <outlet property="partern" destination="uw5-5L-dkt" id="1Ah-7f-3uj"/>
+                                            <outlet property="paternLB" destination="fS4-cT-iYF" id="xXD-rK-DbJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2674,7 +2695,7 @@
                                                     <rect key="frame" x="258" y="113" width="51" height="31"/>
                                                 </switch>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozP-HY-C1L">
-                                                    <rect key="frame" x="222" y="5" width="90" height="17"/>
+                                                    <rect key="frame" x="285" y="5" width="27" height="17"/>
                                                     <state key="normal" image="Menu_Curtain_icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -2686,11 +2707,19 @@
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-xO-zYm">
+                                                    <rect key="frame" x="211" y="3" width="72" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="isopen" destination="YvB-ou-Dou" id="K2x-Sk-Tau"/>
                                             <outlet property="name" destination="YKT-Pq-nDu" id="Qbq-xD-khd"/>
-                                            <outlet property="patern" destination="ozP-HY-C1L" id="zLk-iF-1IN"/>
+                                            <outlet property="patern" destination="ozP-HY-C1L" id="RZb-wF-2Zt"/>
+                                            <outlet property="paternLB" destination="Q18-xO-zYm" id="uhc-F2-EC0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

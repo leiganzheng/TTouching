@@ -43,10 +43,12 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         var cell: ThressOrSixTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? ThressOrSixTableViewCell
         if cell == nil {
             cell = ThressOrSixTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            //            cell.accessoryType = .DisclosureIndicator
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
         let d = self.data[indexPath.row] as? Device
-       
+        let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
+        cell.isopen.backgroundColor = color
+
         let btn1 = cell.patern
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -56,6 +58,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             vc.bock = {(device) -> Void in
                 //修改数据库
                 let seltectd = device as? Device
+                 cell.paternLB.text = seltectd?.dev_name
                 DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
                 popover.dismissPopoverAnimated(true)
             }

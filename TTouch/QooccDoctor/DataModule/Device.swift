@@ -18,13 +18,13 @@ class Device: NSObject {
     var dev_area:String?
     var belong_area:String?
     var is_favourited:Int?
-    var icon_url:String?
+    var icon_url:NSData?
 
     
     init(address:String?,dev_type:Int?,work_status:Int?,dev_name:String?,dev_status:Int?,dev_area:String?,
         belong_area:String?,
         is_favourited:Int?,
-        icon_url:String?){
+        icon_url:NSData?){
         
         self.address = address
         self.dev_type = dev_type

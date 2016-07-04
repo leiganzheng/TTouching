@@ -715,8 +715,8 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
             //            try sock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-            udpsock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 5000, tag: 1)
-            udpsock!.receiveWithTimeout(10,tag: 0)
+            udpsock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 1, tag: 1)
+            udpsock!.receiveWithTimeout(1,tag: 0)
         } catch {
             print("error")
         }

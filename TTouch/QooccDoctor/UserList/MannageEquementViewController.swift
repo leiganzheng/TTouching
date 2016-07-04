@@ -48,6 +48,8 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+//            cell.accessoryType = .DisclosureIndicator
+            
         }
         let d = self.data[indexPath.row] as! Device
         
@@ -55,13 +57,22 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
         logoButton.setTitle(d.dev_name!, forState: .Normal)
         logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        logoButton.titleLabel?.textAlignment = .Left
+        logoButton.contentHorizontalAlignment = .Left
+        logoButton.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0)
         cell.contentView.addSubview(logoButton)
         
         let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
-        logoButton1.setImage(UIImage(named: d.icon_url!), forState: UIControlState.Normal)
+        logoButton1.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
       
         cell.contentView.addSubview(logoButton1)
-        
+        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
+        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            
+            return RACSignal.empty()
+            })
+        cell.contentView.addSubview(searchButton)
         return cell
     }
     

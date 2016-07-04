@@ -43,8 +43,12 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         var cell: SingleTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? SingleTableViewCell
         if cell == nil {
             cell = SingleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
         let d = self.data[indexPath.row] as? Device
+        let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
+        cell.isOpen.backgroundColor = color
+
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
         let gesture = UILongPressGestureRecognizer()
@@ -63,6 +67,10 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
+                
+                if textField.text != nil {
+                    DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
+                }
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 
@@ -83,7 +91,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             let popover = FPPopoverController(viewController: vc)
             vc.bock = {(device) -> Void in
                 //修改数据库
+               
                 let seltectd = device as? Device
+                 cell.parternLB.text = seltectd?.dev_name
                 DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
                 popover.dismissPopoverAnimated(true)
             }
