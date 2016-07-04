@@ -110,11 +110,16 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     }
     
     func selectedPattern(sender:UIButton) {
-        let vc = DemoTableController(style: .Plain)
+        let vc = PaternViewController()
         let popover = FPPopoverController(viewController: vc)
+        vc.bock = {(device) -> Void in
+            //修改数据库
+            NSLog("chenggongxuanzhe")
+            popover.dismissPopoverAnimated(true)
+        }
+        
         popover.contentSize = CGSizeMake(150, 200)
         popover.tint = FPPopoverWhiteTint
-        popover.alpha = 0.5
         popover.border = false
         popover.arrowDirection = FPPopoverArrowDirectionAny
         popover.presentPopoverFromView(sender)

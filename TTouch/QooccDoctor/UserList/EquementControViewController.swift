@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 
-class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInterceptorProtocol {
+class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInterceptorProtocol{
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -19,6 +19,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     var equementType: EquementSign?
     
     private(set) var  pictureScrollView:UIScrollView?
+    private(set) var  contentScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
     var titles: NSArray = ["未分区域","六情景"]
     var icons: NSArray = ["Menu_Light_icon2","Menu_Curtain_icon2"]
@@ -53,29 +54,39 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         self.title = self.titles[self.advertisementCurrent] as? String
         self.contentView.backgroundColor = UIColor(red: (100*CGFloat(self.advertisementCurrent))/255, green: 100/255, blue: 100/255, alpha: 1.0)
     }
+
     //MARK: private method
     private func buildUI(){
-        if self.equementType == .Light {
-            let vc = LightViewController.CreateFromStoryboard("Main")
-            self.contentView.addSubview(vc.view)
-            
-        }else if(self.equementType == .Curtain){
-            let vc = CurtainViewController.CreateFromStoryboard("Main")
-            self.contentView.addSubview(vc.view)
-            
-        }else if(self.equementType == .Action){
-           
-        }else if(self.equementType == .Air){
-            
-        }else if(self.equementType == .Controller){
-            let vc = SecurityViewController.CreateFromStoryboard("Main")
-            self.contentView.addSubview(vc.view)
+        
+        
+        //UIScrollView
+        self.contentScrollView = UIScrollView(frame: CGRectMake(0,0, screenWidth, screenHeight-self.headerView.frame.size.height))
+        self.contentScrollView!.bounces = false
+        self.contentScrollView!.pagingEnabled = true
+        self.contentScrollView!.delegate = self
+        self.contentScrollView!.showsVerticalScrollIndicator = false
+        self.contentScrollView!.showsHorizontalScrollIndicator = false
+        self.contentScrollView!.userInteractionEnabled = true
+        self.contentView.addSubview(self.contentScrollView!)
+        
+        
+        self.contentScrollView?.backgroundColor = defaultBackgroundColor
+        self.contentScrollView?.contentSize = CGSizeMake( screenWidth*CGFloat(self.icons.count), 0)
+        var index = 0
+        for  iconN in self.icons {
+            index = index+1
+            if index == 0 {
+                let vc = UnAeraViewController.CreateFromStoryboard("Main")
+                vc.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
+                self.contentScrollView!.addSubview(vc.view)
+            }
+            if index == 1 {
+                let vc = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
+                vc!.flag = self.flag
+                vc!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
+                self.contentScrollView!.addSubview(vc!.view)
 
-        }else if(self.equementType == .Security){
-            
-        }else if(self.equementType == .Music){
-            
-        }else if(self.equementType == .Movie){
+            }
             
         }
 

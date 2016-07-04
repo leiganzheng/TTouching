@@ -100,6 +100,9 @@
 		BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */; };
 		BB52E6D01D06C189005020A0 /* TimeMannageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52E6CF1D06C189005020A0 /* TimeMannageViewController.swift */; };
 		BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52E6D11D06C2CE005020A0 /* AboutViewController.swift */; };
+		BB5BCE591D29F14800B8BFC1 /* SixPaternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5BCE581D29F14800B8BFC1 /* SixPaternViewController.swift */; };
+		BB5BCE5B1D29F15E00B8BFC1 /* UnAeraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5BCE5A1D29F15E00B8BFC1 /* UnAeraViewController.swift */; };
+		BB5BCE5D1D29F9C100B8BFC1 /* PaternViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5BCE5C1D29F9C100B8BFC1 /* PaternViewController.swift */; };
 		BB6D71891BE0626B0018AADC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D71881BE0626B0018AADC /* MobileCoreServices.framework */; };
 		BB6D718B1BE062950018AADC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D718A1BE062950018AADC /* libsqlite3.dylib */; };
 		BB6D718D1BE062A70018AADC /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D718C1BE062A70018AADC /* libstdc++.6.0.9.dylib */; };
@@ -232,6 +235,9 @@
 		BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementControViewController.swift; sourceTree = "<group>"; };
 		BB52E6CF1D06C189005020A0 /* TimeMannageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeMannageViewController.swift; sourceTree = "<group>"; };
 		BB52E6D11D06C2CE005020A0 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		BB5BCE581D29F14800B8BFC1 /* SixPaternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixPaternViewController.swift; sourceTree = "<group>"; };
+		BB5BCE5A1D29F15E00B8BFC1 /* UnAeraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnAeraViewController.swift; sourceTree = "<group>"; };
+		BB5BCE5C1D29F9C100B8BFC1 /* PaternViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaternViewController.swift; sourceTree = "<group>"; };
 		BB6D71881BE0626B0018AADC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BB6D718A1BE062950018AADC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BB6D718C1BE062A70018AADC /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
@@ -317,6 +323,9 @@
 				71D76E491D28C4A5000E0A34 /* SingleTableViewCell.swift */,
 				71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */,
 				71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */,
+				BB5BCE581D29F14800B8BFC1 /* SixPaternViewController.swift */,
+				BB5BCE5A1D29F15E00B8BFC1 /* UnAeraViewController.swift */,
+				BB5BCE5C1D29F9C100B8BFC1 /* PaternViewController.swift */,
 			);
 			path = EquementMannager;
 			sourceTree = "<group>";
@@ -772,6 +781,7 @@
 				2B40F8C61C1951AD00DD1F31 /* PhotoBroswerViewController.swift in Sources */,
 				BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */,
 				BB347F811D274D41005CEE95 /* FPPopoverController.m in Sources */,
+				BB5BCE591D29F14800B8BFC1 /* SixPaternViewController.swift in Sources */,
 				BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */,
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
@@ -790,6 +800,7 @@
 				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
+				BB5BCE5D1D29F9C100B8BFC1 /* PaternViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,
 				BB3C45CE1B465C46008A1213 /* ReactiveCocoa.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
@@ -847,6 +858,7 @@
 				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
 				BB319C231D26077A0071F443 /* FMDatabasePool.m in Sources */,
 				71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */,
+				BB5BCE5B1D29F15E00B8BFC1 /* UnAeraViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,

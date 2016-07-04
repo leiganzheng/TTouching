@@ -13,7 +13,6 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
-     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,11 +81,16 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     func selectedPattern(sender:UIButton) {
-        let vc = DemoTableController(style: .Plain)
+        let vc = PaternViewController()
         let popover = FPPopoverController(viewController: vc)
+        vc.bock = {(device) -> Void in
+            //修改数据库
+            NSLog("chenggongxuanzhe")
+            popover.dismissPopoverAnimated(true)
+        }
+        
         popover.contentSize = CGSizeMake(150, 200)
         popover.tint = FPPopoverWhiteTint
-        popover.alpha = 0.5
         popover.border = false
         popover.arrowDirection = FPPopoverArrowDirectionAny
         popover.presentPopoverFromView(sender)

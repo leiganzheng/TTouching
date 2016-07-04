@@ -12,7 +12,6 @@ import ReactiveCocoa
 class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCustomTableView: UITableView!
-     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +94,6 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
-        if self.flag == "1"{
             //查
             let arr:Array<Device> = DBManager.shareInstance().selectDatas()
             
@@ -106,39 +104,21 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
                 
             }
 
-        }else if self.flag == "0"{
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_area == "45774" {
-                    self.data.addObject(element)
-                }
-                
-            }
-
-        }else if self.flag == "2"{
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_area == "45774" {
-                    self.data.addObject(element)
-                }
-                
-            }
-            
-        }
-        self.myCustomTableView.reloadData()
+            self.myCustomTableView.reloadData()
         
     }
     
     func selectedPattern(sender:UIButton) {
-        let vc = DemoTableController(style: .Plain)
+        let vc = PaternViewController()
         let popover = FPPopoverController(viewController: vc)
+        vc.bock = {(device) -> Void in
+            //修改数据库
+            NSLog("chenggongxuanzhe")
+            popover.dismissPopoverAnimated(true)
+        }
+
         popover.contentSize = CGSizeMake(150, 200)
         popover.tint = FPPopoverWhiteTint
-        popover.alpha = 0.5
         popover.border = false
         popover.arrowDirection = FPPopoverArrowDirectionAny
         popover.presentPopoverFromView(sender)

@@ -1313,7 +1313,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总控" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5E-wG-iUf">
                                 <rect key="frame" x="67" y="44" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDe-fK-kjG">
@@ -2264,7 +2264,7 @@
                                     <constraint firstAttribute="height" constant="21" id="hrd-F8-zmG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2330,7 +2330,7 @@
                                     <constraint firstAttribute="height" constant="21" id="dfl-8p-XuH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2552,6 +2552,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDH-1f-Qdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-90" y="5859"/>
+        </scene>
+        <!--Six Patern View Controller-->
+        <scene sceneID="dlA-GD-7Ve">
+            <objects>
+                <viewController storyboardIdentifier="SixPaternViewController" id="idJ-ME-t56" customClass="SixPaternViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pzq-rG-hr0"/>
+                        <viewControllerLayoutGuide type="bottom" id="X0U-0u-e5c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9IQ-dz-kaT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDM-Cd-GnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="6545"/>
+        </scene>
+        <!--Un Aera View Controller-->
+        <scene sceneID="32C-Yl-gX9">
+            <objects>
+                <viewController storyboardIdentifier="UnAeraViewController" id="rZp-02-hFq" customClass="UnAeraViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pDN-AM-mn9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cuz-g6-fEw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3a1-wv-fOn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVQ-pF-9xn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="6462"/>
         </scene>
         <!--Three Or Six View Controller-->
         <scene sceneID="txk-Za-yw2">
