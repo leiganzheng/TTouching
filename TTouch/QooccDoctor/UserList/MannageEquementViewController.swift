@@ -36,8 +36,7 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        let temp = self.flags[indexPath.row] as! Bool
-//        return temp == true ? 200 : 72
+
         return 72
     }
     
@@ -69,32 +68,48 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.row {
-        case 0:
+        let d = self.data[indexPath.row] as! Device
+        if d.dev_type == 1 {//总控
             self.VC = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-        case 1:
+        }else if d.dev_type == 2{//六场景
             self.VC = SixViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
 
-        case 2:
+        }else if d.dev_type == 3{//单回路调光控制端
+            self.VC = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+        }else if d.dev_type == 4{//双回路调光控制端
+            self.VC = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+        }else if d.dev_type == 5{//三回路开关控制端
+            
+        }else if d.dev_type == 6{//六回路开关控制端
+            
+        }else if d.dev_type == 7{//窗帘控制端
             self.VC = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
 
-        case 3:
+        }else if d.dev_type == 8{//单回路调光控制端(旧版)
             self.VC = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-
-        case 4:
+        }else if d.dev_type == 9{//双回路调光控制端(旧版)
             self.VC = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-        case 5:
+        }else if d.dev_type == 10{//三/六回路开关控制端
             self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-        default:
-            break;
-        }
+        }else if d.dev_type == 11{
             
+        }else if d.dev_type == 12{//空调
+            
+        }
+        else if d.dev_type == 13{//地暖
+            
+        }
+        else if d.dev_type == 14{//新风
+            
+        }
     
     }
     //MARK://-Private method

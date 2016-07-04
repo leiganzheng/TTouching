@@ -12,6 +12,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
 
     var data: NSMutableArray!
     var myTableView: UITableView!
+    var superVC:UIViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,7 +66,43 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        superVC.hidesBottomBarWhenPushed = true
+        let d = self.data[indexPath.row] as! Device
+        if d.dev_type == 3{//单回路调光控制端
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 4{//双回路调光控制端
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 5{//三回路开关控制端
+            
+        }else if d.dev_type == 6{//六回路开关控制端
+            
+        }else if d.dev_type == 7{//窗帘控制端
+            let vc = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+            
+        }else if d.dev_type == 8{//单回路调光控制端(旧版)
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 9{//双回路调光控制端(旧版)
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 10{//三/六回路开关控制端
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 11{
+            
+        }else if d.dev_type == 12{//空调
+            
+        }
+        else if d.dev_type == 13{//地暖
+            
+        }
+        else if d.dev_type == 14{//新风
+            
+        }
+
     }
     //MARK:- private method
     func fetchData(){

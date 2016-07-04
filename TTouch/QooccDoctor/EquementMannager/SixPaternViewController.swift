@@ -12,6 +12,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
 
     var data: NSMutableArray!
     var myTableView: UITableView!
+    var superVC:UIViewController!
       var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,6 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         }
         let d = self.data[indexPath.row] as! Device
         
-        
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
         logoButton.setTitle(d.dev_name!, forState: .Normal)
         logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -68,7 +68,43 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        superVC.hidesBottomBarWhenPushed = true
+        let d = self.data[indexPath.row] as! Device
+        if d.dev_type == 3{//单回路调光控制端
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 4{//双回路调光控制端
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 5{//三回路开关控制端
+            
+        }else if d.dev_type == 6{//六回路开关控制端
+            
+        }else if d.dev_type == 7{//窗帘控制端
+            let vc = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+            
+        }else if d.dev_type == 8{//单回路调光控制端(旧版)
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 9{//双回路调光控制端(旧版)
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 10{//三/六回路开关控制端
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            superVC.navigationController?.pushViewController(vc, animated: true)
+        }else if d.dev_type == 11{
+            
+        }else if d.dev_type == 12{//空调
+            
+        }
+        else if d.dev_type == 13{//地暖
+            
+        }
+        else if d.dev_type == 14{//新风
+            
+        }
+
     }
     //MARK:- private method
     func fetchData(){
