@@ -75,7 +75,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_area == "0" {
+            if element.dev_area == "0" && element.dev_status == 1 && element.dev_type>2 {
                 self.data.addObject(element)
             }
             

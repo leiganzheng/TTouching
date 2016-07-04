@@ -116,13 +116,10 @@ class DBManager: NSObject {
     }
     
     // MARK: >> 改
-    func update(area:String,type:Int) {
+    func update(area:String,type:String) {
         dbBase.open();
-
-//        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
-  
         
-        if !self.dbBase .executeUpdate("update T_Device set dev_area = (?) WHERE dev_type = ? ", area,type) {
+        if !self.dbBase .executeUpdate("update T_Device set dev_area = (?) WHERE address = ? ", area,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")

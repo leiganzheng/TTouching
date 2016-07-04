@@ -78,7 +78,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         if self.flag == "0" {
             for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_area == "45774" {
+                if element.dev_area == "45774" && element.dev_status == 1 && element.dev_type>2 {
                     self.data.addObject(element)
                 }
                 

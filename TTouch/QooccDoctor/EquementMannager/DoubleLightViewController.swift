@@ -80,7 +80,20 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             
-            self?.selectedPattern(btn1)
+            let vc = PaternViewController()
+            let popover = FPPopoverController(viewController: vc)
+            vc.bock = {(device) -> Void in
+                //修改数据库
+                let seltectd = device as? Device
+                DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
+                popover.dismissPopoverAnimated(true)
+            }
+            
+            popover.contentSize = CGSizeMake(150, 200)
+            popover.tint = FPPopoverWhiteTint
+            popover.border = false
+            popover.arrowDirection = FPPopoverArrowDirectionAny
+            popover.presentPopoverFromView(btn1)
             return RACSignal.empty()
             
             })
@@ -109,21 +122,5 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         
     }
     
-    func selectedPattern(sender:UIButton) {
-        let vc = PaternViewController()
-        let popover = FPPopoverController(viewController: vc)
-        vc.bock = {(device) -> Void in
-            //修改数据库
-            NSLog("chenggongxuanzhe")
-            popover.dismissPopoverAnimated(true)
-        }
-        
-        popover.contentSize = CGSizeMake(150, 200)
-        popover.tint = FPPopoverWhiteTint
-        popover.border = false
-        popover.arrowDirection = FPPopoverArrowDirectionAny
-        popover.presentPopoverFromView(sender)
-        
-    }
-
+    
 }

@@ -43,6 +43,9 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
             cell = CurtainTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         let d = self.data[indexPath.row] as? Device
+        
+        
+        
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
         let gesture = UILongPressGestureRecognizer()
@@ -74,9 +77,23 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         }
         let btn1 = cell.partern
 
-        btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        btn1.rac_command = RACCommand(signalBlock: {(input) -> RACSignal! in
 
-            self?.selectedPattern(btn1)
+            let vc = PaternViewController()
+            let popover = FPPopoverController(viewController: vc)
+            vc.bock = {(device) -> Void in
+                //修改数据库
+                let seltectd = device as? Device
+                DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
+                popover.dismissPopoverAnimated(true)
+            }
+            
+            popover.contentSize = CGSizeMake(150, 200)
+            popover.tint = FPPopoverWhiteTint
+            popover.border = false
+            popover.arrowDirection = FPPopoverArrowDirectionAny
+            popover.presentPopoverFromView(btn1)
+
             return RACSignal.empty()
            
             })
@@ -106,22 +123,5 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         
     }
 
-    func selectedPattern(sender:UIButton) {
-        let vc = PaternViewController()
-        let popover = FPPopoverController(viewController: vc)
-        vc.bock = {(device) -> Void in
-            //修改数据库
-//            let d = device as? Device
-//            DBManager.shareInstance().update((d?.dev_area)!, type: (d?.dev_type)!)
-            popover.dismissPopoverAnimated(true)
-        }
-        
-        popover.contentSize = CGSizeMake(150, 200)
-        popover.tint = FPPopoverWhiteTint
-        popover.border = false
-        popover.arrowDirection = FPPopoverArrowDirectionAny
-        popover.presentPopoverFromView(sender)
-
-    }
 
 }

@@ -29,6 +29,7 @@ class EquementsViewController: UIViewController,AsyncSocketDelegate,QNIntercepto
     
 
     @IBAction func loginAction(sender: AnyObject) {
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
     }
     func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
