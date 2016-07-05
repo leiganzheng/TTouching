@@ -128,6 +128,23 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //            NSLog(res as! String)
 //            self.tableViewController.refreshControl?.endRefreshing()
 //        }
+       let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            
+            if index < arr.count {
+                 mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            index = index + 1
+        }
+        let result = mulArr.map{String($0)}.joinWithSeparator(".")
+        
+        
         if (sock == nil){
             sock = AsyncUdpSocket(delegate: self)
         }
@@ -136,7 +153,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             try sock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-            sock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 1, tag: 1)
+//            sock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
             sock!.receiveWithTimeout(1,tag: 0)
         } catch {
             print("error")

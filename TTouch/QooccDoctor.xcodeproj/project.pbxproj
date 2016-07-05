@@ -37,6 +37,7 @@
 		71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E491D28C4A5000E0A34 /* SingleTableViewCell.swift */; };
 		71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */; };
 		71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */; };
+		BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
 		BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */; };
@@ -154,6 +155,8 @@
 		71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTableViewCell.swift; sourceTree = "<group>"; };
 		71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThressOrSixTableViewCell.swift; sourceTree = "<group>"; };
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BB0072441D2B760200DCEF95 /* GetWiFiInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetWiFiInfoHelper.h; sourceTree = "<group>"; };
+		BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetWiFiInfoHelper.m; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
 		BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
@@ -327,6 +330,15 @@
 			path = EquementMannager;
 			sourceTree = "<group>";
 		};
+		BB0072431D2B760200DCEF95 /* wifi */ = {
+			isa = PBXGroup;
+			children = (
+				BB0072441D2B760200DCEF95 /* GetWiFiInfoHelper.h */,
+				BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */,
+			);
+			path = wifi;
+			sourceTree = "<group>";
+		};
 		BB2578D11CFD7DB50037CA9B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +481,7 @@
 		BB3C45261B465C46008A1213 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				BB0072431D2B760200DCEF95 /* wifi */,
 				BB347F791D274D41005CEE95 /* FPPopover */,
 				BB319C141D26077A0071F443 /* fmdb */,
 				BB319C0B1D26014A0071F443 /* SwiftExtensions */,
@@ -676,7 +689,7 @@
 				TargetAttributes = {
 					BB3C44F11B465BDB008A1213 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = Y52XLS57AB;
+						DevelopmentTeam = 5VV36XYQWS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -814,6 +827,7 @@
 				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
 				BB319C281D2644DF0071F443 /* DeviceHideDB.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
+				BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
 				71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */,
@@ -985,7 +999,7 @@
 					"$(PROJECT_DIR)/QooccDoctor/Librarys/UMAnalytics_Sdk_3.4.8",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qoocc.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.HaoLouHui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
@@ -1013,7 +1027,7 @@
 					"$(PROJECT_DIR)/QooccDoctor/Librarys/UMAnalytics_Sdk_3.4.8",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qoocc.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.HaoLouHui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";

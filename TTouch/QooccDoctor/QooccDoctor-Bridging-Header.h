@@ -20,7 +20,7 @@
 #import "FMDB.h"
 #import "FPPopoverController.h"
 #import <OpenUDID/OpenUDID.h>
-
+#import "GetWiFiInfoHelper.h"
 //BEGIN 网络图片加载库
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
