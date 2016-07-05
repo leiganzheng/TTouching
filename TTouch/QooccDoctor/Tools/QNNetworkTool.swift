@@ -706,16 +706,31 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
      :param: UDP 广播
      */
     class func scanLocationNet(udpStr: String,completion: CustomBlock) {
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let result = mulArr.componentsJoinedByString(".")
          var udpsock = AsyncUdpSocket(delegate: self)
         if (udpsock == nil){
             udpsock = AsyncUdpSocket(delegate: self)
         }
         do{
             //            try sock!.bindToPort(33632)
-            //            try sock!.enableBroadcast(true) // Also tried without this line
+             try udpsock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-            udpsock?.sendData(data, toHost: "255.255.255.255", port: 80, withTimeout: 1, tag: 1)
+            udpsock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
             udpsock!.receiveWithTimeout(1,tag: 0)
         } catch {
             print("error")
@@ -827,6 +842,9 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
     {
         FinishBock!(host)
         print("Connected to \(host) on port \(p).")
+    }
+    func onUdpSocket(sock: AsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
+        print("Connected to")
     }
 }
 

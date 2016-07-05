@@ -133,17 +133,17 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         var index = 0
         let mulArr = NSMutableArray()
         for str in arr {
-            
+            index = index + 1
             if index < arr.count {
                  mulArr.addObject(str)
             }
             if index == arr.count {
                 mulArr.addObject("255")
             }
-            index = index + 1
+
         }
-        let result = mulArr.map{String($0)}.joinWithSeparator(".")
-        
+        let result = mulArr.componentsJoinedByString(".")
+
         
         if (sock == nil){
             sock = AsyncUdpSocket(delegate: self)
@@ -153,7 +153,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             try sock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-//            sock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
+            sock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
             sock!.receiveWithTimeout(1,tag: 0)
         } catch {
             print("error")
