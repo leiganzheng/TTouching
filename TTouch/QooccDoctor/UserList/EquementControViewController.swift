@@ -73,8 +73,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     }
 
     //MARK: private method
-    @IBAction func save(sender: AnyObject) {
-    }
+
     private func buildUI(){
         
         
