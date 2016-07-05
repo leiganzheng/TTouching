@@ -24,21 +24,20 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     private(set) var  contentScrollView:UIScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
     private(set) var  contentCurrent:NSInteger = 0
-    var titles: NSArray = ["未分区域","六情景"]
-    var icons: NSArray = ["Menu_Light_icon2","Menu_Curtain_icon2"]
-   
-    let width:CGFloat = screenWidth/5
+
+    var data: NSMutableArray = NSMutableArray()
+    
+    let width:CGFloat = screenWidth/5 - 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.customTitle
-        self.buildDataAndUI()
-        self.buildUI()
+        self.fetchData()
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton.setImage(UIImage(named: "Manage_Collect_icon1"), forState: UIControlState.Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             
             return RACSignal.empty()
@@ -55,16 +54,27 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView == self.pictureScrollView{
             self.advertisementCurrent = NSInteger(scrollView.contentOffset.x / width)
-            self.title = self.titles[self.advertisementCurrent] as? String
-            self.contentScrollView?.setContentOffset(CGPointMake(CGFloat(self.advertisementCurrent)*screenWidth, 0), animated: true)
+//            self.title = (self.data[self.advertisementCurrent] as? Device)?.dev_name
         }
         if scrollView == self.contentScrollView {
             self.contentCurrent = NSInteger(scrollView.contentOffset.x / screenWidth)
-            self.pictureScrollView?.setContentOffset(CGPointMake(CGFloat(self.contentCurrent)*width, 0), animated: true)
+            self.title = (self.data[self.contentCurrent] as? Device)?.dev_name
+            let arr = (self.pictureScrollView?.subviews)! as NSArray
+            for btn in arr {
+                let index = arr.indexOfObject(btn)
+                
+                if index == self.contentCurrent {
+                    (btn as! UIButton).backgroundColor = defaultBackgroundGrayColor
+                }else{
+                    (btn as! UIButton).backgroundColor = UIColor.clearColor()
+                }
+            }
         }
     }
 
     //MARK: private method
+    @IBAction func save(sender: AnyObject) {
+    }
     private func buildUI(){
         
         
@@ -80,17 +90,18 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         
         
         self.contentScrollView?.backgroundColor = defaultBackgroundColor
-        self.contentScrollView?.contentSize = CGSizeMake( screenWidth*CGFloat(self.icons.count), 0)
+        self.contentScrollView?.contentSize = CGSizeMake( screenWidth*CGFloat(self.data.count), 0)
         var index = 0
-        for  _ in self.icons {
+        for  d in self.data {
+            let temp = d as! Device
             index = index+1
-            if index == 1 {
+            if temp.dev_type == 100{
                 self.unAeraVC = UnAeraViewController.CreateFromStoryboard("Main") as? UnAeraViewController
                 self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, (self.contentScrollView?.frame.size.height)!)
                 self.unAeraVC?.superVC = self
                 self.contentScrollView!.addSubview(self.unAeraVC!.view)
             }
-            if index == 2 {
+            if temp.dev_type == 2 {
                 self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
                 self.sixVC!.flag = self.flag
                 self.sixVC?.superVC = self
@@ -118,17 +129,33 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         
         
         self.pictureScrollView?.backgroundColor = defaultBackgroundColor
-        self.pictureScrollView?.contentSize = CGSizeMake( width*CGFloat(self.icons.count), 0)
+        self.pictureScrollView?.contentSize = CGSizeMake( width*CGFloat(self.data.count), 0)
         var index = 0
-        for  iconN in self.icons {
+        for  d in self.data {
             index = index+1
+           
             let button = UIButton(type: .Custom)
-            button.frame = CGRectMake(width * CGFloat(index-1),0 ,width, (self.pictureScrollView?.frame.size.height)!)
-            button.backgroundColor = UIColor.clearColor()
-            button.setImage(UIImage(named:iconN as! String), forState: .Normal)
-            button.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-                    
-                
+            button.frame = CGRectMake(width * CGFloat(index-1) + 4,4 ,width, ((self.pictureScrollView?.frame.size.height)!-8))
+           
+            if index == 1 {
+                button.backgroundColor = defaultBackgroundGrayColor
+            }else{
+                 button.backgroundColor = UIColor.clearColor()
+            }
+            button.setImage(UIImage(data: (d as! Device).icon_url!), forState: .Normal)
+            button.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+                let arr = (self.pictureScrollView?.subviews)! as NSArray
+                let index = arr.indexOfObject(button)
+                self.title = (self.data[index] as? Device)?.dev_name
+                for btn in arr {
+                    if btn as! NSObject == button {
+                        (btn as! UIButton).backgroundColor = defaultBackgroundGrayColor
+                    }else{
+                        (btn as! UIButton).backgroundColor = UIColor.clearColor()
+                    }
+                }
+
+                self.contentScrollView?.setContentOffset(CGPointMake(CGFloat(index)*screenWidth, 0), animated: true)
                     return RACSignal.empty()
                     })
 
@@ -140,6 +167,23 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         line.backgroundColor = defaultLineColor
         self.headerView?.addSubview(line)
    
+    }
+    func fetchData(){
+        self.data = NSMutableArray()
+        self.data.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if  element.dev_type == 2 || element.dev_type == 100 {
+                self.data.addObject(element)
+            }
+            
+        }
+        self.buildDataAndUI()
+        self.buildUI()
+        
+        
     }
 
 

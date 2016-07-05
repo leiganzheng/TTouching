@@ -48,7 +48,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
-        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.myTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
         self.myTableView.separatorColor = defaultLineColor
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
@@ -118,7 +118,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let temp = self.flags[indexPath.row] as! Bool
-        return temp == true ? 200 : 72
+        return temp == true ? 260 : 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -182,15 +182,17 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
              v.tag = indexPath.row + 100
              v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
-            v.backgroundColor = defaultBackgroundColor
             cell.contentView.addSubview(v)
+            cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
+            cell.addLine(16, y: 188, width: screenWidth-32, height: 1)
+            cell.addLine(0, y: 258, width: screenWidth, height: 1)
         }else{
             let tempV = cell.contentView.viewWithTag(indexPath.row+100)
             tempV?.removeFromSuperview()
+           
         }
-        let lb = UILabel(frame: CGRectMake(0, 71, self.view.bounds.width, 1))
-        lb.backgroundColor = defaultBackgroundGrayColor
-        cell.contentView.addSubview(lb)
+        cell.addLine(0, y: 71, width: screenWidth, height: 1)
+
         return cell
     }
     
@@ -251,8 +253,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     func customNavView() {
 
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
-        searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
-        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
+//        searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
+        searchButton.setTitle("Hi~Jacky", forState: UIControlState.Normal)
+        
+//        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
             return RACSignal.empty()

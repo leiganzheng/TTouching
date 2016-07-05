@@ -128,6 +128,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //            NSLog(res as! String)
 //            self.tableViewController.refreshControl?.endRefreshing()
 //        }
+   
+
        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
         let arr = ipAddress.componentsSeparatedByString(".") as NSArray
         var index = 0
@@ -151,7 +153,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         do{
 //            try sock!.bindToPort(33632)
             try sock!.enableBroadcast(true) // Also tried without this line
-            let datastr = "0xFF0x040x330xCA"
+//            let datastr = "0xFF0x040x330xCA"
+            let datastr = "hello"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
             sock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
             sock!.receiveWithTimeout(1,tag: 0)

@@ -1039,19 +1039,33 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6o-zX-SkR">
-                                <rect key="frame" x="-4" y="137" width="328" height="431"/>
+                                <rect key="frame" x="-4" y="137" width="328" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8p7-0x-f1k">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="dry-16-yKX" eventType="touchUpInside" id="nmJ-be-o1G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Ex-uF-Ejj" firstAttribute="top" secondItem="b6o-zX-SkR" secondAttribute="bottom" constant="44" id="0Sj-HU-QsU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b6o-zX-SkR" secondAttribute="trailing" constant="-20" id="3xA-vW-iMr"/>
                             <constraint firstItem="MTG-pW-S7M" firstAttribute="top" secondItem="f2w-iz-kyG" secondAttribute="bottom" id="DsM-JC-DIN"/>
                             <constraint firstItem="b6o-zX-SkR" firstAttribute="top" secondItem="MTG-pW-S7M" secondAttribute="bottom" constant="1" id="ECm-gY-ZN1"/>
-                            <constraint firstItem="9Ex-uF-Ejj" firstAttribute="top" secondItem="b6o-zX-SkR" secondAttribute="bottom" id="Hw9-4W-XG7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8p7-0x-f1k" secondAttribute="trailing" constant="-20" id="F8m-xg-NUb"/>
+                            <constraint firstItem="9Ex-uF-Ejj" firstAttribute="top" secondItem="8p7-0x-f1k" secondAttribute="bottom" id="MFp-V7-bVP"/>
+                            <constraint firstItem="8p7-0x-f1k" firstAttribute="top" secondItem="b6o-zX-SkR" secondAttribute="bottom" id="MVl-9W-M7Y"/>
                             <constraint firstItem="b6o-zX-SkR" firstAttribute="leading" secondItem="63p-jW-61Q" secondAttribute="leadingMargin" constant="-20" id="XOb-RJ-jL5"/>
                             <constraint firstItem="MTG-pW-S7M" firstAttribute="leading" secondItem="63p-jW-61Q" secondAttribute="leadingMargin" constant="-20" id="ZrN-tU-jIa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MTG-pW-S7M" secondAttribute="trailing" constant="-20" id="f9k-c8-agi"/>
+                            <constraint firstItem="8p7-0x-f1k" firstAttribute="leading" secondItem="63p-jW-61Q" secondAttribute="leadingMargin" constant="-20" id="sHD-9p-MI9"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

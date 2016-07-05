@@ -818,7 +818,21 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
         
     }
 
+    class func test(completion: CustomBlock){
+        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+        do {
+            try socket.connectToHost("www.baidu.com", onPort: 80)
+//            let request:String = "Arn.Preg:3302:"
+            let request:String = "GET / HTTP/1.1\n\n"
+            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            socket.writeData(data, withTimeout: 2, tag: 0)
+            socket.readDataWithTimeout(2, tag: 0)
+        } catch let e {
+            completion("")
+            print(e)
+        }
 
+    }
 
     //MARK:- Delegate method
     func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
