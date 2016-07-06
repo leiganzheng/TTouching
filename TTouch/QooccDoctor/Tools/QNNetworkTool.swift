@@ -22,7 +22,7 @@ private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
 *  //MARK:- 网络处理中心
 */
 let addr = "192.168.0.10"
-let port:UInt16 = 35000
+let port:UInt16 = 33632
 
 class QNNetworkTool: NSObject{
     
@@ -610,20 +610,32 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
             
         }
         let result = mulArr.componentsJoinedByString(".")
-         var udpsock = AsyncUdpSocket(delegate: self)
-        if (udpsock == nil){
-            udpsock = AsyncUdpSocket(delegate: self)
-        }
+        
+        let sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
         do{
-            //            try sock!.bindToPort(33632)
-             try udpsock!.enableBroadcast(true) // Also tried without this line
             let datastr = "0xFF0x040x330xCA"
             let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-            udpsock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
-            udpsock!.receiveWithTimeout(1,tag: 0)
+//            try sock?.bindToPort(33632)
+//            try sock?.joinMulticastGroup(result)
+            sock?.sendData(data, toHost: result, port: 33632, withTimeout: -1, tag: 1)
+            
         } catch {
             print("error")
         }
+
+//         var udpsock = AsyncUdpSocket(delegate: self)
+//        if (udpsock == nil){
+//            udpsock = AsyncUdpSocket(delegate: self)
+//        }
+//        do{
+//            //            try sock!.bindToPort(33632)
+////             try udpsock!.enableBroadcast(true) // Also tried without this line
+//            let datastr = "0xFF0x040x330xCA"
+//            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
+//            udpsock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
+//        } catch {
+//            print("error")
+//        }
 
     }
 
@@ -710,15 +722,15 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
     class func test(completion: CustomBlock){
         let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
         do {
-            try socket.connectToHost(addr, onPort: port)
+            try socket.connectToHost("192.168.11.101", onPort: port)
             
-           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "99"])
+           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "60"])
             
 //            let request:String = "Arn.Preg:3302:"
             
             let data:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: 2, tag: 0)
-            socket.readDataWithTimeout(2, tag: 0)
+            socket.writeData(data, withTimeout: -1, tag: 0)
+            socket.readDataWithTimeout(-1, tag: 0)
         } catch let e {
             completion("")
             print(e)
