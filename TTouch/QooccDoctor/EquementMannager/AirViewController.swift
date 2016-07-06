@@ -15,7 +15,7 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "空调"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()

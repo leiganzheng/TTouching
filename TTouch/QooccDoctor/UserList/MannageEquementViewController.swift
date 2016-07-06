@@ -21,11 +21,6 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         self.title = "设备管理"
         
         self.fetchData()
-        //数据
-//        self.titles = ["总控","六场景","窗帘控制","单路调光","双路调光","三/六路开关"]
-//        self.flags = [false,false,false,false,false,false]
-//        self.icons = ["Manage_ 1ch-Dimmer_icon","Manage_2ch-Curtains_icon","Manage_2ch-Dimmers_icon","Manage_3ch-roads_icon","Manage_3or6ch-roads_icon","Manage_6-scene_icon"]
-
     }
 
     override func didReceiveMemoryWarning() {

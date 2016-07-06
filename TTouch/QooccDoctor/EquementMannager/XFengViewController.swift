@@ -15,7 +15,7 @@ class XFengViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "新风"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()

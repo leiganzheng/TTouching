@@ -15,7 +15,7 @@ class DNuanViewController: UIViewController ,QNInterceptorProtocol, UITableViewD
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "地暖"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()

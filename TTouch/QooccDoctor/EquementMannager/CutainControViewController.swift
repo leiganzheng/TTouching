@@ -15,6 +15,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "窗帘"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()

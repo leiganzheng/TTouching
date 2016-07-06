@@ -15,7 +15,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "3/6回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()
@@ -30,7 +30,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 152
+        return 280
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

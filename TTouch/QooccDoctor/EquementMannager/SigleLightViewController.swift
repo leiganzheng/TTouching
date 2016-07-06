@@ -15,7 +15,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     var data: NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "单回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()

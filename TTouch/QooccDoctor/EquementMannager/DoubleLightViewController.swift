@@ -16,7 +16,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
      var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "双回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()
