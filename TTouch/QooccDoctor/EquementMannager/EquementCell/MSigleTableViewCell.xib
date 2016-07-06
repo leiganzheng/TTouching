@@ -32,7 +32,7 @@
                     </slider>
                     <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnl-y0-1Rj">
                         <rect key="frame" x="144" y="11" width="90" height="34"/>
-                        <state key="normal" title="双回路">
+                        <state key="normal" title="单回路">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>

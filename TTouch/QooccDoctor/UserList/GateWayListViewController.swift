@@ -192,7 +192,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let image7 = UIImageJPEGRepresentation(UIImage(named:"Manage_information_icon" )!, 1)
           let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image7)
         
-        let image8 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+        let image8 = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
          let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "", belong_area: "所属场景", is_favourited: 0, icon_url: image8)
         
         let image9 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)

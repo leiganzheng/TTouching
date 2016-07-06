@@ -78,6 +78,7 @@
 		BB38E8301D2CCA7600190A49 /* DNuanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */; };
 		BB38E8321D2CCA8200190A49 /* XFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */; };
 		BB38E8341D2CCF4F00190A49 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */; };
+		BB38E8361D2CDE8000190A49 /* ChangeNickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8351D2CDE8000190A49 /* ChangeNickViewController.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
 		BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */; };
@@ -228,6 +229,7 @@
 		BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNuanTableViewCell.swift; sourceTree = "<group>"; };
 		BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTableViewCell.swift; sourceTree = "<group>"; };
 		BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8351D2CDE8000190A49 /* ChangeNickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNickViewController.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3C44F71B465BDB008A1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				71D76E281D1827EC000E0A34 /* MusicViewController.swift */,
 				71D76E2A1D1827F6000E0A34 /* MovieViewController.swift */,
 				71D76E2C1D183B76000E0A34 /* NewClockViewController.swift */,
+				BB38E8351D2CDE8000190A49 /* ChangeNickViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -756,7 +759,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = juxi;
+				ORGANIZATIONNAME = Private;
 				TargetAttributes = {
 					BB3C44F11B465BDB008A1213 = {
 						CreatedOnToolsVersion = 6.4;
@@ -950,6 +953,7 @@
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
+				BB38E8361D2CDE8000190A49 /* ChangeNickViewController.swift in Sources */,
 				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
 				BB38E82A1D2CC7AE00190A49 /* DNuanViewController.swift in Sources */,

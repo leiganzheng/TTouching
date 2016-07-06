@@ -18,7 +18,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 40, 40))
-        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
+        searchButton.setImage(UIImage(named: "time"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.presentViewController(UINavigationController(rootViewController: NewClockViewController()), animated: true, completion: nil)
             return RACSignal.empty()
@@ -26,6 +26,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         rightBarButton.addSubview(searchButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
+        self.myTableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = defaultBackgroundGrayColor
        
     }
@@ -42,8 +43,6 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
