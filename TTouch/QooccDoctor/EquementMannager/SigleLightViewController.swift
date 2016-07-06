@@ -107,9 +107,14 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             return RACSignal.empty()
             
             })
+        
+        cell.cmdData.addTarget(self, action: Selector("sliderValueChanged:"), forControlEvents: .ValueChanged)
         return cell
     }
-    
+    func sliderValueChanged(slider: UISlider) {
+        let data = slider.value
+        
+    }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)
         

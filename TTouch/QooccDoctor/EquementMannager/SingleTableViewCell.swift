@@ -14,6 +14,7 @@ class SingleTableViewCell: UITableViewCell {
     @IBOutlet weak var partern: UIButton!
     @IBOutlet weak var isOpen: UIButton!
     @IBOutlet weak var parternLB: UILabel!
+    @IBOutlet weak var cmdData: UISlider!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

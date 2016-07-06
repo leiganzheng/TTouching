@@ -127,11 +127,24 @@ private extension QNNetworkTool{
         do {
            let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
             let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            
             return ["jsonData" : jsonDataString]
         }catch{
             return ["jsonData" : ""]
         }
     }
+    
+    private class func toJsonDataParams(params: [String : AnyObject]) -> String {
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
+            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            
+            return jsonDataString
+        }catch{
+            return ""
+        }
+    }
+
 }
 
 //MARK:- 用户中心(上传)
@@ -418,72 +431,10 @@ extension QNNetworkTool {
         }
     }
     
-    /**
-    021.医生注册接口
-    
-    :param: name                姓名
-    :param: phone               电话号码
-    :param: password            密码
-    :param: authcode            验证码
-    :param: completion          完成的回调
-    */
-//    class func register(name: String, phone: String, password: String, authcode: String, completion: (QD_Doctor?, NSError?, String?) -> Void) {
-//            var params = [String : String]()
-//            params["doct_name"] = name
-//            params["phone"] = phone
-//            params["password"] = password
-//            params["authcode"] = authcode
-//            requestPOST(kServerAddress + "/api/register/registerAction!doctorRegister.action", parameters: paramsToJsonDataParams(params)) { (_, _, _, dictionary, error) -> Void in
-//                if dictionary != nil, let doctorDic = dictionary?["data"] as? NSDictionary, let doctor = QD_Doctor(doctorDic) {
-//                    saveAccountAndPassword(phone, password: password)
-////                    g_doctor = doctor
-//                    
-//                    completion(doctor, nil, nil)
-//                }else {
-//                    completion(nil, error, dictionary?["errorMsg"] as? String)
-//                }
-//            }
-//    }
+ 
     
    }
 
-////MARK:- 用户列表
-//extension QNNetworkTool {
-//    /**
-//    *  监控台用户列表
-//    *  @param Id 医生id
-//    *  @param sortOrder 排序方式，O : 默认综合排序，1：vip等级优先；2：星标用户优先
-//    *  @param start  分页，每一页开始的位置）
-//    *  @param limit  分页，每页显示的记录数
-//    *  @param completion  结果回调
-//    */
-//    class func fetchUserList(DoctorId Id: String, Order order: String , Start start: String, Limit limit: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-//        requestPOST(kServerAddress + "/api/user/fetchUserAction!fetchUser.action", parameters: paramsToJsonDataParams(["doctorId" : Id,"sortOrder" : order,"start" : start,"limit" : limit])) { (_, _, _, dictionary, error) -> Void in
-//            if dictionary != nil {
-//                completion(dictionary, nil, nil)
-//            } else {
-//                completion(nil, self.formatError(),nil)
-//            }
-//        }
-//    }
-//    /**
-//    *  医生控制台修改用户备注
-//    *  @param ownId 用户id
-//    *  @param remak 备注
-//    *  @param completion  结果回调
-//    */
-//    class func changeRemark(OwnId ownId: String, Remark remak: String, completion:  (NSDictionary?, NSError?, String?) -> Void) {
-//        requestPOST(kServerAddress + "/api/user/fetchUserAction!updaRemark.action", parameters: paramsToJsonDataParams(["ownerId" : ownId,"remark" : remak])) { (_, _, _, dictionary, error) -> Void in
-//            if dictionary != nil {
-//                completion(dictionary, nil, nil)
-//            } else {
-//                completion(nil, self.formatError(), dictionary?["errorMsg"] as? String)
-//            }
-//        }
-//
-//    }
-//
-//}
 
 
 
@@ -590,69 +541,7 @@ extension QNNetworkTool {
         }
     }
 }
-// MARK: - 医生余额相关
-extension QNNetworkTool {
-    // 获取医生余额信息
-    /**
-    *   获取医生余额信息
-    *  @param completion  结果回调
-    */
-    class func doctorBalanceInfo(completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/findBalanceInfo", parameters: nil) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error, dictionary?["errorMsg"] as? String)
-        }
-    }
-    // 医生账单
-    /**
-    *   医生账单
-    *  @param pageNo 从1开始，不传默认为1
-    *  @param pageSize 每页大小，不传默认20
-    *  @param completion  结果回调
-    */
-    class func doctorBillList(pageNo: String,pageSize:String,completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/billList", parameters: paramsToJsonDataParams(["pageNo" : pageNo,"pageSize":pageSize])) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error, dictionary?["errorMsg"] as? String)
-        }
-    }
-    // 获取提现界面的上一次所填写的数据信息
-    /**
-    *    获取提现界面的上一次所填写的数据信息
-    *  @param completion  结果回调
-    */
-    class func findLastDoctorDrawMoneyInfo(completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/findLastDrawMoneyInfo", parameters: nil) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error, dictionary?["errorMsg"] as? String)
-        }
-    }
-    // 医生提现界面获取验证码
-    /**
-    *    医生提现界面获取验证码
-    *  @param telephone  电话号码
-    *  @param completion  结果回调
-    */
-    class func doctorDrawMoneyCheckCode(telephone: String ,completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/drawMoneyCheckCode", parameters: paramsToJsonDataParams(["telephone" : telephone])) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error, dictionary?["errorMsg"] as? String)
-        }
-    }
-    // 医生提现
-    /**
-    *   医生提现
-    *  @param accountName 收款人姓名
-    *  @param accountNum 银行卡号
-    *  @param bankCode 银行编码
-    *  @param money 金额
-    *  @param telephone 电话号码
-    *  @param checkCode 验证码
-    *  @param completion  结果回调
-    */
-    class func doctorDrawMoney(accountName: String,accountNum:String,bankCode: String,money:String,telephone: String,checkCode:String,completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/drawMoney", parameters: paramsToJsonDataParams(["accountName" : accountName,"accountNum":accountNum,"bankCode" : bankCode,"money":money,"telephone" : telephone,"checkCode":checkCode])) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error, dictionary?["errorMsg"] as? String)
-        }
-    }
 
-}
 //MARK:- 发起视频，向用户推送APNS消息
 extension QNNetworkTool {
     //MARK: 发起视频，向用户推送APNS消息
@@ -821,10 +710,13 @@ extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
     class func test(completion: CustomBlock){
         let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
         do {
-            try socket.connectToHost("www.baidu.com", onPort: 80)
+            try socket.connectToHost(addr, onPort: port)
+            
+           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "99"])
+            
 //            let request:String = "Arn.Preg:3302:"
-            let request:String = "GET / HTTP/1.1\n\n"
-            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
+            
+            let data:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
             socket.writeData(data, withTimeout: 2, tag: 0)
             socket.readDataWithTimeout(2, tag: 0)
         } catch let e {

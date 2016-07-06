@@ -1868,13 +1868,13 @@
                                                         <constraint firstAttribute="height" constant="30" id="Gtu-BC-nSp"/>
                                                     </constraints>
                                                 </slider>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6i-sd-2IG">
-                                                    <rect key="frame" x="55" y="11" width="90" height="22"/>
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6i-sd-2IG">
+                                                    <rect key="frame" x="55" y="5" width="90" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="lYQ-MH-0qt"/>
                                                         <constraint firstAttribute="height" constant="22" id="unK-bH-W8k"/>
                                                     </constraints>
-                                                    <state key="normal" title="总控">
+                                                    <state key="normal" title="单回路调光">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -1915,6 +1915,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cmdData" destination="m6q-zJ-zP3" id="7u2-ai-wd0"/>
                                             <outlet property="isOpen" destination="c29-oo-Uws" id="bRP-zb-vHM"/>
                                             <outlet property="name" destination="S6i-sd-2IG" id="MSK-lA-8sS"/>
                                             <outlet property="partern" destination="zck-A4-iC2" id="0t1-Su-Igo"/>
@@ -2644,8 +2645,8 @@
                                                     </constraints>
                                                 </button>
                                                 <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tED-bQ-QCj">
-                                                    <rect key="frame" x="45" y="9" width="90" height="22"/>
-                                                    <state key="normal" title="总控">
+                                                    <rect key="frame" x="45" y="3" width="90" height="34"/>
+                                                    <state key="normal" title="双回路调光">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -3215,14 +3216,14 @@
                                                         <constraint firstAttribute="height" constant="31" id="YeA-m6-btn"/>
                                                     </constraints>
                                                 </switch>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKT-Pq-nDu">
-                                                    <rect key="frame" x="53" y="-1" width="85" height="27"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKT-Pq-nDu">
+                                                    <rect key="frame" x="53" y="-5" width="85" height="34"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="Ohe-6M-3ZR"/>
                                                         <constraint firstAttribute="height" constant="27" id="jfD-yt-rTH"/>
                                                     </constraints>
-                                                    <state key="normal" title="总控">
+                                                    <state key="normal" title="六路触点">
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>

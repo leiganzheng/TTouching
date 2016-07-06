@@ -14,7 +14,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var contentView: UIView!
     
-    var customTitle:String?
+    var type:Int?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
     var sixVC:SixPaternViewController?
@@ -31,7 +31,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.customTitle
         self.fetchData()
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
@@ -179,6 +178,10 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             }
             
         }
+         self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
+//        self.data = self.data.sortUsingComparator({ (<#AnyObject#>, <#AnyObject#>) -> NSComparisonResult in
+//            <#code#>
+//        })
         self.buildDataAndUI()
         self.buildUI()
         

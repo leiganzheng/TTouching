@@ -174,6 +174,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             if d.dev_type != 1 {
                 let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
                 vc.flag = "0"
+                vc.type = d.dev_type
                 self?.navigationController?.pushViewController(vc, animated: true)
                 self?.hidesBottomBarWhenPushed = false
             }
