@@ -33,7 +33,40 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 72
+        let d = self.data[indexPath.row] as! Device
+        if d.dev_type == 3{//单回路调光控制端
+
+            return 104
+        }else if d.dev_type == 4{//双回路调光控制端
+                       return 132
+        }else if d.dev_type == 5{//三回路开关控制端
+                        return 190
+        }else if d.dev_type == 6{//六回路开关控制端
+                        return 190
+        }else if d.dev_type == 7{//窗帘控制端
+                       return 104
+        }else if d.dev_type == 8{//单回路调光控制端(旧版)
+                       return 104
+        }else if d.dev_type == 9{//双回路调光控制端(旧版)
+            
+            return 132
+        }else if d.dev_type == 10{//三/六回路开关控制端
+                        return 190
+        }else if d.dev_type == 11{
+            return 0
+        }else if d.dev_type == 12{//空调
+                        return 312
+        }
+        else if d.dev_type == 13{//地暖
+            
+            return 188
+        }
+        else if d.dev_type == 14{//新风
+            
+            return 174
+        }else{
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,26 +75,93 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellId = "cell"
-        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-        }
+
         let d = self.data[indexPath.row] as! Device
-        
-        
-        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
-        logoButton.setTitle(d.dev_name!, forState: .Normal)
-        logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        cell.contentView.addSubview(logoButton)
-        
-        let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
-        logoButton1.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
-        
-        cell.contentView.addSubview(logoButton1)
-        
-        return cell
-        
+        if d.dev_type == 3{//单回路调光控制端
+            let cellIdentifier = "MSigleTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 4{//双回路调光控制端
+            let cellIdentifier = "MDoubleTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 5{//三回路开关控制端
+            let cellIdentifier = "MThreeTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 6{//六回路开关控制端
+            let cellIdentifier = "MThreeTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 7{//窗帘控制端
+            let cellIdentifier = "MCurtainTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MCurtainTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 8{//单回路调光控制端(旧版)
+            let cellIdentifier = "MSigleTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 9{//双回路调光控制端(旧版)
+            let cellIdentifier = "MDoubleTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 10{//三/六回路开关控制端
+            let cellIdentifier = "MThreeTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+            }
+            return cell
+        }else if d.dev_type == 11{
+            return UITableViewCell()
+        }else if d.dev_type == 12{//空调
+            let cellIdentifier = "MAirTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MAirTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MAirTableViewCell
+            }
+            return cell
+        }
+        else if d.dev_type == 13{//地暖
+            let cellIdentifier = "MDiNuanTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDiNuanTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDiNuanTableViewCell
+            }
+            return cell
+        }
+        else if d.dev_type == 14{//新风
+            let cellIdentifier = "MXinFenTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MXinFenTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MXinFenTableViewCell
+            }
+            return cell
+        }else{
+            return UITableViewCell()
+        }
+
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

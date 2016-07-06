@@ -168,10 +168,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
              self?.hidesBottomBarWhenPushed = true
-            let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
-            vc.flag = "0"
-            self?.navigationController?.pushViewController(vc, animated: true)
-            self?.hidesBottomBarWhenPushed = false
+            if d.dev_type != 1 {
+                let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
+                vc.flag = "0"
+                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.hidesBottomBarWhenPushed = false
+            }
             return RACSignal.empty()
             })
         cell.contentView.addSubview(searchButton)

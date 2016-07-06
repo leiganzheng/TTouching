@@ -57,6 +57,20 @@
 		BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F7E1D274D41005CEE95 /* FPPopoverView.m */; };
 		BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB347F801D274D41005CEE95 /* FPTouchView.m */; };
 		BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */; };
+		BB38E80B1D2CAC3500190A49 /* MCurtainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8091D2CAC3500190A49 /* MCurtainTableViewCell.swift */; };
+		BB38E80C1D2CAC3500190A49 /* MCurtainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E80A1D2CAC3500190A49 /* MCurtainTableViewCell.xib */; };
+		BB38E80F1D2CAC4C00190A49 /* MSigleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E80D1D2CAC4C00190A49 /* MSigleTableViewCell.swift */; };
+		BB38E8101D2CAC4C00190A49 /* MSigleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E80E1D2CAC4C00190A49 /* MSigleTableViewCell.xib */; };
+		BB38E8131D2CAC5700190A49 /* MDoubleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8111D2CAC5700190A49 /* MDoubleTableViewCell.swift */; };
+		BB38E8141D2CAC5700190A49 /* MDoubleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8121D2CAC5700190A49 /* MDoubleTableViewCell.xib */; };
+		BB38E8191D2CAD3B00190A49 /* MThreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8171D2CAD3B00190A49 /* MThreeTableViewCell.swift */; };
+		BB38E81A1D2CAD3B00190A49 /* MThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8181D2CAD3B00190A49 /* MThreeTableViewCell.xib */; };
+		BB38E81D1D2CAD4800190A49 /* MAirTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E81B1D2CAD4800190A49 /* MAirTableViewCell.swift */; };
+		BB38E81E1D2CAD4800190A49 /* MAirTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E81C1D2CAD4800190A49 /* MAirTableViewCell.xib */; };
+		BB38E8211D2CAD5900190A49 /* MDiNuanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E81F1D2CAD5900190A49 /* MDiNuanTableViewCell.swift */; };
+		BB38E8221D2CAD5900190A49 /* MDiNuanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */; };
+		BB38E8251D2CAD6600190A49 /* MXinFenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */; };
+		BB38E8261D2CAD6600190A49 /* MXinFenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
 		BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */; };
@@ -186,6 +200,20 @@
 		BB347F7F1D274D41005CEE95 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		BB347F801D274D41005CEE95 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDatePickerViewController.swift; path = ../UserList/CustomDatePickerViewController.swift; sourceTree = "<group>"; };
+		BB38E8091D2CAC3500190A49 /* MCurtainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCurtainTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E80A1D2CAC3500190A49 /* MCurtainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCurtainTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E80D1D2CAC4C00190A49 /* MSigleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSigleTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E80E1D2CAC4C00190A49 /* MSigleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSigleTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E8111D2CAC5700190A49 /* MDoubleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDoubleTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8121D2CAC5700190A49 /* MDoubleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDoubleTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E8171D2CAD3B00190A49 /* MThreeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MThreeTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8181D2CAD3B00190A49 /* MThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MThreeTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E81B1D2CAD4800190A49 /* MAirTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAirTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E81C1D2CAD4800190A49 /* MAirTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAirTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E81F1D2CAD5900190A49 /* MDiNuanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDiNuanTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDiNuanTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXinFenTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXinFenTableViewCell.xib; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3C44F71B465BDB008A1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -312,6 +340,7 @@
 		71D76E301D241717000E0A34 /* EquementMannager */ = {
 			isa = PBXGroup;
 			children = (
+				BB38E8081D2CAC1A00190A49 /* EquementCell */,
 				71D76E311D241777000E0A34 /* MainControViewController.swift */,
 				71D76E331D2418B1000E0A34 /* SixViewController.swift */,
 				71D76E351D2418EB000E0A34 /* CutainControViewController.swift */,
@@ -388,6 +417,27 @@
 				BB347F801D274D41005CEE95 /* FPTouchView.m */,
 			);
 			path = FPPopover;
+			sourceTree = "<group>";
+		};
+		BB38E8081D2CAC1A00190A49 /* EquementCell */ = {
+			isa = PBXGroup;
+			children = (
+				BB38E8091D2CAC3500190A49 /* MCurtainTableViewCell.swift */,
+				BB38E80A1D2CAC3500190A49 /* MCurtainTableViewCell.xib */,
+				BB38E80D1D2CAC4C00190A49 /* MSigleTableViewCell.swift */,
+				BB38E80E1D2CAC4C00190A49 /* MSigleTableViewCell.xib */,
+				BB38E8111D2CAC5700190A49 /* MDoubleTableViewCell.swift */,
+				BB38E8121D2CAC5700190A49 /* MDoubleTableViewCell.xib */,
+				BB38E8171D2CAD3B00190A49 /* MThreeTableViewCell.swift */,
+				BB38E8181D2CAD3B00190A49 /* MThreeTableViewCell.xib */,
+				BB38E81B1D2CAD4800190A49 /* MAirTableViewCell.swift */,
+				BB38E81C1D2CAD4800190A49 /* MAirTableViewCell.xib */,
+				BB38E81F1D2CAD5900190A49 /* MDiNuanTableViewCell.swift */,
+				BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */,
+				BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */,
+				BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */,
+			);
+			path = EquementCell;
 			sourceTree = "<group>";
 		};
 		BB3C44E91B465BDB008A1213 = {
@@ -689,7 +739,7 @@
 				TargetAttributes = {
 					BB3C44F11B465BDB008A1213 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = Y52XLS57AB;
+						DevelopmentTeam = 5VV36XYQWS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -722,12 +772,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB38E8221D2CAD5900190A49 /* MDiNuanTableViewCell.xib in Resources */,
 				BB3C46571B467359008A1213 /* Images.xcassets in Resources */,
 				BB3C465B1B4674C2008A1213 /* Main.storyboard in Resources */,
+				BB38E81E1D2CAD4800190A49 /* MAirTableViewCell.xib in Resources */,
+				BB38E81A1D2CAD3B00190A49 /* MThreeTableViewCell.xib in Resources */,
 				BB319C261D26077A0071F443 /* Info.plist in Resources */,
 				BB3C465A1B4674C2008A1213 /* Login.storyboard in Resources */,
+				BB38E8141D2CAC5700190A49 /* MDoubleTableViewCell.xib in Resources */,
+				BB38E8101D2CAC4C00190A49 /* MSigleTableViewCell.xib in Resources */,
 				BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */,
 				BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */,
+				BB38E80C1D2CAC3500190A49 /* MCurtainTableViewCell.xib in Resources */,
+				BB38E8261D2CAD6600190A49 /* MXinFenTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,6 +847,7 @@
 				BB3C46031B465DA0008A1213 /* QNSharedDatas.swift in Sources */,
 				BB347F811D274D41005CEE95 /* FPPopoverController.m in Sources */,
 				BB5BCE591D29F14800B8BFC1 /* SixPaternViewController.swift in Sources */,
+				BB38E8191D2CAD3B00190A49 /* MThreeTableViewCell.swift in Sources */,
 				BB347F831D274D41005CEE95 /* FPTouchView.m in Sources */,
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
@@ -805,13 +863,16 @@
 				71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */,
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
+				BB38E81D1D2CAD4800190A49 /* MAirTableViewCell.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
 				BB5BCE5D1D29F9C100B8BFC1 /* PaternViewController.swift in Sources */,
 				BB3C45CC1B465C46008A1213 /* LyActivityView.swift in Sources */,
 				BB3C45CE1B465C46008A1213 /* ReactiveCocoa.swift in Sources */,
+				BB38E8251D2CAD6600190A49 /* MXinFenTableViewCell.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
 				BB319C221D26077A0071F443 /* FMDatabaseAdditions.m in Sources */,
+				BB38E80B1D2CAC3500190A49 /* MCurtainTableViewCell.swift in Sources */,
 				BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */,
 				BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */,
 				BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */,
@@ -819,6 +880,7 @@
 				BB3C45B41B465C46008A1213 /* UIImageExtension.swift in Sources */,
 				BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */,
 				BB319C251D26077A0071F443 /* FMResultSet.m in Sources */,
+				BB38E8211D2CAD5900190A49 /* MDiNuanTableViewCell.swift in Sources */,
 				BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */,
@@ -833,6 +895,7 @@
 				71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */,
 				71D76E481D28C49C000E0A34 /* CurtainTableViewCell.swift in Sources */,
 				71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */,
+				BB38E8131D2CAC5700190A49 /* MDoubleTableViewCell.swift in Sources */,
 				71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */,
 				71D76E461D28C20B000E0A34 /* SixTableViewCell.swift in Sources */,
 				BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */,
@@ -841,6 +904,7 @@
 				BB3C46051B465DA0008A1213 /* QNStyleAttribute.swift in Sources */,
 				2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */,
 				BB319C0F1D26014A0071F443 /* FMDatabaseVariadic.swift in Sources */,
+				BB38E80F1D2CAC4C00190A49 /* MSigleTableViewCell.swift in Sources */,
 				BB3C45B61B465C46008A1213 /* UIViewExtension.swift in Sources */,
 				BB3C45B31B465C46008A1213 /* StringExtension.swift in Sources */,
 				BB3C45F61B465C47008A1213 /* QNInterceptor.swift in Sources */,
