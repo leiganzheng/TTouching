@@ -84,7 +84,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             }
-            cell.textLabel?.text = self.titles[indexPath.section][indexPath.row] as! String
+            let array = self.titles[indexPath.section] as! NSArray
+            cell.textLabel?.text = array[indexPath.row] as! String
             cell.contentView.backgroundColor = UIColor.whiteColor()
             
             
