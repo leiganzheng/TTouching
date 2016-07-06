@@ -15,6 +15,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     @IBOutlet weak var contentView: UIView!
     
     var type:Int?
+    var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
     var sixVC:SixPaternViewController?
@@ -169,21 +170,67 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
-        //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-        
-        for (_, element): (Int, Device) in arr.enumerate(){
-            if  element.dev_type == 2 || element.dev_type == 100 {
-                self.data.addObject(element)
-            }
+        if flag == "0" {
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
             
+            for (_, element): (Int, Device) in arr.enumerate(){
+                if  element.dev_type == 2 || element.dev_type == 100 {
+                    self.data.addObject(element)
+                }
+                
+            }
+            self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
+            //        self.data = self.data.sortUsingComparator({ (<#AnyObject#>, <#AnyObject#>) -> NSComparisonResult in
+            //            <#code#>
+            //        })
+            self.buildDataAndUI()
+            self.buildUI()
+
+        }else if flag == "2"{
+            if self.customTitle == "灯光" {
+                //查
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8 || element.dev_type == 100 {
+                        self.data.addObject(element)
+                    }
+                    
+                }
+                
+                self.buildDataAndUI()
+                self.buildUI()
+ 
+            }
+            if self.customTitle == "窗帘" {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 12 || element.dev_type == 13 || element.dev_type == 14 || element.dev_type == 100 {
+                        self.data.addObject(element)
+                    }
+                    
+                }
+                
+                self.buildDataAndUI()
+                self.buildUI()
+            }
+            if self.customTitle == "空调" {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 7 || element.dev_type == 100 {
+                        self.data.addObject(element)
+                    }
+                    
+                }
+                
+                self.buildDataAndUI()
+                self.buildUI()
+            }
+           
         }
-         self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
-//        self.data = self.data.sortUsingComparator({ (<#AnyObject#>, <#AnyObject#>) -> NSComparisonResult in
-//            <#code#>
-//        })
-        self.buildDataAndUI()
-        self.buildUI()
         
         
     }
