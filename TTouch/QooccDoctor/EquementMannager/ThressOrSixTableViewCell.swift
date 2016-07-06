@@ -21,7 +21,6 @@ class ThressOrSixTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        QNTool.configViewLayerFrame(self.paternLB)
         // Configure the view for the selected state
     }
 

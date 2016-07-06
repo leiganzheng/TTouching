@@ -48,7 +48,6 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-//            cell.accessoryType = .DisclosureIndicator
             
         }
         let d = self.data[indexPath.row] as! Device
@@ -68,7 +67,7 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         cell.contentView.addSubview(logoButton1)
         let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             return RACSignal.empty()
             })
@@ -113,13 +112,19 @@ class MannageEquementViewController: UIViewController  , QNInterceptorProtocol, 
         }else if d.dev_type == 11{
             
         }else if d.dev_type == 12{//空调
-            
+            self.VC = AirViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+
         }
         else if d.dev_type == 13{//地暖
-            
+            self.VC = DNuanViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+
         }
         else if d.dev_type == 14{//新风
-            
+            self.VC = XFengViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+
         }
     
     }

@@ -48,7 +48,8 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isopen.backgroundColor = color
-
+        let title = d?.dev_area == "" ? "选择区域" :  d?.dev_area
+        cell.patern.setTitle(title, forState: .Normal)
         let btn1 = cell.patern
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -58,7 +59,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             vc.bock = {(device) -> Void in
                 //修改数据库
                 let seltectd = device as? Device
-                 cell.paternLB.text = seltectd?.dev_name
+                 cell.patern.setTitle(seltectd?.dev_name, forState: .Normal)
                 DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
                 popover.dismissPopoverAnimated(true)
             }

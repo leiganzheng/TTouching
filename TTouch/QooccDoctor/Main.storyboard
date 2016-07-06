@@ -1294,78 +1294,6 @@
             </objects>
             <point key="canvasLocation" x="-159" y="3954"/>
         </scene>
-        <!--Main Contro View Controller-->
-        <scene sceneID="LOJ-Hg-gsf">
-            <objects>
-                <viewController storyboardIdentifier="MainControViewController" id="OpK-XY-YDB" customClass="MainControViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pnx-ID-kf0"/>
-                        <viewControllerLayoutGuide type="bottom" id="dM9-Be-3gb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="S1M-Mq-huP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhU-md-leT">
-                                <rect key="frame" x="20" y="41" width="27" height="27"/>
-                                <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总控" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5E-wG-iUf">
-                                <rect key="frame" x="67" y="44" width="77" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDe-fK-kjG">
-                                <rect key="frame" x="0.0" y="98" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S1 情景一">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsD-nA-Eqo">
-                                <rect key="frame" x="160" y="98" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S2 情景二">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOi-a6-5Uo">
-                                <rect key="frame" x="160" y="188" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S6 OFF">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlT-fX-xaX">
-                                <rect key="frame" x="0.0" y="141" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S3 情景三">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTi-me-O3l">
-                                <rect key="frame" x="0.0" y="188" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S5 ON">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJ2-px-I3w">
-                                <rect key="frame" x="160" y="141" width="160" height="47"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="S4 情景四">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UYl-XR-FpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="493" y="3799"/>
-        </scene>
         <!--Security View Controller-->
         <scene sceneID="rdU-Ol-obj">
             <objects>
@@ -1607,8 +1535,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mb-7Y-KTj">
-                                                    <rect key="frame" x="278" y="14" width="22" height="17"/>
-                                                    <state key="normal" image="Menu_Curtain_icon">
+                                                    <rect key="frame" x="232" y="14" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -1622,19 +1551,12 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xV-yh-9pq">
-                                                    <rect key="frame" x="204" y="12" width="72" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="UYk-Hy-gNK" id="bxJ-CY-CHW"/>
                                             <outlet property="name" destination="zsk-5Q-02U" id="vHA-db-IRh"/>
                                             <outlet property="partern" destination="1Mb-7Y-KTj" id="xkb-OC-0Y8"/>
-                                            <outlet property="paternLB" destination="5xV-yh-9pq" id="q64-hD-4dp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1866,24 +1788,18 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zck-A4-iC2">
-                                                    <rect key="frame" x="281" y="14" width="22" height="17"/>
-                                                    <state key="normal" image="Menu_Curtain_icon">
+                                                    <rect key="frame" x="232" y="14" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95u-h9-My4">
-                                                    <rect key="frame" x="207" y="12" width="72" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="c29-oo-Uws" id="bRP-zb-vHM"/>
                                             <outlet property="name" destination="S6i-sd-2IG" id="MSK-lA-8sS"/>
                                             <outlet property="partern" destination="zck-A4-iC2" id="0t1-Su-Igo"/>
-                                            <outlet property="parternLB" destination="95u-h9-My4" id="hvk-Nv-HWl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2419,7 +2335,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkk-An-9d4">
                                                     <rect key="frame" x="0.0" y="152" width="160" height="47"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <state key="normal" title="S5 ON">
+                                                    <state key="normal" title="S5 情景五">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -2524,8 +2440,9 @@
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </slider>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-5L-dkt">
-                                                    <rect key="frame" x="283" y="13" width="22" height="17"/>
-                                                    <state key="normal" image="Menu_Curtain_icon">
+                                                    <rect key="frame" x="232" y="13" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -2539,19 +2456,12 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS4-cT-iYF">
-                                                    <rect key="frame" x="203" y="12" width="72" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="isOpen" destination="gdf-eq-Vth" id="J94-XA-Cn8"/>
                                             <outlet property="name" destination="tED-bQ-QCj" id="njI-pd-CMh"/>
                                             <outlet property="partern" destination="uw5-5L-dkt" id="1Ah-7f-3uj"/>
-                                            <outlet property="paternLB" destination="fS4-cT-iYF" id="xXD-rK-DbJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2596,6 +2506,182 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDM-Cd-GnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-43" y="6545"/>
+        </scene>
+        <!--Air View Controller-->
+        <scene sceneID="O3y-iT-2b3">
+            <objects>
+                <viewController storyboardIdentifier="AirViewController" id="Iqq-Cg-SMa" customClass="AirViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OMD-G7-9CU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mb1-3X-M4P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Kz-6u-00V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yoF-RT-wIV">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="332" id="WVQ-5J-V0v" customClass="AirTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="332"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WVQ-5J-V0v" id="HjE-2a-bs2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="331"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOL-NL-ER6">
+                                                    <rect key="frame" x="263" y="53" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTl-Ue-Zd6">
+                                                    <rect key="frame" x="156" y="211" width="33" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CD6-pF-tz3">
+                                                    <rect key="frame" x="248" y="259" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vdU-t2-d3o">
+                                                    <rect key="frame" x="48" y="236" width="232" height="31"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </slider>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-4O-Sf0">
+                                                    <rect key="frame" x="132" y="84" width="58" height="34"/>
+                                                    <state key="normal" title="24℃">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKT-9e-kzJ">
+                                                    <rect key="frame" x="132" y="116" width="58" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="当前温度">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrk-VS-NZr">
+                                                    <rect key="frame" x="17" y="238" width="25" height="24"/>
+                                                    <state key="normal" image="Menu_AirCondition_icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-dg-PjJ">
+                                                    <rect key="frame" x="281" y="238" width="25" height="24"/>
+                                                    <state key="normal" image="Manage_Floor-heating_icon"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="16℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-M6-6mK">
+                                                    <rect key="frame" x="47" y="259" width="33" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mai-Fp-mXN">
+                                                    <rect key="frame" x="17" y="147" width="35" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="-28"/>
+                                                    <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="19"/>
+                                                    <state key="normal" title="冷气" image="Menu_AirCondition_icon">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPE-1h-oD2">
+                                                    <rect key="frame" x="80" y="147" width="35" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="-24" minY="0.0" maxX="0.0" maxY="-30"/>
+                                                    <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="15"/>
+                                                    <state key="normal" title="暖气" image="Manage_Floor-heating_icon">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-0W-2Ro">
+                                                    <rect key="frame" x="144" y="147" width="35" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="-28"/>
+                                                    <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="13"/>
+                                                    <state key="normal" title="通风" image="Manage_Fresh-air_icon">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jc5-6A-1pk">
+                                                    <rect key="frame" x="271" y="147" width="35" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="0.0" maxY="-29"/>
+                                                    <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="13"/>
+                                                    <state key="normal" title="除湿" image="Manage_dehumidification_icon">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0y-rj-9eK">
+                                                    <rect key="frame" x="208" y="147" width="35" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="-29"/>
+                                                    <inset key="imageEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="15"/>
+                                                    <state key="normal" title="自动" image="Manage_automatic_icon">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jaz-QN-ntr">
+                                                    <rect key="frame" x="17" y="299" width="25" height="24"/>
+                                                    <state key="normal" image="Manage_Fresh-air_icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bht-eT-NX1">
+                                                    <rect key="frame" x="50" y="301" width="48" height="19"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-0o-ZJl">
+                                                    <rect key="frame" x="106" y="301" width="84" height="19"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KZ-xM-qFl">
+                                                    <rect key="frame" x="198" y="301" width="108" height="19"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2I4-cb-u1G">
+                                                    <rect key="frame" x="10" y="15" width="23" height="27"/>
+                                                    <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-xG-48x">
+                                                    <rect key="frame" x="232" y="20" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQZ-ZP-4L1">
+                                                    <rect key="frame" x="41" y="12" width="85" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="空调">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="isOpen" destination="2I4-cb-u1G" id="fbp-B9-WbX"/>
+                                            <outlet property="name" destination="gQZ-ZP-4L1" id="Z59-Xf-Uv4"/>
+                                            <outlet property="partern" destination="tQl-xG-48x" id="LV2-Ac-izd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Iqq-Cg-SMa" id="jj2-jA-ei0"/>
+                                    <outlet property="delegate" destination="Iqq-Cg-SMa" id="g11-qr-3XC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="myCustomTableView" destination="yoF-RT-wIV" id="agG-IW-yHZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekF-MA-7rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="7138"/>
         </scene>
         <!--Un Aera View Controller-->
         <scene sceneID="32C-Yl-gX9">
@@ -2695,8 +2781,9 @@
                                                     <rect key="frame" x="258" y="113" width="51" height="31"/>
                                                 </switch>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozP-HY-C1L">
-                                                    <rect key="frame" x="285" y="5" width="27" height="17"/>
-                                                    <state key="normal" image="Menu_Curtain_icon">
+                                                    <rect key="frame" x="232" y="5" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -2746,6 +2833,301 @@
             </objects>
             <point key="canvasLocation" x="329" y="5676"/>
         </scene>
+        <!--Nuan View Controller-->
+        <scene sceneID="wQ8-nx-vLf">
+            <objects>
+                <viewController storyboardIdentifier="DNuanViewController" id="Qtz-X5-N4o" customClass="DNuanViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bMI-2e-yZ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="1EL-YK-nQ4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9RD-N9-3Il">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMp-81-nFy">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="evj-C1-0os" customClass="DNuanTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="evj-C1-0os" id="UtR-1Y-SWa">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9J6-wB-0uh">
+                                                    <rect key="frame" x="144" y="157" width="58" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="24℃">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUY-du-xRG">
+                                                    <rect key="frame" x="131" y="75" width="58" height="34"/>
+                                                    <state key="normal" title="24℃">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJM-Mz-hlC">
+                                                    <rect key="frame" x="131" y="107" width="58" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="当前温度">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdx-AL-Q1j">
+                                                    <rect key="frame" x="28" y="162" width="25" height="24"/>
+                                                    <state key="normal" image="Manage_Floor-heating_icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LB-Kc-qEE">
+                                                    <rect key="frame" x="10" y="11" width="23" height="27"/>
+                                                    <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ki-NK-bgy">
+                                                    <rect key="frame" x="232" y="16" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-OW-8t1">
+                                                    <rect key="frame" x="41" y="8" width="85" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="地暖">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORA-2g-eI3">
+                                                    <rect key="frame" x="261" y="49" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="isOpen" destination="3LB-Kc-qEE" id="9NZ-XG-bkT"/>
+                                            <outlet property="name" destination="wMS-OW-8t1" id="RP7-77-0vJ"/>
+                                            <outlet property="partern" destination="7ki-NK-bgy" id="neC-RP-jls"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Qtz-X5-N4o" id="l2M-VK-mLu"/>
+                                    <outlet property="delegate" destination="Qtz-X5-N4o" id="Jck-Bq-nlh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="myCustomTableView" destination="MMp-81-nFy" id="LUm-nk-iaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zdc-NW-Jma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="7109"/>
+        </scene>
+        <!--Feng View Controller-->
+        <scene sceneID="SC6-3y-Odu">
+            <objects>
+                <viewController storyboardIdentifier="XFengViewController" id="dyZ-oE-dUM" customClass="XFengViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cnA-Qq-can"/>
+                        <viewControllerLayoutGuide type="bottom" id="OA2-l1-G0c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hsy-r9-DJS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKO-oR-AB6">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="190" id="2tM-uU-leJ" customClass="XFTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="190"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2tM-uU-leJ" id="Sye-lt-13X">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7U-e7-83c">
+                                                    <rect key="frame" x="107" y="78" width="115" height="50"/>
+                                                    <state key="normal" image="Manage_Fresh-air"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-jU-GXR">
+                                                    <rect key="frame" x="20" y="157" width="25" height="24"/>
+                                                    <state key="normal" image="Manage_Fresh-air_icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51M-vD-jPn">
+                                                    <rect key="frame" x="53" y="159" width="48" height="19"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBt-Hm-CHX">
+                                                    <rect key="frame" x="109" y="159" width="84" height="19"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuS-Ws-Yv2">
+                                                    <rect key="frame" x="201" y="159" width="108" height="19"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uec-Wm-EDh">
+                                                    <rect key="frame" x="8" y="11" width="23" height="27"/>
+                                                    <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vnl-gv-FnD">
+                                                    <rect key="frame" x="232" y="16" width="68" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="选择区域">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cus-DS-rhY">
+                                                    <rect key="frame" x="39" y="8" width="85" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="新风">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFO-uV-WbD">
+                                                    <rect key="frame" x="260" y="43" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="isOpen" destination="uec-Wm-EDh" id="TWW-rT-PxJ"/>
+                                            <outlet property="name" destination="Cus-DS-rhY" id="ZSZ-pc-ZAy"/>
+                                            <outlet property="partern" destination="Vnl-gv-FnD" id="RF9-tU-M9R"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dyZ-oE-dUM" id="dfb-NK-o8e"/>
+                                    <outlet property="delegate" destination="dyZ-oE-dUM" id="cvN-7n-1mF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="myCustomTableView" destination="tKO-oR-AB6" id="ODx-n1-eSf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z84-D0-POx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1271" y="7092"/>
+        </scene>
+        <!--Main Contro View Controller-->
+        <scene sceneID="FoX-HL-vp4">
+            <objects>
+                <viewController storyboardIdentifier="MainControViewController" id="reZ-CC-pi9" customClass="MainControViewController" customModule="QooccDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lGk-C8-2HV"/>
+                        <viewControllerLayoutGuide type="bottom" id="0rL-sn-NNI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hZi-is-DCi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OJf-B7-S6g">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="LGn-Gu-mOP" customClass="MainTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LGn-Gu-mOP" id="dZ7-AI-8Dr">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUJ-1B-TYC">
+                                                    <rect key="frame" x="20" y="20" width="27" height="27"/>
+                                                    <color key="backgroundColor" red="0.46274509800000002" green="0.70980392160000005" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0V-We-fJq">
+                                                    <rect key="frame" x="0.0" y="62" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S1 情景一">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfO-Ye-xgK">
+                                                    <rect key="frame" x="160" y="62" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S2 情景二">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6h-uG-ckF">
+                                                    <rect key="frame" x="160" y="152" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S6 OFF">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBn-BN-SFZ">
+                                                    <rect key="frame" x="0.0" y="105" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S3 情景三">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHb-05-m7K">
+                                                    <rect key="frame" x="0.0" y="152" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S5 情景五">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrW-PM-zIA">
+                                                    <rect key="frame" x="160" y="105" width="160" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="S4 情景四">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dX-lO-ysZ">
+                                                    <rect key="frame" x="60" y="16" width="113" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" title="总控">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="isOpen" destination="JUJ-1B-TYC" id="4Sc-Zi-pIv"/>
+                                            <outlet property="name" destination="6dX-lO-ysZ" id="Dze-m3-3JS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="reZ-CC-pi9" id="Jqu-Rk-rCL"/>
+                                    <outlet property="delegate" destination="reZ-CC-pi9" id="Dj5-X4-0IN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="OJf-B7-S6g" secondAttribute="trailing" constant="-20" id="3Rs-jv-eO5"/>
+                            <constraint firstItem="0rL-sn-NNI" firstAttribute="top" secondItem="OJf-B7-S6g" secondAttribute="bottom" id="86a-CD-NJS"/>
+                            <constraint firstItem="OJf-B7-S6g" firstAttribute="leading" secondItem="hZi-is-DCi" secondAttribute="leadingMargin" constant="-20" id="ebK-fJ-tEE"/>
+                            <constraint firstItem="OJf-B7-S6g" firstAttribute="top" secondItem="lGk-C8-2HV" secondAttribute="bottom" id="jd2-Ua-jfb"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="myCustomTableView" destination="OJf-B7-S6g" id="kGY-kE-tm5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M45-Xb-JIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="3795"/>
+        </scene>
     </scenes>
     <resources>
         <image name="39.pic_hd" width="365" height="285"/>
@@ -2755,12 +3137,18 @@
         <image name="Curtain_stop_icon" width="28" height="28"/>
         <image name="Curtain_up_icon" width="28" height="28"/>
         <image name="Manage_Alarm_icon1" width="32" height="32"/>
+        <image name="Manage_Floor-heating_icon" width="24" height="24"/>
+        <image name="Manage_Fresh-air" width="137" height="71"/>
+        <image name="Manage_Fresh-air_icon" width="24" height="24"/>
         <image name="Manage_House and the house_icon" width="66" height="20"/>
         <image name="Manage_Open_icon" width="32" height="32"/>
+        <image name="Manage_automatic_icon" width="24" height="24"/>
         <image name="Manage_call_icon" width="32" height="32"/>
         <image name="Manage_camera_icon" width="32" height="32"/>
+        <image name="Manage_dehumidification_icon" width="24" height="24"/>
         <image name="Manage_doorbell_icon" width="32" height="32"/>
         <image name="Manage_drop down_icon" width="24" height="24"/>
+        <image name="Menu_AirCondition_icon" width="24" height="24"/>
         <image name="Menu_Curtain_icon" width="36" height="36"/>
         <image name="Menu_Light_icon" width="36" height="36"/>
         <image name="Setup_Voice_icon" width="32" height="32"/>

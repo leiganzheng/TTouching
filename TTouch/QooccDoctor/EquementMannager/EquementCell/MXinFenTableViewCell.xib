@@ -20,30 +20,30 @@
                         <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </switch>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLK-BC-HKR">
-                        <rect key="frame" x="16" y="9" width="58" height="30"/>
+                        <rect key="frame" x="8" y="9" width="58" height="30"/>
                         <state key="normal" title="新风">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-WO-42A">
+                        <rect key="frame" x="103" y="62" width="115" height="50"/>
+                        <state key="normal" image="Manage_Fresh-air"/>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcI-2G-S8H">
-                        <rect key="frame" x="33" y="141" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="16" y="141" width="25" height="24"/>
+                        <state key="normal" image="Manage_Fresh-air_icon"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m01-VB-GuR">
-                        <rect key="frame" x="66" y="143" width="48" height="19"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uls-2H-ZxB">
-                        <rect key="frame" x="122" y="143" width="67" height="19"/>
+                        <rect key="frame" x="49" y="143" width="48" height="19"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsi-aF-IKH">
                         <rect key="frame" x="197" y="143" width="108" height="19"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-WO-42A">
-                        <rect key="frame" x="111" y="65" width="98" height="44"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uls-2H-ZxB">
+                        <rect key="frame" x="105" y="143" width="84" height="19"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -51,6 +51,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Manage_ 1ch-Dimmer_icon" width="44" height="44"/>
+        <image name="Manage_Fresh-air" width="137" height="71"/>
+        <image name="Manage_Fresh-air_icon" width="24" height="24"/>
     </resources>
 </document>

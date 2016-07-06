@@ -21,7 +21,6 @@ class SingleTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        QNTool.configViewLayerFrame(self.parternLB)
         // Configure the view for the selected state
     }
 

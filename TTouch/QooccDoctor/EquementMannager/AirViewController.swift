@@ -1,15 +1,15 @@
 //
-//  SigleLightViewController.swift
+//  AirViewController.swift
 //  QooccDoctor
 //
-//  Created by leiganzheng on 16/6/29.
+//  Created by leiganzheng on 16/7/6.
 //  Copyright © 2016年 juxi. All rights reserved.
 //
 
 import UIKit
 import ReactiveCocoa
 
-class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
+class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
@@ -30,7 +30,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 332
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,9 +40,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellId = "cell"
-        var cell: SingleTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? SingleTableViewCell
+        var cell: AirTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? AirTableViewCell
         if cell == nil {
-            cell = SingleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell = AirTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
         let d = self.data[indexPath.row] as? Device
@@ -83,7 +83,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             }
             
         }
-
+        
         let btn1 = cell.partern
         
         btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -92,7 +92,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             let popover = FPPopoverController(viewController: vc)
             vc.bock = {(device) -> Void in
                 //修改数据库
-               
+                
                 let seltectd = device as? Device
                 cell.partern.setTitle(seltectd?.dev_name, forState: .Normal)
                 DBManager.shareInstance().update((seltectd?.address)!, type: (d?.address)!)
@@ -118,20 +118,20 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_type == 8 {
-                    self.data.addObject(element)
-                }
-                
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 12 {
+                self.data.addObject(element)
             }
-
-            self.myCustomTableView.reloadData()
+            
+        }
+        
+        self.myCustomTableView.reloadData()
         
     }
     
     
-   
+    
 }

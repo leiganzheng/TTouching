@@ -14,38 +14,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-ba-ifs">
-                        <rect key="frame" x="256" y="8" width="51" height="31"/>
-                        <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </switch>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-8d-gkF">
-                        <rect key="frame" x="16" y="7" width="58" height="34"/>
+                        <rect key="frame" x="8" y="7" width="58" height="34"/>
                         <state key="normal" title="地暖">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ6-3V-CFb">
-                        <rect key="frame" x="33" y="150" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-ba-ifs">
+                        <rect key="frame" x="258" y="8" width="51" height="31"/>
+                        <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </switch>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b55-mn-nDr">
+                        <rect key="frame" x="131" y="46" width="58" height="34"/>
+                        <state key="normal" title="24℃">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pG-L7-scT">
+                        <rect key="frame" x="131" y="78" width="58" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="当前温度">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-cP-glz">
+                        <rect key="frame" x="25" y="145" width="25" height="24"/>
+                        <state key="normal" image="Manage_Floor-heating_icon"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58t-Pm-G0p">
-                        <rect key="frame" x="143" y="145" width="58" height="34"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="141" y="140" width="58" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="24℃">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvo-0M-Gzg">
-                        <rect key="frame" x="143" y="61" width="58" height="34"/>
-                        <state key="normal" title="24℃">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZP-7B-a6w">
-                        <rect key="frame" x="143" y="95" width="58" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="当前温度">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -55,6 +55,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Manage_ 1ch-Dimmer_icon" width="44" height="44"/>
+        <image name="Manage_Floor-heating_icon" width="24" height="24"/>
     </resources>
 </document>

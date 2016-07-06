@@ -199,11 +199,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let d = self.data[indexPath.row] as! Device
+        if d.dev_type != 100 {
             let flag = !(self.flags[indexPath.row] as! Bool)
             self.flags.replaceObjectAtIndex(indexPath.row, withObject: flag)
-    
-           self.myTableView.reloadData()
+            
+            self.myTableView.reloadData()
+        }
     }
     //MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {

@@ -71,6 +71,13 @@
 		BB38E8221D2CAD5900190A49 /* MDiNuanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */; };
 		BB38E8251D2CAD6600190A49 /* MXinFenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */; };
 		BB38E8261D2CAD6600190A49 /* MXinFenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */; };
+		BB38E8281D2CC79C00190A49 /* AirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8271D2CC79C00190A49 /* AirViewController.swift */; };
+		BB38E82A1D2CC7AE00190A49 /* DNuanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8291D2CC7AE00190A49 /* DNuanViewController.swift */; };
+		BB38E82C1D2CC7BB00190A49 /* XFengViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E82B1D2CC7BB00190A49 /* XFengViewController.swift */; };
+		BB38E82E1D2CCA6600190A49 /* AirTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E82D1D2CCA6600190A49 /* AirTableViewCell.swift */; };
+		BB38E8301D2CCA7600190A49 /* DNuanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */; };
+		BB38E8321D2CCA8200190A49 /* XFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */; };
+		BB38E8341D2CCF4F00190A49 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */; };
 		BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C44F71B465BDB008A1213 /* AppDelegate.swift */; };
 		BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451B1B465C46008A1213 /* QN_Base.swift */; };
 		BB3C45B11B465C46008A1213 /* QN_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C451F1B465C46008A1213 /* QN_UserInfo.swift */; };
@@ -214,6 +221,13 @@
 		BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDiNuanTableViewCell.xib; sourceTree = "<group>"; };
 		BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXinFenTableViewCell.swift; sourceTree = "<group>"; };
 		BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXinFenTableViewCell.xib; sourceTree = "<group>"; };
+		BB38E8271D2CC79C00190A49 /* AirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirViewController.swift; sourceTree = "<group>"; };
+		BB38E8291D2CC7AE00190A49 /* DNuanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNuanViewController.swift; sourceTree = "<group>"; };
+		BB38E82B1D2CC7BB00190A49 /* XFengViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFengViewController.swift; sourceTree = "<group>"; };
+		BB38E82D1D2CCA6600190A49 /* AirTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNuanTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTableViewCell.swift; sourceTree = "<group>"; };
+		BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		BB3C44F21B465BDB008A1213 /* QooccDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QooccDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C44F61B465BDB008A1213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3C44F71B465BDB008A1213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -355,6 +369,13 @@
 				BB5BCE581D29F14800B8BFC1 /* SixPaternViewController.swift */,
 				BB5BCE5A1D29F15E00B8BFC1 /* UnAeraViewController.swift */,
 				BB5BCE5C1D29F9C100B8BFC1 /* PaternViewController.swift */,
+				BB38E8271D2CC79C00190A49 /* AirViewController.swift */,
+				BB38E8291D2CC7AE00190A49 /* DNuanViewController.swift */,
+				BB38E82B1D2CC7BB00190A49 /* XFengViewController.swift */,
+				BB38E82D1D2CCA6600190A49 /* AirTableViewCell.swift */,
+				BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */,
+				BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */,
+				BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */,
 			);
 			path = EquementMannager;
 			sourceTree = "<group>";
@@ -883,11 +904,14 @@
 				BB38E8211D2CAD5900190A49 /* MDiNuanTableViewCell.swift in Sources */,
 				BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
+				BB38E8341D2CCF4F00190A49 /* MainTableViewCell.swift in Sources */,
 				71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */,
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
 				71D76E321D241778000E0A34 /* MainControViewController.swift in Sources */,
 				BB319C281D2644DF0071F443 /* DeviceHideDB.swift in Sources */,
+				BB38E82E1D2CCA6600190A49 /* AirTableViewCell.swift in Sources */,
+				BB38E82C1D2CC7BB00190A49 /* XFengViewController.swift in Sources */,
 				71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */,
 				BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
@@ -912,6 +936,7 @@
 				BB3C45D01B465C46008A1213 /* GifParser.swift in Sources */,
 				71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */,
 				BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */,
+				BB38E8321D2CCA8200190A49 /* XFTableViewCell.swift in Sources */,
 				BB319C131D26018C0071F443 /* DBManager.swift in Sources */,
 				71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */,
 				BB3C45D21B465C46008A1213 /* UIImageViewWebCacheExtension.swift in Sources */,
@@ -920,12 +945,14 @@
 				BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */,
 				2B5E24471BA0202E002A8FC3 /* SelectBankViewController.swift in Sources */,
 				BB319C211D26077A0071F443 /* FMDatabase.m in Sources */,
+				BB38E8281D2CC79C00190A49 /* AirViewController.swift in Sources */,
 				BB52E6D01D06C189005020A0 /* TimeMannageViewController.swift in Sources */,
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
 				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
+				BB38E82A1D2CC7AE00190A49 /* DNuanViewController.swift in Sources */,
 				71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */,
 				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
 				BB319C231D26077A0071F443 /* FMDatabasePool.m in Sources */,
@@ -935,6 +962,7 @@
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
 				71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */,
+				BB38E8301D2CCA7600190A49 /* DNuanTableViewCell.swift in Sources */,
 				716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,
 				BBA365D61CFC41360010A5EC /* GateWayDetailViewController.swift in Sources */,

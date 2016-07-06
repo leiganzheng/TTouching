@@ -175,25 +175,35 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
         
         let image2 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
-          let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image2)
+          let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image2)
         
         let image3 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
-        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: image3)
+        let curtain1 = Device(address: "1839", dev_type: 7, work_status: 129, dev_name: "窗帘控制", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 1, icon_url: image3)
 
         let image4 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
-          let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image4)
+          let sigle = Device(address: "51960", dev_type: 8, work_status: 22, dev_name: "单回路调光", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image4)
         
         let image5 = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)
-          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 1, icon_url: image5)
+          let double = Device(address: "43688", dev_type: 9, work_status: 0, dev_name: "双回路调光", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 1, icon_url: image5)
         
         let image6 = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)
-          let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image6)
+          let threeOrSix = Device(address: "37300", dev_type: 10, work_status: 3, dev_name: "3/6回路开关", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image6)
         
         let image7 = UIImageJPEGRepresentation(UIImage(named:"Manage_information_icon" )!, 1)
-          let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "0", belong_area: "六所属场景", is_favourited: 0, icon_url: image7)
+          let sixControl = Device(address: "10001", dev_type: 1000, work_status: 1000, dev_name: "六路触点设备", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image7)
         
         let image8 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
-         let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "所属场景", is_favourited: 0, icon_url: image8)
+         let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "", belong_area: "所属场景", is_favourited: 0, icon_url: image8)
+        
+        let image9 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+        let air = Device(address: "1001", dev_type: 12, work_status: 31, dev_name: "空调", dev_status: 1, dev_area: "", belong_area: "所属场景", is_favourited: 0, icon_url: image9)
+        
+        let image10 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+        let dinuan = Device(address: "1002", dev_type: 13, work_status: 31, dev_name: "地暖", dev_status: 1, dev_area: "", belong_area: "所属场景", is_favourited: 0, icon_url: image10)
+        
+        let image11 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)
+        let xinfeng = Device(address: "1003", dev_type: 14, work_status: 31, dev_name: "新风", dev_status: 1, dev_area: "", belong_area: "所属场景", is_favourited: 0, icon_url: image11)
+        
         //创建表
         DBManager.shareInstance().createTable("T_Device")
         //查
@@ -215,6 +225,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             DBManager.shareInstance().add(double);
             DBManager.shareInstance().add(threeOrSix);
             DBManager.shareInstance().add(sixControl);
+            
+            DBManager.shareInstance().add(air);
+            DBManager.shareInstance().add(dinuan);
+            DBManager.shareInstance().add(xinfeng);
         }
        
         

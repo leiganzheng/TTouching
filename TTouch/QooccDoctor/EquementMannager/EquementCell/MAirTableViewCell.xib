@@ -15,27 +15,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pXI-iN-FNC">
-                        <rect key="frame" x="256" y="8" width="51" height="31"/>
+                        <rect key="frame" x="259" y="8" width="51" height="31"/>
                         <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </switch>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5d-Y6-fIc">
-                        <rect key="frame" x="16" y="9" width="58" height="30"/>
-                        <state key="normal" title="新风">
+                        <rect key="frame" x="7" y="7" width="58" height="34"/>
+                        <state key="normal" title="空调">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGz-V4-Xpk">
-                        <rect key="frame" x="65" y="276" width="48" height="19"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOo-gf-0Ta">
-                        <rect key="frame" x="121" y="276" width="67" height="19"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jc-Tv-nqO">
-                        <rect key="frame" x="196" y="276" width="108" height="19"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEd-Sg-rQD">
                         <rect key="frame" x="155" y="186" width="33" height="21"/>
@@ -43,66 +31,103 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyL-MA-V1F">
-                        <rect key="frame" x="251" y="238" width="26" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyL-MA-V1F">
+                        <rect key="frame" x="247" y="234" width="34" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lm1-SN-9aa">
-                        <rect key="frame" x="77" y="210" width="175" height="31"/>
+                        <rect key="frame" x="47" y="210" width="232" height="31"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </slider>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWj-CI-W4D">
-                        <rect key="frame" x="131" y="57" width="58" height="34"/>
+                        <rect key="frame" x="131" y="59" width="58" height="34"/>
                         <state key="normal" title="24℃">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTU-GI-F4x">
                         <rect key="frame" x="131" y="91" width="58" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="当前温度">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99B-K4-ozv">
-                        <rect key="frame" x="24" y="212" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="16" y="213" width="25" height="24"/>
+                        <state key="normal" image="Menu_AirCondition_icon"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxX-6p-Ahy">
-                        <rect key="frame" x="271" y="213" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="280" y="213" width="25" height="24"/>
+                        <state key="normal" image="Manage_Floor-heating_icon"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1c-yO-fZZ">
-                        <rect key="frame" x="57" y="234" width="26" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="16℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1c-yO-fZZ">
+                        <rect key="frame" x="46" y="234" width="33" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQz-m7-Bpk">
-                        <rect key="frame" x="24" y="130" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="16" y="122" width="35" height="55"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="-28"/>
+                        <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="19"/>
+                        <state key="normal" title="冷气" image="Menu_AirCondition_icon">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHb-Gn-9lq">
-                        <rect key="frame" x="79" y="130" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="79" y="122" width="35" height="55"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-24" minY="0.0" maxX="0.0" maxY="-30"/>
+                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="15"/>
+                        <state key="normal" title="暖气" image="Manage_Floor-heating_icon">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uy4-tq-YM5">
-                        <rect key="frame" x="148" y="130" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-yI-XHo">
-                        <rect key="frame" x="271" y="130" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="143" y="122" width="35" height="55"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="-28"/>
+                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="13"/>
+                        <state key="normal" title="通风" image="Manage_Fresh-air_icon">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-ar-NFO">
-                        <rect key="frame" x="207" y="130" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                        <rect key="frame" x="207" y="122" width="35" height="55"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="-29"/>
+                        <inset key="imageEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="15"/>
+                        <state key="normal" title="自动" image="Manage_automatic_icon">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-Qs-MPI">
-                        <rect key="frame" x="24" y="274" width="25" height="24"/>
-                        <state key="normal" image="Manage_ 1ch-Dimmer_icon"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLC-og-uRm">
+                        <rect key="frame" x="16" y="274" width="25" height="24"/>
+                        <state key="normal" image="Manage_Fresh-air_icon"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWx-CA-5J0">
+                        <rect key="frame" x="49" y="276" width="48" height="19"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvv-uL-PYF">
+                        <rect key="frame" x="105" y="276" width="84" height="19"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="px1-XR-fZF">
+                        <rect key="frame" x="197" y="276" width="108" height="19"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-yI-XHo">
+                        <rect key="frame" x="270" y="122" width="35" height="55"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="0.0" maxY="-29"/>
+                        <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="13"/>
+                        <state key="normal" title="除湿" image="Manage_dehumidification_icon">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -110,6 +135,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Manage_ 1ch-Dimmer_icon" width="44" height="44"/>
+        <image name="Manage_Floor-heating_icon" width="24" height="24"/>
+        <image name="Manage_Fresh-air_icon" width="24" height="24"/>
+        <image name="Manage_automatic_icon" width="24" height="24"/>
+        <image name="Manage_dehumidification_icon" width="24" height="24"/>
+        <image name="Menu_AirCondition_icon" width="24" height="24"/>
     </resources>
 </document>
