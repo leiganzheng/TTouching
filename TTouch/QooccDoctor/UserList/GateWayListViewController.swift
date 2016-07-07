@@ -51,7 +51,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
         self.receiveData()
-        self.fectchData()
+//        self.fectchData()
         self.exeDB()
 
     }
@@ -146,17 +146,20 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             
         }
         let result = mulArr.componentsJoinedByString(".")
+        
+        let dnsListener = UDPListener()
+        dnsListener.sendData(result)
 
-         self.sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do{
-            try self.sock!.bindToPort(33632)
-//            try self.sock!.enableBroadcast(true) // Also tried without this line
-//            try self.sock!.joinMulticastGroup(result)
-            try self.sock!.beginReceiving()
-            
-        } catch {
-            print("error")
-        }
+//         self.sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+//        do{
+//            try self.sock!.bindToPort(33632)
+////            try self.sock!.enableBroadcast(true) // Also tried without this line
+////            try self.sock!.joinMulticastGroup(result)
+//            try self.sock!.beginReceiving()
+//            
+//        } catch {
+//            print("error")
+//        }
 
     }
     func fectchData() {
