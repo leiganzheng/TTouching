@@ -142,6 +142,7 @@
 		BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */; };
 		BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */; };
 		BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */; };
+		BBF275D71D2E003400CAFE99 /* UDPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF275D61D2E003400CAFE99 /* UDPListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -300,6 +301,7 @@
 		BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		BBF275D61D2E003400CAFE99 /* UDPListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPListener.swift; sourceTree = "<group>"; };
 		BE0462F1F9121DDCE3F3E669 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -396,6 +398,7 @@
 			children = (
 				BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */,
 				BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */,
+				BBF275D61D2E003400CAFE99 /* UDPListener.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				BB38E8251D2CAD6600190A49 /* MXinFenTableViewCell.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
 				BB319C221D26077A0071F443 /* FMDatabaseAdditions.m in Sources */,
+				BBF275D71D2E003400CAFE99 /* UDPListener.swift in Sources */,
 				BB38E80B1D2CAC3500190A49 /* MCurtainTableViewCell.swift in Sources */,
 				BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */,
 				BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */,
