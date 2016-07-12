@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaAsyncSocket
 
 class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
@@ -20,15 +21,15 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
-        var error : NSError?
-        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        socket.bindToPort(PORT, error: &error)
-        socket.enableBroadcast(true, error: &error)
-        socket.joinMulticastGroup(IP, error: &error)
-        socket.beginReceiving(&error)
+//        var error : NSError?
+//        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+//        socket.bindToPort(PORT, interface: error)
+//        socket.enableBroadcast(true, error: &error)
+//        socket.joinMulticastGroup(IP, onInterface: error)
+//        socket.beginReceiving(&error)
     }
     
-    func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,      withFilterContext filterContext: AnyObject!) {
-        println("incoming message: \(data)");
+    func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
+        print("incoming message: \(data)");
     }
 }

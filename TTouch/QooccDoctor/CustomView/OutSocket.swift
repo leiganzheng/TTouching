@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaAsyncSocket
 
 class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
@@ -21,8 +22,8 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
     func setupConnection(){
         var error : NSError?
-        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        socket.connectToHost(IP, onPort: PORT, error: &error)
+//        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+//        socket.connectToHost(IP, onPort: PORT, error: &error)
     }
     
     func send(message:String){
@@ -31,18 +32,18 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
-        println("didConnectToAddress");
+        print("didConnectToAddress");
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotConnect error: NSError!) {
-        println("didNotConnect \(error)")
+        print("didNotConnect \(error)")
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didSendDataWithTag tag: Int) {
-        println("didSendDataWithTag")
+        print("didSendDataWithTag")
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
-        println("didNotSendDataWithTag")
+        print("didNotSendDataWithTag")
     }
 }
