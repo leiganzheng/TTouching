@@ -20,7 +20,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     var dict:NSMutableDictionary = NSMutableDictionary()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.dict.setValue("闹钟", forKey: "name")
+        self.dict.setValue(QNFormatTool.dateString(NSDate(),format:"HH:mm"), forKey: "time")
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle("保存", forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -78,6 +79,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             self.datePicker!.backgroundColor = UIColor.whiteColor()
             self.datePicker?.datePickerMode = .Time
             self.view.addSubview(self.datePicker!)
+            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
+          
 
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
@@ -125,13 +128,14 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 let lb = cell?.contentView.viewWithTag(100) as! UILabel
                 lb.text = flagStr as? String
                 self.dict.setValue(flagStr, forKey: "name")
-                self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!), forKey: "time")
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 2 {
             
         }
     }
-
+    func dateSelect()  {
+          self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
+    }
 
 }

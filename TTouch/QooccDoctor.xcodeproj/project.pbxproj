@@ -19,6 +19,8 @@
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
 		71BEE56E1D0080A200087201 /* ModifyEquenmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */; };
+		71C2E0461D392D5600B1DCC4 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2E0451D392D5600B1DCC4 /* LocationViewController.swift */; };
+		71C2E0481D392DDD00B1DCC4 /* VoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2E0471D392DDD00B1DCC4 /* VoiceViewController.swift */; };
 		71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF83B41D047568007275FE /* MannageEquementViewController.swift */; };
 		71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CF83B61D047630007275FE /* MEquementDetialViewController.swift */; };
 		71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E241D104B1E000E0A34 /* LightViewController.swift */; };
@@ -162,6 +164,8 @@
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
 		71BEE56D1D0080A200087201 /* ModifyEquenmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyEquenmentsViewController.swift; sourceTree = "<group>"; };
+		71C2E0451D392D5600B1DCC4 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		71C2E0471D392DDD00B1DCC4 /* VoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceViewController.swift; sourceTree = "<group>"; };
 		71CF83B41D047568007275FE /* MannageEquementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MannageEquementViewController.swift; sourceTree = "<group>"; };
 		71CF83B61D047630007275FE /* MEquementDetialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MEquementDetialViewController.swift; sourceTree = "<group>"; };
 		71D76E241D104B1E000E0A34 /* LightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
@@ -736,6 +740,8 @@
 				71D76E2A1D1827F6000E0A34 /* MovieViewController.swift */,
 				71D76E2C1D183B76000E0A34 /* NewClockViewController.swift */,
 				BB38E8351D2CDE8000190A49 /* ChangeNickViewController.swift */,
+				71C2E0451D392D5600B1DCC4 /* LocationViewController.swift */,
+				71C2E0471D392DDD00B1DCC4 /* VoiceViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -966,6 +972,7 @@
 				BB319C211D26077A0071F443 /* FMDatabase.m in Sources */,
 				BB38E8281D2CC79C00190A49 /* AirViewController.swift in Sources */,
 				BB52E6D01D06C189005020A0 /* TimeMannageViewController.swift in Sources */,
+				71C2E0461D392D5600B1DCC4 /* LocationViewController.swift in Sources */,
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
@@ -976,6 +983,7 @@
 				71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */,
 				BB52E6CC1D06B422005020A0 /* EquementControViewController.swift in Sources */,
 				BB319C231D26077A0071F443 /* FMDatabasePool.m in Sources */,
+				71C2E0481D392DDD00B1DCC4 /* VoiceViewController.swift in Sources */,
 				71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */,
 				BB5BCE5B1D29F15E00B8BFC1 /* UnAeraViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,

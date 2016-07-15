@@ -1,18 +1,17 @@
 //
-//  MusicViewController.swift
+//  LocationViewController.swift
 //  QooccDoctor
 //
-//  Created by leiganzheng on 16/6/20.
-//  Copyright © 2016年 juxi. All rights reserved.
+//  Created by leiganzheng on 16/7/15.
+//  Copyright © 2016年 Private. All rights reserved.
 //
 
 import UIKit
 
-class MusicViewController: UIViewController,QNInterceptorProtocol {
+class LocationViewController: UIViewController,QNInterceptorProtocol{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "音乐"
         // Do any additional setup after loading the view.
     }
 

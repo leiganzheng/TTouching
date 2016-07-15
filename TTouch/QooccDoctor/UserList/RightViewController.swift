@@ -80,6 +80,12 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         if indexPath.row == 4{
             self.bock!(ShakeViewController.CreateFromStoryboard("Main"))
         }
+        if indexPath.row == 5{
+            self.bock!(LocationViewController.CreateFromStoryboard("Main"))
+        }
+        if indexPath.row == 6{
+            self.bock!(VoiceViewController.CreateFromStoryboard("Main"))
+        }
         if indexPath.row == 7{
             self.bock!(AboutViewController.CreateFromStoryboard("Main"))
         }

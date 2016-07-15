@@ -18,6 +18,20 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
     var screenHiden : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let searchButton:UIButton = UIButton(frame: CGRectMake(50, 200, screenWidth-100, 120))
+//        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
+        searchButton.setTitle("请点击摇一摇按钮进行设置", forState: UIControlState.Normal)
+        searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            self.myCustomView.hidden = false
+            searchButton.hidden = true
+            return RACSignal.empty()
+        })
+        self.view.addSubview(searchButton)
+        self.myCustomView.hidden = true
+        
         self.myCustomView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.myCustomView.separatorColor = defaultBackgroundGrayColor
         

@@ -181,6 +181,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             return RACSignal.empty()
             })
         cell.contentView.addSubview(searchButton)
+        searchButton.hidden = d.dev_type == 1
         
         let temp = self.flags[indexPath.row] as! Bool
     

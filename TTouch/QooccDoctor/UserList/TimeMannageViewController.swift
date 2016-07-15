@@ -57,7 +57,12 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         }
         cell.contentView.backgroundColor = UIColor.whiteColor()
         let dict = self.data[indexPath.row] as! NSMutableDictionary
-        cell.name.setTitle(dict.valueForKey("name") as? String, forState: .Normal)
+        var str = dict.valueForKey("name") as? String
+        if str == "" {
+            str = "闹钟"
+        }
+        cell.name.setTitle(str, forState: .Normal)
+        cell.time.setTitle(dict.valueForKey("time") as? String, forState: .Normal)
         return cell
     }
     
