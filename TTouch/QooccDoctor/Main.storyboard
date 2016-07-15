@@ -1080,7 +1080,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="132" id="pwG-DG-dvi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="132" id="pwG-DG-dvi" customClass="ClockTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pwG-DG-dvi" id="SO3-Y8-2BO">
@@ -1145,16 +1145,6 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSC-Mb-LDF">
-                                                    <rect key="frame" x="166" y="77" width="30" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="1qq-9H-NVs"/>
-                                                        <constraint firstAttribute="height" constant="34" id="Ch8-gg-a0x"/>
-                                                    </constraints>
-                                                    <state key="normal" title="三">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsn-kv-6Lh">
                                                     <rect key="frame" x="192" y="77" width="30" height="34"/>
                                                     <constraints>
@@ -1205,6 +1195,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSC-Mb-LDF">
+                                                    <rect key="frame" x="166" y="77" width="30" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="1qq-9H-NVs"/>
+                                                        <constraint firstAttribute="height" constant="34" id="Ch8-gg-a0x"/>
+                                                    </constraints>
+                                                    <state key="normal" title="三">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nfI-VX-4lG" firstAttribute="leading" secondItem="DrQ-ph-oqZ" secondAttribute="trailing" constant="13" id="1wa-Rs-ooY"/>
@@ -1234,6 +1234,18 @@
                                                 <constraint firstItem="MYN-ke-Z5k" firstAttribute="trailing" secondItem="SO3-Y8-2BO" secondAttribute="trailingMargin" id="z3M-ZQ-tsJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btn1" destination="KMn-74-gYZ" id="RVr-9N-a53"/>
+                                            <outlet property="btn2" destination="6NY-je-yR6" id="tl4-cI-vGY"/>
+                                            <outlet property="btn3" destination="WSC-Mb-LDF" id="vkA-EF-GhF"/>
+                                            <outlet property="btn4" destination="lsn-kv-6Lh" id="GzS-PZ-feD"/>
+                                            <outlet property="btn5" destination="ByC-6K-pY1" id="Pgm-Us-CeB"/>
+                                            <outlet property="btn6" destination="GTo-Rw-j4e" id="64i-Vo-8BB"/>
+                                            <outlet property="btn7" destination="MYN-ke-Z5k" id="cHf-UQ-Gcq"/>
+                                            <outlet property="name" destination="NcD-1z-b9B" id="mfi-uy-15C"/>
+                                            <outlet property="selectedBtn" destination="nfI-VX-4lG" id="mv7-5Y-Xet"/>
+                                            <outlet property="time" destination="PQ3-3G-UIG" id="kQp-fJ-jI0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

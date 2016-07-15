@@ -21,9 +21,14 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
-        var error : NSError?
-//        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//        socket.connectToHost(IP, onPort: PORT, error: &error)
+        do {
+            socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+           try socket.connectToHost(IP, onPort: PORT)
+            
+        } catch {
+            // deal with error
+        }
+      
     }
     
     func send(message:String){

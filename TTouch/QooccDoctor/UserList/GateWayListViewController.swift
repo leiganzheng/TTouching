@@ -15,6 +15,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
+    var inSocket : InSocket!
+    var outSocket : OutSocket!
 //    var sock:AsyncUdpSocket?
     var sock:GCDAsyncUdpSocket?
     var flags:NSMutableArray!
@@ -50,7 +52,11 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-        self.receiveData()
+        
+        inSocket = InSocket()
+        outSocket = OutSocket()
+        
+//        self.receiveData()
 //        self.fectchData()
         self.exeDB()
 

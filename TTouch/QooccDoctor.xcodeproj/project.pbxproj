@@ -40,6 +40,7 @@
 		BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
+		BB2944221D38D8530096EDC4 /* ClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */; };
 		BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */; };
 		BB319C0F1D26014A0071F443 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0D1D26014A0071F443 /* FMDatabaseVariadic.swift */; };
 		BB319C121D26018C0071F443 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C101D26018C0071F443 /* Device.swift */; };
@@ -184,6 +185,7 @@
 		BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetWiFiInfoHelper.m; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
+		BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockTableViewCell.swift; sourceTree = "<group>"; };
 		BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		BB319C0D1D26014A0071F443 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		BB319C101D26018C0071F443 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				71CF83B61D047630007275FE /* MEquementDetialViewController.swift */,
 				BB52E6CB1D06B422005020A0 /* EquementControViewController.swift */,
 				BB52E6CF1D06C189005020A0 /* TimeMannageViewController.swift */,
+				BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */,
 				BB52E6D11D06C2CE005020A0 /* AboutViewController.swift */,
 				716F20181D0F062900E42F06 /* SecurityViewController.swift */,
 				71D76E241D104B1E000E0A34 /* LightViewController.swift */,
@@ -772,7 +775,7 @@
 				TargetAttributes = {
 					BB3C44F11B465BDB008A1213 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 5VV36XYQWS;
+						DevelopmentTeam = Y52XLS57AB;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -934,6 +937,7 @@
 				71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */,
 				71D76E481D28C49C000E0A34 /* CurtainTableViewCell.swift in Sources */,
 				71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */,
+				BB2944221D38D8530096EDC4 /* ClockTableViewCell.swift in Sources */,
 				BB38E8131D2CAC5700190A49 /* MDoubleTableViewCell.swift in Sources */,
 				71D76E361D2418EB000E0A34 /* CutainControViewController.swift in Sources */,
 				71D76E461D28C20B000E0A34 /* SixTableViewCell.swift in Sources */,
@@ -1107,7 +1111,7 @@
 					"$(PROJECT_DIR)/QooccDoctor/Librarys/UMAnalytics_Sdk_3.4.8",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.HaoLouHui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.QooccDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
@@ -1135,7 +1139,7 @@
 					"$(PROJECT_DIR)/QooccDoctor/Librarys/UMAnalytics_Sdk_3.4.8",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.HaoLouHui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.QooccDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";

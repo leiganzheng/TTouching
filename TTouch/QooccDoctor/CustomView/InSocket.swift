@@ -21,12 +21,19 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
-//        var error : NSError?
-//        socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//        socket.bindToPort(PORT, interface: error)
-//        socket.enableBroadcast(true, error: &error)
-//        socket.joinMulticastGroup(IP, onInterface: error)
-//        socket.beginReceiving(&error)
+        do {
+           
+            socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+            try socket.bindToPort(PORT)
+//            try socket.enableBroadcast(true)
+//            try socket.joinMulticastGroup(IP)
+            try socket.connectToHost(IP, onPort: PORT)
+            try socket.beginReceiving()
+        } catch {
+            // deal with error
+        }
+
+       
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
