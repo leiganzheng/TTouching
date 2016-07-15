@@ -11,8 +11,8 @@ import CocoaAsyncSocket
 
 class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
-    let IP = "90.112.76.180"
-    let PORT:UInt16 = 5556
+//    let IP = "90.112.76.180"
+    let PORT:UInt16 = 33632
     var socket:GCDAsyncUdpSocket!
     
     override init(){
@@ -21,6 +21,21 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let IP = mulArr.componentsJoinedByString(".")
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
            try socket.connectToHost(IP, onPort: PORT)

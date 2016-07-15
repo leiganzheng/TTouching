@@ -11,16 +11,32 @@ import CocoaAsyncSocket
 
 class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
-    let IP = "255.255.255.255"
-    let PORT:UInt16 = 5556
+//    let IP = "255.255.255.255"
+    let PORT:UInt16 = 33632
     var socket:GCDAsyncUdpSocket!
     
     override init(){
         super.init()
+        
         setupConnection()
     }
     
     func setupConnection(){
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let IP = mulArr.componentsJoinedByString(".")
         do {
            
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
