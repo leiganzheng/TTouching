@@ -21,9 +21,9 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 40, 40))
         searchButton.setImage(UIImage(named: "time"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            let vc = NewClockViewController()
+            let vc = NewClockViewController.loadFromStroyboardWithTargetAlarm(nil)
             vc.bock =  {(obj) -> Void in
-                self?.data.addObject(obj!)
+//                self?.data.addObject(obj!)
                 self?.myTableView.reloadData()
             }
             self?.presentViewController(UINavigationController(rootViewController:vc ), animated: true, completion: nil)
@@ -34,7 +34,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         
         self.myTableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = defaultBackgroundGrayColor
-       
+        self.data = DCAlarmManager.sharedInstance.alarmArray //swift的数组是struct，是值类型，写的时候要特别注意
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,19 +56,39 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
             cell = ClockTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.contentView.backgroundColor = UIColor.whiteColor()
-        let dict = self.data[indexPath.row] as! NSMutableDictionary
-        var str = dict.valueForKey("name") as? String
-        if str == "" {
-            str = "闹钟"
+        let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        if let date = alarm!.alarmDate {
+            cell.time.setTitle(dateFormatter.stringFromDate(date), forState: .Normal)
         }
-        cell.name.setTitle(str, forState: .Normal)
-        cell.time.setTitle(dict.valueForKey("time") as? String, forState: .Normal)
+
+        
+//        let dict = self.data[indexPath.row] as! NSMutableDictionary
+//        var str = dict.valueForKey("name") as? String
+//        if str == "" {
+//            str = "闹钟"
+//        }
+        cell.name.setTitle("闹钟", forState: .Normal)
+//        cell.time.setTitle(dict.valueForKey("time") as? String, forState: .Normal)
         return cell
     }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let item = self.data!.objectAtIndex(indexPath.row)
+        self.data?.removeObject(item)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        tableView.reloadData()
+        DCAlarmManager.sharedInstance.save()
+    }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        if let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm {
+            let clockSettingViewController = NewClockViewController.loadFromStroyboardWithTargetAlarm(alarm)
+            self.presentViewController(UINavigationController(rootViewController:clockSettingViewController ), animated: true, completion: nil)
+        }
+
     }
 
 

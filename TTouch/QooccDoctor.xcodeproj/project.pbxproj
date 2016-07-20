@@ -143,6 +143,8 @@
 		BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */; };
 		BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */; };
 		BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */; };
+		BBCB43E21D3F596C00A997EA /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB43E01D3F596C00A997EA /* DCAlarm.swift */; };
+		BBCB43E31D3F596C00A997EA /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */; };
 		BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */; };
 		BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */; };
 		BBF275D71D2E003400CAFE99 /* UDPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF275D61D2E003400CAFE99 /* UDPListener.swift */; };
@@ -307,6 +309,8 @@
 		BBA52F181B9D3EDC007A3C72 /* QNTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNTabBarController.swift; sourceTree = "<group>"; };
 		BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		BBCB43E01D3F596C00A997EA /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
+		BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		BBF275D61D2E003400CAFE99 /* UDPListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPListener.swift; sourceTree = "<group>"; };
@@ -715,6 +719,8 @@
 		BBCEA9871B4A102900A9E478 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				BBCB43E01D3F596C00A997EA /* DCAlarm.swift */,
+				BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */,
 				BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */,
 				BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */,
 				BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */,
@@ -894,6 +900,7 @@
 				BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */,
 				BB3C45D11B465C46008A1213 /* UIImageGifExtension.swift in Sources */,
 				BB3C45FA1B465C47008A1213 /* QNTool.swift in Sources */,
+				BBCB43E31D3F596C00A997EA /* DCAlarmManager.swift in Sources */,
 				BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */,
 				71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */,
 				BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */,
@@ -907,6 +914,7 @@
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
 				BB38E81D1D2CAD4800190A49 /* MAirTableViewCell.swift in Sources */,
+				BBCB43E21D3F596C00A997EA /* DCAlarm.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
 				BB5BCE5D1D29F9C100B8BFC1 /* PaternViewController.swift in Sources */,

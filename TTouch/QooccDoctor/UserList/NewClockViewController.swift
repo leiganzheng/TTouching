@@ -18,6 +18,45 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     var titles:NSArray!
     var bock:NewClockBlock?
     var dict:NSMutableDictionary = NSMutableDictionary()
+
+    @IBOutlet weak var mondayButton: UIButton!
+    
+    @IBOutlet weak var tuesdayButton: UIButton!
+    
+    @IBOutlet weak var wednesdayButton: UIButton!
+    
+    @IBOutlet weak var thursdayButton: UIButton!
+    
+    @IBOutlet weak var fridayButton: UIButton!
+    
+    @IBOutlet weak var saturdayButton: UIButton!
+    
+    @IBOutlet weak var sundayButton: UIButton!
+    
+    private var isAddingAlarm: Bool = false
+    
+    private var targetAlarm: DCAlarm!
+    
+    private var buttonArray: [UIButton] {
+        return [mondayButton, tuesdayButton, wednesdayButton, thursdayButton, fridayButton, saturdayButton, sundayButton]
+    }
+    /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
+    var selectedButtonTag = 0
+    
+    
+    class func loadFromStroyboardWithTargetAlarm(alarm: DCAlarm?) -> NewClockViewController {
+        let viewController = NewClockViewController()
+        if alarm == nil {
+            viewController.isAddingAlarm = true
+            viewController.targetAlarm = DCAlarm()
+        } else {
+            viewController.isAddingAlarm = false
+            viewController.targetAlarm = alarm
+        }
+        return viewController
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dict.setValue("闹钟", forKey: "name")
@@ -25,8 +64,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle("保存", forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            self?.handleConfirmButtonTapped()
             self?.dismissViewControllerAnimated(true, completion: nil)
-            self?.bock!(self?.dict)
+//            self?.bock!(nil)
+            
             return RACSignal.empty()
             })
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
@@ -43,7 +84,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         self.titles = [[""],["重复","标签","配置"]]
         self.myTableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = defaultBackgroundGrayColor
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +122,20 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             self.view.addSubview(self.datePicker!)
             self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
           
+            if let alarm = self.targetAlarm {
+                if let date = alarm.alarmDate {
+                    self.datePicker!.date = date
+                } else {
+                    self.datePicker!.date = NSDate()
+                }
+//                self.selectedButtonTag = alarm.selectedDay
+//                for button in self.buttonArray {
+//                    let selected = 1 << (button.tag - 1)
+//                    button.selected = Bool(alarm.selectedDay & selected)
+//                }
+                
+            }
+
 
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
@@ -134,8 +189,56 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             
         }
     }
+
+    // MARK: - Private Method
     func dateSelect()  {
-          self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
+        self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
     }
+    func setupDefault() {
+        if let alarm = self.targetAlarm {
+            if let date = alarm.alarmDate {
+                self.datePicker!.date = date
+            } else {
+                self.datePicker!.date = NSDate()
+            }
+//            self.selectedButtonTag = alarm.selectedDay
+//            for button in self.buttonArray {
+//                let selected = 1 << (button.tag - 1)
+//                button.selected = Bool(alarm.selectedDay & selected)
+//            }
+//            
+        }
+    }
+
+     func handleConfirmButtonTapped() {
+        let alarm = self.targetAlarm
+        alarm.alarmDate = self.datePicker!.date
+        alarm.selectedDay = self.selectedButtonTag
+        alarm.descriptionText = String(format: "%02x", self.selectedButtonTag)
+        alarm.alarmOn = false
+        alarm.identifier = alarm.alarmDate?.description
+        if self.isAddingAlarm {
+            DCAlarmManager.sharedInstance.alarmArray.addObject(alarm)
+        }
+        
+        DCAlarmManager.sharedInstance.save()
+        
+    }
+    
+    
+     func handleDayButtonTapped(sender: UIButton) {
+        sender.selected = !sender.selected
+        var resultTag = 0x0
+        for button in self.buttonArray {
+            let tag = Int(button.selected) << (button.tag - 1)
+            resultTag = resultTag | tag
+        }
+        self.selectedButtonTag = resultTag
+        
+        let aaa = String(format: "%02x", resultTag)
+        NSLog("self.selectedButtonTag is \(aaa)")
+    }
+
+    
 
 }
