@@ -22,8 +22,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         searchButton.setImage(UIImage(named: "time"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             let vc = NewClockViewController.loadFromStroyboardWithTargetAlarm(nil)
-            vc.bock =  {(obj) -> Void in
-//                self?.data.addObject(obj!)
+            vc.bock =  {() -> Void in
                 self?.myTableView.reloadData()
             }
             self?.presentViewController(UINavigationController(rootViewController:vc ), animated: true, completion: nil)
@@ -62,15 +61,9 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         if let date = alarm!.alarmDate {
             cell.time.setTitle(dateFormatter.stringFromDate(date), forState: .Normal)
         }
-
+        cell.selectedBtn.addTarget(self, action: #selector(TimeMannageViewController.handleSwitchTapped(_:)), forControlEvents: .ValueChanged)
         
-//        let dict = self.data[indexPath.row] as! NSMutableDictionary
-//        var str = dict.valueForKey("name") as? String
-//        if str == "" {
-//            str = "闹钟"
-//        }
         cell.name.setTitle("闹钟", forState: .Normal)
-//        cell.time.setTitle(dict.valueForKey("time") as? String, forState: .Normal)
         return cell
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -90,6 +83,22 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         }
 
     }
+    func handleSwitchTapped(sender: UISwitch) {
+        
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(cell)
+        let alarm = self.data?.objectAtIndex(indexPath!.row) as? DCAlarm
+        if let tempAlarm = alarm {
+            if sender.on {
+                tempAlarm.turnOnAlarm()
+            } else {
+                tempAlarm.turnOffAlarm()
+            }
+            DCAlarmManager.sharedInstance.save()
+        }
+        
+    }
+
 
 
 }

@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 
-typealias NewClockBlock = (AnyObject?) -> Void
+typealias NewClockBlock = () -> Void
 
 class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableViewDelegate,UITableViewDataSource {
 
@@ -66,7 +66,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.handleConfirmButtonTapped()
             self?.dismissViewControllerAnimated(true, completion: nil)
-//            self?.bock!(nil)
+            self?.bock!()
             
             return RACSignal.empty()
             })
