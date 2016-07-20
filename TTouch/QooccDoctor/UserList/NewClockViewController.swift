@@ -175,7 +175,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 1 && indexPath.row == 0 {
-            
+            let vc = TimeSelectedViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 1 {
             let vc = ChangeNickViewController()
             vc.bock = {(flagStr) -> Void in
@@ -224,21 +225,6 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         DCAlarmManager.sharedInstance.save()
         
     }
-    
-    
-     func handleDayButtonTapped(sender: UIButton) {
-        sender.selected = !sender.selected
-        var resultTag = 0x0
-        for button in self.buttonArray {
-            let tag = Int(button.selected) << (button.tag - 1)
-            resultTag = resultTag | tag
-        }
-        self.selectedButtonTag = resultTag
-        
-        let aaa = String(format: "%02x", resultTag)
-        NSLog("self.selectedButtonTag is \(aaa)")
-    }
-
     
 
 }
