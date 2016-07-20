@@ -26,13 +26,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         UINavigationBar.appearance().barTintColor = appThemeColor
         UINavigationBar.appearance().tintColor = navigationBackgroundColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
-       
+        
+        if application.respondsToSelector(#selector(UIApplication.isRegisteredForRemoteNotifications)) {
+            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
+            application.registerForRemoteNotifications()
+        } else {
+            application.registerForRemoteNotificationTypes([UIRemoteNotificationType.Sound, UIRemoteNotificationType.Alert, UIRemoteNotificationType.Badge])
+        }
+
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    }
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+//        DLog("didReceiveLocalNotification : \(notification)")
+        if application.applicationState == .Active {
+            if let dict = notification.userInfo {
+                let identifier = dict["identifier"] as! String
+                
+                let alert = UIAlertView(title: "闹钟", message: "是时候看看闹钟了"+identifier, delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
     }
 
 
