@@ -8,12 +8,21 @@
 
 import UIKit
 import ReactiveCocoa
-
+//typealias ClockBlock = (NSMutableArray) -> Void
 class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInterceptorNavigationBarShowProtocol,UITableViewDataSource, UITableViewDelegate{
 
     var flags:NSMutableArray!
     var titles:NSMutableArray!
     var myTableView: UITableView!
+    var targetAlarm: DCAlarm?
+    private var buttonTagArray: [Int] {
+        return [1, 2, 3, 4, 5, 6, 7]
+    }
+//    var bock:ClockBlock?
+    /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
+    var selectedButtonTag = 0
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +38,19 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
         self.view.addSubview(self.myTableView!)
         
         self.titles = ["每周日","每周一","每周二","每周三","每周四","每周五","每周六"]
+        
         self.flags = [false,false,false,false,false,false,false]
+        if self.targetAlarm == nil {
+            
+        }else{
+            var i = 0
+            for tag in self.buttonTagArray {
+                i = i + 1
+                let selected = 1 << (tag - 1)
+                let temp = Bool(self.targetAlarm!.selectedDay & selected)
+                self.flags.replaceObjectAtIndex(i-1, withObject:temp)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,21 +97,25 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
 
         self.flags.replaceObjectAtIndex(indexPath.row, withObject:!flag)
         self.myTableView.reloadData()
+        self.handleDayButtonTapped()
     }
-// MARK: - Private Method
-//    func handleDayButtonTapped(sender: UIButton) {
-//        sender.selected = !sender.selected
-//        var resultTag = 0x0
-//        for button in self.buttonArray {
-//            let tag = Int(button.selected) << (button.tag - 1)
-//            resultTag = resultTag | tag
-//        }
-//        self.selectedButtonTag = resultTag
-//        
-//        let aaa = String(format: "%02x", resultTag)
-//        NSLog("self.selectedButtonTag is \(aaa)")
-//    }
-//
+ // MARK: - Private Method
+    func handleDayButtonTapped() {
+        
+        var resultTag = 0x0
+        var i = 0
+        for flag in self.flags {
+            i = i + 1
+            let tag = Int(flag as! Bool) << (self.buttonTagArray[i-1] - 1)
+            resultTag = resultTag | tag
+        }
+        self.selectedButtonTag = resultTag
+        DCAlarmManager.sharedInstance.selectedDay = self.selectedButtonTag
+        let aaa = String(format: "%02x", resultTag)
+//        self.bock!(self.flags)
+        NSLog("self.selectedButtonTag is \(aaa)")
+    }
+
 
 
 }

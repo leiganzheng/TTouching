@@ -17,31 +17,13 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     var myTableView: UITableView!
     var titles:NSArray!
     var bock:NewClockBlock?
-    var dict:NSMutableDictionary = NSMutableDictionary()
-
-    @IBOutlet weak var mondayButton: UIButton!
-    
-    @IBOutlet weak var tuesdayButton: UIButton!
-    
-    @IBOutlet weak var wednesdayButton: UIButton!
-    
-    @IBOutlet weak var thursdayButton: UIButton!
-    
-    @IBOutlet weak var fridayButton: UIButton!
-    
-    @IBOutlet weak var saturdayButton: UIButton!
-    
-    @IBOutlet weak var sundayButton: UIButton!
+    private var buttonTagArray: [Int] {
+        return [1, 2, 3, 4, 5, 6, 7]
+    }
     
     private var isAddingAlarm: Bool = false
     
     private var targetAlarm: DCAlarm!
-    
-    private var buttonArray: [UIButton] {
-        return [mondayButton, tuesdayButton, wednesdayButton, thursdayButton, fridayButton, saturdayButton, sundayButton]
-    }
-    /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
-    var selectedButtonTag = 0
     
     
     class func loadFromStroyboardWithTargetAlarm(alarm: DCAlarm?) -> NewClockViewController {
@@ -59,8 +41,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dict.setValue("闹钟", forKey: "name")
-        self.dict.setValue(QNFormatTool.dateString(NSDate(),format:"HH:mm"), forKey: "time")
+
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle("保存", forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
@@ -90,6 +71,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.myTableView.reloadData()
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -128,11 +113,6 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 } else {
                     self.datePicker!.date = NSDate()
                 }
-//                self.selectedButtonTag = alarm.selectedDay
-//                for button in self.buttonArray {
-//                    let selected = 1 << (button.tag - 1)
-//                    button.selected = Bool(alarm.selectedDay & selected)
-//                }
                 
             }
 
@@ -141,32 +121,53 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             return cell
 
         }else{
-            let cellId = "cell1"
-            var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
-            if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            }
-            let array = self.titles[indexPath.section] as! NSArray
-            cell.textLabel?.text = array[indexPath.row] as? String
-            cell.contentView.backgroundColor = UIColor.clearColor()
             
+                let cellId = "cell1"
+                var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
+                if cell == nil {
+                    cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+                }
+                let array = self.titles[indexPath.section] as! NSArray
+                cell.textLabel?.text = array[indexPath.row] as? String
+                cell.contentView.backgroundColor = UIColor.clearColor()
             
-            let flagLb = UILabel(frame: CGRectMake(screenWidth-44-44, 0, 44, 44))
-            flagLb.tag = 100;
-            if indexPath.row == 1 {
-                  flagLb.text = "闹钟1"
-            }
-            cell.contentView.addSubview(flagLb)
-            
-            let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 0, 44, 44))
-            searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-            searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+
+                if indexPath.row == 0 {
+                    var i = 0
+                    for tag in self.buttonTagArray {
+                        i = i + 1
+                        let selected = 1 << (tag - 1)
+                        let temp = Bool(self.targetAlarm.selectedDay & selected)
+                        if temp {
+                            let button:UIButton = UIButton(frame: CGRectMake(screenWidth-CGFloat((7-i)*30), 6, 30, 30))
+                            button.setTitle(NSString(format: "周%i", i) as String, forState: .Normal)
+                            button.titleLabel?.font = UIFont.systemFontOfSize(12)
+                            button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+                            
+                            cell.contentView.addSubview(button)
+
+                        }
+                        
+                    }
+
+                }
                 
-                return RACSignal.empty()
+                let flagLb = UILabel(frame: CGRectMake(screenWidth-44-44, 0, 44, 44))
+                flagLb.tag = 100;
+                if indexPath.row == 1 {
+                    flagLb.text = "闹钟1"
+                }
+                cell.contentView.addSubview(flagLb)
+                
+                let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 0, 44, 44))
+                searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
+                searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+                    
+                    return RACSignal.empty()
                 })
-            cell.contentView.addSubview(searchButton)
-            cell.addLine(y: 43, width: screenWidth)
-            return cell
+                cell.contentView.addSubview(searchButton)
+                cell.addLine(y: 43, width: screenWidth)
+                return cell
 
         }
         
@@ -176,6 +177,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 1 && indexPath.row == 0 {
             let vc = TimeSelectedViewController()
+            vc.targetAlarm = self.targetAlarm
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 1 {
             let vc = ChangeNickViewController()
@@ -183,7 +185,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 let cell = tableView.cellForRowAtIndexPath(indexPath)
                 let lb = cell?.contentView.viewWithTag(100) as! UILabel
                 lb.text = flagStr as? String
-                self.dict.setValue(flagStr, forKey: "name")
+//                self.dict.setValue(flagStr, forKey: "name")
+                self.targetAlarm.descriptionText = flagStr as? String
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 2 {
@@ -193,7 +196,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
 
     // MARK: - Private Method
     func dateSelect()  {
-        self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
+//        self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
     }
     func setupDefault() {
         if let alarm = self.targetAlarm {
@@ -202,20 +205,15 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             } else {
                 self.datePicker!.date = NSDate()
             }
-//            self.selectedButtonTag = alarm.selectedDay
-//            for button in self.buttonArray {
-//                let selected = 1 << (button.tag - 1)
-//                button.selected = Bool(alarm.selectedDay & selected)
-//            }
-//            
         }
     }
 
      func handleConfirmButtonTapped() {
         let alarm = self.targetAlarm
         alarm.alarmDate = self.datePicker!.date
-        alarm.selectedDay = self.selectedButtonTag
-        alarm.descriptionText = String(format: "%02x", self.selectedButtonTag)
+        let tag = DCAlarmManager.sharedInstance.selectedDay
+        alarm.selectedDay = tag
+        alarm.descriptionText = String(format: "%02x", tag)
         alarm.alarmOn = false
         alarm.identifier = alarm.alarmDate?.description
         if self.isAddingAlarm {

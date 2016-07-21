@@ -10,7 +10,7 @@ import UIKit
 
 class DCAlarmManager {
     var alarmArray: NSMutableArray
-    
+    var selectedDay: Int = 0
     static let sharedInstance = DCAlarmManager()
     
     
