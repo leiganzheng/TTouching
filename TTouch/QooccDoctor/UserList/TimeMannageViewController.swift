@@ -22,8 +22,8 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         searchButton.setImage(UIImage(named: "time"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             let vc = NewClockViewController.loadFromStroyboardWithTargetAlarm(nil)
-            vc.bock =  {() -> Void in
-                self?.myTableView.reloadData()
+            vc.bock =  {(Alarm) -> Void in
+                (self?.myTableView.reloadData())!
             }
             self?.presentViewController(UINavigationController(rootViewController:vc ), animated: true, completion: nil)
             return RACSignal.empty()
@@ -79,6 +79,10 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         if let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm {
             let clockSettingViewController = NewClockViewController.loadFromStroyboardWithTargetAlarm(alarm)
+            clockSettingViewController.bock = {(Alarm) -> Void in
+                self.data.replaceObjectAtIndex(indexPath.row, withObject: Alarm)
+                self.myTableView.reloadData()
+            }
             self.presentViewController(UINavigationController(rootViewController:clockSettingViewController ), animated: true, completion: nil)
         }
 

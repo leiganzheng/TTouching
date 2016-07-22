@@ -8,17 +8,19 @@
 
 import UIKit
 import ReactiveCocoa
-//typealias ClockBlock = (NSMutableArray) -> Void
+typealias WeekSelectedBlock = (DCAlarm) -> Void
+
 class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInterceptorNavigationBarShowProtocol,UITableViewDataSource, UITableViewDelegate{
 
     var flags:NSMutableArray!
     var titles:NSMutableArray!
     var myTableView: UITableView!
     var targetAlarm: DCAlarm?
+    var weekBlock:WeekSelectedBlock?
+    
     private var buttonTagArray: [Int] {
         return [1, 2, 3, 4, 5, 6, 7]
     }
-//    var bock:ClockBlock?
     /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
     var selectedButtonTag = 0
 
@@ -37,7 +39,7 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
         self.myTableView.backgroundColor = defaultBackgroundGrayColor
         self.view.addSubview(self.myTableView!)
         
-        self.titles = ["每周日","每周一","每周二","每周三","每周四","每周五","每周六"]
+        self.titles = ["每周一","每周二","每周三","每周四","每周五","每周六","每周日"]
         
         self.flags = [false,false,false,false,false,false,false]
         if self.targetAlarm == nil {
@@ -48,7 +50,9 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
                 i = i + 1
                 let selected = 1 << (tag - 1)
                 let temp = Bool(self.targetAlarm!.selectedDay & selected)
-                self.flags.replaceObjectAtIndex(i-1, withObject:temp)
+                if temp {
+                     self.flags.replaceObjectAtIndex(i-1, withObject:temp)
+                }
             }
         }
     }
@@ -110,9 +114,10 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
             resultTag = resultTag | tag
         }
         self.selectedButtonTag = resultTag
-        DCAlarmManager.sharedInstance.selectedDay = self.selectedButtonTag
+//        DCAlarmManager.sharedInstance.selectedDay = self.selectedButtonTag
+        self.targetAlarm?.selectedDay = self.selectedButtonTag
+        self.weekBlock!(self.targetAlarm!)
         let aaa = String(format: "%02x", resultTag)
-//        self.bock!(self.flags)
         NSLog("self.selectedButtonTag is \(aaa)")
     }
 

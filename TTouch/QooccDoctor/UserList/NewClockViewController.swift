@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 
-typealias NewClockBlock = () -> Void
+typealias NewClockBlock = (DCAlarm) -> Void
 
 class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableViewDelegate,UITableViewDataSource {
 
@@ -46,8 +46,9 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         searchButton.setTitle("保存", forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.handleConfirmButtonTapped()
-            self?.dismissViewControllerAnimated(true, completion: nil)
-            self?.bock!()
+            self?.dismissViewControllerAnimated(true, completion: { 
+                self?.bock!((self?.targetAlarm)!)
+            })
             
             return RACSignal.empty()
             })
@@ -74,7 +75,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.myTableView.reloadData()
+//        self.myTableView.reloadData()
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -105,7 +106,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             self.datePicker!.backgroundColor = UIColor.whiteColor()
             self.datePicker?.datePickerMode = .Time
             self.view.addSubview(self.datePicker!)
-            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
+//            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
           
             if let alarm = self.targetAlarm {
                 if let date = alarm.alarmDate {
@@ -113,10 +114,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 } else {
                     self.datePicker!.date = NSDate()
                 }
-                
             }
-
-
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
 
@@ -178,6 +176,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         if indexPath.section == 1 && indexPath.row == 0 {
             let vc = TimeSelectedViewController()
             vc.targetAlarm = self.targetAlarm
+            vc.weekBlock =  {(Alarm) -> Void in
+                self.targetAlarm = Alarm
+                self.myTableView.reloadData()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 1 {
             let vc = ChangeNickViewController()
@@ -185,7 +187,6 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 let cell = tableView.cellForRowAtIndexPath(indexPath)
                 let lb = cell?.contentView.viewWithTag(100) as! UILabel
                 lb.text = flagStr as? String
-//                self.dict.setValue(flagStr, forKey: "name")
                 self.targetAlarm.descriptionText = flagStr as? String
             }
             self.navigationController?.pushViewController(vc, animated: true)
@@ -211,7 +212,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
      func handleConfirmButtonTapped() {
         let alarm = self.targetAlarm
         alarm.alarmDate = self.datePicker!.date
-        let tag = DCAlarmManager.sharedInstance.selectedDay
+        let tag = self.targetAlarm.selectedDay
         alarm.selectedDay = tag
         alarm.descriptionText = String(format: "%02x", tag)
         alarm.alarmOn = false
