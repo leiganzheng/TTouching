@@ -2,8 +2,8 @@
 //  UIViewControllerExtension.swift
 //  QooccShow
 //
-//  Created by LiuYu on 14/11/3.
-//  Copyright (c) 2014年 Qoocc. All rights reserved.
+//  Created by Leiganzheng on 14/11/3.
+//  Copyright (c) 2014年 lei. All rights reserved.
 //
 
 import UIKit

@@ -3,7 +3,7 @@
 //  QooccHealth
 //
 //  Created by haijie on 15/12/9.
-//  Copyright (c) 2015年 JuXi. All rights reserved.
+//  Copyright (c) 2015年 Lei. All rights reserved.
 //
 
 import UIKit

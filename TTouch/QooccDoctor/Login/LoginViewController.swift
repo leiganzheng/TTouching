@@ -2,14 +2,14 @@
 //  LoginViewController.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/4/13.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/4/13.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import UIKit
 
 /**
-*  @author LiuYu, 15-05-15 10:05:27
+*  @author Leiganzheng, 15-05-15 10:05:27
 *
 *  //MARK:- 用户登录
 */

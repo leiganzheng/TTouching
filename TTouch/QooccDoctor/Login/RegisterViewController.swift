@@ -2,14 +2,14 @@
 //  RegisterViewController.swift
 //  QooccDoctor
 //
-//  Created by LiuYu on 15/7/7.
+//  Created by Leiganzheng on 15/7/7.
 //  Copyright (c) 2015年 leiganzheng. All rights reserved.
 //
 
 import UIKit
 
 /**
-*  @author LiuYu, 15-07-07
+*  @author Leiganzheng, 15-07-07
 *
 *  // MARK: - 注册
 */

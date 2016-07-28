@@ -3,7 +3,7 @@
 //  QooccDoctor
 //
 //  Created by leiganzheng on 16/7/6.
-//  Copyright © 2016年 juxi. All rights reserved.
+//  Copyright © 2016年 Lei. All rights reserved.
 //
 
 import UIKit

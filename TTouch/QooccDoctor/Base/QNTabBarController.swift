@@ -3,7 +3,7 @@
 //  QooccHealth
 //
 //  Created by 肖小丰 on 15/4/14.
-//  Copyright (c) 2015年 Juxi. All rights reserved.
+//  Copyright (c) 2015年 Lei. All rights reserved.
 //
 let QNNotificationJMPAppointmentOrder = "QNNotificationJMPAppointmentOrder"
 var isJMPAppointmentOrder = false

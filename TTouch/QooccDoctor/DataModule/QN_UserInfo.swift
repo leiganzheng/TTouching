@@ -2,8 +2,8 @@
 //  QN_UserInfo.swift
 //  QooccShow
 //
-//  Created by LiuYu on 14/11/6.
-//  Copyright (c) 2014年 Qoocc. All rights reserved.
+//  Created by Leiganzheng on 14/11/6.
+//  Copyright (c) 2014年 Private. All rights reserved.
 //
 
 import Foundation
@@ -16,7 +16,7 @@ class QN_UserInfo: QN_Base {
     private(set) var gId: String!            // 家庭号
     private(set) var userName: String!       // 用户名
     private(set) var ownerId: String!        // 用户唯一标识符
-    var remark: String?         // 备注   Modify by LiuYu ! -> ? on 2015-7-14 （非必须的字段不要用 ? 
+    var remark: String?         // 备注   Modify by Leiganzheng ! -> ? on 2015-7-14 （非必须的字段不要用 ? 
     private(set) var lastMeasureDate: String! //最后一次测量时间
     private(set) var photo: String?          // 用户头像Url
     private(set) var phone: String?             // 用户电话

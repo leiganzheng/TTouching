@@ -2,8 +2,8 @@
 //  UIViewExtension.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/4/25.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/4/25.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ private let kTagBadgeLabel = 20087
 
 
 /**
-*  @author LiuYu, 15-04-25 15:04:25
+*  @author Leiganzheng, 15-04-25 15:04:25
 *
 *  做一个有BadgeValue的扩展，默认的显示位置是在右上角
 */

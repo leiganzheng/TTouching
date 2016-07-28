@@ -2,8 +2,8 @@
 //  QNInterceptor.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/5/28.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/5/28.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ protocol QNInterceptorNavigationBarHiddenProtocol: QNInterceptorProtocol {}
 protocol QNInterceptorKeyboardProtocol: QNInterceptorProtocol {}
 
 /**
-*  @author LiuYu, 15-05-26 14:05:28
+*  @author Leiganzheng, 15-05-26 14:05:28
 *
 *  // MARK: - 拦截器，拦截遵循了QNInterceptorProtocol 协议的类的实例
 */

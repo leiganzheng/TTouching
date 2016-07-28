@@ -2,8 +2,8 @@
 //  QNNetworkTool.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/4/8.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/4/8.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import UIKit

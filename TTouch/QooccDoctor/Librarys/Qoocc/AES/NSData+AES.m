@@ -3,7 +3,7 @@
 //  QooccShow
 //
 //  Created by LeiGanZheng on 15/2/4.
-//  Copyright (c) 2015年 Qoocc. All rights reserved.
+//  Copyright (c) 2015年 Private. All rights reserved.
 //
 
 #import "NSData+AES.h"

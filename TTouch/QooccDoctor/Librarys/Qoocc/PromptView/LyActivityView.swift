@@ -3,7 +3,7 @@
 //  QooccShow
 //
 //  Created by LeiGanZheng on 14/11/12.
-//  Copyright (c) 2014年 Qoocc. All rights reserved.
+//  Copyright (c) 2014年 Private. All rights reserved.
 //
 
 import UIKit

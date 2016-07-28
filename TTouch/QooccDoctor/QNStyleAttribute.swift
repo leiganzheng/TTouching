@@ -2,8 +2,8 @@
 //  QNStyleAttribute.swift
 //  QooccShow
 //
-//  Created by LiuYu on 14/11/10.
-//  Copyright (c) 2014年 Qoocc. All rights reserved.
+//  Created by Leiganzheng on 14/11/10.
+//  Copyright (c) 2014年 Private. All rights reserved.
 //
 
 /**

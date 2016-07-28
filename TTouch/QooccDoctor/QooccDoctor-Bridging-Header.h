@@ -3,7 +3,7 @@
 //  QooccDoctor
 //
 //  Created by leiganzheng on 15/7/3.
-//  Copyright (c) 2015年 Qoocc. All rights reserved.
+//  Copyright (c) 2015年 Private. All rights reserved.
 //
 
 #ifndef QooccDoctor_QooccDoctor_Bridging_Header_h

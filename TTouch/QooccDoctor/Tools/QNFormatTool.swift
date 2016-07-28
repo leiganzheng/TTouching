@@ -2,8 +2,8 @@
 //  QNFormatTool.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/4/27.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/4/27.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class QNFormatTool: NSObject {
 private let defaultDateInputFormat = "yyyy-MM-dd HH:mm:ss"
 private let defaultDateOutputFormat = "MM-dd HH:mm"
 /**
-*  @author LiuYu, 15-04-27 08:04:47
+*  @author Leiganzheng, 15-04-27 08:04:47
 *
 *  //MARK:- 时间格式化工具
 */
@@ -151,7 +151,7 @@ extension QNFormatTool {
 
 
 /**
-*  @author LiuYu, 15-04-27 08:04:38
+*  @author Leiganzheng, 15-04-27 08:04:38
 *
 *  //MARK:- 消息未读数的格式化显示
 */

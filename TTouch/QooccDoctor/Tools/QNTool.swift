@@ -2,8 +2,8 @@
 //  QNTool.swift
 //  QooccHealth
 //
-//  Created by LiuYu on 15/5/28.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 15/5/28.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ class QNTool: NSObject {
 }
 
 /**
-*  @author LiuYu, 15-06-24
+*  @author Leiganzheng, 15-06-24
 *
 *  //MARK:- 更新时做 数据迁移
 */
@@ -60,7 +60,7 @@ extension QNTool {
 }
 
 /**
-*  @author LiuYu, 15-05-28 15:05:50
+*  @author Leiganzheng, 15-05-28 15:05:50
 *
 *  //MARK:- 提示框相关
 */
@@ -123,7 +123,7 @@ extension QNTool {
 }
 
 /**
-*  @author LiuYu, 15-06-11
+*  @author Leiganzheng, 15-06-11
 *
 *  //MARK:- 增加空提示的View
 */
@@ -175,7 +175,7 @@ extension QNTool {
 }
 
 /**
-*  @author LiuYu, 15-05-28 16:05:14
+*  @author Leiganzheng, 15-05-28 16:05:14
 *
 *  //MARK:- 页面切换相关
 */

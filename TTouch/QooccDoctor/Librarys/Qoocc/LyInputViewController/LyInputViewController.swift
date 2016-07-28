@@ -3,7 +3,7 @@
 //  QooccHealth
 //
 //  Created by Yu Liu on 15/4/21.
-//  Copyright (c) 2015年 Liuyu. All rights reserved.
+//  Copyright (c) 2015年 Leiganzheng. All rights reserved.
 //
 
 import UIKit

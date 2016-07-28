@@ -2,8 +2,8 @@
 //  Constents.swift
 //  TestSwify
 //
-//  Created by LiuYu on 14/10/31.
-//  Copyright (c) 2014年 Liuyu. All rights reserved.
+//  Created by Leiganzheng on 14/10/31.
+//  Copyright (c) 2014年 Leiganzheng. All rights reserved.
 //
 
 import UIKit
