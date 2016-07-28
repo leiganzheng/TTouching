@@ -1,39 +1,41 @@
 //
-//  ModifyEquenmentsViewController.swift
+//  SocketManagerTool.swift
 //  QooccDoctor
 //
-//  Created by leiganzheng on 16/6/2.
-//  Copyright © 2016年 Lei. All rights reserved.
+//  Created by leiganzheng on 16/7/28.
+//  Copyright © 2016年 Private. All rights reserved.
 //
 
 import UIKit
 import CocoaAsyncSocket
 
-class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol,GCDAsyncSocketDelegate {
-
+class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     let addr = "192.168.0.10"
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "设备管理"
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //
     func sendMsg() {
-
+        
         // 1.处理请求，返回数据给客户端 ok
         let dict = ["command": "33","permit_old" : "654321","permit_ new":"123456"]
         
         clientSocket.writeData(self.paramsToJsonDataParams(dict) , withTimeout: -1, tag: 0)
     }
+    //连接服务器按钮事件
+     func connectSocket() {
+        do {
+            clientSocket = GCDAsyncSocket()
+            clientSocket.delegate = self
+            clientSocket.delegateQueue = dispatch_get_global_queue(0,0)
+            try clientSocket.connectToHost(addr, onPort: port)
+        }
+            
+        catch {
+            print("error")
+        }
+    }
+
     
     //MARK:- private method
     func paramsToJsonDataParams(params: [String : AnyObject]) -> NSData {
@@ -46,20 +48,7 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol,GCD
             return NSData()
         }
     }
-
-    //连接服务器按钮事件
-    func fectchData() {
-        do {
-            clientSocket = GCDAsyncSocket()
-            clientSocket.delegate = self
-            clientSocket.delegateQueue = dispatch_get_global_queue(0,0)
-            try clientSocket.connectToHost(addr, onPort: port)
-        }
-            
-        catch {
-            print("error")
-        }
-    }
+    
     //MARK:- GCDAsyncSocketDelegate
     func socket(sock:GCDAsyncSocket!, didConnectToHost host: String!, port:UInt16) {
         

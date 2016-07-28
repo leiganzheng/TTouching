@@ -169,10 +169,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
     }
     func fectchData() {
-        QNNetworkTool.scanLocationNet("") { (res) in
-            NSLog(res as! String)
-            self.tableViewController.refreshControl?.endRefreshing()
-        }
+//        QNNetworkTool.scanLocationNet("") { (res) in
+//            NSLog(res as! String)
+//            self.tableViewController.refreshControl?.endRefreshing()
+//        }
    
 
 //       let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23

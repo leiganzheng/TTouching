@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import CocoaAsyncSocket
 
 // MARK: - 医生服务器地址, 体征数据服务器地址
 private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
@@ -21,8 +20,7 @@ private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
 /**
 *  //MARK:- 网络处理中心
 */
-let addr = "192.168.0.10"
-let port:UInt16 = 33632
+
 
 class QNNetworkTool: NSObject{
     
@@ -438,333 +436,58 @@ extension QNNetworkTool {
 
 
 
-
-// MARK: - 预约地点相关
-extension QNNetworkTool {
-    //   预约地点列表
-    /**
-    *   预约地点列表
-    *  @param pageNo      页码，正数
-    *  @param pageSize    每页显示数量，正数
-    *  @param completion  结果回调
-    */
-    class func fetchConsultAddressList(pageNo: String,pageSize : String = "10", completion: (NSArray?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/consultAddress/list", parameters: paramsToJsonDataParams(["pageNo" : pageNo,"pageSize" : pageSize])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    let addresses = dictionary!["addresses"] as! NSArray
-                    completion(addresses, nil, nil);
-                } else {
-                    completion(nil, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(nil, error, nil)
-            }
-        }
-    }
-    //   新建/更新保存预约地点
-    /**
-    *   新建/更新保存预约地点
-    *  @param id            预约地点记录ID，在更新的时候需要传，新建的时候不需要或传0
-    *  @param address       地址，限制50个字
-    *  @param completion  结果回调
-    */
-    class func saveConsultAddress(id: String = "0",address : String, completion: (succeed : Bool!, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/consultAddress/save", parameters: paramsToJsonDataParams(["id": id,"address" : address])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    completion(succeed: true, nil, nil);
-                } else {
-                    completion(succeed: false, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(succeed: false, error, nil)
-            }
-        }
-    }
-    //   设置常用预约地点
-    /**
-    *   设置常用预约地点
-    *  @param id            预约地点记录ID，在更新的时候需要传，新建的时候不需要或传0
-    *  @param completion  结果回调
-    */
-    class func setCommonUsed(id: String = "0", completion: (succeed : Bool!, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/consultAddress/setCommonUsed", parameters: paramsToJsonDataParams(["id" : id])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    completion(succeed: true, nil, nil);
-                } else {
-                    completion(succeed: false, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(succeed: false, error, nil)
-            }
-        }
-    }
-    //   删除预约地点
-    /**
-    *   删除预约地点
-    *  @param id            预约地点记录ID，在更新的时候需要传，新建的时候不需要或传0
-    *  @param completion  结果回调
-    */
-    class func deleteConsultAddress(id: String = "0", completion: (succeed : Bool!, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/consultAddress/delete", parameters: paramsToJsonDataParams(["id" : id])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    completion(succeed: true, nil, nil);
-                } else {
-                    completion(succeed: false, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(succeed: false, error, nil)
-            }
-        }
-    }
-    //  获取常用预约地址
-    /**
-    *  获取常用预约地址
-    *  @param id            预约地点记录ID，在更新的时候需要传，新建的时候不需要或传0
-    *  @param completion  结果回调
-    */
-    class func getCommonUsed(completion: (NSDictionary? , NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/consultAddress/getCommonUsed", parameters:nil) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    let address = dictionary!["address"] as! NSDictionary
-                    completion(address, nil, nil);
-                } else {
-                    completion(nil, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(nil, error, nil)
-            }
-        }
-    }
-}
-
-//MARK:- 发起视频，向用户推送APNS消息
-extension QNNetworkTool {
-    //MARK: 发起视频，向用户推送APNS消息
-    /**
-    :param: orderNo     订单号
-    */
-    class func huanXingCall(orderNo : String, completion: (succeed : Bool!,NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/order/call", parameters: paramsToJsonDataParams(["orderNo" : orderNo])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    completion(succeed: true,dictionary, nil, nil);
-                } else {
-                    completion(succeed:false,nil, error, dictionary?["errorMsg"] as? String)
-                }
-            } else {
-                completion(succeed:false,nil, error, nil)
-            }
-        }
-    }
-    
-}
-//MARK:- 视频通话相关
-extension QNNetworkTool {
-    //MARK: 获取聊天用户头像及昵称
-    /**
-    :param: id     用户id
-    */
-    class func huanXingUserInfo(id : String,completion: (NSDictionary?, NSError?) -> Void) {
-        requestPOST(kXiTeServerAddress + "/api/doctor/user/info", parameters: paramsToJsonDataParams(["id" : id])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                if let errorCode = dictionary!["errorCode"]?.integerValue where errorCode == 0 {
-                    completion(dictionary, nil);
-                } else {
-                    completion(nil, error)
-                }
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-    
-}
-
-//MARK:-网关控制
-typealias CustomBlock = (AnyObject) -> Void
-var FinishBock:CustomBlock?
-extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
-    /**
-      局域网内搜索网关
-     
-     :param: UDP 广播
-     */
-    class func scanLocationNet(udpStr: String,completion: CustomBlock) {
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-        let sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do{
-            let datastr = "0xFF0x040x330xCA"
-            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-//            try sock?.bindToPort(33632)
-//            try sock?.joinMulticastGroup(result)
-            sock?.sendData(data, toHost: result, port: 33632, withTimeout: -1, tag: 1)
-            
-        } catch {
-            print("error")
-        }
-
-//         var udpsock = AsyncUdpSocket(delegate: self)
-//        if (udpsock == nil){
-//            udpsock = AsyncUdpSocket(delegate: self)
+////MARK:-网关控制
+//typealias CustomBlock = (AnyObject) -> Void
+//var FinishBock:CustomBlock?
+//extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
+//    
+//
+//    class func test(completion: CustomBlock){
+//        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+//        do {
+//            try socket.connectToHost("192.168.11.101", onPort: port)
+//            
+//           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "60"])
+//            
+////            let request:String = "Arn.Preg:3302:"
+//            
+//            let data:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
+//            socket.writeData(data, withTimeout: -1, tag: 0)
+//            socket.readDataWithTimeout(-1, tag: 0)
+//        } catch let e {
+//            completion("")
+//            print(e)
 //        }
-//        do{
-//            //            try sock!.bindToPort(33632)
-////             try udpsock!.enableBroadcast(true) // Also tried without this line
-//            let datastr = "0xFF0x040x330xCA"
-//            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-//            udpsock?.sendData(data, toHost: result, port: 80, withTimeout: 1, tag: 1)
-//        } catch {
-//            print("error")
-//        }
-
-    }
-
-    /**
-     网关设置-验证设备管理密码
-     
-     :param: command 指令码:32
-     :param: permit 输入的密码,固定 6 个字符
-     */
-    class func loginLocationNet(command: String,permit: String,completion: CustomBlock) {
-       let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do {
-            try socket.connectToHost(addr, onPort: port)
-            let request:String = "Arn.Preg:3302:"
-            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: -1.0, tag: 0)
-            socket.readDataWithTimeout(-1.0, tag: 0)
-        } catch let e {
-            completion("")
-            print(e)
-        }
-
-    }
-    /**
-     网关设置-修改设备管理密码
-     
-     :param: command 指令码:33
-     :param: permit_old 输入的密码,固定 6 个字符
-     :param: permit_ new 输入的密码,固定 6 个字符
-     */
-    class func modifyLocationNet(command: String,permitOld: String,permitNew: String,completion: CustomBlock) {
-        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do {
-            try socket.connectToHost(addr, onPort: port)
-            let request:String = "Arn.Preg:3302:"
-            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: -1.0, tag: 0)
-            socket.readDataWithTimeout(-1.0, tag: 0)
-        } catch let e {
-            completion("")
-            print(e)
-        }
-        
-    }
-    /**
-     设备管理-获取所有设备信息
-     
-     :param: command 指令码:30
-     */
-    class func equmentslist(command: String,completion: CustomBlock) {
-        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do {
-            try socket.connectToHost(addr, onPort: port)
-            let request:String = "Arn.Preg:3302:"
-            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: -1.0, tag: 0)
-            socket.readDataWithTimeout(-1.0, tag: 0)
-        } catch let e {
-            completion("")
-            print(e)
-        }
-        
-    }
-    /**
-     设备管理-修改各设备的信息
-     
-     :param: command 指令码:30
-     */
-    class func modifyEqument(command: String,completion: CustomBlock) {
-        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do {
-            try socket.connectToHost(addr, onPort: port)
-            let request:String = "Arn.Preg:3302:"
-            let data:NSData = request.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: -1.0, tag: 0)
-            socket.readDataWithTimeout(-1.0, tag: 0)
-        } catch let e {
-            completion("")
-            print(e)
-        }
-        
-    }
-
-    class func test(completion: CustomBlock){
-        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-        do {
-            try socket.connectToHost("192.168.11.101", onPort: port)
-            
-           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "60"])
-            
-//            let request:String = "Arn.Preg:3302:"
-            
-            let data:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
-            socket.writeData(data, withTimeout: -1, tag: 0)
-            socket.readDataWithTimeout(-1, tag: 0)
-        } catch let e {
-            completion("")
-            print(e)
-        }
-
-    }
-
-    //MARK:- Delegate method
-    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
-        print("Recv...")
-        print(data)
-        FinishBock!(data!)
-        cbsock.receiveWithTimeout(10, tag: 0)
-    }
-    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
-        FinishBock!(data!)
-        return true
-    }
-    func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
-    {
-        let response = NSString(data: data, encoding: NSUTF8StringEncoding)
-        FinishBock!(response!)
-        print("Received Response")
-    }
-    
-    func socket(socket : GCDAsyncSocket, didConnectToHost host:String, port p:UInt16)
-    {
-        FinishBock!(host)
-        print("Connected to \(host) on port \(p).")
-    }
-    func onUdpSocket(sock: AsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
-        print("Connected to")
-    }
-}
+//
+//    }
+//
+//    //MARK:- Delegate method
+//    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
+//        print("Recv...")
+//        print(data)
+//        FinishBock!(data!)
+//        cbsock.receiveWithTimeout(10, tag: 0)
+//    }
+//    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
+//        FinishBock!(data!)
+//        return true
+//    }
+//    func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
+//    {
+//        let response = NSString(data: data, encoding: NSUTF8StringEncoding)
+//        FinishBock!(response!)
+//        print("Received Response")
+//    }
+//    
+//    func socket(socket : GCDAsyncSocket, didConnectToHost host:String, port p:UInt16)
+//    {
+//        FinishBock!(host)
+//        print("Connected to \(host) on port \(p).")
+//    }
+//    func onUdpSocket(sock: AsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
+//        print("Connected to")
+//    }
+//}
 
 
 

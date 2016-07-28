@@ -113,9 +113,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     func sliderValueChanged(slider: UISlider) {
         let data = slider.value
-        QNNetworkTool.test { (obj) in
-            
-        }
+//        QNNetworkTool.test { (obj) in
+//            
+//        }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)

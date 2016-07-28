@@ -15,6 +15,7 @@
 		2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B856D561BA16B3F001D3380 /* CustomPickView.swift */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
+		719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E019A1D4A599700E3161D /* SocketManagerTool.swift */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
@@ -163,6 +164,7 @@
 		2B856D561BA16B3F001D3380 /* CustomPickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickView.swift; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
+		719E019A1D4A599700E3161D /* SocketManagerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManagerTool.swift; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */,
 				BB3C45A71B465C46008A1213 /* QNFormatTool.swift */,
 				BB3C45A81B465C46008A1213 /* QNInterceptor.swift */,
+				719E019A1D4A599700E3161D /* SocketManagerTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -999,6 +1002,7 @@
 				71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */,
 				BB5BCE5B1D29F15E00B8BFC1 /* UnAeraViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,
+				719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */,
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
 				71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */,
