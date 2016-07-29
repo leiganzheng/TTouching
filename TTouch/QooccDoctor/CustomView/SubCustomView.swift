@@ -12,6 +12,7 @@ import ReactiveCocoa
 class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource{
 
     var collectionView:UICollectionView?
+    var flag: NSInteger?
     var data:NSArray? {
         didSet {
             self.updateLayerFrames()
@@ -44,22 +45,27 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         }
         
         button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
-//        QNTool.configViewLayerFrame(button)
         cell.contentView.addSubview(button)
         return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(screenWidth/2-6, 50)
     }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsetsMake(5, 0, 5, 0)
-//    }
 
-    
     //实现UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         NSLog("cell")
+        //总控
+         let dict = ["command": "36","dev_addr" : "0","dev_type":"1","work_status":"17"]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
+        
+//        //六情景
+//        let dict = ["command": "36","dev_addr" : "24606","dev_type":"2","work_status":"97"]
+//        let sockertManger = SocketManagerTool()
+//        sockertManger.sendMsg(dict)
+
     }
     func updateLayerFrames() {
         let height = CGFloat(self.data!.count/2 == 0 ? self.data!.count/2 : self.data!.count/2 + 1)*50

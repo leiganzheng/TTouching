@@ -1678,9 +1678,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="close1Btn" destination="bR1-Y8-6a6" id="gms-j6-usD"/>
+                                            <outlet property="close2Btn" destination="lg7-IW-NZD" id="0jE-J2-OeL"/>
                                             <outlet property="isOpen" destination="UYk-Hy-gNK" id="bxJ-CY-CHW"/>
                                             <outlet property="name" destination="zsk-5Q-02U" id="vHA-db-IRh"/>
+                                            <outlet property="open1Btn" destination="rMA-7X-xPx" id="rM5-PX-3xq"/>
+                                            <outlet property="open2Btn" destination="UAz-hg-4Zc" id="aaK-6B-88v"/>
                                             <outlet property="partern" destination="1Mb-7Y-KTj" id="xkb-OC-0Y8"/>
+                                            <outlet property="stop1Btn" destination="9xm-S3-CxR" id="jZS-Ta-svk"/>
+                                            <outlet property="stop2Btn" destination="N5C-Zj-gAG" id="U84-Zq-6jS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2730,6 +2736,8 @@
                                             <outlet property="isOpen" destination="gdf-eq-Vth" id="J94-XA-Cn8"/>
                                             <outlet property="name" destination="tED-bQ-QCj" id="njI-pd-CMh"/>
                                             <outlet property="partern" destination="uw5-5L-dkt" id="1Ah-7f-3uj"/>
+                                            <outlet property="slider1" destination="eX8-J1-YFb" id="dUZ-BZ-PaD"/>
+                                            <outlet property="slider2" destination="Q89-vU-4bE" id="sM7-WE-cb1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3388,6 +3396,12 @@
                                             <outlet property="name" destination="YKT-Pq-nDu" id="Qbq-xD-khd"/>
                                             <outlet property="patern" destination="ozP-HY-C1L" id="RZb-wF-2Zt"/>
                                             <outlet property="paternLB" destination="Q18-xO-zYm" id="uhc-F2-EC0"/>
+                                            <outlet property="switch1" destination="AmT-7n-1aS" id="XZU-6z-ik5"/>
+                                            <outlet property="switch2" destination="fVF-qf-ead" id="Esy-w9-pIm"/>
+                                            <outlet property="switch3" destination="xyA-wn-cNF" id="rvh-9F-mU3"/>
+                                            <outlet property="switch4" destination="EdM-oi-qaS" id="kBd-Ym-4BI"/>
+                                            <outlet property="switch5" destination="BjC-2z-DM4" id="jCF-ae-lCZ"/>
+                                            <outlet property="switch6" destination="YOP-il-dXF" id="4Cr-ya-Ta0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

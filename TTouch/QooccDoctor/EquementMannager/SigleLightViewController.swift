@@ -86,7 +86,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
 
         let btn1 = cell.partern
         
-        btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        btn1.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             let vc = PaternViewController()
             let popover = FPPopoverController(viewController: vc)
@@ -112,10 +112,12 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         return cell
     }
     func sliderValueChanged(slider: UISlider) {
-        let data = slider.value
-//        QNNetworkTool.test { (obj) in
-//            
-//        }
+        //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
+//        let data = slider.value
+        let dict = ["command": "36","dev_addr" : "25678","dev_type":"3","work_status":"99"]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
+
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)

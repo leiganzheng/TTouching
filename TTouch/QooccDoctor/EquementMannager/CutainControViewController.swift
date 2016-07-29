@@ -105,6 +105,13 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
             return RACSignal.empty()
            
             })
+        cell.open1Btn.addTarget(self, action: #selector(CutainControViewController.open1(_:)), forControlEvents: .TouchUpInside)
+        cell.stop1Btn.addTarget(self, action: #selector(CutainControViewController.stop1(_:)), forControlEvents: .TouchUpInside)
+        cell.close1Btn.addTarget(self, action: #selector(CutainControViewController.close1(_:)), forControlEvents: .TouchUpInside)
+        
+        cell.open2Btn.addTarget(self, action: #selector(CutainControViewController.open2(_:)), forControlEvents: .TouchUpInside)
+        cell.stop2Btn.addTarget(self, action: #selector(CutainControViewController.stop2(_:)), forControlEvents: .TouchUpInside)
+        cell.close2Btn.addTarget(self, action: #selector(CutainControViewController.close2(_:)), forControlEvents: .TouchUpInside)
         return cell
     }
     
@@ -113,7 +120,27 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         
     }
     //MARK:- private method
+    func open1(sender: UIButton){
+        let dict = ["command": "36","dev_addr" : "28411","dev_type":"7","work_status":"192"]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
 
+    }
+    func stop1(sender: UIButton){
+        
+    }
+    func close1(sender: UIButton){
+        
+    }
+    func open2(sender: UIButton){
+        
+    }
+    func stop2(sender: UIButton){
+        
+    }
+    func close2(sender: UIButton){
+        
+    }
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()

@@ -72,6 +72,12 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             return RACSignal.empty()
             
             })
+        cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch2.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch4.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch5.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch6.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         return cell
     }
     
@@ -80,6 +86,16 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         
     }
     //MARK:- private method
+    func sliderValueChanged(switchBtn: UISwitch) {
+        //三回路开关控制端
+        //        let data = slider.value
+        
+        let dict = ["command": "36","dev_addr" : "62252","dev_type":"5","work_status":"2"]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
+        
+    }
+
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()

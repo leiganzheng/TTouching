@@ -103,7 +103,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         self.customNavView()
         self.fetchData()
-        let tap = UITapGestureRecognizer(target: self, action: "tap")
+//        let tap = UITapGestureRecognizer(target: self, action: "tap")
     }
     func tap() {
         

@@ -10,15 +10,14 @@ import UIKit
 import ReactiveCocoa
 import CocoaAsyncSocket
 
-class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInterceptorNavigationBarShowProtocol,UITableViewDataSource, UITableViewDelegate,AsyncUdpSocketDelegate {
+class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInterceptorNavigationBarShowProtocol,UITableViewDataSource, UITableViewDelegate {
     private var tableViewController: UITableViewController!
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
     var inSocket : InSocket!
     var outSocket : OutSocket!
-//    var sock:AsyncUdpSocket?
-    var sock:GCDAsyncUdpSocket?
+    
     var flags:NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +55,6 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         inSocket = InSocket()
         outSocket = OutSocket()
         
-//        self.receiveData()
-//        self.fectchData()
         self.exeDB()
 
     }
@@ -119,107 +116,31 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         }
         self.myTableView.reloadData()
     }
-     //MARK:- private method
-    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
-        print("Recv...")
-        print(data)
-        cbsock.receiveWithTimeout(2, tag: 0)
-    }
-    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
-        print("Data...")
-        print(data)
-
-        return true
-    }
-    func onUdpSocket(sock: AsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
-        print("Connected to")
-    }
-    
     //MARK:- private method
     func receiveData() {
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-        let dnsListener = UDPListener()
-        dnsListener.sendData(result)
-
-//         self.sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//        do{
-//            try self.sock!.bindToPort(33632)
-////            try self.sock!.enableBroadcast(true) // Also tried without this line
-////            try self.sock!.joinMulticastGroup(result)
-//            try self.sock!.beginReceiving()
-//            
-//        } catch {
-//            print("error")
-//        }
-
-    }
-    func fectchData() {
-//        QNNetworkTool.scanLocationNet("") { (res) in
-//            NSLog(res as! String)
-//            self.tableViewController.refreshControl?.endRefreshing()
-//        }
-   
-
-//       let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+//        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
 //        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
 //        var index = 0
 //        let mulArr = NSMutableArray()
 //        for str in arr {
 //            index = index + 1
 //            if index < arr.count {
-//                 mulArr.addObject(str)
+//                mulArr.addObject(str)
 //            }
 //            if index == arr.count {
 //                mulArr.addObject("255")
 //            }
-//
+//            
 //        }
 //        let result = mulArr.componentsJoinedByString(".")
-//
 //        
-//        if (sock == nil){
-//            sock = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//        }
-//        do{
-//            //            try sock!.bindToPort(33632)
-//            try sock!.enableBroadcast(true) // Also tried without this line
-//            let datastr = "0xFF0x040x330xCA"
-//            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-//            sock?.sendData(data, toHost: result, port: 33632, withTimeout: 3, tag: 1)
-//            sock!.receiveWithTimeout(3,tag: 0)
-//        } catch {
-//            print("error")
-//        }
+//        let dnsListener = UDPListener()
+//        dnsListener.sendData(result)
 
-        
-//        if (sock == nil){
-//            sock = AsyncUdpSocket(delegate: self)
-//        }
-//        do{
-////            try sock!.bindToPort(33632)
-//            try sock!.enableBroadcast(true) // Also tried without this line
-//            let datastr = "0xFF0x040x330xCA"
-//            let data = datastr.dataUsingEncoding(NSUTF8StringEncoding)
-//            sock?.sendData(data, toHost: result, port: 33632, withTimeout: 3, tag: 1)
-//            sock!.receiveWithTimeout(3,tag: 0)
-//        } catch {
-//            print("error")
-//        }
+
+    }
+    func fectchData() {
+
     }
     func deviceList() {
         

@@ -14,13 +14,16 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
-    //
-    func sendMsg() {
+    override init(){
+        super.init()
+        connectSocket()
+    }
+    func sendMsg(dict: NSDictionary) {
         
         // 1.处理请求，返回数据给客户端 ok
-        let dict = ["command": "33","permit_old" : "654321","permit_ new":"123456"]
+       
         
-        clientSocket.writeData(self.paramsToJsonDataParams(dict) , withTimeout: -1, tag: 0)
+        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
     }
     //连接服务器按钮事件
      func connectSocket() {

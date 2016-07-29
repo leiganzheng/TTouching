@@ -14,6 +14,8 @@ class DoubleTableViewCell: UITableViewCell {
     @IBOutlet weak var partern: UIButton!
     @IBOutlet weak var isOpen: UIButton!
     @IBOutlet weak var paternLB: UILabel!
+    @IBOutlet weak var slider1: UISlider!
+    @IBOutlet weak var slider2: UISlider!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

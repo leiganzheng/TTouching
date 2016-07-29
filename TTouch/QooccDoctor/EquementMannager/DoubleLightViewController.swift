@@ -86,7 +86,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
 
         let btn1 = cell.partern
         
-        btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        btn1.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             let vc = PaternViewController()
             let popover = FPPopoverController(viewController: vc)
@@ -106,6 +106,8 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
             return RACSignal.empty()
             
             })
+        cell.slider1.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.slider2.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         return cell
     }
     
@@ -114,6 +116,15 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         
     }
     //MARK:- private method
+    func sliderValueChanged(slider: UISlider) {
+        //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
+        //        let data = slider.value
+
+        let dict = ["command": "36","dev_addr" : "10976","dev_type":"4","work_status":"199"]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
+        
+    }
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
