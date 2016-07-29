@@ -10,8 +10,8 @@ import UIKit
 import CocoaAsyncSocket
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
-    let addr = "192.168.0.10"
-    let port:UInt16 = 33632
+    let addr = "192.168.5.22"
+    let port:UInt16 = 8080
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
     override init(){
@@ -19,19 +19,17 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         connectSocket()
     }
     func sendMsg(dict: NSDictionary) {
-        
-        // 1.处理请求，返回数据给客户端 ok
-       
-        
         clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
     }
     //连接服务器按钮事件
      func connectSocket() {
         do {
-            clientSocket = GCDAsyncSocket()
-            clientSocket.delegate = self
-            clientSocket.delegateQueue = dispatch_get_global_queue(0,0)
+            clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+//             clientSocket.delegate = self
+//            clientSocket.delegateQueue = dispatch_get_main_queue()
             try clientSocket.connectToHost(addr, onPort: port)
+           
+//            try clientSocket.connectToHost(addr, onPort: port, withTimeout: -1)
         }
             
         catch {

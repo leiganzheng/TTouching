@@ -12,7 +12,7 @@ import CocoaAsyncSocket
 class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
 //    let IP = "90.112.76.180"
-    let PORT:UInt16 = 33632
+    let PORT:UInt16 = 8080
     var socket:GCDAsyncUdpSocket!
     
     override init(){
@@ -38,7 +38,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         let IP = mulArr.componentsJoinedByString(".")
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-           try socket.connectToHost(IP, onPort: PORT)
+           try socket.connectToHost("255.255.255.255", onPort: PORT)
             
         } catch {
             // deal with error

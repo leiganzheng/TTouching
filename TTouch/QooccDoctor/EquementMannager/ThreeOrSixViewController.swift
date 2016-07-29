@@ -13,11 +13,15 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
+    var sockertManger:SocketManagerTool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "3/6回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
+        self.sockertManger = SocketManagerTool()
+
         self.fetchData()
 
     }
@@ -91,7 +95,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         //        let data = slider.value
         
         let dict = ["command": "36","dev_addr" : "62252","dev_type":"5","work_status":"2"]
-        let sockertManger = SocketManagerTool()
+//        let sockertManger = SocketManagerTool()
         sockertManger.sendMsg(dict)
         
     }

@@ -14,11 +14,13 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
      var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
+    var sockertManger:SocketManagerTool!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "双回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
+        self.sockertManger = SocketManagerTool()
         self.fetchData()
         
     }
@@ -121,7 +123,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         //        let data = slider.value
 
         let dict = ["command": "36","dev_addr" : "10976","dev_type":"4","work_status":"199"]
-        let sockertManger = SocketManagerTool()
+//        let sockertManger = SocketManagerTool()
         sockertManger.sendMsg(dict)
         
     }

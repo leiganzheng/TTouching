@@ -42,6 +42,11 @@
 		71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4B1D28C4AD000E0A34 /* DoubleTableViewCell.swift */; };
 		71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D76E4D1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift */; };
 		BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */; };
+		BB1063E41D4B49960044EDB4 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1063DE1D4B49960044EDB4 /* ysocket.swift */; };
+		BB1063E51D4B49960044EDB4 /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = BB1063DF1D4B49960044EDB4 /* ytcpsocket.c */; };
+		BB1063E61D4B49960044EDB4 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1063E01D4B49960044EDB4 /* ytcpsocket.swift */; };
+		BB1063E71D4B49960044EDB4 /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = BB1063E11D4B49960044EDB4 /* yudpsocket.c */; };
+		BB1063E81D4B49960044EDB4 /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1063E21D4B49960044EDB4 /* yudpsocket.swift */; };
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
 		BB2944221D38D8530096EDC4 /* ClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */; };
@@ -193,6 +198,11 @@
 		A2BFD236B28CCA0040D6F938 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB0072441D2B760200DCEF95 /* GetWiFiInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetWiFiInfoHelper.h; sourceTree = "<group>"; };
 		BB0072451D2B760200DCEF95 /* GetWiFiInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetWiFiInfoHelper.m; sourceTree = "<group>"; };
+		BB1063DE1D4B49960044EDB4 /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
+		BB1063DF1D4B49960044EDB4 /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		BB1063E01D4B49960044EDB4 /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
+		BB1063E11D4B49960044EDB4 /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		BB1063E21D4B49960044EDB4 /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yudpsocket.swift; sourceTree = "<group>"; };
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
 		BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockTableViewCell.swift; sourceTree = "<group>"; };
@@ -411,6 +421,18 @@
 			path = wifi;
 			sourceTree = "<group>";
 		};
+		BB1063DD1D4B49960044EDB4 /* ysocket */ = {
+			isa = PBXGroup;
+			children = (
+				BB1063DE1D4B49960044EDB4 /* ysocket.swift */,
+				BB1063DF1D4B49960044EDB4 /* ytcpsocket.c */,
+				BB1063E01D4B49960044EDB4 /* ytcpsocket.swift */,
+				BB1063E11D4B49960044EDB4 /* yudpsocket.c */,
+				BB1063E21D4B49960044EDB4 /* yudpsocket.swift */,
+			);
+			path = ysocket;
+			sourceTree = "<group>";
+		};
 		BB2578D11CFD7DB50037CA9B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +599,7 @@
 		BB3C45261B465C46008A1213 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				BB1063DD1D4B49960044EDB4 /* ysocket */,
 				BB0072431D2B760200DCEF95 /* wifi */,
 				BB347F791D274D41005CEE95 /* FPPopover */,
 				BB319C141D26077A0071F443 /* fmdb */,
@@ -909,6 +932,7 @@
 				BBCB43E31D3F596C00A997EA /* DCAlarmManager.swift in Sources */,
 				BB347F821D274D41005CEE95 /* FPPopoverView.m in Sources */,
 				71D76E291D1827EC000E0A34 /* MusicViewController.swift in Sources */,
+				BB1063E61D4B49960044EDB4 /* ytcpsocket.swift in Sources */,
 				BB319C2A1D2645E30071F443 /* PatternDB.swift in Sources */,
 				17E89CC41B4B699200067F28 /* EditInformationViewController.swift in Sources */,
 				BBF275D91D2E530800CAFE99 /* InSocket.swift in Sources */,
@@ -920,6 +944,7 @@
 				BB52E6D21D06C2CE005020A0 /* AboutViewController.swift in Sources */,
 				71D76E4C1D28C4AD000E0A34 /* DoubleTableViewCell.swift in Sources */,
 				BB38E81D1D2CAD4800190A49 /* MAirTableViewCell.swift in Sources */,
+				BB1063E41D4B49960044EDB4 /* ysocket.swift in Sources */,
 				BBCB43E21D3F596C00A997EA /* DCAlarm.swift in Sources */,
 				BBA52F191B9D3EDC007A3C72 /* QNTabBarController.swift in Sources */,
 				71D76E341D2418B1000E0A34 /* SixViewController.swift in Sources */,
@@ -967,6 +992,7 @@
 				BB3C45CB1B465C46008A1213 /* LyInputViewController.swift in Sources */,
 				BB3C46051B465DA0008A1213 /* QNStyleAttribute.swift in Sources */,
 				2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */,
+				BB1063E71D4B49960044EDB4 /* yudpsocket.c in Sources */,
 				BB319C0F1D26014A0071F443 /* FMDatabaseVariadic.swift in Sources */,
 				BB38E80F1D2CAC4C00190A49 /* MSigleTableViewCell.swift in Sources */,
 				BB3C45B61B465C46008A1213 /* UIViewExtension.swift in Sources */,
@@ -991,6 +1017,7 @@
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
+				BB1063E81D4B49960044EDB4 /* yudpsocket.swift in Sources */,
 				BB38E8361D2CDE8000190A49 /* ChangeNickViewController.swift in Sources */,
 				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
@@ -1006,6 +1033,7 @@
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,
 				71D76E3A1D241905000E0A34 /* DoubleLightViewController.swift in Sources */,
+				BB1063E51D4B49960044EDB4 /* ytcpsocket.c in Sources */,
 				BB38E8301D2CCA7600190A49 /* DNuanTableViewCell.swift in Sources */,
 				716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */,
 				BB3C45CA1B465C46008A1213 /* LyInputView.swift in Sources */,

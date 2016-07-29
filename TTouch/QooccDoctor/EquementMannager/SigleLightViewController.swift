@@ -8,16 +8,20 @@
 
 import UIKit
 import ReactiveCocoa
+import Darwin.C
 
 class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
+    var sockertManger:SocketManagerTool!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "单回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
+//        self.sockertManger = SocketManagerTool()
+        self.testtcpclient()
         self.fetchData()
         
     }
@@ -115,8 +119,8 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
         let dict = ["command": "36","dev_addr" : "25678","dev_type":"3","work_status":"99"]
-        let sockertManger = SocketManagerTool()
-        sockertManger.sendMsg(dict)
+        
+//        self.sockertManger.sendMsg(dict)
 
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -124,6 +128,41 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         
     }
     //MARK:- private method
+    func testtcpclient(){
+        //创建socket
+        let client:TCPClient = TCPClient(addr: "192.168.5.10", port: 8080)
+        //连接
+        let (success,errmsg) = client.connect(timeout: 1)
+        if success{
+            //发送数据
+            let (success,errmsg)=client.send(str:"GET / HTTP/1.0\n\n" )
+            if success{
+                //读取数据
+                let data=client.read(1024*10)
+                if let d=data{
+//                    let result:[UInt8] = client.read(1024*100)!
+//                    
+//                    if let str = NSString(bytes: result, length: result.count, encoding: NSUTF8StringEncoding) as? String {
+//                        print(str)
+//                    } else {
+//                        print("not a valid UTF-8 sequence")
+//                    }
+//                    
+//                    let data:NSData = NSData(bytes: result, length: result.count)
+//                    let str:String = String(data: data, encoding: NSUTF8StringEncoding)!
+//                    print(str)
+                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
+                        print(str)
+                    }
+                }
+            }else{
+                print(errmsg)
+            }
+        }else{
+            print(errmsg)
+        }
+    }
+
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()

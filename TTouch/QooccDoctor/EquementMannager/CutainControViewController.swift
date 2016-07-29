@@ -13,11 +13,14 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
 
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
+    var sockertManger:SocketManagerTool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "窗帘"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
+        self.sockertManger = SocketManagerTool()
         self.fetchData()
     }
 
@@ -122,7 +125,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     //MARK:- private method
     func open1(sender: UIButton){
         let dict = ["command": "36","dev_addr" : "28411","dev_type":"7","work_status":"192"]
-        let sockertManger = SocketManagerTool()
+//        let sockertManger = SocketManagerTool()
         sockertManger.sendMsg(dict)
 
     }

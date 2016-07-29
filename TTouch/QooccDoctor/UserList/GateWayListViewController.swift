@@ -52,8 +52,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
         
-        inSocket = InSocket()
-        outSocket = OutSocket()
+//        inSocket = InSocket()
+//        outSocket = OutSocket()
+        testudpBroadcastserver()
+//        testudpBroadcastclient()
         
         self.exeDB()
 
@@ -144,6 +146,82 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     func deviceList() {
         
+    }
+    func echoService(client c:TCPClient){
+        print("newclient from:\(c.addr)[\(c.port)]")
+        let d=c.read(1024*10)
+        c.send(data: d!)
+        c.close()
+    }
+    func testtcpserver(){
+        let server:TCPServer = TCPServer(addr: "127.0.0.1", port: 8080)
+        var (success,msg)=server.listen()
+        if success{
+            while true{
+                if let client=server.accept(){
+                    echoService(client: client)
+                }else{
+                    print("accept error")
+                }
+            }
+        }else{
+            print(msg)
+        }
+    }
+    //testclient()
+    func testudpserver(){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            let server:UDPServer=UDPServer(addr:"127.0.0.1",port:8080)
+            let run:Bool=true
+            while run{
+                var (data,remoteip,remoteport)=server.recv(1024)
+                print("recive")
+                if let d=data{
+                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
+                        print(str)
+                    }
+                }
+                print(remoteip)
+                server.close()
+                break
+            }
+        })
+    }
+    func testudpclient(){
+        let client:UDPClient=UDPClient(addr: "localhost", port: 8080)
+        print("send hello world")
+        client.send(str: "hello world")
+        client.close()
+    }
+    //testudpBroadcastclient()
+    func testudpBroadcastserver(){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            //turn the server to broadcast mode with the address 255.255.255.255 or empty string
+            let server:UDPServer=UDPServer(addr:"255.255.255.255",port:8080)
+            let run:Bool=true
+            print("server.started")
+            while run{
+                let (data,remoteip,remoteport)=server.recv(1024)
+                print("recive\(remoteip);\(remoteport)")
+                if let d=data{
+                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
+                        print(str)
+                    }
+                }
+                print(remoteip)
+            }
+            print("server.close")
+            server.close()
+        })
+    }
+    func testudpBroadcastclient(){
+        //wait a few second till server will ready
+        sleep(2)
+        print("Broadcastclient.send...")
+        let clientB:UDPClient = UDPClient(addr: "255.255.255.255", port: 8080)
+        clientB.enableBroadcast()
+        clientB.send(str: "test hello from broadcast")
+        clientB.close()
     }
     func exeDB(){
 
