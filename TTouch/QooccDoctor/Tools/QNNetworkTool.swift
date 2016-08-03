@@ -12,7 +12,7 @@ import Alamofire
 // MARK: - 医生服务器地址, 体征数据服务器地址
 private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
     // 正式环境
-    ("http://xite.qoocc.com/doctor", "http://xite.qoocc.com/dc")
+    ("http://www.reluxe.com.tw/phpok45/api.php", "http://xite.qoocc.com/dc")
     // 测试环境
 //    ("http://test.xite.qoocc.com/doctor", "http://test.xite.qoocc.com/dc")
 }()
@@ -74,8 +74,8 @@ private extension QNNetworkTool{
                         dictionary = jsonData
                     }
                     
-                    let errorCode = Int((dictionary!["errorCode"] as! String))
-                    if errorCode == 1000 || errorCode == 0 {
+                    let errorCode = Int((dictionary!["status"] as! String))
+                    if errorCode == 1000 || errorCode == 1 {
                         completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: nil)
                     }
                     else {
@@ -297,24 +297,24 @@ extension QNNetworkTool {
     :param: Password 登录密码
     :param: completion    请求完成后的回掉
     */
-//    class func login(Id id: String, Password password: String, completion: (QD_Doctor?, NSError?, String?) -> Void) {
-//        requestPOST(kServerAddress + "/api/login", parameters: paramsToJsonDataParams(["account" : id, "password" : password])) { (_, _, _, dictionary, error) -> Void in
-//            if dictionary != nil, let doctorDic = dictionary?["data"] as? NSDictionary, let doctor = QD_Doctor(doctorDic) {
-//                // 登录成功，保存账号密码到本地
+    class func login(User user: String, Password password: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
+        requestPOST(kServerAddress, parameters: ["user" : user, "pass" : password,"c":"login"]) { (_, _, _, dictionary, error) -> Void in
+            if dictionary != nil, let doctorDic = dictionary?["content"] as? NSDictionary {
+                // 登录成功，保存账号密码到本地
 //                saveAccountAndPassword(id, password: password)
 //                g_doctor = doctor
-//
-//                let asyncLogin = { () -> Void in
-//                    
-//                }
+
+                let asyncLogin = { () -> Void in
+                    
+                }
 //                var asyncLoginCount = 0
 //                               completion(doctor, nil, nil)
-//            }
-//            else {
+            }
+            else {
 //                completion(nil, error, dictionary?["errorMsg"] as? String)
-//            }
-//        }
-//    }
+            }
+        }
+    }
 //    class func loginOther(Id id: String, Password password: String, completion: (QD_Doctor?, NSError?, String?) -> Void) {
 //        requestPOST(kServerAddress + "/api/login", parameters: paramsToJsonDataParams(["account" : id, "password" : password])) { (_, _, _, dictionary, error) -> Void in
 //            if dictionary != nil, let doctorDic = dictionary?["data"] as? NSDictionary, let doctor = QD_Doctor(doctorDic) {

@@ -72,9 +72,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "718"
-            endingLineNumber = "718"
-            landmarkName = "modifyEqument(_:completion:)"
-            landmarkType = "5">
+            endingLineNumber = "718">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,9 +86,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "723"
-            endingLineNumber = "723"
-            landmarkName = "test(_:)"
-            landmarkType = "5">
+            endingLineNumber = "723">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,9 +100,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "728"
-            endingLineNumber = "728"
-            landmarkName = "test(_:)"
-            landmarkType = "5">
+            endingLineNumber = "728">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -394,6 +388,102 @@
             startingLineNumber = "206"
             endingLineNumber = "206"
             landmarkName = "testudpBroadcastserver()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QooccDoctor.GateWayListViewController.(testudpBroadcastserver () -&gt; ()).(closure #1)"
+                  moduleName = "QooccDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/UserList/GateWayListViewController.swift"
+                  timestampString = "491907586.179726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "896">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QooccDoctor.GateWayListViewController.(testudpBroadcastserver () -&gt; ()).(closure #1)"
+                  moduleName = "QooccDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/UserList/GateWayListViewController.swift"
+                  timestampString = "491907586.179836"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "957">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/Tools/QNNetworkTool.swift"
+            timestampString = "491906944.507684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "login(User:Password:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static QooccDoctor.QNNetworkTool.(login (User : Swift.String, Password : Swift.String, completion : (Swift.Optional&lt;__ObjC.NSDictionary&gt;, Swift.Optional&lt;__ObjC.NSError&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "QooccDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/Tools/QNNetworkTool.swift"
+                  timestampString = "491907586.180512"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static QooccDoctor.QNNetworkTool.(login (User : Swift.String, Password : Swift.String, completion : (Swift.Optional&lt;__ObjC.NSDictionary&gt;, Swift.Optional&lt;__ObjC.NSError&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "QooccDoctor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/Tools/QNNetworkTool.swift"
+                  timestampString = "491907586.180622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "515">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/Tools/QNNetworkTool.swift"
+            timestampString = "491907504.220243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "requestForSelf(_:method:parameters:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
