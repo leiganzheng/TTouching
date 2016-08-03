@@ -55,7 +55,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        inSocket = InSocket()
 //        outSocket = OutSocket()
         testudpBroadcastserver()
-//        testudpBroadcastclient()
+        testudpBroadcastclient()
         
         self.exeDB()
 
@@ -206,6 +206,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 if let d=data{
                     if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
                         print(str)
+//                        let msgd:NSData=NSData(bytes: buff, length: buff.count)
+//                        let msgi:NSDictionary =
+//                            (try! NSJSONSerialization.JSONObjectWithData(msgd,
+//                                options: .MutableContainers)) as! NSDictionary
                     }
                 }
                 print(remoteip)
