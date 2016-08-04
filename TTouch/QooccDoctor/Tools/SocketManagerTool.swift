@@ -9,11 +9,16 @@
 import UIKit
 import CocoaAsyncSocket
 
+typealias SocketBlock = (AnyObject) -> Void
+
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     let addr = "192.168.10.100"
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
+    
+    var SBlock :SocketBlock?
+    
     override init(){
         super.init()
         connectSocket()
@@ -70,7 +75,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         
         // 2 主界面ui 显示数据
         dispatch_async(mainQueue, {
-            
+            self.SBlock!(data)
             let showStr:NSMutableString = NSMutableString()
             
         })

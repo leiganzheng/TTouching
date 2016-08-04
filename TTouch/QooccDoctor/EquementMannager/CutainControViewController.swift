@@ -125,8 +125,10 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     //MARK:- private method
     func open1(sender: UIButton){
         let dict = ["command": 36,"dev_addr" : 60838,"dev_type":7,"work_status":192]
-//        let sockertManger = SocketManagerTool()
         sockertManger.sendMsg(dict)
+        sockertManger.SBlock =  {(vc) -> Void in
+            print("success")
+        }
 
     }
     func stop1(sender: UIButton){
