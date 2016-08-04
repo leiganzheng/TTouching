@@ -43,7 +43,7 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
             try socket.bindToPort(PORT)
 //            try socket.enableBroadcast(true)
 //            try socket.joinMulticastGroup(IP)
-            try socket.connectToHost(IP, onPort: PORT)
+            try socket.connectToHost(IP, onPort: 0)
             try socket.beginReceiving()
         } catch {
             // deal with error
@@ -54,5 +54,6 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
         print("incoming message: \(data)");
+        print("incoming message1: \(address)");
     }
 }

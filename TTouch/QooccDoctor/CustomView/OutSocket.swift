@@ -12,7 +12,7 @@ import CocoaAsyncSocket
 class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
 //    let IP = "90.112.76.180"
-    let PORT:UInt16 = 8080
+    let PORT:UInt16 = 33632
     var socket:GCDAsyncUdpSocket!
     
     override init(){
@@ -38,7 +38,9 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         let IP = mulArr.componentsJoinedByString(".")
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-           try socket.connectToHost("255.255.255.255", onPort: PORT)
+            try socket.enableBroadcast(true)
+//            try socket.joinMulticastGroup(IP)
+           try socket.connectToHost(IP, onPort: PORT)
             
         } catch {
             // deal with error
@@ -47,8 +49,10 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func send(message:String){
-        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
-        socket.sendData(data, withTimeout: 2, tag: 0)
+//        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
+        let data1:[UInt8] = [0xff,0x04,0x33,0xca]
+        let temp = NSData(bytes: data1, length: 4)
+        socket.sendData(temp, withTimeout: 2, tag: 0)
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {

@@ -94,10 +94,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     }
     
     func login() {
-        QNNetworkTool.login(User: "jacky", Password: "123456") { (dict, error, errorMsg) in
-            
-        }
-        return
+//        QNNetworkTool.login(User: "jacky", Password: "123456") { (dict, error, errorMsg) in
+//            
+//        }
+//        return
         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
         self.navigationController?.pushViewController(vc, animated: true)
         return

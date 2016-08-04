@@ -10,8 +10,8 @@ import UIKit
 import CocoaAsyncSocket
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
-    let addr = "192.168.5.22"
-    let port:UInt16 = 8080
+    let addr = "192.168.10.100"
+    let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
     override init(){
@@ -66,7 +66,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
         // 1 获取客户的发来的数据 ，把 NSData 转 NSString
         let readClientDataString:NSString? = NSString(data: data, encoding:NSUTF8StringEncoding)
-        print(readClientDataString!)
+        print(data)
         
         // 2 主界面ui 显示数据
         dispatch_async(mainQueue, {

@@ -42,7 +42,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            
+//             self.outSocket.send("ff0433ca")
             let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
             QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
@@ -51,12 +51,13 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-        
-//        inSocket = InSocket()
-//        outSocket = OutSocket()
-        testudpBroadcastserver()
-        testudpBroadcastclient()
-        
+//        
+        inSocket = InSocket()
+        outSocket = OutSocket()
+//
+//        testudpBroadcastserver()
+//        testudpBroadcastclient()
+
         self.exeDB()
 
     }
@@ -154,7 +155,25 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         c.close()
     }
     func testtcpserver(){
-        let server:TCPServer = TCPServer(addr: "127.0.0.1", port: 8080)
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let result = mulArr.componentsJoinedByString(".")
+        
+
+
+        let server:TCPServer = TCPServer(addr: result, port: 33632)
         var (success,msg)=server.listen()
         if success{
             while true{
@@ -170,8 +189,26 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     //testclient()
     func testudpserver(){
+        
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let result = mulArr.componentsJoinedByString(".")
+        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-            let server:UDPServer=UDPServer(addr:"127.0.0.1",port:8080)
+            let server:UDPServer=UDPServer(addr:result,port:33632)
             let run:Bool=true
             while run{
                 var (data,remoteip,remoteport)=server.recv(1024)
@@ -195,9 +232,25 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     //testudpBroadcastclient()
     func testudpBroadcastserver(){
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let result = mulArr.componentsJoinedByString(".")
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
             //turn the server to broadcast mode with the address 255.255.255.255 or empty string
-            let server:UDPServer=UDPServer(addr:"255.255.255.255",port:8080)
+            let server:UDPServer=UDPServer(addr:result,port:33632)
             let run:Bool=true
             print("server.started")
             while run{
@@ -220,11 +273,27 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     func testudpBroadcastclient(){
         //wait a few second till server will ready
-        sleep(2)
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let result = mulArr.componentsJoinedByString(".")
+        
+//        sleep(2)
         print("Broadcastclient.send...")
-        let clientB:UDPClient = UDPClient(addr: "255.255.255.255", port: 8080)
+        let clientB:UDPClient = UDPClient(addr: result, port: 33632)
         clientB.enableBroadcast()
-        clientB.send(str: "test hello from broadcast")
+        clientB.send(str: "0xFF0x040x330xCA")
         clientB.close()
     }
     func exeDB(){
