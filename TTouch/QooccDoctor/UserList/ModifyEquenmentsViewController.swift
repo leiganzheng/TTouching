@@ -9,7 +9,7 @@
 import UIKit
 import CocoaAsyncSocket
 
-class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol,GCDAsyncSocketDelegate {
+class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
 
 
     var sockertManger:SocketManagerTool!

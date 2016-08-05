@@ -21,7 +21,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool()
-        self.testtcpclient()
+//        self.testtcpclient()
         self.fetchData()
         
     }

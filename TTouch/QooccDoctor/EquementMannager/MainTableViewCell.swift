@@ -14,6 +14,12 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var partern: UIButton!
     @IBOutlet weak var isOpen: UIButton!
     @IBOutlet weak var parternLB: UILabel!
+    @IBOutlet weak var p1Btn: UIButton!
+    @IBOutlet weak var p2Btn: UIButton!
+    @IBOutlet weak var p3Btn: UIButton!
+    @IBOutlet weak var p4Btn: UIButton!
+    @IBOutlet weak var p5Btn: UIButton!
+    @IBOutlet weak var p6Btn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

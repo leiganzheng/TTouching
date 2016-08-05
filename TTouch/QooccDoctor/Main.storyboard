@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p61-4D-HeU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p61-4D-HeU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2582,6 +2582,12 @@
                                         <connections>
                                             <outlet property="isOpen" destination="FI1-je-Dd8" id="l0O-C9-v8f"/>
                                             <outlet property="name" destination="gt9-iT-Vfy" id="osl-mc-VR7"/>
+                                            <outlet property="p1Btn" destination="tnm-Xl-Hxo" id="GKi-38-Dbg"/>
+                                            <outlet property="p2Btn" destination="N2e-B5-SLy" id="r42-Q1-sbQ"/>
+                                            <outlet property="p3Btn" destination="vby-KU-5GG" id="mbg-14-IYM"/>
+                                            <outlet property="p4Btn" destination="fLX-Zt-2Ak" id="Oa4-2L-Ynu"/>
+                                            <outlet property="p5Btn" destination="Zkk-An-9d4" id="0uL-gt-8X9"/>
+                                            <outlet property="p6Btn" destination="qd0-Nu-qzg" id="Dy6-bt-FSN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3891,6 +3897,12 @@
                                         <connections>
                                             <outlet property="isOpen" destination="JUJ-1B-TYC" id="4Sc-Zi-pIv"/>
                                             <outlet property="name" destination="6dX-lO-ysZ" id="Dze-m3-3JS"/>
+                                            <outlet property="p1Btn" destination="O0V-We-fJq" id="ySH-oV-lby"/>
+                                            <outlet property="p2Btn" destination="JfO-Ye-xgK" id="oUT-gf-2Mi"/>
+                                            <outlet property="p3Btn" destination="DBn-BN-SFZ" id="Msn-cz-wZE"/>
+                                            <outlet property="p4Btn" destination="vrW-PM-zIA" id="t2P-Cj-rO7"/>
+                                            <outlet property="p5Btn" destination="uHb-05-m7K" id="0V7-rg-5yG"/>
+                                            <outlet property="p6Btn" destination="e6h-uG-ckF" id="eHK-8Q-AXd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
