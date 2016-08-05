@@ -56,7 +56,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         cell.patern.setTitle(title, forState: .Normal)
         let btn1 = cell.patern
         
-        btn1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+        btn1.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             let vc = PaternViewController()
             let popover = FPPopoverController(viewController: vc)
@@ -76,10 +76,10 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             return RACSignal.empty()
             
             })
-        cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
          cell.switch2.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch4.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+         cell.switch4.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
          cell.switch5.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
          cell.switch6.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         return cell
@@ -94,8 +94,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         //三回路开关控制端
         //        let data = slider.value
         
-        let dict = ["command": "36","dev_addr" : "62252","dev_type":"5","work_status":"2"]
-//        let sockertManger = SocketManagerTool()
+        let dict = ["command": 36,"dev_addr" : 62252,"dev_type":5,"work_status":2]
         sockertManger.sendMsg(dict)
         
     }

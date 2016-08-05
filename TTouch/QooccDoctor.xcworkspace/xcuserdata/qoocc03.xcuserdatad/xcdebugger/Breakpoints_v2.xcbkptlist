@@ -339,7 +339,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
             endingLineNumber = "204"
-            landmarkName = "testudpBroadcastserver()"
+            landmarkName = "testudpserver()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -355,7 +355,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "testudpBroadcastserver()"
+            landmarkName = "testudpserver()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -371,7 +371,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
             endingLineNumber = "181"
-            landmarkName = "testudpserver()"
+            landmarkName = "testtcpserver()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -387,7 +387,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "testudpBroadcastserver()"
+            landmarkName = "testudpserver()"
             landmarkType = "5">
             <Locations>
                <Location

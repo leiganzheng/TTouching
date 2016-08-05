@@ -42,7 +42,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-//             self.outSocket.send("ff0433ca")
+            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+            let data = NSData(bytes: bytes, length: 4)
+             self.outSocket.send(data)
+            
             let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
             QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
@@ -51,7 +54,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-//        
+        
         inSocket = InSocket()
         outSocket = OutSocket()
 //

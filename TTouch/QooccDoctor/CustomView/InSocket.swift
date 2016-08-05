@@ -41,9 +41,9 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
            
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.bindToPort(PORT)
-//            try socket.enableBroadcast(true)
-//            try socket.joinMulticastGroup(IP)
-            try socket.connectToHost(IP, onPort: 0)
+            try socket.enableBroadcast(true)
+            try socket.joinMulticastGroup(IP)
+//            try socket.connectToHost(IP, onPort: 0)
             try socket.beginReceiving()
         } catch {
             // deal with error

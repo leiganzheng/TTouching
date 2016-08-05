@@ -20,7 +20,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.title = "单回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
-//        self.sockertManger = SocketManagerTool()
+        self.sockertManger = SocketManagerTool()
         self.testtcpclient()
         self.fetchData()
         
@@ -118,9 +118,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     func sliderValueChanged(slider: UISlider) {
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
-        let dict = ["command": "36","dev_addr" : "25678","dev_type":"3","work_status":"99"]
+        let dict = ["command": 36,"dev_addr" : 25678,"dev_type":3,"work_status":99]
         
-//        self.sockertManger.sendMsg(dict)
+        self.sockertManger.sendMsg(dict)
 
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -39,8 +39,10 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.enableBroadcast(true)
-//            try socket.joinMulticastGroup(IP)
-           try socket.connectToHost(IP, onPort: PORT)
+//            socket.localPort()
+            try socket.joinMulticastGroup(IP)
+//           try socket.connectToHost(IP, onPort: PORT)
+            try socket.beginReceiving()
             
         } catch {
             // deal with error
@@ -48,11 +50,25 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
       
     }
     
-    func send(message:String){
-//        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
-        let data1:[UInt8] = [0xff,0x04,0x33,0xca]
-        let temp = NSData(bytes: data1, length: 4)
-        socket.sendData(temp, withTimeout: 2, tag: 0)
+    func send(message:NSData){
+        
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+        var index = 0
+        let mulArr = NSMutableArray()
+        for str in arr {
+            index = index + 1
+            if index < arr.count {
+                mulArr.addObject(str)
+            }
+            if index == arr.count {
+                mulArr.addObject("255")
+            }
+            
+        }
+        let IP = mulArr.componentsJoinedByString(".")
+//        socket.sendData(temp, withTimeout: 2, tag: 0)
+        socket.sendData(message, toHost:IP , port: 33632, withTimeout: -1, tag: 0)
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
@@ -69,5 +85,9 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
         print("didNotSendDataWithTag")
+    }
+    func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
+        print("incoming message: \(data)");
+        print("incoming message1: \(address)");
     }
 }

@@ -57,12 +57,12 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     {
         NSLog("cell")
         //总控
-         let dict = ["command": "36","dev_addr" : "0","dev_type":"1","work_status":"17"]
+         let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":17]
         let sockertManger = SocketManagerTool()
         sockertManger.sendMsg(dict)
         
 //        //六情景
-//        let dict = ["command": "36","dev_addr" : "24606","dev_type":"2","work_status":"97"]
+//        let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":97]
 //        let sockertManger = SocketManagerTool()
 //        sockertManger.sendMsg(dict)
 
