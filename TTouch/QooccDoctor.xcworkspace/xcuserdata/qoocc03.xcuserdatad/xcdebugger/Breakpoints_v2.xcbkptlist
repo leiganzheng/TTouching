@@ -195,8 +195,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "socket(_:didConnectToHost:port:)"
-            landmarkType = "5">
+            landmarkName = "SocketManagerTool"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -211,7 +211,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "socket(_:didReadData:withTag:)"
+            landmarkName = "socketDidDisconnect(_:withError:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -227,23 +227,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "socketDidDisconnect(_:withError:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/EquementMannager/SigleLightViewController.swift"
-            timestampString = "491473664.159515"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "sliderValueChanged(_:)"
+            landmarkName = "socket(_:didConnectToHost:port:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -259,8 +243,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "init()"
-            landmarkType = "5">
+            landmarkName = "SocketManagerTool"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -292,38 +276,6 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "udpSocket(_:didReceiveData:fromAddress:withFilterContext:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/EquementMannager/SigleLightViewController.swift"
-            timestampString = "491473463.121388"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "testtcpclient()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/EquementMannager/SigleLightViewController.swift"
-            timestampString = "491473621.984152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "testtcpclient()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

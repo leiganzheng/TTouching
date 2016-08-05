@@ -96,6 +96,10 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         
         let dict = ["command": 36,"dev_addr" : 62252,"dev_type":5,"work_status":2]
         sockertManger.sendMsg(dict)
+        sockertManger.SBlock =  {(vc) -> Void in
+            print("success")
+        }
+
         
     }
 

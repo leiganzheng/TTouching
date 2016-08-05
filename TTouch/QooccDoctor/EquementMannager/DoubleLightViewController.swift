@@ -124,6 +124,10 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
 
         let dict = ["command": 36,"dev_addr" : 10976,"dev_type":4,"work_status":199]
         sockertManger.sendMsg(dict)
+        sockertManger.SBlock =  {(vc) -> Void in
+            print("success")
+        }
+
         
     }
     func fetchData(){
