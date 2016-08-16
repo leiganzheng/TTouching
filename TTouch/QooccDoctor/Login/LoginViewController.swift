@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 /**
 *  @author Leiganzheng, 15-05-15 10:05:27
@@ -68,6 +69,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         let lArray = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages")
         let currentLanguage = lArray?.objectAtIndex(0) as! String
         self.settingLangue(currentLanguage)
+         IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
     }

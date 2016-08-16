@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 let kKeyIsFirstStartApp = ("IsFirstStartApp" as NSString).encrypt(g_SecretKey) // 第一次启动判断的Key
 
 @UIApplicationMain
@@ -33,7 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         } else {
             application.registerForRemoteNotificationTypes([UIRemoteNotificationType.Sound, UIRemoteNotificationType.Alert, UIRemoteNotificationType.Badge])
         }
-
+        let manager = IQKeyboardManager.sharedManager()
+        manager.enable = true
+        manager.shouldResignOnTouchOutside = true
+        manager.shouldToolbarUsesTextFieldTintColor = true
+        manager.enableAutoToolbar = false
+        
+        UIApplication.sharedApplication().applicationSupportsShakeToEdit = true
         return true
     }
 

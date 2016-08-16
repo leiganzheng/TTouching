@@ -34,16 +34,16 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         super.viewDidLoad()
         self.fetchData()
         //Right
-        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+//        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
-        searchButton.setImage(UIImage(named: "Manage_Collect_icon1"), forState: UIControlState.Normal)
+        searchButton.setImage(UIImage(named: "Manage_Collect_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             
             
             return RACSignal.empty()
             })
-        rightBarButton.addSubview(searchButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+//        rightBarButton.addSubview(searchButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
     }
 
     override func didReceiveMemoryWarning() {

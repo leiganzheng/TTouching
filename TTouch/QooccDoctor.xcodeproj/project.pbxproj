@@ -15,6 +15,7 @@
 		2B856D571BA16B3F001D3380 /* CustomPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B856D561BA16B3F001D3380 /* CustomPickView.swift */; };
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
+		71744F381D636C3F0010D7D0 /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 71744F371D636C3F0010D7D0 /* glass.wav */; };
 		719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E019A1D4A599700E3161D /* SocketManagerTool.swift */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
@@ -169,6 +170,7 @@
 		2B856D561BA16B3F001D3380 /* CustomPickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickView.swift; sourceTree = "<group>"; };
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
+		71744F371D636C3F0010D7D0 /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		719E019A1D4A599700E3161D /* SocketManagerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManagerTool.swift; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 		BB3C45A11B465C46008A1213 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				71744F371D636C3F0010D7D0 /* glass.wav */,
 				BB3C46561B467359008A1213 /* Images.xcassets */,
 			);
 			path = Resources;
@@ -858,6 +861,7 @@
 				BB3C465A1B4674C2008A1213 /* Login.storyboard in Resources */,
 				BB38E8141D2CAC5700190A49 /* MDoubleTableViewCell.xib in Resources */,
 				BB38E8101D2CAC4C00190A49 /* MSigleTableViewCell.xib in Resources */,
+				71744F381D636C3F0010D7D0 /* glass.wav in Resources */,
 				BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */,
 				BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */,
 				BB38E80C1D2CAC3500190A49 /* MCurtainTableViewCell.xib in Resources */,

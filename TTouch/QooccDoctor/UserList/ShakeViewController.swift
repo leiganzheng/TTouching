@@ -8,28 +8,33 @@
 
 import UIKit
 import ReactiveCocoa
+import AudioToolbox
 
 class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var myCustomView: UITableView!
     var zoneSubView: SubCustomView?
     var screenSubView: SubCustomView?
+    var searchButton:UIButton?
+    var  soundID:SystemSoundID = 0
     var zoneHiden : Bool = false
     var screenHiden : Bool = false
     override func viewDidLoad() {
+       
         super.viewDidLoad()
+        let path = NSBundle.mainBundle().pathForResource("glass", ofType: "wav")
+        AudioServicesCreateSystemSoundID(NSURL(fileURLWithPath: path!), &soundID);
         
-        
-        let searchButton:UIButton = UIButton(frame: CGRectMake(50, 200, screenWidth-100, 120))
+        searchButton = UIButton(frame: CGRectMake(50, 200, screenWidth-100, 120))
 //        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        searchButton.setTitle("请点击摇一摇按钮进行设置", forState: UIControlState.Normal)
-        searchButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+        searchButton!.setTitle("请点击摇一摇按钮进行设置", forState: UIControlState.Normal)
+        searchButton!.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        searchButton!.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             self.myCustomView.hidden = false
-            searchButton.hidden = true
+            self.searchButton!.hidden = true
             return RACSignal.empty()
         })
-        self.view.addSubview(searchButton)
+        self.view.addSubview(searchButton!)
         self.myCustomView.hidden = true
         
         self.myCustomView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
@@ -40,7 +45,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         
         self.screenSubView = SubCustomView(frame: CGRectMake(0,0,screenWidth,150))
         self.screenSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
-
+        
+        self.becomeFirstResponder()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +55,34 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.resignFirstResponder()
+    }
+     //MARK:- method
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+////       let anim = [CABasicAnimation animationWithKeyPath:"position"];
+////        anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(100, 50)];
+////        anim.toValue = [NSValue valueWithCGPoint:CGPointMake(100, 500)];
+////        
+////        anim.removedOnCompletion = NO;
+////        anim.duration = 1.0f;
+////        anim.fillMode = kCAFillModeForwards;
+////        anim.delegate = self;
+////        //  随便拖过来的一个label测试效果
+////        [self.label.layer addAnimation:anim forKey:nil];
+//        let anim = CABasicAnimation.init(keyPath: "position")
+//        a
+    }
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == UIEventSubtype.MotionShake
+        {
+            self.myCustomView.hidden = false
+            searchButton!.hidden = true
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            AudioServicesPlaySystemSound (soundID)
+        }
+    }
     //MARK:- private method
     func animationWith(v: UIView,x:CGFloat) {
         UIView .beginAnimations("move", context: nil)

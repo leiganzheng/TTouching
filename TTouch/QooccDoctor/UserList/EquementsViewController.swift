@@ -20,7 +20,7 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         super.viewDidLoad()
 
         self.title = "设备管理"
-        self.sockertManger = SocketManagerTool()
+//        self.sockertManger = SocketManagerTool()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,18 +31,18 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
 
     @IBAction func loginAction(sender: AnyObject) {
         self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+         self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
         
     }
     
     
     //连接服务器按钮事件
     func senderData() {
-        let dict = ["command": 32,"permit" : "123Abc"]
-        sockertManger.sendMsg(dict)
-        sockertManger.SBlock =  {(vc) -> Void in
-            print("success")
-        }
+//        let dict = ["command": 32,"permit" : "123Abc"]
+//        sockertManger.sendMsg(dict)
+//        sockertManger.SBlock =  {(vc) -> Void in
+//            print("success")
+//        }
     }
 
 

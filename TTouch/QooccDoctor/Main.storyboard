@@ -839,7 +839,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginAction:" destination="mK3-gV-RUf" eventType="touchUpInside" id="TNy-MM-moz"/>
-                                    <action selector="tst:" destination="mK3-gV-RUf" eventType="touchUpInside" id="Zwk-Ov-eyd"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -50,6 +50,10 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             
+        }else{
+            while (cell.contentView.subviews.last != nil) {
+                (cell.contentView.subviews.last! as UIView).removeFromSuperview()  //删除并进行重新分配
+            }
         }
         let d = self.data[indexPath.row] as! Device
         

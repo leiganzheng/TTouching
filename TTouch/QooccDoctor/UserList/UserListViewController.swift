@@ -76,7 +76,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
              self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.hidesBottomBarWhenPushed = false
-            self.animationWith((self.rightVC)!, x: screenWidth)
+            self.animationWith((self.rightVC)!, x: screenWidth+10)
         }
         
         //Right
