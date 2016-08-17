@@ -80,6 +80,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         if indexPath.row == 2 {
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
+            vc.flag = "2"
             vc.equementType = EquementSign.Action
             self.bock!(vc)
         }

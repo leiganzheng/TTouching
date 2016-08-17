@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "493092588.638895"
+            timestampString = "493095323.805354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,31 +106,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/UserList/EquementControViewController.swift"
-            timestampString = "493093816.12539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "fetchData()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/EquementControViewController.swift"
-            timestampString = "493093816.12539"
+            timestampString = "493094516.57377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "fetchData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -302,7 +286,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/Tools/QNNetworkTool.swift"
-                  timestampString = "493093995.967998"
+                  timestampString = "493095445.732232"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "302"
@@ -317,7 +301,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/Tools/QNNetworkTool.swift"
-                  timestampString = "493093995.96809"
+                  timestampString = "493095445.732335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "302"
@@ -388,6 +372,22 @@
             startingLineNumber = "361"
             endingLineNumber = "361"
             landmarkName = "exeDB()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/UserList/EquementControViewController.swift"
+            timestampString = "493095508.674347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

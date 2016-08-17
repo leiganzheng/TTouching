@@ -13,6 +13,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     var data: NSMutableArray!
     var myTableView: UITableView!
     var superVC:UIViewController!
+    var customTitle:String?
       var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
