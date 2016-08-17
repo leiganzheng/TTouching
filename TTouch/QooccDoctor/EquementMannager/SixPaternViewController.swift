@@ -43,7 +43,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         }else if d.dev_type == 4{//双回路调光控制端
             return 132
         }else if d.dev_type == 5{//三回路开关控制端
-            return 190
+            return 170
         }else if d.dev_type == 6{//六回路开关控制端
             return 190
         }else if d.dev_type == 7{//窗帘控制端
@@ -54,9 +54,9 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             
             return 132
         }else if d.dev_type == 10{//三/六回路开关控制端
-            return 190
+            return 170
         }else if d.dev_type == 11{
-            return 0
+            return 190
         }else if d.dev_type == 12{//空调
             return 312
         }
@@ -104,10 +104,10 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }
             return cell
         }else if d.dev_type == 6{//六回路开关控制端
-            let cellIdentifier = "MThreeTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
+            let cellIdentifier = "MSixTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTableViewCell!
             if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTableViewCell
             }
             return cell
         }else if d.dev_type == 7{//窗帘控制端
@@ -139,7 +139,12 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }
             return cell
         }else if d.dev_type == 11{
-            return UITableViewCell()
+            let cellIdentifier = "MSixTouchTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTouchTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTouchTableViewCell
+            }
+            return cell
         }else if d.dev_type == 12{//空调
             let cellIdentifier = "MAirTableViewCell"
             var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MAirTableViewCell!

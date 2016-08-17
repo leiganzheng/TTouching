@@ -73,7 +73,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
         searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            
+            self.selectPatte(d)
             return RACSignal.empty()
             })
         cell.contentView.addSubview(searchButton)
@@ -84,13 +84,17 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         let d = self.data[indexPath.row] as! Device
+        self.selectPatte(d)
+    }
+    //MARK://-Private method
+    func selectPatte(d:Device){
         if d.dev_type == 1 {//总控
             self.VC = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
         }else if d.dev_type == 2{//六场景
             self.VC = SixViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-
+            
         }else if d.dev_type == 3{//单回路调光控制端
             self.VC = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
@@ -104,7 +108,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         }else if d.dev_type == 7{//窗帘控制端
             self.VC = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-
+            
         }else if d.dev_type == 8{//单回路调光控制端(旧版)
             self.VC = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
@@ -115,25 +119,20 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
         }else if d.dev_type == 11{
-            
+            self.VC = SixTouchViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
         }else if d.dev_type == 12{//空调
             self.VC = AirViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-
+            
         }
         else if d.dev_type == 13{//地暖
             self.VC = DNuanViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
-
+            
         }
-        else if d.dev_type == 14{//新风
-            self.VC = XFengViewController.CreateFromStoryboard("Main") as! UIViewController
-            self.navigationController?.pushViewController(self.VC, animated: true)
 
-        }
-    
     }
-    //MARK://-Private method
     func modifyEqument() {//修改各设备的信息
         let save_dev = [["dev_addr": 43688,"dev_name": "电子双回路调光"],["dev_addr": 22224,"dev_type": 5,"dev_name": "3 回路开关","dev_area": 30785]]
         let dict = ["command": 31,"save_dev": save_dev]

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="322" id="KGk-i7-Jjw" customClass="MSixTouchTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2o-bR-A7U">
+                        <rect key="frame" x="115" y="8" width="90" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="Jdh-Ma-udE"/>
+                            <constraint firstAttribute="width" constant="90" id="TAo-8K-BZA"/>
+                        </constraints>
+                        <state key="normal" title="六触点">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkZ-bc-fl8">
+                        <rect key="frame" x="18" y="50" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="in1-oW-RFa"/>
+                            <constraint firstAttribute="width" constant="110" id="rPN-a6-ag9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="左触点一" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGW-Yi-bkN">
+                        <rect key="frame" x="202" y="50" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="fbP-hF-7JR"/>
+                            <constraint firstAttribute="width" constant="110" id="u6c-df-LiZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="右触点一" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT0-ql-tqb">
+                        <rect key="frame" x="18" y="85" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="3os-rk-FH0"/>
+                            <constraint firstAttribute="height" constant="28" id="jdQ-40-9RY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="左触点二" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7e5-oT-jGg">
+                        <rect key="frame" x="202" y="85" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="34q-Eb-lcx"/>
+                            <constraint firstAttribute="width" constant="110" id="aew-Bq-VS6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="右触点二" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xD1-Yj-mCr">
+                        <rect key="frame" x="202" y="127" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="Khp-M1-kR0"/>
+                            <constraint firstAttribute="width" constant="110" id="VTe-wO-Wkl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="右触点三" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-V8-QEi">
+                        <rect key="frame" x="18" y="127" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="eJL-cw-qKV"/>
+                            <constraint firstAttribute="width" constant="110" id="glK-ze-Bii"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="左触点三" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hT0-ql-tqb" firstAttribute="top" secondItem="YkZ-bc-fl8" secondAttribute="bottom" constant="7" id="9d4-fh-7y2"/>
+                    <constraint firstItem="g9s-V8-QEi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="DML-h9-5Rc"/>
+                    <constraint firstItem="7e5-oT-jGg" firstAttribute="top" secondItem="ZGW-Yi-bkN" secondAttribute="bottom" constant="7" id="FF5-bL-B0D"/>
+                    <constraint firstItem="ZGW-Yi-bkN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="42" id="GWW-zM-dYO"/>
+                    <constraint firstItem="o2o-bR-A7U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="IHO-6Y-fh2"/>
+                    <constraint firstItem="YkZ-bc-fl8" firstAttribute="top" secondItem="o2o-bR-A7U" secondAttribute="bottom" constant="8" id="Vug-bG-JsS"/>
+                    <constraint firstItem="g9s-V8-QEi" firstAttribute="top" secondItem="hT0-ql-tqb" secondAttribute="bottom" constant="14" id="Yi5-S9-jyt"/>
+                    <constraint firstItem="YkZ-bc-fl8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="abj-Mi-quy"/>
+                    <constraint firstItem="xD1-Yj-mCr" firstAttribute="top" secondItem="7e5-oT-jGg" secondAttribute="bottom" constant="14" id="c0G-tH-ctV"/>
+                    <constraint firstItem="xD1-Yj-mCr" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dLC-6u-H8B"/>
+                    <constraint firstItem="ZGW-Yi-bkN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="exX-FZ-qln"/>
+                    <constraint firstItem="o2o-bR-A7U" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="h3K-Qp-Ryr"/>
+                    <constraint firstItem="hT0-ql-tqb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="lcd-zt-Ro9"/>
+                    <constraint firstItem="7e5-oT-jGg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="nCz-mV-rEu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="268" y="313.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="navigation_Options_icon" width="16" height="16"/>
+    </resources>
+</document>

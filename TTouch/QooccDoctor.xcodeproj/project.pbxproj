@@ -144,6 +144,13 @@
 		BB6D71931BE062DD0018AADC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D71921BE062DD0018AADC /* libxml2.dylib */; };
 		BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */; };
 		BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6D71B51BE0C0090018AADC /* Localizable.strings */; };
+		BB99BA661D63EEAB0079359D /* HuiLuSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */; };
+		BB99BA681D63F2850079359D /* SixTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA671D63F2850079359D /* SixTouchViewController.swift */; };
+		BB99BA6A1D63F6690079359D /* SixTouchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */; };
+		BB99BA6D1D63FB5E0079359D /* MSixTouchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA6B1D63FB5E0079359D /* MSixTouchTableViewCell.swift */; };
+		BB99BA6E1D63FB5E0079359D /* MSixTouchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB99BA6C1D63FB5E0079359D /* MSixTouchTableViewCell.xib */; };
+		BB99BA731D63FC6D0079359D /* MSixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA711D63FC6D0079359D /* MSixTableViewCell.swift */; };
+		BB99BA741D63FC6D0079359D /* MSixTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB99BA721D63FC6D0079359D /* MSixTableViewCell.xib */; };
 		BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */; };
 		BBA365D21CFBD6EC0010A5EC /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */; };
 		BBA365D41CFC40960010A5EC /* GateWayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */; };
@@ -318,6 +325,13 @@
 		BB6D71A71BE0AF970018AADC /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		BB6D71B41BE0C0090018AADC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuiLuSelectViewController.swift; sourceTree = "<group>"; };
+		BB99BA671D63F2850079359D /* SixTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchViewController.swift; sourceTree = "<group>"; };
+		BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchTableViewCell.swift; sourceTree = "<group>"; };
+		BB99BA6B1D63FB5E0079359D /* MSixTouchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSixTouchTableViewCell.swift; sourceTree = "<group>"; };
+		BB99BA6C1D63FB5E0079359D /* MSixTouchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSixTouchTableViewCell.xib; sourceTree = "<group>"; };
+		BB99BA711D63FC6D0079359D /* MSixTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSixTableViewCell.swift; sourceTree = "<group>"; };
+		BB99BA721D63FC6D0079359D /* MSixTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSixTableViewCell.xib; sourceTree = "<group>"; };
 		BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateWayListViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +424,9 @@
 				BB38E82F1D2CCA7600190A49 /* DNuanTableViewCell.swift */,
 				BB38E8311D2CCA8200190A49 /* XFTableViewCell.swift */,
 				BB38E8331D2CCF4F00190A49 /* MainTableViewCell.swift */,
+				BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */,
+				BB99BA671D63F2850079359D /* SixTouchViewController.swift */,
+				BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */,
 			);
 			path = EquementMannager;
 			sourceTree = "<group>";
@@ -506,6 +523,10 @@
 				BB38E8201D2CAD5900190A49 /* MDiNuanTableViewCell.xib */,
 				BB38E8231D2CAD6600190A49 /* MXinFenTableViewCell.swift */,
 				BB38E8241D2CAD6600190A49 /* MXinFenTableViewCell.xib */,
+				BB99BA6B1D63FB5E0079359D /* MSixTouchTableViewCell.swift */,
+				BB99BA6C1D63FB5E0079359D /* MSixTouchTableViewCell.xib */,
+				BB99BA711D63FC6D0079359D /* MSixTableViewCell.swift */,
+				BB99BA721D63FC6D0079359D /* MSixTableViewCell.xib */,
 			);
 			path = EquementCell;
 			sourceTree = "<group>";
@@ -856,11 +877,13 @@
 				BB3C46571B467359008A1213 /* Images.xcassets in Resources */,
 				BB3C465B1B4674C2008A1213 /* Main.storyboard in Resources */,
 				BB38E81E1D2CAD4800190A49 /* MAirTableViewCell.xib in Resources */,
+				BB99BA6E1D63FB5E0079359D /* MSixTouchTableViewCell.xib in Resources */,
 				BB38E81A1D2CAD3B00190A49 /* MThreeTableViewCell.xib in Resources */,
 				BB319C261D26077A0071F443 /* Info.plist in Resources */,
 				BB3C465A1B4674C2008A1213 /* Login.storyboard in Resources */,
 				BB38E8141D2CAC5700190A49 /* MDoubleTableViewCell.xib in Resources */,
 				BB38E8101D2CAC4C00190A49 /* MSigleTableViewCell.xib in Resources */,
+				BB99BA741D63FC6D0079359D /* MSixTableViewCell.xib in Resources */,
 				71744F381D636C3F0010D7D0 /* glass.wav in Resources */,
 				BBB243D21B4A5C2D00519CB2 /* UserTableViewCell.xib in Resources */,
 				BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */,
@@ -969,10 +992,12 @@
 				BBB243D11B4A5C2D00519CB2 /* UserTableViewCell.swift in Sources */,
 				BB319C251D26077A0071F443 /* FMResultSet.m in Sources */,
 				BBF275DB1D2E531800CAFE99 /* OutSocket.swift in Sources */,
+				BB99BA681D63F2850079359D /* SixTouchViewController.swift in Sources */,
 				BB38E8211D2CAD5900190A49 /* MDiNuanTableViewCell.swift in Sources */,
 				BB36C1031D17D0B000B5B21E /* CustomDatePickerViewController.swift in Sources */,
 				71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */,
 				BB38E8341D2CCF4F00190A49 /* MainTableViewCell.swift in Sources */,
+				BB99BA6A1D63F6690079359D /* SixTouchTableViewCell.swift in Sources */,
 				71D76E4E1D28C4C6000E0A34 /* ThressOrSixTableViewCell.swift in Sources */,
 				71CF83B71D047630007275FE /* MEquementDetialViewController.swift in Sources */,
 				2B6938CC1C18071C00E63045 /* ImageSingleZoomViewController.swift in Sources */,
@@ -1018,12 +1043,15 @@
 				BB38E8281D2CC79C00190A49 /* AirViewController.swift in Sources */,
 				BB52E6D01D06C189005020A0 /* TimeMannageViewController.swift in Sources */,
 				71C2E0461D392D5600B1DCC4 /* LocationViewController.swift in Sources */,
+				BB99BA6D1D63FB5E0079359D /* MSixTouchTableViewCell.swift in Sources */,
 				BB319C241D26077A0071F443 /* FMDatabaseQueue.m in Sources */,
 				BB3C44F81B465BDB008A1213 /* AppDelegate.swift in Sources */,
 				71D76E251D104B1E000E0A34 /* LightViewController.swift in Sources */,
 				BB1063E81D4B49960044EDB4 /* yudpsocket.swift in Sources */,
 				BB38E8361D2CDE8000190A49 /* ChangeNickViewController.swift in Sources */,
 				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
+				BB99BA661D63EEAB0079359D /* HuiLuSelectViewController.swift in Sources */,
+				BB99BA731D63FC6D0079359D /* MSixTableViewCell.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,
 				BB38E82A1D2CC7AE00190A49 /* DNuanViewController.swift in Sources */,
 				71D76E2D1D183B76000E0A34 /* NewClockViewController.swift in Sources */,

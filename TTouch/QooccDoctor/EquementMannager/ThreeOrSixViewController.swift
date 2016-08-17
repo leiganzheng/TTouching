@@ -14,6 +14,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
     var sockertManger:SocketManagerTool!
+    var flag:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 280
+        if self.flag {
+             return 280
+        }
+        return 150
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,6 +80,30 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             return RACSignal.empty()
             
             })
+        let tempT = self.flag == true ? "六回路" :  "三回路"
+        cell.name.setTitle(tempT, forState: .Normal)
+        cell.name.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            
+            let vc = HuiLuSelectViewController()
+            let popover = FPPopoverController(viewController: vc)
+            vc.bock = {(title) -> Void in
+                //修改数据库
+                self.flag = title as! String ==  "六回路" ?  true :  false
+                cell.name.setTitle(title as? String, forState: .Normal)
+                self.myCustomTableView.reloadData()
+                popover.dismissPopoverAnimated(true)
+            }
+            
+            popover.contentSize = CGSizeMake(150, 200)
+            popover.tint = FPPopoverWhiteTint
+            popover.border = false
+            popover.arrowDirection = FPPopoverArrowDirectionAny
+            popover.presentPopoverFromView(cell.name)
+            return RACSignal.empty()
+            
+        })
+
+        
          cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
          cell.switch2.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
          cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)

@@ -32,6 +32,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = self.type == 100 ? "未分区域" :  "六场景"
         self.fetchData()
         //Right
 //        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
@@ -110,7 +111,10 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             }
             
         }
-
+        if self.type == 2 {
+            self.contentScrollView?.setContentOffset(CGPointMake(screenWidth, 0), animated: true)
+        }
+        
         
     }
     private func buildDataAndUI(){
