@@ -144,6 +144,7 @@
 		BB6D71931BE062DD0018AADC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D71921BE062DD0018AADC /* libxml2.dylib */; };
 		BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */; };
 		BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6D71B51BE0C0090018AADC /* Localizable.strings */; };
+		BB814F751D65923B001769B0 /* UDPMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB814F741D65923B001769B0 /* UDPMannager.swift */; };
 		BB99BA661D63EEAB0079359D /* HuiLuSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */; };
 		BB99BA681D63F2850079359D /* SixTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA671D63F2850079359D /* SixTouchViewController.swift */; };
 		BB99BA6A1D63F6690079359D /* SixTouchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */; };
@@ -325,6 +326,7 @@
 		BB6D71A71BE0AF970018AADC /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		BB6D71B41BE0C0090018AADC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BB814F741D65923B001769B0 /* UDPMannager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPMannager.swift; sourceTree = "<group>"; };
 		BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuiLuSelectViewController.swift; sourceTree = "<group>"; };
 		BB99BA671D63F2850079359D /* SixTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchViewController.swift; sourceTree = "<group>"; };
 		BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchTableViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				BBF275D61D2E003400CAFE99 /* UDPListener.swift */,
 				BBF275D81D2E530800CAFE99 /* InSocket.swift */,
 				BBF275DA1D2E531800CAFE99 /* OutSocket.swift */,
+				BB814F741D65923B001769B0 /* UDPMannager.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				71D76E2B1D1827F6000E0A34 /* MovieViewController.swift in Sources */,
 				BB5BCE5B1D29F15E00B8BFC1 /* UnAeraViewController.swift in Sources */,
 				17C5562B1B4B5D8100D042CE /* RegisterViewController.swift in Sources */,
+				BB814F751D65923B001769B0 /* UDPMannager.swift in Sources */,
 				719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */,
 				BB3C45B51B465C46008A1213 /* UIViewControllerExtension.swift in Sources */,
 				BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */,

@@ -15,8 +15,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
-    var inSocket : InSocket!
-    var outSocket : OutSocket!
+//    var inSocket : InSocket!
+//    var outSocket : OutSocket!
+    
+    var udpSocket : UDPMannager!
     
     var flags:NSMutableArray!
     override func viewDidLoad() {
@@ -44,19 +46,19 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
             let data = NSData(bytes: bytes, length: 4)
-             self.outSocket.send(data)
+             self.udpSocket.send(data)
             
-            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-            QNTool.enterRootViewController(vc, animated: true)
+//            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+//            QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
             })
         self.view.addSubview(searchButton)
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-        
-        inSocket = InSocket()
-        outSocket = OutSocket()
+        self.udpSocket = UDPMannager()
+//        inSocket = InSocket()
+//        outSocket = OutSocket()
 //
 //        testudpBroadcastserver()
 //        testudpBroadcastclient()
