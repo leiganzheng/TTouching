@@ -334,7 +334,24 @@ extension QNNetworkTool {
     退出登录，并且拥有页面跳转功能
     */
     class func logout() {
-        cleanPassword()
+        requestPOST(kServerAddress, parameters: ["c":"logout"]) { (_, _, _, dictionary, error) -> Void in
+            if dictionary != nil, let doctorDic = dictionary?["content"] as? NSDictionary {
+                // 登录成功，保存账号密码到本地
+                //                saveAccountAndPassword(id, password: password)
+                //                g_doctor = doctor
+                
+                let asyncLogin = { () -> Void in
+                    
+                }
+                //                var asyncLoginCount = 0
+                //                               completion(doctor, nil, nil)
+            }
+            else {
+                //                completion(nil, error, dictionary?["errorMsg"] as? String)
+            }
+        }
+
+        //        cleanPassword()
         //激光推送设置空字符串 （@""）表示取消之前的设置。
         QNTool.enterLoginViewController()
     }

@@ -81,16 +81,23 @@ class UDPMannager: NSObject, GCDAsyncUdpSocketDelegate {
             d.getBytes(&temp, range: NSRange(location: i,length:1 ))
             byteArray.append(temp)
         }
-//        let tem1 = byteArray[4...9] as [UInt8]
-//        let tem2 = byteArray[8...15]
-//        let tem3 = byteArray[14...19]
+//        let tem1 = byteArray[5...8] as [UInt8]
+//        let tem2 = byteArray[9...14]
+//        let tem3 = byteArray[15...18]
 //          let tempdata = NSData(bytes: tem1  , length: 4)
         return byteArray
     }
-//    func makeData(arr:[UInt8],index1:Int,index2:Int)-> NSData{
-////        let data = malloc(1000);
-////        memcpy(data, arr, 1000);
-//    }
+    func makeData(arr:[UInt8],index1:Int,index2:Int)-> NSData{
+        var byteArray:[UInt8] = [UInt8]()
+        var j = 0
+        for i in arr {
+            j = j + 1
+            if j-1 >= index1 && j-1 <= index2{
+                byteArray.append(i)
+            }
+        }
+       return NSData(bytes: byteArray  , length: 4)
+    }
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
         print("didConnectToAddress");
     }
