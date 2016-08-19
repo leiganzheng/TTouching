@@ -175,6 +175,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
                 let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
                 vc.flag = "0"
                 vc.type = d.dev_type
+                vc.device = d
+                vc.address = d.address
                 self?.navigationController?.pushViewController(vc, animated: true)
                 self?.hidesBottomBarWhenPushed = false
             }
@@ -268,7 +270,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         
 //        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+//            self?.navigationController?.pushViewController(EquementControViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
             return RACSignal.empty()
             })
 

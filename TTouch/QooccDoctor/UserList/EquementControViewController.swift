@@ -15,6 +15,8 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     @IBOutlet weak var contentView: UIView!
     
     var type:Int?
+    var device:Device?
+    var  address:String?
     var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
@@ -33,7 +35,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.flag == "0" {
-             self.title = self.type == 100 ? "未分区域" :  "六场景"
+             self.title = self.type == 100 ? "未分区域" :  self.device?.dev_name
         }
        
         self.fetchData()
@@ -107,6 +109,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             if temp.dev_type == 2 {
                 self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
                 self.sixVC!.flag = self.flag
+                self.sixVC!.device = self.device
                 self.sixVC?.superVC = self
                 self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 100))
                 self.contentScrollView!.addSubview(self.sixVC!.view)
@@ -182,7 +185,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             let arr:Array<Device> = DBManager.shareInstance().selectDatas()
             
             for (_, element): (Int, Device) in arr.enumerate(){
-                if  element.dev_type == 2 || element.dev_type == 100 {
+                if  element.address == self.address || element.dev_type == 100 {
                     self.data.addObject(element)
                 }
                 

@@ -11,6 +11,7 @@ import UIKit
 class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
 
     var data: NSMutableArray!
+    var device:Device?
     var myTableView: UITableView!
     var superVC:UIViewController!
     var customTitle:String?
@@ -237,6 +238,22 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 if element.dev_area == "45774" && element.dev_status == 1 && element.dev_type>2 {
                     self.data.addObject(element)
                 }
+                if element.dev_area == "45774 1" && element.dev_status == 1 && element.dev_type>2 {
+                    self.data.addObject(element)
+                }
+                if element.dev_area == "45774 2" && element.dev_status == 1 && element.dev_type>2 {
+                    self.data.addObject(element)
+                }
+                if element.dev_area == "45774 3" && element.dev_status == 1 && element.dev_type>2 {
+                    self.data.addObject(element)
+                }
+                if element.dev_area == "45774 4" && element.dev_status == 1 && element.dev_type>2 {
+                    self.data.addObject(element)
+                }
+                
+//                if element.address == self.device?.address  {
+//                    self.data.addObject(element)
+//                }
                 
                 print("Device:\(element.address!)", terminator: "");
             }

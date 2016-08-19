@@ -55,7 +55,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     //实现UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        NSLog("cell")
+//        NSLog("cell")
         //总控
 //         let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":17]
 //        let sockertManger = SocketManagerTool()

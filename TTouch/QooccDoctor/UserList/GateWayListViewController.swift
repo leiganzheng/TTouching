@@ -44,12 +44,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
-            let data = NSData(bytes: bytes, length: 4)
-             self.udpSocket.send(data)
+//            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+//            let data = NSData(bytes: bytes, length: 4)
+//             self.udpSocket.send(data)
             
-//            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-//            QNTool.enterRootViewController(vc, animated: true)
+            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+            QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
             })
         self.view.addSubview(searchButton)
@@ -310,6 +310,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let image1 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
         let sixD = Device(address: "45774", dev_type: 2, work_status: 110, dev_name: "六情景", dev_status: 1, dev_area: "45774", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
         
+        let sixD1 = Device(address: "45774 1", dev_type: 2, work_status: 110, dev_name: "餐厅", dev_status: 1, dev_area: "45774 1", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
+        
+        let sixD2 = Device(address: "45774 2", dev_type: 2, work_status: 110, dev_name: "书房", dev_status: 1, dev_area: "45774 2", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
+        
+        let sixD3 = Device(address: "45774 3", dev_type: 2, work_status: 110, dev_name: "主浴", dev_status: 1, dev_area: "45774 3", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
+        
+        let sixD4 = Device(address: "45774 4", dev_type: 2, work_status: 110, dev_name: "主卧房", dev_status: 1, dev_area: "45774 4", belong_area: "六所属场景", is_favourited: 0, icon_url: image1)
+        
         let image2 = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)
           let curtain = Device(address: "35300", dev_type: 7, work_status: 0, dev_name: "窗帘控制", dev_status: 1, dev_area: "", belong_area: "六所属场景", is_favourited: 0, icon_url: image2)
         
@@ -354,6 +362,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             //增：
             DBManager.shareInstance().add(d);
             DBManager.shareInstance().add(sixD);
+             DBManager.shareInstance().add(sixD1);
+             DBManager.shareInstance().add(sixD2);
+             DBManager.shareInstance().add(sixD3);
+             DBManager.shareInstance().add(sixD4);
+            
+            
             DBManager.shareInstance().add(noPattern);
             DBManager.shareInstance().add(curtain);
             DBManager.shareInstance().add(curtain1);

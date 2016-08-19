@@ -118,7 +118,7 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
         self.targetAlarm?.selectedDay = self.selectedButtonTag
         self.weekBlock!(self.targetAlarm!)
         let aaa = String(format: "%02x", resultTag)
-        NSLog("self.selectedButtonTag is \(aaa)")
+//        NSLog("self.selectedButtonTag is \(aaa)")
     }
 
 

@@ -162,7 +162,10 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 
         for (_, element): (Int, Device) in arr.enumerate(){
             if element.dev_type != 100  {
-                self.data.addObject(element)
+                if element.address != "45774 1" && element.address != "45774 2"  && element.address != "45774 3" && element.address != "45774 4"{
+                     self.data.addObject(element)
+                }
+               
             }
             
         }

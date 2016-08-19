@@ -137,7 +137,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 2 {
+            if element.address == "45774" {
                 self.data.addObject(element)
             }
             
