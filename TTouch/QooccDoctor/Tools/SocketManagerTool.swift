@@ -35,6 +35,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
             try clientSocket.connectToHost(addr, onPort: port)
            
 //            try clientSocket.connectToHost(addr, onPort: port, withTimeout: -1)
+            
         }
             
         catch {

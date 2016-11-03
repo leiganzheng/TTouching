@@ -145,6 +145,7 @@
 		BB6D71AB1BE0AF970018AADC /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */; };
 		BB6D71B31BE0C0090018AADC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB6D71B51BE0C0090018AADC /* Localizable.strings */; };
 		BB814F751D65923B001769B0 /* UDPMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB814F741D65923B001769B0 /* UDPMannager.swift */; };
+		BB973EF61DCB182D00E32B48 /* UdpSocketController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB973EF51DCB182D00E32B48 /* UdpSocketController.m */; };
 		BB99BA661D63EEAB0079359D /* HuiLuSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */; };
 		BB99BA681D63F2850079359D /* SixTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA671D63F2850079359D /* SixTouchViewController.swift */; };
 		BB99BA6A1D63F6690079359D /* SixTouchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */; };
@@ -327,6 +328,8 @@
 		BB6D71A81BE0AF970018AADC /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		BB6D71B41BE0C0090018AADC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BB814F741D65923B001769B0 /* UDPMannager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPMannager.swift; sourceTree = "<group>"; };
+		BB973EF41DCB182D00E32B48 /* UdpSocketController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpSocketController.h; sourceTree = "<group>"; };
+		BB973EF51DCB182D00E32B48 /* UdpSocketController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpSocketController.m; sourceTree = "<group>"; };
 		BB99BA651D63EEAB0079359D /* HuiLuSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuiLuSelectViewController.swift; sourceTree = "<group>"; };
 		BB99BA671D63F2850079359D /* SixTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchViewController.swift; sourceTree = "<group>"; };
 		BB99BA691D63F6690079359D /* SixTouchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixTouchTableViewCell.swift; sourceTree = "<group>"; };
@@ -718,6 +721,8 @@
 		BB3C45A61B465C46008A1213 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BB973EF41DCB182D00E32B48 /* UdpSocketController.h */,
+				BB973EF51DCB182D00E32B48 /* UdpSocketController.m */,
 				BB319C111D26018C0071F443 /* DBManager.swift */,
 				BB3C45AC1B465C46008A1213 /* QNTool.swift */,
 				BB3C45A91B465C46008A1213 /* QNNetworkTool.swift */,
@@ -1035,6 +1040,7 @@
 				71D76E381D2418FA000E0A34 /* SigleLightViewController.swift in Sources */,
 				BB3C45AD1B465C46008A1213 /* QN_Base.swift in Sources */,
 				BB38E8321D2CCA8200190A49 /* XFTableViewCell.swift in Sources */,
+				BB973EF61DCB182D00E32B48 /* UdpSocketController.m in Sources */,
 				BB319C131D26018C0071F443 /* DBManager.swift in Sources */,
 				71CF83B51D047568007275FE /* MannageEquementViewController.swift in Sources */,
 				BB3C45D21B465C46008A1213 /* UIImageViewWebCacheExtension.swift in Sources */,
@@ -1184,8 +1190,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1201,7 +1208,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.QooccDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "00d9c0c3-5ae5-41dd-9f40-fe454062805b";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1212,8 +1219,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1229,7 +1237,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qoocc.QooccDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "00d9c0c3-5ae5-41dd-9f40-fe454062805b";
 				SWIFT_OBJC_BRIDGING_HEADER = "QooccDoctor/QooccDoctor-Bridging-Header.h";
 			};
 			name = Release;
