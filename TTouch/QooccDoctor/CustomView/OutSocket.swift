@@ -39,20 +39,22 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.enableBroadcast(true)
+            try socket.bindToPort(0)
 //            socket.localPort()
-            try socket.joinMulticastGroup(IP)
+//            try socket.joinMulticastGroup(IP)
 //           try socket.connectToHost(IP, onPort: PORT)
             try socket.beginReceiving()
             
         } catch {
             // deal with error
+            NSLog("error")
         }
       
     }
     
     func send(message:NSData){
         
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)
         let arr = ipAddress.componentsSeparatedByString(".") as NSArray
         var index = 0
         let mulArr = NSMutableArray()
@@ -87,6 +89,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         print("didNotSendDataWithTag")
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
+        
         print("incoming message: \(data)");
         print("incoming message1: \(address)");
     }

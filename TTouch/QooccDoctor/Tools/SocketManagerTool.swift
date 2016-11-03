@@ -12,7 +12,7 @@ import CocoaAsyncSocket
 typealias SocketBlock = (AnyObject) -> Void
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
-    let addr = "192.168.10.100"
+    let addr = "192.168.1.100"
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
@@ -75,11 +75,11 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         print(data)
         
         // 2 主界面ui 显示数据
-        dispatch_async(mainQueue, {
-            self.SBlock!(data)
-            let showStr:NSMutableString = NSMutableString()
-            
-        })
+//        dispatch_async(mainQueue, {
+//            self.SBlock!(data)
+//            let showStr:NSMutableString = NSMutableString()
+//            
+//        })
         
         // 3.处理请求，返回数据给客户端 ok
         let serviceStr:NSMutableString = NSMutableString()

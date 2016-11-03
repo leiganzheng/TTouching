@@ -15,8 +15,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
-//    var inSocket : InSocket!
-//    var outSocket : OutSocket!
+    var inSocket : InSocket!
+    var outSocket : OutSocket!
+    var vc:UdpSocketController!
+    
     
     var udpSocket : UDPMannager!
     
@@ -44,24 +46,24 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-//            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
-//            let data = NSData(bytes: bytes, length: 4)
-//             self.udpSocket.send(data)
+            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+            let data = NSData(bytes: bytes, length: 4)
+             self.outSocket.send(data)
+
             
-            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-            QNTool.enterRootViewController(vc, animated: true)
+            
+//            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+//            QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
             })
         self.view.addSubview(searchButton)
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-        self.udpSocket = UDPMannager()
+//        self.udpSocket = UDPMannager()
 //        inSocket = InSocket()
-//        outSocket = OutSocket()
+        outSocket = OutSocket()
 //
-//        testudpBroadcastserver()
-//        testudpBroadcastclient()
 
         self.exeDB()
 
@@ -152,154 +154,6 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     func deviceList() {
         
-    }
-    func echoService(client c:TCPClient){
-        print("newclient from:\(c.addr)[\(c.port)]")
-        let d=c.read(1024*10)
-        c.send(data: d!)
-        c.close()
-    }
-    func testtcpserver(){
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-
-
-        let server:TCPServer = TCPServer(addr: result, port: 33632)
-        var (success,msg)=server.listen()
-        if success{
-            while true{
-                if let client=server.accept(){
-                    echoService(client: client)
-                }else{
-                    print("accept error")
-                }
-            }
-        }else{
-            print(msg)
-        }
-    }
-    //testclient()
-    func testudpserver(){
-        
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-            let server:UDPServer=UDPServer(addr:result,port:33632)
-            let run:Bool=true
-            while run{
-                var (data,remoteip,remoteport)=server.recv(1024)
-                print("recive")
-                if let d=data{
-                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
-                        print(str)
-                    }
-                }
-                print(remoteip)
-                server.close()
-                break
-            }
-        })
-    }
-    func testudpclient(){
-        let client:UDPClient=UDPClient(addr: "localhost", port: 8080)
-        print("send hello world")
-        client.send(str: "hello world")
-        client.close()
-    }
-    //testudpBroadcastclient()
-    func testudpBroadcastserver(){
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-            //turn the server to broadcast mode with the address 255.255.255.255 or empty string
-            let server:UDPServer=UDPServer(addr:result,port:33632)
-            let run:Bool=true
-            print("server.started")
-            while run{
-                let (data,remoteip,remoteport)=server.recv(1024)
-                print("recive\(remoteip);\(remoteport)")
-                if let d=data{
-                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
-                        print(str)
-//                        let msgd:NSData=NSData(bytes: buff, length: buff.count)
-//                        let msgi:NSDictionary =
-//                            (try! NSJSONSerialization.JSONObjectWithData(msgd,
-//                                options: .MutableContainers)) as! NSDictionary
-                    }
-                }
-                print(remoteip)
-            }
-            print("server.close")
-            server.close()
-        })
-    }
-    func testudpBroadcastclient(){
-        //wait a few second till server will ready
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let result = mulArr.componentsJoinedByString(".")
-        
-//        sleep(2)
-        print("Broadcastclient.send...")
-        let clientB:UDPClient = UDPClient(addr: result, port: 33632)
-        clientB.enableBroadcast()
-        clientB.send(str: "0xFF0x040x330xCA")
-        clientB.close()
     }
     func exeDB(){
 

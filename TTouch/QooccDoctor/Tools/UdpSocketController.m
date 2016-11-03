@@ -14,8 +14,8 @@
 @synthesize udpServer;
 @synthesize udpClient;
 @synthesize delegateArray;
-static NSString *groupHost=@"224.1.1.100";
-static int PORT=60000;
+NSString *groupHost=@"192.168.1.255";
+static int PORT=33632;
 
 +(UdpSocketController *)shareInstance{
     static dispatch_once_t once;

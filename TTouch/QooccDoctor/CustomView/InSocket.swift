@@ -11,8 +11,7 @@ import CocoaAsyncSocket
 
 class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
-//    let IP = "255.255.255.255"
-    let PORT:UInt16 = 33632
+    let PORT:UInt16 = 5210
     var socket:GCDAsyncUdpSocket!
     
     override init(){
@@ -22,7 +21,7 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)
         let arr = ipAddress.componentsSeparatedByString(".") as NSArray
         var index = 0
         let mulArr = NSMutableArray()
@@ -41,8 +40,8 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
            
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.bindToPort(PORT)
-            try socket.enableBroadcast(true)
-            try socket.joinMulticastGroup(IP)
+//            try socket.enableBroadcast(true)
+//            try socket.joinMulticastGroup(IP)
 //            try socket.connectToHost(IP, onPort: 0)
             try socket.beginReceiving()
         } catch {

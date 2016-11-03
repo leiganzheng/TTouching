@@ -22,7 +22,6 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.sockertManger = SocketManagerTool()
         self.fetchData()
         
-//        let vc = UdpSocketController.shareInstance()
     }
     
     override func didReceiveMemoryWarning() {
