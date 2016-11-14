@@ -26,13 +26,21 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func sendMsg(dict: NSDictionary) {
         clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
     }
+    func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
+        self.SBlock = completion
+        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
+    }
+
     //连接服务器按钮事件
      func connectSocket() {
         do {
             clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
 //             clientSocket.delegate = self
 //            clientSocket.delegateQueue = dispatch_get_main_queue()
-            try clientSocket.connectToHost(addr, onPort: port)
+            //使用解析出来的ip连接测试
+            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
+            //使用固定ip连接测试
+//            try clientSocket.connectToHost(addr, onPort: port)
            
 //            try clientSocket.connectToHost(addr, onPort: port, withTimeout: -1)
             
@@ -72,7 +80,40 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
         // 1 获取客户的发来的数据 ，把 NSData 转 NSString
         let readClientDataString:NSString? = NSString(data: data, encoding:NSUTF8StringEncoding)
-        print(data)
+        print(readClientDataString)
+        do  {
+            let errorJson: NSErrorPointer = nil
+            let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            var dictionary = jsonObject as? NSDictionary
+            if dictionary == nil {  // Json解析结果出错
+                NSLog("JSON解析错误")
+                
+                 return
+            }else{
+                self.SBlock!(dictionary!)
+            }
+            
+//            // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
+//            if let jsonData = dictionary!["jsonData"] as? NSDictionary {
+//                dictionary = jsonData
+//            }
+//            
+//            let errorCode = Int((dictionary!["errorCode"] as! String))
+//            if errorCode == 1000 || errorCode == 0 {
+//                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: nil)
+//            }
+//            else {
+//                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: NSError(domain: "服务器返回错误", code:errorCode ?? 10088, userInfo: nil))
+//            }
+//            if dictionary == nil {  // Json解析结果出错
+//                completionHandler(request: $0!, response: $1, data: $2, dictionary: nil, error: errorJson.memory); return
+//            }
+        }catch {
+            // 直接出错了
+            NSLog("直接出错了")
+             return
+        }
+
         
         // 2 主界面ui 显示数据
 //        dispatch_async(mainQueue, {
@@ -82,9 +123,9 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //        })
         
         // 3.处理请求，返回数据给客户端 ok
-        let serviceStr:NSMutableString = NSMutableString()
-        serviceStr.appendString("ok\n")
-        clientSocket.writeData(serviceStr.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
+//        let serviceStr:NSMutableString = NSMutableString()
+//        serviceStr.appendString("ok\n")
+//        clientSocket.writeData(serviceStr.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
         
         // 4每次读完数据后，都要调用一次监听数据的方法
         clientSocket.readDataWithTimeout(-1, tag:0)

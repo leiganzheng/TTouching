@@ -12,7 +12,8 @@ class DBManager: NSObject {
  
     let dbPath:String
     let dbBase:FMDatabase
-
+    var ip:String
+    
     
     // MARK: >> 单例化
     class func shareInstance()->DBManager{
@@ -30,7 +31,7 @@ class DBManager: NSObject {
     
     // MARK: >> 创建数据库，打开数据库
     override init() {
-        
+        self.ip = ""
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         let path = (documentsFolder as NSString).stringByAppendingPathComponent("TTouching.sqlite")
         self.dbPath = path

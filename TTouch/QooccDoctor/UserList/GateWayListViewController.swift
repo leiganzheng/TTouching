@@ -64,7 +64,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        inSocket = InSocket()
         outSocket = OutSocket()
 //
-
+        self.resolvingByte()
         self.exeDB()
 
     }
@@ -127,6 +127,21 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.myTableView.reloadData()
     }
     //MARK:- private method
+    func resolvingByte(){
+      let datastr = "fe54330000c0a80164001ab602c08f00000000542d546f756368696e67204761746577617900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d9000000000000000000000000000000000000000000000000000000000000000000000000"
+          let data:NSData? = datastr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        print("data: \(data)");
+//        let data = NSData(bytes: bytes, length: 3)
+        //把NSData的值存到byteArray中
+//        var byteArray:[UInt8] = [UInt8]()
+//        for i in 0..<3 {
+//            var temp:UInt8 = 0
+//            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
+//            byteArray.append(temp)
+//        }
+//        print("byteArray: \(byteArray)");
+        
+    }
     func receiveData() {
 //        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
 //        let arr = ipAddress.componentsSeparatedByString(".") as NSArray

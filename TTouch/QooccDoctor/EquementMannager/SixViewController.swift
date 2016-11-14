@@ -54,7 +54,12 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
              let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":97]
             self.sockertManger.sendMsg(dict)
-            
+            self.sockertManger.sendMsg(dict, completion: { (dict) in
+                NSLog("结果：\(dict)" )
+            })
+            self.sockertManger.SBlock =  {(dict) -> Void in
+                print("success")
+            }
             return RACSignal.empty()
         })
         

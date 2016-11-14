@@ -92,5 +92,15 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         
         print("incoming message: \(data)");
         print("incoming message1: \(address)");
+        
+//        //把NSData的值存到byteArray中
+//        var byteArray:[UInt8] = [UInt8]()
+//        for i in 0..<3 {
+//            var temp:UInt8 = 0
+//            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
+//            byteArray.append(temp)
+//        }
+//        print("byteArray: \(byteArray)");
+        DBManager.shareInstance().ip = ""
     }
 }
