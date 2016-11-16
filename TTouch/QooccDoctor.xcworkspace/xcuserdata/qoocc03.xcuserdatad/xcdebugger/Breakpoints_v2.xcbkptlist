@@ -668,12 +668,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixViewController.swift"
-                  timestampString = "500960537.662862"
+                  timestampString = "500970132.874124"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "520">
+                  offsetFromSymbolStart = "532">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -683,12 +683,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixViewController.swift"
-                  timestampString = "500960537.662983"
+                  timestampString = "500970132.874221"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
                   endingLineNumber = "61"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -716,12 +716,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixViewController.swift"
-                  timestampString = "500960537.663711"
+                  timestampString = "500970132.874789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "63"
                   endingLineNumber = "63"
-                  offsetFromSymbolStart = "740">
+                  offsetFromSymbolStart = "760">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -731,12 +731,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixViewController.swift"
-                  timestampString = "500960537.663829"
+                  timestampString = "500970132.874881"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
                   endingLineNumber = "64"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
