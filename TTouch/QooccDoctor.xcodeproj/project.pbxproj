@@ -51,6 +51,7 @@
 		BB2578D01CFD7CA70037CA9B /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */; };
 		BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */; };
 		BB2944221D38D8530096EDC4 /* ClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */; };
+		BB2C390A1DDC099D001A9475 /* Localicable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB2C390C1DDC099D001A9475 /* Localicable.strings */; };
 		BB319C0E1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */; };
 		BB319C0F1D26014A0071F443 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C0D1D26014A0071F443 /* FMDatabaseVariadic.swift */; };
 		BB319C121D26018C0071F443 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB319C101D26018C0071F443 /* Device.swift */; };
@@ -216,6 +217,9 @@
 		BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCustomView.swift; sourceTree = "<group>"; };
 		BB2944211D38D8530096EDC4 /* ClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockTableViewCell.swift; sourceTree = "<group>"; };
+		BB2C390B1DDC099D001A9475 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localicable.strings"; sourceTree = "<group>"; };
+		BB2C390D1DDC099F001A9475 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localicable.strings; sourceTree = "<group>"; };
+		BB2C390E1DDC09A1001A9475 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localicable.strings; sourceTree = "<group>"; };
 		BB319C0C1D26014A0071F443 /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		BB319C0D1D26014A0071F443 /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		BB319C101D26018C0071F443 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -538,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				BB3C45FB1B465C7D008A1213 /* readme */,
+				BB2C390C1DDC099D001A9475 /* Localicable.strings */,
 				BB3C44F41B465BDB008A1213 /* TTouch */,
 				BB3C46451B466203008A1213 /* Frameworks */,
 				BB3C44F31B465BDB008A1213 /* Products */,
@@ -886,6 +891,7 @@
 				BB38E81A1D2CAD3B00190A49 /* MThreeTableViewCell.xib in Resources */,
 				BB319C261D26077A0071F443 /* Info.plist in Resources */,
 				BB3C465A1B4674C2008A1213 /* Login.storyboard in Resources */,
+				BB2C390A1DDC099D001A9475 /* Localicable.strings in Resources */,
 				BB38E8141D2CAC5700190A49 /* MDoubleTableViewCell.xib in Resources */,
 				BB38E8101D2CAC4C00190A49 /* MSigleTableViewCell.xib in Resources */,
 				BB99BA741D63FC6D0079359D /* MSixTableViewCell.xib in Resources */,
@@ -1082,6 +1088,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BB2C390C1DDC099D001A9475 /* Localicable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB2C390B1DDC099D001A9475 /* zh-Hans */,
+				BB2C390D1DDC099F001A9475 /* en */,
+				BB2C390E1DDC09A1001A9475 /* Base */,
+			);
+			name = Localicable.strings;
+			sourceTree = "<group>";
+		};
 		BB6D71B51BE0C0090018AADC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

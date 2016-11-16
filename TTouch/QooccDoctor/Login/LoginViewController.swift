@@ -42,7 +42,8 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.accountTextField.text = g_Account
         
         let lb = UILabel(frame: CGRectMake(0, 0, 40, 20))
-        lb.text = "用户"
+//        lb.text = "用户"
+        lb.text = NSLocalizedString("loginUser", comment: "Welcome")
         self.accountTextField.leftView = lb
 
         RegisterViewController.configTextField(self.passwordTextField)
