@@ -17,10 +17,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     var inSocket : InSocket!
     var outSocket : OutSocket!
-    var vc:UdpSocketController!
     
-    
-    var udpSocket : UDPMannager!
     
     var flags:NSMutableArray!
     override func viewDidLoad() {
@@ -46,25 +43,21 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
-            let data = NSData(bytes: bytes, length: 4)
-             self.outSocket.send(data)
+//           self.fectchData()
 
-            
-            
-//            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-//            QNTool.enterRootViewController(vc, animated: true)
+            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+            QNTool.enterRootViewController(vc, animated: true)
             return RACSignal.empty()
             })
         self.view.addSubview(searchButton)
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-//        self.udpSocket = UDPMannager()
 //        inSocket = InSocket()
+        //局域网内搜索网关
         outSocket = OutSocket()
-//
-        self.resolvingByte()
+//        self.fectchData()
+//        self.resolvingByte()
         self.exeDB()
 
     }
@@ -127,6 +120,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.myTableView.reloadData()
     }
     //MARK:- private method
+    func fectchData() {
+        //UDP 广播,发送广播
+        let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+        let data = NSData(bytes: bytes, length: 4)
+        self.outSocket.send(data, complete: { (result) in
+            self.tableViewController.refreshControl?.endRefreshing()
+        })
+    }
     func resolvingByte(){
       let datastr = "fe54330000c0a80164001ab602c08f00000000542d546f756368696e67204761746577617900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d9000000000000000000000000000000000000000000000000000000000000000000000000"
           let data:NSData? = datastr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
@@ -142,34 +143,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        print("byteArray: \(byteArray)");
         
     }
-    func receiveData() {
-//        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-//        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-//        var index = 0
-//        let mulArr = NSMutableArray()
-//        for str in arr {
-//            index = index + 1
-//            if index < arr.count {
-//                mulArr.addObject(str)
-//            }
-//            if index == arr.count {
-//                mulArr.addObject("255")
-//            }
-//            
-//        }
-//        let result = mulArr.componentsJoinedByString(".")
-//        
-//        let dnsListener = UDPListener()
-//        dnsListener.sendData(result)
 
-
-    }
-    func fectchData() {
-
-    }
-    func deviceList() {
-        
-    }
     func exeDB(){
 
         //总控

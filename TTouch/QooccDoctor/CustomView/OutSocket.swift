@@ -9,11 +9,14 @@
 import UIKit
 import CocoaAsyncSocket
 
+typealias resultBlock = (AnyObject) -> Void
+
 class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
 //    let IP = "90.112.76.180"
     let PORT:UInt16 = 33632
     var socket:GCDAsyncUdpSocket!
+    var myResultBlock :resultBlock?
     
     override init(){
         super.init()
@@ -52,8 +55,8 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
       
     }
     
-    func send(message:NSData){
-        
+    func send(message:NSData,complete:(AnyObject)->Void){
+        self.myResultBlock = complete
         let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)
         let arr = ipAddress.componentsSeparatedByString(".") as NSArray
         var index = 0
@@ -69,27 +72,36 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
             
         }
         let IP = mulArr.componentsJoinedByString(".")
-//        socket.sendData(temp, withTimeout: 2, tag: 0)
         socket.sendData(message, toHost:IP , port: 33632, withTimeout: -1, tag: 0)
     }
-    
+    func test(){
+        let delayInSeconds = 2.0
+        let popTime = dispatch_time(DISPATCH_TIME_NOW,Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            self.myResultBlock!("fail")
+        }
+    }
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
+        self.myResultBlock!("fail")
         print("didConnectToAddress");
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotConnect error: NSError!) {
+        self.myResultBlock!("fail")
         print("didNotConnect \(error)")
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didSendDataWithTag tag: Int) {
+        self.myResultBlock!("fail")
         print("didSendDataWithTag")
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
+        self.myResultBlock!("fail")
         print("didNotSendDataWithTag")
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
-        
+        self.myResultBlock!("fail")
         print("incoming message: \(data)");
         print("incoming message1: \(address)");
         

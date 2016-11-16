@@ -38,9 +38,9 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //             clientSocket.delegate = self
 //            clientSocket.delegateQueue = dispatch_get_main_queue()
             //使用解析出来的ip连接测试
-            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
+//            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
             //使用固定ip连接测试
-//            try clientSocket.connectToHost(addr, onPort: port)
+            try clientSocket.connectToHost(addr, onPort: port)
            
 //            try clientSocket.connectToHost(addr, onPort: port, withTimeout: -1)
             
@@ -66,7 +66,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     
     //MARK:- GCDAsyncSocketDelegate
     func socket(sock:GCDAsyncSocket!, didConnectToHost host: String!, port:UInt16) {
-        
+         self.SBlock!("")
         print("与服务器连接成功！")
         
         clientSocket.readDataWithTimeout(-1, tag:0)
@@ -74,6 +74,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     }
     
     func socketDidDisconnect(sock:GCDAsyncSocket!, withError err: NSError!) {
+//        self.SBlock!("")
         print("与服务器断开连接")
     }
     
@@ -110,6 +111,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //            }
         }catch {
             // 直接出错了
+            self.SBlock!("")
             NSLog("直接出错了")
              return
         }

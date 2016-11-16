@@ -106,33 +106,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
 //        if !self.checkAccountPassWord() {return}
 //        if let id = self.accountTextField.text, let password = self.passwordTextField.text {
 //            QNTool.showActivityView("正在登录...")
-//            QNNetworkTool.login(Id: id, Password: password) { (doctor, error, errorMsg) -> Void in
+//            QNNetworkTool.login(User: "jacky", Password: "123456") { (dict, error, errorMsg) in
 //                QNTool.hiddenActivityView()
-//                if doctor != nil {
-//                    if self.checkRegisterEditInfo(doctor!) {
-//                        //进入主界面
-////                        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-//                         let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
-//                        self.navigationController?.pushViewController(vc, animated: true)
-////                        QNTool.enterRootViewController(vc, animated: true)
-//                    } else {
-//                        // 未填写注册信息
-//                        let vc = EditInformationViewController.CreateFromStoryboard("Login") as! EditInformationViewController
-//                        vc.finished = { () -> Void in
-//                            QNNetworkTool.login(Id: id, Password: password) { (doctor, error, errorMsg) -> Void in
-//                                QNTool.hiddenActivityView()
-//                                if doctor != nil {
-////                                    let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-//                                    let vc = GateWayListViewController.CreateFromStoryboard("Main") as! UIViewController
-//                                    QNTool.enterRootViewController(vc, animated: true)
-//                                }
-//                                else {
-//                                    QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
-//                                }
-//                            }
-//                        }
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//                    }
+//                if dict != nil {
+//                    
 //                }
 //                else {
 //                    QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
@@ -237,15 +214,5 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         return true
         
     }
-//    // 判断注册时是否填写信息
-//    func checkRegisterEditInfo(doctor : QD_Doctor) -> Bool {
-//        if doctor.jobTitle == nil || doctor.jobTitle == "" {
-//            return false
-//        } else if doctor.belongHospital == nil || doctor.belongHospital == "" {
-//            return false
-//        } else if doctor.department_hospital == nil || doctor.department_hospital == "" {
-//            return false
-//        }
-//        return true
-//    }
+
 }

@@ -193,17 +193,17 @@ extension RegisterViewController {
     class func fetchAuthCode(viewController: UIViewController, phone: (() -> String?), authCodeButton: UIButton?, isRegister: Bool) {
         if let phoneNum = phone() where phoneNum.characters.count > 0 {
             QNTool.showActivityView("正在获取验证码...", inView: viewController.view)
-            QNNetworkTool.fetchAuthCode(phoneNum, isRegister: isRegister, completion: { [weak viewController](succeed, error, errorMsg) -> Void in
-                if let _ = viewController {
-                    QNTool.hiddenActivityView()
-                    if succeed {
-                        self.waitingAuthCode(authCodeButton, start: true)
-                    }
-                    else {
-                        QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
-                    }
-                }
-            })
+//            QNNetworkTool.fetchAuthCode(phoneNum, isRegister: isRegister, completion: { [weak viewController](succeed, error, errorMsg) -> Void in
+//                if let _ = viewController {
+//                    QNTool.hiddenActivityView()
+//                    if succeed {
+//                        self.waitingAuthCode(authCodeButton, start: true)
+//                    }
+//                    else {
+//                        QNTool.showErrorPromptView(nil, error: error, errorMsg: errorMsg)
+//                    }
+//                }
+//            })
         }
     }
     

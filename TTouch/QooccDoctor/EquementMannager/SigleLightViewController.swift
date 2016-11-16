@@ -120,6 +120,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
 //        let data = slider.value
         let dict = ["command": 36,"dev_addr" : 25678,"dev_type":3,"work_status":99]
         self.sockertManger.sendMsg(dict)
+        self.sockertManger.sendMsg(dict, completion: { (dict) in
+            NSLog("结果：\(dict)" )
+        })
         sockertManger.SBlock =  {(vc) -> Void in
             print("success")
         }

@@ -9,12 +9,10 @@
 import UIKit
 import Alamofire
 
-// MARK: - 医生服务器地址, 体征数据服务器地址
-private let (kServerAddress, kXiTeServerAddress) = { () -> (String, String) in
+// MARK: - 服务器地址
+private let (kServerAddress) = { () -> (String) in
     // 正式环境
-    ("http://www.reluxe.com.tw/phpok45/api.php", "http://xite.qoocc.com/dc")
-    // 测试环境
-//    ("http://test.xite.qoocc.com/doctor", "http://test.xite.qoocc.com/dc")
+    ("http://www.reluxe.com.tw/phpok45/api.php")
 }()
 
 /**
@@ -38,10 +36,10 @@ private extension QNNetworkTool{
     */
     private class func productRequest(url: NSURL!, method: NSString!) -> NSMutableURLRequest {
         let request = NSMutableURLRequest(URL: url)
-//        request.addValue(g_doctor?.auth ?? "", forHTTPHeaderField: "AUTH") // 用户身份串,在调用/api/login 成功后会返回这个串;未登录时为空
-        request.addValue("1", forHTTPHeaderField: "AID")                // app_id, iphone=1, android=2
-        request.addValue(APP_VERSION, forHTTPHeaderField: "VER")        // 客户端版本号
-        request.addValue(g_UDID, forHTTPHeaderField: "CID")             // 客户端设备号
+////        request.addValue(g_doctor?.auth ?? "", forHTTPHeaderField: "AUTH") // 用户身份串,在调用/api/login 成功后会返回这个串;未登录时为空
+//        request.addValue("1", forHTTPHeaderField: "AID")                // app_id, iphone=1, android=2
+//        request.addValue(APP_VERSION, forHTTPHeaderField: "VER")        // 客户端版本号
+//        request.addValue(g_UDID, forHTTPHeaderField: "CID")             // 客户端设备号
         request.HTTPMethod = method as String
         return request
     }
@@ -145,150 +143,7 @@ private extension QNNetworkTool{
 
 }
 
-//MARK:- 用户中心(上传)
-extension QNNetworkTool {
-    /**
-    //MARK: 生产一个用于上传的Request
-    
-    :param: url      上传的接口的地址
-    :param: method   上传的方式， Get Post Put ...
-    :param: data     需要被上传的数据
-    :param: fileName 上传的文件名
-    */
-    //构建上传request
-    private class func productUploadRequest(url: NSURL!, method: NSString, data: NSData, fileName: NSString) -> NSURLRequest {
-        let request = self.productRequest(url, method: method)
-        // 定制一post方式上传数据，数据格式必须和下面方式相同
-        let boundary = "abcdefg"
-        request.setValue(String(format: "multipart/form-data;boundary=%@", boundary), forHTTPHeaderField: "Content-Type")
-        // 注意 ："face"这个字段需要看文档服务端的要求，他们要取该字段进行图片命名
-        let str = NSMutableString(format: "--%@\r\nContent-Disposition: form-data; name=\"%@\";filename=\"%@\"\r\nContent-Type: %@\r\nContent-Transfer-Encoding: binary\r\n\r\n",boundary, "face", fileName, "application/octet-stream")
-        // 配置内容
-        let bodyData = str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) as! NSMutableData
-        bodyData.appendData(data)
-        bodyData.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-        bodyData.appendData(NSString(format: "--%@--\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-        request.HTTPBody = bodyData
-        return request
-    }
-    //生产多参数上传Request
-    private class func uploadRequest(url: NSURL!, method: NSString, data: NSData, fileName: NSString,type: NSString) -> NSURLRequest {
-        let request = self.productRequest(url, method: method)
-        // 定制一post方式上传数据，数据格式必须和下面方式相同
-        let boundary = "abcdefg"
-        request.setValue(String(format: "multipart/form-data;boundary=%@", boundary), forHTTPHeaderField: "Content-Type")
-        let str1 = NSMutableString(format: "--%@\r\nContent-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n",boundary, "type", type)
-        let str = NSMutableString(format: "%@--%@\r\nContent-Disposition: form-data; name=\"%@\";filename=\"%@\"\r\nContent-Type: %@\r\nContent-Transfer-Encoding: binary\r\n\r\n",str1,boundary, "img", fileName, "application/octet-stream")
-        // 配置内容
-        let bodyData = str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) as! NSMutableData
-        bodyData.appendData(data)
-        bodyData.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-        bodyData.appendData(NSString(format: "--%@--\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-        request.HTTPBody = bodyData
-        return request
-    }
-
-    //MARK: 上传图片(病历 、医生头像、 医生其他资料、用户头像)
-    /**
-    :param: img         图片二进制文件
-    :param: fileName    图片名字
-    :param: type        图片类型  可选值：medicalRecord 病历;doctorFace 医生头像; doctorImg 医生其他图片;clientImg 用户头像;
-    */
-    class func uploadDoctorImage(file: NSData, fileName: NSString,type: NSString, completion: (NSDictionary?, NSError?) -> Void) {
-        let url = NSURL(string: kXiTeServerAddress+"/api/upload/image")
-        request(self.uploadRequest(url, method: "POST", data: file, fileName: fileName,type:type)).response {
-            do {
-                let jsonObject: AnyObject? = try NSJSONSerialization.JSONObjectWithData($2!, options: NSJSONReadingOptions.MutableContainers)
-                let dictionary = jsonObject as? NSDictionary
-                completion(dictionary, $3)
-  
-            }catch{
-                
-            }
-            
-        }
-    }
-
-    /**
-    保存医生个人简介
-    
-    :param: doctor_id       登录Id
-    :param: introduce       登录密码
-    :param: completion      请求完成后的回掉
-    */
-    class func saveDocIntroduce(doctor_id : String, introduce: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/register/docUpdateAction!saveIntroduce.action", parameters: paramsToJsonDataParams(["doctor_id" : doctor_id, "introduce" : introduce])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-              completion(dictionary,nil,nil)
-            }
-            else {
-                completion(nil, error, dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-
-       /**
-    修改医生头像或密码（应该是名字）
-    
-    :param: columanName       要修改头像传  head_pic ; 要修改姓名传 doct_name;
-    :param: columnValue      要保存的值（如果保存的是头像，则先调用上传图片接口，放入返回的文件名）
-    */
-    class func doctorRecolumn(columnName : String,columnValue : String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/doctor/recolumn", parameters: paramsToJsonDataParams(["columnName" : columnName,"columnValue" : columnValue])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary,nil,nil)
-            }
-            else {
-                completion(nil, error, dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-   
-    /**
-    修改医生头像或密码（应该是名字）
-    
-    :param: doctor_id       
-    :param: good_describe   描述的内容长度不超过500个字节
-    :param: illness_id      病症的ID组成的字符串
-    */
-    class func saveGoodDescribe(doctor_id : String,good_describe : String,illness_id : String, completion: (NSDictionary?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/register/docUpdateAction!saveGoodDescribe.action", parameters: paramsToJsonDataParams(["doctor_id" : doctor_id,"good_describe" : good_describe,"illness_id" : illness_id])) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil {
-                completion(dictionary,nil,nil)
-            }
-            else {
-                completion(nil, error, dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-    /**
-    保存医生资格认证信息
-    
-    :param: doctor_id
-    :param: good_describe   描述的内容长度不超过500个字节
-    :param: illness_id      病症的ID组成的字符串
-    */
-    class func saveCredential(doctor_id : String,work_card : String,identity : String,head_pic : String, completion: (succeed : Bool?, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/register/docUpdateAction!saveCredential.action", parameters: paramsToJsonDataParams(["doctor_id" : doctor_id,"work_card" : work_card,"identity" : identity,"head_pic" : head_pic])) { (_, _, _, dictionary, error) -> Void in
-             let succeed: Bool
-            if dictionary != nil {
-                if let errorCode = dictionary?["errorCode"]?.integerValue where errorCode == 0 {
-                    succeed = true
-                }
-                else {
-                    succeed = false
-                }
-                completion(succeed: succeed, error, dictionary?["errorMsg"] as? String)
-            }else {
-                succeed = false
-                completion(succeed: succeed, error, dictionary?["errorMsg"] as? String)
-            }
-        }
-    }
-
-}
-
-//MARK:- 登录 & 登出
+//MARK:- 登录 & 登出 & 注册会员 & 检查账号重复
 extension QNNetworkTool {
     /**
     登录接口
@@ -299,7 +154,7 @@ extension QNNetworkTool {
     */
     class func login(User user: String, Password password: String, completion: (NSDictionary?, NSError?, String?) -> Void) {
         requestPOST(kServerAddress, parameters: ["user" : user, "pass" : password,"c":"login"]) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil, let doctorDic = dictionary?["content"] as? NSDictionary {
+            if dictionary != nil, let dic = dictionary?["content"] as? NSDictionary {
                 // 登录成功，保存账号密码到本地
 //                saveAccountAndPassword(id, password: password)
 //                g_doctor = doctor
@@ -315,39 +170,19 @@ extension QNNetworkTool {
             }
         }
     }
-//    class func loginOther(Id id: String, Password password: String, completion: (QD_Doctor?, NSError?, String?) -> Void) {
-//        requestPOST(kServerAddress + "/api/login", parameters: paramsToJsonDataParams(["account" : id, "password" : password])) { (_, _, _, dictionary, error) -> Void in
-//            if dictionary != nil, let doctorDic = dictionary?["data"] as? NSDictionary, let doctor = QD_Doctor(doctorDic) {
-//                // 登录成功，保存账号密码到本地
-//                saveAccountAndPassword(id, password: password)
-//                g_doctor = doctor
-//                completion(doctor, nil, nil)
-//            }
-//            else {
-//                completion(nil, error, dictionary?["errorMsg"] as? String)
-//            }
-//        }
-//    }
-
     
     /**
     退出登录，并且拥有页面跳转功能
     */
     class func logout() {
         requestPOST(kServerAddress, parameters: ["c":"logout"]) { (_, _, _, dictionary, error) -> Void in
-            if dictionary != nil, let doctorDic = dictionary?["content"] as? NSDictionary {
-                // 登录成功，保存账号密码到本地
-                //                saveAccountAndPassword(id, password: password)
-                //                g_doctor = doctor
+            if dictionary != nil, let dic = dictionary?["content"] as? NSDictionary {
                 
                 let asyncLogin = { () -> Void in
                     
                 }
-                //                var asyncLoginCount = 0
-                //                               completion(doctor, nil, nil)
-            }
+                         }
             else {
-                //                completion(nil, error, dictionary?["errorMsg"] as? String)
             }
         }
 
@@ -357,154 +192,130 @@ extension QNNetworkTool {
     }
     
     /**
-    重置密码
-    
-    :param: phone       手机号
-    :param: authcode    验证码
-    :param: Password    新密码
-    :param: completion  请求完成后的回掉
-    */
-    class func resetPassword(phone: String, authcode: String, password: String, completion: (succeed: Bool, NSError?, String?) -> Void) {
-        requestPOST(kServerAddress + "/api/register/registerAction!findDoctorPassword.action", parameters: paramsToJsonDataParams(["phone" : phone, "authcode" : authcode,"password" : password])) { (_, _, _, dictionary, error) -> Void in
-            let succeed: Bool
-            if let errorCode = dictionary?["errorCode"]?.integerValue where errorCode == 0 {
-                succeed = true
+     注册会员
+     */
+    class func regishter(phone: String, user: String, password: String, chpassword: String, completion: (succeed: Bool, NSError?, String?) -> Void){
+        requestPOST(kServerAddress, parameters: ["c":"register","f":"save","group_id":"7","mobile":phone,"user":user,"newpass":password,"chkpass":chpassword]) { (_, _, _, dictionary, error) -> Void in
+            if dictionary != nil, let dic = dictionary?["content"] as? NSDictionary {
+                
+                let asyncLogin = { () -> Void in
+                    
+                }
+                
             }
             else {
-                succeed = false
             }
-            completion(succeed: succeed, error, dictionary?["errorMsg"] as? String)
         }
+        
     }
-    
     /**
-    修改密码
-    
-    :param: doctorId    医生Id
-    :param: oldPassword 旧密码
-    :param: newPassword 新密码
-    :param: completion  请求完成的回调
-    */
-    class func changePassword(doctorId: String, oldPassword: String, newPassword: String, completion: (succeed: Bool, NSError?, String?) -> Void) {
-        var params = [String : String]()
-        params["doctorId"] = doctorId
-        params["oldPass"] = oldPassword
-        params["newPass"] = newPassword
-        requestPOST(kServerAddress + "/api/register/registerAction!updateDoctorPassword.action", parameters: paramsToJsonDataParams(params)) { (_, _, _, dictionary, error) -> Void in
-            let succeed: Bool
-            if let errorCode = dictionary?["errorCode"]?.integerValue where errorCode == 0 {
-                succeed = true
+     检测帐号重复
+     */
+    class func checkUser(user: String, completion: (succeed: Bool, NSError?, String?) -> Void){
+        requestPOST(kServerAddress, parameters: ["c":"register","f":"check_user","user":user]) { (_, _, _, dictionary, error) -> Void in
+            if dictionary != nil, let dic = dictionary?["content"] as? NSDictionary {
+                
+                let asyncLogin = { () -> Void in
+                    
+                }
+                
             }
             else {
-                succeed = false
             }
-            completion(succeed: succeed, error, dictionary?["errorMsg"] as? String)
         }
+        
     }
 }
 
-// MARK: - 用户信息
-extension QNNetworkTool {
 
-    
-    /**
-    获取管理用户记录数列表
-    
-    :param: doctorId   医生Id
-    :param: completion 请求完成的回调
-    */
-    class func fetchUserManger(doctorId: String, completion: (NSDictionary?, NSError?) -> Void) {
-        requestPOST(kServerAddress + "/api/user/fetchUserAction!doctorAdminUserCount.action", parameters: paramsToJsonDataParams(["doctorId" : doctorId])) { (_, _, _, dictionary, error) -> Void in
-            completion(dictionary, error)
-        }
-    }
-    
-}
-
-// MARK: - 用户注册相关接口 & 验证码
-extension QNNetworkTool {
-    /**
-    获取验证码
-    
-    :param: phoneNum   手机号码
-    :param: hasRegistor  true：注册时候用，  false： 忘记密码时候用
-    :param: completion 完成的回调（内涵验证码）
-    */
-    class func fetchAuthCode(phoneNum: String, isRegister: Bool, completion: (succeed: Bool, NSError?, String?) -> Void) {
-        var params = [String : String]()
-        params["phoneNum"] = phoneNum
-        params["isRegister"] = isRegister ? "NO" : "YES"
-        requestPOST(kServerAddress + "/api/register/registerAction!reqRegisterCode.action", parameters: paramsToJsonDataParams(params)) { (_, _, _, dictionary, error) -> Void in
-            let succeed: Bool
-            if let errorCode = dictionary?["errorCode"]?.integerValue where errorCode == 0 {
-                succeed = true
-            }
-            else {
-                succeed = false
-            }
-            completion(succeed: succeed, error, dictionary?["errorMsg"] as? String)
-        }
-    }
-    
+/*
  
-    
-   }
+ 1.1	登录会员
+	说明：	登录已注册帐号和密码
+	数据交换格式	JSON
+	请求	POST
+	地址	http://www.reluxe.com.tw/phpok45/api.php
+ 
+	请求字段说明：
+	字段	必需	类型及范围
+	c	是	login
+	user	是	帐号，默认以手机号
+	pass	是	密码
+ 
+	示例
+	http://www.reluxe.com.tw/phpok45/api.php?c=login&user=jacky&pass=123456
+ 
+	返回结果
+	status		1:ok    2:error
+	content		内容说明
+ 
+	json解析		http://json.cn/
+ 
+ 
+ 1.2	登出会员
+	说明：	退出已登录帐号和密码
+	数据交换格式	JSON
+	请求	POST
+	地址	http://www.reluxe.com.tw/phpok45/api.php
+ 
+	请求字段说明：
+	字段	必需	类型及范围
+	c	是	logout
+ 
+	示例
+	http://www.reluxe.com.tw/phpok45/api.php?c=login&user=jacky&pass=123456
+ 
+	返回结果
+	status		1:ok    2:error
+	content		内容说明
+ 
+ 
+ 1.3	注册会员
+	说明：	填写手机，帐号，密码，邮箱
+	数据交换格式	JSON
+	请求	POST
+	地址	http://www.reluxe.com.tw/phpok45/api.php
+ 
+	请求字段说明：
+	字段	必需	类型及范围
+	c	是	register
+	f	是	save
+	group_id	是	会员组，id=7手机会员（免审核）
+	mobile	是	手机号
+	user	是	帐号
+	newpass	是	密码
+	chkpass	是	确认密码
+	email	是	邮箱
+ 
+	示例
+	http://www.reluxe.com.tw/phpok45/api.php?c=register&f=save&group_id=7&mobile=13711688482&user=jacky1&newpass=123456&chkpass=123456&email=vitowu@sohu.com
+ 
+	返回结果
+	status		1:ok    2:error
+	content		内容说明
+ 
+ 1.4	检测帐号重复
+	说明：	检测注册帐号是否重复
+	数据交换格式	JSON
+	请求	POST
+	地址	http://www.reluxe.com.tw/phpok45/api.php
+ 
+	请求字段说明：
+	字段	必需	类型及范围
+	c	是	register
+	f	是	check_user
+	user	是	帐号
+ 
+	示例
+	http://www.reluxe.com.tw/phpok45/api.php?c=register&f=check_user&user=jacky
+ 
+ 
+ */
 
 
 
 
-////MARK:-网关控制
-//typealias CustomBlock = (AnyObject) -> Void
-//var FinishBock:CustomBlock?
-//extension QNNetworkTool:AsyncUdpSocketDelegate,AsyncSocketDelegate{
-//    
-//
-//    class func test(completion: CustomBlock){
-//        let socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//        do {
-//            try socket.connectToHost("192.168.11.101", onPort: port)
-//            
-//           let str = toJsonDataParams(["command" : "36","dev_addr" : "25678","dev_type" : "3","work_status" : "60"])
-//            
-////            let request:String = "Arn.Preg:3302:"
-//            
-//            let data:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
-//            socket.writeData(data, withTimeout: -1, tag: 0)
-//            socket.readDataWithTimeout(-1, tag: 0)
-//        } catch let e {
-//            completion("")
-//            print(e)
-//        }
-//
-//    }
-//
-//    //MARK:- Delegate method
-//    func onUdpSocket(cbsock:AsyncUdpSocket!,didReceiveData data: NSData!){
-//        print("Recv...")
-//        print(data)
-//        FinishBock!(data!)
-//        cbsock.receiveWithTimeout(10, tag: 0)
-//    }
-//    func onUdpSocket(sock: AsyncUdpSocket!, didReceiveData data: NSData!, withTag tag: Int, fromHost host: String!, port: UInt16) -> Bool {
-//        FinishBock!(data!)
-//        return true
-//    }
-//    func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
-//    {
-//        let response = NSString(data: data, encoding: NSUTF8StringEncoding)
-//        FinishBock!(response!)
-//        print("Received Response")
-//    }
-//    
-//    func socket(socket : GCDAsyncSocket, didConnectToHost host:String, port p:UInt16)
-//    {
-//        FinishBock!(host)
-//        print("Connected to \(host) on port \(p).")
-//    }
-//    func onUdpSocket(sock: AsyncUdpSocket!, didNotSendDataWithTag tag: Int, dueToError error: NSError!) {
-//        print("Connected to")
-//    }
-//}
+
 
 
 
