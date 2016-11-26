@@ -12,7 +12,8 @@ import CocoaAsyncSocket
 typealias SocketBlock = (AnyObject) -> Void
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
-    let addr = "192.168.1.100"
+//    let addr = "192.168.1.100"
+    let addr = DBManager.shareInstance().ip
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var mainQueue = dispatch_get_main_queue()
@@ -24,11 +25,11 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         connectSocket()
     }
     func sendMsg(dict: NSDictionary) {
-        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
+//        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
     }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
-        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
+        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]).dataUsingEncoding(NSUTF8StringEncoding) , withTimeout: -1, tag: 0)
     }
 
     //连接服务器按钮事件
@@ -53,20 +54,20 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 
     
     //MARK:- private method
-    func paramsToJsonDataParams(params: [String : AnyObject]) -> NSData {
+    func paramsToJsonDataParams(params: [String : AnyObject]) -> NSString {
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
-            //            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             
-            return jsonData
+            return jsonDataString
         }catch{
-            return NSData()
+            return NSString()
         }
     }
     
     //MARK:- GCDAsyncSocketDelegate
     func socket(sock:GCDAsyncSocket!, didConnectToHost host: String!, port:UInt16) {
-         self.SBlock!("")
+//         self.SBlock!("")
         print("与服务器连接成功！")
         
         clientSocket.readDataWithTimeout(-1, tag:0)
@@ -79,9 +80,17 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     }
     
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
-        // 1 获取客户的发来的数据 ，把 NSData 转 NSString
+        // 1 获取客户的发来的数据 ，把 NSData 转 NSString 
         let readClientDataString:NSString? = NSString(data: data, encoding:NSUTF8StringEncoding)
         print(readClientDataString)
+        var byteArray:[UInt8] = [UInt8]()
+        for i in 0..<data.length {
+            var temp:UInt8 = 0
+            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
+            byteArray.append(temp)
+           
+        }
+        print("byteArray: \(byteArray)");
         do  {
             let errorJson: NSErrorPointer = nil
             let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)

@@ -82,7 +82,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         }
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
-        self.myResultBlock!("fail")
+//        self.myResultBlock!("fail")
         print("didConnectToAddress");
     }
     
@@ -92,7 +92,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didSendDataWithTag tag: Int) {
-        self.myResultBlock!("fail")
+//        self.myResultBlock!("fail")
         print("didSendDataWithTag")
     }
     
@@ -101,18 +101,45 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         print("didNotSendDataWithTag")
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
-        self.myResultBlock!("fail")
+        self.myResultBlock!("success")
         print("incoming message: \(data)");
         print("incoming message1: \(address)");
         
-//        //把NSData的值存到byteArray中
-//        var byteArray:[UInt8] = [UInt8]()
-//        for i in 0..<3 {
-//            var temp:UInt8 = 0
-//            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
-//            byteArray.append(temp)
-//        }
-//        print("byteArray: \(byteArray)");
-        DBManager.shareInstance().ip = ""
+        //把NSData的值存到byteArray中
+        var ipByteArray:[UInt8] = [UInt8]()
+        var byteArray:[UInt8] = [UInt8]()
+        for i in 0..<84 {
+            var temp:UInt8 = 0
+            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
+            byteArray.append(temp)
+            if i>=5 && i <= 8 {
+                ipByteArray.append(temp)
+            }
+        }
+        print("byteArray: \(byteArray)");
+        print("ipByteArray:\(ipByteArray)")
+//        ipByteArray:[192, 168, 1, 100]
+        let filtered = ipByteArray.description.stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let filtered1 = filtered.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let filtered2 = filtered1.stringByReplacingOccurrencesOfString(",", withString: ".", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let filtered3 = filtered2.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+
+/*
+         [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+         ipByteArray:[192, 168, 1, 100]
+ */
+        // 输出：cde
+//        print("ipData:\(ipData)")
+//        let ipStr = NSString(data: ipData, encoding: NSUTF8StringEncoding)
+        print("ipStr:\(String(filtered3))")
+        DBManager.shareInstance().ip = filtered3
+    }
+}
+extension String {
+    init(_ bytes: [UInt8]) {
+        self.init()
+        for b in bytes {
+            self.append(UnicodeScalar(b))
+        }
     }
 }

@@ -26,6 +26,15 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         self.title = "设备管理"
         self.sockertManger = SocketManagerTool()
         self.fetchData()
+        let dict = ["command": 30]
+//        self.sockertManger.sendMsg(dict)
+        self.sockertManger.sendMsg(dict, completion: { (dict) in
+            NSLog("结果：\(dict)" )
+        })
+//        self.sockertManger.SBlock =  {(dict) -> Void in
+//            print("success")
+//        }
+//
         
     }
 

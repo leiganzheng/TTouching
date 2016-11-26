@@ -53,11 +53,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
         self.flags = [false,true,false]
        self.tableViewController.refreshControl?.beginRefreshing()
-//        inSocket = InSocket()
         //局域网内搜索网关
         outSocket = OutSocket()
-//        self.fectchData()
-//        self.resolvingByte()
+        self.fectchData()
         self.exeDB()
 
     }
@@ -125,24 +123,11 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)
         self.outSocket.send(data, complete: { (result) in
+//            QNTool.showActivityView("服务ip地址：\(DBManager.shareInstance().ip)")
             self.tableViewController.refreshControl?.endRefreshing()
         })
     }
-    func resolvingByte(){
-      let datastr = "fe54330000c0a80164001ab602c08f00000000542d546f756368696e67204761746577617900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d9000000000000000000000000000000000000000000000000000000000000000000000000"
-          let data:NSData? = datastr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        print("data: \(data)");
-//        let data = NSData(bytes: bytes, length: 3)
-        //把NSData的值存到byteArray中
-//        var byteArray:[UInt8] = [UInt8]()
-//        for i in 0..<3 {
-//            var temp:UInt8 = 0
-//            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
-//            byteArray.append(temp)
-//        }
-//        print("byteArray: \(byteArray)");
-        
-    }
+
 
     func exeDB(){
 
