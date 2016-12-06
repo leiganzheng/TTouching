@@ -13,6 +13,7 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
     
     private var tableViewController: UITableViewController!
     var cellTitles: NSArray!
+    var dataS:NSMutableArray?
     var myTableView: UITableView!
 //    var myTableView: UITableView! {
 //        return self.tableViewController?.tableView
@@ -43,7 +44,7 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellTitles.count
+        return self.dataS!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,8 +55,8 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
             //            cell.accessoryType = .DisclosureIndicator
         }
         cell.textLabel?.text = self.cellTitles[indexPath.row] as? String
-        let lb = UILabel(frame: CGRectMake(0,0,80,40))
-        
+        let lb = UILabel(frame: CGRectMake(0,0,120,40))
+        lb.text = self.dataS![indexPath.row] as? String
         cell.accessoryView = lb
         let line = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
         line.backgroundColor = defaultBackgroundGrayColor
@@ -70,5 +71,9 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
     }
     
     //MARK:- private method
+    func paraterData(data:NSData){
+
+    }
+
 
 }

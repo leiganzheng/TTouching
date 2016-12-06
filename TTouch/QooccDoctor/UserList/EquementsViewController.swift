@@ -11,16 +11,12 @@ import CocoaAsyncSocket
 
 class EquementsViewController: UIViewController,QNInterceptorProtocol{
 
-    
-//    let addr = "192.168.0.10"
-//    let port:UInt16 = 33632
     var sockertManger:SocketManagerTool!
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "设备管理"
-//        self.sockertManger = SocketManagerTool()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +26,8 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     
 
     @IBAction func loginAction(sender: AnyObject) {
+        self.senderData()
+        return
         self.hidesBottomBarWhenPushed = true
          self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
         
@@ -38,11 +36,11 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     
     //连接服务器按钮事件
     func senderData() {
-//        let dict = ["command": 32,"permit" : "123Abc"]
-//        sockertManger.sendMsg(dict)
-//        sockertManger.SBlock =  {(vc) -> Void in
-//            print("success")
-//        }
+        let dict = ["command": 32,"permit" : "123Abc"]
+        var str = dict.description
+        print("str:\(str)")
+        
+        sockertManger.sendMsg(dict)        
     }
 
 

@@ -17,9 +17,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     var inSocket : InSocket!
     var outSocket : OutSocket!
-    
-    
-    var flags:NSMutableArray!
+    var flags:NSMutableArray = []
+    var dataS:NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "查找网关"
@@ -51,7 +50,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             })
         self.view.addSubview(searchButton)
         
-        self.flags = [false,true,false]
+        
        self.tableViewController.refreshControl?.beginRefreshing()
         //局域网内搜索网关
         outSocket = OutSocket()
@@ -74,7 +73,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataS.count
     }
     
     
@@ -85,17 +84,18 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         cell.contentView.backgroundColor = UIColor.whiteColor()
-        cell.textLabel?.text = "T-Touching Gateway";
-        
-        let flag = self.flags[indexPath.row] as! Bool
-        let icon = (flag==true) ? "pic_hd" : "Menu_Trigger_icon1"
-        cell.imageView?.image = UIImage(named: icon)
-        
+            let dict = dataS[indexPath.row] as! NSMutableDictionary
+            cell.textLabel?.text = dict.allKeys[0] as? String
+            
+            let flag = self.flags[indexPath.row] as! Bool
+            let icon = (flag==true) ? "pic_hd" : "Menu_Trigger_icon1"
+            cell.imageView?.image = UIImage(named: icon)
         let searchButton:UIButton = UIButton(type: .Custom)
         searchButton.frame = CGRectMake(0, 5, 40, 30)
         searchButton.setImage(UIImage(named: "Manage_information_icon"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! GateWayDetailViewController
+            vc.dataS = dict.allValues[0] as? NSMutableArray
             self?.navigationController?.pushViewController(vc, animated: true)
             return RACSignal.empty()
             })
@@ -118,12 +118,63 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.myTableView.reloadData()
     }
     //MARK:- private method
+    func paraterData(data:NSData){
+        var ip:String = ""
+        var macAddress:String = ""
+        var version:String = ""
+        var byteArray:[UInt8] = [UInt8]()
+        let dict:NSMutableDictionary = NSMutableDictionary()
+        let detail:NSMutableArray = []
+        
+        for i in 0..<data.length {
+            var temp:UInt8 = 0
+            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
+            let str = String(temp)
+            if i>=5 && i <= 8 {
+                if i == 5{
+                    ip = ip + str
+                }else{
+                    ip = ip + "." + str
+                }
+                if i==8 {
+                    detail.addObject(ip)
+                }
+                
+            }
+            if i>=9 && i<=14 {
+                macAddress = macAddress + str
+                if i==14 {
+                    detail.addObject(macAddress)
+                }
+            }
+            if i>=15&&i<=18 {
+                version = version + str
+                if i==18 {
+                    detail.addObject(version)
+                }
+            }
+            if i>=19&&i<=82 {
+                byteArray.append(temp)
+            }
+        }
+        let tempName = NSString(bytes: byteArray, length: 65, encoding: 0) as! String
+        dict.setValue(detail, forKey: tempName)
+        
+        DBManager.shareInstance().ip = ip
+        self.dataS.addObject(dict);
+        self.flags.addObject(true)
+        self.myTableView.reloadData()
+        print("ip:\(ip)&&mac:\(macAddress)&&version:\(version)&&name:\(tempName)")
+
+    }
     func fectchData() {
+        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+        self.paraterData(tempData)
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)
         self.outSocket.send(data, complete: { (result) in
-//            QNTool.showActivityView("服务ip地址：\(DBManager.shareInstance().ip)")
             self.tableViewController.refreshControl?.endRefreshing()
         })
     }

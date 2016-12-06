@@ -25,10 +25,11 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         connectSocket()
     }
     func sendMsg(dict: NSDictionary) {
-//        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]) , withTimeout: -1, tag: 0)
+        //两种方式处理字符串发送
+        clientSocket.writeData(dict.description.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
     }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
-        self.SBlock = completion
+//        self.SBlock = completion
         clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]).dataUsingEncoding(NSUTF8StringEncoding) , withTimeout: -1, tag: 0)
     }
 
