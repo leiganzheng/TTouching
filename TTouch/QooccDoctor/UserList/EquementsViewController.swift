@@ -15,7 +15,7 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.sockertManger = SocketManagerTool()
         self.title = "设备管理"
     }
 
@@ -26,8 +26,8 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     
 
     @IBAction func loginAction(sender: AnyObject) {
-        self.senderData()
-        return
+//        self.senderData()
+//        return
         self.hidesBottomBarWhenPushed = true
          self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
         

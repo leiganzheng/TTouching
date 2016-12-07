@@ -21,7 +21,6 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool()
-//        self.testtcpclient()
         self.fetchData()
         
     }
@@ -76,6 +75,9 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
                 if textField.text != nil {
                     DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
                 }
+                let save_dev = [["dev_addr": 25678,"dev_type": 3,"dev_name": "单回路调光"]]
+                QNTool.modifyEqument(save_dev)
+                
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 

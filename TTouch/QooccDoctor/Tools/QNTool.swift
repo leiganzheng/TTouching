@@ -355,9 +355,16 @@ extension QNTool {
         return false
     }
 }
-// MARK: - 测试环信
+// MARK: -
 extension QNTool {
-    class func testHuanXin() {
-//      ChatSendHelper.
+    class func modifyEqument(arr:NSArray) {//修改各设备的信息
+        let save_dev = [["dev_addr": 43688,"dev_name": "电子双回路调光"],["dev_addr": 22224,"dev_type": 5,"dev_name": "3 回路开关","dev_area": 30785]]
+        let dict = ["command": 31,"save_dev": save_dev]
+        let sockertManger = SocketManagerTool()
+        sockertManger.sendMsg(dict)
+        sockertManger.SBlock =  {(vc) -> Void in
+            print("success")
+        }
+        
     }
 }

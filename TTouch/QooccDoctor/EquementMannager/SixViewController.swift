@@ -118,6 +118,8 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
             let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
+                let save_dev = [["dev_addr": 24606,"dev_type": 2,"dev_name": "六情景"]]
+                QNTool.modifyEqument(save_dev)
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 

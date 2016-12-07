@@ -74,6 +74,8 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
                 if textField.text != nil {
                     DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
                 }
+                let save_dev = [["dev_addr": 10976,"dev_type": 4,"dev_name": "双回路调光"]]
+                QNTool.modifyEqument(save_dev)
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 
