@@ -74,6 +74,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
          IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.changeLanguage), name: "NSchangeLanguage", object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -91,7 +92,9 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         return false
     }
-    
+    func changeLanguage(){
+        
+    }
     // MARK: 登录
     @IBAction func login(sender: AnyObject) {
         self.login()

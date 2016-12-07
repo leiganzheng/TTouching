@@ -61,7 +61,17 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
             }
         }
         self.myTableView.reloadData()
+        
     }
-
+    func changeLanugae(){
+        let lan = QNTool.userLanguage()
+        if(lan.isEqualToString("en")){//判断当前的语言，进行改变
+            QNTool.setUserLanguage("zh-Hans")
+        }else{
+            QNTool.setUserLanguage("en")
+        }
+        //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
+        NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
+    }
 
 }
