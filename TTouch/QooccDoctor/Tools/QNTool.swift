@@ -376,9 +376,7 @@ extension QNTool {
     class func initUserLanguage()->NSBundle{
         let def = NSUserDefaults.standardUserDefaults()
         var string = def.valueForKey("userLanguage") as! NSString
-        
         if(string.length == 0){
-            
             //获取系统当前语言版本(中文zh-Hans,英文en)
             
             let languages = def.valueForKey("AppleLanguages")
@@ -388,11 +386,14 @@ extension QNTool {
             string = current
             def.setValue(current, forKey: "userLanguage")
             def.synchronize()//持久化，不加的话不会保存
-
         }
         //获取文件路径
         let path = NSBundle.mainBundle().pathForResource(string as String, ofType: "lproj")
-        return NSBundle(path: path!)!
+        if (path != nil) {
+             return NSBundle(path: path!)!
+        }
+        return NSBundle()
+       
     }
     class func userLanguage()-> NSString{
         let def = NSUserDefaults.standardUserDefaults()
@@ -406,12 +407,10 @@ extension QNTool {
             def.synchronize()//持久化，不加的话不会保存
             return current
         }
-        return ""
+        return string
     }
     class func setUserLanguage(language:NSString){
          let def = NSUserDefaults.standardUserDefaults()
-        let path = NSBundle.mainBundle().pathForResource(language as String, ofType: "lproj")
-        let bundle = NSBundle(path: path!)
         def.setValue(language, forKey: "userLanguage")
         def.synchronize()
     }

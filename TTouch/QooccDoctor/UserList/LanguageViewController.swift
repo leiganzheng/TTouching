@@ -11,6 +11,7 @@ import UIKit
 class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
     
     var titles: NSArray!
+    var language: NSArray!
 
     @IBOutlet weak var myTableView: UITableView!
     var flags:NSMutableArray!
@@ -18,6 +19,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         super.viewDidLoad()
         self.title = "语言"
         self.titles = ["简体中文","繁体中文","English"]
+        self.language = ["zh-Hans","zh-Hant","en"]
         self.flags = [false,true,false]
     }
 
@@ -61,17 +63,11 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
             }
         }
         self.myTableView.reloadData()
-        
-    }
-    func changeLanugae(){
-        let lan = QNTool.userLanguage()
-        if(lan.isEqualToString("en")){//判断当前的语言，进行改变
-            QNTool.setUserLanguage("zh-Hans")
-        }else{
-            QNTool.setUserLanguage("en")
-        }
+        let lanuageStr = self.language[indexPath.row] as! NSString
+        QNTool.setUserLanguage(lanuageStr)
         //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
         NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
+        
     }
 
 }

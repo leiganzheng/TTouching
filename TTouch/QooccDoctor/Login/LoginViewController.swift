@@ -25,6 +25,8 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     @IBOutlet weak var EngBtn: UIButton!
     @IBOutlet weak var remberPBtn: UIButton!
     @IBOutlet weak var inHomeBtn: UIButton!
+    var pass:UILabel!
+    var user:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +43,17 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         RegisterViewController.configTextField(self.accountTextField)
         self.accountTextField.text = g_Account
         
-        let lb = UILabel(frame: CGRectMake(0, 0, 40, 20))
+        self.user = UILabel(frame: CGRectMake(0, 0, 40, 20))
 //        lb.text = "用户"
-        lb.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
+        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
 //        lb.text = NSLocalizedString("loginUser", comment: "Welcome")
-        self.accountTextField.leftView = lb
+        self.accountTextField.leftView = self.user
 
         RegisterViewController.configTextField(self.passwordTextField)
         self.passwordTextField.secureTextEntry = true
         
         
-        let pass = UILabel(frame: CGRectMake(0, 0, 40, 20))
+        self.pass = UILabel(frame: CGRectMake(0, 0, 40, 20))
         pass.text = "密码"
         self.passwordTextField.leftView = pass
 
@@ -74,12 +76,13 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
          IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.changeLanguage), name: "NSchangeLanguage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.changeLanguage), name: "changeLanguage", object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        self.user.text = QNTool.initUserLanguage().localizedStringForKey("loginUser", value: nil, table: "Localization")
     }
     
     // MARK: UITextFieldDelegate
@@ -93,7 +96,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         return false
     }
     func changeLanguage(){
-        
+        self.user.text = QNTool.initUserLanguage().localizedStringForKey("loginUser", value: nil, table: "Localization")
     }
     // MARK: 登录
     @IBAction func login(sender: AnyObject) {

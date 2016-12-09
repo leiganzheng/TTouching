@@ -41,6 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         manager.enableAutoToolbar = false
         
         UIApplication.sharedApplication().applicationSupportsShakeToEdit = true
+        //获取系统当前语言版本(中文zh-Hans,英文en)
+        let def = NSUserDefaults.standardUserDefaults()
+        let languages = def.valueForKey("AppleLanguages")
+        let current = languages?.objectAtIndex(0) as! NSString
+        def.setValue(current, forKey: "userLanguage")
+        def.synchronize()//持久化，不加的话不会保存
+
         return true
     }
 
