@@ -26,8 +26,8 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     
 
     @IBAction func loginAction(sender: AnyObject) {
-//        self.senderData()
-//        return
+        self.senderData()
+        return
         self.hidesBottomBarWhenPushed = true
          self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
         
@@ -39,6 +39,7 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         let dict = ["command": 32,"permit" : "123Abc"]
         var str = dict.description
         print("str:\(str)")
+        print("strData:\(dict.description.dataUsingEncoding(NSUTF8StringEncoding))")
         
         sockertManger.sendMsg(dict)        
     }
