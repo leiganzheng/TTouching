@@ -39,9 +39,12 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         let dict = ["command": 32,"permit" : "123Abc"]
         var str = dict.description
         print("str:\(str)")
-        print("strData:\(dict.description.dataUsingEncoding(NSUTF8StringEncoding))")
+        print("strData:\(dict.description.dataUsingEncoding(NSUTF8StringEncoding)!)")
         
-        sockertManger.sendMsg(dict)        
+        sockertManger.sendMsg(dict)
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
     }
 
 
