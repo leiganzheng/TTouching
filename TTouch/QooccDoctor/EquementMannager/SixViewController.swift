@@ -19,7 +19,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
-        self.sockertManger = SocketManagerTool()
+        self.sockertManger = SocketManagerTool.shareInstance()
         self.sockertManger.SBlock =  {(dict) -> Void in
             print("success")
         }

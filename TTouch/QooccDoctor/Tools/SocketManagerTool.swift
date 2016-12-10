@@ -24,13 +24,25 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         super.init()
         connectSocket()
     }
+    // MARK: >> 单例化
+    class func shareInstance()->SocketManagerTool{
+        struct psSingle{
+            static var onceToken:dispatch_once_t = 0;
+            static var instance:SocketManagerTool? = nil
+        }
+        //保证单例只创建一次
+        dispatch_once(&psSingle.onceToken,{
+            psSingle.instance = SocketManagerTool()
+        })
+        return psSingle.instance!
+    }
     func sendMsg(dict: NSDictionary) {
         //两种方式处理字符串发送
-        clientSocket.writeData(dict.description.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
+//        clientSocket.writeData(dict.description.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
     }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
-//        self.SBlock = completion
-        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]).dataUsingEncoding(NSUTF8StringEncoding) , withTimeout: -1, tag: 0)
+        self.SBlock = completion
+        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
     }
 
     //连接服务器按钮事件
@@ -55,14 +67,14 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 
     
     //MARK:- private method
-    func paramsToJsonDataParams(params: [String : AnyObject]) -> NSString {
+    func paramsToJsonDataParams(params: [String : AnyObject]) -> NSData {
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
-            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-            print("jsonData:\(jsonDataString.dataUsingEncoding(NSUTF8StringEncoding))")
-            return jsonDataString
+//            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            print("jsonData:\(jsonData)")
+            return jsonData
         }catch{
-            return NSString()
+            return NSData()
         }
     }
     
@@ -71,7 +83,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //         self.SBlock!("")
         print("与服务器连接成功！")
         
-        clientSocket.readDataWithTimeout(-1, tag:0)
+        clientSocket.readDataWithTimeout(-1, tag:200)
         
     }
     
@@ -79,52 +91,85 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //        self.SBlock!("")
         print("与服务器断开连接")
     }
+    func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
+        print("消息发送成功")
+    }
+//    func UTF8ToGB2312(str: String) -> (NSData?, UInt) {
+//        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+//        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
+//        return (data, enc)
+//    }
     
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
-        // 1 获取客户的发来的数据 ，把 NSData 转 NSString 
-        let readClientDataString:NSString? = NSString(data: data, encoding:NSUTF8StringEncoding)
-        print(readClientDataString)
-        var byteArray:[UInt8] = [UInt8]()
-        for i in 0..<data.length {
-            var temp:UInt8 = 0
-            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
-            byteArray.append(temp)
-           
-        }
-        print("byteArray: \(byteArray)");
-        do  {
-            let errorJson: NSErrorPointer = nil
-            let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            var dictionary = jsonObject as? NSDictionary
-            if dictionary == nil {  // Json解析结果出错
-                NSLog("JSON解析错误")
-                
-                 return
-            }else{
-                self.SBlock!(dictionary!)
-            }
+        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+//        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
+        
+        // 1 获取客户的发来的数据 ，把 NSData 转 NSString
+        let readClientDataString =  String(data: data, encoding: enc)
+       
+        let newStr = readClientDataString?.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
+        
+        if readClientDataString != nil {
+//            let jsonData = readClientDataString?.dataUsingEncoding(enc)
+//            let jsonStr = NSString(data:jsonData!, encoding: enc)
+            //将数据转为UTF-8
+            let  tempData = newStr?.dataUsingEncoding(NSUTF8StringEncoding)
+            print(readClientDataString)
             
-//            // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
-//            if let jsonData = dictionary!["jsonData"] as? NSDictionary {
-//                dictionary = jsonData
-//            }
-//            
-//            let errorCode = Int((dictionary!["errorCode"] as! String))
-//            if errorCode == 1000 || errorCode == 0 {
-//                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: nil)
-//            }
-//            else {
-//                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: NSError(domain: "服务器返回错误", code:errorCode ?? 10088, userInfo: nil))
-//            }
-//            if dictionary == nil {  // Json解析结果出错
-//                completionHandler(request: $0!, response: $1, data: $2, dictionary: nil, error: errorJson.memory); return
-//            }
-        }catch {
-            // 直接出错了
-            self.SBlock!("")
-            NSLog("直接出错了")
-             return
+            do  {
+                
+                let jsonObject = try  NSJSONSerialization.JSONObjectWithData(tempData!, options: NSJSONReadingOptions.MutableContainers)
+                var dictionary = jsonObject as? NSDictionary
+                if dictionary == nil {  // Json解析结果出错
+                    NSLog("JSON解析错误")
+                    
+                }else{
+                    self.SBlock!(dictionary!)
+                }
+                
+                // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
+                if let jsonData = dictionary!["jsonData"] as? NSDictionary {
+                    dictionary = jsonData
+                }
+                
+            }catch (let e) {
+                print(e)
+                // 直接出错了
+                if self.SBlock != nil {
+                    self.SBlock!("")
+                    NSLog("直接出错了")
+                }
+            }
+        }else{
+            let tempData = data
+            let readClientDataString = NSString(data:data!, encoding: NSUTF8StringEncoding)
+            //将数据转为UTF-8
+            print(readClientDataString)
+            
+            do  {
+                let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(tempData!, options: NSJSONReadingOptions.AllowFragments)
+                var dictionary = jsonObject as? NSDictionary
+                if dictionary == nil {  // Json解析结果出错
+                    NSLog("JSON解析错误")
+                    
+                }else{
+                    self.SBlock!(dictionary!)
+                }
+                
+                // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
+                if let jsonData = dictionary!["jsonData"] as? NSDictionary {
+                    dictionary = jsonData
+                }
+                
+            }catch {
+                // 直接出错了
+                if self.SBlock != nil {
+                    self.SBlock!("")
+                    NSLog("直接出错了")
+                }
+            }
         }
+      
 
         
         // 2 主界面ui 显示数据
@@ -140,7 +185,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //        clientSocket.writeData(serviceStr.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
         
         // 4每次读完数据后，都要调用一次监听数据的方法
-        clientSocket.readDataWithTimeout(-1, tag:0)
+        clientSocket.readDataWithTimeout(-1, tag:200)
     }
 
 }

@@ -414,5 +414,4 @@ extension QNTool {
         def.setValue(language, forKey: "userLanguage")
         def.synchronize()
     }
-    
 }

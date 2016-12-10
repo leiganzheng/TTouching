@@ -17,6 +17,7 @@
 		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
 		71744F381D636C3F0010D7D0 /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 71744F371D636C3F0010D7D0 /* glass.wav */; };
 		719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E019A1D4A599700E3161D /* SocketManagerTool.swift */; };
+		71B797F71DFBDF5D0041E0A7 /* NSData+THCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B797F61DFBDF5D0041E0A7 /* NSData+THCategory.m */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
 		71BEE5681CFF31B900087201 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5671CFF31B900087201 /* LanguageViewController.swift */; };
 		71BEE56C1D007FBF00087201 /* EquementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE56B1D007FBF00087201 /* EquementsViewController.swift */; };
@@ -180,6 +181,8 @@
 		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		71744F371D636C3F0010D7D0 /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		719E019A1D4A599700E3161D /* SocketManagerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManagerTool.swift; sourceTree = "<group>"; };
+		71B797F51DFBDF5D0041E0A7 /* NSData+THCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+THCategory.h"; sourceTree = "<group>"; };
+		71B797F61DFBDF5D0041E0A7 /* NSData+THCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+THCategory.m"; sourceTree = "<group>"; };
 		71BEE5651CFC989B00087201 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		71BEE5671CFF31B900087201 /* LanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		71BEE56B1D007FBF00087201 /* EquementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquementsViewController.swift; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 		BB3C45211B465C46008A1213 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				71B797F51DFBDF5D0041E0A7 /* NSData+THCategory.h */,
+				71B797F61DFBDF5D0041E0A7 /* NSData+THCategory.m */,
 				BB3C45221B465C46008A1213 /* StringExtension.swift */,
 				BB3C45231B465C46008A1213 /* UIImageExtension.swift */,
 				BB3C45241B465C46008A1213 /* UIViewControllerExtension.swift */,
@@ -1017,6 +1022,7 @@
 				BB0072461D2B760200DCEF95 /* GetWiFiInfoHelper.m in Sources */,
 				BB319C121D26018C0071F443 /* Device.swift in Sources */,
 				BBA365D01CFBD6E20010A5EC /* LeftViewController.swift in Sources */,
+				71B797F71DFBDF5D0041E0A7 /* NSData+THCategory.m in Sources */,
 				71D76E4A1D28C4A5000E0A34 /* SingleTableViewCell.swift in Sources */,
 				71D76E481D28C49C000E0A34 /* CurtainTableViewCell.swift in Sources */,
 				71D76E271D104FA9000E0A34 /* CurtainViewController.swift in Sources */,

@@ -101,7 +101,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         print("didNotSendDataWithTag")
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
-        self.myResultBlock!("success")
+        self.myResultBlock!(data)
         print("incoming message: \(data)");
         print("incoming message1: \(address)");
         //把NSData的值存到byteArray中

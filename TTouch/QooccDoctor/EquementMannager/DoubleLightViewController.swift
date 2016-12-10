@@ -20,7 +20,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         self.title = "双回路调光"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
-        self.sockertManger = SocketManagerTool()
+        self.sockertManger = SocketManagerTool.shareInstance()
         self.fetchData()
         
     }

@@ -19,7 +19,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
-        self.sockertManger = SocketManagerTool()
+        self.sockertManger = SocketManagerTool.shareInstance()
         self.fetchData()
         
     }
@@ -54,7 +54,9 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         //开启总控情景一
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":17]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                print("测试：\(result)")
+            })
 
             return RACSignal.empty()
         })
@@ -62,7 +64,9 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         //开启总控情景二
         cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":18]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                print("测试：\(result)")
+            })
             
             return RACSignal.empty()
         })

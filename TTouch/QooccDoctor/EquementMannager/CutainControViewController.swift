@@ -20,7 +20,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         self.title = "窗帘"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
-        self.sockertManger = SocketManagerTool()
+        self.sockertManger = SocketManagerTool.shareInstance()
         self.fetchData()
     }
 

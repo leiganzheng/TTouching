@@ -24,17 +24,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.sockertManger = SocketManagerTool()
-        self.fetchData()
-        let dict = ["command": 30]
-//        self.sockertManger.sendMsg(dict)
-        self.sockertManger.sendMsg(dict, completion: { (dict) in
-            NSLog("结果：\(dict)" )
-        })
-//        self.sockertManger.SBlock =  {(dict) -> Void in
-//            print("success")
-//        }
-//
+//        self.sockertManger = SocketManagerTool.shareInstance()
+//        self.fetchData()
+        
         
     }
 
@@ -42,7 +34,30 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        let dict = ["command": 30]
+        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+            NSLog("结果：\(dict)" )
+            let d = result as! NSDictionary
+            let devices = d.objectForKey("Device Information") as! NSArray
+            if (devices.count == 0) {
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+            }else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                self.data.removeAllObjects()
+                for tempDict in devices {
+                    let tempDic = tempDict as! NSDictionary
+                    let dev = Device(address: tempDic["dev_addr"] as? String, dev_type: tempDic["dev_type"] as? Int, work_status: tempDic["work_status"] as? Int, dev_name: tempDic["dev_name"] as? String, dev_status: tempDic["dev_status"] as? Int, dev_area: tempDic["dev_area"] as? String, belong_area: "", is_favourited: 1, icon_url: NSData())
+                    
+                    self.data.addObject(dev)
+                    
+                }
+
+                self.myTableView.reloadData()
+                
+            }
+        })
+    }
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
