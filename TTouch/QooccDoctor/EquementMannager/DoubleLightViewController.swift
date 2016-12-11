@@ -139,7 +139,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 9 {
+            if element.dev_type == 4 {
                 self.data.addObject(element)
             }
             

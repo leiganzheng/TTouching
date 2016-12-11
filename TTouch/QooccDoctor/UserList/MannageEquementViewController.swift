@@ -24,10 +24,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.sockertManger = SocketManagerTool.shareInstance()
 //        self.fetchData()
         
-        
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,28 +34,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(animated: Bool) {
-        let dict = ["command": 30]
-        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-            NSLog("结果：\(dict)" )
-            let d = result as! NSDictionary
-            let devices = d.objectForKey("Device Information") as! NSArray
-            if (devices.count == 0) {
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
-            }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
-                self.data.removeAllObjects()
-                for tempDict in devices {
-                    let tempDic = tempDict as! NSDictionary
-                    let dev = Device(address: tempDic["dev_addr"] as? String, dev_type: tempDic["dev_type"] as? Int, work_status: tempDic["work_status"] as? Int, dev_name: tempDic["dev_name"] as? String, dev_status: tempDic["dev_status"] as? Int, dev_area: tempDic["dev_area"] as? String, belong_area: "", is_favourited: 1, icon_url: NSData())
-                    
-                    self.data.addObject(dev)
-                    
-                }
-
-                self.myTableView.reloadData()
-                
-            }
-        })
+//        self.test()
+//        self.fetchData()
     }
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
@@ -111,6 +90,93 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         self.selectPatte(d)
     }
     //MARK://-Private method
+    func  test(){
+
+        let d :NSDictionary = [
+            "command": 30,
+            "Device Information": [
+            [
+            "dev_addr": "0",
+            "dev_type": 1,
+            "work_status": 31,
+            "dev_name": "总控设备",
+            "dev_status": 1,
+            "dev_area": "0"
+            ],
+            [
+            "dev_addr": "13014",
+            "dev_type": 2,
+            "work_status": 111,
+            "dev_name": "六场景",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "32881",
+            "dev_type": 3,
+            "work_status": 0,
+            "dev_name": "单回路调光",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "41749",
+            "dev_type": 6,
+            "work_status": 42,
+            "dev_name": "6回路开关",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "13358",
+            "dev_type": 5,
+            "work_status": 2,
+            "dev_name": "3回路开关",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "673",
+            "dev_type": 7,
+            "work_status": 17,
+            "dev_name": "窗帘控制",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "25988",
+            "dev_type": 4,
+            "work_status": 0,
+            "dev_name": "双回路调光",
+            "dev_status": 1,
+            "dev_area": "13014"
+            ],
+            [
+            "dev_addr": "38585",
+            "dev_type": 3,
+            "work_status": 0,
+            "dev_name": "单回路调光",
+            "dev_status": 1,
+            "dev_area": "0"
+            ]
+            ]
+        ]
+        
+        let devices = d.objectForKey("Device Information") as! NSArray
+        if (devices.count == 0) {
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+        }else{
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            self.data.removeAllObjects()
+            for tempDict in devices {
+                self.exeDB(tempDict as! NSDictionary)
+            }
+            
+            self.myTableView.reloadData()
+            
+        }
+
+    }
     func selectPatte(d:Device){
         if d.dev_type == 1 {//总控
             self.VC = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
@@ -155,7 +221,6 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             self.navigationController?.pushViewController(self.VC, animated: true)
             
         }
-
     }
     func modifyEqument() {//修改各设备的信息
         let save_dev = [["dev_addr": 43688,"dev_name": "电子双回路调光"],["dev_addr": 22224,"dev_type": 5,"dev_name": "3 回路开关","dev_area": 30785]]
@@ -166,35 +231,108 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         }
 
     }
-    
-    //MARK:- private method
-    
-    //连接服务器按钮事件，获取所有设备信息
-    func connect() {
-        let dict = ["command": 30]
-        self.sockertManger.sendMsg(dict)
-        sockertManger.SBlock =  {(vc) -> Void in
-            print("success")
-        }
 
+    func exeDB(tempDic:NSDictionary){
+        var dev:Device? = nil
+        let addr = tempDic["dev_addr"] as? String
+        let dev_type = tempDic["dev_type"] as? Int
+        let work_status = tempDic["work_status"] as? Int
+        let name = tempDic["dev_name"] as? String
+        let dev_area = tempDic["dev_area"] as? String
+        let dev_status = tempDic["dev_status"] as? Int
+        let belong_area = tempDic["dev_area"] as? String
+        let is_favourited = 1
+        var image:NSData = NSData()
+        if ((tempDic["dev_type"] as? Int) == 1) {//总控
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 2){//六情景
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 3){//单回路调光
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
+           
+        }else if((tempDic["dev_type"] as? Int) == 6){//6回路开关
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+      
+        }else if((tempDic["dev_type"] as? Int) == 5){//3回路开关
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
+           
+        }
+        else if((tempDic["dev_type"] as? Int) == 7){//窗帘控制
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+
+        }else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
+           
+        }
+        else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
+             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
+            
+        }else{
+            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
+        }
+        dev = Device(address: addr, dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: image)
+
+        if dev != nil {
+            self.data.addObject(dev!)
+            //创建表
+            DBManager.shareInstance().createTable("T_Device")
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            
+            //        for (index, element): (Int, Device) in arr.enumerate(){
+            //            print("Device:\(element.address!)", terminator: "");
+            //        }
+//            if arr.count>0 {
+//                
+//            }else{
+                //增：
+                DBManager.shareInstance().add(dev!);
+//            }
+        }
+        
     }
 
 
     func fetchData(){
         //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDataNotRepeat()
-
-        for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type != 100  {
-                if element.address != "45774 1" && element.address != "45774 2"  && element.address != "45774 3" && element.address != "45774 4"{
-                     self.data.addObject(element)
+//        let arr:Array<Device> = DBManager.shareInstance().selectDataNotRepeat()
+//
+//        for (_, element): (Int, Device) in arr.enumerate(){
+//            if element.dev_type != 100  {
+//                if element.address != "45774 1" && element.address != "45774 2"  && element.address != "45774 3" && element.address != "45774 4"{
+//                     self.data.addObject(element)
+//                }
+//
+//            }
+//        }
+//        self.myTableView.reloadData()
+//        
+        QNTool.showActivityView("获取设备、、、")
+        let dict = ["command": 30]
+        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+            NSLog("结果：\(dict)" )
+            QNTool.hiddenActivityView()
+            let d = result as! NSDictionary
+            let devices = d.objectForKey("Device Information") as! NSArray
+            if (devices.count == 0) {
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+            }else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                self.data.removeAllObjects()
+                for tempDict in devices {
+//                    let tempDic = tempDict as! NSDictionary
+//                    let dev = Device(address: tempDic["dev_addr"] as? String, dev_type: tempDic["dev_type"] as? Int, work_status: tempDic["work_status"] as? Int, dev_name: tempDic["dev_name"] as? String, dev_status: tempDic["dev_status"] as? Int, dev_area: tempDic["dev_area"] as? String, belong_area: "", is_favourited: 1, icon_url: NSData())
+//                    
+//                    self.data.addObject(dev)
+                        self.exeDB(tempDict as! NSDictionary)
                 }
-               
+                
+                self.myTableView.reloadData()
+                
             }
-            
-        }
-        self.myTableView.reloadData()
-        
+        })
     }
 
 }

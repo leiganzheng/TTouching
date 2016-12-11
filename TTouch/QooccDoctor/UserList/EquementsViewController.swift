@@ -17,6 +17,8 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sockertManger = SocketManagerTool.shareInstance()
+        self.passWord.text = "123456"
+        self.passWord.placeholder = "请输入密码"
         self.title = "设备管理"
     }
 
@@ -38,13 +40,15 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     
     //连接服务器按钮事件
     func senderData(pass:NSString) {
-//        let dict = ["command": 30]
+        
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+        return
         let dict = ["command": 32,"permit" : pass]
         sockertManger.sendMsg(dict) { (result) in
             let d = result as! NSDictionary
             let status = d.objectForKey("status") as! NSNumber
             if (status.intValue == 1) {
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "验证成功！")
                 QNTool.showPromptView("验证成功！", {
                     self.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)

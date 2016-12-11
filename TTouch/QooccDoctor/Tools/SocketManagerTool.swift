@@ -102,16 +102,12 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-//        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
-        
         // 1 获取客户的发来的数据 ，把 NSData 转 NSString
         let readClientDataString =  String(data: data, encoding: enc)
-       
+       //处理gbk问题
         let newStr = readClientDataString?.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
         
         if readClientDataString != nil {
-//            let jsonData = readClientDataString?.dataUsingEncoding(enc)
-//            let jsonStr = NSString(data:jsonData!, encoding: enc)
             //将数据转为UTF-8
             let  tempData = newStr?.dataUsingEncoding(NSUTF8StringEncoding)
             print(readClientDataString)

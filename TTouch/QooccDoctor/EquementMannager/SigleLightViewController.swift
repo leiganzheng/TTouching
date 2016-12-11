@@ -126,9 +126,45 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         "dev_area": 0*/
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
-        let dict = ["command": 36,"dev_addr" : 38585,"dev_type":3,"work_status":99]
-        self.sockertManger.sendMsg(dict, completion: { (dict) in
-            NSLog("结果：\(dict)" )
+        var dict:NSDictionary = [:]
+        let command = 36
+        let dev_addr = 38585
+        let dev_type = 3
+        var msg = ""
+        if slider.value == 0 {
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":223]
+            msg = "关闭调光"
+        }else if(slider.value>0&&slider.value<24){//调光一档
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":209]
+            msg = "关闭调光"
+
+        }else if(slider.value>=25&&slider.value<50){//调光二档
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":210]
+            msg = "关闭调光"
+            
+        }
+        else if(slider.value>=50&&slider.value<75){//调光三档
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":211]
+            msg = "关闭调光"
+            
+        }
+        else if(slider.value>=75&&slider.value<99){//调光四档
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":212]
+            msg = "关闭调光"
+            
+        }else if(slider.value == 99){
+            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":222]
+            msg = "关闭调光"
+            
+        }
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            let d = result as! NSDictionary
+            let status = d.objectForKey("work_status") as! NSNumber
+            if (status == 18){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+            }else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+            }
         })
    
 
@@ -138,40 +174,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         
     }
     //MARK:- private method
-    func testtcpclient(){
-        //创建socket
-        let client:TCPClient = TCPClient(addr: "192.168.5.10", port: 8080)
-        //连接
-        let (success,errmsg) = client.connect(timeout: 1)
-        if success{
-            //发送数据
-            let (success,errmsg)=client.send(str:"GET / HTTP/1.0\n\n" )
-            if success{
-                //读取数据
-                let data=client.read(1024*10)
-                if let d=data{
-//                    let result:[UInt8] = client.read(1024*100)!
-//                    
-//                    if let str = NSString(bytes: result, length: result.count, encoding: NSUTF8StringEncoding) as? String {
-//                        print(str)
-//                    } else {
-//                        print("not a valid UTF-8 sequence")
-//                    }
-//                    
-//                    let data:NSData = NSData(bytes: result, length: result.count)
-//                    let str:String = String(data: data, encoding: NSUTF8StringEncoding)!
-//                    print(str)
-                    if let str=String(bytes: d, encoding: NSUTF8StringEncoding){
-                        print(str)
-                    }
-                }
-            }else{
-                print(errmsg)
-            }
-        }else{
-            print(errmsg)
-        }
-    }
+
 
     func fetchData(){
         self.data = NSMutableArray()
@@ -180,7 +183,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             let arr:Array<Device> = DBManager.shareInstance().selectDatas()
             
             for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_type == 8 {
+                if element.dev_type == 3 {
                     self.data.addObject(element)
                 }
                 

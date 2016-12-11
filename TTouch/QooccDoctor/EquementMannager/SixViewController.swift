@@ -20,9 +20,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.sockertManger.SBlock =  {(dict) -> Void in
-            print("success")
-        }
+
         self.fetchData()
         
     }
@@ -53,51 +51,97 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
 //        97:开启情景一; 98:开启情景二; 99:开启情景三; 100:开启情景四;110:场景组内所有设备 ON 状态; 111:场景组内所有设备 OFF 状态; 102:保存当前情景为情景一; 103:保存当前情景为情景二; 104:保存当前情景为情景三; 105:保存当前情景为情景四。
+        let command = 36;
+        
         //开启总控情景一
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
              let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":97]
             self.sockertManger.sendMsg(dict)
-            self.sockertManger.sendMsg(dict, completion: { (dict) in
-                NSLog("结果：\(dict)" )
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 97){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
             })
-            self.sockertManger.SBlock =  {(dict) -> Void in
-                print("success")
-            }
+            
             return RACSignal.empty()
         })
         
         //开启总控情景二
         cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
              let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":98]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 98){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景二！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
             
             return RACSignal.empty()
         })
         //开启总控情景三
         cell.p3Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":99]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 99){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景三！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
             
             return RACSignal.empty()
         })
         //开启总控情景四
         cell.p4Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":100]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 100){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景四！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
             
             return RACSignal.empty()
         })
         //场景组内所有设备 ON 状态
         cell.p5Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":110]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 110){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启所有设备！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
             
             return RACSignal.empty()
         })
         //关闭所有设备
         cell.p6Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":111]
-            self.sockertManger.sendMsg(dict)
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 111){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
             
             return RACSignal.empty()
         })
@@ -147,7 +191,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.address == "45774" {
+            if element.dev_type! == 2{
                 self.data.addObject(element)
             }
             

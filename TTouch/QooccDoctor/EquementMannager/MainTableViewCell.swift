@@ -23,11 +23,13 @@ class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.backgroundColor = defaultBackgroundGrayColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        self.p1Btn.showsTouchWhenHighlighted = true
+//        self.p1Btn.backgroundColor = UIColor.lightGrayColor()
         // Configure the view for the selected state
     }
 

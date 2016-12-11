@@ -138,7 +138,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 10 {
+            if element.dev_type == 5 {
                 self.data.addObject(element)
             }
             
