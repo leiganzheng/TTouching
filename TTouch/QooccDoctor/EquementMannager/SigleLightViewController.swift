@@ -136,31 +136,31 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             msg = "关闭调光"
         }else if(slider.value>0&&slider.value<24){//调光一档
             dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":209]
-            msg = "关闭调光"
+            msg = "调光一档"
 
         }else if(slider.value>=25&&slider.value<50){//调光二档
             dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":210]
-            msg = "关闭调光"
+            msg = "调光二档"
             
         }
         else if(slider.value>=50&&slider.value<75){//调光三档
             dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":211]
-            msg = "关闭调光"
+            msg = "调光三档"
             
         }
         else if(slider.value>=75&&slider.value<99){//调光四档
             dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":212]
-            msg = "关闭调光"
+            msg = "调光四档"
             
         }else if(slider.value == 99){
             dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":222]
-            msg = "关闭调光"
+            msg = "最大亮度"
             
         }
         self.sockertManger.sendMsg(dict, completion: { (result) in
             let d = result as! NSDictionary
             let status = d.objectForKey("work_status") as! NSNumber
-            if (status == 18){
+            if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
             }else{
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")

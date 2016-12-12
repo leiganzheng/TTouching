@@ -225,10 +225,16 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     func modifyEqument() {//修改各设备的信息
         let save_dev = [["dev_addr": 43688,"dev_name": "电子双回路调光"],["dev_addr": 22224,"dev_type": 5,"dev_name": "3 回路开关","dev_area": 30785]]
         let dict = ["command": 31,"save_dev": save_dev]
-        self.sockertManger.sendMsg(dict)
-        sockertManger.SBlock =  {(vc) -> Void in
-            print("success")
-        }
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            let d = result as! NSDictionary
+//            let status = d.objectForKey("work_status") as! NSNumber
+//            if (status == 97){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+//            }else{
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//            }
+        })
+
 
     }
 

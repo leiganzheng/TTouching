@@ -123,12 +123,15 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         //        let data = slider.value
         
         let dict = ["command": 36,"dev_addr" : 62252,"dev_type":5,"work_status":2]
-        sockertManger.sendMsg(dict)
-        sockertManger.SBlock =  {(vc) -> Void in
-            print("success")
-        }
-
-        
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            let d = result as! NSDictionary
+            let status = d.objectForKey("work_status") as! NSNumber
+//            if (status == 97){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+//            }else{
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//            }
+        })
     }
 
     func fetchData(){

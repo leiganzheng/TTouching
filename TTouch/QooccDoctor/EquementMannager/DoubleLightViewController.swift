@@ -125,10 +125,16 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         //        let data = slider.value
 
         let dict = ["command": 36,"dev_addr" : 10976,"dev_type":4,"work_status":199]
-        sockertManger.sendMsg(dict)
-        sockertManger.SBlock =  {(vc) -> Void in
-            print("success")
-        }
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            let d = result as! NSDictionary
+            let status = d.objectForKey("work_status") as! NSNumber
+//            if (status == 97){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+//            }else{
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//            }
+        })
+       
 
         
     }

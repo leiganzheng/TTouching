@@ -36,10 +36,6 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         })
         return psSingle.instance!
     }
-    func sendMsg(dict: NSDictionary) {
-        //两种方式处理字符串发送
-//        clientSocket.writeData(dict.description.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
-    }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
         clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
@@ -49,15 +45,10 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
      func connectSocket() {
         do {
             clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-//             clientSocket.delegate = self
-//            clientSocket.delegateQueue = dispatch_get_main_queue()
             //使用解析出来的ip连接测试
 //            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
             //使用固定ip连接测试
             try clientSocket.connectToHost(addr, onPort: port)
-           
-//            try clientSocket.connectToHost(addr, onPort: port, withTimeout: -1)
-            
         }
             
         catch {
