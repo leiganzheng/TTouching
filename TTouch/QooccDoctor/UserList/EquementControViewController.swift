@@ -98,7 +98,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         for  d in self.data {
             let temp = d as! Device
             index = index+1
-            if temp.dev_type == 100{
+            if temp.dev_area == "0"{
                 self.unAeraVC = UnAeraViewController.CreateFromStoryboard("Main") as? UnAeraViewController
                 self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 100))
                 self.unAeraVC?.superVC = self
@@ -148,7 +148,14 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             }else{
                  button.backgroundColor = UIColor.clearColor()
             }
-            button.setImage(UIImage(data: (d as! Device).icon_url!), forState: .Normal)
+            let temp = d as! Device
+            var data = NSData()
+            if temp.dev_area == "0" {
+                data = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
+            }else{
+                data = (d as! Device).icon_url!
+            }
+            button.setImage(UIImage(data:data) , forState: .Normal)
             button.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
                 let arr = (self.pictureScrollView?.subviews)! as NSArray
                 let index = arr.indexOfObject(button)
