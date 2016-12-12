@@ -12,7 +12,7 @@ import ReactiveCocoa
 class CutainControViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var myCustomTableView: UITableView!
-    var data: NSMutableArray!
+    var device:Device?
     var sockertManger:SocketManagerTool!
     var commandArr:NSMutableArray?
     override func viewDidLoad() {
@@ -22,7 +22,6 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
         self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
-        self.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +36,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return 1
     }
     
     
@@ -48,10 +47,10 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
             cell = CurtainTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
-        let d = self.data[indexPath.row] as? Device
+        let d = self.device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color
-        let title = d?.dev_area == "" ? "选择区域" :  d?.dev_area
+        let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
          cell.partern.setTitle(title, forState: .Normal)
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
@@ -152,22 +151,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     func close2(sender: UIButton){
         
     }
-    func fetchData(){
-        self.data = NSMutableArray()
-        self.data.removeAllObjects()
-        //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-        
-        for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 7 {
-                self.data.addObject(element)
-            }
-            
-            print("Device:\(element.address!)", terminator: "");
-        }
-        self.myCustomTableView.reloadData()
-        
-    }
+
 
 
 }

@@ -13,7 +13,6 @@ import Darwin.C
 class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var myCustomTableView: UITableView!
-    var data: NSMutableArray!
     var device:Device?
     var sockertManger:SocketManagerTool!
     override func viewDidLoad() {
@@ -22,8 +21,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.fetchData()
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +36,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return  1
     }
     
     
@@ -49,10 +47,10 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             cell = SingleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
-        let d = self.data[indexPath.row] as? Device
+        let d = self.device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color
-        let title = d?.dev_area == "" ? "选择区域" :  d?.dev_area
+        let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
         cell.partern.setTitle(title, forState: .Normal)
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
@@ -127,9 +125,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         "dev_area": 0*/
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
-        let tempCell = slider.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
-        let d = self.data[(indexPath?.row)!] as! Device
+        let d = self.device!
         var dict:NSDictionary = [:]
         let command = 36
         let dev_addr = d.address
@@ -204,23 +200,6 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     //MARK:- private method
 
-
-    func fetchData(){
-        self.data = NSMutableArray()
-        self.data.removeAllObjects()
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_type == 3 {
-                    self.data.addObject(element)
-                }
-                
-            }
-
-            self.myCustomTableView.reloadData()
-        
-    }
     
     
    

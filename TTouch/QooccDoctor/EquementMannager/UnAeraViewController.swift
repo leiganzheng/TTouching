@@ -176,27 +176,37 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         superVC.hidesBottomBarWhenPushed = true
         let d = self.data[indexPath.row] as! Device
         if d.dev_type == 3{//单回路调光控制端
-            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 4{//双回路调光控制端
-            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 5{//三回路开关控制端
-            
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+            vc.device = d
+            superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 6{//六回路开关控制端
-            
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+            vc.device = d
+            superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 7{//窗帘控制端
-            let vc = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = CutainControViewController.CreateFromStoryboard("Main") as! CutainControViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
             
         }else if d.dev_type == 8{//单回路调光控制端(旧版)
-            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 9{//双回路调光控制端(旧版)
-            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 10{//三/六回路开关控制端
-            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+            vc.device = d
             superVC.navigationController?.pushViewController(vc, animated: true)
         }else if d.dev_type == 11{
             

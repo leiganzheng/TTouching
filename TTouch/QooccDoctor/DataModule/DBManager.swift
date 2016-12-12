@@ -223,8 +223,27 @@ class DBManager: NSObject {
         return devices
         
     }
-
-
+    // MARK: >> 查
+    func selectData(aera:String) -> String {
+        dbBase.open();
+        var temp:String?
+        if let rs = dbBase.executeQuery("select address,dev_type,work_status,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+            while rs.next() {
+                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                let dev_area:String = rs.stringForColumn("dev_area")
+                if dev_type == 2 && dev_area == aera {
+                    temp = rs.stringForColumn("dev_name")
+                }
+                
+            }
+        } else {
+            
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+        dbBase.close();
+        return temp!
+    }
 
     // MARK: >> 保证线程安全
     // TODO: 示例-增,查

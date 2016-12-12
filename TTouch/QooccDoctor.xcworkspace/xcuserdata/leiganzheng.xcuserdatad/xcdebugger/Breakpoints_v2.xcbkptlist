@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/CutainControViewController.swift"
-            timestampString = "489338508.481181"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -370,11 +370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/CutainControViewController.swift"
-            timestampString = "491919426.111953"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "open1(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -450,11 +450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/MannageEquementViewController.swift"
-            timestampString = "503159528.438458"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371">
+            startingLineNumber = "384"
+            endingLineNumber = "384">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1483,22 +1483,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/UserList/MannageEquementViewController.swift"
-            timestampString = "503159528.438458"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "selectPatte(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1519,11 +1503,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/MannageEquementViewController.swift"
-            timestampString = "503159528.438458"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "exeDB(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1535,11 +1519,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/MannageEquementViewController.swift"
-            timestampString = "503159528.438458"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "exeDB(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1631,11 +1615,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/UnAeraViewController.swift"
-            timestampString = "503240930.394942"
+            timestampString = "503243324.816849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "fetchData()"
             landmarkType = "5">
          </BreakpointContent>
