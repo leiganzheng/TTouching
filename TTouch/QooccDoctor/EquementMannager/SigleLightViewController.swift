@@ -14,6 +14,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
+    var device:Device?
     var sockertManger:SocketManagerTool!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,47 +127,75 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         "dev_area": 0*/
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
+        let tempCell = slider.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
         var dict:NSDictionary = [:]
         let command = 36
-        let dev_addr = 38585
-        let dev_type = 3
+        let dev_addr = d.address
+        let dev_type = d.dev_type
         var msg = ""
-        if slider.value == 0 {
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":223]
-            msg = "关闭调光"
-        }else if(slider.value>0&&slider.value<24){//调光一档
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":209]
-            msg = "调光一档"
-
-        }else if(slider.value>=25&&slider.value<50){//调光二档
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":210]
-            msg = "调光二档"
-            
-        }
-        else if(slider.value>=50&&slider.value<75){//调光三档
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":211]
-            msg = "调光三档"
-            
-        }
-        else if(slider.value>=75&&slider.value<99){//调光四档
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":212]
-            msg = "调光四档"
-            
-        }else if(slider.value == 99){
-            dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":222]
-            msg = "最大亮度"
-            
-        }
-        self.sockertManger.sendMsg(dict, completion: { (result) in
-            let d = result as! NSDictionary
-            let status = d.objectForKey("work_status") as! NSNumber
-            if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-            }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+        if dev_type == 3 {
+            if slider.value == 0 {
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":0]
+                msg = "关闭调光"
+            }else if(slider.value>0&&slider.value<24){//调光
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":Int(slider.value)]
+                msg = "调光\(slider.value/100)"
+                
+            }else if(slider.value == 99){
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":99]
+                msg = "最大亮度"
+                
             }
-        })
-   
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status.intValue >= 0 && status.intValue <= 99){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+        }
+        if dev_type == 8 {
+            if slider.value == 0 {
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":223]
+                msg = "关闭调光"
+            }else if(slider.value>0&&slider.value<24){//调光一档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":209]
+                msg = "调光一档"
+                
+            }else if(slider.value>=25&&slider.value<50){//调光二档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":210]
+                msg = "调光二档"
+                
+            }
+            else if(slider.value>=50&&slider.value<75){//调光三档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":211]
+                msg = "调光三档"
+                
+            }
+            else if(slider.value>=75&&slider.value<99){//调光四档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":212]
+                msg = "调光四档"
+                
+            }else if(slider.value == 99){
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type!,"work_status":222]
+                msg = "最大亮度"
+                
+            }
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! NSNumber
+                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+        }
+        
 
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

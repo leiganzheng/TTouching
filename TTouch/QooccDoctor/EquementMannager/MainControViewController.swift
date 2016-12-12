@@ -52,8 +52,12 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
 //        17:开启总控情景一; 18:开启总控情景二; 19:开启总控情景三; 20:开启总控情景四; 21:开启总控情景五;31:所有设备 OFF。
 //        22:保存当前情景为总控情景一; 23:保存当前情景为总控情景二; 24:保存当前情景为总控情景三; 25:保存当前情景为总控情景四; 26:保存当前情景为总控情景五;
         //开启总控情景一
+        let command:Int = 36
+        let dev_addr:String = (d?.address)!
+        let dev_type:Int = (d?.dev_type)!
+        
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":17]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":17]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 print("测试：\(result)")
                 let d = result as! NSDictionary
@@ -71,7 +75,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         
         //开启总控情景二
         cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":18]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":18]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! NSNumber
@@ -86,7 +90,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //开启总控情景三
         cell.p3Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":19]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":19]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! NSNumber
@@ -102,7 +106,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //开启总控情景四
         cell.p4Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":20]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":20]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! NSNumber
@@ -118,7 +122,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //开启总控情景五
         cell.p5Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":21]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":21]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! NSNumber
@@ -134,7 +138,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //关闭所有设备
         cell.p6Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":31]
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":31]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! NSNumber
@@ -166,7 +170,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
             let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
-                let save_dev = [["dev_addr": 0,"dev_type": 1,"dev_name": "总控"]]
+                let save_dev = [["dev_addr": dev_addr,"dev_type": dev_type,"dev_name": "总控"]]
                 QNTool.modifyEqument(save_dev)
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in

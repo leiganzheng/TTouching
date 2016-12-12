@@ -192,9 +192,13 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             self.VC = DoubleLightViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
         }else if d.dev_type == 5{//三回路开关控制端
-            
+            self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+
         }else if d.dev_type == 6{//六回路开关控制端
-            
+            self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
+            self.navigationController?.pushViewController(self.VC, animated: true)
+
         }else if d.dev_type == 7{//窗帘控制端
             self.VC = CutainControViewController.CreateFromStoryboard("Main") as! UIViewController
             self.navigationController?.pushViewController(self.VC, animated: true)
@@ -275,9 +279,10 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
             
-        }else{
-            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
         }
+//        else{
+//            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
+//        }
         dev = Device(address: addr, dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: image)
 
         if dev != nil {

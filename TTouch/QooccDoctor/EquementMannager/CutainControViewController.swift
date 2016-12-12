@@ -14,13 +14,14 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     @IBOutlet weak var myCustomTableView: UITableView!
     var data: NSMutableArray!
     var sockertManger:SocketManagerTool!
-    
+    var commandArr:NSMutableArray?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "窗帘"
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
+        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
         self.fetchData()
     }
 

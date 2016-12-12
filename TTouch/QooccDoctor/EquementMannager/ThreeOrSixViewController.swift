@@ -15,6 +15,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     var data: NSMutableArray!
     var sockertManger:SocketManagerTool!
     var flag:Bool = false
+    var commandArr:NSMutableArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-
+        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
         self.fetchData()
 
     }
@@ -119,10 +120,71 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     //MARK:- private method
     func sliderValueChanged(switchBtn: UISwitch) {
-        //三回路开关控制端
-        //        let data = slider.value
+        let tempCell = switchBtn.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
         
-        let dict = ["command": 36,"dev_addr" : 62252,"dev_type":5,"work_status":2]
+        let command = 36
+        let dev_addr = d.address!
+        let dev_type = d.dev_type!
+        
+        //三回路开关控制端
+        if switchBtn.tag == 100  {
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 101){
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 102){
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 103){
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 104){
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 105){
+            if switchBtn.on {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }
+         var work_status = 0
+        if self.flag {//
+            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
+            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
+            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
+            work_status = Int(A|B|C|D|E|F)
+        }else{
+            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+            work_status = Int(A|B|C)
+            print("A|B|C 结果为：\(A|B|C)")
+        }
+        
+
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
             let d = result as! NSDictionary
             let status = d.objectForKey("work_status") as! NSNumber

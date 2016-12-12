@@ -15,7 +15,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     var myTableView: UITableView!
     var superVC:UIViewController!
     var customTitle:String?
-      var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
+    var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -235,32 +235,15 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         if self.flag == "0" {
             for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_area == "45774" && element.dev_status == 1 && element.dev_type>2 {
+                if element.dev_area == "13014" {//六场景
                     self.data.addObject(element)
                 }
-                if element.dev_area == "45774 1" && element.dev_status == 1 && element.dev_type>2 {
-                    self.data.addObject(element)
-                }
-                if element.dev_area == "45774 2" && element.dev_status == 1 && element.dev_type>2 {
-                    self.data.addObject(element)
-                }
-                if element.dev_area == "45774 3" && element.dev_status == 1 && element.dev_type>2 {
-                    self.data.addObject(element)
-                }
-                if element.dev_area == "45774 4" && element.dev_status == 1 && element.dev_type>2 {
-                    self.data.addObject(element)
-                }
-                
-//                if element.address == self.device?.address  {
-//                    self.data.addObject(element)
-//                }
-                
                 print("Device:\(element.address!)", terminator: "");
             }
 
         }else if self.flag == "2" {
             for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_type == 2 {
+                if element.dev_type == self.device?.dev_type  {//
                     self.data.addObject(element)
                 }
                 

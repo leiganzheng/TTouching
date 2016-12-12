@@ -81,8 +81,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     //MARK: private method
 
     private func buildUI(){
-        
-        
         //UIScrollView
         self.contentScrollView = UIScrollView(frame: CGRectMake(0,0, screenWidth, screenHeight-self.headerView.frame.size.height))
         self.contentScrollView!.bounces = false
@@ -113,7 +111,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                 self.sixVC?.superVC = self
                 self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 100))
                 self.contentScrollView!.addSubview(self.sixVC!.view)
-
             }
             
         }
@@ -183,17 +180,20 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         if flag == "0" {
             //查
             let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
             for (_, element): (Int, Device) in arr.enumerate(){
-                if  element.address == self.address || element.dev_type == 100 {
-                    self.data.addObject(element)
+                if self.device?.dev_type == 100 {//未分区
+                    if  element.dev_area == "0" {
+                        self.data.addObject(element)
+                    }
+                }else{
+                    if  element.address == self.address {
+                        self.data.addObject(element)
+                    }
                 }
-                
             }
-            self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
-            //        self.data = self.data.sortUsingComparator({ (<#AnyObject#>, <#AnyObject#>) -> NSComparisonResult in
-            //            <#code#>
-            //        })
+            if self.data.count>1 {
+                self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
+            }
             self.buildDataAndUI()
             self.buildUI()
 
@@ -208,10 +208,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                     }
                     
                 }
-                
-                self.buildDataAndUI()
-                self.buildUI()
- 
             }
             if self.customTitle == "窗帘" {
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
@@ -220,11 +216,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                     if  element.dev_type == 7 || element.dev_type == 100 {
                         self.data.addObject(element)
                     }
-                    
                 }
-                
-                self.buildDataAndUI()
-                self.buildUI()
             }
             if self.customTitle == "动作" {
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
@@ -233,11 +225,8 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                     if  element.dev_type == 11 || element.dev_type == 100 {
                         self.data.addObject(element)
                     }
-                    
                 }
                 
-                self.buildDataAndUI()
-                self.buildUI()
             }
             if self.customTitle == "空调" {
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
@@ -246,18 +235,11 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                     if  element.dev_type == 12 || element.dev_type == 100 {
                         self.data.addObject(element)
                     }
-                    
                 }
-                
-                self.buildDataAndUI()
-                self.buildUI()
             }
+            self.buildDataAndUI()
+            self.buildUI()
 
-           
         }
-        
-        
     }
-
-
 }
