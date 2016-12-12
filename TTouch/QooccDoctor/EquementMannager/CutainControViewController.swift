@@ -13,6 +13,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
 
     @IBOutlet weak var myCustomTableView: UITableView!
     var device:Device?
+    var data:NSMutableArray!
     var sockertManger:SocketManagerTool!
     var commandArr:NSMutableArray?
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
         self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+        self.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +38,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.data.count
     }
     
     
@@ -47,7 +49,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
             cell = CurtainTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
-        let d = self.device
+        let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color
         let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
@@ -111,6 +113,9 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
            
             })
         cell.open1Btn.addTarget(self, action: #selector(CutainControViewController.open1(_:)), forControlEvents: .TouchUpInside)
+        let longGesture = UILongPressGestureRecognizer(target: self, action: "longOpen1")
+        gesture.minimumPressDuration = 0.8
+        cell.open1Btn.addGestureRecognizer(longGesture)
         cell.stop1Btn.addTarget(self, action: #selector(CutainControViewController.stop1(_:)), forControlEvents: .TouchUpInside)
         cell.close1Btn.addTarget(self, action: #selector(CutainControViewController.close1(_:)), forControlEvents: .TouchUpInside)
         
@@ -125,33 +130,99 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         
     }
     //MARK:- private method
+    let command = 36
+    let dev_addr = 673
+    let dev_type = 7
     func open1(sender: UIButton){
-        let command = 36
-        let dev_addr = 673
-        let dev_type = 7
-        
+        QNTool.showPromptView("打开左路窗帘")
         let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":192]
         sockertManger.sendMsg(dict) { (result) in
             
         }
 
     }
-    func stop1(sender: UIButton){
+    func longOpen1(){
+        QNTool.showPromptView("长按左路窗帘开")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":224]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
         
+    }
+    func stop1(sender: UIButton){
+        QNTool.showPromptView("暂停左路窗帘")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":144]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
     }
     func close1(sender: UIButton){
-        
+        QNTool.showPromptView("关闭左路窗帘")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":128]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
+    }
+    func longClose1(){
+        QNTool.showPromptView("长按左路窗帘关")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":160]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
     }
     func open2(sender: UIButton){
+        QNTool.showPromptView("打开右路窗帘")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":12]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
+    }
+    func longOpen2(){
+        QNTool.showPromptView("长按左路窗帘开")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":14]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
         
     }
+    
     func stop2(sender: UIButton){
-        
+        QNTool.showPromptView("暂停右路窗帘")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":9]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
     }
     func close2(sender: UIButton){
-        
+        QNTool.showPromptView("关闭右路窗帘")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":8]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
+    }
+    func longClose2(){
+        QNTool.showPromptView("长按右路窗帘关")
+        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":10]
+        sockertManger.sendMsg(dict) { (result) in
+            
+        }
     }
 
-
+    func fetchData(){
+        self.data = NSMutableArray()
+        self.data.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 7 {
+                self.data.addObject(element)
+            }
+            
+            print("Device:\(element.address!)", terminator: "");
+        }
+        self.myCustomTableView.reloadData()
+        
+    }
 
 }

@@ -17,12 +17,11 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     var type:Int?
     var device:Device?
     var unAeraDevice:Device?
-    var  address:String?
-    var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
     var sixVC:SixPaternViewController?
     var unAeraVC:UnAeraViewController?
+    var searchButton:UIButton!
     
     
     private(set) var  pictureScrollView:UIScrollView?
@@ -36,25 +35,30 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.fetchData()
+        //Right
+        searchButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
+        searchButton.setImage(UIImage(named: "Manage_Collect_icon"), forState: UIControlState.Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            let d = self.data[self.contentCurrent] as? Device
+            DBManager.shareInstance().updateFav(0, type: (d?.address)!, complete: { (flag) in
+                if flag as! Int == 0 {
+                    QNTool.showPromptView("收藏失败")
+                }else {
+                    QNTool.showPromptView("已收藏")
+                }
+            })
+            return RACSignal.empty()
+            })
+        self.navigationItem.rightBarButtonItem = self.type == 100 ? nil :  UIBarButtonItem(customView: searchButton)
         if self.flag == "0" {
-             self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
+            self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
         }
         if self.flag == "2" {
             self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
         }
-       
-        self.fetchData()
-        //Right
-//        let rightBarButton = UIView(frame: CGRectMake(0, 0, 40, 40)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
-        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
-        searchButton.setImage(UIImage(named: "Manage_Collect_icon"), forState: UIControlState.Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            
-            
-            return RACSignal.empty()
-            })
-//        rightBarButton.addSubview(searchButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +77,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             let arr = (self.pictureScrollView?.subviews)! as NSArray
             for btn in arr {
                 let index = arr.indexOfObject(btn)
-                
                 if index == self.contentCurrent {
                     (btn as! UIButton).backgroundColor = defaultBackgroundGrayColor
                 }else{
@@ -125,7 +128,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         if self.type == 2 {
             self.contentScrollView?.setContentOffset(CGPointMake(screenWidth, 0), animated: true)
         }
-        
+        self.contentCurrent = NSInteger(contentScrollView!.contentOffset.x / screenWidth)
         
     }
     private func buildDataAndUI(){
@@ -166,10 +169,12 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                         (btn as! UIButton).backgroundColor = UIColor.clearColor()
                     }
                 }
-
+                 self.navigationItem.rightBarButtonItem = (self.data[index] as? Device)?.dev_type == 100 ? nil :  UIBarButtonItem(customView: self.searchButton)
+                 self.contentCurrent = NSInteger(self.pictureScrollView!.contentOffset.x / screenWidth)
                 self.contentScrollView?.setContentOffset(CGPointMake(CGFloat(index)*screenWidth, 0), animated: true)
                     return RACSignal.empty()
-                    })
+                
+            })
 
             self.pictureScrollView!.addSubview(button)
           

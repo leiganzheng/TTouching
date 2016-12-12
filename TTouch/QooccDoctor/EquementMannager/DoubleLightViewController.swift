@@ -13,6 +13,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     
     @IBOutlet weak var myCustomTableView: UITableView!
     var device:Device?
+    var data:NSMutableArray!
      var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var sockertManger:SocketManagerTool!
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-      
+      self.fetchData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,7 +37,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.data.count
     }
     
     
@@ -47,7 +48,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
             cell = DoubleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
-        let d = self.device
+        let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color
         let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
@@ -119,10 +120,28 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         
     }
     //MARK:- private method
+    func fetchData(){
+        self.data = NSMutableArray()
+        self.data.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 4 {
+                self.data.addObject(element)
+            }
+            
+            print("Device:\(element.address!)", terminator: "");
+        }
+        self.myCustomTableView.reloadData()
+        
+    }
     func sliderValueChanged(slider: UISlider) {
         //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
         //        let data = slider.value
-        let d = self.device!
+        let tempCell = slider.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
         var dict:NSDictionary = [:]
         let command = 36
         let dev_addr = d.address

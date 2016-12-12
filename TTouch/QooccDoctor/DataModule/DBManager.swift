@@ -130,6 +130,22 @@ class DBManager: NSObject {
 
     }
     // MARK: >> 改
+    func updateFav(fav:Int,type:String,complete:(AnyObject) -> Void) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update T_Device set is_favourited = (?) WHERE address = ? ", fav,type) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+            complete(0)//失败
+        }else{
+            print("修改1条数据成功！: ")
+            complete(1)
+            
+        }
+        dbBase.close();
+        
+    }
+
+    // MARK: >> 改
     func updateName(name:String,type:String) {
         dbBase.open();
         
@@ -226,23 +242,21 @@ class DBManager: NSObject {
     // MARK: >> 查
     func selectData(aera:String) -> String {
         dbBase.open();
-        var temp:String?
-        if let rs = dbBase.executeQuery("select address,dev_type,work_status,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+        var temp:String = ""
+        if let rs = dbBase.executeQuery("select dev_type,dev_name,dev_area,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
                 let dev_type:Int = Int(rs.intForColumn("dev_type"))
                 let dev_area:String = rs.stringForColumn("dev_area")
                 if dev_type == 2 && dev_area == aera {
                     temp = rs.stringForColumn("dev_name")
                 }
-                
             }
         } else {
-            
             print("查询失败 failed: \(dbBase.lastErrorMessage())")
             
         }
         dbBase.close();
-        return temp!
+        return temp
     }
 
     // MARK: >> 保证线程安全

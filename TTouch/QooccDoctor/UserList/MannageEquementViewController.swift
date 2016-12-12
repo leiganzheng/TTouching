@@ -203,6 +203,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         }else if d.dev_type == 6{//六回路开关控制端
             self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
             let tempVc = self.VC as! ThreeOrSixViewController
+            tempVc.flag = true
             tempVc.device = d
             self.navigationController?.pushViewController(tempVc, animated: true)
         }else if d.dev_type == 7{//窗帘控制端

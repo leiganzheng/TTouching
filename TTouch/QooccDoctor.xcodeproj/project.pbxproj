@@ -164,7 +164,6 @@
 		BBCB43E31D3F596C00A997EA /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */; };
 		BBCEA9891B4A104B00A9E478 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */; };
 		BBCEA98D1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */; };
-		BBF275D71D2E003400CAFE99 /* UDPListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF275D61D2E003400CAFE99 /* UDPListener.swift */; };
 		BBF275D91D2E530800CAFE99 /* InSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF275D81D2E530800CAFE99 /* InSocket.swift */; };
 		BBF275DB1D2E531800CAFE99 /* OutSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF275DA1D2E531800CAFE99 /* OutSocket.swift */; };
 /* End PBXBuildFile section */
@@ -351,7 +350,6 @@
 		BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		BBCEA98C1B4A2E9D00A9E478 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
-		BBF275D61D2E003400CAFE99 /* UDPListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPListener.swift; sourceTree = "<group>"; };
 		BBF275D81D2E530800CAFE99 /* InSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InSocket.swift; sourceTree = "<group>"; };
 		BBF275DA1D2E531800CAFE99 /* OutSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutSocket.swift; sourceTree = "<group>"; };
 		BE0462F1F9121DDCE3F3E669 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -465,7 +463,6 @@
 			children = (
 				BB36C1021D17D0B000B5B21E /* CustomDatePickerViewController.swift */,
 				BB2578D21CFD7DCA0037CA9B /* SubCustomView.swift */,
-				BBF275D61D2E003400CAFE99 /* UDPListener.swift */,
 				BBF275D81D2E530800CAFE99 /* InSocket.swift */,
 				BBF275DA1D2E531800CAFE99 /* OutSocket.swift */,
 			);
@@ -994,7 +991,6 @@
 				BB38E8251D2CAD6600190A49 /* MXinFenTableViewCell.swift in Sources */,
 				BB3C45C91B465C46008A1213 /* NSString+AES.m in Sources */,
 				BB319C221D26077A0071F443 /* FMDatabaseAdditions.m in Sources */,
-				BBF275D71D2E003400CAFE99 /* UDPListener.swift in Sources */,
 				BB38E80B1D2CAC3500190A49 /* MCurtainTableViewCell.swift in Sources */,
 				BB3C45F51B465C47008A1213 /* QNFormatTool.swift in Sources */,
 				BB2578D31CFD7DCA0037CA9B /* SubCustomView.swift in Sources */,
