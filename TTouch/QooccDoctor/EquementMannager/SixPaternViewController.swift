@@ -11,11 +11,10 @@ import UIKit
 class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
 
     var data: NSMutableArray!
-    var device:Device?
     var myTableView: UITableView!
     var superVC:UIViewController!
-    var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
+    var equementType: EquementSign?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -242,12 +241,46 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }
 
         }else if self.flag == "2" {
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_type == self.device?.dev_type  {//
-                    self.data.addObject(element)
+            let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            self.data.addObject(noPattern)
+            if self.equementType == .Light {
+                //查
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8  {
+                        self.data.addObject(element)
+                    }
+                    
+                }
+            }
+            if self.equementType == .Curtain {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 7  {
+                        self.data.addObject(element)
+                    }
+                }
+            }
+            if self.equementType == .Action {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 11  {
+                        self.data.addObject(element)
+                    }
                 }
                 
-                print("Device:\(element.address!)", terminator: "");
+            }
+            if self.equementType == .Air {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 12 {
+                        self.data.addObject(element)
+                    }
+                }
             }
         }
         self.myTableView.reloadData()

@@ -19,7 +19,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     private var dataArray: NSMutableArray!
     var data: NSMutableArray = NSMutableArray()
-
     var flags: NSMutableArray!
     var tempButton:UIButton?
     private var tableViewController: UITableViewController!
@@ -176,7 +175,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
                 vc.flag = "0"
                 vc.type = d.dev_type
                 vc.device = d
-                vc.address = d.address
+                vc.unAeraDevice = (self?.data.lastObject)! as? Device
                 self?.navigationController?.pushViewController(vc, animated: true)
                 self?.hidesBottomBarWhenPushed = false
             }

@@ -16,12 +16,14 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     var type:Int?
     var device:Device?
+    var unAeraDevice:Device?
     var  address:String?
     var customTitle:String?
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var equementType: EquementSign?
     var sixVC:SixPaternViewController?
     var unAeraVC:UnAeraViewController?
+    
     
     private(set) var  pictureScrollView:UIScrollView?
     private(set) var  contentScrollView:UIScrollView?
@@ -35,7 +37,10 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.flag == "0" {
-             self.title = self.type == 100 ? "未分区域" :  self.device?.dev_name
+             self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
+        }
+        if self.flag == "2" {
+            self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
         }
        
         self.fetchData()
@@ -98,18 +103,21 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         for  d in self.data {
             let temp = d as! Device
             index = index+1
-            if temp.dev_area == "0"{
+            if temp.dev_type == 100{
                 self.unAeraVC = UnAeraViewController.CreateFromStoryboard("Main") as? UnAeraViewController
-                self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 100))
+                self.unAeraVC?.flag = self.flag
+                self.unAeraVC?.equementType = self.equementType
                 self.unAeraVC?.superVC = self
+                self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 70))
                 self.contentScrollView!.addSubview(self.unAeraVC!.view)
             }
             if temp.dev_type == 2 {
                 self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
                 self.sixVC!.flag = self.flag
-                self.sixVC!.device = self.device
+                self.sixVC?.equementType = self.equementType
                 self.sixVC?.superVC = self
-                self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 100))
+                
+                self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 70))
                 self.contentScrollView!.addSubview(self.sixVC!.view)
             }
             
@@ -121,8 +129,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         
     }
     private func buildDataAndUI(){
-        //数据
-        
         //UIScrollView
         self.pictureScrollView = UIScrollView(frame: CGRectMake(0,0, screenWidth, self.headerView.frame.size.height-1))
         self.pictureScrollView!.bounces = false
@@ -148,14 +154,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             }else{
                  button.backgroundColor = UIColor.clearColor()
             }
-            let temp = d as! Device
-            var data = NSData()
-            if temp.dev_area == "0" {
-                data = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
-            }else{
-                data = (d as! Device).icon_url!
-            }
-            button.setImage(UIImage(data:data) , forState: .Normal)
+            button.setImage(UIImage(data:(d as! Device).icon_url!) , forState: .Normal)
             button.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
                 let arr = (self.pictureScrollView?.subviews)! as NSArray
                 let index = arr.indexOfObject(button)
@@ -185,68 +184,19 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
         self.data = NSMutableArray()
         self.data.removeAllObjects()
         if flag == "0" {
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            for (_, element): (Int, Device) in arr.enumerate(){
-                if self.device?.dev_type == 100 {//未分区
-                    if  element.dev_area == "0" {
-                        self.data.addObject(element)
-                    }
-                }else{
-                    if  element.address == self.address {
-                        self.data.addObject(element)
-                    }
-                }
-            }
-            if self.data.count>1 {
-                self.data.exchangeObjectAtIndex(0, withObjectAtIndex: 1)
-            }
-            self.buildDataAndUI()
-            self.buildUI()
-
+            self.data.addObject(unAeraDevice!)
         }else if flag == "2"{
-            if self.customTitle == "灯光" {
-                //查
-                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-                
-                for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8 || element.dev_type == 100 {
-                        self.data.addObject(element)
-                    }
-                    
-                }
-            }
-            if self.customTitle == "窗帘" {
-                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-                
-                for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 7 || element.dev_type == 100 {
-                        self.data.addObject(element)
-                    }
-                }
-            }
-            if self.customTitle == "动作" {
-                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-                
-                for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 11 || element.dev_type == 100 {
-                        self.data.addObject(element)
-                    }
-                }
-                
-            }
-            if self.customTitle == "空调" {
-                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-                
-                for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 12 || element.dev_type == 100 {
-                        self.data.addObject(element)
-                    }
-                }
-            }
-            self.buildDataAndUI()
-            self.buildUI()
-
+            let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            self.data.addObject(noPattern)
         }
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type == 2 {//六情景
+                self.data.addObject(element)
+            }
+        }
+        self.buildDataAndUI()
+        self.buildUI()
     }
 }

@@ -13,6 +13,8 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     var data: NSMutableArray!
     var myTableView: UITableView!
     var superVC:UIViewController!
+    var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
+    var equementType: EquementSign?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -213,16 +215,60 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
-        //查
-        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
-        for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_area! == "0"{
-                self.data.addObject(element)
+        if flag == "0" {
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            for (_, element): (Int, Device) in arr.enumerate(){
+                if element.dev_area! == "0"{
+                    self.data.addObject(element)
+                }
             }
-            
-            print("Device:\(element.address!)", terminator: "");
+        }else if flag == "2"{
+            let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            self.data.addObject(noPattern)
+            if self.equementType == .Light {
+                //查
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8  {
+                        self.data.addObject(element)
+                    }
+                    
+                }
+            }
+            if self.equementType == .Curtain {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 7  {
+                        self.data.addObject(element)
+                    }
+                }
+            }
+            if self.equementType == .Action {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 11  {
+                        self.data.addObject(element)
+                    }
+                }
+                
+            }
+            if self.equementType == .Air {
+                let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+                for (_, element): (Int, Device) in arr.enumerate(){
+                    if  element.dev_type == 12 {
+                        self.data.addObject(element)
+                    }
+                }
+            }
         }
+
+        
         self.myTableView.reloadData()
         
     }

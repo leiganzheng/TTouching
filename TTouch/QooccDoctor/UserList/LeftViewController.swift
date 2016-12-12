@@ -67,6 +67,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
             vc.equementType = EquementSign.Light
+            vc.type = 100
             vc.flag = "2"
             self.bock!(vc)
         }
@@ -74,6 +75,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
             vc.flag = "2"
+            vc.type = 100
             vc.equementType = EquementSign.Curtain
             self.bock!(vc)
         }
@@ -81,6 +83,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
             let vc = EquementControViewController.CreateFromStoryboard("Main") as! EquementControViewController
             vc.customTitle = self.titles![indexPath.row] as? String
             vc.flag = "2"
+            vc.type = 100
             vc.equementType = EquementSign.Action
             self.bock!(vc)
         }
@@ -89,6 +92,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
             vc.customTitle = self.titles![indexPath.row] as? String
             vc.equementType = EquementSign.Air
             vc.flag = "2"
+            vc.type = 100
             self.bock!(vc)
         }
         if indexPath.row == 4 {
