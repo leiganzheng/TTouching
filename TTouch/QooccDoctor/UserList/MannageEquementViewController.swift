@@ -281,10 +281,10 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let is_favourited = 1
         var image:NSData = NSData()
         if ((tempDic["dev_type"] as? Int) == 1) {//总控
-             image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+             image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
             
         }else if((tempDic["dev_type"] as? Int) == 2){//六情景
-             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+             image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
         }else if((tempDic["dev_type"] as? Int) == 3){//单回路调光
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
@@ -303,8 +303,26 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
            
         }
-        else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
-             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
+        else if((tempDic["dev_type"] as? Int) == 8){//单回路调光控制端(旧版)
+             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 9){//双回路调光控制端(旧版)
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 10){//三/六回路开关控制端
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 11){//干接点
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 12){//空调
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 13){//地暖
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 14){//新风
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
 //        else{

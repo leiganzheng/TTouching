@@ -123,7 +123,9 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        let flag = !(self.flags[indexPath.row] as! Bool)
+        self.flags.replaceObjectAtIndex(indexPath.row, withObject: flag)
+        self.myTableView.reloadData()
     }
     
     //MARK:- private method
