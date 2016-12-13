@@ -43,12 +43,17 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-//           self.fectchData()
-            
-            let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-            QNTool.enterRootViewController(vc, animated: true)
+            for temp in self.flags {
+                if (temp as! Bool) == true {
+                    let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+                    QNTool.enterRootViewController(vc, animated: true)
+                }else{
+                    QNTool.showPromptView("请选择网关")
+                    break
+                }
+            }
             return RACSignal.empty()
-            })
+        })
         self.view.addSubview(searchButton)
         
         
@@ -74,11 +79,26 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataS.count
+        return dataS.count == 0 ? 1: self.dataS.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if self.dataS.count==0 {
+            let cellIdentifier = "Cell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            if cell == nil {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+            }
+            tableView.separatorStyle = .None
+            let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,48))
+            lb.text = "暂无数据"
+            lb.textAlignment = .Center
+            cell.contentView.addSubview(lb)
+            return cell
+        }else{
+
         let cellId = "cell"
         var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
@@ -105,17 +125,24 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         lb.backgroundColor = defaultBackgroundGrayColor
         cell.contentView.addSubview(lb)
         return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        for index in 0 ..< 3 {
-            if index == indexPath.row {
-                self.flags.replaceObjectAtIndex(index, withObject: true)
-            }else{
-                self.flags.replaceObjectAtIndex(index, withObject: false)
+        if self.flags.count == 1 {
+            self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
+        }else {
+            for index in 0 ..< self.flags.count {
+                if index == indexPath.row {
+                    self.flags.replaceObjectAtIndex(index, withObject: true)
+                }else{
+                    self.flags.replaceObjectAtIndex(index, withObject: false)
+                }
             }
+
         }
+        
         self.myTableView.reloadData()
     }
     //MARK:- private method
@@ -162,8 +189,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         dict.setValue(detail, forKey: tempName)
         
         DBManager.shareInstance().ip = ip
-        self.dataS.addObject(dict);
-        self.flags.addObject(true)
+        self.dataS.addObject(dict)
+        self.flags.addObject(false)
         self.myTableView.reloadData()
         self.test()
 
