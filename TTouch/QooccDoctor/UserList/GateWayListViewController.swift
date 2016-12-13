@@ -164,7 +164,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.dataS.addObject(dict);
         self.flags.addObject(true)
         self.myTableView.reloadData()
-        print("ip:\(ip)&&mac:\(macAddress)&&version:\(version)&&name:\(tempName)")
+//        print("ip:\(ip)&&mac:\(macAddress)&&version:\(version)&&name:\(tempName)")
 
     }
     func fectchData() {

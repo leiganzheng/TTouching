@@ -12,7 +12,7 @@ import ReactiveCocoa
 class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate{
 
     var data: NSMutableArray!
-
+    var flags: NSMutableArray!
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,39 +32,93 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchData()
+    }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 72
+        if self.flags.count == 0 {
+            return 72
+        }else{
+            let temp = self.flags[indexPath.row] as! Bool
+            return temp == true ? 260 : 72
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return self.data.count == 0 ? 1 : self.data.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellId = "cell"
-        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            //            cell.accessoryType = .DisclosureIndicator
-        }
-        let d = self.data[indexPath.row] as? Device
-        cell.textLabel?.text = d?.dev_name!
-        
-        let searchButton:UIButton = UIButton(type: .Custom)
-        searchButton.frame = CGRectMake(0, 0, 40, 40)
-        searchButton.setImage(UIImage(named: "Manage_Collect_icon2"), forState: .Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            if d?.is_favourited == 0 {
-                self?.data.removeObject(d!)
+        if self.data.count == 0 {
+            let cellIdentifier = "Cell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            if cell == nil {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
-            self?.myTableView .reloadData()
-        return RACSignal.empty()
-        })
-        cell.accessoryView = searchButton
-        return cell
+            tableView.separatorStyle = .None
+            let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
+            lb.text = "暂无数据"
+            lb.textAlignment = .Center
+            cell.contentView.addSubview(lb)
+            return cell
+        }else{
+             tableView.separatorStyle = .SingleLine
+            let cellIdentifier = "UserTableViewCell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserTableViewCell!
+            if cell == nil {
+                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! UserTableViewCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.Default
+            }
+            let d = self.data[indexPath.row] as! Device
+            cell.name.text = d.dev_name!
+            
+            let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
+            
+            
+            logoButton.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
+            cell.contentView.addSubview(logoButton)
+            
+            let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
+            searchButton.setImage(UIImage(named: "Manage_Collect_icon2"), forState: UIControlState.Normal)
+            searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+                DBManager.shareInstance().updateFav(1, type: (d.address)!, complete: { (flag) in
+                    if flag as! Int == 0 {
+                        QNTool.showPromptView("取消收藏失败")
+                    }else {
+                        QNTool.showPromptView("已取消")
+                        if d.is_favourited == 0 {
+                            self?.data.removeObject(d)
+                        }
+                        self?.myTableView .reloadData()
+                    }
+                })
+                return RACSignal.empty()
+                })
+            cell.contentView.addSubview(searchButton)
+            searchButton.hidden = d.dev_type == 1
+            
+            let temp = self.flags[indexPath.row] as! Bool
+            
+            if temp {
+                let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+                v.tag = indexPath.row + 100
+                v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+                cell.contentView.addSubview(v)
+                cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
+                cell.addLine(16, y: 188, width: screenWidth-32, height: 1)
+                cell.addLine(0, y: 258, width: screenWidth, height: 1)
+            }else{
+                let tempV = cell.contentView.viewWithTag(indexPath.row+100)
+                tempV?.removeFromSuperview()
+                
+            }
+            cell.addLine(0, y: 71, width: screenWidth, height: 1)
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -76,12 +130,15 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
+        self.flags = NSMutableArray()
+        self.flags.removeAllObjects()
         //查
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
             if element.is_favourited == 0 {
                 self.data.addObject(element)
+                 self.flags.addObject(false)
             }
             
         }

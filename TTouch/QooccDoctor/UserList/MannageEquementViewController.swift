@@ -25,7 +25,6 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         super.viewDidLoad()
         self.title = "设备管理"
 //        self.fetchData()
-        
         self.test()
     }
 
@@ -40,47 +39,61 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
         return 72
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return self.data.count == 0 ? 1 : self.data.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellId = "cell"
-        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            
-        }else{
-            while (cell.contentView.subviews.last != nil) {
-                (cell.contentView.subviews.last! as UIView).removeFromSuperview()  //删除并进行重新分配
+        if self.data.count==0 {
+            let cellIdentifier = "Cell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            if cell == nil {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
-        }
-        let d = self.data[indexPath.row] as! Device
-        
-
-        let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
-        logoButton.setTitle(d.dev_name!, forState: .Normal)
-        logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        logoButton.titleLabel?.textAlignment = .Left
-        logoButton.contentHorizontalAlignment = .Left
-        logoButton.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0)
-        cell.contentView.addSubview(logoButton)
-        
-        let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
-        logoButton1.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
-      
-        cell.contentView.addSubview(logoButton1)
-        let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
-        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            self.selectPatte(d)
-            return RACSignal.empty()
+            tableView.separatorStyle = .None
+            let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
+            lb.text = "暂无数据"
+            lb.textAlignment = .Center
+            cell.contentView.addSubview(lb)
+            return cell
+        }else {
+            let cellId = "cell"
+            var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+                
+            }else{
+                while (cell.contentView.subviews.last != nil) {
+                    (cell.contentView.subviews.last! as UIView).removeFromSuperview()  //删除并进行重新分配
+                }
+            }
+            let d = self.data[indexPath.row] as! Device
+            
+            
+            let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 120, 44))
+            logoButton.setTitle(d.dev_name!, forState: .Normal)
+            logoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            logoButton.titleLabel?.textAlignment = .Left
+            logoButton.contentHorizontalAlignment = .Left
+            logoButton.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0)
+            cell.contentView.addSubview(logoButton)
+            
+            let logoButton1:UIButton = UIButton(frame: CGRectMake(screenWidth/2-22, 12, 44, 44))
+            logoButton1.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
+            
+            cell.contentView.addSubview(logoButton1)
+            let searchButton:UIButton = UIButton(frame: CGRectMake(screenWidth-44, 12, 44, 44))
+            searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
+            searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+                self.selectPatte(d)
+                return RACSignal.empty()
             })
-        cell.contentView.addSubview(searchButton)
-        return cell
+            cell.contentView.addSubview(searchButton)
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
