@@ -13,6 +13,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
 
     var collectionView:UICollectionView?
     var flag: NSInteger?
+    var device:Device?
     var data:NSArray? {
         didSet {
             self.updateLayerFrames()
@@ -55,16 +56,65 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     //实现UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-//        NSLog("cell")
-        //总控
-//         let dict = ["command": 36,"dev_addr" : 0,"dev_type":1,"work_status":17]
-//        let sockertManger = SocketManagerTool()
-//        sockertManger.sendMsg(dict)
-        
-//        //六情景
-//        let dict = ["command": 36,"dev_addr" : 24606,"dev_type":2,"work_status":97]
-//        let sockertManger = SocketManagerTool()
-//        sockertManger.sendMsg(dict)
+        if self.device?.dev_type == 1 {
+            let command:Int = 36
+            let dev_addr:String = (device?.address)!
+            let dev_type:Int = (device?.dev_type)!
+            if indexPath.row == 0 {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":17]
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 1) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":18]
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 2) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":19]
+                
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 3) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":20]
+                
+                QNTool.openSence(dict)
+
+            }else if(indexPath.row == 4) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":21]
+                
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 5) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":31]
+                
+                QNTool.openSence(dict)
+            }
+            
+        }else if(self.device?.dev_type == 2){
+            let command:Int = 36
+            let dev_addr:String = (device?.address)!
+            let dev_type:Int = (device?.dev_type)!
+            if indexPath.row == 0 {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":97]
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 1) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":98]
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 2) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":99]
+                
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 3) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":100]
+                
+                QNTool.openSence(dict)
+                
+            }else if(indexPath.row == 4) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":110]
+                
+                QNTool.openSence(dict)
+            }else if(indexPath.row == 5) {
+                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":111]
+                
+                QNTool.openSence(dict)
+            }
+
+        }
 
     }
     func updateLayerFrames() {

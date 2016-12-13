@@ -101,12 +101,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         leftBarButton.addSubview(searchButton1)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         self.customNavView()
-        self.fetchData()
-//        let tap = UITapGestureRecognizer(target: self, action: "tap")
-    }
-    func tap() {
         
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -115,6 +112,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        self.fetchData()
     }
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
@@ -128,6 +126,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cellIdentifier = "UserTableViewCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UserTableViewCell!
         if cell == nil {
@@ -136,11 +135,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         }
         let d = self.data[indexPath.row] as! Device
         cell.name.text = d.dev_name!
-        
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
-
-        
-        logoButton.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
+        logoButton.setImage(UIImage(data:d.icon_url!), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.tempButton = input as? UIButton
             let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
@@ -189,6 +185,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         if temp {
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
              v.tag = indexPath.row + 100
+            v.device = d
              v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
             cell.contentView.addSubview(v)
             cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
@@ -247,10 +244,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
                 self.flags.addObject(false)
             }
         }
-        let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
-        let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
-        self.data.addObject(noPattern)
-        self.flags.addObject(false)
+        if self.data.count != 0 {
+            let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            self.data.addObject(noPattern)
+            self.flags.addObject(false)
+        }
         self.myTableView.reloadData()
         
     }

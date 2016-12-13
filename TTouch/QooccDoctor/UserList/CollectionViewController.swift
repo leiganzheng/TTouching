@@ -77,8 +77,6 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
             cell.name.text = d.dev_name!
             
             let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
-            
-            
             logoButton.setImage(UIImage(data: d.icon_url!), forState: UIControlState.Normal)
             cell.contentView.addSubview(logoButton)
             
@@ -106,6 +104,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
             if temp {
                 let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
                 v.tag = indexPath.row + 100
+                v.device = d
                 v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
                 cell.contentView.addSubview(v)
                 cell.addLine(16, y: 126, width: screenWidth-32, height: 1)

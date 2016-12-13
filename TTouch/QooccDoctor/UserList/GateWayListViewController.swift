@@ -165,8 +165,184 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.dataS.addObject(dict);
         self.flags.addObject(true)
         self.myTableView.reloadData()
+        self.test()
 
     }
+    func  test(){
+        
+        let d :NSDictionary = [
+            "command": 30,
+            "Device Information": [
+                [
+                    "dev_addr": "0",
+                    "dev_type": 1,
+                    "work_status": 31,
+                    "dev_name": "总控设备",
+                    "dev_status": 1,
+                    "dev_area": "0"
+                ],
+                [
+                    "dev_addr": "13014",
+                    "dev_type": 2,
+                    "work_status": 111,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "32881",
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "41749",
+                    "dev_type": 6,
+                    "work_status": 42,
+                    "dev_name": "6回路开关",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "13358",
+                    "dev_type": 5,
+                    "work_status": 2,
+                    "dev_name": "3回路开关",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "673",
+                    "dev_type": 7,
+                    "work_status": 17,
+                    "dev_name": "窗帘控制",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "25988",
+                    "dev_type": 4,
+                    "work_status": 0,
+                    "dev_name": "双回路调光",
+                    "dev_status": 1,
+                    "dev_area": "13014"
+                ],
+                [
+                    "dev_addr": "38585",
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": "0"
+                ]
+            ]
+        ]
+        
+        let devices = d.objectForKey("Device Information") as! NSArray
+        if (devices.count == 0) {
+//            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+        }else{
+//            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            for tempDict in devices {
+                self.exeDB(tempDict as! NSDictionary)
+            }
+            
+        }
+        
+    }
+    func exeDB(tempDic:NSDictionary){
+        var dev:Device? = nil
+        let addr = tempDic["dev_addr"] as? String
+        let dev_type = tempDic["dev_type"] as? Int
+        let work_status = tempDic["work_status"] as? Int
+        let name = tempDic["dev_name"] as? String
+        let dev_area = tempDic["dev_area"] as? String
+        let dev_status = tempDic["dev_status"] as? Int
+        let belong_area = tempDic["dev_area"] as? String
+        let is_favourited = 1
+        var image:NSData = NSData()
+        if ((tempDic["dev_type"] as? Int) == 1) {//总控
+            image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 2){//六情景
+            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 3){//单回路调光
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 6){//6回路开关
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_6ch-roads_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 5){//3回路开关
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
+            
+        }
+        else if((tempDic["dev_type"] as? Int) == 7){//窗帘控制
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
+            
+        }
+        else if((tempDic["dev_type"] as? Int) == 8){//单回路调光控制端(旧版)
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 9){//双回路调光控制端(旧版)
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 10){//三/六回路开关控制端
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 11){//干接点
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 12){//空调
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 13){//地暖
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }else if((tempDic["dev_type"] as? Int) == 14){//新风
+            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            
+        }
+ 
+        dev = Device(address: addr, dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: image)
+        
+        if dev != nil {
+            //创建表
+            DBManager.shareInstance().createTable("T_Device")
+            //查
+            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+            DBManager.shareInstance().add(dev!);
+        }
+        
+    }
+    func fetchList(){
+//        QNTool.showActivityView("获取设备、、、")
+        let dict = ["command": 30]
+        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+            NSLog("结果：\(dict)" )
+            QNTool.hiddenActivityView()
+            let d = result as! NSDictionary
+            let devices = d.objectForKey("Device Information") as! NSArray
+            if (devices.count == 0) {
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+            }else{
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                for tempDict in devices {
+                    self.exeDB(tempDict as! NSDictionary)
+                }
+                
+                self.myTableView.reloadData()
+                
+            }
+        })
+    }
+
+
     func fectchData() {
         let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
         let tempData:NSData = NSData(bytes: dataArr, length: 84)

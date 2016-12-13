@@ -258,7 +258,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         }else if self.flag == "2" {
             let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
             let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
-            self.data.addObject(noPattern)
+//            self.data.addObject(noPattern)
             if self.equementType == .Light {
                 //查
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()

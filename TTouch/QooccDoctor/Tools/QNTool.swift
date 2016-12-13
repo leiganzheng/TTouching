@@ -367,6 +367,47 @@ extension QNTool {
         
     }
 }
+//MARK: - 
+extension QNTool {
+   class func openSence(dict: NSDictionary) {
+        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+            print(dict)
+            let d = result as! NSDictionary
+            let status = d.objectForKey("work_status") as! NSNumber
+            if (status == 17){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景一！")
+            }else if(status == 18){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景二！")
+            }else if (status == 19){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景三！")
+            }else if (status == 20){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景四！")
+            }else if (status == 21){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景五！")
+            }else if (status == 31){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
+            }else if(status == 97){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+            }else if (status == 98){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景二！")
+            }else if (status == 99){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景三！")
+            }else if (status == 100){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景四！")
+            }else if (status == 110){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启所有设备！")
+            }else if (status == 111){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
+            }
+            else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+            }
+            
+        })
+    }
+
+}
+
 // MARK: -
 
 
