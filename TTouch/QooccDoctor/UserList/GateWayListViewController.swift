@@ -15,10 +15,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var myTableView: UITableView! {
         return self.tableViewController?.tableView
     }
-    var inSocket : InSocket!
     var outSocket : OutSocket!
     var flags:NSMutableArray = []
     var dataS:NSMutableArray = []
+    var flag = true
     var searchButton:UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,11 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         //列表创建
         self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
         self.tableViewController.refreshControl = UIRefreshControl()
-        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
-            self?.fectchData()
-            })
+//        self.tableViewController.refreshControl?.rac_signalForControlEvents(UIControlEvents.ValueChanged).subscribeNext({ [weak self](input) -> Void in
+//            self?.fectchData()
+//            })
+        self.tableViewController.refreshControl?.addTarget(self, action: #selector(GateWayListViewController.pullData), forControlEvents: UIControlEvents.ValueChanged)
+//        self.tableViewController.refreshControl?.attributedTitle = NSAttributedString(string: "下拉刷新数据")
         self.myTableView.frame = CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 48)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
@@ -57,14 +59,15 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.view.addSubview(searchButton)
         
         
-       self.tableViewController.refreshControl?.beginRefreshing()
         //局域网内搜索网关
         outSocket = OutSocket()
         self.fectchData()
 //        self.exeDB()
 
     }
-
+    func pullData(){
+        self.fectchData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,11 +78,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UserTableViewCell.height
+        return dataS.count == 0 ? 0 : UserTableViewCell.height
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataS.count == 0 ? 1: self.dataS.count
+        if flag == true {
+            return 0
+        }
+        return dataS.count == 0 ? 1 : self.dataS.count
     }
     
     
@@ -93,7 +99,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,48))
-            lb.text = "暂无数据"
+            lb.text = "暂无数据,下拉重试"
+            lb.textColor = UIColor.lightGrayColor()
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)
             return cell
@@ -191,6 +198,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         DBManager.shareInstance().ip = ip
         self.dataS.addObject(dict)
         self.flags.addObject(false)
+        self.flag = false
         self.myTableView.reloadData()
 //        self.test()
         self.fetchList()
@@ -387,9 +395,19 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)
+        self.tableViewController.refreshControl?.beginRefreshing()
         self.outSocket.send(data, complete: { (result) in
-            self.paraterData(result as! NSData)
+            if result is NSData {
+                self.paraterData(result as! NSData)
+            }
             self.tableViewController.refreshControl?.endRefreshing()
         })
+        let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let time = dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC))
+        dispatch_after(time, globalQueue) { () -> Void in
+            self.flag = false
+            self.myTableView.reloadData()
+            self.tableViewController.refreshControl?.endRefreshing()
+        }
     }
 }
