@@ -360,7 +360,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        QNTool.showActivityView("获取设备、、、")
         let dict = ["command": 30]
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-            NSLog("结果：\(dict)" )
+//            NSLog("结果：\(dict)" )
             QNTool.hiddenActivityView()
             let d = result as! NSDictionary
             let devices = d.objectForKey("Device Information") as! NSArray

@@ -108,7 +108,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 let jsonObject = try  NSJSONSerialization.JSONObjectWithData(tempData!, options: NSJSONReadingOptions.MutableContainers)
                 var dictionary = jsonObject as? NSDictionary
                 if dictionary == nil {  // Json解析结果出错
-                    NSLog("JSON解析错误")
+                    print("JSON解析错误")
                     
                 }else{
                     self.SBlock!(dictionary!)
@@ -124,7 +124,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 // 直接出错了
                 if self.SBlock != nil {
                     self.SBlock!("")
-                    NSLog("直接出错了")
+                    print("直接出错了")
                 }
             }
         }else{
@@ -137,7 +137,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(tempData!, options: NSJSONReadingOptions.AllowFragments)
                 var dictionary = jsonObject as? NSDictionary
                 if dictionary == nil {  // Json解析结果出错
-                    NSLog("JSON解析错误")
+                    print("JSON解析错误")
                     
                 }else{
                     self.SBlock!(dictionary!)
@@ -152,7 +152,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 // 直接出错了
                 if self.SBlock != nil {
                     self.SBlock!("")
-                    NSLog("直接出错了")
+                    print("直接出错了")
                 }
             }
         }

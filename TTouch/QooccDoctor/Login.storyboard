@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sob-MV-Xfz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sob-MV-Xfz">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -29,11 +29,11 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-dB-V9r">
-                                        <rect key="frame" x="21" y="151" width="68" height="16"/>
+                                        <rect key="frame" x="21" y="151" width="85" height="16"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="1ZL-2r-b9T"/>
-                                            <constraint firstAttribute="width" constant="68" id="DRs-K0-cmi"/>
+                                            <constraint firstAttribute="width" constant="85" id="DRs-K0-cmi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="繁体中文" image="navigation_Options_icon">
@@ -48,7 +48,7 @@
                                         <rect key="frame" x="127" y="151" width="68" height="16"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="68" id="XPq-nJ-C1y"/>
+                                            <constraint firstAttribute="width" constant="85" id="XPq-nJ-C1y"/>
                                             <constraint firstAttribute="height" constant="16" id="YNQ-d9-Ix7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -92,10 +92,10 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boe-WW-1Lg">
-                                                <rect key="frame" x="200" y="134" width="68" height="16"/>
+                                                <rect key="frame" x="193" y="134" width="75" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="68" id="6Bs-0Q-de9"/>
+                                                    <constraint firstAttribute="width" constant="75" id="6Bs-0Q-de9"/>
                                                     <constraint firstAttribute="height" constant="16" id="Zea-ZB-u38"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -128,11 +128,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTk-3I-g0b">
-                                                <rect key="frame" x="8" y="134" width="68" height="20"/>
+                                                <rect key="frame" x="8" y="134" width="100" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="YRQ-gg-EOC"/>
-                                                    <constraint firstAttribute="width" constant="68" id="s2T-bj-eGM"/>
+                                                    <constraint firstAttribute="width" constant="100" id="s2T-bj-eGM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="记住密码" image="navigation_Options_icon">
@@ -212,8 +212,8 @@
                                             <action selector="loginAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="wc7-UK-o87"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9v-rC-xj3">
-                                        <rect key="frame" x="206" y="443" width="100" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9v-rC-xj3">
+                                        <rect key="frame" x="205" y="443" width="100" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="MH2-zj-cQR"/>

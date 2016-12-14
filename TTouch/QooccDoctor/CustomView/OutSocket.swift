@@ -50,7 +50,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
             
         } catch {
             // deal with error
-            NSLog("error")
+//            NSLog("error")
         }
       
     }
