@@ -267,12 +267,12 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let dict = ["command": 31,"save_dev": save_dev]
         self.sockertManger.sendMsg(dict, completion: { (result) in
             let d = result as! NSDictionary
-//            let status = d.objectForKey("work_status") as! NSNumber
-//            if (status == 97){
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-//            }else{
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-//            }
+            let status = d.objectForKey("status") as! NSNumber
+            if (status == 1){
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
+            }else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+            }
         })
 
 

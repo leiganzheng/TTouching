@@ -171,8 +171,10 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
             let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
-                let save_dev = [["dev_addr": dev_addr,"dev_type": dev_type,"dev_name": "总控"]]
-                QNTool.modifyEqument(save_dev)
+                if textField.text != nil {
+                    let save_dev = [["dev_addr": dev_addr,"dev_type": dev_type,"dev_name": textField.text!]]
+                    QNTool.modifyEqument(save_dev)
+                }
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 

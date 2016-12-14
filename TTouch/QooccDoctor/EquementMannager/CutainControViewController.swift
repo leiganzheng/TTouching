@@ -73,10 +73,9 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
-                    DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
+                    let save_dev = [["dev_addr": (d?.address)!,"dev_type": (d?.dev_type)!,"dev_name": textField.text!]]
+                    QNTool.modifyEqument(save_dev)
                 }
-                let save_dev = [["dev_addr": 28411,"dev_type": 7,"dev_name": "窗帘控制端"]]
-                QNTool.modifyEqument(save_dev)
                 
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
