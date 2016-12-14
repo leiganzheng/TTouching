@@ -126,9 +126,15 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             
         }
         if self.type == 2 {
-            self.contentScrollView?.setContentOffset(CGPointMake(screenWidth, 0), animated: true)
+            for d in self.data{
+                let temp = d as! Device
+                if self.device?.address == temp.address {
+                    self.contentCurrent = self.data.indexOfObject(d)
+                      self.contentScrollView?.setContentOffset(CGPointMake(screenWidth*CGFloat(self.contentCurrent), 0), animated: true)
+                }
+            }
+          
         }
-        self.contentCurrent = NSInteger(contentScrollView!.contentOffset.x / screenWidth)
         
     }
     private func buildDataAndUI(){
@@ -162,6 +168,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                 let arr = (self.pictureScrollView?.subviews)! as NSArray
                 let index = arr.indexOfObject(button)
                 self.title = (self.data[index] as? Device)?.dev_name
+                self.contentCurrent = index
                 for btn in arr {
                     if btn as! NSObject == button {
                         (btn as! UIButton).backgroundColor = defaultBackgroundGrayColor
@@ -170,7 +177,6 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                     }
                 }
                  self.navigationItem.rightBarButtonItem = (self.data[index] as? Device)?.dev_type == 100 ? nil :  UIBarButtonItem(customView: self.searchButton)
-                 self.contentCurrent = NSInteger(self.pictureScrollView!.contentOffset.x / screenWidth)
                 self.contentScrollView?.setContentOffset(CGPointMake(CGFloat(index)*screenWidth, 0), animated: true)
                     return RACSignal.empty()
                 

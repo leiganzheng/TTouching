@@ -23,6 +23,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
+
     }
     
     required init(coder: NSCoder) {
@@ -47,6 +48,11 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         
         button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
         cell.contentView.addSubview(button)
+        button.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            if self.flag == 1 {return RACSignal.empty()}
+            self.sendCommand(indexPath)
+            return RACSignal.empty()
+        })
         return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -56,6 +62,9 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     //实现UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
+        
+    }
+    func sendCommand(indexPath:NSIndexPath){
         if self.device?.dev_type == 1 {
             let command:Int = 36
             let dev_addr:String = (device?.address)!
@@ -74,7 +83,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":20]
                 
                 QNTool.openSence(dict)
-
+                
             }else if(indexPath.row == 4) {
                 let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":21]
                 
@@ -113,7 +122,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 
                 QNTool.openSence(dict)
             }
-
+            
         }
 
     }
@@ -123,7 +132,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         let layout = UICollectionViewFlowLayout()
         self.collectionView = UICollectionView(frame: CGRectMake(0, 0, screenWidth, height), collectionViewLayout: layout)
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-            self.collectionView!.delegate = self;
+        self.collectionView!.delegate = self;
         self.collectionView!.dataSource = self;
         
         self.collectionView!.backgroundColor = UIColor.whiteColor()

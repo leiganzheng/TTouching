@@ -77,6 +77,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.changeLanguage), name: "changeLanguage", object: nil)
+        
     }
 
     override func viewWillAppear(animated: Bool) {

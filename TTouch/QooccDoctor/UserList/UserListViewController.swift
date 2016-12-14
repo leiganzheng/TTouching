@@ -101,7 +101,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         leftBarButton.addSubview(searchButton1)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         self.customNavView()
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -186,6 +186,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
              v.tag = indexPath.row + 100
             v.device = d
+            v.flag = 0
              v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
             cell.contentView.addSubview(v)
             cell.addLine(16, y: 126, width: screenWidth-32, height: 1)

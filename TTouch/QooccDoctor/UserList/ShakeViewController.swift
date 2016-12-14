@@ -41,9 +41,11 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         self.myCustomView.separatorColor = defaultBackgroundGrayColor
         
         self.zoneSubView = SubCustomView(frame: CGRectMake(0,0,screenWidth,150))
+        self.zoneSubView?.flag = 1
         self.zoneSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
         
         self.screenSubView = SubCustomView(frame: CGRectMake(0,0,screenWidth,150))
+        self.screenSubView?.flag = 1
         self.screenSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
         
         self.becomeFirstResponder()

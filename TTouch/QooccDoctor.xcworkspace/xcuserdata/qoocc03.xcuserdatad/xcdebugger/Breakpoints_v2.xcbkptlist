@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/ShakeViewController.swift"
-            timestampString = "486720583.699104"
+            timestampString = "503371011.727591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "ShakeViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -179,7 +179,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "fectchData()"
+            landmarkName = "paraterData(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -286,11 +286,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/GateWayListViewController.swift"
-            timestampString = "503307989.003948"
+            timestampString = "503367824.348339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251">
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "test()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -385,7 +387,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "paraterData(_:)"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -412,7 +414,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Login/LoginViewController.swift"
-            timestampString = "502941394.31475"
+            timestampString = "503371011.727591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -568,15 +570,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Login/LoginViewController.swift"
-            timestampString = "502943853.872016"
+            timestampString = "503371011.727591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "changeLanguage()"
             landmarkType = "5">
          </BreakpointContent>
@@ -593,7 +595,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "378"
             endingLineNumber = "378"
-            landmarkName = "initUserLanguage()"
+            landmarkName = "openSence(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -609,23 +611,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "400"
             endingLineNumber = "400"
-            landmarkName = "userLanguage()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "503203009.552343"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
-            landmarkName = "setUserLanguage(_:)"
+            landmarkName = "openSence(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -636,7 +622,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Login/LoginViewController.swift"
-            timestampString = "502943284.942951"
+            timestampString = "503371011.727591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -689,7 +675,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "392"
             endingLineNumber = "392"
-            landmarkName = "initUserLanguage()"
+            landmarkName = "openSence(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -705,7 +691,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "392"
             endingLineNumber = "392"
-            landmarkName = "initUserLanguage()"
+            landmarkName = "openSence(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -732,11 +718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/EquementControViewController.swift"
-            timestampString = "503221101.867564"
+            timestampString = "503372774.3578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "fetchData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -748,11 +734,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/UserList/EquementControViewController.swift"
-            timestampString = "503221101.867564"
+            timestampString = "503372774.3578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "fetchData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -770,6 +756,22 @@
             startingLineNumber = "135"
             endingLineNumber = "135"
             landmarkName = "sliderValueChanged(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/CustomView/SubCustomView.swift"
+            timestampString = "503371032.601627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "sendCommand(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
