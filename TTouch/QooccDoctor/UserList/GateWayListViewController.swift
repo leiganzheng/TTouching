@@ -200,8 +200,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             self.flags.addObject(false)
             self.flag = false
             self.myTableView.reloadData()
-                    self.test()
-//            self.fetchList()
+//                    self.test()
+            self.fetchList()
         }
 
     }
@@ -294,13 +294,13 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     func exeDB(tempDic:NSDictionary){
         var dev:Device? = nil
-        let addr = tempDic["dev_addr"] as? Int
-        let dev_type = tempDic["dev_type"] as? Int
-        let work_status = tempDic["work_status"] as? Int
+        let addr = tempDic["dev_addr"] as! Int
+        let dev_type = tempDic["dev_type"] as! Int
+        let work_status = tempDic["work_status"] as! Int
         let name = tempDic["dev_name"] as? String
-        let dev_area = tempDic["dev_area"] as? Int
-        let dev_status = tempDic["dev_status"] as? Int
-        let belong_area = tempDic["dev_area"] as? Int
+        let dev_area = tempDic["dev_area"] as! Int
+        let dev_status = tempDic["dev_status"] as! Int
+        let belong_area = tempDic["dev_area"] as! Int
         let is_favourited = 1
         var image:NSData = NSData()
         if ((tempDic["dev_type"] as? Int) == 1) {//总控
@@ -348,15 +348,13 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
-        let dd = String(addr) as String
-        let ard = String(dev_area) as String
         dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {
             //创建表
             DBManager.shareInstance().createTable("T_Device")
             //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+//            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
             DBManager.shareInstance().add(dev!);
         }
         
@@ -385,19 +383,19 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-        self.paraterData(tempData)
+//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+//        self.paraterData(tempData)
         //UDP 广播,发送广播
-//        let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
-//        let data = NSData(bytes: bytes, length: 4)
-//        
-//        self.outSocket.send(data, complete: { (result) in
-//            if result is NSData {
-//                self.paraterData(result as! NSData)
-//            }
-//            self.tableViewController.refreshControl?.endRefreshing()
-//        })
+        let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+        let data = NSData(bytes: bytes, length: 4)
+        
+        self.outSocket.send(data, complete: { (result) in
+            if result is NSData {
+                self.paraterData(result as! NSData)
+            }
+            self.tableViewController.refreshControl?.endRefreshing()
+        })
         let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         let time = dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC))
         dispatch_after(time, globalQueue) { () -> Void in

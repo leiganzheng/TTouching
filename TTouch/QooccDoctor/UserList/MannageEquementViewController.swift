@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -284,13 +284,13 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 
     func exeDB(tempDic:NSDictionary){
         var dev:Device? = nil
-        let addr = tempDic["dev_addr"] as? Int
-        let dev_type = tempDic["dev_type"] as? Int
-        let work_status = tempDic["work_status"] as? Int
+        let addr = tempDic["dev_addr"] as! Int
+        let dev_type = tempDic["dev_type"] as! Int
+        let work_status = tempDic["work_status"] as! Int
         let name = tempDic["dev_name"] as? String
-        let dev_area = tempDic["dev_area"] as? Int
-        let dev_status = tempDic["dev_status"] as? Int
-        let belong_area = tempDic["dev_area"] as? Int
+        let dev_area = tempDic["dev_area"] as! Int
+        let dev_status = tempDic["dev_status"] as! Int
+        let belong_area = tempDic["dev_area"] as! Int
         let is_favourited = 1
         var image:NSData = NSData()
         if ((tempDic["dev_type"] as? Int) == 1) {//总控
