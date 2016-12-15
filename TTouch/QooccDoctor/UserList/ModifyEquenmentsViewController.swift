@@ -14,9 +14,12 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
 
     var sockertManger:SocketManagerTool!
     
+    @IBOutlet weak var newPas: UITextField!
+    @IBOutlet weak var oldpass: UITextField!
+    @IBOutlet weak var newMpas: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "设备管理"
+        self.title = "修改设备管理密码"
         self.sockertManger = SocketManagerTool.shareInstance()
     }
 
@@ -26,24 +29,53 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
     }
     
     //MARK:- private method
-    func sendMsg() {
-        
-        // 1.处理请求，返回数据给客户端 ok
-        let dict = ["command": 33,"permit_old" : "654321","permit_ new":"123456"]
-        self.sockertManger.sendMsg(dict, completion: { (result) in
-            let d = result as! NSDictionary
-//            let status = d.objectForKey("work_status") as! NSNumber
-//            if (status == 97){
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-//            }else{
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-//            }
-        })
+    @IBAction func saveAction(sender: AnyObject) {
+        if !self.checkAccountPassWord() {
+            return
+        }
+        if self.newPas.text == self.newMpas.text {
+            let dict = ["command": 33,"permit_old" : self.oldpass.text!,"permit_ new":self.newPas.text!]
+            self.sockertManger.sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("status") as! Int
+                if (status == 1){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
+                }else if(status  == -1){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "旧密码错误！")
+                }else if(status  == -2){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "字符数不正确！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+                }
+            })
+
+        }else{
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "两次输入密码不一样！")
+        }
         
     }
-    //连接服务器按钮事件
-    func fectchData() {
+    private func checkAccountPassWord() -> Bool {
+        if (self.oldpass.text?.characters.count == 0 && self.newPas.text?.characters.count == 0 && self.newMpas.text?.characters.count == 0) {
+            QNTool.showPromptView("请输入内容")
+            self.oldpass.becomeFirstResponder()
+            return false
+        }else if(self.oldpass.text?.characters.count == 0) {
+            QNTool.showPromptView("请输入密码")
+            self.oldpass.becomeFirstResponder()
+            return false
+            
+        }else if (self.newPas.text?.characters.count == 0){
+            QNTool.showPromptView("请输入新密码")
+            self.newPas.becomeFirstResponder()
+            return false
+        }else if (self.newMpas.text?.characters.count == 0){
+            QNTool.showPromptView("请输入验证密码")
+            self.newMpas.becomeFirstResponder()
+            return false
+        }
+        return true
         
     }
-   
+
+
 }

@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
+//        self.fetchData()
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -185,12 +185,16 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         ]
         
         let devices = d.objectForKey("Device Information") as! NSArray
-        if (devices.count == 0) {
+        let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+        let descs2 = NSArray(objects: typeDesc)
+        let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+//        print(array)
+        if (array.count == 0) {
             QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
         }else{
             QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
             self.data.removeAllObjects()
-            for tempDict in devices {
+            for tempDict in array {
                 self.exeDB(tempDict as! NSDictionary)
             }
             

@@ -62,7 +62,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
 //            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-            print("jsonData:\(jsonData)")
+//            print("jsonData:\(jsonData)")
             return jsonData
         }catch{
             return NSData()
@@ -101,7 +101,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         if readClientDataString != nil {
             //将数据转为UTF-8
             let  tempData = newStr?.dataUsingEncoding(NSUTF8StringEncoding)
-            print(readClientDataString)
+//            print(readClientDataString)
             
             do  {
                 

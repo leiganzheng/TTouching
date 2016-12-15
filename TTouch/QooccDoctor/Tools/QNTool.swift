@@ -377,6 +377,13 @@ extension QNTool {
         }
         
     }
+    func UTF8ToGB2312(str: String) -> NSData? {
+        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+        
+        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
+        
+        return data
+    }
 }
 //MARK: - 
 extension QNTool {
