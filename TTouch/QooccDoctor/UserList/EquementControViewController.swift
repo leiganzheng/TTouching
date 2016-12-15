@@ -110,6 +110,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                 self.unAeraVC = UnAeraViewController.CreateFromStoryboard("Main") as? UnAeraViewController
                 self.unAeraVC?.flag = self.flag
                 self.unAeraVC?.equementType = self.equementType
+                self.unAeraVC?.myDevice = temp
                 self.unAeraVC?.superVC = self
                 self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 70))
                 self.contentScrollView!.addSubview(self.unAeraVC!.view)
@@ -117,6 +118,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             if temp.dev_type == 2 {
                 self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
                 self.sixVC!.flag = self.flag
+                self.sixVC?.myDevice = temp
                 self.sixVC?.equementType = self.equementType
                 self.sixVC?.superVC = self
                 

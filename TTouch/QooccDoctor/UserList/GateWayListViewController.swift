@@ -348,7 +348,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
- 
+        let dd = String(addr) as String
+        let ard = String(dev_area) as String
         dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {

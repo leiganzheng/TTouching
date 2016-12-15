@@ -14,6 +14,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     var myTableView: UITableView!
     var superVC:UIViewController!
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
+    var myDevice:Device?
     var equementType: EquementSign?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -249,7 +250,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         if self.flag == "0" {
             for (_, element): (Int, Device) in arr.enumerate(){
-                if element.dev_area == "13014" {//六场景
+                if element.dev_area == self.myDevice?.address {//六场景
                     self.data.addObject(element)
                 }
                 print("Device:\(element.address!)", terminator: "");
@@ -264,7 +265,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
                 
                 for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8  {
+                    if  (element.dev_type == 9 || element.dev_type == 3 || element.dev_type == 4 || element.dev_type == 5 || element.dev_type == 6 || element.dev_type == 8) &&  element.dev_area == self.myDevice?.address  {
                         self.data.addObject(element)
                     }
                     
@@ -274,7 +275,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
                 
                 for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 7  {
+                    if  element.dev_type == 7 &&  element.dev_area == self.myDevice?.address {
                         self.data.addObject(element)
                     }
                 }
@@ -283,7 +284,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
                 
                 for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 11  {
+                    if  element.dev_type == 11 &&  element.dev_area == self.myDevice?.address {
                         self.data.addObject(element)
                     }
                 }
@@ -292,7 +293,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             if self.equementType == .Air {
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
                 for (_, element): (Int, Device) in arr.enumerate(){
-                    if  element.dev_type == 12 {
+                    if  element.dev_type == 12 &&  element.dev_area == self.myDevice?.address {
                         self.data.addObject(element)
                     }
                 }
