@@ -25,21 +25,21 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func setupConnection(){
-        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
-        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
-        var index = 0
-        let mulArr = NSMutableArray()
-        for str in arr {
-            index = index + 1
-            if index < arr.count {
-                mulArr.addObject(str)
-            }
-            if index == arr.count {
-                mulArr.addObject("255")
-            }
-            
-        }
-        let IP = mulArr.componentsJoinedByString(".")
+//        let ipAddress =  GetWiFiInfoHelper.getIPAddress(true)//192.168.5.23
+//        let arr = ipAddress.componentsSeparatedByString(".") as NSArray
+//        var index = 0
+//        let mulArr = NSMutableArray()
+//        for str in arr {
+//            index = index + 1
+//            if index < arr.count {
+//                mulArr.addObject(str)
+//            }
+//            if index == arr.count {
+//                mulArr.addObject("255")
+//            }
+//            
+//        }
+//        let IP = mulArr.componentsJoinedByString(".")
         do {
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.enableBroadcast(true)
@@ -76,11 +76,11 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         socket.sendData(message, toHost:IP , port: 33632, withTimeout: -1, tag: 0)
     }
     func test(){
-        let delayInSeconds = 2.0
-        let popTime = dispatch_time(DISPATCH_TIME_NOW,Int64(delayInSeconds * Double(NSEC_PER_SEC)))
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            self.myResultBlock!("fail")
-        }
+//        let delayInSeconds = 2.0
+//        let popTime = dispatch_time(DISPATCH_TIME_NOW,Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+//        dispatch_after(popTime, dispatch_get_main_queue()) {
+//            self.myResultBlock!("fail")
+//        }
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didConnectToAddress address: NSData!) {
 //        self.myResultBlock!("fail")
@@ -88,7 +88,7 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     func udpSocket(sock: GCDAsyncUdpSocket!, didNotConnect error: NSError!) {
-        self.myResultBlock!("fail")
+//        self.myResultBlock!("fail")
         print("didNotConnect \(error)")
     }
     
@@ -102,7 +102,9 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         print("didNotSendDataWithTag")
     }
     func udpSocket(sock: GCDAsyncUdpSocket!, didReceiveData data: NSData!, fromAddress address: NSData!,withFilterContext filterContext: AnyObject!) {
-        self.myResultBlock!(data)
+        if data != nil {
+            self.myResultBlock!(data)
+        }
 //        print("incoming message: \(data)");
 //        print("incoming message1: \(address)");
 //        //把NSData的值存到byteArray中

@@ -61,8 +61,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         
         //局域网内搜索网关
         outSocket = OutSocket()
+        self.tableViewController.refreshControl?.beginRefreshing()
         self.fectchData()
-//        self.exeDB()
 
     }
     func pullData(){
@@ -192,16 +192,17 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 byteArray.append(temp)
             }
         }
-        let tempName = NSString(bytes: byteArray, length: 65, encoding: 0) as! String
-        dict.setValue(detail, forKey: tempName)
-        
-        DBManager.shareInstance().ip = ip
-        self.dataS.addObject(dict)
-        self.flags.addObject(false)
-        self.flag = false
-        self.myTableView.reloadData()
-//        self.test()
-        self.fetchList()
+        let tempName = NSString(bytes: byteArray, length: 65, encoding: 0)
+        if tempName != nil {
+            dict.setValue(detail, forKey: tempName as! String)
+            DBManager.shareInstance().ip = ip
+            self.dataS.addObject(dict)
+            self.flags.addObject(false)
+            self.flag = false
+            self.myTableView.reloadData()
+            //        self.test()
+            self.fetchList()
+        }
 
     }
     func  test(){
@@ -210,77 +211,68 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             "command": 30,
             "Device Information": [
                 [
-                    "dev_addr": "0",
+                    "dev_addr": 0,
                     "dev_type": 1,
                     "work_status": 31,
                     "dev_name": "总控设备",
                     "dev_status": 1,
-                    "dev_area": "0"
+                    "dev_area": 0
                 ],
                 [
-                    "dev_addr": "13014",
+                    "dev_addr": 13014,
                     "dev_type": 2,
                     "work_status": 111,
                     "dev_name": "六场景",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "13019",
-                    "dev_type": 2,
-                    "work_status": 111,
-                    "dev_name": "卧室",
-                    "dev_status": 1,
-                    "dev_area": "13019"
-                ],
-
-                [
-                    "dev_addr": "32881",
+                    "dev_addr": 32881,
                     "dev_type": 3,
                     "work_status": 0,
                     "dev_name": "单回路调光",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "41749",
+                    "dev_addr": 41749,
                     "dev_type": 6,
                     "work_status": 42,
                     "dev_name": "6回路开关",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "13358",
+                    "dev_addr": 13358,
                     "dev_type": 5,
                     "work_status": 2,
                     "dev_name": "3回路开关",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "673",
+                    "dev_addr": 673,
                     "dev_type": 7,
                     "work_status": 17,
                     "dev_name": "窗帘控制",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "25988",
+                    "dev_addr": 25988,
                     "dev_type": 4,
                     "work_status": 0,
                     "dev_name": "双回路调光",
                     "dev_status": 1,
-                    "dev_area": "13014"
+                    "dev_area": 13014
                 ],
                 [
-                    "dev_addr": "38585",
+                    "dev_addr": 38585,
                     "dev_type": 3,
                     "work_status": 0,
                     "dev_name": "单回路调光",
                     "dev_status": 1,
-                    "dev_area": "0"
+                    "dev_area": 0
                 ]
             ]
         ]
@@ -299,13 +291,13 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     }
     func exeDB(tempDic:NSDictionary){
         var dev:Device? = nil
-        let addr = tempDic["dev_addr"] as? String
+        let addr = tempDic["dev_addr"] as? Int
         let dev_type = tempDic["dev_type"] as? Int
         let work_status = tempDic["work_status"] as? Int
         let name = tempDic["dev_name"] as? String
-        let dev_area = tempDic["dev_area"] as? String
+        let dev_area = tempDic["dev_area"] as? Int
         let dev_status = tempDic["dev_status"] as? Int
-        let belong_area = tempDic["dev_area"] as? String
+        let belong_area = tempDic["dev_area"] as? Int
         let is_favourited = 1
         var image:NSData = NSData()
         if ((tempDic["dev_type"] as? Int) == 1) {//总控
@@ -354,7 +346,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             
         }
  
-        dev = Device(address: addr, dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {
             //创建表
@@ -371,18 +363,18 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
 //            NSLog("结果：\(dict)" )
             QNTool.hiddenActivityView()
-            let d = result as! NSDictionary
-            let devices = d.objectForKey("Device Information") as! NSArray
-            if (devices.count == 0) {
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
-            }else{
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
-                for tempDict in devices {
-                    self.exeDB(tempDict as! NSDictionary)
+            if result is NSDictionary {
+                let d = result as! NSDictionary
+                let devices = d.objectForKey("Device Information") as! NSArray
+                if (devices.count == 0) {
+                    //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+                }else{
+                    //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                    for tempDict in devices {
+                        self.exeDB(tempDict as! NSDictionary)
+                    }
+                    self.myTableView.reloadData()
                 }
-                
-                self.myTableView.reloadData()
-                
             }
         })
     }
@@ -395,7 +387,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)
-        self.tableViewController.refreshControl?.beginRefreshing()
+        
         self.outSocket.send(data, complete: { (result) in
             if result is NSData {
                 self.paraterData(result as! NSData)

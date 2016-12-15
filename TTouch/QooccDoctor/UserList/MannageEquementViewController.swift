@@ -118,68 +118,68 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             "command": 30,
             "Device Information": [
             [
-            "dev_addr": "0",
+            "dev_addr": 0,
             "dev_type": 1,
             "work_status": 31,
             "dev_name": "总控设备",
             "dev_status": 1,
-            "dev_area": "0"
+            "dev_area": 0
             ],
             [
-            "dev_addr": "13014",
+            "dev_addr": 13014,
             "dev_type": 2,
             "work_status": 111,
             "dev_name": "六场景",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "32881",
+            "dev_addr": 32881,
             "dev_type": 3,
             "work_status": 0,
             "dev_name": "单回路调光",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "41749",
+            "dev_addr": 41749,
             "dev_type": 6,
             "work_status": 42,
             "dev_name": "6回路开关",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "13358",
+            "dev_addr": 13358,
             "dev_type": 5,
             "work_status": 2,
             "dev_name": "3回路开关",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "673",
+            "dev_addr": 673,
             "dev_type": 7,
             "work_status": 17,
             "dev_name": "窗帘控制",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "25988",
+            "dev_addr": 25988,
             "dev_type": 4,
             "work_status": 0,
             "dev_name": "双回路调光",
             "dev_status": 1,
-            "dev_area": "13014"
+            "dev_area": 13014
             ],
             [
-            "dev_addr": "38585",
+            "dev_addr": 38585,
             "dev_type": 3,
             "work_status": 0,
             "dev_name": "单回路调光",
             "dev_status": 1,
-            "dev_area": "0"
+            "dev_area": 0
             ]
             ]
         ]
@@ -280,13 +280,13 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 
     func exeDB(tempDic:NSDictionary){
         var dev:Device? = nil
-        let addr = tempDic["dev_addr"] as? String
+        let addr = tempDic["dev_addr"] as? Int
         let dev_type = tempDic["dev_type"] as? Int
         let work_status = tempDic["work_status"] as? Int
         let name = tempDic["dev_name"] as? String
-        let dev_area = tempDic["dev_area"] as? String
+        let dev_area = tempDic["dev_area"] as? Int
         let dev_status = tempDic["dev_status"] as? Int
-        let belong_area = tempDic["dev_area"] as? String
+        let belong_area = tempDic["dev_area"] as? Int
         let is_favourited = 1
         var image:NSData = NSData()
         if ((tempDic["dev_type"] as? Int) == 1) {//总控
@@ -337,7 +337,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 //        else{
 //            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
 //        }
-        dev = Device(address: addr, dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
 
         if dev != nil {
             self.data.addObject(dev!)
