@@ -35,13 +35,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PwN-ZV-KXH">
-                        <rect key="frame" x="38" y="48" width="249" height="31"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="PKX-9W-shB"/>
-                        </constraints>
-                    </slider>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrr-7o-LWh">
                         <rect key="frame" x="8" y="90" width="26" height="21"/>
                         <constraints>
@@ -79,6 +72,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PwN-ZV-KXH">
+                        <rect key="frame" x="38" y="48" width="249" height="31"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="PKX-9W-shB"/>
+                        </constraints>
+                    </slider>
                 </subviews>
                 <constraints>
                     <constraint firstItem="3Za-lE-0ls" firstAttribute="leading" secondItem="KA4-Ml-XW6" secondAttribute="trailing" constant="5" id="0NP-qS-cQM"/>
@@ -99,6 +99,11 @@
                     <constraint firstItem="lBy-EA-FZf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="zKM-O0-nFh"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="slider1" destination="PwN-ZV-KXH" id="F7i-LS-Kcs"/>
+                <outlet property="slider2" destination="KA4-Ml-XW6" id="vRR-YF-W1B"/>
+                <outlet property="title" destination="lBy-EA-FZf" id="5RL-8a-ajM"/>
+            </connections>
             <point key="canvasLocation" x="496.5" y="379.5"/>
         </tableViewCell>
     </objects>

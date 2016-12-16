@@ -73,6 +73,12 @@
                     <constraint firstItem="xyc-gf-Ned" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jab-NM-ufZ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="r1Btn" destination="7sw-Ch-eb0" id="T4o-mB-x9c"/>
+                <outlet property="r2Btn" destination="1fW-5b-JS2" id="yB7-IJ-0kC"/>
+                <outlet property="r3Btn" destination="J9a-Xh-PQy" id="WKk-Fb-a81"/>
+                <outlet property="title" destination="xyc-gf-Ned" id="TXW-ei-op9"/>
+            </connections>
             <point key="canvasLocation" x="419" y="283.5"/>
         </tableViewCell>
     </objects>

@@ -50,7 +50,8 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         }else if d.dev_type == 6{//六回路开关控制端
                         return 190
         }else if d.dev_type == 7{//窗帘控制端
-                       return 104
+//                       return 104
+            return 54
         }else if d.dev_type == 8{//单回路调光控制端(旧版)
                        return 104
         }else if d.dev_type == 9{//双回路调光控制端(旧版)
@@ -102,6 +103,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
                 }
+                cell.titel.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 4{//双回路调光控制端
                 let cellIdentifier = "MDoubleTableViewCell"
@@ -109,6 +111,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
                 }
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 5{//三回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"
@@ -116,6 +119,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
                 }
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 6{//六回路开关控制端
                 let cellIdentifier = "MSixTableViewCell"
@@ -123,6 +127,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTableViewCell
                 }
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 7{//窗帘控制端
                 let cellIdentifier = "MCurtainTableViewCell"
@@ -130,6 +135,8 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
                 }
+                cell.LTitle.text=d.dev_name!
+                //                cell.RTitle.text =
                 return cell
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 let cellIdentifier = "MSigleTableViewCell"
@@ -151,6 +158,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
                 }
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 11{
                 let cellIdentifier = "MSixTouchTableViewCell"
@@ -158,6 +166,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTouchTableViewCell
                 }
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
             }else if d.dev_type == 12{//空调
                 let cellIdentifier = "MAirTableViewCell"

@@ -91,8 +91,11 @@ class DBManager: NSObject {
         
         if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?, ?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
+//               print("添加1条数据失败！: \(d.address)")
+//               print("添加1条数据失败！: \(d.dev_name)")
         }else{
-                print("添加1条数据成功！: \(d.address)")
+//            print("添加1条数据！: \(dbBase.lastErrorMessage())")
+                print("添加1条数据成功！: \(d.dev_name)")
 
         }
         
@@ -101,6 +104,15 @@ class DBManager: NSObject {
     
     
     // MARK: >> 删
+    func deleteAll(){
+        dbBase.open();
+        if self.dbBase.executeUpdate("delete from T_Device") {
+            print("删除数据成功！")
+        }else{
+             print("删除数据失败！: \(dbBase.lastErrorMessage())")
+        }
+        dbBase.close()
+    }
     func deleteData(d:Device) {
         
         dbBase.open();

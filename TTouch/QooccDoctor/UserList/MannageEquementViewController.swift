@@ -193,6 +193,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
         }else{
             QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            DBManager.shareInstance().dbBase.open()
+            DBManager.shareInstance().deleteAll()
             self.data.removeAllObjects()
             for tempDict in array {
                 self.exeDB(tempDict as! NSDictionary)
@@ -293,48 +295,48 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let belong_area = tempDic["dev_area"] as! Int
         let is_favourited = 1
         var image:NSData = NSData()
-        if ((tempDic["dev_type"] as? Int) == 1) {//总控
+        if (dev_type == 1) {//总控
              image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 2){//六情景
+        }else if(dev_type == 2){//六情景
              image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 3){//单回路调光
+        }else if(dev_type == 3){//单回路调光
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
            
-        }else if((tempDic["dev_type"] as? Int) == 6){//6回路开关
+        }else if(dev_type == 6){//6回路开关
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_6ch-roads_icon" )!, 1)!
       
-        }else if((tempDic["dev_type"] as? Int) == 5){//3回路开关
+        }else if(dev_type == 5){//3回路开关
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
            
         }
-        else if((tempDic["dev_type"] as? Int) == 7){//窗帘控制
+        else if(dev_type == 7){//窗帘控制
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
 
-        }else if((tempDic["dev_type"] as? Int) == 4){//双回路调光
+        }else if(dev_type == 4){//双回路调光
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
            
         }
-        else if((tempDic["dev_type"] as? Int) == 8){//单回路调光控制端(旧版)
+        else if(dev_type == 8){//单回路调光控制端(旧版)
              image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 9){//双回路调光控制端(旧版)
+        }else if(dev_type == 9){//双回路调光控制端(旧版)
             image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 10){//三/六回路开关控制端
+        }else if(dev_type == 10){//三/六回路开关控制端
             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 11){//干接点
+        }else if(dev_type == 11){//干接点
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 12){//空调
+        }else if(dev_type == 12){//空调
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 13){//地暖
+        }else if(dev_type == 13){//地暖
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
-        }else if((tempDic["dev_type"] as? Int) == 14){//新风
+        }else if(dev_type == 14){//新风
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
@@ -346,19 +348,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         if dev != nil {
             self.data.addObject(dev!)
             //创建表
-            DBManager.shareInstance().createTable("T_Device")
-            //查
-            let arr:Array<Device> = DBManager.shareInstance().selectDatas()
-            
-            //        for (index, element): (Int, Device) in arr.enumerate(){
-            //            print("Device:\(element.address!)", terminator: "");
-            //        }
-//            if arr.count>0 {
-//                
-//            }else{
-                //增：
-                DBManager.shareInstance().add(dev!);
-//            }
+           DBManager.shareInstance().add(dev!);
         }
         
     }
@@ -378,6 +368,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
             }else{
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                DBManager.shareInstance().deleteAll()
                 self.data.removeAllObjects()
                 for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)

@@ -1568,7 +1568,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-2R-6na">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遮光布帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-2R-6na">
                                                     <rect key="frame" x="10" y="126" width="73" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="1M1-C3-G54"/>
@@ -1578,7 +1578,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-hg-4Zc">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-hg-4Zc">
                                                     <rect key="frame" x="117" y="123" width="60" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="1oS-vg-4eR"/>
@@ -1589,7 +1589,7 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Zj-gAG">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-Zj-gAG">
                                                     <rect key="frame" x="197" y="123" width="36" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="hq5-ka-XeG"/>
@@ -1599,7 +1599,7 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lg7-IW-NZD">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lg7-IW-NZD">
                                                     <rect key="frame" x="249" y="123" width="60" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="5bh-7N-emr"/>
@@ -1697,6 +1697,7 @@
                                             <outlet property="partern" destination="1Mb-7Y-KTj" id="xkb-OC-0Y8"/>
                                             <outlet property="stop1Btn" destination="9xm-S3-CxR" id="jZS-Ta-svk"/>
                                             <outlet property="stop2Btn" destination="N5C-Zj-gAG" id="U84-Zq-6jS"/>
+                                            <outlet property="title" destination="3qd-gu-DvL" id="yFt-yG-aWo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -66,7 +66,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDC-jb-nCz">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDC-jb-nCz">
                         <rect key="frame" x="10" y="65" width="73" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="XuE-I6-ifb"/>
@@ -76,7 +76,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBw-xa-0Yu">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBw-xa-0Yu">
                         <rect key="frame" x="117" y="62" width="60" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="2CS-hC-ASL"/>
@@ -87,7 +87,7 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJo-Jx-oaP">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJo-Jx-oaP">
                         <rect key="frame" x="197" y="62" width="36" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="Dmh-0r-29c"/>
@@ -97,7 +97,7 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHh-nT-fPR">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHh-nT-fPR">
                         <rect key="frame" x="249" y="62" width="60" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="1Ly-BA-znb"/>
@@ -130,6 +130,16 @@
                     <constraint firstItem="VHh-nT-fPR" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="8" id="yP5-9K-NlB"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="L1" destination="um8-4A-nJI" id="Xk3-cg-K2N"/>
+                <outlet property="L2" destination="OHq-8s-cM5" id="AMQ-GQ-MQX"/>
+                <outlet property="L3" destination="W5e-UA-Yq8" id="VYD-el-y6r"/>
+                <outlet property="LTitle" destination="rl0-S3-Try" id="qP3-b6-7Zm"/>
+                <outlet property="R1" destination="kBw-xa-0Yu" id="m43-O9-b9d"/>
+                <outlet property="R2" destination="VJo-Jx-oaP" id="FwU-51-od6"/>
+                <outlet property="R3" destination="VHh-nT-fPR" id="Owp-pM-GxJ"/>
+                <outlet property="RTitle" destination="aDC-jb-nCz" id="Ph8-FQ-Txy"/>
+            </connections>
             <point key="canvasLocation" x="367" y="71.5"/>
         </tableViewCell>
     </objects>

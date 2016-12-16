@@ -10,6 +10,14 @@ import UIKit
 
 class MCurtainTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var LTitle: UILabel!
+    @IBOutlet weak var L1: UIButton!
+    @IBOutlet weak var L2: UIButton!
+    @IBOutlet weak var L3: UIButton!
+    @IBOutlet weak var RTitle: UILabel!
+    @IBOutlet weak var R1: UIButton!
+    @IBOutlet weak var R2: UIButton!
+    @IBOutlet weak var R3: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

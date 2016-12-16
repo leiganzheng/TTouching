@@ -10,6 +10,10 @@ import UIKit
 
 class MThreeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UIButton!
+    @IBOutlet weak var r1Btn: UIButton!
+    @IBOutlet weak var r2Btn: UIButton!
+    @IBOutlet weak var r3Btn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

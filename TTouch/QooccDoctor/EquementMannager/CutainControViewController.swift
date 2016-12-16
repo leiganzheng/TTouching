@@ -34,7 +34,8 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 168
+//        return 168
+        return 114
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +113,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
            
             })
         cell.open1Btn.addTarget(self, action: #selector(CutainControViewController.open1(_:)), forControlEvents: .TouchUpInside)
-        let longGesture = UILongPressGestureRecognizer(target: self, action: "longOpen1")
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longOpen1(_:)))
         gesture.minimumPressDuration = 0.8
         cell.open1Btn.addGestureRecognizer(longGesture)
         cell.stop1Btn.addTarget(self, action: #selector(CutainControViewController.stop1(_:)), forControlEvents: .TouchUpInside)
@@ -129,82 +130,74 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         
     }
     //MARK:- private method
-    let command = 36
-    let dev_addr = 673
-    let dev_type = 7
     func open1(sender: UIButton){
-        QNTool.showPromptView("打开左路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":192]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 0)
 
     }
-    func longOpen1(){
-        QNTool.showPromptView("长按左路窗帘开")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":224]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
-        
+    func longOpen1(sender: UIGestureRecognizer){
+
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 1)
     }
     func stop1(sender: UIButton){
-        QNTool.showPromptView("暂停左路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":144]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 2)
     }
     func close1(sender: UIButton){
-        QNTool.showPromptView("关闭左路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":128]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 3)
     }
-    func longClose1(){
-        QNTool.showPromptView("长按左路窗帘关")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":160]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+    func longClose1(sender: UIGestureRecognizer){
+
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 4)
     }
     func open2(sender: UIButton){
-        QNTool.showPromptView("打开右路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":12]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 5)
     }
-    func longOpen2(){
-        QNTool.showPromptView("长按左路窗帘开")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":14]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+    func longOpen2(sender: UIButton){
+
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 6)
         
     }
     
     func stop2(sender: UIButton){
-        QNTool.showPromptView("暂停右路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":9]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 7)
     }
     func close2(sender: UIButton){
-        QNTool.showPromptView("关闭右路窗帘")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":8]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 8)
     }
-    func longClose2(){
-        QNTool.showPromptView("长按右路窗帘关")
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":10]
-        sockertManger.sendMsg(dict) { (result) in
-            
-        }
+    func longClose2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 9)
     }
 
     func fetchData(){

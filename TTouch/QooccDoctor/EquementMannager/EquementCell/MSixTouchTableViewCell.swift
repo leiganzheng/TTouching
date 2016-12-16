@@ -10,6 +10,13 @@ import UIKit
 
 class MSixTouchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UIButton!
+    @IBOutlet weak var l1: UIButton!
+    @IBOutlet weak var l2: UIButton!
+    @IBOutlet weak var l3: UIButton!
+    @IBOutlet weak var r1: UIButton!
+    @IBOutlet weak var r2: UIButton!
+    @IBOutlet weak var r3: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

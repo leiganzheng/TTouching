@@ -115,6 +115,15 @@
                     <constraint firstItem="7e5-oT-jGg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="nCz-mV-rEu"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="l1" destination="YkZ-bc-fl8" id="wud-In-0cO"/>
+                <outlet property="l2" destination="hT0-ql-tqb" id="wIl-7H-hHE"/>
+                <outlet property="l3" destination="g9s-V8-QEi" id="DNO-pD-UkR"/>
+                <outlet property="r1" destination="ZGW-Yi-bkN" id="SAa-Qe-YkX"/>
+                <outlet property="r2" destination="7e5-oT-jGg" id="RSH-5h-iq6"/>
+                <outlet property="r3" destination="xD1-Yj-mCr" id="UCB-ih-eau"/>
+                <outlet property="title" destination="o2o-bR-A7U" id="kxe-Ca-uTl"/>
+            </connections>
             <point key="canvasLocation" x="268" y="313.5"/>
         </tableViewCell>
     </objects>

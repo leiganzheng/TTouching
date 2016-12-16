@@ -388,10 +388,11 @@ extension QNTool {
 //MARK: - 
 extension QNTool {
    class func openSence(dict: NSDictionary) {
+    print(dict)
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-            print(dict)
+            
             let d = result as! NSDictionary
-            let status = d.objectForKey("work_status") as! NSNumber
+            let status = d.objectForKey("work_status") as! Int
             if (status == 17){
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景一！")
             }else if(status == 18){
@@ -422,6 +423,342 @@ extension QNTool {
             }
             
         })
+    }
+    class func openLight(d: Device,value:Int ) {
+        var dict:NSDictionary = [:]
+        let command = 36
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = (d.dev_type)!
+        var msg = ""
+        if dev_type == 3 {
+            if value == 0 {
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":0]
+//                print(dict)
+                msg = "关闭调光"
+            }else if(value>0&&value<24){//调光
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":value]
+                msg = "调光\(value/100)"
+//                print(dict)
+                
+            }else if(value == 99){
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":99]
+                msg = "最大亮度"
+                
+            }
+             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status >= 0 && status <= 99){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+        }
+        if dev_type == 8 {
+            if value == 0 {
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":223]
+                msg = "关闭调光"
+            }else if(value>0&&value<24){//调光一档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":209]
+                msg = "调光一档"
+                
+            }else if(value>=25&&value<50){//调光二档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":210]
+                msg = "调光二档"
+                
+            }
+            else if(value>=50&&value<75){//调光三档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":211]
+                msg = "调光三档"
+                
+            }
+            else if(value>=75&&value<99){//调光四档
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":212]
+                msg = "调光四档"
+                
+            }else if(value == 99){
+                dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":222]
+                msg = "最大亮度"
+                
+            }
+             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+        }
+
+    }
+    class func openDLight(d: Device,slider:UISlider ) {
+        var dict:NSDictionary = [:]
+        let command = 36
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = (d.dev_type)!
+        var msg = ""
+        if dev_type == 4 {
+            if slider.tag == 100 {
+                slider.minimumValue = 100
+                slider.maximumValue = 199
+                if slider.value == 100   {
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":100]
+                    msg = "关闭左回路"
+                    print(dict)
+                }else if(slider.value>100&&slider.value<199){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                    msg = "调光中"
+                    print(dict)
+                    
+                }else if(slider.value == 199 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
+                    msg = "最大亮度"
+                    
+                }
+                SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! NSNumber
+                    if (status.intValue >= 0 && status.intValue <= 99){
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
+                })
+            }else if (slider.value == 101){
+                slider.minimumValue = 200
+                slider.maximumValue = 299
+                if slider.value == 200   {
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":200]
+                    msg = "关闭右回路"
+                }else if(slider.value>200&&slider.value<299){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                    msg = "调光中"
+                    
+                }else if(slider.value == 299 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
+                    msg = "最大亮度"
+                    
+                }
+                SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! NSNumber
+                    if (status.intValue >= 0 && status.intValue <= 99){
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
+                })
+            }
+        }else if(dev_type == 9){//老版本
+            if slider.tag == 100 {
+                slider.minimumValue = 264
+                slider.maximumValue = 268
+                if slider.value == 264   {
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":264]
+                    msg = "关闭左回路"
+                }else if(slider.value>264&&slider.value<268){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                    msg = "调光中"
+                    
+                }else if(slider.value == 268 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
+                    msg = "最大亮度"
+                    
+                }
+                SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! NSNumber
+                    if (status.intValue > 264 && status.intValue < 268){
+                        //停止调光
+                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
+                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                            
+                        })
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }else if (status.intValue > 264 || status.intValue < 268){
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }
+                    else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
+                })
+                
+            }else if (slider.value == 101){
+                slider.minimumValue = 384
+                slider.maximumValue = 448
+                if slider.value == 384   {
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":384]
+                    msg = "关闭左回路"
+                }else if(slider.value>384&&slider.value<448){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                    msg = "调光中"
+                    
+                }else if(slider.value == 448 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":448]
+                    msg = "最大亮度"
+                    
+                }
+                SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! NSNumber
+                    if (status.intValue > 384 && status.intValue < 448){
+                        //停止调光
+                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
+                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                            
+                        })
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }else if (status.intValue > 384 || status.intValue < 448){
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+                    }
+                    else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
+                })
+                
+            }
+        }
+
+    }
+    class func openCutain(d: Device,value:Int ) {
+        let command = 36
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = d.dev_type!
+        var dict:NSDictionary = [:]
+        if value == 0 {
+            dict = ["command": command,"dev_addr" :dev_addr!,"dev_type":dev_type,"work_status":192]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 192){
+                    QNTool.showPromptView("打开左路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        
+        }else if (value == 1){
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":224]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 224){
+                    QNTool.showPromptView("长按左路窗帘开")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+                 })
+    
+        }else if (value == 2){
+           
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":144]
+             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 144){
+                    QNTool.showPromptView("暂停左路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 3){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 128){
+                    QNTool.showPromptView("关闭左路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+
+            
+        }else if (value == 4){
+            
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":160]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 160){
+                    QNTool.showPromptView("长按左路窗帘关")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 5){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":12]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 12){
+                    QNTool.showPromptView("打开右路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 6){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":14]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 14){
+                    QNTool.showPromptView("长按左路窗帘开")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 7){
+            
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":9]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 9){
+                    QNTool.showPromptView("暂停右路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+
+        }else if (value == 8){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 8){
+                   QNTool.showPromptView("关闭右路窗帘")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+
+        }else if (value == 9){
+            
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":10]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 10){
+                    QNTool.showPromptView("长按右路窗帘关")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }
     }
 
 }

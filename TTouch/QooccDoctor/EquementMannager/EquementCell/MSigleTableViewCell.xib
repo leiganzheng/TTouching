@@ -75,6 +75,10 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="slider" destination="oqr-a5-Mna" id="72z-wR-0Ei"/>
+                <outlet property="titel" destination="fnl-y0-1Rj" id="6PK-13-sjx"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="296"/>
         </tableViewCell>
     </objects>
