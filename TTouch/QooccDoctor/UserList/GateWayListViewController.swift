@@ -297,7 +297,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let addr = tempDic["dev_addr"] as! Int
         let dev_type = tempDic["dev_type"] as! Int
         let work_status = tempDic["work_status"] as! Int
-        let name = tempDic["dev_name"] as? String
+        let name = tempDic["dev_name"] as! String
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
         let belong_area = tempDic["dev_area"] as! Int
@@ -368,11 +368,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             if result is NSDictionary {
                 let d = result as! NSDictionary
                 let devices = d.objectForKey("Device Information") as! NSArray
-                if (devices.count == 0) {
+                let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+                let descs2 = NSArray(objects: typeDesc)
+                let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+                if (array.count == 0) {
                     //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
                 }else{
                     //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
-                    for tempDict in devices {
+                    for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)
                     }
                     self.myTableView.reloadData()
