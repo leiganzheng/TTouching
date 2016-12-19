@@ -114,7 +114,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
             })
         cell.open1Btn.addTarget(self, action: #selector(CutainControViewController.open1(_:)), forControlEvents: .TouchUpInside)
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longOpen1(_:)))
-        gesture.minimumPressDuration = 0.8
+        longGesture.minimumPressDuration = 0.8
         cell.open1Btn.addGestureRecognizer(longGesture)
         cell.stop1Btn.addTarget(self, action: #selector(CutainControViewController.stop1(_:)), forControlEvents: .TouchUpInside)
         cell.close1Btn.addTarget(self, action: #selector(CutainControViewController.close1(_:)), forControlEvents: .TouchUpInside)

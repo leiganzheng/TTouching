@@ -201,8 +201,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             self.flags.addObject(false)
             self.flag = false
             self.myTableView.reloadData()
-//                    self.test()
-            self.fetchList()
+                    self.test()
+//            self.fetchList()
         }
 
     }
@@ -384,19 +384,19 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-//        self.paraterData(tempData)
+        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+        self.paraterData(tempData)
         //UDP 广播,发送广播
-        let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
-        let data = NSData(bytes: bytes, length: 4)
-        
-        self.outSocket.send(data, complete: { (result) in
-            if result is NSData {
-                self.paraterData(result as! NSData)
-            }
-            self.tableViewController.refreshControl?.endRefreshing()
-        })
+//        let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
+//        let data = NSData(bytes: bytes, length: 4)
+//        
+//        self.outSocket.send(data, complete: { (result) in
+//            if result is NSData {
+//                self.paraterData(result as! NSData)
+//            }
+//            self.tableViewController.refreshControl?.endRefreshing()
+//        })
         let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         let time = dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC))
         dispatch_after(time, globalQueue) { () -> Void in

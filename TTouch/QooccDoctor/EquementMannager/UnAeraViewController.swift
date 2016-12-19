@@ -104,6 +104,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
                 }
                 cell.titel.setTitle(d.dev_name!, forState: .Normal)
+                cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
                 return cell
             }else if d.dev_type == 4{//双回路调光控制端
                 let cellIdentifier = "MDoubleTableViewCell"
@@ -112,6 +113,9 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.slider1.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
+                cell.slider2.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
+                
                 return cell
             }else if d.dev_type == 5{//三回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"
@@ -136,7 +140,12 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
                 }
                 cell.LTitle.text=d.dev_name!
-                //                cell.RTitle.text =
+                cell.L1.addTarget(self, action: #selector(SixPaternViewController.open1(_:)), forControlEvents: .TouchUpInside)
+                let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
+                longGesture.minimumPressDuration = 0.8
+                cell.L1.addGestureRecognizer(longGesture)
+                cell.L2.addTarget(self, action: #selector(SixPaternViewController.stop1(_:)), forControlEvents: .TouchUpInside)
+                cell.L3.addTarget(self, action: #selector(SixPaternViewController.close1(_:)), forControlEvents: .TouchUpInside)
                 return cell
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 let cellIdentifier = "MSigleTableViewCell"
@@ -200,52 +209,52 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        superVC.hidesBottomBarWhenPushed = true
-        let d = self.data[indexPath.row] as! Device
-        if d.dev_type == 3{//单回路调光控制端
-            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 4{//双回路调光控制端
-            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 5{//三回路开关控制端
-            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 6{//六回路开关控制端
-            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 7{//窗帘控制端
-            let vc = CutainControViewController.CreateFromStoryboard("Main") as! CutainControViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-            
-        }else if d.dev_type == 8{//单回路调光控制端(旧版)
-            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 9{//双回路调光控制端(旧版)
-            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 10{//三/六回路开关控制端
-            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-            vc.device = d
-            superVC.navigationController?.pushViewController(vc, animated: true)
-        }else if d.dev_type == 11{
-            
-        }else if d.dev_type == 12{//空调
-            
-        }
-        else if d.dev_type == 13{//地暖
-            
-        }
-        else if d.dev_type == 14{//新风
-            
-        }
+//        superVC.hidesBottomBarWhenPushed = true
+//        let d = self.data[indexPath.row] as! Device
+//        if d.dev_type == 3{//单回路调光控制端
+//            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 4{//双回路调光控制端
+//            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 5{//三回路开关控制端
+//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 6{//六回路开关控制端
+//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 7{//窗帘控制端
+//            let vc = CutainControViewController.CreateFromStoryboard("Main") as! CutainControViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//            
+//        }else if d.dev_type == 8{//单回路调光控制端(旧版)
+//            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 9{//双回路调光控制端(旧版)
+//            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 10{//三/六回路开关控制端
+//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
+//            vc.device = d
+//            superVC.navigationController?.pushViewController(vc, animated: true)
+//        }else if d.dev_type == 11{
+//            
+//        }else if d.dev_type == 12{//空调
+//            
+//        }
+//        else if d.dev_type == 13{//地暖
+//            
+//        }
+//        else if d.dev_type == 14{//新风
+//            
+//        }
 
     }
     //MARK:- private method
@@ -310,5 +319,59 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         self.myTableView.reloadData()
         
     }
+    //MARK:- Private Method
+    func valueChanged(slider: UISlider) {
+        /*"dev_addr": 38585,
+         "dev_type": 3,
+         "work_status": 0,
+         "dev_name": "单回路调光",
+         "dev_status": 1,
+         "dev_area": 0*/
+        //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
+        //        let data = slider.value
+        let tempCell = slider.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openLight(d, value: Int(slider.value))
+        
+    }
+    func dSliderValueChanged(slider: UISlider) {
+        //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
+        //        let data = slider.value
+        let tempCell = slider.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openDLight(d, slider: slider)
+    }
+    func open1(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 0)
+        
+    }
+    func longOpen1(sender: UIGestureRecognizer){
+        
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 1)
+    }
+    func stop1(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 2)
+    }
+    func close1(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 3)
+    }
+
 
 }
