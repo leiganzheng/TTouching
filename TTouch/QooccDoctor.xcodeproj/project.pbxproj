@@ -782,12 +782,12 @@
 			children = (
 				BBCB43E01D3F596C00A997EA /* DCAlarm.swift */,
 				BBCB43E11D3F596C00A997EA /* DCAlarmManager.swift */,
-				BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */,
 				BBB243CF1B4A5C2D00519CB2 /* UserTableViewCell.swift */,
 				BBB243D01B4A5C2D00519CB2 /* UserTableViewCell.xib */,
 				BBA365CF1CFBD6E20010A5EC /* LeftViewController.swift */,
 				BBA365D11CFBD6EC0010A5EC /* RightViewController.swift */,
 				BBA365D31CFC40960010A5EC /* GateWayListViewController.swift */,
+				BBCEA9881B4A104B00A9E478 /* UserListViewController.swift */,
 				BBA365D51CFC41360010A5EC /* GateWayDetailViewController.swift */,
 				71BEE5651CFC989B00087201 /* CollectionViewController.swift */,
 				BB2578CF1CFD7CA70037CA9B /* ShakeViewController.swift */,

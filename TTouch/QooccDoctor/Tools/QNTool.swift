@@ -760,122 +760,83 @@ extension QNTool {
             
         }
     }
+//    var commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+//    class func openThreeOrSixRoad(d:Device,sender:UIButton){
+//        let command = 36
+//        let dev_addr = d.address!
+//        let dev_type = d.dev_type!
+//        
+//        //三回路开关控制端
+//        if switchBtn.tag == 100  {
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
+//            }
+//        }else if(switchBtn.tag == 101){
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
+//            }
+//        }else if(switchBtn.tag == 102){
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+//            }
+//        }else if(switchBtn.tag == 103){
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+//            }
+//        }else if(switchBtn.tag == 104){
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+//            }
+//        }else if(switchBtn.tag == 105){
+//            if switchBtn.on {
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
+//            }else{
+//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+//            }
+//        }
+//        var work_status = 0
+//        if self.flag {//
+//            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+//            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+//            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+//            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
+//            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
+//            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
+//            work_status = Int(A|B|C|D|E|F)
+//        }else{
+//            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+//            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+//            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+//            work_status = Int(A|B|C)
+//            print("A|B|C 结果为：\(A|B|C)")
+//        }
+//        
+//        
+//        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":work_status ]
+//        self.sockertManger.sendMsg(dict, completion: { (result) in
+//            let d = result as! NSDictionary
+//            let status = d.objectForKey("work_status") as! NSNumber
+//            //            if (status == 97){
+//            //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+//            //            }else{
+//            //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//            //            }
+//        })
+//    }
 
 }
 
-// MARK: -
-extension QNTool {
-    class func configCell(device:Device,tableView:UITableView)->UITableViewCell{
-        let d = device
-        if d.dev_type == 3{//单回路调光控制端
-            let cellIdentifier = "MSigleTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
-            }
-            cell.titel.setTitle(d.dev_name!, forState: .Normal)
-            cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
-            return cell
-        }else if d.dev_type == 4{//双回路调光控制端
-            let cellIdentifier = "MDoubleTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
-            }
-            cell.title.setTitle(d.dev_name!, forState: .Normal)
-            cell.slider1.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
-            cell.slider2.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
-            
-            return cell
-        }else if d.dev_type == 5{//三回路开关控制端
-            let cellIdentifier = "MThreeTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
-            }
-            cell.title.setTitle(d.dev_name!, forState: .Normal)
-            return cell
-        }else if d.dev_type == 6{//六回路开关控制端
-            let cellIdentifier = "MSixTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTableViewCell
-            }
-            cell.title.setTitle(d.dev_name!, forState: .Normal)
-            return cell
-        }else if d.dev_type == 7{//窗帘控制端
-            let cellIdentifier = "MCurtainTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MCurtainTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
-            }
-            cell.LTitle.text=d.dev_name!
-            cell.L1.addTarget(self, action: #selector(SixPaternViewController.open1(_:)), forControlEvents: .TouchUpInside)
-            let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
-            longGesture.minimumPressDuration = 0.8
-            cell.L1.addGestureRecognizer(longGesture)
-            cell.L2.addTarget(self, action: #selector(SixPaternViewController.stop1(_:)), forControlEvents: .TouchUpInside)
-            cell.L3.addTarget(self, action: #selector(SixPaternViewController.close1(_:)), forControlEvents: .TouchUpInside)
-            return cell
-        }else if d.dev_type == 8{//单回路调光控制端(旧版)
-            let cellIdentifier = "MSigleTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
-            }
-            return cell
-        }else if d.dev_type == 9{//双回路调光控制端(旧版)
-            let cellIdentifier = "MDoubleTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
-            }
-            return cell
-        }else if d.dev_type == 10{//三/六回路开关控制端
-            let cellIdentifier = "MThreeTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
-            }
-            cell.title.setTitle(d.dev_name!, forState: .Normal)
-            return cell
-        }else if d.dev_type == 11{
-            let cellIdentifier = "MSixTouchTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTouchTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTouchTableViewCell
-            }
-            cell.title.setTitle(d.dev_name!, forState: .Normal)
-            return cell
-        }else if d.dev_type == 12{//空调
-            let cellIdentifier = "MAirTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MAirTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MAirTableViewCell
-            }
-            return cell
-        }
-        else if d.dev_type == 13{//地暖
-            let cellIdentifier = "MDiNuanTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDiNuanTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDiNuanTableViewCell
-            }
-            return cell
-        }
-        else if d.dev_type == 14{//新风
-            let cellIdentifier = "MXinFenTableViewCell"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MXinFenTableViewCell!
-            if cell == nil {
-                cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MXinFenTableViewCell
-            }
-            return cell
-        }else{
-            return UITableViewCell()
-        }
 
-    }
-}
 
 extension QNTool {
 
