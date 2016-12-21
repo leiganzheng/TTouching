@@ -836,7 +836,18 @@ extension QNTool {
 
 }
 
-
+extension QNTool {
+    class func repeatArray(d:Device,array:NSArray) -> Bool {
+        var falg = false
+        for data in array {
+            let data1 = data as! Device
+            if d.dev_type == data1.dev_type {
+                falg = true
+            }
+        }
+        return falg
+    }
+}
 
 extension QNTool {
 

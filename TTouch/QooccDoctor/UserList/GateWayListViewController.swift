@@ -279,13 +279,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         ]
         
         let devices = d.objectForKey("Device Information") as! NSArray
-        let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
-        let descs2 = NSArray(objects: typeDesc)
-        let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
-        if (array.count == 0) {
-//            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
-        }else{
-//            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+      
+        if (devices.count != 0) {
+
+            let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+            let descs2 = NSArray(objects: typeDesc)
+            let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
             DBManager.shareInstance().deleteAll()
             
             for tempDict in array {
@@ -367,12 +366,11 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             if result is NSDictionary {
                 let d = result as! NSDictionary
                 let devices = d.objectForKey("Device Information") as! NSArray
-                let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
-                let descs2 = NSArray(objects: typeDesc)
-                let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
-                if (array.count == 0) {
-                }else{
+                if (devices.count != 0) {
                     DBManager.shareInstance().deleteAll()
+                    let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+                    let descs2 = NSArray(objects: typeDesc)
+                    let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
                     for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)
                     }
