@@ -53,11 +53,11 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
 //        22:保存当前情景为总控情景一; 23:保存当前情景为总控情景二; 24:保存当前情景为总控情景三; 25:保存当前情景为总控情景四; 26:保存当前情景为总控情景五;
         //开启总控情景一
         let command:Int = 36
-        let dev_addr:String = (d?.address)!
-        let dev_type:Int = (d?.dev_type)!
+        let dev_addr = Int(d!.address!)
+        let dev_type:Int = d!.dev_type!
         
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":17]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":17]
             QNTool.openSence(dict)
 
             return RACSignal.empty()
@@ -65,14 +65,14 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         
         //开启总控情景二
         cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":18]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":18]
 
             QNTool.openSence(dict)
             return RACSignal.empty()
         })
         //开启总控情景三
         cell.p3Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":19]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":19]
 
             QNTool.openSence(dict)
             
@@ -80,7 +80,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //开启总控情景四
         cell.p4Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":20]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":20]
 
 
             QNTool.openSence(dict)
@@ -88,7 +88,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //开启总控情景五
         cell.p5Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":21]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":21]
 
             QNTool.openSence(dict)
             
@@ -96,7 +96,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
         //关闭所有设备
         cell.p6Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":31]
+            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":31]
 
             QNTool.openSence(dict)
             return RACSignal.empty()
@@ -121,7 +121,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
-                    let save_dev = [["dev_addr": dev_addr,"dev_type": dev_type,"dev_name": textField.text!]]
+                    let save_dev = [["dev_addr": dev_addr!,"dev_type": dev_type,"dev_name": textField.text!]]
                     QNTool.modifyEqument(save_dev)
                 }
             }

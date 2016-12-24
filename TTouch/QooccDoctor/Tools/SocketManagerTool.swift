@@ -151,7 +151,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
             }catch {
                 // 直接出错了
                 if self.SBlock != nil {
-                    self.SBlock!("")
+//                    self.SBlock!("")
                     print("直接出错了")
                 }
             }

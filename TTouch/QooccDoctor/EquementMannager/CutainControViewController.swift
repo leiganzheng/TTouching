@@ -34,8 +34,8 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
 
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 168
-        return 114
+        return 168
+//        return 114
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,7 +56,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
          cell.partern.setTitle(title, forState: .Normal)
         let btn = cell.name
-        btn.setTitle(d?.dev_name!, forState: .Normal)
+//        btn.setTitle(d?.dev_name!, forState: .Normal)
         let gesture = UILongPressGestureRecognizer()
         btn.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
@@ -120,6 +120,9 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         cell.close1Btn.addTarget(self, action: #selector(CutainControViewController.close1(_:)), forControlEvents: .TouchUpInside)
         
         cell.open2Btn.addTarget(self, action: #selector(CutainControViewController.open2(_:)), forControlEvents: .TouchUpInside)
+        let longGesture1 = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longOpen2(_:)))
+        longGesture.minimumPressDuration = 0.8
+        cell.open1Btn.addGestureRecognizer(longGesture1)
         cell.stop2Btn.addTarget(self, action: #selector(CutainControViewController.stop2(_:)), forControlEvents: .TouchUpInside)
         cell.close2Btn.addTarget(self, action: #selector(CutainControViewController.close2(_:)), forControlEvents: .TouchUpInside)
         return cell
@@ -199,6 +202,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 9)
     }
+    
 
     func fetchData(){
         self.data = NSMutableArray()

@@ -52,43 +52,43 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         btn.setTitle(d?.dev_name!, forState: .Normal)
 //        97:开启情景一; 98:开启情景二; 99:开启情景三; 100:开启情景四;110:场景组内所有设备 ON 状态; 111:场景组内所有设备 OFF 状态; 102:保存当前情景为情景一; 103:保存当前情景为情景二; 104:保存当前情景为情景三; 105:保存当前情景为情景四。
         let command:Int = 36
-        let dev_addr:String = (d?.address)!
-        let dev_type:Int = (d?.dev_type)!
+        let dev_addr = Int(d!.address!)
+        let dev_type:Int = d!.dev_type!
         //开启总控情景一
         cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-             let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":97]
+             let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":97]
             QNTool.openSence(dict)
             return RACSignal.empty()
         })
         
         //开启总控情景二
         cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-             let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":98]
+             let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":98]
             QNTool.openSence(dict)
             
             return RACSignal.empty()
         })
         //开启总控情景三
         cell.p3Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":99]
+            let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":99]
                 QNTool.openSence(dict)
             return RACSignal.empty()
         })
         //开启总控情景四
         cell.p4Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":100]
+            let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":100]
             QNTool.openSence(dict)
             return RACSignal.empty()
         })
         //场景组内所有设备 ON 状态
         cell.p5Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":110]
+            let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":110]
             QNTool.openSence(dict)
             return RACSignal.empty()
         })
         //关闭所有设备
         cell.p6Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":111]
+            let dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":111]
             QNTool.openSence(dict)
             return RACSignal.empty()
         })
@@ -110,7 +110,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
-                    let save_dev = [["dev_addr": dev_addr,"dev_type": dev_type,"dev_name": textField.text!]]
+                    let save_dev = [["dev_addr": dev_addr!,"dev_type": dev_type,"dev_name": textField.text!]]
                     QNTool.modifyEqument(save_dev)
                 }
             }

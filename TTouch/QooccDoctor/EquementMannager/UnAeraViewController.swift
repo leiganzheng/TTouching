@@ -50,8 +50,8 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         }else if d.dev_type == 6{//六回路开关控制端
                         return 190
         }else if d.dev_type == 7{//窗帘控制端
-//                       return 104
-            return 54
+                       return 104
+//            return 54
         }else if d.dev_type == 8{//单回路调光控制端(旧版)
                        return 104
         }else if d.dev_type == 9{//双回路调光控制端(旧版)
@@ -139,13 +139,22 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
                 }
-                cell.LTitle.text=d.dev_name!
+//                cell.LTitle.text=d.dev_name!
                 cell.L1.addTarget(self, action: #selector(SixPaternViewController.open1(_:)), forControlEvents: .TouchUpInside)
                 let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
                 longGesture.minimumPressDuration = 0.8
                 cell.L1.addGestureRecognizer(longGesture)
                 cell.L2.addTarget(self, action: #selector(SixPaternViewController.stop1(_:)), forControlEvents: .TouchUpInside)
                 cell.L3.addTarget(self, action: #selector(SixPaternViewController.close1(_:)), forControlEvents: .TouchUpInside)
+                
+                
+                cell.R1.addTarget(self, action: #selector(SixPaternViewController.open2(_:)), forControlEvents: .TouchUpInside)
+                let longGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen2(_:)))
+                longGesture.minimumPressDuration = 0.8
+                cell.R1.addGestureRecognizer(longGestureR)
+                cell.R2.addTarget(self, action: #selector(SixPaternViewController.stop2(_:)), forControlEvents: .TouchUpInside)
+                cell.R3.addTarget(self, action: #selector(SixPaternViewController.close2(_:)), forControlEvents: .TouchUpInside)
+                
                 return cell
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 let cellIdentifier = "MSigleTableViewCell"
@@ -371,6 +380,40 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 3)
+    }
+    func open2(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 5)
+    }
+    func longOpen2(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 6)
+        
+    }
+    
+    func stop2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 7)
+    }
+    func close2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 8)
+    }
+    func longClose2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 9)
     }
 
 

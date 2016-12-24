@@ -126,11 +126,20 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 5 {
-                self.data.addObject(element)
+            if self.flag {
+                if element.dev_type == 6 {
+                    self.data.addObject(element)
+                }
+                
+                print("Device:\(element.address!)", terminator: "");
+            }else{
+                if element.dev_type == 5 {
+                    self.data.addObject(element)
+                }
+                
+                print("Device:\(element.address!)", terminator: "");
             }
             
-            print("Device:\(element.address!)", terminator: "");
         }
         self.myCustomTableView.reloadData()
         
@@ -141,9 +150,9 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let d = self.data[(indexPath?.row)!] as! Device
         
         let command = 36
-        let dev_addr = d.address!
-        let dev_type = d.dev_type!
-        
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = d.dev_type!
+        var dict:NSDictionary = [:]
         //三回路开关控制端
         if switchBtn.tag == 100  {
             if switchBtn.on {
@@ -200,7 +209,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         }
         
 
-        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":work_status ]
+        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
             let d = result as! NSDictionary
             let status = d.objectForKey("work_status") as! NSNumber

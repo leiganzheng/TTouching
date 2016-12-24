@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -243,6 +243,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
             let tempVc = self.VC as! ThreeOrSixViewController
             tempVc.device = d
+            tempVc.flag = false
             self.navigationController?.pushViewController(tempVc, animated: true)
         }else if d.dev_type == 6{//六回路开关控制端
             self.VC = ThreeOrSixViewController.CreateFromStoryboard("Main") as! UIViewController
@@ -379,7 +380,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             QNTool.hiddenActivityView()
             let d = result as! NSDictionary
             let devices = d.objectForKey("Device Information") as! NSArray
-            
+            print(devices)
             if (devices.count == 0) {
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
             }else{

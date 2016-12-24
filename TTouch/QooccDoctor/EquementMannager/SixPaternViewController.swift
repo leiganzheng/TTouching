@@ -51,8 +51,8 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }else if d.dev_type == 6{//六回路开关控制端
                 return 190
             }else if d.dev_type == 7{//窗帘控制端
-//                return 104
-                return 54
+                return 104
+//                return 54
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 return 104
             }else if d.dev_type == 9{//双回路调光控制端(旧版)
@@ -152,13 +152,21 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
                 }
-                cell.LTitle.text=d.dev_name!
+//                cell.LTitle.text=d.dev_name!
                 cell.L1.addTarget(self, action: #selector(SixPaternViewController.open1(_:)), forControlEvents: .TouchUpInside)
                 let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
                 longGesture.minimumPressDuration = 0.8
                 cell.L1.addGestureRecognizer(longGesture)
                 cell.L2.addTarget(self, action: #selector(SixPaternViewController.stop1(_:)), forControlEvents: .TouchUpInside)
                 cell.L3.addTarget(self, action: #selector(SixPaternViewController.close1(_:)), forControlEvents: .TouchUpInside)
+                
+                cell.R1.addTarget(self, action: #selector(SixPaternViewController.open2(_:)), forControlEvents: .TouchUpInside)
+                let longGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen2(_:)))
+                longGesture.minimumPressDuration = 0.8
+                cell.R1.addGestureRecognizer(longGestureR)
+                cell.R2.addTarget(self, action: #selector(SixPaternViewController.stop2(_:)), forControlEvents: .TouchUpInside)
+                cell.R3.addTarget(self, action: #selector(SixPaternViewController.close2(_:)), forControlEvents: .TouchUpInside)
+                
                 return cell
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 let cellIdentifier = "MSigleTableViewCell"
@@ -221,52 +229,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        superVC.hidesBottomBarWhenPushed = true
-//        let d = self.data[indexPath.row] as! Device
-//        if d.dev_type == 3{//单回路调光控制端
-//            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 4{//双回路调光控制端
-//            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 5{//三回路开关控制端
-//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 6{//六回路开关控制端
-//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 7{//窗帘控制端
-//            let vc = CutainControViewController.CreateFromStoryboard("Main") as! CutainControViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//            
-//        }else if d.dev_type == 8{//单回路调光控制端(旧版)
-//            let vc = SigleLightViewController.CreateFromStoryboard("Main") as! SigleLightViewController
-//            vc.device=d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 9{//双回路调光控制端(旧版)
-//            let vc = DoubleLightViewController.CreateFromStoryboard("Main") as! DoubleLightViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 10{//三/六回路开关控制端
-//            let vc = ThreeOrSixViewController.CreateFromStoryboard("Main") as! ThreeOrSixViewController
-//            vc.device = d
-//            superVC.navigationController?.pushViewController(vc, animated: true)
-//        }else if d.dev_type == 11{
-//            
-//        }else if d.dev_type == 12{//空调
-//            
-//        }
-//        else if d.dev_type == 13{//地暖
-//            
-//        }
-//        else if d.dev_type == 14{//新风
-//            
-//        }
+
 
     }
     //MARK:- private method
@@ -388,6 +351,41 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 3)
     }
+    func open2(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 5)
+    }
+    func longOpen2(sender: UIButton){
+        
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 6)
+        
+    }
+    
+    func stop2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 7)
+    }
+    func close2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 8)
+    }
+    func longClose2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 9)
+    }
+    
     func Troad1(sender:UIButton){
         self.imageOfButton(sender)
     }
