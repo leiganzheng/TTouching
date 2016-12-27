@@ -67,58 +67,58 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     func sendCommand(indexPath:NSIndexPath){
         if self.device?.dev_type == 1 {
             let command:Int = 36
-            let dev_addr:String = (device?.address)!
-            let dev_type:Int = (device?.dev_type)!
+            let dev_addr = Int(device!.address!)
+            let dev_type:Int = device!.dev_type!
             if indexPath.row == 0 {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":17]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":17]
                 QNTool.openSence(dict)
             }else if(indexPath.row == 1) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":18]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":18]
                 QNTool.openSence(dict)
             }else if(indexPath.row == 2) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":19]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":19]
                 
                 QNTool.openSence(dict)
             }else if(indexPath.row == 3) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":20]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":20]
                 
                 QNTool.openSence(dict)
                 
             }else if(indexPath.row == 4) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":21]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":21]
                 
                 QNTool.openSence(dict)
             }else if(indexPath.row == 5) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":31]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":31]
                 
                 QNTool.openSence(dict)
             }
             
         }else if(self.device?.dev_type == 2){
             let command:Int = 36
-            let dev_addr:String = (device?.address)!
-            let dev_type:Int = (device?.dev_type)!
+            let dev_addr = Int(device!.address!)
+            let dev_type:Int = device!.dev_type!
             if indexPath.row == 0 {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":97]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":97]
                 QNTool.openSence(dict)
             }else if(indexPath.row == 1) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":98]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":98]
                 QNTool.openSence(dict)
             }else if(indexPath.row == 2) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":99]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":99]
                 
                 QNTool.openSence(dict)
             }else if(indexPath.row == 3) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":100]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":100]
                 
                 QNTool.openSence(dict)
                 
             }else if(indexPath.row == 4) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":110]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":110]
                 
                 QNTool.openSence(dict)
             }else if(indexPath.row == 5) {
-                let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": dev_type, "work_status":111]
+                let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":111]
                 
                 QNTool.openSence(dict)
             }

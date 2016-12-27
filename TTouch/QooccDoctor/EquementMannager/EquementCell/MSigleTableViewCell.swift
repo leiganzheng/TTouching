@@ -12,6 +12,7 @@ class MSigleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titel: UIButton!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var valueLB: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

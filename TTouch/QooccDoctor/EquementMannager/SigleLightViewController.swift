@@ -33,7 +33,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,6 +114,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             })
         
         cell.cmdData.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+       
         return cell
     }
     func sliderValueChanged(slider: UISlider) {
@@ -125,9 +126,10 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         "dev_area": 0*/
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
 //        let data = slider.value
-        let tempCell = slider.superview?.superview as! UITableViewCell
+        let tempCell = slider.superview?.superview as! SingleTableViewCell
         let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
+         tempCell.valueLB.text = "\(Int(slider.value))%"
         QNTool.openLight(d, value: Int(slider.value))
     
 

@@ -15,7 +15,7 @@ import ReactiveCocoa
 *  //MARK: 用户列表
 */
 
-class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class UserListViewController: UIViewController, QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate {
     
     private var dataArray: NSMutableArray!
     var data: NSMutableArray = NSMutableArray()
@@ -101,9 +101,30 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         leftBarButton.addSubview(searchButton1)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         self.customNavView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: "tapAction")
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
     
     }
+    func tapAction() {
+        if self.rightVC != nil && self.rightVC.view.frame.origin.x ==  screenWidth-160{
+            self.animationWith((self.rightVC)!, x: self.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
 
+        }
+        if self.leftVC != nil && self.leftVC.view.frame.origin.x ==  0{
+             self.animationWith((self.leftVC)!, x: self.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
+            
+        }
+        
+    }
+    //MARK: 重写手势让tableview能点击
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if NSStringFromClass(touch.view!.classForCoder) == "UITableViewCellContentView"{
+            return false
+        }
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

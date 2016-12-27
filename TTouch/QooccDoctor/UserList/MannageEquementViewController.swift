@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
+//        self.fetchData()
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +64,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-                
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
             }else{
                 while (cell.contentView.subviews.last != nil) {
                     (cell.contentView.subviews.last! as UIView).removeFromSuperview()  //删除并进行重新分配

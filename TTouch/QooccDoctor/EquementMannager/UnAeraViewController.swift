@@ -16,6 +16,10 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     var flag:String?//0：主界面 1：设备管理 2：左边快捷菜单
     var myDevice:Device?
     var equementType: EquementSign?
+    var commandArr:NSMutableArray!
+    var sockertManger:SocketManagerTool!
+    var flag1:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +31,10 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
+        
+        self.sockertManger = SocketManagerTool.shareInstance()
+        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+        
         self.fetchData()
     }
 
@@ -42,7 +50,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let d = self.data[indexPath.row] as! Device
         if d.dev_type == 3{//单回路调光控制端
 
-            return 104
+            return 114
         }else if d.dev_type == 4{//双回路调光控制端
                        return 132
         }else if d.dev_type == 5{//三回路开关控制端
@@ -53,7 +61,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                        return 104
 //            return 54
         }else if d.dev_type == 8{//单回路调光控制端(旧版)
-                       return 104
+                       return 114
         }else if d.dev_type == 9{//双回路调光控制端(旧版)
             
             return 132
@@ -124,6 +132,11 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.r1Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                cell.r2Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                cell.r3Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 return cell
             }else if d.dev_type == 6{//六回路开关控制端
                 let cellIdentifier = "MSixTableViewCell"
@@ -132,6 +145,12 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTableViewCell
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.r1.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                cell.r2.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                cell.r3.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                cell.r4.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                cell.r5.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                cell.r6.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
                 return cell
             }else if d.dev_type == 7{//窗帘控制端
                 let cellIdentifier = "MCurtainTableViewCell"
@@ -177,6 +196,10 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.r1Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                cell.r2Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                cell.r3Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 return cell
             }else if d.dev_type == 11{
                 let cellIdentifier = "MSixTouchTableViewCell"
@@ -338,9 +361,10 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
          "dev_area": 0*/
         //单回路调光控制端 work_status操作码范围是 0 ~ 99,分别表示调光百分比; 0:关闭回路调光;99:最大调光亮度。
         //        let data = slider.value
-        let tempCell = slider.superview?.superview as! UITableViewCell
+        let tempCell = slider.superview?.superview as! MSigleTableViewCell
         let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
+        tempCell.valueLB.text = "\(Int(slider.value))%"
         QNTool.openLight(d, value: Int(slider.value))
         
     }
@@ -414,6 +438,93 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 9)
+    }
+    //三
+    func Troad1(sender:UIButton){
+        self.imageOfButton(sender)
+        self.valueChangedOfButton(sender)
+    }
+    //六
+    func road1(sender:UIButton){
+        self.imageOfButton(sender)
+        self.valueChangedOfButton(sender)
+    }
+    func imageOfButton(sender:UIButton){
+        sender.selected = !sender.selected
+        let title = sender.selected ? "navigation_Options_icon_s" : "navigation_Options_icon"
+        sender.setImage(UIImage(named: title), forState: .Normal)
+        
+    }
+
+    func valueChangedOfButton(switchBtn: UIButton) {
+        let tempCell = switchBtn.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        
+        let command = 36
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = d.dev_type!
+        var dict:NSDictionary = [:]
+        //三回路开关控制端
+        if switchBtn.tag == 100  {
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 101){
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 102){
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 103){
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 104){
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }else if(switchBtn.tag == 105){
+            if switchBtn.selected {
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
+            }else{
+                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+            }
+        }
+        var work_status = 0
+        if tempCell is MSixTableViewCell {//
+            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
+            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
+            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
+            work_status = Int(A|B|C|D|E|F)
+        }else{
+            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
+            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
+            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
+            work_status = Int(A|B|C)
+            print("A|B|C 结果为：\(A|B|C)")
+        }
+        
+        
+        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            
+        })
     }
 
 

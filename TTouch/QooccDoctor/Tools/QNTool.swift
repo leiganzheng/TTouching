@@ -440,7 +440,7 @@ extension QNTool {
 //                msg = "调光\(value/100)"
 //                print(dict)
                 
-            }else if(value == 99){
+            }else if(value == 100){
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":99]
 //                msg = "最大亮度"
                 
@@ -448,7 +448,7 @@ extension QNTool {
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! Int
-                if (status >= 0 && status <= 99){
+                if (status >= 0 && status <= 100){
 //                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
@@ -477,7 +477,7 @@ extension QNTool {
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":212]
 //                msg = "调光四档"
                 
-            }else if(value == 99){
+            }else if(value == 100){
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":222]
 //                msg = "最大亮度"
                 
@@ -760,79 +760,6 @@ extension QNTool {
             
         }
     }
-//    var commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
-//    class func openThreeOrSixRoad(d:Device,sender:UIButton){
-//        let command = 36
-//        let dev_addr = d.address!
-//        let dev_type = d.dev_type!
-//        
-//        //三回路开关控制端
-//        if switchBtn.tag == 100  {
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
-//            }
-//        }else if(switchBtn.tag == 101){
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
-//            }
-//        }else if(switchBtn.tag == 102){
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
-//            }
-//        }else if(switchBtn.tag == 103){
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
-//            }
-//        }else if(switchBtn.tag == 104){
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
-//            }
-//        }else if(switchBtn.tag == 105){
-//            if switchBtn.on {
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
-//            }else{
-//                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
-//            }
-//        }
-//        var work_status = 0
-//        if self.flag {//
-//            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-//            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-//            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-//            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
-//            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
-//            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
-//            work_status = Int(A|B|C|D|E|F)
-//        }else{
-//            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-//            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-//            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-//            work_status = Int(A|B|C)
-//            print("A|B|C 结果为：\(A|B|C)")
-//        }
-//        
-//        
-//        let dict = ["command": command,"dev_addr" : dev_addr,"dev_type":dev_type,"work_status":work_status ]
-//        self.sockertManger.sendMsg(dict, completion: { (result) in
-//            let d = result as! NSDictionary
-//            let status = d.objectForKey("work_status") as! NSNumber
-//            //            if (status == 97){
-//            //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-//            //            }else{
-//            //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-//            //            }
-//        })
-//    }
 
 }
 
