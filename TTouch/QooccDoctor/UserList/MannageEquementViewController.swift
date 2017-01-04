@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +90,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }else  {
                 img = UIImageJPEGRepresentation(UIImage(named:"Manage_6-scene_icon" )!, 1)!
             }
+            if d.dev_type == 3 || d.dev_type == 8 {
+                logoButton.setTitle("单回路调光", forState: .Normal)
+            }
 
             logoButton1.setImage(UIImage(data: img), forState: UIControlState.Normal)
             
@@ -137,7 +140,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             "dev_addr": 32881,
             "dev_type": 3,
             "work_status": 0,
-            "dev_name": "单回路调光",
+            "dev_name": "单火路调光",
             "dev_status": 1,
             "dev_area": 13014
             ],
@@ -193,7 +196,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             "dev_addr": 38585,
             "dev_type": 3,
             "work_status": 0,
-            "dev_name": "单回路调光",
+            "dev_name": "单水路调光",
             "dev_status": 1,
             "dev_area": 0
             ]
