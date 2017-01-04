@@ -19,6 +19,7 @@ class SingleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.cmdData.continuous = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

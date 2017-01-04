@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/UnAeraViewController.swift"
-            timestampString = "504512070.804704"
+            timestampString = "505193148.092403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -589,22 +589,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QooccDoctor/EquementMannager/ThreeOrSixViewController.swift"
-            timestampString = "503221101.867564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "fetchData()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QooccDoctor/CustomView/SubCustomView.swift"
             timestampString = "503371032.601627"
             startingColumnNumber = "9223372036854775807"
@@ -842,7 +826,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/DataModule/DBManager.swift"
@@ -990,7 +974,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/CutainControViewController.swift"
-                  timestampString = "504513833.177295"
+                  timestampString = "505193149.477027"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "160"
@@ -1005,7 +989,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/CutainControViewController.swift"
-                  timestampString = "504513833.177405"
+                  timestampString = "505193149.477136"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "160"
@@ -1022,11 +1006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "504512070.804704"
+            timestampString = "505193148.092403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "valueChangedOfButton(_:)"
             landmarkType = "5">
             <Locations>
@@ -1038,11 +1022,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixPaternViewController.swift"
-                  timestampString = "504513833.17814"
+                  timestampString = "505193149.477884"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "470"
-                  endingLineNumber = "470"
+                  startingLineNumber = "471"
+                  endingLineNumber = "471"
                   offsetFromSymbolStart = "6396">
                </Location>
                <Location
@@ -1053,11 +1037,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixPaternViewController.swift"
-                  timestampString = "504513833.178257"
+                  timestampString = "505193149.477994"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "470"
-                  endingLineNumber = "470"
+                  startingLineNumber = "471"
+                  endingLineNumber = "471"
                   offsetFromSymbolStart = "8544">
                </Location>
             </Locations>
@@ -1070,11 +1054,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "504512070.804704"
+            timestampString = "505193148.092403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "valueChangedOfButton(_:)"
             landmarkType = "5">
             <Locations>
@@ -1086,11 +1070,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixPaternViewController.swift"
-                  timestampString = "504513833.178982"
+                  timestampString = "505193149.478639"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "462"
-                  endingLineNumber = "462"
+                  startingLineNumber = "463"
+                  endingLineNumber = "463"
                   offsetFromSymbolStart = "4857">
                </Location>
                <Location
@@ -1101,11 +1085,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qoocc03/TTouching/TTouch/QooccDoctor/EquementMannager/SixPaternViewController.swift"
-                  timestampString = "504513833.1791"
+                  timestampString = "505193149.478749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "462"
-                  endingLineNumber = "462"
+                  startingLineNumber = "463"
+                  endingLineNumber = "463"
                   offsetFromSymbolStart = "8496">
                </Location>
             </Locations>
@@ -1124,6 +1108,118 @@
             startingLineNumber = "111"
             endingLineNumber = "111"
             landmarkName = "tapAction()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/SigleLightViewController.swift"
+            timestampString = "505189232.794855"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "sliderValueChanged(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/Tools/QNTool.swift"
+            timestampString = "505189269.065128"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "openLight(_:value:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/Tools/QNTool.swift"
+            timestampString = "505189659.310083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "openLight(_:value:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/ThreeOrSixViewController.swift"
+            timestampString = "505190120.034525"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/ThreeOrSixViewController.swift"
+            timestampString = "505190142.883635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "sliderValueChanged(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/ThreeOrSixViewController.swift"
+            timestampString = "505190243.144484"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "sliderValueChanged(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
+            timestampString = "505193180.981957"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "tableView(_:heightForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

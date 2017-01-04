@@ -10,6 +10,7 @@ import UIKit
 
 class MCurtainTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var LTitle: UILabel!
     @IBOutlet weak var L1: UIButton!
     @IBOutlet weak var L2: UIButton!
@@ -25,7 +26,7 @@ class MCurtainTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

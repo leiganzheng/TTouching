@@ -435,12 +435,12 @@ extension QNTool {
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":0]
 //                print(dict)
 //                msg = "关闭调光"
-            }else if(value>0&&value<24){//调光
+            }else if(value>0&&value<98){//调光
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":value]
 //                msg = "调光\(value/100)"
 //                print(dict)
                 
-            }else if(value == 100){
+            }else if(value>98&&value<=100){
                 dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":99]
 //                msg = "最大亮度"
                 

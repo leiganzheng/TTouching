@@ -397,7 +397,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //            self.tableViewController.refreshControl?.endRefreshing()
 //        })
         let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let time = dispatch_time(DISPATCH_TIME_NOW, (Int64)(5 * NSEC_PER_SEC))
+        let time = dispatch_time(DISPATCH_TIME_NOW, (Int64)(3 * NSEC_PER_SEC))
         dispatch_after(time, globalQueue) { () -> Void in
             self.flag = false
             self.myTableView.reloadData()

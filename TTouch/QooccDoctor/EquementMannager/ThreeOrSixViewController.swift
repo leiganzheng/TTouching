@@ -24,7 +24,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
         self.fetchData()
     }
 
@@ -91,6 +91,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
                 //修改数据库
                 self.flag = title as! String ==  "六回路" ?  true :  false
                 cell.name.setTitle(title as? String, forState: .Normal)
+                self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
                 self.myCustomTableView.reloadData()
                 popover.dismissPopoverAnimated(true)
             }
@@ -174,21 +175,21 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             }
         }else if(switchBtn.tag == 103){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
+                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000001000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000000000)
             }
         }else if(switchBtn.tag == 104){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
+                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000010000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000000000)
             }
         }else if(switchBtn.tag == 105){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
+                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000100000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000000000)
             }
         }
          var work_status = 0
@@ -211,13 +212,13 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
-            let d = result as! NSDictionary
-            let status = d.objectForKey("work_status") as! NSNumber
-//            if (status == 97){
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-//            }else{
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-//            }
+//            let d = result as! NSDictionary
+//            let status = d.objectForKey("work_status") as! NSNumber
+////            if (status == 97){
+////                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+////            }else{
+////                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+////            }
         })
     }
 

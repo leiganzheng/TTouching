@@ -34,7 +34,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         self.view.addSubview(self.myTableView!)
         
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
         
         self.fetchData()
     }
@@ -60,7 +60,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }else if d.dev_type == 6{//六回路开关控制端
                 return 190
             }else if d.dev_type == 7{//窗帘控制端
-                return 104
+                return 128
 //                return 54
             }else if d.dev_type == 8{//单回路调光控制端(旧版)
                 return 114
@@ -114,6 +114,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.titel.setTitle(d.dev_name!, forState: .Normal)
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
@@ -123,6 +124,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 cell.slider1.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
@@ -134,6 +136,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 cell.r1Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
@@ -146,6 +149,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 cell.r1.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
@@ -160,8 +164,10 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MCurtainTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MCurtainTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
 //                cell.LTitle.text=d.dev_name!
+                cell.title.text = d.dev_name!
                 cell.L1.addTarget(self, action: #selector(SixPaternViewController.open1(_:)), forControlEvents: .TouchUpInside)
                 let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
                 longGesture.minimumPressDuration = 0.8
@@ -182,6 +188,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 return cell
             }else if d.dev_type == 9{//双回路调光控制端(旧版)
@@ -189,6 +196,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 return cell
             }else if d.dev_type == 10{//三/六回路开关控制端
@@ -196,6 +204,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MThreeTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MThreeTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
@@ -209,6 +218,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSixTouchTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTouchTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 return cell
@@ -217,6 +227,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MAirTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MAirTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 return cell
             }
@@ -225,6 +236,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDiNuanTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDiNuanTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 return cell
             }
@@ -233,6 +245,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MXinFenTableViewCell!
                 if cell == nil {
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MXinFenTableViewCell
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 return cell
             }else{
@@ -440,21 +453,21 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }
         }else if(switchBtn.tag == 103){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000001000)
+                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000001000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000000000)
             }
         }else if(switchBtn.tag == 104){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000010000)
+                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000010000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000000000)
             }
         }else if(switchBtn.tag == 105){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000100000)
+                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000100000)
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000000000)
             }
         }
         var work_status = 0

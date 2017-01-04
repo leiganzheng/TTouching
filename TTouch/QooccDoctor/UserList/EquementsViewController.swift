@@ -44,21 +44,21 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
         return
-//        let dict = ["command": 32,"permit" : pass]
-//        sockertManger.sendMsg(dict) { (result) in
-//            let d = result as! NSDictionary
-//            let status = d.objectForKey("status") as! NSNumber
-//            if (status.intValue == 1) {
-//                QNTool.showPromptView("验证成功！", {
-//                    self.hidesBottomBarWhenPushed = true
-//                    self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
-//                })
-//               
-//            }else{
-//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "验证失败，请重试！")
-//            }
-//            print(result)
-//        }
+        let dict = ["command": 32,"permit" : pass]
+        sockertManger.sendMsg(dict) { (result) in
+            let d = result as! NSDictionary
+            let status = d.objectForKey("status") as! NSNumber
+            if (status.intValue == 1) {
+                QNTool.showPromptView("验证成功！", {
+                    self.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+                })
+               
+            }else{
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "验证失败，请重试！")
+            }
+            print(result)
+        }
     }
 
 
