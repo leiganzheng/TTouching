@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
+//        self.fetchData()
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +92,40 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }
             if d.dev_type == 3 || d.dev_type == 8 {
                 logoButton.setTitle("单回路调光", forState: .Normal)
+            }
+            if d.dev_type == 1  {
+                logoButton.setTitle("总控设备", forState: .Normal)
+            }
+            if d.dev_type == 2 {
+                logoButton.setTitle("六场景", forState: .Normal)
+            }
+            if d.dev_type == 4  || d.dev_type == 9 {
+                logoButton.setTitle("双回路调光", forState: .Normal)
+            }
+            if d.dev_type == 5 {
+                logoButton.setTitle("三回路控制", forState: .Normal)
+            }
+            if d.dev_type == 6 {
+                logoButton.setTitle("六回路控制", forState: .Normal)
+            }
+            if d.dev_type == 7 {
+                logoButton.setTitle("窗帘控制", forState: .Normal)
+            }
+            if d.dev_type == 10 {
+                logoButton.setTitle("三/六回路控制", forState: .Normal)
+            }
+            
+            if d.dev_type == 11 {
+                logoButton.setTitle("干接点", forState: .Normal)
+            }
+            if d.dev_type == 12 {
+                logoButton.setTitle("空调", forState: .Normal)
+            }
+            if d.dev_type == 13 {
+                logoButton.setTitle("地暖", forState: .Normal)
+            }
+            if d.dev_type == 14 {
+                logoButton.setTitle("新风", forState: .Normal)
             }
 
             logoButton1.setImage(UIImage(data: img), forState: UIControlState.Normal)

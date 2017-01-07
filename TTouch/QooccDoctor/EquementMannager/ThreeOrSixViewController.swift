@@ -105,13 +105,18 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             
         })
 
-        
          cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch1.on = self.commandArr![0] as! Int == 0b0000000000000001
          cell.switch2.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch2.on = self.commandArr![1] as! Int == 0b0000000000000010
          cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch3.on = self.commandArr![2] as! Int == 0b0000000000000100
          cell.switch4.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch4.on = self.commandArr![3] as! Int == 0b0000000000001000
          cell.switch5.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch5.on = self.commandArr![4] as! Int == 0b0000000000010000
          cell.switch6.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.switch6.on = self.commandArr![5] as! Int == 0b0000000000100000
         return cell
     }
     
@@ -201,6 +206,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
             let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
             work_status = Int(A|B|C|D|E|F)
+            print("A|B|C|D|E|F 结果为：\(A|B|C|D|E|F)")
         }else{
             let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
             let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制

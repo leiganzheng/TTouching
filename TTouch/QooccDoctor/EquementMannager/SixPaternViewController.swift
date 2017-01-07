@@ -171,7 +171,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen1(_:)))
                 longGesture.minimumPressDuration = 0.8
-                cell.L1.addGestureRecognizer(longGesture)
+//                cell.L1.addGestureRecognizer(longGesture)
                 
                 let longlongGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longlongOpen1(_:)))
                 longlongGesture.minimumPressDuration = 2
@@ -182,7 +182,8 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 let longCloseGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longClose1(_:)))
                 longCloseGesture.minimumPressDuration = 0.8
-                cell.L3.addGestureRecognizer(longCloseGesture)
+                
+//                cell.L3.addGestureRecognizer(longCloseGesture)
                 let longlongCloseGesture = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longlongClose1(_:)))
                 longlongCloseGesture.minimumPressDuration = 2
                 cell.L3.addGestureRecognizer(longlongCloseGesture)
@@ -191,7 +192,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.R1.addTarget(self, action: #selector(SixPaternViewController.open2(_:)), forControlEvents: .TouchUpInside)
                 let longGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longOpen2(_:)))
                 longGesture.minimumPressDuration = 0.8
-                cell.R1.addGestureRecognizer(longGestureR)
+//                cell.R1.addGestureRecognizer(longGestureR)
                 
                 let longlongGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longlongOpen2(_:)))
                 longlongGestureR.minimumPressDuration = 2
@@ -202,7 +203,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 let longCloseGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longClose2(_:)))
                 longCloseGestureR.minimumPressDuration = 0.8
-                cell.R3.addGestureRecognizer(longCloseGestureR)
+//                cell.R3.addGestureRecognizer(longCloseGestureR)
                 
                 let longlongCloseGestureR = UILongPressGestureRecognizer(target: self, action: #selector(SixPaternViewController.longlongClose2(_:)))
                 longlongCloseGestureR.minimumPressDuration = 2
@@ -389,11 +390,12 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         QNTool.openCutain(d, value: 1)
     }
     func longlongOpen1(sender: UIGestureRecognizer){
-        
+        if sender.state == .Began {
         let tempCell = sender.view!.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 10)
+        }
     }
     func stop1(sender: UIButton){
         
@@ -418,16 +420,17 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     func longClose1(sender: UIGestureRecognizer){
         
         let tempCell = sender.view!.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 4)
     }
     func longlongClose1(sender: UIGestureRecognizer){
-        
+        if sender.state == .Began {
         let tempCell = sender.view!.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 12)
+        }
     }
     func open2(sender: UIButton){
         
@@ -445,11 +448,12 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         
     }
     func longlongOpen2(sender: UIGestureRecognizer){
-        
+        if sender.state == .Began {
         let tempCell = sender.view!.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 11)
+        }
     }
     
     func stop2(sender: UIButton){
@@ -470,11 +474,13 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 9)
     }
-    func longlongClose2(sender: UIButton){
-        let tempCell = sender.superview?.superview as! UITableViewCell
-        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+    func longlongClose2(sender: UIGestureRecognizer){
+        if sender.state == .Began {
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 13)
+        }
     }
     //三
     func Troad1(sender:UIButton){
@@ -542,6 +548,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
             let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
             work_status = Int(A|B|C|D|E|F)
+            print("A|B|C|D|E|F 结果为：\(A|B|C|D|E|F)")
         }else{
             let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
             let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制

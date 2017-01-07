@@ -37,7 +37,7 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDf-ok-zyj">
+                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDf-ok-zyj">
                         <rect key="frame" x="8" y="88" width="110" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="AwQ-7C-QJ1"/>
@@ -45,11 +45,11 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="回路三" image="navigation_Options_icon">
+                        <state key="normal" title="回路二" image="navigation_Options_icon">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h0-88-641">
+                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h0-88-641">
                         <rect key="frame" x="8" y="132" width="110" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="bmA-Qy-VF0"/>
@@ -57,19 +57,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="回路五" image="navigation_Options_icon">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-9L-0oH">
-                        <rect key="frame" x="197" y="88" width="110" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="28" id="SzR-q8-MXT"/>
-                            <constraint firstAttribute="width" constant="110" id="Uno-OQ-0Ad"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="回路四" image="navigation_Options_icon">
+                        <state key="normal" title="回路三" image="navigation_Options_icon">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -85,7 +73,7 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIo-3e-Rew">
+                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIo-3e-Rew">
                         <rect key="frame" x="197" y="52" width="110" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="ELo-20-hZk"/>
@@ -93,7 +81,19 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="回路二" image="navigation_Options_icon">
+                        <state key="normal" title="回路四" image="navigation_Options_icon">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-9L-0oH">
+                        <rect key="frame" x="197" y="88" width="110" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="SzR-q8-MXT"/>
+                            <constraint firstAttribute="width" constant="110" id="Uno-OQ-0Ad"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="回路五" image="navigation_Options_icon">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
