@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
     }
 
     override func didReceiveMemoryWarning() {

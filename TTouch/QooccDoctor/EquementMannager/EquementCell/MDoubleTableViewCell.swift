@@ -16,6 +16,8 @@ class MDoubleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.slider1.continuous = false
+        self.slider2.continuous = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

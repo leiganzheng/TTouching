@@ -16,6 +16,7 @@ class MSigleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.slider.continuous = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

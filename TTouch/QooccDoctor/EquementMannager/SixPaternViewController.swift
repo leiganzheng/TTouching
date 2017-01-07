@@ -118,6 +118,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 }
                 cell.titel.setTitle(d.dev_name!, forState: .Normal)
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
+            
                 return cell
             }else if d.dev_type == 4{//双回路调光控制端
                 let cellIdentifier = "MDoubleTableViewCell"
