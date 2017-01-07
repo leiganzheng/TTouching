@@ -502,18 +502,19 @@ extension QNTool {
         var msg = ""
         if dev_type == 4 {
             if slider.tag == 100 {
-                slider.minimumValue = 100
-                slider.maximumValue = 199
-                if slider.value == 100   {
+//                slider.minimumValue = 100
+//                slider.maximumValue = 199
+                let value = 100 + slider.value
+                if value == 100   {
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":100]
                     msg = "关闭左回路"
                     print(dict)
-                }else if(slider.value>100&&slider.value<199){//调光
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                }else if(value>100&&value<199){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
                     msg = "调光中"
                     print(dict)
                     
-                }else if(slider.value == 199 ){
+                }else if(value == 200 ){
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
                     msg = "最大亮度"
                     
@@ -528,17 +529,16 @@ extension QNTool {
 //                    }
                 })
             }else if (slider.tag == 101){
-                slider.minimumValue = 200
-                slider.maximumValue = 299
-                if slider.value == 200   {
+                let value = 200 + slider.value
+                if value == 200   {
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":200]
                     msg = "关闭右回路"
-                }else if(slider.value>200&&slider.value<299){//调光
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
+                }else if(value>200&&value<299){//调光
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
                     msg = "调光中"
                     
-                }else if(slider.value == 299 ){
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
+                }else if(value == 300 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":299]
                     msg = "最大亮度"
                     
                 }
@@ -554,17 +554,20 @@ extension QNTool {
             }
         }else if(dev_type == 9){//老版本
             if slider.tag == 100 {
-                slider.minimumValue = 264
-                slider.maximumValue = 268
-                if slider.value == 264   {
+//                slider.minimumValue = 264
+//                slider.maximumValue = 268
+                if slider.value == 0   {
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":264]
                     msg = "关闭左回路"
-                }else if(slider.value>264&&slider.value<268){//调光
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
-                    msg = "调光中"
+                }else if(slider.value>0&&slider.value<100){//调光
+                    let value = 264 + lroundf(slider.value*0.04)
+                    if value < 268{
+                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
+                        msg = "调光中"
+                    }
                     
-                }else if(slider.value == 268 ){
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":199]
+                }else if(slider.value == 100 ){
+                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":268]
                     msg = "最大亮度"
                     
                 }
@@ -586,17 +589,20 @@ extension QNTool {
 //                    }
                 })
                 
-            }else if (slider.value == 101){
-                slider.minimumValue = 384
-                slider.maximumValue = 448
-                if slider.value == 384   {
+            }else if (slider.tag == 101){
+//                slider.minimumValue = 384
+//                slider.maximumValue = 448
+                if slider.value == 0  {
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":384]
                     msg = "关闭左回路"
-                }else if(slider.value>384&&slider.value<448){//调光
-                    dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(slider.value)]
-                    msg = "调光中"
-                    
-                }else if(slider.value == 448 ){
+                }else if(slider.value>0&&slider.value<100){//调光
+                    let value = 384 + lroundf(slider.value*0.6)
+                    if value < 448{
+                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
+                        msg = "调光中"
+                    }
+                   
+                }else if(slider.value == 100 ){
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":448]
                     msg = "最大亮度"
                     

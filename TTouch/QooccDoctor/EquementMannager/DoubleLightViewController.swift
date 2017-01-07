@@ -33,7 +33,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120
+        return 180
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,7 +127,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 4 {
+            if element.dev_type == 4 || element.dev_type == 9{
                 self.data.addObject(element)
             }
             
@@ -139,9 +139,14 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
     func sliderValueChanged(slider: UISlider) {
         //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
         //        let data = slider.value
-        let tempCell = slider.superview?.superview as! UITableViewCell
+        let tempCell = slider.superview?.superview as! DoubleTableViewCell
         let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
+        if slider.tag == 100 {
+            tempCell.title1.text = "\(Int(slider.value))%"
+        }else if (slider.tag == 101){
+            tempCell.title2.text = "\(Int(slider.value))%"
+        }
         QNTool.openDLight(d, slider: slider)
     }
 

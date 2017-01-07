@@ -146,7 +146,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()
         
         for (_, element): (Int, Device) in arr.enumerate(){
-            if element.dev_type == 3 {
+            if element.dev_type == 3 || element.dev_type == 8{
                 self.data.addObject(element)
             }
         }

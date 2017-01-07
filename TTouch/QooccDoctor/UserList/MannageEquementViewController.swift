@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
+//        self.fetchData()
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,7 +212,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             ],
             [
             "dev_addr": 25988,
-            "dev_type": 4,
+            "dev_type": 9,
             "work_status": 0,
             "dev_name": "双回路调光",
             "dev_status": 1,

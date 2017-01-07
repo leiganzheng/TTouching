@@ -54,7 +54,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             if d.dev_type == 3{//单回路调光控制端
                 return 114
             }else if d.dev_type == 4{//双回路调光控制端
-                return 132
+                return 185
             }else if d.dev_type == 5{//三回路开关控制端
                 return 170
             }else if d.dev_type == 6{//六回路开关控制端
@@ -66,7 +66,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 return 114
             }else if d.dev_type == 9{//双回路调光控制端(旧版)
                 
-                return 132
+                return 185
             }else if d.dev_type == 10{//三/六回路开关控制端
                 return 170
             }else if d.dev_type == 11{
@@ -109,7 +109,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             return cell
         }else{
             let d = self.data[indexPath.row] as! Device
-            if d.dev_type == 3{//单回路调光控制端
+            if d.dev_type == 3 || d.dev_type == 8{//单回路调光控制端(旧版){//单回路调光控制端
                 let cellIdentifier = "MSigleTableViewCell"
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
                 if cell == nil {
@@ -120,7 +120,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
             
                 return cell
-            }else if d.dev_type == 4{//双回路调光控制端
+            }else if d.dev_type == 4 || d.dev_type == 9{//9双回路调光控制端(旧版);双回路调光控制端
                 let cellIdentifier = "MDoubleTableViewCell"
                 var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
                 if cell == nil {
@@ -213,22 +213,6 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 
                 
-                return cell
-            }else if d.dev_type == 8{//单回路调光控制端(旧版)
-                let cellIdentifier = "MSigleTableViewCell"
-                var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MSigleTableViewCell!
-                if cell == nil {
-                    cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSigleTableViewCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.None
-                }
-                return cell
-            }else if d.dev_type == 9{//双回路调光控制端(旧版)
-                let cellIdentifier = "MDoubleTableViewCell"
-                var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! MDoubleTableViewCell!
-                if cell == nil {
-                    cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MDoubleTableViewCell
-                    cell.selectionStyle = UITableViewCellSelectionStyle.None
-                }
                 return cell
             }else if d.dev_type == 10{//三/六回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"
@@ -370,9 +354,14 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     func dSliderValueChanged(slider: UISlider) {
         //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
         //        let data = slider.value
-        let tempCell = slider.superview?.superview as! UITableViewCell
+        let tempCell = slider.superview?.superview as! MDoubleTableViewCell
         let indexPath = self.myTableView.indexPathForCell(tempCell)
         let d = self.data[(indexPath?.row)!] as! Device
+        if slider.tag == 100 {
+            tempCell.title1.text = "\(Int(slider.value))%"
+        }else if (slider.tag == 101){
+            tempCell.title2.text = "\(Int(slider.value))%"
+        }
         QNTool.openDLight(d, slider: slider)
     }
     func open1(sender: UIButton){
