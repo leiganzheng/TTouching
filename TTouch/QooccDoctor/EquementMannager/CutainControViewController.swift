@@ -116,15 +116,41 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longOpen1(_:)))
         longGesture.minimumPressDuration = 0.8
         cell.open1Btn.addGestureRecognizer(longGesture)
+        
+        let longlongGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longlongOpen1(_:)))
+        longlongGesture.minimumPressDuration = 2
+        cell.open1Btn.addGestureRecognizer(longlongGesture)
+        
         cell.stop1Btn.addTarget(self, action: #selector(CutainControViewController.stop1(_:)), forControlEvents: .TouchUpInside)
         cell.close1Btn.addTarget(self, action: #selector(CutainControViewController.close1(_:)), forControlEvents: .TouchUpInside)
+        let longCloseGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longClose1(_:)))
+        longCloseGesture.minimumPressDuration = 0.8
+         cell.close1Btn.addGestureRecognizer(longCloseGesture)
+        let longlongCloseGesture = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longlongClose1(_:)))
+        longlongCloseGesture.minimumPressDuration = 2
+        cell.close1Btn.addGestureRecognizer(longlongCloseGesture)
+        
+        
         
         cell.open2Btn.addTarget(self, action: #selector(CutainControViewController.open2(_:)), forControlEvents: .TouchUpInside)
         let longGesture1 = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longOpen2(_:)))
         longGesture.minimumPressDuration = 0.8
-        cell.open1Btn.addGestureRecognizer(longGesture1)
+        cell.open2Btn.addGestureRecognizer(longGesture1)
+        
+        let longlongGesture1 = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longlongOpen2(_:)))
+        longlongGesture1.minimumPressDuration = 2
+        cell.open2Btn.addGestureRecognizer(longlongGesture1)
+        
         cell.stop2Btn.addTarget(self, action: #selector(CutainControViewController.stop2(_:)), forControlEvents: .TouchUpInside)
         cell.close2Btn.addTarget(self, action: #selector(CutainControViewController.close2(_:)), forControlEvents: .TouchUpInside)
+        
+        let longCloseGesture1 = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longClose2(_:)))
+        longCloseGesture1.minimumPressDuration = 0.8
+        cell.close2Btn.addGestureRecognizer(longCloseGesture1)
+        let longlongCloseGesture1 = UILongPressGestureRecognizer(target: self, action: #selector(CutainControViewController.longlongClose2(_:)))
+        longlongCloseGesture1.minimumPressDuration = 2
+        cell.close2Btn.addGestureRecognizer(longlongCloseGesture1)
+        
         return cell
     }
     
@@ -148,6 +174,13 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 1)
     }
+    func longlongOpen1(sender: UIGestureRecognizer){
+        
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 10)
+    }
     func stop1(sender: UIButton){
 
         let tempCell = sender.superview?.superview as! UITableViewCell
@@ -169,6 +202,13 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 4)
     }
+    func longlongClose1(sender: UIGestureRecognizer){
+        
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 12)
+    }
     func open2(sender: UIButton){
         let tempCell = sender.superview?.superview as! UITableViewCell
         let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
@@ -183,7 +223,14 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         QNTool.openCutain(d, value: 6)
         
     }
-    
+    func longlongOpen2(sender: UIGestureRecognizer){
+        
+        let tempCell = sender.view!.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 11)
+    }
+
     func stop2(sender: UIButton){
         let tempCell = sender.superview?.superview as! UITableViewCell
         let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
@@ -202,6 +249,13 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let d = self.data[(indexPath?.row)!] as! Device
         QNTool.openCutain(d, value: 9)
     }
+    func longlongClose2(sender: UIButton){
+        let tempCell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.myCustomTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        QNTool.openCutain(d, value: 13)
+    }
+    
     
 
     func fetchData(){

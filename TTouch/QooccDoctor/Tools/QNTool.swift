@@ -446,13 +446,13 @@ extension QNTool {
                 
             }
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status >= 0 && status <= 100){
-//                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-                }
+//                let d = result as! NSDictionary
+//                let status = d.objectForKey("work_status") as! Int
+//                if (status >= 0 && status <= 100){
+////                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+//                }else{
+//                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//                }
             })
         }
         if dev_type == 8 {
@@ -483,13 +483,13 @@ extension QNTool {
                 
             }
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-                }
+//                let d = result as! NSDictionary
+//                let status = d.objectForKey("work_status") as! Int
+//                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
+//                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+//                }else{
+//                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//                }
             })
         }
 
@@ -569,21 +569,21 @@ extension QNTool {
                     
                 }
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                    let d = result as! NSDictionary
-                    let status = d.objectForKey("work_status") as! NSNumber
-                    if (status.intValue > 264 && status.intValue < 268){
-                        //停止调光
-                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
-                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                            
-                        })
-                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                    }else if (status.intValue > 264 || status.intValue < 268){
+//                    let d = result as! NSDictionary
+//                    let status = d.objectForKey("work_status") as! NSNumber
+//                    if (status.intValue > 264 && status.intValue < 268){
+//                        //停止调光
+//                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
+//                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+//                            
+//                        })
 //                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                    }
-                    else{
-//                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-                    }
+//                    }else if (status.intValue > 264 || status.intValue < 268){
+////                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+//                    }
+//                    else{
+////                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//                    }
                 })
                 
             }else if (slider.value == 101){
@@ -602,21 +602,21 @@ extension QNTool {
                     
                 }
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                    let d = result as! NSDictionary
-                    let status = d.objectForKey("work_status") as! NSNumber
-                    if (status.intValue > 384 && status.intValue < 448){
-                        //停止调光
-                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
-                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                            
-                        })
-                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                    }else if (status.intValue > 384 || status.intValue < 448){
+//                    let d = result as! NSDictionary
+//                    let status = d.objectForKey("work_status") as! NSNumber
+//                    if (status.intValue > 384 && status.intValue < 448){
+//                        //停止调光
+//                        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
+//                        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+//                            
+//                        })
 //                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
-                    }
-                    else{
-//                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-                    }
+//                    }else if (status.intValue > 384 || status.intValue < 448){
+////                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: msg)
+//                    }
+//                    else{
+////                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//                    }
                 })
                 
             }
@@ -642,6 +642,18 @@ extension QNTool {
             
         
         }else if (value == 1){
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":192]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 192){
+                    QNTool.showPromptView("短按左路窗帘开")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+                 })
+    
+        }else if (value == 10){
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":224]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
@@ -651,8 +663,8 @@ extension QNTool {
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
-                 })
-    
+            })
+            
         }else if (value == 2){
            
              dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":144]
@@ -682,7 +694,20 @@ extension QNTool {
             
         }else if (value == 4){
             
-             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":160]
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 128){
+                    QNTool.showPromptView("短按左路窗帘关")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 12){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":160]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! Int
@@ -708,12 +733,25 @@ extension QNTool {
             
         }else if (value == 6){
             
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":12]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 12){
+                    QNTool.showPromptView("短按右路窗帘开")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 11){
+            
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":14]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! Int
                 if (status == 14){
-                    QNTool.showPromptView("长按左路窗帘开")
+                    QNTool.showPromptView("长按右路窗帘开")
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
@@ -747,7 +785,20 @@ extension QNTool {
 
         }else if (value == 9){
             
-             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":10]
+             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
+            SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                let d = result as! NSDictionary
+                let status = d.objectForKey("work_status") as! Int
+                if (status == 8){
+                    QNTool.showPromptView("短按右路窗帘关")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                }
+            })
+            
+        }else if (value == 13){
+            
+            dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":10]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 let d = result as! NSDictionary
                 let status = d.objectForKey("work_status") as! Int
