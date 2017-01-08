@@ -142,6 +142,19 @@ class DBManager: NSObject {
 
     }
     // MARK: >> 改
+    func updateStatus(status:Int,type:String) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update T_Device set work_status = (?) WHERE address = ? ", status,type) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+        dbBase.close();
+        
+    }
+    // MARK: >> 改
     func updateFav(fav:Int,type:String,complete:(AnyObject) -> Void) {
         dbBase.open();
         

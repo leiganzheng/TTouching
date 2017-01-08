@@ -118,6 +118,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 }
                 cell.titel.setTitle(d.dev_name!, forState: .Normal)
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
+                cell.slider.value = Float((d.work_status)!)
             
                 return cell
             }else if d.dev_type == 4 || d.dev_type == 9{//9双回路调光控制端(旧版);双回路调光控制端
@@ -130,7 +131,8 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
                 cell.slider1.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
                 cell.slider2.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
-                
+                cell.slider1.value = Float((d.work_status)!)
+                cell.slider2.value = Float((d.work_status)!)
                 return cell
             }else if d.dev_type == 5{//三回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"

@@ -114,7 +114,8 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             })
         
         cell.cmdData.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-       
+       cell.cmdData.value = Float((d?.work_status)!)
+        cell.valueLB.text = "\((d?.work_status)!)%"
         return cell
     }
     func sliderValueChanged(slider: UISlider) {

@@ -446,6 +446,7 @@ extension QNTool {
                 
             }
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                DBManager.shareInstance().updateStatus(value, type: d.address!)
 //                let d = result as! NSDictionary
 //                let status = d.objectForKey("work_status") as! Int
 //                if (status >= 0 && status <= 100){
@@ -483,6 +484,7 @@ extension QNTool {
                 
             }
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                DBManager.shareInstance().updateStatus(value, type: d.address!)
 //                let d = result as! NSDictionary
 //                let status = d.objectForKey("work_status") as! Int
 //                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
@@ -520,6 +522,7 @@ extension QNTool {
                     
                 }
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue >= 0 && status.intValue <= 99){
@@ -543,6 +546,8 @@ extension QNTool {
                     
                 }
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue >= 0 && status.intValue <= 99){
