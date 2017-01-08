@@ -9,6 +9,19 @@
 import UIKit
 import ReactiveCocoa
 
+
+class CustomScrollView: UIScrollView {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let result = super.hitTest(point, withEvent: event)
+        if result is UISlider {
+            self.scrollEnabled = false
+        }else{
+            self.scrollEnabled = true
+        }
+        return result
+    }
+}
+
 class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInterceptorProtocol{
 
     @IBOutlet weak var headerView: UIView!
@@ -25,7 +38,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
     
     
     private(set) var  pictureScrollView:UIScrollView?
-    private(set) var  contentScrollView:UIScrollView?
+    private(set) var  contentScrollView:CustomScrollView?
     private(set) var  advertisementCurrent:NSInteger = 0
     private(set) var  contentCurrent:NSInteger = 0
 
@@ -90,7 +103,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
 
     private func buildUI(){
         //UIScrollView
-        self.contentScrollView = UIScrollView(frame: CGRectMake(0,0, screenWidth, screenHeight-self.headerView.frame.size.height))
+        self.contentScrollView = CustomScrollView(frame: CGRectMake(0,0, screenWidth, screenHeight-self.headerView.frame.size.height))
         self.contentScrollView!.bounces = false
         self.contentScrollView!.pagingEnabled = true
         self.contentScrollView!.delegate = self
