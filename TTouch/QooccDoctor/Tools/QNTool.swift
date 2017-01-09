@@ -522,7 +522,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+//                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
 //                    let d = result as! NSDictionary
@@ -547,7 +547,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-                DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
+//                DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
 
@@ -583,7 +583,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
+//                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
 //                    let d = result as! NSDictionary
@@ -625,7 +625,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
+//                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(temValue), type: d.address!)
 //                    let d = result as! NSDictionary

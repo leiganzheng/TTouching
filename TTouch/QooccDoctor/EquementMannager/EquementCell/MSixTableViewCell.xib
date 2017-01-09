@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -117,14 +117,14 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="r1" destination="RF1-Ed-w2k" id="WNq-AT-uYx"/>
-                <outlet property="r2" destination="pIo-3e-Rew" id="048-cB-T8f"/>
-                <outlet property="r3" destination="SDf-ok-zyj" id="9G4-Pp-hNF"/>
-                <outlet property="r4" destination="Saf-9L-0oH" id="uF4-z6-r2t"/>
-                <outlet property="r5" destination="3h0-88-641" id="fsU-Lh-JPR"/>
+                <outlet property="r2" destination="SDf-ok-zyj" id="6Yg-6Q-GI2"/>
+                <outlet property="r3" destination="3h0-88-641" id="D6H-XC-tFw"/>
+                <outlet property="r4" destination="pIo-3e-Rew" id="EPq-9h-zky"/>
+                <outlet property="r5" destination="Saf-9L-0oH" id="Jcc-iI-Mn0"/>
                 <outlet property="r6" destination="Yw5-z5-0M4" id="oV4-QR-1bE"/>
                 <outlet property="title" destination="u9y-0C-CGd" id="9W3-C3-ZyE"/>
             </connections>
-            <point key="canvasLocation" x="373" y="395"/>
+            <point key="canvasLocation" x="407" y="364"/>
         </tableViewCell>
     </objects>
     <resources>

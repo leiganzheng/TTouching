@@ -91,8 +91,8 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
                 //修改数据库
                 self.flag = title as! String ==  "六回路" ?  true :  false
                 cell.name.setTitle(title as? String, forState: .Normal)
-     
-                self.myCustomTableView.reloadData()
+                self.fetchData()
+//                self.myCustomTableView.reloadData()
                 popover.dismissPopoverAnimated(true)
             }
             
@@ -208,9 +208,11 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         }
         
 //        DBManager.shareInstance().updateStatus(work_status, type: d.address!)
+//        self.fetchData()
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
             DBManager.shareInstance().updateStatus(work_status, type: d.address!)
+             self.fetchData()
 //            let d = result as! NSDictionary
 //            let status = d.objectForKey("work_status") as! NSNumber
 ////            if (status == 97){

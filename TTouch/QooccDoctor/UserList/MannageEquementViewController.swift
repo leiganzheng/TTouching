@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,20 +212,20 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             ],
             [
             "dev_addr": 25988,
-            "dev_type": 9,
+            "dev_type": 4,
             "work_status": 0,
             "dev_name": "双回路调光",
             "dev_status": 1,
             "dev_area": 13014
             ],
-                [
-                    "dev_addr": 25988,
-                    "dev_type": 4,
-                    "work_status": 0,
-                    "dev_name": "双回路调光",
-                    "dev_status": 1,
-                    "dev_area": 13014
-                ],
+//                [
+//                    "dev_addr": 25988,
+//                    "dev_type": 4,
+//                    "work_status": 0,
+//                    "dev_name": "双回路调光",
+//                    "dev_status": 1,
+//                    "dev_area": 13014
+//                ],
             [
             "dev_addr": 38585,
             "dev_type": 3,
@@ -397,7 +397,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 //        else{
 //            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
 //        }
-        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status, work_status1:200 , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status, work_status1:0 , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
 
         if dev != nil {
             if !QNTool.repeatArray(dev!, array: self.data) {
@@ -417,7 +417,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             QNTool.hiddenActivityView()
             let d = result as! NSDictionary
             let devices = d.objectForKey("Device Information") as! NSArray
-            print(devices)
+//            print(devices)
             if (devices.count == 0) {
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
             }else{

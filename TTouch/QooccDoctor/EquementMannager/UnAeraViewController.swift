@@ -130,10 +130,23 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 cell.slider1.value = Float((d.work_status)!)
                 cell.slider2.value = Float((d.work_status1)!)
                 if d.dev_type == 4 {
-                    cell.title1.text = "\((d.work_status)!-100)%"
-                    cell.title2.text = "\((d.work_status1)!-200)%"
-                    cell.slider1.value = Float((d.work_status)!-100)
-                    cell.slider2.value = Float((d.work_status1)!-200)
+                    if  (d.work_status)! == 0 {
+                        cell.title1.text = "\(0)%"
+                        cell.title2.text = "\(0)%"
+                        cell.slider1.value = Float(0)
+                        cell.slider2.value = Float(0)
+                    }else if ((d.work_status)! == 99){
+                        cell.title1.text = "\(100)%"
+                        cell.title2.text = "\(100)%"
+                        cell.slider1.value = Float(100)
+                        cell.slider2.value = Float(100)
+                    }else{
+                        cell.title1.text = "\((d.work_status)!-100)%"
+                        cell.title2.text = "\((d.work_status1)!-200)%"
+                        cell.slider1.value = Float((d.work_status)!-100)
+                        cell.slider2.value = Float((d.work_status1)!-200)
+                    }
+
                 }else{
                     cell.title1.text = "\((d.work_status)!)%"
                     cell.title2.text = "\((d.work_status1)!)%"
@@ -510,12 +523,12 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
     }
     //三
     func Troad1(sender:UIButton){
-        self.imageOfButton(sender)
+//        self.imageOfButton(sender)
         self.valueChangedOfButton(sender)
     }
     //六
     func road1(sender:UIButton){
-        self.imageOfButton(sender)
+//        self.imageOfButton(sender)
         self.valueChangedOfButton(sender)
     }
     func imageOfButton(sender:UIButton){
@@ -535,39 +548,40 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let dev_type:Int = d.dev_type!
         var dict:NSDictionary = [:]
         var value = QNTool.xnStringAndBinaryDigit(Int(d.work_status!))
+        let currImage = switchBtn.currentImage == UIImage(named: "navigation_Options_icon_s")
         //三回路开关控制端
         if switchBtn.tag == 100  {
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "0")
             }
         }else if(switchBtn.tag == 101){
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "0")
             }
         }else if(switchBtn.tag == 102){
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "0")
             }
         }else if(switchBtn.tag == 103){
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "0")
             }
         }else if(switchBtn.tag == 104){
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "0")
             }
         }else if(switchBtn.tag == 105){
-            if switchBtn.selected {
+            if !currImage {
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "1")
             }else{
                 value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "0")
@@ -583,6 +597,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
              DBManager.shareInstance().updateStatus(work_status, type: d.address!)
+            self.fetchData()
         })
     }
 

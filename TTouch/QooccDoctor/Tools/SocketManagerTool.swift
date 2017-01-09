@@ -83,7 +83,10 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socketDidDisconnect(sock:GCDAsyncSocket!, withError err: NSError!) {
 //        self.SBlock!("")
         print("与服务器断开连接")
-        clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        if self.tempDic != nil {
+            clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        }
+        
     }
     func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
         print("消息发送成功")
