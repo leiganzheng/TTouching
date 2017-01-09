@@ -16,7 +16,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     var data:NSMutableArray!
     var sockertManger:SocketManagerTool!
     var flag:Bool = false
-    var commandArr:NSMutableArray?
+//    var commandArr:NSMutableArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+   
         self.fetchData()
     }
 
@@ -91,7 +91,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
                 //修改数据库
                 self.flag = title as! String ==  "六回路" ?  true :  false
                 cell.name.setTitle(title as? String, forState: .Normal)
-                self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+     
                 self.myCustomTableView.reloadData()
                 popover.dismissPopoverAnimated(true)
             }
@@ -106,17 +106,18 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         })
 
          cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch1.on = self.commandArr![0] as! Int == 0b0000000000000001
+        cell.switch1.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1"
+        
          cell.switch2.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch2.on = self.commandArr![1] as! Int == 0b0000000000000010
+        cell.switch2.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(13, 1)) == "1"
          cell.switch3.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch3.on = self.commandArr![2] as! Int == 0b0000000000000100
+        cell.switch3.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1"
          cell.switch4.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch4.on = self.commandArr![3] as! Int == 0b0000000000001000
+        cell.switch4.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(11, 1)) == "1"
          cell.switch5.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch5.on = self.commandArr![4] as! Int == 0b0000000000010000
+        cell.switch5.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(10, 1)) == "1"
          cell.switch6.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
-        cell.switch6.on = self.commandArr![5] as! Int == 0b0000000000100000
+        cell.switch6.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(9, 1)) == "1"
         return cell
     }
     
@@ -125,6 +126,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         
     }
     //MARK:- private method
+
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()
@@ -159,65 +161,56 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let dev_addr = Int(d.address!)
         let dev_type:Int = d.dev_type!
         var dict:NSDictionary = [:]
+        var value = QNTool.xnStringAndBinaryDigit(Int(d.work_status!))
         //三回路开关控制端
         if switchBtn.tag == 100  {
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "0")
             }
         }else if(switchBtn.tag == 101){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "0")
             }
         }else if(switchBtn.tag == 102){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "0")
             }
         }else if(switchBtn.tag == 103){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000001000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "0")
             }
         }else if(switchBtn.tag == 104){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000010000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "0")
             }
         }else if(switchBtn.tag == 105){
             if switchBtn.on {
-                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000100000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "0")
             }
         }
          var work_status = 0
         if self.flag {//
-            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
-            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
-            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
-            work_status = Int(A|B|C|D|E|F)
-            print("A|B|C|D|E|F 结果为：\(A|B|C|D|E|F)")
+            work_status = QNTool.binary2dec(value as String)
         }else{
-            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-            work_status = Int(A|B|C)
-            print("A|B|C 结果为：\(A|B|C)")
+            work_status = QNTool.binary2dec(value as String)
         }
         
-
+//        DBManager.shareInstance().updateStatus(work_status, type: d.address!)
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
+            DBManager.shareInstance().updateStatus(work_status, type: d.address!)
 //            let d = result as! NSDictionary
 //            let status = d.objectForKey("work_status") as! NSNumber
 ////            if (status == 97){
@@ -227,7 +220,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
 ////            }
         })
     }
-
+    
 
 
 }

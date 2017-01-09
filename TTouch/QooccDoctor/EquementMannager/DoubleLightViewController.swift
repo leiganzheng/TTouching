@@ -112,6 +112,8 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
             })
         cell.slider1.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         cell.slider2.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        cell.slider1.value = Float((d?.work_status)!)
+        cell.slider2.value = Float((d?.work_status1)!)
         return cell
     }
     

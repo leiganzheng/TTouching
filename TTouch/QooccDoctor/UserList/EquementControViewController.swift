@@ -213,7 +213,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             self.data.addObject(unAeraDevice!)
         }else if flag == "2"{
             let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
-            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31,work_status1: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
             self.data.addObject(noPattern)
         }
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()

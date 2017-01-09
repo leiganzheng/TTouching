@@ -201,8 +201,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             self.flags.addObject(false)
             self.flag = false
             self.myTableView.reloadData()
-                    self.test()
-//            self.fetchList()
+//                    self.test()
+            self.fetchList()
         }
 
     }
@@ -350,7 +350,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
-        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:0  , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {
             //创建表
@@ -383,9 +383,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-        self.paraterData(tempData)
+//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+//        self.paraterData(tempData)
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)

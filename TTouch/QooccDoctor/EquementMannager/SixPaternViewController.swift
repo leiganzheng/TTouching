@@ -17,7 +17,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
     var myDevice:Device?
     var equementType: EquementSign?
     
-    var commandArr:NSMutableArray!
+//    var commandArr:NSMutableArray!
     var sockertManger:SocketManagerTool!
     var flag1:Bool = false
     
@@ -34,7 +34,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         self.view.addSubview(self.myTableView!)
         
         self.sockertManger = SocketManagerTool.shareInstance()
-        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
+//        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
         
         self.fetchData()
     }
@@ -117,6 +117,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                     cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
                 cell.titel.setTitle(d.dev_name!, forState: .Normal)
+                cell.valueLB.text = "\((d.work_status)!)%"
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
                 cell.slider.value = Float((d.work_status)!)
             
@@ -132,7 +133,9 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.slider1.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
                 cell.slider2.addTarget(self, action: #selector(SixPaternViewController.dSliderValueChanged(_:)), forControlEvents: .ValueChanged)
                 cell.slider1.value = Float((d.work_status)!)
-                cell.slider2.value = Float((d.work_status)!)
+                cell.slider2.value = Float((d.work_status1)!)
+                cell.title1.text = "\((d.work_status)!)%"
+                cell.title2.text = "\((d.work_status1)!)%"
                 return cell
             }else if d.dev_type == 5{//三回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"
@@ -145,6 +148,17 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.r1Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 cell.r2Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 cell.r3Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                
+                let title = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r1Btn.setImage(UIImage(named: title), forState: .Normal)
+                
+                let title1 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(13, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r2Btn.setImage(UIImage(named: title1), forState: .Normal)
+                
+                let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r3Btn.setImage(UIImage(named: title2), forState: .Normal)
+
+                
                 
                 return cell
             }else if d.dev_type == 6{//六回路开关控制端
@@ -161,6 +175,25 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.r4.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
                 cell.r5.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
                 cell.r6.addTarget(self, action: "road1:", forControlEvents: .TouchUpInside)
+                
+                let title = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r1.setImage(UIImage(named: title), forState: .Normal)
+                
+                let title1 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(13, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r2.setImage(UIImage(named: title1), forState: .Normal)
+                
+                let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r3.setImage(UIImage(named: title2), forState: .Normal)
+                
+                let title3 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(11, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r4.setImage(UIImage(named: title3), forState: .Normal)
+                
+                let title4 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(10, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r5.setImage(UIImage(named: title4), forState: .Normal)
+                
+                let title5 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(9, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r6.setImage(UIImage(named: title5), forState: .Normal)
+                
                 return cell
             }else if d.dev_type == 7{//窗帘控制端
                 let cellIdentifier = "MCurtainTableViewCell"
@@ -229,6 +262,14 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 cell.r1Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 cell.r2Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
                 cell.r3Btn.addTarget(self, action: "Troad1:", forControlEvents: .TouchUpInside)
+                let title = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r1Btn.setImage(UIImage(named: title), forState: .Normal)
+                
+                let title1 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(13, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r2Btn.setImage(UIImage(named: title1), forState: .Normal)
+                
+                let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r3Btn.setImage(UIImage(named: title2), forState: .Normal)
                 return cell
             }else if d.dev_type == 11{
                 let cellIdentifier = "MSixTouchTableViewCell"
@@ -292,8 +333,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
 
         }else if self.flag == "2" {
             let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
-            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
-//            self.data.addObject(noPattern)
+
             if self.equementType == .Light {
                 //查
                 let arr:Array<Device> = DBManager.shareInstance().selectDatas()
@@ -493,66 +533,56 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let dev_addr = Int(d.address!)
         let dev_type:Int = d.dev_type!
         var dict:NSDictionary = [:]
+        var value = QNTool.xnStringAndBinaryDigit(Int(d.work_status!))
         //三回路开关控制端
         if switchBtn.tag == 100  {
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000001)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(0, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "0")
             }
         }else if(switchBtn.tag == 101){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000010)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(1, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "0")
             }
         }else if(switchBtn.tag == 102){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000100)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(2, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "0")
             }
         }else if(switchBtn.tag == 103){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000001000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(3, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "0")
             }
         }else if(switchBtn.tag == 104){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000010000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(4, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "0")
             }
         }else if(switchBtn.tag == 105){
             if switchBtn.selected {
-                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000100000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "1")
             }else{
-                self.commandArr?.replaceObjectAtIndex(5, withObject: 0b0000000000000000)
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "0")
             }
         }
         var work_status = 0
         if tempCell is MSixTableViewCell {//
-            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-            let D = self.commandArr?.objectAtIndex(3) as! Int // 二进制
-            let E = self.commandArr?.objectAtIndex(4) as! Int// 二进制
-            let F = self.commandArr?.objectAtIndex(5) as! Int// 二进制
-            work_status = Int(A|B|C|D|E|F)
-            print("A|B|C|D|E|F 结果为：\(A|B|C|D|E|F)")
+            work_status = QNTool.binary2dec(value as String)
         }else{
-            let A = self.commandArr?.objectAtIndex(0) as! Int // 二进制
-            let B = self.commandArr?.objectAtIndex(1) as! Int// 二进制
-            let C = self.commandArr?.objectAtIndex(2) as! Int// 二进制
-            work_status = Int(A|B|C)
-            print("A|B|C 结果为：\(A|B|C)")
+           work_status = QNTool.binary2dec(value as String)
         }
         
         
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
-        
+            DBManager.shareInstance().updateStatus(work_status, type: d.address!)
         })
     }
 

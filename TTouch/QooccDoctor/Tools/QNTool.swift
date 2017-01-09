@@ -445,6 +445,7 @@ extension QNTool {
 //                msg = "最大亮度"
                 
             }
+//            DBManager.shareInstance().updateStatus(value, type: d.address!)
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 DBManager.shareInstance().updateStatus(value, type: d.address!)
 //                let d = result as! NSDictionary
@@ -521,6 +522,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
+//                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
 //                    let d = result as! NSDictionary
@@ -545,8 +547,9 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
+//                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                    DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+                    DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
 
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
@@ -561,22 +564,28 @@ extension QNTool {
             if slider.tag == 100 {
 //                slider.minimumValue = 264
 //                slider.maximumValue = 268
+                var temValue = 0
                 if slider.value == 0   {
+                    temValue = Int(slider.value)
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":264]
                     msg = "关闭左回路"
                 }else if(slider.value>0&&slider.value<100){//调光
                     let value = 264 + lroundf(slider.value*0.04)
                     if value < 268{
+                         temValue = value
                         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
                         msg = "调光中"
                     }
                     
                 }else if(slider.value == 100 ){
+                    temValue = Int(slider.value)
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":268]
                     msg = "最大亮度"
                     
                 }
+//                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 264 && status.intValue < 268){
@@ -597,22 +606,28 @@ extension QNTool {
             }else if (slider.tag == 101){
 //                slider.minimumValue = 384
 //                slider.maximumValue = 448
+                var temValue = 0
                 if slider.value == 0  {
+                    temValue = Int(slider.value)
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":384]
                     msg = "关闭左回路"
                 }else if(slider.value>0&&slider.value<100){//调光
                     let value = 384 + lroundf(slider.value*0.6)
                     if value < 448{
+                        temValue = value
                         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":Int(value)]
                         msg = "调光中"
                     }
                    
                 }else if(slider.value == 100 ){
+                    temValue = Int(slider.value)
                     dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":448]
                     msg = "最大亮度"
                     
                 }
+//                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+                    DBManager.shareInstance().updateStatus1(Int(temValue), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 384 && status.intValue < 448){
@@ -839,7 +854,23 @@ extension QNTool {
 }
 
 extension QNTool {
-
+    class func xnStringAndBinaryDigit(status: Int) -> NSString{
+        let string = String(status,radix:2)
+        // 获取字符串内容长度
+        let temp = "000000000000000"
+        let str =  (temp as NSString).substringToIndex(15 - string.characters.count)
+        return (str + string) as NSString
+    }
+    class func binary2dec(num:String) -> Int {
+        var sum = 0
+        for c in num.characters {
+            sum = sum * 2 + Int("\(c)")!
+        }
+        return sum
+    }
+    class func subStr(index:Int,string:NSString,replace:String)-> String{
+       return string.stringByReplacingCharactersInRange(NSMakeRange(index, 1), withString: replace)
+    }
     class func initUserLanguage()->NSBundle{
         let def = NSUserDefaults.standardUserDefaults()
         var string = def.valueForKey("userLanguage") as! NSString
