@@ -16,6 +16,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     let addr = DBManager.shareInstance().ip
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
+    var tempDic:NSDictionary!
     var mainQueue = dispatch_get_main_queue()
     
     var SBlock :SocketBlock?
@@ -38,6 +39,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
+        self.tempDic = dict
         clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
     }
 
@@ -81,6 +83,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socketDidDisconnect(sock:GCDAsyncSocket!, withError err: NSError!) {
 //        self.SBlock!("")
         print("与服务器断开连接")
+        clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
     }
     func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
         print("消息发送成功")

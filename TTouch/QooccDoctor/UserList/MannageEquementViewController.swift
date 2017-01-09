@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
+//        self.fetchData()
+        self.test()
     }
 
     override func didReceiveMemoryWarning() {
@@ -397,7 +397,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 //        else{
 //            image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)!
 //        }
-        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status, work_status1:0 , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status, work_status1:200 , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
 
         if dev != nil {
             if !QNTool.repeatArray(dev!, array: self.data) {

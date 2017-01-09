@@ -201,8 +201,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             self.flags.addObject(false)
             self.flag = false
             self.myTableView.reloadData()
-//                    self.test()
-            self.fetchList()
+                    self.test()
+//            self.fetchList()
         }
 
     }
@@ -261,8 +261,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 ],
                 [
                     "dev_addr": 25988,
-                    "dev_type": 9,
-                    "work_status": 0,
+                    "dev_type": 4,
+                    "work_status": 145,
                     "dev_name": "双回路调光",
                     "dev_status": 1,
                     "dev_area": 13014
@@ -299,6 +299,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let addr = tempDic["dev_addr"] as! Int
         let dev_type = tempDic["dev_type"] as! Int
         let work_status = tempDic["work_status"] as! Int
+        let work_status1 = Int(200)
         let name = tempDic["dev_name"] as! String
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
@@ -350,7 +351,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
-        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:0  , dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:work_status1, dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {
             //创建表
@@ -363,7 +364,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let dict = ["command": 30]
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
             QNTool.hiddenActivityView()
-            print(dict)
+//            print(dict)
             if result is NSDictionary {
                 let d = result as! NSDictionary
                 let devices = d.objectForKey("Device Information") as! NSArray
@@ -383,9 +384,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-//        self.paraterData(tempData)
+        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+        self.paraterData(tempData)
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)
