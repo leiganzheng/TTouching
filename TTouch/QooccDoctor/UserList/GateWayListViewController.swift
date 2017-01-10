@@ -299,7 +299,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let addr = tempDic["dev_addr"] as! Int
         let dev_type = tempDic["dev_type"] as! Int
         let work_status = tempDic["work_status"] as! Int
-        let work_status1 = Int(0)
+        let work_status1 = Int(200)
         let name = tempDic["dev_name"] as! String
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
