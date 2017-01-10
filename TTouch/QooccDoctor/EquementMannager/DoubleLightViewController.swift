@@ -112,7 +112,16 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
             })
         cell.slider1.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         cell.slider2.addTarget(self, action: #selector(SigleLightViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+       
         cell.slider1.value = Float((d?.work_status)!)
+        if ((d!.work_status)! >= 100 && (d!.work_status)! <= 199 ){
+           cell.slider1.value = Float((d?.work_status)!-100)
+            cell.title1.text = "\((d?.work_status)!-100)%"
+        }else if ((d!.work_status)! >= 200 && (d!.work_status)! <= 299 ){
+           cell.slider1.value = Float((d?.work_status)!-200)
+            cell.title1.text = "\((d?.work_status)!-200)%"
+        }
+        cell.title2.text = "\((d?.work_status1)!-200)%"
         cell.slider2.value = Float((d?.work_status1)!-200)
         return cell
     }

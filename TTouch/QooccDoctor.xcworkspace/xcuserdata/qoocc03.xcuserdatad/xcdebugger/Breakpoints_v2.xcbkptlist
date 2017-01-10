@@ -1278,11 +1278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "stop2(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1294,11 +1294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "500"
+            endingLineNumber = "500"
             landmarkName = "open2(_:)"
             landmarkType = "5">
             <Locations>
@@ -1342,11 +1342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "close1(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1358,11 +1358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "open1(_:)"
             landmarkType = "5">
             <Locations>
@@ -1406,11 +1406,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "dSliderValueChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1502,11 +1502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505645448.962543"
+            timestampString = "505712637.921635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "valueChanged(_:)"
             landmarkType = "5">
             <Locations>
