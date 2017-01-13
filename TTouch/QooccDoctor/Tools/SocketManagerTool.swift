@@ -91,11 +91,6 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
         print("消息发送成功")
     }
-//    func UTF8ToGB2312(str: String) -> (NSData?, UInt) {
-//        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-//        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
-//        return (data, enc)
-//    }
     
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))

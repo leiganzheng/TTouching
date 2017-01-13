@@ -13,6 +13,8 @@ class DBManager: NSObject {
     let dbPath:String
     let dbBase:FMDatabase
     var ip:String
+    var TableOneName:String
+    var TableDLightName:String
     
     
     // MARK: >> 单例化
@@ -32,6 +34,8 @@ class DBManager: NSObject {
     // MARK: >> 创建数据库，打开数据库
     override init() {
         self.ip = ""
+        self.TableOneName = ""
+        self.TableDLightName = ""
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         let path = (documentsFolder as NSString).stringByAppendingPathComponent("TTouching.sqlite")
         self.dbPath = path
@@ -40,24 +44,6 @@ class DBManager: NSObject {
         
         print("path: ---- \(self.dbPath)", terminator: "")
         
-//        //打开数据库
-//        if dbBase.open(){
-//            
-//            let createSql:String = "CREATE TABLE IF NOT EXISTS T_Device (address TEXT,dev_type INTEGER, work_status INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);"
-//            
-//            if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
-//                
-//                print("数据库创建成功！", terminator: "")
-//            
-//            }else{
-//                
-//                print("数据库创建失败！failed:\(dbBase.lastErrorMessage())", terminator: "")
-//            
-//            }
-//        }else{
-//                print("Unable to open database!", terminator: "")
-//        
-//        }
     }
     // MARK: >> 建立数据表
     func createTable(name: String) {
@@ -113,7 +99,7 @@ class DBManager: NSObject {
         
         let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
         
-        if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?,?,?, ?,?, ?, ?)", withArgumentsInArray: arr) {
+        if !self.dbBase.executeUpdate("insert into \(TableOneName) (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?,?,?, ?,?, ?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
 //               print("添加1条数据失败！: \(d.address)")
 //               print("添加1条数据失败！: \(d.dev_name)")
@@ -133,7 +119,7 @@ class DBManager: NSObject {
         
         let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
         
-        if !self.dbBase.executeUpdate("insert into T_DeviceDouble (address ,dev_type, work_status,work_status1,work_status2) values (?, ?, ?,?, ?)", withArgumentsInArray: arr) {
+        if !self.dbBase.executeUpdate("insert into \(self.TableOneName) (address ,dev_type, work_status,work_status1,work_status2) values (?, ?, ?,?, ?)", withArgumentsInArray: arr) {
             print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
             //               print("添加1条数据失败！: \(d.address)")
             //               print("添加1条数据失败！: \(d.dev_name)")
@@ -151,7 +137,7 @@ class DBManager: NSObject {
     // MARK: >> 删
     func deleteAll(){
         dbBase.open();
-        if self.dbBase.executeUpdate("delete from T_Device") {
+        if self.dbBase.executeUpdate("delete from \(self.TableOneName)") {
             print("删除数据成功！")
         }else{
              print("删除数据失败！: \(dbBase.lastErrorMessage())")
@@ -162,7 +148,7 @@ class DBManager: NSObject {
         
         dbBase.open();
         
-        if !self.dbBase.executeUpdate("delete from T_Device where address = (?)", withArgumentsInArray: [d.address!]) {
+        if !self.dbBase.executeUpdate("delete from \(self.TableOneName) where address = (?)", withArgumentsInArray: [d.address!]) {
             print("删除1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("删除1条数据成功！: \(d.address)")
@@ -177,7 +163,7 @@ class DBManager: NSObject {
     func update(area:String,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set dev_area = (?) WHERE address = ? ", area,type) {
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set dev_area = (?) WHERE address = ? ", area,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -190,7 +176,7 @@ class DBManager: NSObject {
     func updateStatus(status:Int,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set work_status = (?) WHERE address = ? ", status,type) {
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set work_status = (?) WHERE address = ? ", status,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -203,7 +189,7 @@ class DBManager: NSObject {
     func updateStatus1(status:Int,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_DeviceDouble set work_status1 = (?) WHERE address = ? ", status,type) {
+        if !self.dbBase .executeUpdate("update \(TableDLightName) set work_status1 = (?) WHERE address = ? ", status,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -216,7 +202,7 @@ class DBManager: NSObject {
     func updateStatus2(status:Int,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_DeviceDouble set work_status2 = (?) WHERE address = ? ", status,type) {
+        if !self.dbBase .executeUpdate("update \(TableDLightName) set work_status2 = (?) WHERE address = ? ", status,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -231,7 +217,7 @@ class DBManager: NSObject {
     func updateFav(fav:Int,type:String,complete:(AnyObject) -> Void) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set is_favourited = (?) WHERE address = ? ", fav,type) {
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set is_favourited = (?) WHERE address = ? ", fav,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
             complete(0)//失败
         }else{
@@ -247,7 +233,7 @@ class DBManager: NSObject {
     func updateName(name:String,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set dev_name = (?) WHERE address = ? ", name,type) {
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set dev_name = (?) WHERE address = ? ", name,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -260,7 +246,7 @@ class DBManager: NSObject {
     func updateIcon(image:NSData,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set icon_url = (?) WHERE address = ? ", image,type) {
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set icon_url = (?) WHERE address = ? ", image,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -276,7 +262,7 @@ class DBManager: NSObject {
         dbBase.open();
         var devices=[Device]()
         
-            if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device", withArgumentsInArray: nil) {
+            if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from \(self.TableOneName)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let address:String = rs.stringForColumn("address")
@@ -311,7 +297,7 @@ class DBManager: NSObject {
         dbBase.open();
         var devices=[Device]()
         
-        if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from \(self.TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
                 
                 let address:String = rs.stringForColumn("address")
@@ -345,8 +331,7 @@ class DBManager: NSObject {
     func selectWorkStatus(address:String,flag:Int) -> Int {
         dbBase.open();
         var temp:Int = flag == 0 ? 100 : 200
-        if dbBase.columnExists("T_DeviceDouble", columnName: "address") {
-            if let rs = dbBase.executeQuery("select work_status1,work_status2,dev_type,address from T_DeviceDouble  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select work_status1,work_status2,dev_type,address from \(TableDLightName)  GROUP BY dev_type", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let dev_type:Int = Int(rs.intForColumn("dev_type"))
@@ -364,7 +349,6 @@ class DBManager: NSObject {
                 print("查询失败 failed: \(dbBase.lastErrorMessage())")
                 
             }
-        }
         dbBase.close();
         return temp
     }
@@ -372,7 +356,7 @@ class DBManager: NSObject {
     func selectData(aera:String) -> String {
         dbBase.open();
         var temp:String = ""
-        if let rs = dbBase.executeQuery("select dev_type,dev_name,dev_area,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select dev_type,dev_name,dev_area,icon_url from \(self.TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
                 let dev_type:Int = Int(rs.intForColumn("dev_type"))
                 let dev_area:String = rs.stringForColumn("dev_area")
@@ -403,7 +387,7 @@ class DBManager: NSObject {
             db.open();
             let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
             
-            if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?,?, ?,?, ?)", withArgumentsInArray: arr) {
+            if !self.dbBase.executeUpdate("insert into \(self.TableOneName) (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?,?, ?,?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(db.lastErrorMessage())")
             }else{
                 print("添加1条数据成功！: \(d.address)")
@@ -420,7 +404,7 @@ class DBManager: NSObject {
 //                
 //            }
             //查
-            if let rs = db.executeQuery("select address from T_Device", withArgumentsInArray: nil) {
+            if let rs = db.executeQuery("select address from \(self.TableOneName)", withArgumentsInArray: nil) {
                 while rs.next() {
                     let address:String = rs.stringForColumn("address")
                     let dev_type:Int = Int(rs.intForColumn("dev_type"))

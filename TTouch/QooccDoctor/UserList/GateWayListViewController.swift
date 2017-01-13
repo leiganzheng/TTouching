@@ -45,14 +45,17 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            var tag = false
             for temp in self.flags {
                 if (temp as! Bool) == true {
-                    let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
-                    QNTool.enterRootViewController(vc, animated: true)
-                }else{
-                    QNTool.showPromptView("请选择网关")
-                    break
+                    tag = true
                 }
+            }
+            if tag {
+                let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
+                QNTool.enterRootViewController(vc, animated: true)
+            }else{
+                QNTool.showPromptView("请选择网关")
             }
             return RACSignal.empty()
         })
@@ -62,8 +65,6 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         //局域网内搜索网关
         outSocket = OutSocket()
         self.tableViewController.refreshControl?.beginRefreshing()
-        DBManager.shareInstance().createTable("T_Device")
-        DBManager.shareInstance().createTable("T_DeviceDouble")
         
         self.fectchData()
 
@@ -108,38 +109,51 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             cell.contentView.addSubview(lb)
             return cell
         }else{
-
-        let cellId = "cell"
-        var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-        }
-        cell.contentView.backgroundColor = UIColor.whiteColor()
+            
+            let cellId = "cell"
+            var cell: UITableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+            }
+            cell.contentView.backgroundColor = UIColor.whiteColor()
             let dict = dataS[indexPath.row] as! NSMutableDictionary
             cell.textLabel?.text = dict.allKeys[0] as? String
             
             let flag = self.flags[indexPath.row] as! Bool
             let icon = (flag==true) ? "pic_hd" : "Menu_Trigger_icon1"
             cell.imageView?.image = UIImage(named: icon)
-        let searchButton:UIButton = UIButton(type: .Custom)
-        searchButton.frame = CGRectMake(0, 5, 40, 30)
-        searchButton.setImage(UIImage(named: "Manage_information_icon"), forState: .Normal)
-        searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! GateWayDetailViewController
-            vc.dataS = dict.allValues[0] as? NSMutableArray
-            self?.navigationController?.pushViewController(vc, animated: true)
-            return RACSignal.empty()
-            })
-        cell.accessoryView = searchButton
-        let lb = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
-        lb.backgroundColor = defaultBackgroundGrayColor
-        cell.contentView.addSubview(lb)
-        return cell
+            let searchButton:UIButton = UIButton(type: .Custom)
+            searchButton.frame = CGRectMake(0, 5, 40, 30)
+            searchButton.setImage(UIImage(named: "Manage_information_icon"), forState: .Normal)
+            searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+                let vc = GateWayDetailViewController.CreateFromStoryboard("Main") as! GateWayDetailViewController
+                vc.dataS = dict.allValues[0] as? NSMutableArray
+                self?.navigationController?.pushViewController(vc, animated: true)
+                return RACSignal.empty()
+                })
+            cell.accessoryView = searchButton
+            let lb = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
+            lb.backgroundColor = defaultBackgroundGrayColor
+            cell.contentView.addSubview(lb)
+            return cell
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+           let dict = dataS[indexPath.row] as! NSMutableDictionary
+           let arr = dict.allValues[0] as? NSMutableArray
+        if arr!.count>=2 {
+            DBManager.shareInstance().TableOneName = "T_Device" + (arr![1] as! String)
+            DBManager.shareInstance().TableDLightName = "T_DeviceDouble" + (arr![1] as! String)
+        }
+//        if indexPath.row == 1 {
+//            self.test1()
+//        }else{
+//            self.test()
+//        }
+                    self.fetchList()
         if self.flags.count == 1 {
             self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
         }else {
@@ -200,14 +214,18 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             dict.setValue(detail, forKey: tempName as! String)
             DBManager.shareInstance().ip = ip
             self.dataS.addObject(dict)
+            if detail.count>=2 {
+                DBManager.shareInstance().createTable("T_Device" + (detail[1] as! String))
+                DBManager.shareInstance().createTableDoubleLight("T_DeviceDouble" + (detail[1] as! String))
+            }
+
             self.flags.addObject(false)
             self.flag = false
             self.myTableView.reloadData()
-//                    self.test()
-            self.fetchList()
         }
 
     }
+    
     func  test(){
         
         let d :NSDictionary = [
@@ -233,7 +251,15 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                     "dev_addr": 32881,
                     "dev_type": 3,
                     "work_status": 0,
-                    "dev_name": "单回路调光",
+                    "dev_name": "单火路调光",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 41749,
+                    "dev_type": 6,
+                    "work_status": 42,
+                    "dev_name": "6回路开关",
                     "dev_status": 1,
                     "dev_area": 13014
                 ],
@@ -264,16 +290,41 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 [
                     "dev_addr": 25988,
                     "dev_type": 4,
-                    "work_status": 138,
+                    "work_status": 230,
                     "dev_name": "双回路调光",
                     "dev_status": 1,
                     "dev_area": 13014
                 ],
                 [
+                    "dev_addr": 18279,
+                    "dev_type": 11,
+                    "work_status": 10,
+                    "dev_name": "干接点",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 25988,
+                    "dev_type": 9,
+                    "work_status": 0,
+                    "dev_name": "调光",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 182700,
+                    "dev_type": 12,
+                    "work_status": 0,
+                    "dev_name": "空调",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                
+                [
                     "dev_addr": 38585,
                     "dev_type": 3,
                     "work_status": 0,
-                    "dev_name": "单回路调光",
+                    "dev_name": "单水路调光",
                     "dev_status": 1,
                     "dev_area": 0
                 ]
@@ -296,19 +347,109 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         }
         
     }
+    func  test1(){
+        
+        let d :NSDictionary = [
+            "command": 30,
+            "Device Information": [
+                [
+                    "dev_addr": 0,
+                    "dev_type": 1,
+                    "work_status": 31,
+                    "dev_name": "总设备",
+                    "dev_status": 1,
+                    "dev_area": 0
+                ],
+                [
+                    "dev_addr": 13014,
+                    "dev_type": 2,
+                    "work_status": 111,
+                    "dev_name": "六景",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 32881,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单路调光",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 41749,
+                    "dev_type": 6,
+                    "work_status": 42,
+                    "dev_name": "6路开关",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 13358,
+                    "dev_type": 5,
+                    "work_status": 2,
+                    "dev_name": "3路开关",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 673,
+                    "dev_type": 7,
+                    "work_status": 17,
+                    "dev_name": "窗控制",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 25988,
+                    "dev_type": 4,
+                    "work_status": 138,
+                    "dev_name": "双路调光",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 38585,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单路调光",
+                    "dev_status": 1,
+                    "dev_area": 0
+                ]
+            ]
+        ]
+        
+        let devices = d.objectForKey("Device Information") as! NSArray
+        
+        if (devices.count != 0) {
+            
+            let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+            let descs2 = NSArray(objects: typeDesc)
+            let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+            DBManager.shareInstance().deleteAll()
+            
+            for tempDict in array {
+                self.exeDB(tempDict as! NSDictionary)
+            }
+            
+        }
+        
+    }
+
     func exeDB(tempDic:NSDictionary){
         var dev:Device? = nil
         let addr = tempDic["dev_addr"] as! Int
         let dev_type = tempDic["dev_type"] as! Int
         let work_status = tempDic["work_status"] as! Int
-        let work_status1 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 0)
-        let work_status2 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 1)
+ 
+            let work_status1 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 0)
+            let work_status2 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 1)
         let name = tempDic["dev_name"] as! String
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
         let belong_area = tempDic["dev_area"] as! Int
         let is_favourited = 1
-        var image:NSData = NSData()
+        var image:NSData = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
         if (dev_type == 1) {//总控
             image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
             
@@ -342,16 +483,16 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             
         }else if(dev_type == 11){//干接点
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             
         }else if(dev_type == 12){//空调
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
         }else if(dev_type == 13){//地暖
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
         }else if(dev_type == 14){//新风
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
         }
         dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:work_status1,work_status2:work_status2, dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
@@ -370,7 +511,6 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let dict = ["command": 30]
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
             QNTool.hiddenActivityView()
-//            print(dict)
             if result is NSDictionary {
                 let d = result as! NSDictionary
                 let devices = d.objectForKey("Device Information") as! NSArray
@@ -393,6 +533,12 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
 //        let tempData:NSData = NSData(bytes: dataArr, length: 84)
 //        self.paraterData(tempData)
+//        
+//        
+//        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 27, 188, 2, 192, 144, 0, 0, 0, 0, 85, 40, 84, 112, 117, 99, 104, 105, 111, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+//        let tempData2:NSData = NSData(bytes: dataArr1, length: 84)
+//        self.paraterData(tempData2)
+        
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
         let data = NSData(bytes: bytes, length: 4)

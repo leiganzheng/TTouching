@@ -312,7 +312,34 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                     cell = (NSBundle.mainBundle().loadNibNamed(cellIdentifier, owner: self, options: nil) as NSArray).objectAtIndex(0) as! MSixTouchTableViewCell
                     cell.selectionStyle = UITableViewCellSelectionStyle.None
                 }
+                
                 cell.title.setTitle(d.dev_name!, forState: .Normal)
+                cell.l1.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                cell.l2.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                cell.l3.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                
+                cell.r1.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                cell.r2.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                cell.r3.addTarget(self, action: #selector(SixPaternViewController.touchAction(_:)), forControlEvents: .TouchUpInside)
+                
+                let title = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.l1.setImage(UIImage(named: title), forState: .Normal)
+                
+                let title1 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(13, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.l2.setImage(UIImage(named: title1), forState: .Normal)
+                
+                let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.l3.setImage(UIImage(named: title2), forState: .Normal)
+                
+                let title3 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(11, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r1.setImage(UIImage(named: title3), forState: .Normal)
+                
+                let title4 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(10, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r2.setImage(UIImage(named: title4), forState: .Normal)
+                
+                let title5 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(9, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
+                cell.r3.setImage(UIImage(named: title5), forState: .Normal)
+                
                 return cell
             }else if d.dev_type == 12{//空调
                 let cellIdentifier = "MAirTableViewCell"
@@ -623,7 +650,69 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             self.fetchData()
         })
     }
+    func touchAction(sender:UIButton) {
+        let tempCell = sender.superview?.superview as! MSixTouchTableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        
+        let command = 36
+        let dev_addr = Int(d.address!)
+        let dev_type:Int = d.dev_type!
+        var dict:NSDictionary = [:]
+        var value = QNTool.xnStringAndBinaryDigit(Int(d.work_status!))
+        let currImage = sender.currentImage == UIImage(named: "navigation_Options_icon_s")
+        //开关控制端
+        if sender  == tempCell.l1  {
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(14, 1), withString: "0")
+            }
+           
+        }else if(sender == tempCell.l2){
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(13, 1), withString: "0")
+            }
+        }else if(sender == tempCell.l3){
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(12, 1), withString: "0")
+            }
+        }else if(sender == tempCell.r1){
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(11, 1), withString: "0")
+            }
+        }else if(sender == tempCell.r2){
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(10, 1), withString: "0")
+            }
+        }else if(sender == tempCell.r3){
+            if !currImage {
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "1")
+            }else{
+                value = value.stringByReplacingCharactersInRange(NSMakeRange(9, 1), withString: "0")
+            }
+        }
+        
+        let work_status = QNTool.binary2dec(value as String)
+        
+//                DBManager.shareInstance().updateStatus(work_status, type: d.address!)
+//                self.fetchData()
+        dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
+        self.sockertManger.sendMsg(dict, completion: { (result) in
+            DBManager.shareInstance().updateStatus(work_status, type: d.address!)
+            self.fetchData()
+            
+        })
 
+    }
 
     
 

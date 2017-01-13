@@ -523,8 +523,10 @@ extension QNTool {
                     
                 }
 //                DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
+//                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
+                    DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue >= 0 && status.intValue <= 99){
@@ -548,8 +550,10 @@ extension QNTool {
                     
                 }
 //                DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
+//                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
+                    DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
 
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
@@ -586,6 +590,7 @@ extension QNTool {
 //                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
+                    DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 264 && status.intValue < 268){
@@ -628,6 +633,7 @@ extension QNTool {
 //                DBManager.shareInstance().updateStatus2(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(temValue), type: d.address!)
+                    DBManager.shareInstance().updateStatus(Int(temValue), type: d.address!)
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 384 && status.intValue < 448){
@@ -854,6 +860,12 @@ extension QNTool {
 }
 
 extension QNTool {
+    class func UTF8TOGB2312(str: String) -> NSData {
+        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
+        return data!
+    }
+
     class func xnStringAndBinaryDigit(status: Int) -> NSString{
         let string = String(status,radix:2)
         // 获取字符串内容长度

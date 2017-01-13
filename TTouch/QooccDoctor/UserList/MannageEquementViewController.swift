@@ -218,14 +218,31 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             "dev_status": 1,
             "dev_area": 13014
             ],
-//                [
-//                    "dev_addr": 25988,
-//                    "dev_type": 4,
-//                    "work_status": 0,
-//                    "dev_name": "双回路调光",
-//                    "dev_status": 1,
-//                    "dev_area": 13014
-//                ],
+                [
+                    "dev_addr": 18279,
+                    "dev_type": 11,
+                    "work_status": 10,
+                    "dev_name": "干接点",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 25988,
+                    "dev_type": 9,
+                    "work_status": 0,
+                    "dev_name": "调光",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+                [
+                    "dev_addr": 182700,
+                    "dev_type": 12,
+                    "work_status": 0,
+                    "dev_name": "空调",
+                    "dev_status": 1,
+                    "dev_area": 13014
+                ],
+
             [
             "dev_addr": 38585,
             "dev_type": 3,
@@ -348,7 +365,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let dev_status = tempDic["dev_status"] as! Int
         let belong_area = tempDic["dev_area"] as! Int
         let is_favourited = 1
-        var image:NSData = NSData()
+        var image:NSData = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
         if (dev_type == 1) {//总控
              image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
             
@@ -382,16 +399,16 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             
         }else if(dev_type == 11){//干接点
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+            image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             
         }else if(dev_type == 12){//空调
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             
         }else if(dev_type == 13){//地暖
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }else if(dev_type == 14){//新风
-            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
+//            image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
 //        else{
@@ -417,7 +434,6 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             QNTool.hiddenActivityView()
             let d = result as! NSDictionary
             let devices = d.objectForKey("Device Information") as! NSArray
-//            print(devices)
             if (devices.count == 0) {
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
             }else{

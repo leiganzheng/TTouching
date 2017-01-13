@@ -16,6 +16,8 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "空调"
+        self.myCustomTableView.delegate = self
+        self.myCustomTableView.dataSource = self
         self.view.backgroundColor =  defaultBackgroundColor
         self.myCustomTableView.backgroundColor = UIColor.clearColor()
         self.fetchData()
@@ -39,6 +41,20 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if self.data.count==0 {
+            let cellIdentifier = "Cell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            if cell == nil {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+            }
+            tableView.separatorStyle = .None
+            let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
+            lb.text = "暂无数据"
+            lb.textAlignment = .Center
+            cell.contentView.addSubview(lb)
+            return cell
+        }else {
         let cellId = "cell"
         var cell: AirTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? AirTableViewCell
         if cell == nil {
@@ -108,6 +124,7 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
             
             })
         return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

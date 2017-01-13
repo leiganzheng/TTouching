@@ -16,7 +16,6 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     var data:NSMutableArray!
     var sockertManger:SocketManagerTool!
     var flag:Bool = false
-//    var commandArr:NSMutableArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -213,13 +212,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.sockertManger.sendMsg(dict, completion: { (result) in
             DBManager.shareInstance().updateStatus(work_status, type: d.address!)
              self.fetchData()
-//            let d = result as! NSDictionary
-//            let status = d.objectForKey("work_status") as! NSNumber
-////            if (status == 97){
-////                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-////            }else{
-////                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-////            }
+
         })
     }
     

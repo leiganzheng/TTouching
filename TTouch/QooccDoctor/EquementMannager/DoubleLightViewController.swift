@@ -72,7 +72,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
-                    let save_dev = [["dev_addr": (d?.address)!,"dev_type": (d?.dev_type)!,"dev_name": textField.text!]]
+                    let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
                     QNTool.modifyEqument(save_dev)
                 }
 
