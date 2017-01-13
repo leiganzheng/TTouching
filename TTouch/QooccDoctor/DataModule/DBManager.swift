@@ -64,7 +64,7 @@ class DBManager: NSObject {
         //打开数据库
         if dbBase.open(){
             
-            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT INTEGER NOT NULL PRIMARY KEY ,dev_type INTEGER, work_status INTEGER, work_status1 INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);",name) as String
+            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT INTEGER NOT NULL PRIMARY KEY ,dev_type INTEGER, work_status INTEGER, work_status1 INTEGER,work_status2 INTEGER,dev_name TEXT ,dev_status INTEGER, dev_area TEXT,belong_area TEXT,is_favourited INTEGER, icon_url TEXT);",name) as String
             
             if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
                 
@@ -82,14 +82,38 @@ class DBManager: NSObject {
 
     }
     
+    // MARK: >> 建立数据表
+    func createTableDoubleLight(name: String) {
+        //打开数据库
+        if dbBase.open(){
+            
+            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT INTEGER NOT NULL PRIMARY KEY ,dev_type INTEGER, work_status INTEGER, work_status1 INTEGER,work_status2 INTEGER);",name) as String
+            
+            if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
+                
+                print("数据库创建成功！", terminator: "")
+                
+            }else{
+                
+                print("数据库创建失败！failed:\(dbBase.lastErrorMessage())", terminator: "")
+                
+            }
+        }else{
+            print("Unable to open database!", terminator: "")
+            
+        }
+        
+    }
+
+    
     // MARK: >> 增
     func add(d:Device) {
         
         dbBase.open();
         
-        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
+        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
         
-        if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?,?, ?,?, ?, ?)", withArgumentsInArray: arr) {
+        if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?,?,?, ?,?, ?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
 //               print("添加1条数据失败！: \(d.address)")
 //               print("添加1条数据失败！: \(d.dev_name)")
@@ -101,6 +125,27 @@ class DBManager: NSObject {
         
         dbBase.close();
     }
+
+    // MARK: >> 增
+    func addLight(d:Device) {
+        
+        dbBase.open();
+        
+        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
+        
+        if !self.dbBase.executeUpdate("insert into T_DeviceDouble (address ,dev_type, work_status,work_status1,work_status2) values (?, ?, ?,?, ?)", withArgumentsInArray: arr) {
+            print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
+            //               print("添加1条数据失败！: \(d.address)")
+            //               print("添加1条数据失败！: \(d.dev_name)")
+        }else{
+            //            print("添加1条数据！: \(dbBase.lastErrorMessage())")
+            print("添加1条数据成功！: \(d.dev_name)")
+            
+        }
+        
+        dbBase.close();
+    }
+
     
     
     // MARK: >> 删
@@ -158,7 +203,7 @@ class DBManager: NSObject {
     func updateStatus1(status:Int,type:String) {
         dbBase.open();
         
-        if !self.dbBase .executeUpdate("update T_Device set work_status1 = (?) WHERE address = ? ", status,type) {
+        if !self.dbBase .executeUpdate("update T_DeviceDouble set work_status1 = (?) WHERE address = ? ", status,type) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -167,6 +212,20 @@ class DBManager: NSObject {
         dbBase.close();
         
     }
+    // MARK: >> 改
+    func updateStatus2(status:Int,type:String) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update T_DeviceDouble set work_status2 = (?) WHERE address = ? ", status,type) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+        dbBase.close();
+        
+    }
+
 
     // MARK: >> 改
     func updateFav(fav:Int,type:String,complete:(AnyObject) -> Void) {
@@ -217,13 +276,14 @@ class DBManager: NSObject {
         dbBase.open();
         var devices=[Device]()
         
-            if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device", withArgumentsInArray: nil) {
+            if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let address:String = rs.stringForColumn("address")
                     let dev_type:Int = Int(rs.intForColumn("dev_type"))
                     let work_status:Int = Int(rs.intForColumn("work_status"))
                     let work_status1:Int = Int(rs.intForColumn("work_status1"))
+                    let work_status2:Int = Int(rs.intForColumn("work_status2"))
                     
                     let dev_name:String = rs.stringForColumn("dev_name")
                     let dev_status:Int = Int(rs.intForColumn("dev_status"))
@@ -233,7 +293,7 @@ class DBManager: NSObject {
                     let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
                     let icon_url:NSData = rs.dataForColumn("icon_url")
                     
-                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, work_status1: work_status1,dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, work_status1: work_status1,work_status2: work_status2,dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
                     devices.append(d)
                 }
             } else {
@@ -251,13 +311,14 @@ class DBManager: NSObject {
         dbBase.open();
         var devices=[Device]()
         
-        if let rs = dbBase.executeQuery("select address,dev_type,work_status,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select address,dev_type,work_status,work_status1,work_status2,dev_name,dev_status,dev_area,belong_area,is_favourited,icon_url from T_Device  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
                 
                 let address:String = rs.stringForColumn("address")
                 let dev_type:Int = Int(rs.intForColumn("dev_type"))
                 let work_status:Int = Int(rs.intForColumn("work_status"))
                 let work_status1:Int = Int(rs.intForColumn("work_status1"))
+                let work_status2:Int = Int(rs.intForColumn("work_status2"))
                 
                 let dev_name:String = rs.stringForColumn("dev_name")
                 let dev_status:Int = Int(rs.intForColumn("dev_status"))
@@ -267,7 +328,7 @@ class DBManager: NSObject {
                 let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
                 let icon_url:NSData = rs.dataForColumn("icon_url")
                 
-                let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status,work_status1: work_status1, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+                let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status,work_status1: work_status1,work_status2: work_status2, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
                 devices.append(d)
             }
         } else {
@@ -279,6 +340,33 @@ class DBManager: NSObject {
         
         return devices
         
+    }
+    // MARK: >> 查
+    func selectWorkStatus(address:String,flag:Int) -> Int {
+        dbBase.open();
+        var temp:Int = flag == 0 ? 100 : 200
+        if dbBase.columnExists("T_DeviceDouble", columnName: "address") {
+            if let rs = dbBase.executeQuery("select work_status1,work_status2,dev_type,address from T_DeviceDouble  GROUP BY dev_type", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                    let dev_address:String = rs.stringForColumn("address")
+                    if dev_type == 4 && dev_address == address {
+                        if flag == 0 {
+                            temp = Int(rs.stringForColumn("work_status1"))!
+                        }else{
+                            temp = Int(rs.stringForColumn("work_status2"))!
+                        }
+                    }
+                    
+                }
+            } else {
+                print("查询失败 failed: \(dbBase.lastErrorMessage())")
+                
+            }
+        }
+        dbBase.close();
+        return temp
     }
     // MARK: >> 查
     func selectData(aera:String) -> String {
@@ -315,7 +403,7 @@ class DBManager: NSObject {
             db.open();
             let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
             
-            if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?,?, ?, ?)", withArgumentsInArray: arr) {
+            if !self.dbBase.executeUpdate("insert into T_Device (address ,dev_type, work_status,work_status1,work_status2,dev_name ,dev_status, dev_area,belong_area ,is_favourited, icon_url) values (?, ?, ?,?, ?, ?,?,?, ?,?, ?)", withArgumentsInArray: arr) {
                 print("添加1条数据失败！: \(db.lastErrorMessage())")
             }else{
                 print("添加1条数据成功！: \(d.address)")
@@ -338,6 +426,7 @@ class DBManager: NSObject {
                     let dev_type:Int = Int(rs.intForColumn("dev_type"))
                     let work_status:Int = Int(rs.intForColumn("work_status"))
                     let work_status1:Int = Int(rs.intForColumn("work_status1"))
+                    let work_status2:Int = Int(rs.intForColumn("work_status2"))
                     
                     let dev_name:String = rs.stringForColumn("dev_name")
                     let dev_status:Int = Int(rs.intForColumn("dev_status"))
@@ -347,7 +436,7 @@ class DBManager: NSObject {
                     let is_favourited:Int = Int(rs.intForColumn("is_favourited"))
                     let icon_url:NSData = rs.dataForColumn("icon_url")
                     
-                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, work_status1: work_status1, dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
+                    let d:Device = Device(address: address, dev_type: dev_type, work_status: work_status, work_status1: work_status1, work_status2: work_status2,dev_name: dev_name, dev_status: dev_status, dev_area: dev_area, belong_area: belong_area, is_favourited: is_favourited, icon_url: icon_url)
 
                     print("address:\(d.address),name:\(d.dev_name)", terminator: "");
                 }

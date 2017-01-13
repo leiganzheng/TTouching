@@ -63,6 +63,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         outSocket = OutSocket()
         self.tableViewController.refreshControl?.beginRefreshing()
         DBManager.shareInstance().createTable("T_Device")
+        DBManager.shareInstance().createTable("T_DeviceDouble")
+        
         self.fectchData()
 
     }
@@ -262,7 +264,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 [
                     "dev_addr": 25988,
                     "dev_type": 4,
-                    "work_status": 238,
+                    "work_status": 138,
                     "dev_name": "双回路调光",
                     "dev_status": 1,
                     "dev_area": 13014
@@ -299,7 +301,8 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let addr = tempDic["dev_addr"] as! Int
         let dev_type = tempDic["dev_type"] as! Int
         let work_status = tempDic["work_status"] as! Int
-        let work_status1 = Int(200)
+        let work_status1 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 0)
+        let work_status2 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 1)
         let name = tempDic["dev_name"] as! String
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
@@ -351,11 +354,14 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             image = UIImageJPEGRepresentation(UIImage(named:"" )!, 1)!
             
         }
-        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:work_status1, dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:work_status1,work_status2:work_status2, dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
         
         if dev != nil {
             //创建表
             DBManager.shareInstance().add(dev!);
+            if (dev_type == 4 || dev_type == 9){
+                DBManager.shareInstance().addLight(dev!);
+            }
        
         }
         

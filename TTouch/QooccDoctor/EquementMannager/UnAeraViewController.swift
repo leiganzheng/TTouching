@@ -142,21 +142,16 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                         cell.slider2.value = Float(100)
                     }else if ((d.work_status)! >= 100 && (d.work_status)! <= 199 ){
                         cell.title1.text = "\((d.work_status)!-100)%"
-                        cell.title2.text = "\((d.work_status1)!-200)%"
+                        cell.title2.text = "\((d.work_status2)!-200)%"
                         cell.slider1.value = Float((d.work_status)!-100)
-                        cell.slider2.value = Float((d.work_status1)!-200)
+                        cell.slider2.value = Float((d.work_status2)!-200)
+                        
                     }else if ((d.work_status)! >= 200 && (d.work_status)! <= 299 ){
-                        cell.title1.text = "\((d.work_status)!-200)%"
-                        cell.title2.text = "\((d.work_status1)!-200)%"
-                        cell.slider1.value = Float((d.work_status)! - 200)
-                        cell.slider2.value = Float((d.work_status1)!-200)
-                    }else{
-                        cell.title1.text = "\((d.work_status)!-100)%"
-                        cell.title2.text = "\((d.work_status1)!-200)%"
-                        cell.slider1.value = Float((d.work_status)!-100)
-                        cell.slider2.value = Float((d.work_status1)!-200)
+                        cell.title1.text = "\((d.work_status1)!-100)%"
+                        cell.title2.text = "\((d.work_status)!-200)%"
+                        cell.slider1.value = Float((d.work_status1)! - 100)
+                        cell.slider2.value = Float((d.work_status)!-200)
                     }
-
                 }else{
                     cell.title1.text = "\((d.work_status)!)%"
                     cell.title2.text = "\((d.work_status1)!)%"
