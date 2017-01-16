@@ -26,6 +26,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         self.title = "设备管理"
         self.fetchData()
 //        self.test()
+//        self.test1()
     }
 
     override func didReceiveMemoryWarning() {
@@ -275,6 +276,155 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         }
 
     }
+    func  test1(){
+        
+        let d :NSDictionary = [
+            "command": 30,
+            "Device Information": [
+                [
+                    "dev_addr": 0,
+                    "dev_type": 1,
+                    "work_status": 0,
+                    "dev_name": "总控设备",
+                    "dev_status": 1,
+                    "dev_area": 0
+                ],
+                [
+                    "dev_addr": 1772,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 47893
+                ],
+                [
+                    "dev_addr": 62234,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": 62234
+                ],
+                [
+                    "dev_addr": 41729,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": 41729
+                ],
+                [
+                    "dev_addr": 40807,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "研发办公室",
+                    "dev_status": 1,
+                    "dev_area": 40807
+                ],
+                [
+                    "dev_addr": 47893,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": 47893
+                ],
+                [
+                    "dev_addr": 20297,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 0
+                ],
+                [
+                    "dev_addr": 52095,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": 52095
+                ],
+                [
+                    "dev_addr": 36921,
+                    "dev_type": 2,
+                    "work_status": 0,
+                    "dev_name": "六场景",
+                    "dev_status": 1,
+                    "dev_area": 36921
+                ],
+                [
+                    "dev_addr": 36545,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 47893
+                ],
+                [
+                    "dev_addr": 43471,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 41729
+                ],
+                [
+                    "dev_addr": 24281,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 24318
+                ],
+                [
+                    "dev_addr": 39569,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 36921
+                ],
+                [
+                    "dev_addr": 65223,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 40807
+                ],
+                [
+                    "dev_addr": 62287,
+                    "dev_type": 3,
+                    "work_status": 0,
+                    "dev_name": "单回路调光",
+                    "dev_status": 1,
+                    "dev_area": 36921
+                ]
+            ]
+        ]
+        
+        let devices = d.objectForKey("Device Information") as! NSArray
+        
+        if (devices.count == 0) {
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+        }else{
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+            let descs2 = NSArray(objects: typeDesc)
+            let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+            DBManager.shareInstance().dbBase.open()
+            DBManager.shareInstance().deleteAll()
+            self.data.removeAllObjects()
+            for tempDict in array {
+                self.exeDB(tempDict as! NSDictionary)
+            }
+            
+            self.myTableView.reloadData()
+            
+        }
+        
+    }
     func selectPatte(d:Device){
         if d.dev_type == 1 {//总控
             self.VC = MainControViewController.CreateFromStoryboard("Main") as! UIViewController
@@ -432,23 +582,25 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let dict = ["command": 30]
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
             QNTool.hiddenActivityView()
-            let d = result as! NSDictionary
-            let devices = d.objectForKey("Device Information") as! NSArray
-            if (devices.count == 0) {
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
-            }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
-                let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
-                let descs2 = NSArray(objects: typeDesc)
-                let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
-                DBManager.shareInstance().deleteAll()
-                self.data.removeAllObjects()
-                for tempDict in array {
+            if result is  NSDictionary {
+                let d = result as! NSDictionary
+                let devices = d.objectForKey("Device Information") as! NSArray
+                if (devices.count == 0) {
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                    let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+                    let descs2 = NSArray(objects: typeDesc)
+                    let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+                    DBManager.shareInstance().deleteAll()
+                    self.data.removeAllObjects()
+                    for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)
+                    }
+                    
+                    self.myTableView.reloadData()
+                    
                 }
-                
-                self.myTableView.reloadData()
-                
             }
         })
     }

@@ -153,6 +153,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        }else{
 //            self.test()
 //        }
+//        self.test1()
                     self.fetchList()
         if self.flags.count == 1 {
             self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
@@ -350,74 +351,130 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     func  test1(){
         
         let d :NSDictionary = [
-            "command": 30,
-            "Device Information": [
+                "command": 30,
+                "Device Information": [
                 [
-                    "dev_addr": 0,
-                    "dev_type": 1,
-                    "work_status": 31,
-                    "dev_name": "总设备",
-                    "dev_status": 1,
-                    "dev_area": 0
+                "dev_addr": 0,
+                "dev_type": 1,
+                "work_status": 0,
+                "dev_name": "总控设备",
+                "dev_status": 1,
+                "dev_area": 0
                 ],
                 [
-                    "dev_addr": 13014,
-                    "dev_type": 2,
-                    "work_status": 111,
-                    "dev_name": "六景",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 1772,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 47893
                 ],
                 [
-                    "dev_addr": 32881,
-                    "dev_type": 3,
-                    "work_status": 0,
-                    "dev_name": "单路调光",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 62234,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "六场景",
+                "dev_status": 1,
+                "dev_area": 62234
                 ],
                 [
-                    "dev_addr": 41749,
-                    "dev_type": 6,
-                    "work_status": 42,
-                    "dev_name": "6路开关",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 41729,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "六场景",
+                "dev_status": 1,
+                "dev_area": 41729
                 ],
                 [
-                    "dev_addr": 13358,
-                    "dev_type": 5,
-                    "work_status": 2,
-                    "dev_name": "3路开关",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 40807,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "研发办公室",
+                "dev_status": 1,
+                "dev_area": 40807
                 ],
                 [
-                    "dev_addr": 673,
-                    "dev_type": 7,
-                    "work_status": 17,
-                    "dev_name": "窗控制",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 47893,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "六场景",
+                "dev_status": 1,
+                "dev_area": 47893
                 ],
                 [
-                    "dev_addr": 25988,
-                    "dev_type": 4,
-                    "work_status": 138,
-                    "dev_name": "双路调光",
-                    "dev_status": 1,
-                    "dev_area": 13014
+                "dev_addr": 20297,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 0
                 ],
                 [
-                    "dev_addr": 38585,
-                    "dev_type": 3,
-                    "work_status": 0,
-                    "dev_name": "单路调光",
-                    "dev_status": 1,
-                    "dev_area": 0
+                "dev_addr": 52095,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "六场景",
+                "dev_status": 1,
+                "dev_area": 52095
+                ],
+                [
+                "dev_addr": 36921,
+                "dev_type": 2,
+                "work_status": 0,
+                "dev_name": "六场景",
+                "dev_status": 1,
+                "dev_area": 36921
+                ],
+                [
+                "dev_addr": 36545,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 47893
+                ],
+                [
+                "dev_addr": 43471,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 41729
+                ],
+                [
+                "dev_addr": 24281,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 24318
+                ],
+                [
+                "dev_addr": 39569,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 36921
+                ],
+                [
+                "dev_addr": 65223,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 40807
+                ],
+                [
+                "dev_addr": 62287,
+                "dev_type": 3,
+                "work_status": 0,
+                "dev_name": "单回路调光",
+                "dev_status": 1,
+                "dev_area": 36921
                 ]
+                    ]
             ]
-        ]
         
         let devices = d.objectForKey("Device Information") as! NSArray
         
@@ -535,9 +592,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 //        self.paraterData(tempData)
 //        
 //        
-//        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 27, 188, 2, 192, 144, 0, 0, 0, 0, 85, 40, 84, 112, 117, 99, 104, 105, 111, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData2:NSData = NSData(bytes: dataArr1, length: 84)
-//        self.paraterData(tempData2)
+////        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 27, 188, 2, 192, 144, 0, 0, 0, 0, 85, 40, 84, 112, 117, 99, 104, 105, 111, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+////        let tempData2:NSData = NSData(bytes: dataArr1, length: 84)
+////        self.paraterData(tempData2)
         
         //UDP 广播,发送广播
         let bytes:[UInt8] = [0xff,0x04,0x33,0xca]
