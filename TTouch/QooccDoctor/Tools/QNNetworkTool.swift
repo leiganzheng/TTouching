@@ -28,6 +28,7 @@ class QNNetworkTool: NSObject{
 *  //MARK:- 网络基础处理
 */
 private extension QNNetworkTool{
+    
     /**
     //MARK: 生产共有的 URLRequest，如果是到巨细的服务器请求数据，必须使用此方法创建URLRequest
         

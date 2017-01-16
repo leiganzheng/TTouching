@@ -12,7 +12,7 @@ class DBManager: NSObject {
  
     let dbPath:String
     let dbBase:FMDatabase
-    var ip:String
+//    var ip:String
     var TableOneName:String
     var TableDLightName:String
     
@@ -29,11 +29,12 @@ class DBManager: NSObject {
         })
         return psSingle.instance!
     }
-    
+
     
     // MARK: >> 创建数据库，打开数据库
     override init() {
-        self.ip = ""
+//        self.ip = ""
+//        self.ipArr = NSMutableArray()
         self.TableOneName = ""
         self.TableDLightName = ""
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
@@ -44,6 +45,10 @@ class DBManager: NSObject {
         
         print("path: ---- \(self.dbPath)", terminator: "")
         
+    }
+    func updateIp(name1:String,name2:String){
+        self.TableOneName = name1
+        self.TableDLightName = name2
     }
     // MARK: >> 建立数据表
     func createTable(name: String) {
@@ -65,7 +70,7 @@ class DBManager: NSObject {
             print("Unable to open database!", terminator: "")
             
         }
-
+        dbBase.close()
     }
     
     // MARK: >> 建立数据表
@@ -88,7 +93,7 @@ class DBManager: NSObject {
             print("Unable to open database!", terminator: "")
             
         }
-        
+        dbBase.close()
     }
 
     

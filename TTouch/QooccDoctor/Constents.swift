@@ -36,6 +36,7 @@ let APP_URL_IN_ITUNES: String = NSString(format: APP_URL_IN_ITUNES_PREFIX, APP_I
 let screenHeight = UIScreen.mainScreen().bounds.size.height
 let screenWidth = UIScreen.mainScreen().bounds.size.width
 
+
 // MARK: - System
 // MARK:  系统名称
 let SYSTEM_NAME: String = UIDevice.currentDevice().systemName

@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManager
 let kKeyIsFirstStartApp = ("IsFirstStartApp" as NSString).encrypt(g_SecretKey) // 第一次启动判断的Key
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
 

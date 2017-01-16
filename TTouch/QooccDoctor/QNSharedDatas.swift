@@ -37,7 +37,7 @@ func saveAccountAndPassword(account: String, password: String?) {
 func cleanPassword() {
     removeObjectAtUserDefaults(kKeyPassword)
 }
-
+var g_ip:String?
 //MARK: g_currentUser 当选中用户
 var g_currentUser: QN_UserInfo?
 

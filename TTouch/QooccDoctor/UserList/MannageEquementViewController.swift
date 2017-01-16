@@ -24,9 +24,13 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设备管理"
-        self.fetchData()
-//        self.test()
-//        self.test1()
+//        self.fetchData()
+        if g_ip == "192.168.1.101" {
+            self.test1()
+        }else{
+            self.test()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

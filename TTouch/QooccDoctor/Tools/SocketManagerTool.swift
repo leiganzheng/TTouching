@@ -13,7 +13,7 @@ typealias SocketBlock = (AnyObject) -> Void
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //    let addr = "192.168.1.100"
-    let addr = DBManager.shareInstance().ip
+//    var addr:String
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var tempDic:NSDictionary!
@@ -22,8 +22,10 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     var SBlock :SocketBlock?
     
     override init(){
+//        addr = DBManager.shareInstance().ip
         super.init()
-        connectSocket()
+        
+//        connectSocket()
     }
     // MARK: >> 单例化
     class func shareInstance()->SocketManagerTool{
@@ -37,20 +39,32 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         })
         return psSingle.instance!
     }
+    class func  attempDealloc(){
+
+    }
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
         self.tempDic = dict
-        clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        if self.clientSocket.isConnected {
+            clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        }else{
+            if g_ip != nil {
+                 self.connectSocket(g_ip!)
+            }
+           
+        }
+        
     }
 
     //连接服务器按钮事件
-     func connectSocket() {
+    func connectSocket(ip:String) {
         do {
             clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             //使用解析出来的ip连接测试
 //            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
             //使用固定ip连接测试
-            try clientSocket.connectToHost(addr, onPort: port)
+//            try clientSocket.connectToHost(addr, onPort: port)
+            try clientSocket.connectToHost(ip, onPort: port)
         }
             
         catch {
