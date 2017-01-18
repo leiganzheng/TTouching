@@ -17,6 +17,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var tempDic:NSDictionary!
+    var mulData:NSMutableData?
     var mainQueue = dispatch_get_main_queue()
     
     var SBlock :SocketBlock?
@@ -45,6 +46,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
         self.tempDic = dict
+        self.mulData = NSMutableData()
         if self.clientSocket.isConnected {
             clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
         }else{
@@ -76,10 +78,15 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     //MARK:- private method
     func paramsToJsonDataParams(params: [String : AnyObject]) -> NSData {
         do {
+            let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
             let jsonData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
-//            let jsonDataString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            let jsonDataString = NSString(data: jsonData, encoding:NSUTF8StringEncoding ) as! String
 //            print("jsonData:\(jsonData)")
-            return jsonData
+            
+            let newStr = jsonDataString.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
+            let data = newStr.dataUsingEncoding(enc, allowLossyConversion: false)
+
+            return data!
         }catch{
             return NSData()
         }
@@ -107,16 +114,44 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     }
     
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
+        
+        if data.length < 1460 {
+            self.mulData?.appendData(data)
+//            if self.mulData?.length == self.clientSocket.d{
+//            
+//            }
+            self.paraData(self.mulData!)
+        }else if(data.length == 1460){
+            self.mulData?.appendData(data)
+        }
+        
+        // 2 主界面ui 显示数据
+//        dispatch_async(mainQueue, {
+//            self.SBlock!(data)
+//            let showStr:NSMutableString = NSMutableString()
+//            
+//        })
+        
+        // 3.处理请求，返回数据给客户端 ok
+//        let serviceStr:NSMutableString = NSMutableString()
+//        serviceStr.appendString("ok\n")
+//        clientSocket.writeData(serviceStr.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
+        
+        // 4每次读完数据后，都要调用一次监听数据的方法
+        clientSocket.readDataWithTimeout(-1, tag:200)
+    }
+    func paraData(data:NSData){
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
         // 1 获取客户的发来的数据 ，把 NSData 转 NSString
         let readClientDataString =  String(data: data, encoding: enc)
-       //处理gbk问题
+        //处理gbk问题
         let newStr = readClientDataString?.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
         
         if readClientDataString != nil {
+            self.mulData = nil
             //将数据转为UTF-8
             let  tempData = newStr?.dataUsingEncoding(NSUTF8StringEncoding)
-//            print(readClientDataString)
+            //            print(readClientDataString)
             
             do  {
                 
@@ -143,13 +178,11 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 }
             }
         }else{
-            let tempData = data
-            let readClientDataString = NSString(data:data!, encoding: NSUTF8StringEncoding)
-            //将数据转为UTF-8
-            print(readClientDataString)
-            
+          
+            self.mulData = nil
+            self.mulData = NSMutableData()
             do  {
-                let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(tempData!, options: NSJSONReadingOptions.AllowFragments)
+                let jsonObject: AnyObject? = try  NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
                 var dictionary = jsonObject as? NSDictionary
                 if dictionary == nil {  // Json解析结果出错
                     print("JSON解析错误")
@@ -166,28 +199,13 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
             }catch {
                 // 直接出错了
                 if self.SBlock != nil {
-//                    self.SBlock!("")
+                    //                    self.SBlock!("")
                     print("直接出错了")
                 }
             }
         }
-      
+        
 
-        
-        // 2 主界面ui 显示数据
-//        dispatch_async(mainQueue, {
-//            self.SBlock!(data)
-//            let showStr:NSMutableString = NSMutableString()
-//            
-//        })
-        
-        // 3.处理请求，返回数据给客户端 ok
-//        let serviceStr:NSMutableString = NSMutableString()
-//        serviceStr.appendString("ok\n")
-//        clientSocket.writeData(serviceStr.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1, tag: 0)
-        
-        // 4每次读完数据后，都要调用一次监听数据的方法
-        clientSocket.readDataWithTimeout(-1, tag:200)
     }
 
 }

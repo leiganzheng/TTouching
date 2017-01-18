@@ -55,9 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
     func applicationDidBecomeActive(application: UIApplication) {
-//        if SocketManagerTool.shareInstance().clientSocket.isDisconnected {
-//            QNTool.enterLoginViewController()
-//        }
+        if SocketManagerTool.shareInstance().clientSocket != nil {
+            if SocketManagerTool.shareInstance().clientSocket.isDisconnected {
+                QNTool.enterLoginViewController()
+            }
+        }
+        
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
 //        DLog("didReceiveLocalNotification : \(notification)")

@@ -364,11 +364,11 @@ extension QNTool {
             let d = result as! NSDictionary
             let status = d.objectForKey("status") as! NSNumber
             if (status == 1){
-                let d = arr[0] as! NSDictionary
-                let address = d.objectForKey("dev_addr") as! String
-                let name = d.objectForKey("dev_name") as! String
-                
-                DBManager.shareInstance().updateName(name, type: address)
+//                let d = arr[0] as! NSDictionary
+//                let address = d.objectForKey("dev_addr") as! String
+//                let name = d.objectForKey("dev_name") as! String
+//                
+//                DBManager.shareInstance().updateName(name, type: address)
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
             }else{
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
@@ -860,11 +860,68 @@ extension QNTool {
 }
 
 extension QNTool {
-    class func UTF8TOGB2312(str: String) -> NSData {
+    class func UTF8TOGB2312(str: String) -> String {
+        //        let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))
+        
+        
+        //        // 将字符串 text 写入文件，指定编码为 enc
+        //        do {
+        //            try text.writeToFile(text_path, atomically: true, encoding: enc)
+        //        }
+        //        catch {
+        //            print("error", appendNewline: true)
+        //        }
+        //
+        //        // 读取GBK编码的文件内容
+        //        do{
+        //            try text = NSString(contentsOfFile: text_path, encoding: enc) as String
+        //            print(text, appendNewline: true)
+        //        }
+        //        catch {
+        //            print("error", appendNewline: true)
+        //        }
+        //
+        ////        作者：唐任
+        ////        链接：https://www.zhihu.com/question/33563580/answer/56923649
+        ////        来源：知乎
+        ////        著作权归作者所有，转载请联系作者获得授权。
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-        let data = str.dataUsingEncoding(enc, allowLossyConversion: false)
-        return data!
+        let newStr = str.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
+        let data = newStr.dataUsingEncoding(enc, allowLossyConversion: false)
+        let str1 = String(data: data!, encoding: enc)
+        return str1!
     }
+//    class func UTF8TOGB2312(str: String) -> NSData {
+////        let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))
+//        
+//        
+////        // 将字符串 text 写入文件，指定编码为 enc
+////        do {
+////            try text.writeToFile(text_path, atomically: true, encoding: enc)
+////        }
+////        catch {
+////            print("error", appendNewline: true)
+////        }
+////        
+////        // 读取GBK编码的文件内容
+////        do{
+////            try text = NSString(contentsOfFile: text_path, encoding: enc) as String
+////            print(text, appendNewline: true)
+////        }
+////        catch {
+////            print("error", appendNewline: true)
+////        }
+////        
+//////        作者：唐任
+//////        链接：https://www.zhihu.com/question/33563580/answer/56923649
+//////        来源：知乎
+//////        著作权归作者所有，转载请联系作者获得授权。
+//        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+//        let newStr = str.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
+//        let data = newStr.dataUsingEncoding(enc, allowLossyConversion: false)
+//        let str1 = String(data: data!, encoding: enc)
+//        return data!
+//    }
 
     class func xnStringAndBinaryDigit(status: Int) -> NSString{
         let string = String(status,radix:2)
