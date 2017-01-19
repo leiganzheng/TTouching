@@ -56,7 +56,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isopen.backgroundColor = color
-        let title = d?.dev_area == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
+        let title = DBManager.shareInstance().selectData((d?.dev_area)!) == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
         cell.patern.setTitle(title, forState: .Normal)
         let btn1 = cell.patern
         
