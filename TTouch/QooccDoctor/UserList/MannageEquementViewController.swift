@@ -25,6 +25,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         super.viewDidLoad()
         self.title = "设备管理"
         self.fetchData()
+//        self.test()
 //        if g_ip == "192.168.1.101" {
 //            self.test1()
 //        }else{

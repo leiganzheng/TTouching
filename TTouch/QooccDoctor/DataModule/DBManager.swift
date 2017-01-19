@@ -361,11 +361,12 @@ class DBManager: NSObject {
     func selectData(aera:String) -> String {
         dbBase.open();
         var temp:String = ""
-        if let rs = dbBase.executeQuery("select dev_type,dev_name,dev_area,icon_url from \(self.TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select dev_type,address,dev_name,dev_area,icon_url from \(self.TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
-                let dev_type:Int = Int(rs.intForColumn("dev_type"))
-                let dev_area:String = rs.stringForColumn("dev_area")
-                if dev_type == 2 && dev_area == aera {
+//                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+//                let dev_area:String = rs.stringForColumn("dev_area")
+                let addrr:String = rs.stringForColumn("address")
+                if (addrr == aera) {
                     temp = rs.stringForColumn("dev_name")
                 }
             }
@@ -376,7 +377,7 @@ class DBManager: NSObject {
         dbBase.close();
         return temp
     }
-
+    
     // MARK: >> 保证线程安全
     // TODO: 示例-增,查
     //FMDatabaseQueue这么设计的目的是让我们避免发生并发访问数据库的问题，因为对数据库的访问可能是随机的（在任何时候）、不同线程间（不同的网络回调等）的请求。内置一个Serial队列后，FMDatabaseQueue就变成线程安全了，所有的数据库访问都是同步执行，而且这比使用@synchronized或NSLock要高效得多。

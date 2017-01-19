@@ -55,8 +55,13 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
             //            cell.accessoryType = .DisclosureIndicator
         }
         cell.textLabel?.text = self.cellTitles[indexPath.row] as? String
-        let lb = UILabel(frame: CGRectMake(0,0,120,40))
+        let lb = UILabel(frame: CGRectMake(0,0,200,40))
+        lb.textAlignment = .Right
         lb.text = self.dataS![indexPath.row] as? String
+        if indexPath.row == 1 {
+            lb.text =  String().stringByAppendingFormat("%x",(self.dataS![indexPath.row] as? String)!)
+        }
+        
         cell.accessoryView = lb
         let line = UILabel(frame: CGRectMake(0, 50, self.view.bounds.width, 1))
         line.backgroundColor = defaultBackgroundGrayColor

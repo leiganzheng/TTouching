@@ -127,6 +127,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                 self.unAeraVC?.superVC = self
                 self.unAeraVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 70))
                 self.contentScrollView!.addSubview(self.unAeraVC!.view)
+                self.addChildViewController( self.unAeraVC!)
             }
             if temp.dev_type == 2 {
                 self.sixVC = SixPaternViewController.CreateFromStoryboard("Main") as? SixPaternViewController
@@ -137,6 +138,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
                 
                 self.sixVC!.view.frame = CGRectMake(screenWidth * CGFloat(index-1),0 ,screenWidth, ((self.contentScrollView?.frame.size.height)! - 70))
                 self.contentScrollView!.addSubview(self.sixVC!.view)
+                self.addChildViewController( self.sixVC!)
             }
             
         }

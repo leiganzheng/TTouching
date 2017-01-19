@@ -34,8 +34,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         self.view.addSubview(self.myTableView!)
         
         self.sockertManger = SocketManagerTool.shareInstance()
-//        self.commandArr = [0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000,0b0000000000000000]
-        
+ 
         self.fetchData()
     }
 
