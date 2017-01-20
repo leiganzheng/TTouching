@@ -10,46 +10,65 @@ import UIKit
 import ReactiveCocoa
 import AudioToolbox
 
-class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDataSource, UITableViewDelegate {
+class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    @IBOutlet weak var myCustomView: UITableView!
-    var zoneSubView: SubCustomView?
-    var screenSubView: SubCustomView?
+
+    @IBOutlet weak var zoneCollectionView: UICollectionView!
+    @IBOutlet weak var sceneCollectionView: UICollectionView!
+    @IBOutlet weak var onOfOff: UISwitch!
     var searchButton:UIButton?
     var  soundID:SystemSoundID = 0
-    var zoneHiden : Bool = false
-    var screenHiden : Bool = false
+    var tempDic:NSMutableDictionary = NSMutableDictionary()
+    var flags:NSMutableArray = []
+    var flags1:NSMutableArray = []
+    var sceneArrdata:NSMutableArray!
+    var sceneArr:NSMutableArray!
+    var dataArr:NSMutableArray!
+    
     override func viewDidLoad() {
        
         super.viewDidLoad()
         let path = NSBundle.mainBundle().pathForResource("glass", ofType: "wav")
         AudioServicesCreateSystemSoundID(NSURL(fileURLWithPath: path!), &soundID);
         
-        searchButton = UIButton(frame: CGRectMake(50, 200, screenWidth-100, 120))
-//        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        searchButton!.setTitle("请点击进行设置", forState: UIControlState.Normal)
-        searchButton!.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        searchButton!.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            self.myCustomView.hidden = false
-            self.searchButton!.hidden = true
+        //Right
+        let rightBarButton = UIView(frame: CGRectMake(0, 0, 60, 60)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
+        let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 60, 60))
+        searchButton.setTitle("保存", forState: .Normal)
+        searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+            if self.onOfOff.on || (self.tempDic.objectForKey("KZone") != nil) || (self.tempDic.objectForKey("KScene") != nil){
+                saveObjectToUserDefaults("KShark", value: self.tempDic)
+                QNTool.showPromptView("保存成功，可以使用摇一摇了")
+            }else{
+                QNTool.showPromptView("请开启摇一摇")
+            }
             return RACSignal.empty()
-        })
-        self.view.addSubview(searchButton!)
-        self.myCustomView.hidden = true
+            })
+        rightBarButton.addSubview(searchButton)
         
-        self.myCustomView?.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        self.myCustomView.separatorColor = defaultBackgroundGrayColor
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+
         
-        self.zoneSubView = SubCustomView(frame: CGRectMake(0,0,screenWidth,150))
-        self.zoneSubView?.flag = 1
-        self.zoneSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
         
-        self.screenSubView = SubCustomView(frame: CGRectMake(0,0,screenWidth,150))
-        self.screenSubView?.flag = 1
-        self.screenSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
+        self.dataArr = NSMutableArray()
+        self.sceneArr = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+        self.sceneArrdata = [97,98,99,100,110,111]
+        self.flags1 = [false,false,false,false,false,false]
+        if getObjectFromUserDefaults("KShark") != nil {
+            let dict = getObjectFromUserDefaults("KShark") as! NSMutableDictionary
+            self.tempDic = dict
+            if self.tempDic.allValues.count != 0 {
+                self.onOfOff.on = self.tempDic.objectForKey("KSwitch") as! Bool
+            }
+
+        }
         
-        self.becomeFirstResponder()
-        
+        self.zoneCollectionView.delegate = self
+        self.zoneCollectionView.dataSource = self
+        self.sceneCollectionView.delegate = self
+        self.sceneCollectionView.dataSource = self
+       
+        self.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,10 +98,15 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == UIEventSubtype.MotionShake
         {
-            self.myCustomView.hidden = false
             searchButton!.hidden = true
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             AudioServicesPlaySystemSound (soundID)
+            if self.tempDic.allValues.count != 0 {
+                let dict = ["command": 36, "dev_addr" : self.tempDic.objectForKey("KZone") as! String, "dev_type": 2, "work_status":self.tempDic.objectForKey("KScene") as! Int]
+                QNTool.openSence(dict)
+
+            }
+           
         }
     }
     //MARK:- private method
@@ -94,128 +118,138 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         UIView.commitAnimations()
         
     }
-    //MARK:- UITableViewDelegate or UITableViewDataSource
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //MARK:-
+    //返回多少个组
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         
-        if indexPath.row == 0{
-            return 53
-        }
-        else if indexPath.row == 1{
-           return self.zoneHiden == true ? 216 : 53
-        }
-        else if  indexPath.row == 2{
-            return self.screenHiden == true ? 216 : 53
-        }
-        return 0
+        return 1
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let cellId = "cell0"
-            var cell: UITableViewCell! = self.myCustomView.dequeueReusableCellWithIdentifier(cellId)
-            if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            }
-           
-            return cell
-
+    //返回多少个cell
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (collectionView == self.zoneCollectionView) {
+             return dataArr.count
+        }else if (collectionView == self.sceneCollectionView){
+            return self.sceneArr.count
         }
-        else if indexPath.row == 1{
-            let cellId = "cell1"
-            var cell: UITableViewCell! = self.myCustomView.dequeueReusableCellWithIdentifier(cellId)
-            if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            }
-            let btn = cell.contentView.viewWithTag(100) as! UIButton
-            btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-                self.zoneHiden = !self.zoneHiden
-//                if self.zoneHiden {
-//                    let v = cell.contentView.viewWithTag(104)
-//                    cell.contentView.addSubview(self.zoneSubView!)
-//                    self.zoneSubView?.frame =  CGRectMake(0,v!.frame.origin.y+53,screenWidth,150)
-//                }else{
-////                    self.zoneSubView?.removeFromSuperview()
-//                }
-                self.myCustomView.reloadData()
-                return RACSignal.empty()
-            })
-            return cell
+       return 0
+    }
+    //返回自定义的cell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if (collectionView == self.zoneCollectionView) {
+            let cell:UICollectionViewCell  = self.zoneCollectionView.dequeueReusableCellWithReuseIdentifier("ZoneCell", forIndexPath: indexPath)
+            let flag = self.flags[indexPath.row] as! Bool
+            let icon = (flag==true) ? "pic_hd" : "navigation_Options_icon"
+            let d = self.dataArr[indexPath.row] as! Device
+            let lb = cell.viewWithTag(101) as! UILabel
+            lb.text = d.dev_name
+            let img = cell.viewWithTag(100) as! UIImageView
+            img.image = UIImage(named: icon)
             
-        }
-        else if  indexPath.row == 2{
-            let cellId = "cell2"
-            var cell: UITableViewCell! = self.myCustomView.dequeueReusableCellWithIdentifier(cellId)
-            if cell == nil {
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            }
-            let btn = cell.contentView.viewWithTag(101) as! UIButton
-            btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-                 self.screenHiden = !self.screenHiden
-//                if self.screenHiden {
-//                    let v = cell.contentView.viewWithTag(105)
-//                    cell.contentView.addSubview(self.zoneSubView!)
-//                    self.screenSubView?.frame =  CGRectMake(0,v!.frame.origin.y+53,screenWidth,150)
-//                }else{
-////                    self.screenSubView?.removeFromSuperview()
-//                }
-               
-                self.myCustomView.reloadData()
-                return RACSignal.empty()
-            })
-            return cell
             
+            return cell
+        }else if (collectionView == self.sceneCollectionView){
+            let cell:UICollectionViewCell  = self.sceneCollectionView.dequeueReusableCellWithReuseIdentifier("SceneCell", forIndexPath: indexPath)
+            let str = self.sceneArr[indexPath.row] as! String
+            let lb = cell.viewWithTag(101) as! UILabel
+            lb.text = str
+            let flag = self.flags1[indexPath.row] as! Bool
+            let color = (flag==true) ? UIColor.blueColor() : UIColor.darkGrayColor()
+            lb.textColor = color
+            return cell
+        }else{
+            return UICollectionViewCell()
         }
-        return UITableViewCell()
 
     }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if (collectionView == self.zoneCollectionView) {
+            let d = self.dataArr[indexPath.row] as! Device
+            self.tempDic.setObject(d.address!, forKey: "KZone")
+            if self.flags.count == 1 {
+                self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
+            }else {
+                for index in 0 ..< self.flags.count {
+                    if index == indexPath.row {
+                        self.flags.replaceObjectAtIndex(index, withObject: true)
+                    }else{
+                        self.flags.replaceObjectAtIndex(index, withObject: false)
+                    }
+                }
+                
+            }
+            self.zoneCollectionView.reloadData()
+        }else if (collectionView == self.sceneCollectionView){
+            let str = self.sceneArrdata[indexPath.row] as! Int
+            self.tempDic.setObject(str, forKey: "KScene")
+            if self.flags1.count == 1 {
+                self.flags1.replaceObjectAtIndex(0 , withObject: !(self.flags1.objectAtIndex(0) as! Bool))
+            }else {
+                for index in 0 ..< self.flags1.count {
+                    if index == indexPath.row {
+                        self.flags1.replaceObjectAtIndex(index, withObject: true)
+                    }else{
+                        self.flags1.replaceObjectAtIndex(index, withObject: false)
+                    }
+                }
+                
+            }
+            self.sceneCollectionView.reloadData()
+        }
+       
+    }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.myCustomView.deselectRowAtIndexPath(indexPath, animated: true)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+              return CGSizeMake((collectionView.frame.width - 14)/2.0-8, 43)
+    }
+
+
+    //返回cell 上下左右的间距
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+        return UIEdgeInsetsMake(4, 4, 2, 4)
+    }
+    //MARK:- private method
+    @IBAction func switchAction(sender: UISwitch) {
+        self.tempDic.setObject(sender.on, forKey: "KSwitch")
+    }
+    func fetchData(){
+        self.dataArr.removeAllObjects()
+        //查
+        let arr:Array<Device> = DBManager.shareInstance().selectDatas()
+        
+        for (_, element): (Int, Device) in arr.enumerate(){
+            if element.dev_type! == 2{
+                self.flags.addObject(false)
+                self.dataArr.addObject(element)
+            }
+            
+            print("Device:\(element.address!)", terminator: "");
+        }
+        if self.tempDic.allValues.count != 0 {
+            for index in 0 ..< self.dataArr.count {
+                let d = self.dataArr[index] as! Device
+                if d.address == self.tempDic.objectForKey("KZone") as! String {
+                    self.flags.replaceObjectAtIndex(index, withObject: true)
+                }else{
+                    self.flags.replaceObjectAtIndex(index, withObject: false)
+                }
+            }
+
+        }
+        if self.tempDic.allValues.count != 0 {
+            for index1 in 0 ..< self.sceneArrdata.count {
+                let d = self.sceneArrdata[index1] as! Int
+                if d == self.tempDic.objectForKey("KScene") as! Int {
+                    self.flags1.replaceObjectAtIndex(index1, withObject: true)
+                }else{
+                    self.flags1.replaceObjectAtIndex(index1, withObject: false)
+                }
+            }
+            self.sceneCollectionView.reloadData()
+        }
+
+        self.zoneCollectionView.reloadData()
         
     }
-
-//    @IBAction func zoneAction(sender: AnyObject) {
-//        if self.zoneSubView == nil {
-//            self.zoneSubView = SubCustomView(frame: CGRectMake(0,self.zoneView.frame.origin.y+53,screenWidth,100))
-//            self.zoneSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
-//            self.view.addSubview(self.zoneSubView!)
-//            self .animationWith(self.screenView, x: self.zoneSubView!.frame.origin.y+53+63+self.zoneSubView!.frame.size.height)
-//            
-//        }else{
-//            self.zoneSubView?.removeFromSuperview()
-//            self.zoneSubView = nil
-//            self .animationWith(self.screenView, x: self.zoneView.frame.origin.y-63)
-//        }
-//        
-//    }
-//    @IBAction func screenAction(sender: AnyObject) {
-//        if self.screenSubView == nil {
-//            var y:CGFloat!
-//            if self.zoneSubView == nil {
-//                y = self.screenView.frame.origin.y
-//            }else{
-//                y = self.zoneSubView!.frame.origin.y
-//            }
-//            self.screenSubView = SubCustomView(frame: CGRectMake(0,y+53,screenWidth,100))
-//            self.screenSubView?.data = ["客厅","餐厅","书房","主浴","漏台","主卧"]
-//            self.view.addSubview(self.screenSubView!)
-//
-//        }else{
-//            self.screenSubView?.removeFromSuperview()
-//            self.screenSubView = nil
-//            var y:CGFloat!
-//            if self.zoneSubView == nil {
-//                y = self.zoneView.frame.origin.y+53
-//            }else{
-//                y = self.zoneSubView!.frame.origin.y
-//            }
-//            self .animationWith(self.screenView, x: self.screenView.frame.origin.y-63)
-//        }
-//    }
 
 }
