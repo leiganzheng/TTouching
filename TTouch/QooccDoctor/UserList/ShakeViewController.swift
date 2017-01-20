@@ -16,14 +16,16 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     @IBOutlet weak var zoneCollectionView: UICollectionView!
     @IBOutlet weak var sceneCollectionView: UICollectionView!
     @IBOutlet weak var onOfOff: UISwitch!
-    var searchButton:UIButton?
     var  soundID:SystemSoundID = 0
-    var tempDic:NSMutableDictionary = NSMutableDictionary()
     var flags:NSMutableArray = []
     var flags1:NSMutableArray = []
     var sceneArrdata:NSMutableArray!
     var sceneArr:NSMutableArray!
     var dataArr:NSMutableArray!
+    
+    var flagon: Bool = true
+    var zoneStr:String = ""
+    var scene:Int = 0
     
     override func viewDidLoad() {
        
@@ -36,11 +38,13 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 60, 60))
         searchButton.setTitle("保存", forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            if self.onOfOff.on || (self.tempDic.objectForKey("KZone") != nil) || (self.tempDic.objectForKey("KScene") != nil){
-                saveObjectToUserDefaults("KShark", value: self.tempDic)
+            if self.onOfOff.on && (self.zoneStr != "") && (self.scene != 0) && (self.flagon == true){
+                saveObjectToUserDefaults("KZone", value: self.zoneStr)
+                saveObjectToUserDefaults("KScene", value: self.scene)
+                saveObjectToUserDefaults("KSwitch", value: self.flagon)
                 QNTool.showPromptView("保存成功，可以使用摇一摇了")
             }else{
-                QNTool.showPromptView("请开启摇一摇")
+                QNTool.showPromptView("请开启摇一摇、选择区域和场景")
             }
             return RACSignal.empty()
             })
@@ -54,13 +58,14 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         self.sceneArr = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
         self.sceneArrdata = [97,98,99,100,110,111]
         self.flags1 = [false,false,false,false,false,false]
-        if getObjectFromUserDefaults("KShark") != nil {
-            let dict = getObjectFromUserDefaults("KShark") as! NSMutableDictionary
-            self.tempDic = dict
-            if self.tempDic.allValues.count != 0 {
-                self.onOfOff.on = self.tempDic.objectForKey("KSwitch") as! Bool
-            }
-
+        if getObjectFromUserDefaults("KSwitch") != nil {
+            self.onOfOff.on = getObjectFromUserDefaults("KSwitch") as! Bool
+        }
+        if getObjectFromUserDefaults("KZone") != nil {
+            self.zoneStr = getObjectFromUserDefaults("KZone") as! String
+        }
+        if getObjectFromUserDefaults("KScene") != nil {
+            self.scene = getObjectFromUserDefaults("KScene") as! Int
         }
         
         self.zoneCollectionView.delegate = self
@@ -78,7 +83,6 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.resignFirstResponder()
     }
      //MARK:- method
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
@@ -98,14 +102,18 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == UIEventSubtype.MotionShake
         {
-            searchButton!.hidden = true
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             AudioServicesPlaySystemSound (soundID)
-            if self.tempDic.allValues.count != 0 {
-                let dict = ["command": 36, "dev_addr" : self.tempDic.objectForKey("KZone") as! String, "dev_type": 2, "work_status":self.tempDic.objectForKey("KScene") as! Int]
-                QNTool.openSence(dict)
+            if self.onOfOff.on {
+                if  (getObjectFromUserDefaults("KZone") != nil) && (getObjectFromUserDefaults("KScene") != nil){
+                    let str = getObjectFromUserDefaults("KZone") as? String
+                    let dict = ["command": 36, "dev_addr" : Int(str!)!, "dev_type": 2, "work_status":getObjectFromUserDefaults("KScene") as! Int]
+                    QNTool.openSence(dict)
+                    
+                }
 
             }
+            
            
         }
     }
@@ -165,7 +173,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if (collectionView == self.zoneCollectionView) {
             let d = self.dataArr[indexPath.row] as! Device
-            self.tempDic.setObject(d.address!, forKey: "KZone")
+//            self.tempDic.setObject(d.address!, forKey: "KZone")
+            saveObjectToUserDefaults("KZone", value: d.address!)
+            self.zoneStr = d.address!
             if self.flags.count == 1 {
                 self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
             }else {
@@ -181,7 +191,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             self.zoneCollectionView.reloadData()
         }else if (collectionView == self.sceneCollectionView){
             let str = self.sceneArrdata[indexPath.row] as! Int
-            self.tempDic.setObject(str, forKey: "KScene")
+//            self.tempDic.setObject(str, forKey: "KScene")
+//            saveObjectToUserDefaults("KScene", value: str)
+            self.scene = str
             if self.flags1.count == 1 {
                 self.flags1.replaceObjectAtIndex(0 , withObject: !(self.flags1.objectAtIndex(0) as! Bool))
             }else {
@@ -210,7 +222,15 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     }
     //MARK:- private method
     @IBAction func switchAction(sender: UISwitch) {
-        self.tempDic.setObject(sender.on, forKey: "KSwitch")
+//        self.tempDic.setObject(sender.on, forKey: "KSwitch")
+//        saveObjectToUserDefaults("KSwitch", value: sender.on)
+        self.flagon = sender.on
+        if sender.on {
+            QNTool.showPromptView("摇一摇开启")
+        }else{
+            QNTool.showPromptView("摇一摇关闭")
+        }
+        
     }
     func fetchData(){
         self.dataArr.removeAllObjects()
@@ -225,10 +245,10 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             
             print("Device:\(element.address!)", terminator: "");
         }
-        if self.tempDic.allValues.count != 0 {
+        if getObjectFromUserDefaults("KZone") != nil {
             for index in 0 ..< self.dataArr.count {
                 let d = self.dataArr[index] as! Device
-                if d.address == self.tempDic.objectForKey("KZone") as! String {
+                if d.address == getObjectFromUserDefaults("KZone") as? String {
                     self.flags.replaceObjectAtIndex(index, withObject: true)
                 }else{
                     self.flags.replaceObjectAtIndex(index, withObject: false)
@@ -236,10 +256,10 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             }
 
         }
-        if self.tempDic.allValues.count != 0 {
+        if getObjectFromUserDefaults("KScene") != nil  {
             for index1 in 0 ..< self.sceneArrdata.count {
                 let d = self.sceneArrdata[index1] as! Int
-                if d == self.tempDic.objectForKey("KScene") as! Int {
+                if d ==  getObjectFromUserDefaults("KScene")  as! Int {
                     self.flags1.replaceObjectAtIndex(index1, withObject: true)
                 }else{
                     self.flags1.replaceObjectAtIndex(index1, withObject: false)
