@@ -361,13 +361,14 @@ class DBManager: NSObject {
     func selectData(aera:String) -> String {
         dbBase.open();
         var temp:String = ""
-        if let rs = dbBase.executeQuery("select dev_type,address,dev_name,dev_area,icon_url from \(self.TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select address,dev_name from \(self.TableOneName)", withArgumentsInArray: nil) {
             while rs.next() {
 //                let dev_type:Int = Int(rs.intForColumn("dev_type"))
 //                let dev_area:String = rs.stringForColumn("dev_area")
                 let addrr:String = rs.stringForColumn("address")
                 if (addrr == aera) {
                     temp = rs.stringForColumn("dev_name")
+                    break
                 }
             }
         } else {

@@ -27,7 +27,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UITableViewDa
         
         searchButton = UIButton(frame: CGRectMake(50, 200, screenWidth-100, 120))
 //        searchButton.setImage(UIImage(named: "Manage_Side pull_icon"), forState: UIControlState.Normal)
-        searchButton!.setTitle("请点击摇一摇按钮进行设置", forState: UIControlState.Normal)
+        searchButton!.setTitle("请点击进行设置", forState: UIControlState.Normal)
         searchButton!.setTitleColor(UIColor.blackColor(), forState: .Normal)
         searchButton!.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             self.myCustomView.hidden = false

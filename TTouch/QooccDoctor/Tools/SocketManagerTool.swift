@@ -13,7 +13,7 @@ typealias SocketBlock = (AnyObject) -> Void
 
 class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
 //    let addr = "192.168.1.100"
-//    var addr:String
+
     let port:UInt16 = 33632
     var clientSocket:GCDAsyncSocket!
     var tempDic:NSDictionary!
@@ -23,7 +23,6 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     var SBlock :SocketBlock?
     
     override init(){
-//        addr = DBManager.shareInstance().ip
         super.init()
         
 //        connectSocket()
@@ -46,6 +45,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func sendMsg(dict: NSDictionary,completion:(AnyObject) -> Void) {
         self.SBlock = completion
         self.tempDic = dict
+        self.mulData = nil
         self.mulData = NSMutableData()
         if self.clientSocket.isConnected {
             clientSocket.writeData(self.paramsToJsonDataParams(dict as! [String : AnyObject]), withTimeout: -1, tag: 0)
@@ -62,10 +62,6 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func connectSocket(ip:String) {
         do {
             clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-            //使用解析出来的ip连接测试
-//            try clientSocket.connectToHost(DBManager.shareInstance().ip, onPort: port)
-            //使用固定ip连接测试
-//            try clientSocket.connectToHost(addr, onPort: port)
             try clientSocket.connectToHost(ip, onPort: port)
         }
             
@@ -96,7 +92,8 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socket(sock:GCDAsyncSocket!, didConnectToHost host: String!, port:UInt16) {
 //         self.SBlock!("")
         print("与服务器连接成功！")
-        
+        self.mulData = nil
+        self.mulData = NSMutableData()
         clientSocket.readDataWithTimeout(-1, tag:200)
         
     }
@@ -117,9 +114,6 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         
         if data.length < 1460 {
             self.mulData?.appendData(data)
-//            if self.mulData?.length == self.clientSocket.d{
-//            
-//            }
             self.paraData(self.mulData!)
         }else if(data.length == 1460){
             self.mulData?.appendData(data)

@@ -389,8 +389,8 @@ extension QNTool {
 extension QNTool {
    class func openSence(dict: NSDictionary) {
     print(dict)
-        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-            
+    SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+        if result is  NSDictionary {
             let d = result as! NSDictionary
             let status = d.objectForKey("work_status") as! Int
             if (status == 17){
@@ -421,8 +421,8 @@ extension QNTool {
             else{
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
             }
-            
-        })
+        }
+    })
     }
     class func openLight(d: Device,value:Int ) {
         var dict:NSDictionary = [:]
@@ -714,12 +714,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 128){
-                    QNTool.showPromptView("关闭左路窗帘")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 128){
+                        QNTool.showPromptView("关闭左路窗帘")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
 
@@ -728,12 +730,14 @@ extension QNTool {
             
              dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":128]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 128){
-                    QNTool.showPromptView("短按左路窗帘关")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 128){
+                        QNTool.showPromptView("短按左路窗帘关")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -741,12 +745,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":160]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 160){
-                    QNTool.showPromptView("长按左路窗帘关")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 160){
+                        QNTool.showPromptView("长按左路窗帘关")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -754,12 +760,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":12]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 12){
-                    QNTool.showPromptView("打开右路窗帘")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 12){
+                        QNTool.showPromptView("打开右路窗帘")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -767,12 +775,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":12]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 12){
-                    QNTool.showPromptView("短按右路窗帘开")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 12){
+                        QNTool.showPromptView("短按右路窗帘开")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -780,12 +790,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":14]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 14){
-                    QNTool.showPromptView("长按右路窗帘开")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 14){
+                        QNTool.showPromptView("长按右路窗帘开")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -793,12 +805,14 @@ extension QNTool {
             
              dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":9]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 9){
-                    QNTool.showPromptView("暂停右路窗帘")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 9){
+                        QNTool.showPromptView("暂停右路窗帘")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
 
@@ -806,12 +820,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 8){
-                   QNTool.showPromptView("关闭右路窗帘")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 8){
+                        QNTool.showPromptView("关闭右路窗帘")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
 
@@ -819,12 +835,14 @@ extension QNTool {
             
              dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":8]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 8){
-                    QNTool.showPromptView("短按右路窗帘关")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 8){
+                        QNTool.showPromptView("短按右路窗帘关")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -832,12 +850,14 @@ extension QNTool {
             
             dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":10]
             SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-                let d = result as! NSDictionary
-                let status = d.objectForKey("work_status") as! Int
-                if (status == 10){
-                    QNTool.showPromptView("长按右路窗帘关")
-                }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                if result is  NSDictionary {
+                    let d = result as! NSDictionary
+                    let status = d.objectForKey("work_status") as! Int
+                    if (status == 10){
+                        QNTool.showPromptView("长按右路窗帘关")
+                    }else{
+                        QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+                    }
                 }
             })
             
@@ -861,67 +881,12 @@ extension QNTool {
 
 extension QNTool {
     class func UTF8TOGB2312(str: String) -> String {
-        //        let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))
-        
-        
-        //        // 将字符串 text 写入文件，指定编码为 enc
-        //        do {
-        //            try text.writeToFile(text_path, atomically: true, encoding: enc)
-        //        }
-        //        catch {
-        //            print("error", appendNewline: true)
-        //        }
-        //
-        //        // 读取GBK编码的文件内容
-        //        do{
-        //            try text = NSString(contentsOfFile: text_path, encoding: enc) as String
-        //            print(text, appendNewline: true)
-        //        }
-        //        catch {
-        //            print("error", appendNewline: true)
-        //        }
-        //
-        ////        作者：唐任
-        ////        链接：https://www.zhihu.com/question/33563580/answer/56923649
-        ////        来源：知乎
-        ////        著作权归作者所有，转载请联系作者获得授权。
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
         let newStr = str.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
         let data = newStr.dataUsingEncoding(enc, allowLossyConversion: false)
         let str1 = String(data: data!, encoding: enc)
         return str1!
     }
-//    class func UTF8TOGB2312(str: String) -> NSData {
-////        let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue))
-//        
-//        
-////        // 将字符串 text 写入文件，指定编码为 enc
-////        do {
-////            try text.writeToFile(text_path, atomically: true, encoding: enc)
-////        }
-////        catch {
-////            print("error", appendNewline: true)
-////        }
-////        
-////        // 读取GBK编码的文件内容
-////        do{
-////            try text = NSString(contentsOfFile: text_path, encoding: enc) as String
-////            print(text, appendNewline: true)
-////        }
-////        catch {
-////            print("error", appendNewline: true)
-////        }
-////        
-//////        作者：唐任
-//////        链接：https://www.zhihu.com/question/33563580/answer/56923649
-//////        来源：知乎
-//////        著作权归作者所有，转载请联系作者获得授权。
-//        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-//        let newStr = str.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
-//        let data = newStr.dataUsingEncoding(enc, allowLossyConversion: false)
-//        let str1 = String(data: data!, encoding: enc)
-//        return data!
-//    }
 
     class func xnStringAndBinaryDigit(status: Int) -> NSString{
         let string = String(status,radix:2)
