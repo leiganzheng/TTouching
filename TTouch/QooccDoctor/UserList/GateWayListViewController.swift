@@ -149,10 +149,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         SocketManagerTool.shareInstance().connectSocket(ip)
         g_ip = ip
         if arr!.count>=2 {
-            DBManager.shareInstance().updateIp("T_Device" + (arr![1] as! String), name2: "T_DeviceDouble" + (arr![1] as! String))
+            DBManager.shareInstance().updateIp("T_Device" + (arr![1] as! String), name2: "T_DeviceDouble" + (arr![1] as! String),name3: "T_Scene" + (arr![1] as! String))
         }
         
-        self.test()
+//        self.test()
         if self.flags.count == 1 {
             self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
         }else {
@@ -215,6 +215,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             if detail.count>=2 {
                 DBManager.shareInstance().createTable("T_Device" + (detail[1] as! String))
                 DBManager.shareInstance().createTableDoubleLight("T_DeviceDouble" + (detail[1] as! String))
+                DBManager.shareInstance().createTableOfScene("T_Scene" + (detail[1] as! String))
                 self.flags.addObject(false)
                 self.flag = false
                 self.myTableView.reloadData()
@@ -583,9 +584,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-        self.paraterData(tempData)
+//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+//        self.paraterData(tempData)
 
 //
 //        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 27, 188, 2, 192, 144, 0, 0, 0, 0, 85, 40, 84, 112, 117, 99, 104, 105, 111, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]

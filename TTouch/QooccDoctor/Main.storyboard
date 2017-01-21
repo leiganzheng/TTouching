@@ -1251,23 +1251,13 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="curtainCell" rowHeight="168" id="Ig6-La-hMq" customClass="CurtainTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="curtainCell" rowHeight="168" id="Ig6-La-hMq" customClass="CurtainTableViewCell" customModule="QooccDoctor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ig6-La-hMq" id="fZS-md-acd">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="左路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qd-gu-DvL">
-                                                    <rect key="frame" x="10" y="80" width="73" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="SZS-x8-IxX"/>
-                                                        <constraint firstAttribute="width" constant="73" id="kbv-x9-OcH"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMA-7X-xPx">
                                                     <rect key="frame" x="117" y="77" width="60" height="28"/>
                                                     <constraints>
@@ -1306,16 +1296,6 @@
                                                         <constraint firstAttribute="height" constant="1" id="J2P-nW-4NH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-2R-6na">
-                                                    <rect key="frame" x="10" y="126" width="73" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="1M1-C3-G54"/>
-                                                        <constraint firstAttribute="width" constant="73" id="uz0-5M-gz5"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1381,7 +1361,7 @@
                                                         <constraint firstAttribute="height" constant="22" id="VVf-3X-Feg"/>
                                                         <constraint firstAttribute="width" constant="82" id="idb-ea-BFu"/>
                                                     </constraints>
-                                                    <state key="normal" title="总控">
+                                                    <state key="normal" title="窗帘控制">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -1396,6 +1376,28 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKR-aI-68K">
+                                                    <rect key="frame" x="10" y="80" width="73" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="73" id="PAA-Ul-BP5"/>
+                                                        <constraint firstAttribute="height" constant="22" id="aZZ-xp-yoi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="左路窗帘">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUz-pr-sze">
+                                                    <rect key="frame" x="10" y="126" width="73" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="ZIK-dB-dow"/>
+                                                        <constraint firstAttribute="width" constant="73" id="nbv-BO-tht"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="右路窗帘">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Gws-Rs-oqY" secondAttribute="trailing" constant="-8" id="0RI-x1-Yn3"/>
@@ -1403,17 +1405,17 @@
                                                 <constraint firstItem="UYk-Hy-gNK" firstAttribute="top" secondItem="fZS-md-acd" secondAttribute="topMargin" id="5QM-bM-T9T"/>
                                                 <constraint firstItem="bR1-Y8-6a6" firstAttribute="top" secondItem="dLx-Ze-b1Y" secondAttribute="bottom" constant="21" id="9RG-nO-BWU"/>
                                                 <constraint firstItem="dLx-Ze-b1Y" firstAttribute="top" secondItem="UYk-Hy-gNK" secondAttribute="bottom" constant="20" id="AkZ-Kk-hXY"/>
-                                                <constraint firstItem="u8F-2R-6na" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="2" id="EBd-4j-h8q"/>
-                                                <constraint firstItem="u8F-2R-6na" firstAttribute="top" secondItem="Gws-Rs-oqY" secondAttribute="bottom" constant="11" id="GSb-uK-vai"/>
+                                                <constraint firstItem="MKR-aI-68K" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="2" id="F6g-kG-Ole"/>
+                                                <constraint firstItem="MUz-pr-sze" firstAttribute="top" secondItem="Gws-Rs-oqY" secondAttribute="bottom" constant="11" id="GO0-YK-0Xx"/>
+                                                <constraint firstItem="MKR-aI-68K" firstAttribute="top" secondItem="dLx-Ze-b1Y" secondAttribute="bottom" constant="24" id="Jd2-lk-aRH"/>
                                                 <constraint firstItem="9xm-S3-CxR" firstAttribute="top" secondItem="dLx-Ze-b1Y" secondAttribute="bottom" constant="21" id="KtY-4u-qqh"/>
                                                 <constraint firstItem="dLx-Ze-b1Y" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="-8" id="MYS-BA-giI"/>
                                                 <constraint firstItem="9xm-S3-CxR" firstAttribute="leading" secondItem="rMA-7X-xPx" secondAttribute="trailing" constant="20" id="N5t-rp-lLh"/>
+                                                <constraint firstItem="MUz-pr-sze" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="2" id="NCG-zC-tz0"/>
                                                 <constraint firstItem="Gws-Rs-oqY" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="-8" id="Ooz-ES-H2U"/>
                                                 <constraint firstItem="lg7-IW-NZD" firstAttribute="top" secondItem="Gws-Rs-oqY" secondAttribute="bottom" constant="8" id="Rnv-49-azF"/>
                                                 <constraint firstItem="1Mb-7Y-KTj" firstAttribute="top" secondItem="fZS-md-acd" secondAttribute="topMargin" constant="8" id="SAa-TL-LpV"/>
                                                 <constraint firstItem="zsk-5Q-02U" firstAttribute="top" secondItem="fZS-md-acd" secondAttribute="topMargin" constant="3" id="TSQ-EZ-vw4"/>
-                                                <constraint firstItem="3qd-gu-DvL" firstAttribute="top" secondItem="dLx-Ze-b1Y" secondAttribute="bottom" constant="24" id="W61-nd-vzF"/>
-                                                <constraint firstItem="3qd-gu-DvL" firstAttribute="leading" secondItem="fZS-md-acd" secondAttribute="leadingMargin" constant="2" id="cqN-q2-zNh"/>
                                                 <constraint firstItem="lg7-IW-NZD" firstAttribute="leading" secondItem="N5C-Zj-gAG" secondAttribute="trailing" constant="16" id="fLX-OL-GEJ"/>
                                                 <constraint firstItem="N5C-Zj-gAG" firstAttribute="top" secondItem="Gws-Rs-oqY" secondAttribute="bottom" constant="8" id="fQd-Ru-SMs"/>
                                                 <constraint firstItem="Gws-Rs-oqY" firstAttribute="top" secondItem="bR1-Y8-6a6" secondAttribute="bottom" constant="9" id="hgd-nP-2nS"/>
@@ -1436,9 +1438,10 @@
                                             <outlet property="open1Btn" destination="rMA-7X-xPx" id="rM5-PX-3xq"/>
                                             <outlet property="open2Btn" destination="UAz-hg-4Zc" id="aaK-6B-88v"/>
                                             <outlet property="partern" destination="1Mb-7Y-KTj" id="xkb-OC-0Y8"/>
+                                            <outlet property="r1" destination="MKR-aI-68K" id="OBw-Lc-Qo4"/>
+                                            <outlet property="r2" destination="MUz-pr-sze" id="gxy-xO-PeO"/>
                                             <outlet property="stop1Btn" destination="9xm-S3-CxR" id="jZS-Ta-svk"/>
                                             <outlet property="stop2Btn" destination="N5C-Zj-gAG" id="U84-Zq-6jS"/>
-                                            <outlet property="title" destination="3qd-gu-DvL" id="yFt-yG-aWo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3194,6 +3197,12 @@
                                             <outlet property="isopen" destination="YvB-ou-Dou" id="K2x-Sk-Tau"/>
                                             <outlet property="name" destination="YKT-Pq-nDu" id="Qbq-xD-khd"/>
                                             <outlet property="patern" destination="ozP-HY-C1L" id="RZb-wF-2Zt"/>
+                                            <outlet property="r1" destination="lUf-D1-MnK" id="GsX-4d-hAH"/>
+                                            <outlet property="r2" destination="Gbk-Jg-1X5" id="cou-Lp-xuk"/>
+                                            <outlet property="r3" destination="Lbg-AL-Mk8" id="mgh-Dt-eIB"/>
+                                            <outlet property="r4" destination="PGe-8b-VmL" id="h0d-Xz-Jea"/>
+                                            <outlet property="r5" destination="6OG-6p-ajM" id="mH4-Md-CXF"/>
+                                            <outlet property="r6" destination="8PI-1q-kYr" id="HWd-GT-1zl"/>
                                             <outlet property="switch1" destination="AmT-7n-1aS" id="XZU-6z-ik5"/>
                                             <outlet property="switch2" destination="fVF-qf-ead" id="Esy-w9-pIm"/>
                                             <outlet property="switch3" destination="xyA-wn-cNF" id="rvh-9F-mU3"/>

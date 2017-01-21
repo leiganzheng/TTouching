@@ -137,9 +137,8 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if (collectionView == self.zoneCollectionView) {
             let d = self.dataArr[indexPath.row] as! Device
-//            self.tempDic.setObject(d.address!, forKey: "KZone")
-            saveObjectToUserDefaults("KZone", value: d.address!)
             self.zoneStr = d.address!
+            self.fetchScene(d.address!)
             if self.flags.count == 1 {
                 self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
             }else {
@@ -155,8 +154,6 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             self.zoneCollectionView.reloadData()
         }else if (collectionView == self.sceneCollectionView){
             let str = self.sceneArrdata[indexPath.row] as! Int
-//            self.tempDic.setObject(str, forKey: "KScene")
-//            saveObjectToUserDefaults("KScene", value: str)
             self.scene = str
             if self.flags1.count == 1 {
                 self.flags1.replaceObjectAtIndex(0 , withObject: !(self.flags1.objectAtIndex(0) as! Bool))
@@ -196,6 +193,20 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         }
         
     }
+    func fetchScene(addr:String){
+        self.sceneArr.removeAllObjects()
+        self.flags1.removeAllObjects()
+        //查
+        let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
+        
+        for (_, element): (Int, String) in arr.enumerate(){
+                self.flags1.addObject(false)
+                self.sceneArr.addObject(element)
+            
+//            print("Device:\(element.address!)", terminator: "");
+        }
+        self.sceneCollectionView.reloadData()
+    }
     func fetchData(){
         self.dataArr.removeAllObjects()
         //查
@@ -233,7 +244,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         }
 
         self.zoneCollectionView.reloadData()
-        
+        if self.dataArr.count>0 {
+            self.fetchScene((self.dataArr[0] as! Device).address!)
+        }
     }
 
 }

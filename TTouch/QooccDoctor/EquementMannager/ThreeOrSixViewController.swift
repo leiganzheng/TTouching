@@ -117,6 +117,35 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         cell.switch5.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(10, 1)) == "1"
          cell.switch6.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         cell.switch6.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(9, 1)) == "1"
+        
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "1") != nil {
+            cell.r1.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "1") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "2") != nil {
+            cell.r2.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "2") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "3") != nil {
+            cell.r3.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "3") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "4") != nil {
+            cell.r4.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "4") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "5") != nil {
+            cell.r5.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "5") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "6") != nil {
+            cell.r6.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "6") as? String, forState: .Normal)
+        }
+
+        
+        QNTool.showM(d!, num: "1", vc: self, touchView: cell.r1)
+        QNTool.showM(d!, num: "2", vc: self, touchView: cell.r2)
+        QNTool.showM(d!, num: "3", vc: self, touchView: cell.r3)
+        QNTool.showM(d!, num: "4", vc: self, touchView: cell.r4)
+        QNTool.showM(d!, num: "5", vc: self, touchView: cell.r5)
+        QNTool.showM(d!, num: "6", vc: self, touchView: cell.r6)
+        
+        
         return cell
     }
     

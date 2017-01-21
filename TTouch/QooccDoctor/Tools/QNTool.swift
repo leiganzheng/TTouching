@@ -361,19 +361,20 @@ extension QNTool {
         let dict = ["command": 31,"save_dev": arr]
         let sockertManger = SocketManagerTool.shareInstance()
         sockertManger.sendMsg(dict) { (result) in
-            let d = result as! NSDictionary
-            let status = d.objectForKey("status") as! NSNumber
-            if (status == 1){
-//                let d = arr[0] as! NSDictionary
-//                let address = d.objectForKey("dev_addr") as! String
-//                let name = d.objectForKey("dev_name") as! String
-//                
-//                DBManager.shareInstance().updateName(name, type: address)
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
-            }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+            if result is NSDictionary {
+                let d = result as! NSDictionary
+                let status = d.objectForKey("status") as! NSNumber
+                if (status == 1){
+                    let d = arr[0] as! NSDictionary
+                    let address = d.objectForKey("dev_addr") as! String
+                    let name = d.objectForKey("dev_name") as! String
+                    
+                    DBManager.shareInstance().updateName(name, type: address)
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
+                }else{
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+                }
             }
-
         }
         
     }
@@ -391,36 +392,36 @@ extension QNTool {
     print(dict)
     SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
         if  result is  NSDictionary {
-            let d = result as! NSDictionary
-            let status = d["work_status"] as! Int
-            if (status == 17){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景一！")
-            }else if(status == 18){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景二！")
-            }else if (status == 19){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景三！")
-            }else if (status == 20){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景四！")
-            }else if (status == 21){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景五！")
-            }else if (status == 31){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
-            }else if(status == 97){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
-            }else if (status == 98){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景二！")
-            }else if (status == 99){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景三！")
-            }else if (status == 100){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景四！")
-            }else if (status == 110){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启所有设备！")
-            }else if (status == 111){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
-            }
-            else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
-            }
+//            let d = result as! NSDictionary
+//            let status = d["work_status"] as! Int
+//            if (status == 17){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景一！")
+//            }else if(status == 18){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景二！")
+//            }else if (status == 19){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景三！")
+//            }else if (status == 20){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景四！")
+//            }else if (status == 21){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景五！")
+//            }else if (status == 31){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
+//            }else if(status == 97){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景一！")
+//            }else if (status == 98){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景二！")
+//            }else if (status == 99){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景三！")
+//            }else if (status == 100){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启情景四！")
+//            }else if (status == 110){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启所有设备！")
+//            }else if (status == 111){
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "关闭所有设备！")
+//            }
+//            else{
+//                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
+//            }
         }
     })
     }
@@ -878,6 +879,59 @@ extension QNTool {
         return falg
     }
 }
+extension QNTool {
+    class func mCurtian(d:Device,num:String,name:String){
+         saveObjectToUserDefaults(d.address! + g_ip! + num, value: name)
+    }
+    class func mDouble(d:Device,num:String,name:String){
+        saveObjectToUserDefaults(d.address! + g_ip! + num, value: name)
+    }
+    class func mThree(d:Device,num:String,name:String){
+         saveObjectToUserDefaults(d.address! + g_ip! + num, value: name)
+    }
+    class func mSix(d:Device,num:String,name:String){
+         saveObjectToUserDefaults(d.address! + g_ip! + num, value: name)
+    }
+}
+extension QNTool {
+    class func showM(d:Device,num:String,vc:UIViewController,touchView:UIView){
+        let gesture = UILongPressGestureRecognizer()
+        touchView.addGestureRecognizer(gesture)
+        gesture.rac_gestureSignal().subscribeNext { (obj) in
+            let title = "修改名字"
+            let cancelButtonTitle = "取消"
+            let otherButtonTitle = "确定"
+            
+            let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+            
+            
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
+                
+            }
+            let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
+                let textField = (alertController.textFields?.first)! as UITextField
+                if textField.text != nil {
+                    if touchView is UILabel{
+                        (touchView as! UILabel).text = textField.text
+                    }
+                    if touchView is UIButton{
+                        (touchView as! UIButton).setTitle(textField.text, forState: .Normal)
+                    }
+                    saveObjectToUserDefaults((d.address)! + g_ip! + num, value: textField.text!)
+                }
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(otherAction)
+            vc.presentViewController(alertController, animated: true) {
+            }
+        }
+    }
+    
+}
+
 
 extension QNTool {
     class func UTF8TOGB2312(str: String) -> String {

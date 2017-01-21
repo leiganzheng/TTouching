@@ -190,7 +190,18 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
                 cell.r3Btn.setImage(UIImage(named: title2), forState: .Normal)
 
-                
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "1") != nil {
+                    cell.r1Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "1") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "2") != nil {
+                    cell.r2Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "2") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "3") != nil {
+                    cell.r3Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "3") as? String, forState: .Normal)
+                }
+//                QNTool.showM(d, num: "1", vc: self, touchView: cell.r1Btn)
+//                QNTool.showM(d, num: "2", vc: self, touchView: cell.r2Btn)
+//                QNTool.showM(d, num: "3", vc: self, touchView: cell.r3Btn)
                 
                 return cell
             }else if d.dev_type == 6{//六回路开关控制端
@@ -225,7 +236,30 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 let title5 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(9, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
                 cell.r6.setImage(UIImage(named: title5), forState: .Normal)
-                
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "1") != nil {
+                    cell.r1.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "1") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "2") != nil {
+                    cell.r2.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "2") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "3") != nil {
+                    cell.r3.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "3") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "4") != nil {
+                    cell.r4.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "4") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "5") != nil {
+                    cell.r5.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "5") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "6") != nil {
+                    cell.r6.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "6") as? String, forState: .Normal)
+                }
+//                QNTool.showM(d, num: "1", vc: self, touchView: cell.r1)
+//                QNTool.showM(d, num: "2", vc: self, touchView: cell.r2)
+//                QNTool.showM(d, num: "3", vc: self, touchView: cell.r3)
+//                QNTool.showM(d, num: "4", vc: self, touchView: cell.r4)
+//                QNTool.showM(d, num: "5", vc: self, touchView: cell.r5)
+//                QNTool.showM(d, num: "6", vc: self, touchView: cell.r6)
                 return cell
             }else if d.dev_type == 7{//窗帘控制端
                 let cellIdentifier = "MCurtainTableViewCell"
@@ -277,7 +311,14 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 longlongCloseGestureR.minimumPressDuration = 2
                 cell.R3.addGestureRecognizer(longlongCloseGestureR)
 
-                
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "00") != nil {
+                    cell.lBtn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "00") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "11") != nil {
+                     cell.rBtn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "11") as? String, forState: .Normal)
+                }
+//                QNTool.showM(d, num: "00", vc: self, touchView: cell.lBtn)
+//                QNTool.showM(d, num: "11", vc: self, touchView: cell.rBtn)
                 
                 
                 return cell
@@ -303,6 +344,18 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
                 
                 let title2 = QNTool.xnStringAndBinaryDigit((d.work_status)!).substringWithRange(NSMakeRange(12, 1)) == "1" ? "navigation_Options_icon_s" : "navigation_Options_icon"
                 cell.r3Btn.setImage(UIImage(named: title2), forState: .Normal)
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "1") != nil {
+                    cell.r1Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "1") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "2") != nil {
+                    cell.r2Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "2") as? String, forState: .Normal)
+                }
+                if getObjectFromUserDefaults((d.address)! + g_ip! + "3") != nil {
+                    cell.r3Btn.setTitle(getObjectFromUserDefaults((d.address)! + g_ip! + "3") as? String, forState: .Normal)
+                }
+//                QNTool.showM(d, num: "1", vc: self, touchView: cell.r1Btn)
+//                QNTool.showM(d, num: "2", vc: self, touchView: cell.r2Btn)
+//                QNTool.showM(d, num: "3", vc: self, touchView: cell.r3Btn)
                 return cell
             }else if d.dev_type == 11{
                 let cellIdentifier = "MSixTouchTableViewCell"

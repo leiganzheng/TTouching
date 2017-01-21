@@ -15,16 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="左路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rl0-S3-Try">
-                        <rect key="frame" x="10" y="49" width="73" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="73" id="1Zu-6a-vPb"/>
-                            <constraint firstAttribute="height" constant="22" id="ytK-On-Eu3"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="um8-4A-nJI">
                         <rect key="frame" x="117" y="46" width="60" height="28"/>
                         <constraints>
@@ -63,16 +53,6 @@
                             <constraint firstAttribute="height" constant="1" id="M3r-La-lcy"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右路窗帘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDC-jb-nCz">
-                        <rect key="frame" x="10" y="95" width="73" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="73" id="PsW-6f-AeI"/>
-                            <constraint firstAttribute="height" constant="22" id="Qkw-2p-E9x"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -116,29 +96,51 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcU-wi-Dpa">
+                        <rect key="frame" x="10" y="95" width="73" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="XCR-Gu-cB0"/>
+                            <constraint firstAttribute="width" constant="73" id="zdH-Qm-9WN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="右路窗帘">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-wz-66b">
+                        <rect key="frame" x="10" y="49" width="73" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="73" id="GXp-m2-jWK"/>
+                            <constraint firstAttribute="height" constant="22" id="vY9-74-Z58"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="左路窗帘">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="VJo-Jx-oaP" firstAttribute="leading" secondItem="kBw-xa-0Yu" secondAttribute="trailing" constant="20" id="0c8-y6-142"/>
-                    <constraint firstItem="rl0-S3-Try" firstAttribute="top" secondItem="U3f-jM-52t" secondAttribute="bottom" constant="11" id="12y-AO-V6t"/>
                     <constraint firstItem="OHq-8s-cM5" firstAttribute="leading" secondItem="um8-4A-nJI" secondAttribute="trailing" constant="20" id="20U-Gz-04v"/>
+                    <constraint firstItem="9Jc-wz-66b" firstAttribute="top" secondItem="U3f-jM-52t" secondAttribute="bottom" constant="11" id="24a-Yf-Eng"/>
                     <constraint firstItem="kBw-xa-0Yu" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="8" id="2DL-c0-aFa"/>
                     <constraint firstItem="VHh-nT-fPR" firstAttribute="leading" secondItem="VJo-Jx-oaP" secondAttribute="trailing" constant="16" id="2tM-0q-ho4"/>
                     <constraint firstItem="W5e-UA-Yq8" firstAttribute="leading" secondItem="OHq-8s-cM5" secondAttribute="trailing" constant="16" id="2vh-LV-FeT"/>
                     <constraint firstItem="OHq-8s-cM5" firstAttribute="top" secondItem="U3f-jM-52t" secondAttribute="bottom" constant="8" id="5KH-qM-JhU"/>
                     <constraint firstItem="W5e-UA-Yq8" firstAttribute="top" secondItem="U3f-jM-52t" secondAttribute="bottom" constant="8" id="5ml-TG-ZPY"/>
                     <constraint firstItem="U3f-jM-52t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="36" id="5sW-Fa-gpk"/>
-                    <constraint firstItem="rl0-S3-Try" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="6R2-9g-kU1"/>
                     <constraint firstItem="VJo-Jx-oaP" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="8" id="DhY-5M-N3g"/>
                     <constraint firstAttribute="trailingMargin" secondItem="VHh-nT-fPR" secondAttribute="trailing" constant="3" id="JJR-WK-KH8"/>
+                    <constraint firstItem="fcU-wi-Dpa" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="11" id="O6s-Jn-wUp"/>
                     <constraint firstItem="VHh-nT-fPR" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="8" id="SpX-My-YHZ"/>
-                    <constraint firstItem="aDC-jb-nCz" firstAttribute="top" secondItem="5gT-6E-zsh" secondAttribute="bottom" constant="11" id="YBv-Fs-Cev"/>
+                    <constraint firstItem="9Jc-wz-66b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="SsY-ru-JV3"/>
+                    <constraint firstItem="fcU-wi-Dpa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="XBU-i5-ySK"/>
                     <constraint firstAttribute="trailingMargin" secondItem="5gT-6E-zsh" secondAttribute="trailing" constant="-8" id="YoZ-rh-s3T"/>
                     <constraint firstItem="um8-4A-nJI" firstAttribute="top" secondItem="U3f-jM-52t" secondAttribute="bottom" constant="8" id="ehp-h4-XWE"/>
                     <constraint firstItem="5gT-6E-zsh" firstAttribute="top" secondItem="W5e-UA-Yq8" secondAttribute="bottom" constant="9" id="izZ-Dk-xdw"/>
                     <constraint firstAttribute="trailingMargin" secondItem="W5e-UA-Yq8" secondAttribute="trailing" constant="3" id="mX6-z4-eZR"/>
                     <constraint firstAttribute="trailingMargin" secondItem="U3f-jM-52t" secondAttribute="trailing" constant="35" id="szl-df-EmB"/>
                     <constraint firstItem="U3f-jM-52t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="tgF-UO-kaQ"/>
-                    <constraint firstItem="aDC-jb-nCz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="uUO-YV-xC1"/>
                     <constraint firstItem="5gT-6E-zsh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="zh9-h4-euu"/>
                 </constraints>
             </tableViewCellContentView>
@@ -146,11 +148,11 @@
                 <outlet property="L1" destination="um8-4A-nJI" id="Xk3-cg-K2N"/>
                 <outlet property="L2" destination="OHq-8s-cM5" id="AMQ-GQ-MQX"/>
                 <outlet property="L3" destination="W5e-UA-Yq8" id="VYD-el-y6r"/>
-                <outlet property="LTitle" destination="rl0-S3-Try" id="qP3-b6-7Zm"/>
                 <outlet property="R1" destination="kBw-xa-0Yu" id="m43-O9-b9d"/>
                 <outlet property="R2" destination="VJo-Jx-oaP" id="FwU-51-od6"/>
                 <outlet property="R3" destination="VHh-nT-fPR" id="Owp-pM-GxJ"/>
-                <outlet property="RTitle" destination="aDC-jb-nCz" id="Ph8-FQ-Txy"/>
+                <outlet property="lBtn" destination="9Jc-wz-66b" id="Kao-8b-t3y"/>
+                <outlet property="rBtn" destination="fcU-wi-Dpa" id="cO8-kb-xg9"/>
                 <outlet property="title" destination="U3f-jM-52t" id="QLy-hL-cfj"/>
             </connections>
             <point key="canvasLocation" x="367" y="86"/>

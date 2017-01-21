@@ -14,6 +14,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
     var collectionView:UICollectionView?
     var flag: NSInteger?
     var device:Device?
+    var vc:UIViewController?
     var data:NSArray? {
         didSet {
             self.updateLayerFrames()
@@ -53,6 +54,36 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
             self.sendCommand(indexPath)
             return RACSignal.empty()
         })
+        
+        
+        let gesture = UILongPressGestureRecognizer()
+        button.addGestureRecognizer(gesture)
+        gesture.rac_gestureSignal().subscribeNext { (obj) in
+            let title = "修改名字"
+            let cancelButtonTitle = "取消"
+            let otherButtonTitle = "确定"
+            let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
+            }
+            let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
+                let textField = (alertController.textFields?.first)! as UITextField
+                button.setTitle(textField.text, forState: .Normal)
+                
+                if textField.text != nil {
+                    DBManager.shareInstance().updateSceneName("scene\(indexPath.row+1)",name: textField.text!, addr: (self.device?.address!)!)
+                }
+                
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(otherAction)
+            self.vc!.presentViewController(alertController, animated: true) {
+                
+            }
+        }
+
         return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

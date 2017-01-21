@@ -56,7 +56,7 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
         let title = DBManager.shareInstance().selectData((d?.dev_area)!) == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
          cell.partern.setTitle(title, forState: .Normal)
         let btn = cell.name
-//        btn.setTitle(d?.dev_name!, forState: .Normal)
+        btn.setTitle(d?.dev_name!, forState: .Normal)
         let gesture = UILongPressGestureRecognizer()
         btn.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
@@ -89,7 +89,18 @@ class CutainControViewController: UIViewController,QNInterceptorProtocol, UITabl
 
         }
         let btn1 = cell.partern
+        
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "00") != nil {
+            cell.r1.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "00") as? String, forState: .Normal)
+        }
+        if getObjectFromUserDefaults((d?.address)! + g_ip! + "11") != nil {
+             cell.r2.setTitle(getObjectFromUserDefaults((d?.address)! + g_ip! + "11") as? String, forState: .Normal)
+        }
+        
 
+        QNTool.showM(d!, num: "00", vc: self, touchView: cell.r1)
+        QNTool.showM(d!, num: "11", vc: self, touchView: cell.r2)
+        
         btn1.rac_command = RACCommand(signalBlock: {(input) -> RACSignal! in
 
             let vc = PaternViewController()

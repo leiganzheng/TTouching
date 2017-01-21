@@ -20,6 +20,12 @@ class ThressOrSixTableViewCell: UITableViewCell {
     @IBOutlet weak var switch4: UISwitch!
     @IBOutlet weak var switch5: UISwitch!
     @IBOutlet weak var switch6: UISwitch!
+    @IBOutlet weak var r1: UIButton!
+    @IBOutlet weak var r2: UIButton!
+    @IBOutlet weak var r3: UIButton!
+    @IBOutlet weak var r4: UIButton!
+    @IBOutlet weak var r5: UIButton!
+    @IBOutlet weak var r6: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

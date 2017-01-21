@@ -15,6 +15,7 @@ class DBManager: NSObject {
 //    var ip:String
     var TableOneName:String
     var TableDLightName:String
+    var SceneName:String
     
     
     // MARK: >> 单例化
@@ -37,6 +38,7 @@ class DBManager: NSObject {
 //        self.ipArr = NSMutableArray()
         self.TableOneName = ""
         self.TableDLightName = ""
+        self.SceneName = ""
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         let path = (documentsFolder as NSString).stringByAppendingPathComponent("TTouching.sqlite")
         self.dbPath = path
@@ -46,11 +48,34 @@ class DBManager: NSObject {
         print("path: ---- \(self.dbPath)", terminator: "")
         
     }
-    func updateIp(name1:String,name2:String){
+    func updateIp(name1:String,name2:String,name3:String){
         self.TableOneName = name1
         self.TableDLightName = name2
+        self.SceneName = name3
     }
     // MARK: >> 建立数据表
+    func createTableOfScene(name: String) {
+        //打开数据库
+        if dbBase.open(){
+            
+            let createSql:String = NSString(format: "CREATE TABLE IF NOT EXISTS %@ (address TEXT INTEGER NOT NULL PRIMARY KEY ,dev_type INTEGER, scene1 TEXT, scene2 TEXT, scene3 TEXT, scene4 TEXT, scene5 TEXT, scene6 TEXT);",name) as String
+            
+            if dbBase.executeUpdate(createSql, withArgumentsInArray: nil){
+                
+                print("数据库创建成功！", terminator: "")
+                
+            }else{
+                
+                print("数据库创建失败！failed:\(dbBase.lastErrorMessage())", terminator: "")
+                
+            }
+        }else{
+            print("Unable to open database!", terminator: "")
+            
+        }
+        dbBase.close()
+    }
+
     func createTable(name: String) {
         //打开数据库
         if dbBase.open(){
@@ -98,6 +123,73 @@ class DBManager: NSObject {
 
     
     // MARK: >> 增
+    func addScene(d:Device,s1:String,s2:String,s3:String,s4:String,s5:String,s6:String) {
+        
+        dbBase.open();
+        
+        let arr:[AnyObject] = [d.address!,d.dev_type!,s1,s2,s3,s4,s5,s6];
+        
+        if !self.dbBase.executeUpdate("insert into \(SceneName) (address ,dev_type, scene1,scene2,scene3,scene4,scene5,scene6) values (?, ?, ?,?, ?,?,?, ?)", withArgumentsInArray: arr) {
+            print("添加1条数据失败！: \(dbBase.lastErrorMessage())")
+            //               print("添加1条数据失败！: \(d.address)")
+            //               print("添加1条数据失败！: \(d.dev_name)")
+        }else{
+            //            print("添加1条数据！: \(dbBase.lastErrorMessage())")
+            print("添加1条数据成功！: \(s1)")
+            
+        }
+        
+        dbBase.close();
+    }
+    // MARK: >> 查
+    func selectScene(adrr:String) -> Array<String> {
+        dbBase.open();
+        var devices=[String]()
+        
+        if let rs = dbBase.executeQuery("select address,dev_type,scene1,scene2,scene3,scene4,scene5,scene6 from \(self.SceneName)", withArgumentsInArray: nil) {
+            while rs.next() {
+                
+                let address:String = rs.stringForColumn("address")
+                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                let s1:String = rs.stringForColumn("scene1")
+                let s2:String = rs.stringForColumn("scene2")
+                let s3:String = rs.stringForColumn("scene3")
+                let s4:String = rs.stringForColumn("scene4")
+                let s5:String = rs.stringForColumn("scene5")
+                let s6:String = rs.stringForColumn("scene6")
+                if adrr == address {
+                    devices.append(s1)
+                    devices.append(s2)
+                    devices.append(s3)
+                    devices.append(s4)
+                    devices.append(s5)
+                    devices.append(s6)
+                }
+            }
+        } else {
+            
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+        dbBase.close();
+        
+        return devices
+        
+    }
+    // MARK: >> 改
+    func updateSceneName(keyV:String,name:String,addr:String) {
+        dbBase.open();
+        
+        if !self.dbBase .executeUpdate("update \(self.SceneName) set \(keyV) = (?) WHERE address = ? ", name,addr) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+        dbBase.close();
+        
+    }
+
     func add(d:Device) {
         
         dbBase.open();

@@ -204,10 +204,18 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
         if temp {
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+            v.vc = self
              v.tag = indexPath.row + 100
             v.device = d
             v.flag = 0
+            let arr = self.fetchScene(d.address!)
+            if  arr.count != 0{
+                v.data = arr
+            }else{
              v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+            DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
+            }
+            
             cell.contentView.addSubview(v)
             cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
             cell.addLine(16, y: 188, width: screenWidth-32, height: 1)
@@ -274,7 +282,17 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.myTableView.reloadData()
         
     }
-
+    func fetchScene(addr:String)->NSMutableArray{
+        let temp = NSMutableArray()
+        temp.removeAllObjects()
+        //查
+        let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
+        
+        for (_, element): (Int, String) in arr.enumerate(){
+            temp.addObject(element)
+        }
+        return temp
+    }
     // 压缩图片
     private func imageWithImageSimple(image: UIImage, scaledSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(scaledSize)

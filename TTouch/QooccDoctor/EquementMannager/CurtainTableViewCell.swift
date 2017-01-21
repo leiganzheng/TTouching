@@ -20,7 +20,8 @@ class CurtainTableViewCell: UITableViewCell {
     @IBOutlet weak var open2Btn: UIButton!
     @IBOutlet weak var stop2Btn: UIButton!
     @IBOutlet weak var close2Btn: UIButton!
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var r1: UIButton!
+    @IBOutlet weak var r2: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -66,7 +66,9 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row == 0 {
+            SocketManagerTool.shareInstance().clientSocket.disconnect()
             QNTool.enterLoginViewController()
+
         }
         if indexPath.row == 1 {
             self.bock!(LanguageViewController.CreateFromStoryboard("Main"))
