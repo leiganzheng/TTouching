@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import AudioToolbox
 
 class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -16,7 +15,6 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     @IBOutlet weak var zoneCollectionView: UICollectionView!
     @IBOutlet weak var sceneCollectionView: UICollectionView!
     @IBOutlet weak var onOfOff: UISwitch!
-    var  soundID:SystemSoundID = 0
     var flags:NSMutableArray = []
     var flags1:NSMutableArray = []
     var sceneArrdata:NSMutableArray!
@@ -30,9 +28,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        let path = NSBundle.mainBundle().pathForResource("glass", ofType: "wav")
-        AudioServicesCreateSystemSoundID(NSURL(fileURLWithPath: path!), &soundID);
-        
+
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 60, 60)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 60, 60))
@@ -84,39 +80,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
     }
-     //MARK:- method
-    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
-////       let anim = [CABasicAnimation animationWithKeyPath:"position"];
-////        anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(100, 50)];
-////        anim.toValue = [NSValue valueWithCGPoint:CGPointMake(100, 500)];
-////        
-////        anim.removedOnCompletion = NO;
-////        anim.duration = 1.0f;
-////        anim.fillMode = kCAFillModeForwards;
-////        anim.delegate = self;
-////        //  随便拖过来的一个label测试效果
-////        [self.label.layer addAnimation:anim forKey:nil];
-//        let anim = CABasicAnimation.init(keyPath: "position")
-//        a
-    }
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if motion == UIEventSubtype.MotionShake
-        {
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            AudioServicesPlaySystemSound (soundID)
-            if self.onOfOff.on {
-                if  (getObjectFromUserDefaults("KZone") != nil) && (getObjectFromUserDefaults("KScene") != nil){
-                    let str = getObjectFromUserDefaults("KZone") as? String
-                    let dict = ["command": 36, "dev_addr" : Int(str!)!, "dev_type": 2, "work_status":getObjectFromUserDefaults("KScene") as! Int]
-                    QNTool.openSence(dict)
-                    
-                }
 
-            }
-            
-           
-        }
-    }
     //MARK:- private method
     func animationWith(v: UIView,x:CGFloat) {
         UIView .beginAnimations("move", context: nil)

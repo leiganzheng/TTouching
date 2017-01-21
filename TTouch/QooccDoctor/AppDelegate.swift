@@ -9,16 +9,15 @@
 import UIKit
 import IQKeyboardManager
 let kKeyIsFirstStartApp = ("IsFirstStartApp" as NSString).encrypt(g_SecretKey) // 第一次启动判断的Key
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("\n<\(APP_NAME)> 开始运行\nversion: \(APP_VERSION)(\(APP_VERSION_BUILD))\nApple ID: \(APP_ID)\nBundle ID: \(APP_BUNDLE_ID)\n")
         // Override point for customization after application launch.
-        
+    
 
         // 开启拦截器
         QNInterceptor.start()
@@ -46,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let current = languages?.objectAtIndex(0) as! NSString
         def.setValue(current, forKey: "userLanguage")
         def.synchronize()//持久化，不加的话不会保存
-
+        self.window?.canBecomeFirstResponder()
         return true
     }
 
@@ -73,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             }
         }
     }
-
+    
 
 }
 

@@ -29,11 +29,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     
     let Width:CGFloat = 160
     let Y:CGFloat = 64
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = defaultBackgroundColor
-        
         // 让导航栏支持右滑返回功能 
         self.navigationController?.navigationBar.translucent = false
         QNTool.addInteractive(self.navigationController)
@@ -306,4 +305,5 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         UIView.commitAnimations()
 
     }
+   
 }

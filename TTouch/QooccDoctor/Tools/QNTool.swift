@@ -390,9 +390,9 @@ extension QNTool {
    class func openSence(dict: NSDictionary) {
     print(dict)
     SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-        if result is  NSDictionary {
+        if  result is  NSDictionary {
             let d = result as! NSDictionary
-            let status = d.objectForKey("work_status") as! Int
+            let status = d["work_status"] as! Int
             if (status == 17){
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: "开启总控情景一！")
             }else if(status == 18){

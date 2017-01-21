@@ -36,9 +36,9 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if self.flag {
-             return 280
+             return 284
         }
-        return 150
+        return 154
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
