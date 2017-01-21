@@ -32,7 +32,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
     
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200
+        return 260
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,53 +56,24 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         let dev_addr = Int(d!.address!)
         let dev_type:Int = d!.dev_type!
         
-        cell.p1Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":17]
-            QNTool.openSence(dict)
-
-            return RACSignal.empty()
-        })
+        let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+        v.backgroundColor = defaultBackgroundGrayColor
+        v.vc = self
+        v.tag = indexPath.row + 100
+        v.device = d
+        v.flag = 0
+        let arr = self.fetchScene(d!.address!)
+        if  arr.count != 0{
+            v.data = arr
+        }else{
+            v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+            DBManager.shareInstance().addScene(d!, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
+        }
         
-        //开启总控情景二
-        cell.p2Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":18]
-
-            QNTool.openSence(dict)
-            return RACSignal.empty()
-        })
-        //开启总控情景三
-        cell.p3Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":19]
-
-            QNTool.openSence(dict)
-            
-            return RACSignal.empty()
-        })
-        //开启总控情景四
-        cell.p4Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":20]
-
-
-            QNTool.openSence(dict)
-            return RACSignal.empty()
-        })
-        //开启总控情景五
-        cell.p5Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":21]
-
-            QNTool.openSence(dict)
-            
-            return RACSignal.empty()
-        })
-        //关闭所有设备
-        cell.p6Btn.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":31]
-
-            QNTool.openSence(dict)
-            return RACSignal.empty()
-        })
-
-
+        cell.contentView.addSubview(v)
+        cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
+        cell.addLine(16, y: 188, width: screenWidth-32, height: 1)
+        cell.addLine(0, y: 258, width: screenWidth, height: 1)
         
         let gesture = UILongPressGestureRecognizer()
         btn.addGestureRecognizer(gesture)
@@ -144,6 +115,17 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         
     }
     //MARK:- private method
+    func fetchScene(addr:String)->NSMutableArray{
+        let temp = NSMutableArray()
+        temp.removeAllObjects()
+        //查
+        let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
+        
+        for (_, element): (Int, String) in arr.enumerate(){
+            temp.addObject(element)
+        }
+        return temp
+    }
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()

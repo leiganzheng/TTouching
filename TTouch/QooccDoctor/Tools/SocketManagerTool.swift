@@ -113,8 +113,11 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socket(sock:GCDAsyncSocket!, didReadData data: NSData!, withTag tag:Int) {
         
         if data.length < 1460 {
-            self.mulData?.appendData(data)
-            self.paraData(self.mulData!)
+            if self.mulData != nil {
+                self.mulData?.appendData(data)
+                self.paraData(self.mulData!)
+            }
+           
         }else if(data.length == 1460){
             self.mulData?.appendData(data)
         }
@@ -167,7 +170,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                 print(e)
                 // 直接出错了
                 if self.SBlock != nil {
-                    self.SBlock!("")
+//                    self.SBlock!("")
                     print("直接出错了")
                 }
             }

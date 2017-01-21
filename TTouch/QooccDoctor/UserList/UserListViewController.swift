@@ -37,11 +37,6 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.navigationController?.navigationBar.translucent = false
         QNTool.addInteractive(self.navigationController)
         
-        //数据
-       
-//        self.titles = ["总控","客厅","餐厅","书房","主浴","露台","小孩房","主卧房"]
-//        self.flags = [false,false,false,false,false,false,false,false]
-//        self.icons = ["Room_MasterRoom_icon","Room_LivingRoom_icon","Room_DinningRoom_icon","Room_StudingRoom_icon","Room_MasterBath_icon","Room_Treeace_icon","Room_ChildRoom _icon","Room_MasterBedRoom_icon"]
 
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         self.myTableView?.delegate = self

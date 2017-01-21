@@ -389,9 +389,9 @@ extension QNTool {
 //MARK: - 
 extension QNTool {
    class func openSence(dict: NSDictionary) {
-    print(dict)
+//    print(dict)
     SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
-        if  result is  NSDictionary {
+//        if  result is  NSDictionary {
 //            let d = result as! NSDictionary
 //            let status = d["work_status"] as! Int
 //            if (status == 17){
@@ -422,7 +422,7 @@ extension QNTool {
 //            else{
 //                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
 //            }
-        }
+//        }
     })
     }
     class func openLight(d: Device,value:Int ) {
