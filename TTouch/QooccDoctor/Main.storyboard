@@ -3067,9 +3067,8 @@
                                                         <constraint firstAttribute="width" constant="78" id="Ohe-6M-3ZR"/>
                                                         <constraint firstAttribute="height" constant="24" id="jfD-yt-rTH"/>
                                                     </constraints>
-                                                    <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="56" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="六回路" image="Manage_drop_down_icon">
+                                                    <state key="normal" title="六回路">
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
@@ -4065,7 +4064,6 @@
         <image name="Manage_camera_icon" width="32" height="32"/>
         <image name="Manage_dehumidification_icon" width="24" height="24"/>
         <image name="Manage_doorbell_icon" width="32" height="32"/>
-        <image name="Manage_drop_down_icon" width="24" height="24"/>
         <image name="Menu_AirCondition_icon" width="24" height="24"/>
         <image name="Menu_Curtain_icon" width="36" height="36"/>
         <image name="Menu_Light_icon" width="36" height="36"/>

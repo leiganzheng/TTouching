@@ -89,8 +89,8 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
                 let textField = (alertController.textFields?.first)! as UITextField
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
-                    let save_dev = [["dev_addr": dev_addr!,"dev_type": dev_type,"dev_name": textField.text!]]
-                    QNTool.modifyEqument(save_dev)
+                    let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
+                    QNTool.modifyEqument(save_dev,name:textField.text!)
                 }
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in

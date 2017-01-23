@@ -82,27 +82,56 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             })
         let tempT = self.flag == true ? "六回路" :  "三回路"
         cell.name.setTitle(tempT, forState: .Normal)
-        cell.name.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
-            
-            let vc = HuiLuSelectViewController()
-            let popover = FPPopoverController(viewController: vc)
-            vc.bock = {(title) -> Void in
-                //修改数据库
-                self.flag = title as! String ==  "六回路" ?  true :  false
-                cell.name.setTitle(title as? String, forState: .Normal)
-                self.fetchData()
-//                self.myCustomTableView.reloadData()
-                popover.dismissPopoverAnimated(true)
+//        cell.name.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
+//            
+//            let vc = HuiLuSelectViewController()
+//            let popover = FPPopoverController(viewController: vc)
+//            vc.bock = {(title) -> Void in
+//                //修改数据库
+//                self.flag = title as! String ==  "六回路" ?  true :  false
+//                cell.name.setTitle(title as? String, forState: .Normal)
+//                self.fetchData()
+////                self.myCustomTableView.reloadData()
+//                popover.dismissPopoverAnimated(true)
+//            }
+//            
+//            popover.contentSize = CGSizeMake(150, 200)
+//            popover.tint = FPPopoverWhiteTint
+//            popover.border = false
+//            popover.arrowDirection = FPPopoverArrowDirectionAny
+//            popover.presentPopoverFromView(cell.name)
+//            return RACSignal.empty()
+//            
+//        })
+        let gesture = UILongPressGestureRecognizer()
+        cell.name.addGestureRecognizer(gesture)
+        gesture.rac_gestureSignal().subscribeNext { (obj) in
+            let title = "修改名字"
+            let cancelButtonTitle = "取消"
+            let otherButtonTitle = "确定"
+            let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
             }
-            
-            popover.contentSize = CGSizeMake(150, 200)
-            popover.tint = FPPopoverWhiteTint
-            popover.border = false
-            popover.arrowDirection = FPPopoverArrowDirectionAny
-            popover.presentPopoverFromView(cell.name)
-            return RACSignal.empty()
-            
-        })
+            let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
+                let textField = (alertController.textFields?.first)! as UITextField
+                cell.name.setTitle(textField.text, forState: .Normal)
+                
+                if textField.text != nil {
+                    let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
+                    QNTool.modifyEqument(save_dev,name:textField.text!)
+                }
+                
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(otherAction)
+            self.presentViewController(alertController, animated: true) {
+                
+            }
+        }
+
 
          cell.switch1.addTarget(self, action: #selector(ThreeOrSixViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
         cell.switch1.on = QNTool.xnStringAndBinaryDigit((d?.work_status)!).substringWithRange(NSMakeRange(14, 1)) == "1"

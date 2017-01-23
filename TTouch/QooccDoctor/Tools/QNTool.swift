@@ -357,7 +357,7 @@ extension QNTool {
 }
 // MARK: -
 extension QNTool {
-    class func modifyEqument(arr:NSArray) {//修改各设备的信息
+    class func modifyEqument(arr:NSArray,name:String) {//修改各设备的信息
         let dict = ["command": 31,"save_dev": arr]
         let sockertManger = SocketManagerTool.shareInstance()
         sockertManger.sendMsg(dict) { (result) in
@@ -366,10 +366,10 @@ extension QNTool {
                 let status = d.objectForKey("status") as! NSNumber
                 if (status == 1){
                     let d = arr[0] as! NSDictionary
-                    let address = d.objectForKey("dev_addr") as! String
-                    let name = d.objectForKey("dev_name") as! String
+                    let address = d.objectForKey("dev_addr") as! Int
+//                    let name = d.objectForKey("dev_name") as! String
                     
-                    DBManager.shareInstance().updateName(name, type: address)
+                    DBManager.shareInstance().updateName(name, type: String(address))
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
