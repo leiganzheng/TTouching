@@ -36,7 +36,9 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         }
         
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.hidesBottomBarWhenPushed = true
+    }
     
     //连接服务器按钮事件
     func senderData(pass:NSString) {

@@ -34,8 +34,9 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
             return
         }
         if self.newPas.text == self.newMpas.text {
-            let dict = ["command": 33,"permit_old" : self.oldpass.text!,"permit_ new":self.newPas.text!]
+            let dict = ["command": 33,"permit_old" : QNTool.UTF8TOGB2312(self.oldpass.text!),"permit_ new":QNTool.UTF8TOGB2312(self.newPas.text!)]
             self.sockertManger.sendMsg(dict, completion: { (result) in
+                if result is NSDictionary {
                 let d = result as! NSDictionary
                 let status = d.objectForKey("status") as! Int
                 if (status == 1){
@@ -46,6 +47,7 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "字符数不正确！")
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+                }
                 }
             })
 
