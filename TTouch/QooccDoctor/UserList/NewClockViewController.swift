@@ -20,6 +20,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     private var buttonTagArray: [Int] {
         return [1, 2, 3, 4, 5, 6, 7]
     }
+     var tagArray =  ["周一","周二","周三","周四","周五","周六","周日"]
     
     private var isAddingAlarm: Bool = false
     
@@ -137,8 +138,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                         let selected = 1 << (tag - 1)
                         let temp = Bool(self.targetAlarm.selectedDay & selected)
                         if temp {
-                            let button:UIButton = UIButton(frame: CGRectMake(screenWidth-CGFloat((7-i)*30), 6, 30, 30))
-                            button.setTitle(NSString(format: "周%i", i) as String, forState: .Normal)
+                            let button:UIButton = UIButton(frame: CGRectMake(screenWidth-CGFloat((7-i)*30)-58, 6, 30, 30))
+                            button.setTitle(self.tagArray[i-1] as String, forState: .Normal)
                             button.titleLabel?.font = UIFont.systemFontOfSize(12)
                             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
                             
