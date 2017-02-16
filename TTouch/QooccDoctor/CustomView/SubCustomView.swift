@@ -48,6 +48,24 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         }
         
         button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
+        if (device?.work_status)! == 97 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if (device?.work_status)! == 98 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if (device?.work_status)! == 99 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }
+        else if (device?.work_status)! == 100 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }
+        else if (device?.work_status)! == 110 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if (device?.work_status)! == 111 {
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else{
+                button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        }
+
         cell.contentView.addSubview(button)
         button.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             if self.flag == 1 {return RACSignal.empty()}

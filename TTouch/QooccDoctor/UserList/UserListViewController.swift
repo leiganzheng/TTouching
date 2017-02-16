@@ -202,15 +202,15 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         if temp {
             let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
             v.vc = self
-             v.tag = indexPath.row + 100
+            v.tag = indexPath.row + 100
             v.device = d
             v.flag = 0
             let arr = self.fetchScene(d.address!)
             if  arr.count != 0{
                 v.data = arr
             }else{
-             v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
-            DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
+                v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+//                DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
             }
             
             cell.contentView.addSubview(v)
@@ -220,7 +220,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         }else{
             let tempV = cell.contentView.viewWithTag(indexPath.row+100)
             tempV?.removeFromSuperview()
-           
+            
         }
         cell.addLine(0, y: 71, width: screenWidth, height: 1)
 
@@ -268,6 +268,10 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             if element.dev_type! == 1 || element.dev_type! == 2{
                 self.data.addObject(element)
                 self.flags.addObject(false)
+                if element.dev_type! == 2 {
+                    let  dataTemp = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+                    DBManager.shareInstance().addScene(element, s1: dataTemp[0] , s2: dataTemp[1] , s3: dataTemp[2] ,s4: dataTemp[3], s5: dataTemp[4], s6: dataTemp[5])
+                }
             }
         }
         if self.data.count != 0 {

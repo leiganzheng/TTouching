@@ -119,7 +119,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             cell.contentView.backgroundColor = UIColor.whiteColor()
             let dict = dataS[indexPath.row] as! NSMutableDictionary
             cell.textLabel?.text = dict.allKeys[0] as? String
-            
+//            if dataS.count == 1 {
+//                self.flags.replaceObjectAtIndex(0 , withObject: true)
+//                self.test()
+//            }
             let flag = self.flags[indexPath.row] as! Bool
             let icon = (flag==true) ? "pic_hd" : "Menu_Trigger_icon1"
             cell.imageView?.image = UIImage(named: icon)
@@ -142,17 +145,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let dict = dataS[indexPath.row] as! NSMutableDictionary
         
-        let arr = dict.allValues[0] as? NSMutableArray
-        let ip = arr![0] as! String
-        SocketManagerTool.shareInstance().connectSocket(ip)
-        g_ip = ip
-        if arr!.count>=2 {
-            DBManager.shareInstance().updateIp("T_Device" + (arr![1] as! String), name2: "T_DeviceDouble" + (arr![1] as! String),name3: "T_Scene" + (arr![1] as! String))
-        }
-        
-//        self.test1()
         if self.flags.count == 1 {
             self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
         }else {
@@ -166,9 +159,27 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             
         }
         self.myTableView.reloadData()
-        self.fetchList(ip)
+        let fl = self.flags[indexPath.row] as! Bool
+        if fl {
+            let dict = dataS[indexPath.row] as! NSMutableDictionary
+            
+            self.dataFeathc(dict)
+        }
+        
     }
     //MARK:- private method
+    func dataFeathc(dict:NSMutableDictionary){
+        let arr = dict.allValues[0] as? NSMutableArray
+        let ip = arr![0] as! String
+        SocketManagerTool.shareInstance().connectSocket(ip)
+        g_ip = ip
+        if arr!.count>=2 {
+            DBManager.shareInstance().updateIp("T_Device" + (arr![1] as! String), name2: "T_DeviceDouble" + (arr![1] as! String),name3: "T_Scene" + (arr![1] as! String))
+        }
+        
+        self.test()
+        self.fetchList(ip)
+    }
     func paraterData(data:NSData){
         var ip:String = ""
         var macAddress:String = ""
@@ -660,13 +671,13 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-//        self.paraterData(tempData)
-//        
-//        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData1:NSData = NSData(bytes: dataArr1, length: 84)
-//        self.paraterData(tempData1)
+        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+        self.paraterData(tempData)
+        
+        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData1:NSData = NSData(bytes: dataArr1, length: 84)
+        self.paraterData(tempData1)
 
 
 //

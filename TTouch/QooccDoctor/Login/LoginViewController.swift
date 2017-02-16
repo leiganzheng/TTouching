@@ -44,19 +44,27 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.accountTextField.text = g_Account
         
         self.user = UILabel(frame: CGRectMake(0, 0, 40, 20))
-        user.text = "用户"
+        user.text = "用户:"
+        let usView = UIView.init(frame: CGRectMake(0, 0, 80, 20))
 //        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
 //        self.user.text = NSLocalizedString("loginUser", comment: "Welcome")
-        self.accountTextField.leftView = self.user
+        usView.addSubview(self.user)
+        self.accountTextField.leftView = usView
+        self.accountTextField.text = "T-Touching"
+        self.accountTextField.leftViewMode = UITextFieldViewMode.Always
 
         RegisterViewController.configTextField(self.passwordTextField)
         self.passwordTextField.secureTextEntry = true
         
         
         self.pass = UILabel(frame: CGRectMake(0, 0, 40, 20))
-        pass.text = "密码"
-        self.passwordTextField.leftView = pass
-
+        pass.text = "密码:"
+        let usView1 = UIView.init(frame: CGRectMake(0, 0, 80, 20))
+        //        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
+        //        self.user.text = NSLocalizedString("loginUser", comment: "Welcome")
+        usView1.addSubview(self.pass)
+        self.passwordTextField.leftView = usView1
+        self.passwordTextField.text = "T-Touching"
         
         let passwordImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
         passwordImageView.contentMode = UIViewContentMode.Center
