@@ -153,26 +153,28 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let logoButton:UIButton = UIButton(frame: CGRectMake(14, 12, 44, 44))
         logoButton.setImage(UIImage(data:d.icon_url!), forState: UIControlState.Normal)
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            self?.tempButton = input as? UIButton
-            let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
-            actionSheet.addButtonWithTitle("从手机相册选择")
-            actionSheet.addButtonWithTitle("拍照")
-            actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
-                if let indexInt = index as? Int {
-                    switch indexInt {
-                    case 1, 2:
-                        if self!.picker == nil {
-                            self!.picker = UIImagePickerController()
-                            self!.picker!.delegate = self
+            if d.address != "1000" {
+                self?.tempButton = input as? UIButton
+                let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
+                actionSheet.addButtonWithTitle("从手机相册选择")
+                actionSheet.addButtonWithTitle("拍照")
+                actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
+                    if let indexInt = index as? Int {
+                        switch indexInt {
+                        case 1, 2:
+                            if self!.picker == nil {
+                                self!.picker = UIImagePickerController()
+                                self!.picker!.delegate = self
+                            }
+                            self!.picker!.sourceType = (indexInt == 1) ? .SavedPhotosAlbum : .Camera
+                            self!.picker!.allowsEditing = true
+                            self!.presentViewController(self!.picker!, animated: true, completion: nil)
+                        default: break
                         }
-                        self!.picker!.sourceType = (indexInt == 1) ? .SavedPhotosAlbum : .Camera
-                        self!.picker!.allowsEditing = true
-                        self!.presentViewController(self!.picker!, animated: true, completion: nil)
-                    default: break
                     }
-                }
-            })
-            actionSheet.showInView(self!.view)
+                })
+                actionSheet.showInView(self!.view)
+            }
             return RACSignal.empty()
             })
         cell.contentView.addSubview(logoButton)

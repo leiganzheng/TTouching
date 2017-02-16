@@ -15,6 +15,7 @@ class DBManager: NSObject {
 //    var ip:String
     var TableOneName:String
     var TableDLightName:String
+    var imagesDB:String
     var SceneName:String
     
     
@@ -39,6 +40,7 @@ class DBManager: NSObject {
         self.TableOneName = ""
         self.TableDLightName = ""
         self.SceneName = ""
+        self.imagesDB = ""
         let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         let path = (documentsFolder as NSString).stringByAppendingPathComponent("TTouching.sqlite")
         self.dbPath = path
@@ -48,12 +50,35 @@ class DBManager: NSObject {
         print("path: ---- \(self.dbPath)", terminator: "")
         
     }
+    func isDataExist(address:NSString)->Bool
+    {
+        dbBase.open()
+        
+        if let rs = dbBase.executeQuery("select address from \(self.TableOneName)", withArgumentsInArray: nil) {
+            while rs.next() {
+
+                let adrr:String = rs.stringForColumn("address")
+                if adrr == address {
+                  return true
+                }
+            }
+        } else {
+            
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+
+        dbBase.close();
+        return false
+    }
     func updateIp(name1:String,name2:String,name3:String){
         self.TableOneName = name1
         self.TableDLightName = name2
         self.SceneName = name3
     }
     // MARK: >> 建立数据表
+
+
     func createTableOfScene(name: String) {
         //打开数据库
         if dbBase.open(){
@@ -189,7 +214,19 @@ class DBManager: NSObject {
         dbBase.close();
         
     }
-
+    func update(d:Device) {
+        
+        dbBase.open();
+        
+        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set dev_type = (?),work_status = (?),work_status1 = (?),work_status2 = (?),dev_name = (?),dev_status = (?),dev_area = (?),belong_area = (?),is_favourited = (?),icon_url = (?) WHERE address = ? ", d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!) {
+            print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
+        }else{
+            print("修改1条数据成功！: ")
+            
+        }
+            dbBase.close()
+    }
     func add(d:Device) {
         
         dbBase.open();
@@ -449,6 +486,25 @@ class DBManager: NSObject {
         dbBase.close();
         return temp
     }
+    func selectWorkImage(type:Int) -> NSData {
+        dbBase.open();
+        var temp:NSData = NSData()
+        if let rs = dbBase.executeQuery("select dev_type,icon_urlfrom \(TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
+            while rs.next() {
+                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                if type == dev_type {
+                    temp = rs.dataForColumn("icon_url")!
+                }
+                
+            }
+        } else {
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+        dbBase.close();
+        return temp
+    }
+
     // MARK: >> 查
     func selectData(aera:String) -> String {
         dbBase.open();
