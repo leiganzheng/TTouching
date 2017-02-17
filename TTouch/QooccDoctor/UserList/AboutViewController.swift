@@ -13,7 +13,7 @@ class AboutViewController: UIViewController ,QNInterceptorProtocol, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "关于版本"
+        self.title = NSLocalizedString("版本", tableName: "Localization",comment:"jj")
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +33,10 @@ class AboutViewController: UIViewController ,QNInterceptorProtocol, UITableViewD
         var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellId)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell.selectionStyle = .None
         }
 
-        cell.textLabel?.text = "版本号"
+        cell.textLabel?.text = NSLocalizedString("版本号", tableName: "Localization",comment:"jj")
         let lb = UILabel(frame:CGRectMake(0,0, 80, 54) )
         lb.text = "1.0"
         cell.accessoryView = lb

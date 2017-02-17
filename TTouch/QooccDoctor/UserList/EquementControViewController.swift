@@ -57,19 +57,19 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             let d = self.data[self.contentCurrent] as? Device
             DBManager.shareInstance().updateFav(0, type: (d?.address)!, complete: { (flag) in
                 if flag as! Int == 0 {
-                    QNTool.showPromptView("收藏失败")
+                    QNTool.showPromptView(NSLocalizedString("失败", tableName: "Localization",comment:"jj"))
                 }else {
-                    QNTool.showPromptView("已收藏")
+                    QNTool.showPromptView(NSLocalizedString("成功", tableName: "Localization",comment:"jj"))
                 }
             })
             return RACSignal.empty()
             })
         self.navigationItem.rightBarButtonItem = self.type == 100 ? nil :  UIBarButtonItem(customView: searchButton)
         if self.flag == "0" {
-            self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
+            self.title = self.type == 100 ? NSLocalizedString("未分区的区域", tableName: "Localization",comment:"jj") :  self.device?.dev_name
         }
         if self.flag == "2" {
-            self.title = self.type == 100 ? "未分区的区域" :  self.device?.dev_name
+            self.title = self.type == 100 ? NSLocalizedString("未分区的区域", tableName: "Localization",comment:"jj") :  self.device?.dev_name
         }
 
     }
@@ -215,7 +215,7 @@ class EquementControViewController: UIViewController,UIScrollViewDelegate, QNInt
             self.data.addObject(unAeraDevice!)
         }else if flag == "2"{
             let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
-            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31,work_status1: 31,work_status2: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31,work_status1: 31,work_status2: 31, dev_name: NSLocalizedString("未分区的区域", tableName: "Localization",comment:"jj"), dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
             self.data.addObject(noPattern)
         }
         let arr:Array<Device> = DBManager.shareInstance().selectDatas()

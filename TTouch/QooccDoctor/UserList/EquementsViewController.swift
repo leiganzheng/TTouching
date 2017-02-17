@@ -18,8 +18,8 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
         super.viewDidLoad()
         self.sockertManger = SocketManagerTool.shareInstance()
         self.passWord.text = "123456"
-        self.passWord.placeholder = "请输入密码"
-        self.title = "设备管理"
+        self.passWord.placeholder = NSLocalizedString("请输入密码", tableName: "Localization",comment:"jj")
+        self.title = NSLocalizedString("设备管理", tableName: "Localization",comment:"jj")
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +30,7 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
 
     @IBAction func loginAction(sender: AnyObject) {
         if (self.passWord.text?.characters.count == 0){
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请输入密码！")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg:NSLocalizedString("请输入密码", tableName: "Localization",comment:"jj"))
         }else{
             self.senderData(self.passWord.text!)
         }
@@ -43,21 +43,21 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     //连接服务器按钮事件
     func senderData(pass:NSString) {
         
-//        self.hidesBottomBarWhenPushed = true
-//        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
-//        return
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+        return
         let dict = ["command": 32,"permit" : pass]
         sockertManger.sendMsg(dict) { (result) in
             let d = result as! NSDictionary
             let status = d.objectForKey("status") as! NSNumber
             if (status.intValue == 1) {
-                QNTool.showPromptView("验证成功！", {
+                QNTool.showPromptView(NSLocalizedString("验证成功", tableName: "Localization",comment:"jj"), {
                     self.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
                 })
                
             }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "验证失败，请重试！")
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("验证失败", tableName: "Localization",comment:"jj"))
             }
             print(result)
         }

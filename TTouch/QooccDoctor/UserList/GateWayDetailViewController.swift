@@ -21,8 +21,8 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cellTitles = ["IP 地址","物理地址","固件版本"]
-        self.title = "网关详情"
+        self.cellTitles = [NSLocalizedString("IP 地址", tableName: "Localization",comment:"jj"),NSLocalizedString("物理地址", tableName: "Localization",comment:"jj"),NSLocalizedString("固件版本", tableName: "Localization",comment:"jj")]
+        self.title = NSLocalizedString("网关详情", tableName: "Localization",comment:"jj")
         self.myTableView = UITableView(frame: CGRectMake(0, 30, self.view.bounds.width, self.view.bounds.height - 36))
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self

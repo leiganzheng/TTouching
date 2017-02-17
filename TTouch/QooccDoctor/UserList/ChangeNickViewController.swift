@@ -18,7 +18,7 @@ class ChangeNickViewController: UIViewController, UITextFieldDelegate {
     var bock:callBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "标签"
+        self.title = NSLocalizedString("标签", tableName: "Localization",comment:"jj")
         self.view.backgroundColor = defaultBackgroundGrayColor
         
         self.inputTextView = UITextField(frame: CGRectMake(0, 120, self.view.frame.width, 50))
@@ -35,19 +35,19 @@ class ChangeNickViewController: UIViewController, UITextFieldDelegate {
         self.inputTextView.becomeFirstResponder()
         self.view.addSubview(self.inputTextView)
         // 保存按钮
-        let saveItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        let saveItem = UIBarButtonItem(title: NSLocalizedString("保存", tableName: "Localization",comment:"jj"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
         saveItem.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             if let strongSelf = self {
                 self!.view.endEditing(true)
                 var nickName = strongSelf.inputTextView.text as NSString?
                 nickName = nickName?.stringByReplacingOccurrencesOfString(" ", withString: "")
                 if nickName == nil || nickName!.length == 0 {
-                    QNTool.showPromptView("请输入标签")
+                    QNTool.showPromptView(NSLocalizedString("请输入标签", tableName: "Localization",comment:"jj"))
                     
                 }else{
                     // 限制输入范围在8以内
                     if nickName!.length > 8 {
-                        QNTool.showPromptView("昵称长度不得大于8个字")
+                        QNTool.showPromptView(NSLocalizedString("昵称长度不得大于8个字", tableName: "Localization",comment:"jj"))
                         
                     }else{
                         self?.bock!(nickName!)

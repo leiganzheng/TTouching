@@ -20,7 +20,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     private var buttonTagArray: [Int] {
         return [1, 2, 3, 4, 5, 6, 7]
     }
-     var tagArray =  ["周一","周二","周三","周四","周五","周六","周日"]
+     var tagArray =  [NSLocalizedString("周一", tableName: "Localization",comment:"jj"),NSLocalizedString("周二", tableName: "Localization",comment:"jj"),NSLocalizedString("周三", tableName: "Localization",comment:"jj"),NSLocalizedString("周四", tableName: "Localization",comment:"jj"),NSLocalizedString("周五", tableName: "Localization",comment:"jj"),NSLocalizedString("周六", tableName: "Localization",comment:"jj"),NSLocalizedString("周日", tableName: "Localization",comment:"jj")]
     
     private var isAddingAlarm: Bool = false
     
@@ -44,7 +44,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         super.viewDidLoad()
 
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
-        searchButton.setTitle("保存", forState: .Normal)
+        searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.handleConfirmButtonTapped()
             self?.dismissViewControllerAnimated(true, completion: { 
@@ -64,7 +64,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
-        self.titles = [[""],["重复","标签","配置"]]
+        self.titles = [[""],[NSLocalizedString("重复", tableName: "Localization",comment:"jj"),NSLocalizedString("标签", tableName: "Localization",comment:"jj"),NSLocalizedString("配置", tableName: "Localization",comment:"jj")]]
         self.myTableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = defaultBackgroundGrayColor
         

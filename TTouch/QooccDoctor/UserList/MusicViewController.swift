@@ -12,7 +12,7 @@ class MusicViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "音乐"
+        self.title = NSLocalizedString("音乐", tableName: "Localization",comment:"jj")
         // Do any additional setup after loading the view.
     }
 

@@ -56,7 +56,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isopen.backgroundColor = color
-        let title = DBManager.shareInstance().selectData((d?.dev_area)!) == "" ? "选择区域" :  DBManager.shareInstance().selectData((d?.dev_area)!)
+        let title = DBManager.shareInstance().selectData((d?.dev_area)!) == "" ? NSLocalizedString("选择区域", tableName: "Localization",comment:"jj") :  DBManager.shareInstance().selectData((d?.dev_area)!)
         cell.patern.setTitle(title, forState: .Normal)
         let btn1 = cell.patern
         
@@ -106,9 +106,9 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
         let gesture = UILongPressGestureRecognizer()
         cell.name.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
-            let title = "修改名字"
-            let cancelButtonTitle = "取消"
-            let otherButtonTitle = "确定"
+            let title = NSLocalizedString("修改名字", tableName: "Localization",comment:"jj")
+            let cancelButtonTitle = NSLocalizedString("取消", tableName: "Localization",comment:"jj")
+            let otherButtonTitle = NSLocalizedString("确定", tableName: "Localization",comment:"jj")
             let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
             let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
             }

@@ -20,7 +20,15 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         self.title = "语言"
         self.titles = ["简体中文","繁体中文","English"]
         self.language = ["zh-Hans","zh-Hant","en"]
-        self.flags = [false,true,false]
+        let l = QNTool.userLanguage()
+        if l == "zh-Hans" {
+            self.flags = [true,false,false]
+        }else if (l == "zh-Hant"){
+             self.flags = [false,true,false]
+        }else if (l == "en"){
+             self.flags = [false,false,true]
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +74,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         let lanuageStr = self.language[indexPath.row] as! NSString
         QNTool.setUserLanguage(lanuageStr)
         //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
-        NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
+//        NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
         
     }
 

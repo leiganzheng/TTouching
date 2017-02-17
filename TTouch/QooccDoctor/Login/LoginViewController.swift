@@ -25,6 +25,9 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     @IBOutlet weak var EngBtn: UIButton!
     @IBOutlet weak var remberPBtn: UIButton!
     @IBOutlet weak var inHomeBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var noLoginBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     var pass:UILabel!
     var user:UILabel!
     
@@ -39,14 +42,18 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.imageView.image = UIImage(named: "LOGO")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.imageView.tintColor = appThemeColor
         self.imageView.tintAdjustmentMode = .Normal
-        
+        self.remberPBtn.setTitle(NSLocalizedString("记住密码", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.loginBtn.setTitle(NSLocalizedString("登入", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.registerBtn.setTitle(NSLocalizedString("注册", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.noLoginBtn.setTitle(NSLocalizedString("无法登录", tableName: "Localization",comment:"jj"), forState: .Normal)
         RegisterViewController.configTextField(self.accountTextField)
         self.accountTextField.text = g_Account
         
-        self.user = UILabel(frame: CGRectMake(0, 0, 40, 20))
-        user.text = "用户:"
-        let usView = UIView.init(frame: CGRectMake(0, 0, 80, 20))
-//        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
+        self.user = UILabel(frame: CGRectMake(0, 0, 70, 20))
+//        user.text = "用户:"
+        let usView = UIView.init(frame: CGRectMake(0, 0, 85, 20))
+        self.user.text = NSLocalizedString("用户", tableName: "Localization",comment:"jj") + ":"
+    
         usView.addSubview(self.user)
         self.accountTextField.leftView = usView
         self.accountTextField.text = "T-Touching"
@@ -56,11 +63,10 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.passwordTextField.secureTextEntry = true
         
         
-        self.pass = UILabel(frame: CGRectMake(0, 0, 40, 20))
-        pass.text = "密码:"
-        let usView1 = UIView.init(frame: CGRectMake(0, 0, 80, 20))
-        //        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
-        //        self.user.text = NSLocalizedString("loginUser", comment: "Welcome")
+        self.pass = UILabel(frame: CGRectMake(0, 0, 80, 20))
+//        pass.text = "密码:"
+        let usView1 = UIView.init(frame: CGRectMake(0, 0, 85, 20))
+        self.pass.text = NSLocalizedString("密码", tableName: "Localization",comment:"jj") + ":"
         usView1.addSubview(self.pass)
         self.passwordTextField.leftView = usView1
         self.passwordTextField.text = "T-Touching"
@@ -83,14 +89,12 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
          IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.changeLanguage), name: "changeLanguage", object: nil)
         
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-        self.user.text = QNTool.initUserLanguage().localizedStringForKey("User", value: nil, table: "Localization")
     }
     
     // MARK: UITextFieldDelegate
@@ -102,9 +106,6 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
             self.login()
         }
         return false
-    }
-    func changeLanguage(){
-        self.user.text = QNTool.initUserLanguage().localizedStringForKey("User", value: nil, table: "Localization")
     }
     // MARK: 登录
     @IBAction func login(sender: AnyObject) {

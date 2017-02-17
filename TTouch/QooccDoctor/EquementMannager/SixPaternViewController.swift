@@ -102,7 +102,7 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
-            lb.text = "暂无数据"
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)
             return cell

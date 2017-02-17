@@ -66,7 +66,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         if  arr.count != 0{
             v.data = arr
         }else{
-            v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+            v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
             DBManager.shareInstance().addScene(d!, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
         }
         
@@ -78,9 +78,9 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         let gesture = UILongPressGestureRecognizer()
         btn.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
-            let title = "修改名字"
-            let cancelButtonTitle = "取消"
-            let otherButtonTitle = "确定"
+            let title = NSLocalizedString("修改名字", tableName: "Localization",comment:"jj")
+            let cancelButtonTitle = NSLocalizedString("取消", tableName: "Localization",comment:"jj")
+            let otherButtonTitle = NSLocalizedString("确定", tableName: "Localization",comment:"jj")
             
             let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
             

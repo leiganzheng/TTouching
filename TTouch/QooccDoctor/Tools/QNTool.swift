@@ -998,6 +998,7 @@ extension QNTool {
     class func setUserLanguage(language:NSString){
          let def = NSUserDefaults.standardUserDefaults()
         def.setValue(language, forKey: "userLanguage")
+        NSBundle.setLanguage(language as String)
         def.synchronize()
     }
 }

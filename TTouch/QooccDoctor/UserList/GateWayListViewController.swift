@@ -22,7 +22,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
     var searchButton:UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "查找网关"
+        self.title = NSLocalizedString("查找网关", tableName: "Localization",comment:"jj")
         //列表创建
         self.tableViewController = UITableViewController(nibName: nil, bundle: nil)
         self.tableViewController.refreshControl = UIRefreshControl()
@@ -41,7 +41,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         self.view.addSubview(self.myTableView!)
         
         searchButton = UIButton(frame: CGRectMake(10, self.myTableView.frame.size.height+4, screenWidth-20, 48))
-        searchButton.setTitle("选择", forState: UIControlState.Normal)
+        searchButton.setTitle(NSLocalizedString("选择", tableName: "Localization",comment:"jj"), forState: UIControlState.Normal)
         searchButton.backgroundColor = appThemeColor
         QNTool.configViewLayer(searchButton)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
@@ -55,7 +55,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController())!
                 QNTool.enterRootViewController(vc, animated: true)
             }else{
-                QNTool.showPromptView("请选择网关")
+                QNTool.showPromptView(NSLocalizedString("选择网关", tableName: "Localization",comment:"jj"))
             }
             return RACSignal.empty()
         })
@@ -103,7 +103,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,48))
-            lb.text = "暂无数据,下拉重试"
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textColor = UIColor.lightGrayColor()
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)

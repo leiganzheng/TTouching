@@ -19,7 +19,7 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
     @IBOutlet weak var newMpas: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "修改设备管理密码"
+        self.title = NSLocalizedString("修改设备管理密码", tableName: "Localization",comment:"jj")
         self.sockertManger = SocketManagerTool.shareInstance()
     }
 
@@ -40,38 +40,38 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
                 let d = result as! NSDictionary
                 let status = d.objectForKey("status") as! Int
                 if (status == 1){
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("修改成功", tableName: "Localization",comment:"jj"))
                 }else if(status  == -1){
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "旧密码错误！")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("旧密码错误", tableName: "Localization",comment:"jj"))
                 }else if(status  == -2){
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "字符数不正确！")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("字符数不正确", tableName: "Localization",comment:"jj"))
                 }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("修改失败", tableName: "Localization",comment:"jj"))
                 }
                 }
             })
 
         }else{
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "两次输入密码不一样！")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("两次输入密码不一样", tableName: "Localization",comment:"jj"))
         }
         
     }
     private func checkAccountPassWord() -> Bool {
         if (self.oldpass.text?.characters.count == 0 && self.newPas.text?.characters.count == 0 && self.newMpas.text?.characters.count == 0) {
-            QNTool.showPromptView("请输入内容")
+            QNTool.showPromptView(NSLocalizedString("请输入内容", tableName: "Localization",comment:"jj"))
             self.oldpass.becomeFirstResponder()
             return false
         }else if(self.oldpass.text?.characters.count == 0) {
-            QNTool.showPromptView("请输入密码")
+            QNTool.showPromptView(NSLocalizedString("请输入密码", tableName: "Localization",comment:"jj"))
             self.oldpass.becomeFirstResponder()
             return false
             
         }else if (self.newPas.text?.characters.count == 0){
-            QNTool.showPromptView("请输入新密码")
+            QNTool.showPromptView(NSLocalizedString("请输入新密码", tableName: "Localization",comment:"jj"))
             self.newPas.becomeFirstResponder()
             return false
         }else if (self.newMpas.text?.characters.count == 0){
-            QNTool.showPromptView("请输入验证密码")
+            QNTool.showPromptView(NSLocalizedString("请输入验证密码", tableName: "Localization",comment:"jj"))
             self.newMpas.becomeFirstResponder()
             return false
         }

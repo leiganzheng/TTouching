@@ -19,7 +19,7 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
-        self.titles = ["登出","语言","管理","定时","摇摇","定位","语音","版本"]
+        self.titles = [NSLocalizedString("登出", tableName: "Localization",comment:"jj"),NSLocalizedString("语言", tableName: "Localization",comment:"jj"),NSLocalizedString("管理", tableName: "Localization",comment:"jj"),NSLocalizedString("定时", tableName: "Localization",comment:"jj"),NSLocalizedString("摇摇", tableName: "Localization",comment:"jj"),NSLocalizedString("定位", tableName: "Localization",comment:"jj"),NSLocalizedString("语音", tableName: "Localization",comment:"jj"),NSLocalizedString("版本", tableName: "Localization",comment:"jj")]
         self.icons = ["Setup_Login_icon1","Setup_Lang_icon1","Setup_Manage_icon1","Setup_Timer_icon1","Setup_Shack_icon1","Setup_Location_icon1","Setup_Voice_icon1","Setup_Version_icon1"]
         self.myTableView.frame = CGRectMake(0, 44, screenWidth/2, screenHeight )
         self.myTableView?.delegate = self

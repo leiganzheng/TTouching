@@ -12,7 +12,7 @@ class SecurityViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "对讲"
+        self.title = NSLocalizedString("保全", tableName: "Localization",comment:"jj")
         // Do any additional setup after loading the view.
     }
 

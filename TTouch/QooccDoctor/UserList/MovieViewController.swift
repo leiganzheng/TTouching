@@ -12,7 +12,7 @@ class MovieViewController: UIViewController,QNInterceptorProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "影音"
+        self.title = NSLocalizedString("影视", tableName: "Localization",comment:"jj")
         // Do any additional setup after loading the view.
     }
 

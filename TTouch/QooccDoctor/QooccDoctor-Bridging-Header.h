@@ -32,4 +32,5 @@
 
 #import "UdpSocketController.h"
 #import "NSData+THCategory.h"
+#import "NSBundle+Language.h"
 #endif

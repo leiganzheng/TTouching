@@ -5,6 +5,99 @@
   Created by leiganzheng on 16/11/16.
   Copyright © 2016年 Private. All rights reserved.
 */
-"User"="Account";
-"Password"="Password";
-"RemberPss"="Remember Password";
+"用户"="Account";
+"密码"="Password";
+"记住密码"="Remember Password";
+"登入"="Login";
+"无法登录"="Can Not Login";
+"注册"="Register";
+"查找网关"="Find The Gateway";
+"选择网关"="Select The Gateway";
+"选择"="Select";
+"暂无数据,下拉重试"="No data, drop again";
+"IP 地址"="IP Address";
+"物理地址"="Physical Address";
+"固件版本"="Firmware Version";
+"网关详情"="Gateway details";
+
+"拍照"="Take Picture";
+"从手机相册选择"="Choose From The Picture Albums";
+"取消"="Cancel";
+"确定"＝"Confirm";
+"修改名字"＝"Modify name";
+
+"S1 场景一"="S1 Scene 1";
+"S2 场景二"="S2 Scene 2";
+"S3 场景三"="S3 Scene 3";
+"S4 场景四"="S4 Scene 4";
+"S5 全开模式"="S5 ON";
+"S6 关闭模式"="S6 OFF";
+
+"灯光"="Light";
+"窗帘"="Curtain";
+"动作"="Motion";
+"空调"="HVAC";
+"监视"="Surveillance";
+"保全"="Security";
+"音乐"="Music";
+"影视"="AV";
+
+"语音"="Voice";
+"定位"="Location";
+"定时"="Timer";
+"管理"="Management";
+"登出"="Sign Out";
+"语言"="Language";
+"版本"="Version";
+"版本号"="version number";
+"摇摇"="Shaking";
+"设备管理"="Equipment Management";
+"请输入密码"="Please input a password";
+"验证成功"="Verify success";
+"验证失败"="Validation failed";
+
+
+
+"设备管理"="device management";
+"请输入密码"="Please enter password";
+"验证成功"="Verify success";
+"验证失败"="Validation failed";
+
+"修改设备管理密码"="Modify device management password";
+"旧密码错误"="Old password error";
+"字符数不正确"="Incorrect number of characters";
+"修改失败"="Modify failed";
+
+"两次输入密码不一样"="Two input password is not the same";
+"请输入内容"="Please input content";
+"请输入验证密码"="Please enter the password";
+"请输入新密码"="Please enter a new password";
+
+"成功"="Success";
+"失败"="fail";
+"获取设备、、、"="Get device、、、";
+"未分区的区域"="UN partitioned area";
+"闹钟"="alarm";
+
+"保存"="Save";
+"周一"="Monday";
+"周二"="Tuesday";
+"周三"="Wednesday";
+"周四"="Thursday";
+"周五"="Friday";
+"周六"="Saturday";
+"周日"="Sunday";
+"重复"="Repeat";
+"标签"="Label";
+"配置"="Configure";
+
+"昵称长度不得大于8个字"="Nickname length should not be greater than 8 words";
+"请输入标签"="Please enter a label";
+"选择区域"="Select area";
+
+
+
+
+
+
+

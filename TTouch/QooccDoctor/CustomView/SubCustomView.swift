@@ -89,9 +89,9 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         let gesture = UILongPressGestureRecognizer()
         button.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
-            let title = "修改名字"
-            let cancelButtonTitle = "取消"
-            let otherButtonTitle = "确定"
+            let title = NSLocalizedString("修改名字", tableName: "Localization",comment:"jj")
+            let cancelButtonTitle = NSLocalizedString("取消", tableName: "Localization",comment:"jj")
+            let otherButtonTitle = NSLocalizedString("确定", tableName: "Localization",comment:"jj")
             let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
             let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .Cancel) { (action) in
             }

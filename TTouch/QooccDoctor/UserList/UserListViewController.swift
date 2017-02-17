@@ -167,9 +167,9 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         logoButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             if d.address != "1000" {
                 self?.tempButton = input as? UIButton
-                let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
-                actionSheet.addButtonWithTitle("从手机相册选择")
-                actionSheet.addButtonWithTitle("拍照")
+                let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"), destructiveButtonTitle: nil)
+                actionSheet.addButtonWithTitle(NSLocalizedString("从手机相册选择", tableName: "Localization",comment:"jj"))
+                actionSheet.addButtonWithTitle(NSLocalizedString("拍照", tableName: "Localization",comment:"jj"))
                 actionSheet.rac_buttonClickedSignal().subscribeNext({ (index) -> Void in
                     if let indexInt = index as? Int {
                         switch indexInt {
@@ -221,7 +221,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             if  arr.count != 0{
                 v.data = arr
             }else{
-                v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+                v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
 //                DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
             }
             
@@ -281,14 +281,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
                 self.data.addObject(element)
                 self.flags.addObject(false)
                 if element.dev_type! == 2 {
-                    let  dataTemp = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+                    let  dataTemp = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
                     DBManager.shareInstance().addScene(element, s1: dataTemp[0] , s2: dataTemp[1] , s3: dataTemp[2] ,s4: dataTemp[3], s5: dataTemp[4], s6: dataTemp[5])
                 }
             }
         }
         if self.data.count != 0 {
             let image = UIImageJPEGRepresentation(UIImage(named:"icon_no" )!, 1)
-            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31,work_status1: 31,work_status2: 31, dev_name: "未分区的区域", dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
+            let noPattern = Device(address: "1000", dev_type: 100, work_status: 31,work_status1: 31,work_status2: 31, dev_name: NSLocalizedString("未分区的区域", tableName: "Localization",comment:"jj"), dev_status: 1, dev_area: "0", belong_area: "", is_favourited: 0, icon_url: image)
             self.data.addObject(noPattern)
             self.flags.addObject(false)
         }
@@ -318,7 +318,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
 //        searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
-        searchButton.setTitle("Hi~Jacky", forState: UIControlState.Normal)
+//        searchButton.setTitle("Hi~Jacky", forState: UIControlState.Normal)
         
 //        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in

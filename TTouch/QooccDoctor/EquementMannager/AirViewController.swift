@@ -50,7 +50,7 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
-            lb.text = "暂无数据"
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)
             return cell
@@ -64,16 +64,16 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color
-        let title = d?.dev_area == "" ? "选择区域" :  d?.dev_area
+        let title = d?.dev_area == "" ? NSLocalizedString("选择区域", tableName: "Localization",comment:"jj") :  d?.dev_area
         cell.partern.setTitle(title, forState: .Normal)
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
         let gesture = UILongPressGestureRecognizer()
         btn.addGestureRecognizer(gesture)
         gesture.rac_gestureSignal().subscribeNext { (obj) in
-            let title = "修改名字"
-            let cancelButtonTitle = "取消"
-            let otherButtonTitle = "确定"
+            let title = NSLocalizedString("修改名字", tableName: "Localization",comment:"jj")
+            let cancelButtonTitle = NSLocalizedString("取消", tableName: "Localization",comment:"jj")
+            let otherButtonTitle = NSLocalizedString("确定", tableName: "Localization",comment:"jj")
             
             let alertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
             

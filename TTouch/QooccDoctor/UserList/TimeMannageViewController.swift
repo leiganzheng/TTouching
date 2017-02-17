@@ -63,7 +63,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         }
         cell.selectedBtn.addTarget(self, action: #selector(TimeMannageViewController.handleSwitchTapped(_:)), forControlEvents: .ValueChanged)
         
-        cell.name.setTitle("闹钟", forState: .Normal)
+        cell.name.setTitle(NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), forState: .Normal)
         return cell
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

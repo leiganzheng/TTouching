@@ -18,7 +18,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGrayColor()
-        self.titles = ["灯光","窗帘","动作","空调","监视","保全","音乐","影视"]
+        self.titles = [NSLocalizedString("灯光", tableName: "Localization",comment:"jj"),NSLocalizedString("窗帘", tableName: "Localization",comment:"jj"),NSLocalizedString("动作", tableName: "Localization",comment:"jj"),NSLocalizedString("空调", tableName: "Localization",comment:"jj"),NSLocalizedString("监视", tableName: "Localization",comment:"jj"),NSLocalizedString("保全", tableName: "Localization",comment:"jj"),NSLocalizedString("音乐", tableName: "Localization",comment:"jj"),NSLocalizedString("影视", tableName: "Localization",comment:"jj")]
         self.icons = ["Menu_Light_icon1","Menu_Curtain_icon1","Menu_Trigger_icon1","Menu_AirCondition_icon1","Menu_Camera_icon1","Menu_Security_icon1","Menu_Music_icon1","Menu_AV_icon1"]
         self.myTableView.frame = CGRectMake(0,0, screenWidth/2, screenHeight)
         self.myTableView?.delegate = self

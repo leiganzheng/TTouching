@@ -28,7 +28,7 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "重复"
+        self.title = NSLocalizedString("重复", tableName: "Localization",comment:"jj")
         //列表创建
         self.myTableView = UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height),style:.Grouped)
         self.myTableView?.delegate = self
@@ -39,7 +39,7 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
         self.myTableView.backgroundColor = defaultBackgroundGrayColor
         self.view.addSubview(self.myTableView!)
         
-        self.titles = ["每周一","每周二","每周三","每周四","每周五","每周六","每周日"]
+        self.titles = [NSLocalizedString("周一", tableName: "Localization",comment:"jj"),NSLocalizedString("周二", tableName: "Localization",comment:"jj"),NSLocalizedString("周三", tableName: "Localization",comment:"jj"),NSLocalizedString("周四", tableName: "Localization",comment:"jj"),NSLocalizedString("周五", tableName: "Localization",comment:"jj"),NSLocalizedString("周六", tableName: "Localization",comment:"jj"),NSLocalizedString("周日", tableName: "Localization",comment:"jj")]
         
         self.flags = [false,false,false,false,false,false,false]
         if self.targetAlarm == nil {

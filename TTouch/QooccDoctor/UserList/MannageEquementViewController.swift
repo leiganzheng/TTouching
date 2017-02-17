@@ -23,7 +23,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "设备管理"
+        self.title = NSLocalizedString("设备管理", tableName: "Localization",comment:"jj")
         self.fetchData()
 //        self.test1()
 //        if g_ip == "192.168.1.101" {
@@ -61,7 +61,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
-            lb.text = "暂无数据"
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)
             return cell
@@ -263,9 +263,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let devices = d.objectForKey("Device Information") as! NSArray
         
         if (devices.count == 0) {
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("失败", tableName: "Localization",comment:"jj"))
         }else{
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg:NSLocalizedString("成功", tableName: "Localization",comment:"jj"))
             let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
             let descs2 = NSArray(objects: typeDesc)
             let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
@@ -412,9 +412,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let devices = d.objectForKey("Device Information") as! NSArray
         
         if (devices.count == 0) {
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("失败", tableName: "Localization",comment:"jj"))
         }else{
-            QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("成功", tableName: "Localization",comment:"jj"))
             let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
             let descs2 = NSArray(objects: typeDesc)
             let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
@@ -501,9 +501,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             let d = result as! NSDictionary
             let status = d.objectForKey("status") as! NSNumber
             if (status == 1){
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改成功！")
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("修改成功", tableName: "Localization",comment:"jj"))
             }else{
-                QNTool.showErrorPromptView(nil, error: nil, errorMsg: "修改失败！")
+                QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("修改失败", tableName: "Localization",comment:"jj"))
             }
         })
 
@@ -643,7 +643,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
 
 
     func fetchData(){
-        QNTool.showActivityView("获取设备、、、")
+        QNTool.showActivityView(NSLocalizedString("获取设备、、、", tableName: "Localization",comment:"jj"))
         let dict = ["command": 30]
         SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
             QNTool.hiddenActivityView()
@@ -651,9 +651,9 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
                 let d = result as! NSDictionary
                 let devices = d.objectForKey("Device Information") as! NSArray
                 if (devices.count == 0) {
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "获取设备失败")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("失败", tableName: "Localization",comment:"jj"))
                 }else{
-                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: "成功")
+                    QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("成功", tableName: "Localization",comment:"jj"))
                     let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
                     let descs2 = NSArray(objects: typeDesc)
                     let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])

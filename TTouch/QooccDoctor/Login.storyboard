@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sob-MV-Xfz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sob-MV-Xfz">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -128,11 +128,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTk-3I-g0b">
-                                                <rect key="frame" x="8" y="134" width="100" height="20"/>
+                                                <rect key="frame" x="8" y="134" width="140" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="YRQ-gg-EOC"/>
-                                                    <constraint firstAttribute="width" constant="100" id="s2T-bj-eGM"/>
+                                                    <constraint firstAttribute="width" constant="140" id="s2T-bj-eGM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="记住密码" image="navigation_Options_icon_s">
@@ -196,11 +196,11 @@
                                             <action selector="login:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="OMs-HW-aFb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW0-pI-Gbq">
-                                        <rect key="frame" x="16" y="443" width="90" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW0-pI-Gbq">
+                                        <rect key="frame" x="16" y="443" width="110" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="1eG-uz-NJW"/>
+                                            <constraint firstAttribute="width" constant="110" id="1eG-uz-NJW"/>
                                             <constraint firstAttribute="height" constant="30" id="IWO-fr-Fh2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -212,7 +212,7 @@
                                             <action selector="loginAction:" destination="2uY-yi-O1Z" eventType="touchUpInside" id="wc7-UK-o87"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9v-rC-xj3">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9v-rC-xj3">
                                         <rect key="frame" x="205" y="443" width="100" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -268,7 +268,10 @@
                         <outlet property="headerView" destination="Ir0-g1-fiP" id="2kg-X1-fpv"/>
                         <outlet property="imageView" destination="2yQ-DJ-qHl" id="N3A-vJ-KEa"/>
                         <outlet property="inHomeBtn" destination="Boe-WW-1Lg" id="PiV-Gv-KXr"/>
+                        <outlet property="loginBtn" destination="YjR-6g-HPn" id="3mA-5K-plp"/>
+                        <outlet property="noLoginBtn" destination="hW0-pI-Gbq" id="T28-KG-czK"/>
                         <outlet property="passwordTextField" destination="WBZ-r8-qda" id="Kca-3O-zpL"/>
+                        <outlet property="registerBtn" destination="M9v-rC-xj3" id="Dnp-4k-dUl"/>
                         <outlet property="remberPBtn" destination="YTk-3I-g0b" id="R91-RI-xGE"/>
                         <outlet property="simplifiedBtn" destination="BPe-UB-Oa7" id="ePI-T1-FYl"/>
                         <outlet property="traditionalBtn" destination="zr9-dB-V9r" id="d9l-MT-hqi"/>

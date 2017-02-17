@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let languages = def.valueForKey("AppleLanguages")
         let current = languages?.objectAtIndex(0) as! NSString
         def.setValue(current, forKey: "userLanguage")
+        NSBundle.setLanguage(current as String)
         def.synchronize()//持久化，不加的话不会保存
         self.window?.canBecomeFirstResponder()
         return true
