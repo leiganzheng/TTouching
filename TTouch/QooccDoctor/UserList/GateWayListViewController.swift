@@ -177,7 +177,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             DBManager.shareInstance().updateIp("T_Device" + (arr![1] as! String), name2: "T_DeviceDouble" + (arr![1] as! String),name3: "T_Scene" + (arr![1] as! String))
         }
         
-        self.test()
+        self.test1()
         self.fetchList(ip)
     }
     func paraterData(data:NSData){

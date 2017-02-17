@@ -5,4 +5,6 @@
   Created by leiganzheng on 16/11/16.
   Copyright © 2016年 Private. All rights reserved.
 */
-"loginUser"="姓名";
+"User"="帳號";
+"Password"="密碼";
+"RemberPss"="記住密碼";

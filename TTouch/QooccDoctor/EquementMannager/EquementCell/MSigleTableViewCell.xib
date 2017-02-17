@@ -70,13 +70,22 @@
                             </mask>
                         </variation>
                     </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-LQ-Bha">
+                        <rect key="frame" x="324" y="32" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="GwS-xj-rqO"/>
+                            <constraint firstAttribute="height" constant="31" id="d7b-hB-III"/>
+                        </constraints>
+                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xu1-VR-TQn" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="3dK-2z-RYf"/>
                     <constraint firstItem="oqr-a5-Mna" firstAttribute="leading" secondItem="LdY-UA-65G" secondAttribute="trailing" constant="10" id="8ND-Kt-FUh"/>
+                    <constraint firstItem="mKe-LQ-Bha" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="RRu-ep-9Fs"/>
                     <constraint firstItem="LdY-UA-65G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="49" id="Roq-IJ-tW2"/>
                     <constraint firstAttribute="bottomMargin" secondItem="LdY-UA-65G" secondAttribute="bottom" constant="13" id="Sis-PV-dS4"/>
                     <constraint firstItem="fnl-y0-1Rj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="UJi-fp-3u4"/>
+                    <constraint firstItem="mKe-LQ-Bha" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="24" id="YAe-CO-GU4"/>
                     <constraint firstItem="xu1-VR-TQn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="49" id="ctj-Kl-ezc"/>
                     <constraint firstItem="fnl-y0-1Rj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="deb-6v-sfU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xu1-VR-TQn" secondAttribute="bottom" constant="13" id="gCh-Yn-774"/>
@@ -97,10 +106,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="slider" destination="oqr-a5-Mna" id="72z-wR-0Ei"/>
+                <outlet property="swithc" destination="mKe-LQ-Bha" id="SPJ-KR-X0r"/>
                 <outlet property="titel" destination="fnl-y0-1Rj" id="6PK-13-sjx"/>
                 <outlet property="valueLB" destination="Atr-7Q-L4e" id="tPf-IM-dTr"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="296"/>
+            <point key="canvasLocation" x="-168.5" y="439"/>
         </tableViewCell>
     </objects>
 </document>

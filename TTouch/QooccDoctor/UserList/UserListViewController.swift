@@ -23,6 +23,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
     var tempButton:UIButton?
     private var tableViewController: UITableViewController!
     private var leftVC: LeftViewController!
+    private var tapV: UIView!
     private var rightVC: RightViewController!
     var myTableView: UITableView!
     var picker: UIImagePickerController?
@@ -47,6 +48,13 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
         
+        self.tapV = UIView(frame: CGRectMake(0,0, screenWidth-Width,screenHeight))
+        self.tapV.backgroundColor = UIColor.blackColor()
+        self.tapV.alpha = 0
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            appDelegate.window?.addSubview(self.tapV)
+            self.tapV.hidden = true
+        }
         self.leftVC = LeftViewController.CreateFromStoryboard("Main") as! LeftViewController
         self.leftVC.view.frame = CGRectMake(-screenWidth,Y, Width,screenHeight)
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
@@ -57,6 +65,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.hidesBottomBarWhenPushed = false
+            self.animationWith((self.tapV)!, alpha: 0)
             self.animationWith((self.leftVC)!, x: -screenWidth)
         }
         
@@ -69,6 +78,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
              self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc as! UIViewController, animated: true)
             self.hidesBottomBarWhenPushed = false
+            self.animationWith((self.tapV)!, alpha: 0)
             self.animationWith((self.rightVC)!, x: screenWidth+10)
         }
         
@@ -77,7 +87,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            
+            self?.tapV.frame = CGRectMake(0,0, screenWidth - self!.Width,screenHeight)
+            self?.animationWith((self?.tapV)!, alpha: 0.1)
            self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
             return RACSignal.empty()
         })
@@ -89,6 +100,8 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let searchButton1:UIButton = UIButton(frame: CGRectMake(0, 0, 34, 34))
         searchButton1.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
         searchButton1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
+            self?.tapV.frame = CGRectMake(self!.Width,0, screenWidth - self!.Width,screenHeight)
+            self?.animationWith((self?.tapV)!, alpha: 0.1)
             self?.animationWith((self?.leftVC)!, x: self?.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
             return RACSignal.empty()
             })
@@ -98,19 +111,18 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UserListViewController.tapAction))
         tap.delegate = self
-        self.view.addGestureRecognizer(tap)
+        self.tapV.addGestureRecognizer(tap)
     
     }
     func tapAction() {
         if self.rightVC != nil && self.rightVC.view.frame.origin.x ==  screenWidth-160{
             self.animationWith((self.rightVC)!, x: self.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
-
         }
         if self.leftVC != nil && self.leftVC.view.frame.origin.x ==  0{
              self.animationWith((self.leftVC)!, x: self.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
             
         }
-        
+        self.animationWith((self.tapV)!, alpha: 0)
     }
     //MARK: 重写手势让tableview能点击
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
@@ -315,6 +327,17 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             })
 
         self.navigationItem.titleView = searchButton
+    }
+    func animationWith(vc: UIView,alpha:CGFloat) {
+       UIView.animateWithDuration(0.4, animations: {
+            vc.alpha = alpha
+        }) { (finished) in
+            if finished && alpha == 0 {
+                vc.hidden = true
+            }else{
+                vc.hidden = false
+            }
+        }
     }
     func animationWith(vc: UIViewController,x:CGFloat) {
         UIView .beginAnimations("move", context: nil)

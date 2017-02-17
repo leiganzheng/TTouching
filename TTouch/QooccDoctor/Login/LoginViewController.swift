@@ -47,7 +47,6 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         user.text = "用户:"
         let usView = UIView.init(frame: CGRectMake(0, 0, 80, 20))
 //        self.user.text = NSLocalizedString("loginUser", tableName: "Localization",comment:"jj")
-//        self.user.text = NSLocalizedString("loginUser", comment: "Welcome")
         usView.addSubview(self.user)
         self.accountTextField.leftView = usView
         self.accountTextField.text = "T-Touching"
@@ -91,7 +90,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-//        self.user.text = QNTool.initUserLanguage().localizedStringForKey("loginUser", value: nil, table: "Localization")
+        self.user.text = QNTool.initUserLanguage().localizedStringForKey("User", value: nil, table: "Localization")
     }
     
     // MARK: UITextFieldDelegate
@@ -105,7 +104,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         return false
     }
     func changeLanguage(){
-        self.user.text = QNTool.initUserLanguage().localizedStringForKey("loginUser", value: nil, table: "Localization")
+        self.user.text = QNTool.initUserLanguage().localizedStringForKey("User", value: nil, table: "Localization")
     }
     // MARK: 登录
     @IBAction func login(sender: AnyObject) {

@@ -48,22 +48,34 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
         }
         
         button.setTitle(self.data![indexPath.row] as? String, forState: UIControlState.Normal)
-        if (device?.work_status)! == 97 {
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        let status = DBManager.shareInstance().selectStatus(device!.address!)
+        if status == 97 && indexPath.row == 0{
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        }else if (device?.work_status)! == 98 {
+        }else if status == 98 && indexPath.row == 1 {
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        }else if (device?.work_status)! == 99 {
+        }else if status == 99 && indexPath.row == 2{
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
         }
-        else if (device?.work_status)! == 100 {
+        else if status == 100 && indexPath.row == 3{
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
         }
-        else if (device?.work_status)! == 110 {
+        else if status == 110 && indexPath.row == 4{
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        }else if (device?.work_status)! == 111 {
+        }else if status == 111 && indexPath.row == 5{
             button.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        }else{
-                button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        }else if status == 17 && indexPath.row == 0{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if status == 18 && indexPath.row == 1{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if status == 19 && indexPath.row == 2{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if status == 20 && indexPath.row == 3{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if status == 21 && indexPath.row == 4{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        }else if status == 31 && indexPath.row == 5{
+            button.setTitleColor(UIColor.blueColor(), forState: .Normal)
         }
 
         cell.contentView.addSubview(button)
@@ -118,60 +130,74 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
             let command:Int = 36
             let dev_addr = Int(device!.address!)
             let dev_type:Int = device!.dev_type!
+            var value = device!.work_status!
             if indexPath.row == 0 {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":17]
+                value = 17
                 QNTool.openSence(dict)
             }else if(indexPath.row == 1) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":18]
+                value = 18
                 QNTool.openSence(dict)
             }else if(indexPath.row == 2) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":19]
-                
+                value = 19
                 QNTool.openSence(dict)
             }else if(indexPath.row == 3) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":20]
-                
+                value = 20
                 QNTool.openSence(dict)
                 
             }else if(indexPath.row == 4) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":21]
-                
+                value = 21
                 QNTool.openSence(dict)
             }else if(indexPath.row == 5) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":31]
-                
+                value = 31
                 QNTool.openSence(dict)
             }
-            
+            DBManager.shareInstance().updateStatus(value, type: device!.address!)
+            if  vc is UserListViewController {
+                let temp = vc as! UserListViewController
+                temp.myTableView.reloadData()
+            }
         }else if(self.device?.dev_type == 2){
             let command:Int = 36
             let dev_addr = Int(device!.address!)
             let dev_type:Int = device!.dev_type!
+            var value = device!.work_status!
             if indexPath.row == 0 {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":97]
+                value = 97
                 QNTool.openSence(dict)
             }else if(indexPath.row == 1) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":98]
+                value = 98
                 QNTool.openSence(dict)
             }else if(indexPath.row == 2) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":99]
-                
+                value = 99
                 QNTool.openSence(dict)
             }else if(indexPath.row == 3) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":100]
-                
+                value = 100
                 QNTool.openSence(dict)
                 
             }else if(indexPath.row == 4) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":110]
-                
+                value = 110
                 QNTool.openSence(dict)
             }else if(indexPath.row == 5) {
                 let dict = ["command": command, "dev_addr" : dev_addr!, "dev_type": dev_type, "work_status":111]
-                
+                value = 111
                 QNTool.openSence(dict)
             }
-            
+            DBManager.shareInstance().updateStatus(value, type: device!.address!)
+            if  vc is UserListViewController {
+                let temp = vc as! UserListViewController
+                temp.myTableView.reloadData()
+            }
         }
 
     }

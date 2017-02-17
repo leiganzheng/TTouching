@@ -116,6 +116,8 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 cell.valueLB.text = "\((d.work_status)!)%"
                 cell.slider.addTarget(self, action:#selector(SixPaternViewController.valueChanged(_:)), forControlEvents: .ValueChanged)
                 cell.slider.value = Float((d.work_status)!)
+                cell.swithc.on = d.work_status != 0 
+                cell.swithc.addTarget(self, action: #selector(SixPaternViewController.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
                 return cell
             }else if d.dev_type == 4 || d.dev_type == 9{//9双回路调光控制端(旧版);双回路调光控制端
                 let cellIdentifier = "MDoubleTableViewCell"
@@ -476,6 +478,25 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         
     }
     //MARK:- Private Method
+    func sliderValueChanged(switchBtn: UISwitch) {
+        let tempCell = switchBtn.superview?.superview as! MSigleTableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        if switchBtn.on {
+            if  tempCell.slider.value == 0{
+                QNTool.openLight(d, value: 100)
+                tempCell.slider.value = 100
+                tempCell.valueLB.text = "100%"
+            }else{
+                QNTool.openLight(d, value: Int(tempCell.slider.value))
+            }
+            
+        }else{
+            QNTool.openLight(d, value: 0)
+            tempCell.slider.value = 0
+            tempCell.valueLB.text = "0%"
+        }
+    }
     func valueChanged(slider: UISlider) {
         /*"dev_addr": 38585,
          "dev_type": 3,

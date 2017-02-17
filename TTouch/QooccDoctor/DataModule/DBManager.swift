@@ -319,6 +319,29 @@ class DBManager: NSObject {
         dbBase.close();
         
     }
+    // MARK: >> 查
+    func selectStatus(type:String) -> Int{
+        dbBase.open();
+        
+        if let rs = dbBase.executeQuery("select address,work_status from \(self.TableOneName)", withArgumentsInArray: nil) {
+            while rs.next() {
+                
+                let address:String = rs.stringForColumn("address")
+                let work_status:Int = Int(rs.intForColumn("work_status"))
+                if address == type {
+                    return work_status
+                }
+            }
+        } else {
+            
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+
+        dbBase.close();
+        return 0
+    }
+
     // MARK: >> 改
     func updateStatus1(status:Int,type:String) {
         dbBase.open();
