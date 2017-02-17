@@ -32,8 +32,12 @@ class RightViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.myTableView.backgroundColor = UIColor.clearColor()
         self.myTableView?.backgroundView = UIImageView(image: UIImage(named: "right"))
         self.view.addSubview(self.myTableView!)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: "changeLanguage", object: nil)
     }
-    
+    func change() {
+        self.titles = [NSLocalizedString("登出", tableName: "Localization",comment:"jj"),NSLocalizedString("语言", tableName: "Localization",comment:"jj"),NSLocalizedString("管理", tableName: "Localization",comment:"jj"),NSLocalizedString("定时", tableName: "Localization",comment:"jj"),NSLocalizedString("摇摇", tableName: "Localization",comment:"jj"),NSLocalizedString("定位", tableName: "Localization",comment:"jj"),NSLocalizedString("语音", tableName: "Localization",comment:"jj"),NSLocalizedString("版本", tableName: "Localization",comment:"jj")]
+        self.myTableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

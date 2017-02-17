@@ -19,12 +19,15 @@
 "物理地址"="Physical Address";
 "固件版本"="Firmware Version";
 "网关详情"="Gateway details";
+"主页"="Home";
+"收藏"="Collection";
 
 "拍照"="Take Picture";
 "从手机相册选择"="Choose From The Picture Albums";
 "取消"="Cancel";
-"确定"＝"Confirm";
-"修改名字"＝"Modify name";
+"确定"="Confirm";
+"修改名字"="Modify name";
+"修改密码"="Modify password";
 
 "S1 场景一"="S1 Scene 1";
 "S2 场景二"="S2 Scene 2";
@@ -95,8 +98,16 @@
 "请输入标签"="Please enter a label";
 "选择区域"="Select area";
 
-
-
+"保存成功，可以使用摇一摇了"="Save successfully, you can use a shake";
+"请开启摇一摇、选择区域和场景"="Please turn the shake, select the area and the scene";
+"摇一摇开启"="shake a shake to open";
+"摇一摇关闭"="shake one roll off";
+"已取消"="cancelled";
+"取消收藏失败"="failed to collect";
+"功能升级中..."="Function upgrade...";
+"情景选择"="Scenario selection";
+"原密码"="original password";
+"新密码"="new password";
 
 
 

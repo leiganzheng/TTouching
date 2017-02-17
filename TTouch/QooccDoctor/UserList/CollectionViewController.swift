@@ -16,7 +16,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        self.title = NSLocalizedString("收藏", tableName: "Localization",comment:"jj")
         self.myTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 36)
         self.myTableView?.delegate = self
         self.myTableView?.dataSource = self
@@ -61,7 +61,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
             }
             tableView.separatorStyle = .None
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
-            lb.text = "暂无数据"
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)
             return cell
@@ -106,7 +106,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
                 v.tag = indexPath.row + 100
                 v.device = d
                 v.flag = 0
-                v.data = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+                v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
                 cell.contentView.addSubview(v)
                 cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
                 cell.addLine(16, y: 188, width: screenWidth-32, height: 1)

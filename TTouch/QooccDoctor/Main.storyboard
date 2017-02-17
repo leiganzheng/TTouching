@@ -184,6 +184,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="定位" id="6wx-1m-e38"/>
+                    <connections>
+                        <outlet property="lb" destination="Cs2-ry-tOB" id="hve-NW-d4i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aey-Gq-mkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,6 +222,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="语音" id="6GR-cr-4xe"/>
+                    <connections>
+                        <outlet property="lb" destination="QIv-j3-vMN" id="Zy9-LC-TcD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="que-oR-6zc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,21 +259,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="情景选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-qk-fpl">
-                                <rect key="frame" x="6" y="306" width="102" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="83q-AF-csk"/>
-                                    <constraint firstAttribute="height" constant="21" id="SGk-mt-BT1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="区域选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9I-xn-iNX">
                                 <rect key="frame" x="6" y="107" width="102" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4GY-Xv-fH3"/>
-                                    <constraint firstAttribute="width" constant="102" id="U8e-Df-sHg"/>
+                                    <constraint firstAttribute="width" constant="150" id="U8e-Df-sHg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -375,6 +371,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="情景选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-qk-fpl">
+                                <rect key="frame" x="6" y="306" width="102" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="83q-AF-csk"/>
+                                    <constraint firstAttribute="height" constant="21" id="SGk-mt-BT1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -394,8 +400,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="摇一摇" id="cuv-xG-woG"/>
                     <connections>
+                        <outlet property="lbzone" destination="H9I-xn-iNX" id="39m-Up-XDV"/>
                         <outlet property="onOfOff" destination="YUF-iD-x4P" id="mtJ-Tp-e1B"/>
                         <outlet property="sceneCollectionView" destination="wXP-4K-EQX" id="Rjk-gN-XwD"/>
+                        <outlet property="sceneLb" destination="P6g-qk-fpl" id="ctQ-0n-9Us"/>
                         <outlet property="zoneCollectionView" destination="OPf-fy-VlH" id="qeG-gy-jxr"/>
                     </connections>
                 </viewController>
@@ -548,12 +556,12 @@
                                     <constraint firstItem="yD9-4W-lPy" firstAttribute="top" secondItem="wwg-9a-EIx" secondAttribute="bottom" id="uXI-Y4-miS"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-kv-VDG">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-kv-VDG">
                                 <rect key="frame" x="250" y="268" width="61" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Cei-SB-StU"/>
-                                    <constraint firstAttribute="width" constant="61" id="InK-Aa-iGd"/>
+                                    <constraint firstAttribute="width" constant="150" id="InK-Aa-iGd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="修改密码">
@@ -597,6 +605,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="login" destination="qOl-AX-VjN" id="ZTo-93-z3b"/>
+                        <outlet property="modif" destination="Ngd-kv-VDG" id="L5X-tg-sXe"/>
+                        <outlet property="pas" destination="yD9-4W-lPy" id="ezK-X9-jzT"/>
                         <outlet property="passWord" destination="riQ-4S-rcy" id="RqY-da-FUL"/>
                     </connections>
                 </viewController>
@@ -619,16 +630,6 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W43-7y-0Ek">
                                 <rect key="frame" x="0.0" y="156" width="320" height="145"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suF-sW-8L0">
-                                        <rect key="frame" x="12" y="0.0" width="55" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="oZG-ZB-nZ1"/>
-                                            <constraint firstAttribute="width" constant="55" id="u7O-sX-CVQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUv-ri-3G9">
                                         <rect key="frame" x="0.0" y="49" width="320" height="1"/>
                                         <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -696,6 +697,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suF-sW-8L0">
+                                        <rect key="frame" x="12" y="0.0" width="55" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="oZG-ZB-nZ1"/>
+                                            <constraint firstAttribute="width" constant="55" id="u7O-sX-CVQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -755,9 +766,13 @@
                     <navigationItem key="navigationItem" id="Orn-gT-hkw"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="mpass" destination="ZM1-4c-2Xq" id="cDi-pg-RYx"/>
                         <outlet property="newMpas" destination="TCs-za-4WI" id="567-hE-wxF"/>
+                        <outlet property="newP" destination="s6z-wm-0OL" id="179-dl-ACj"/>
                         <outlet property="newPas" destination="LLg-Ps-vc2" id="AoN-Bu-BaL"/>
+                        <outlet property="oldp" destination="suF-sW-8L0" id="Ki0-YJ-fFt"/>
                         <outlet property="oldpass" destination="1NY-zX-gdw" id="Cmn-7Q-ImI"/>
+                        <outlet property="saveB" destination="Zgn-ho-grw" id="seS-dc-Tvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbB-wl-RJy" userLabel="First Responder" sceneMemberID="firstResponder"/>

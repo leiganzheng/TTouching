@@ -10,8 +10,11 @@ import UIKit
 
 class VoiceViewController: UIViewController,QNInterceptorProtocol {
 
+    @IBOutlet weak var lb: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        lb.text = NSLocalizedString("功能升级中...", tableName: "Localization",comment:"jj")
+        self.title = NSLocalizedString("语音", tableName: "Localization",comment:"jj")
         // Do any additional setup after loading the view.
     }
 

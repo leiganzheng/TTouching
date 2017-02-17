@@ -29,8 +29,12 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         
         self.myTableView?.backgroundView = UIImageView(image: UIImage(named: "left"))
         self.view.addSubview(self.myTableView!)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: "changeLanguage", object: nil)
     }
-
+    func change() {
+        self.titles = [NSLocalizedString("灯光", tableName: "Localization",comment:"jj"),NSLocalizedString("窗帘", tableName: "Localization",comment:"jj"),NSLocalizedString("动作", tableName: "Localization",comment:"jj"),NSLocalizedString("空调", tableName: "Localization",comment:"jj"),NSLocalizedString("监视", tableName: "Localization",comment:"jj"),NSLocalizedString("保全", tableName: "Localization",comment:"jj"),NSLocalizedString("音乐", tableName: "Localization",comment:"jj"),NSLocalizedString("影视", tableName: "Localization",comment:"jj")]
+        self.myTableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

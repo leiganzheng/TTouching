@@ -33,6 +33,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
         self.view.backgroundColor = defaultBackgroundColor
         // 让导航栏支持右滑返回功能 
         self.navigationController?.navigationBar.translucent = false
@@ -88,7 +89,11 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.tapV.frame = CGRectMake(0,0, screenWidth - self!.Width,screenHeight)
-            self?.animationWith((self?.tapV)!, alpha: 0.1)
+            if self?.rightVC.view.frame.origin.x != screenWidth-160 {
+                self?.animationWith((self?.tapV)!, alpha: 0.1)
+            }else{
+                self?.animationWith((self?.tapV)!, alpha: 0)
+            }
            self?.animationWith((self?.rightVC)!, x: self?.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
             return RACSignal.empty()
         })
@@ -101,7 +106,11 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         searchButton1.setImage(UIImage(named: "navigation_Menu_icon"), forState: UIControlState.Normal)
         searchButton1.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             self?.tapV.frame = CGRectMake(self!.Width,0, screenWidth - self!.Width,screenHeight)
-            self?.animationWith((self?.tapV)!, alpha: 0.1)
+            if self?.leftVC.view.frame.origin.x != 0 {
+                self?.animationWith((self?.tapV)!, alpha: 0.1)
+            }else{
+                self?.animationWith((self?.tapV)!, alpha: 0)
+            }
             self?.animationWith((self?.leftVC)!, x: self?.leftVC.view.frame.origin.x == 0 ? -screenWidth : 0)
             return RACSignal.empty()
             })

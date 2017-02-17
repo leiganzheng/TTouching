@@ -12,6 +12,10 @@ import CocoaAsyncSocket
 class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
 
 
+    @IBOutlet weak var oldp: UILabel!
+    @IBOutlet weak var mpass: UILabel!
+    @IBOutlet weak var newP: UILabel!
+    @IBOutlet weak var saveB: UIButton!
     var sockertManger:SocketManagerTool!
     
     @IBOutlet weak var newPas: UITextField!
@@ -20,6 +24,10 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("修改设备管理密码", tableName: "Localization",comment:"jj")
+        self.oldp.text = NSLocalizedString("原密码", tableName: "Localization",comment:"jj")
+        self.newP.text = NSLocalizedString("新密码", tableName: "Localization",comment:"jj")
+        self.mpass.text = NSLocalizedString("新密码", tableName: "Localization",comment:"jj")
+        self.saveB.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         self.sockertManger = SocketManagerTool.shareInstance()
     }
 

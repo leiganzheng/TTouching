@@ -41,8 +41,8 @@ class QNTabBarController: UITabBarController {
         self.tabBar.translucent = false
         self.tabBar.barTintColor = defaultLineColor
         self.tabBar.tintColor = UINavigationBar.appearance().tintColor
-//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [defaultLineColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
-//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [ appThemeColor, UIFont.systemFontOfSize(12)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
+//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UINavigationBar.appearance().tintColor, UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
+//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UINavigationBar.appearance().tintColor, UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
 
         // 图标配置
         if let _ = self.tabBar.items {

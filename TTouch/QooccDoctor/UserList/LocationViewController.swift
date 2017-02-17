@@ -10,8 +10,11 @@ import UIKit
 
 class LocationViewController: UIViewController,QNInterceptorProtocol{
 
+    @IBOutlet weak var lb: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = NSLocalizedString("定位", tableName: "Localization",comment:"jj")
+         lb.text = NSLocalizedString("功能升级中...", tableName: "Localization",comment:"jj")
         // Do any additional setup after loading the view.
     }
 

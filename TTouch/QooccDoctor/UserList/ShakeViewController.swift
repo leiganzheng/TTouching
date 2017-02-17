@@ -12,6 +12,8 @@ import ReactiveCocoa
 class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
 
 
+    @IBOutlet weak var lbzone: UILabel!
+    @IBOutlet weak var sceneLb: UILabel!
     @IBOutlet weak var zoneCollectionView: UICollectionView!
     @IBOutlet weak var sceneCollectionView: UICollectionView!
     @IBOutlet weak var onOfOff: UISwitch!
@@ -28,19 +30,21 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     override func viewDidLoad() {
        
         super.viewDidLoad()
-
+        self.title = NSLocalizedString("摇摇", tableName: "Localization",comment:"jj")
+        lbzone.text = NSLocalizedString("选择区域", tableName: "Localization",comment:"jj")
+        sceneLb.text = NSLocalizedString("情景选择", tableName: "Localization",comment:"jj")
         //Right
         let rightBarButton = UIView(frame: CGRectMake(0, 0, 60, 60)) //（在外层在包一个View，来缩小点击范围，不然和菜单栏在一起和容易误点）
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 60, 60))
-        searchButton.setTitle("保存", forState: .Normal)
+        searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             if self.onOfOff.on && (self.zoneStr != "") && (self.scene != 0) && (self.flagon == true){
                 saveObjectToUserDefaults("KZone", value: self.zoneStr)
                 saveObjectToUserDefaults("KScene", value: self.scene)
                 saveObjectToUserDefaults("KSwitch", value: self.flagon)
-                QNTool.showPromptView("保存成功，可以使用摇一摇了")
+                QNTool.showPromptView(NSLocalizedString("保存成功，可以使用摇一摇了", tableName: "Localization",comment:"jj"))
             }else{
-                QNTool.showPromptView("请开启摇一摇、选择区域和场景")
+                QNTool.showPromptView(NSLocalizedString("请开启摇一摇、选择区域和场景", tableName: "Localization",comment:"jj"))
             }
             return RACSignal.empty()
             })
@@ -51,7 +55,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         
         
         self.dataArr = NSMutableArray()
-        self.sceneArr = ["s1  迎宾模式","s2  主灯气氛","s3  影音欣赏","s4  浪漫情调","s5  全开模式","s6  关闭模式"]
+        self.sceneArr = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
         self.sceneArrdata = [97,98,99,100,110,111]
         self.flags1 = [false,false,false,false,false,false]
         if getObjectFromUserDefaults("KSwitch") != nil {
@@ -187,9 +191,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
 //        saveObjectToUserDefaults("KSwitch", value: sender.on)
         self.flagon = sender.on
         if sender.on {
-            QNTool.showPromptView("摇一摇开启")
+            QNTool.showPromptView(NSLocalizedString("摇一摇开启", tableName: "Localization",comment:"jj"))
         }else{
-            QNTool.showPromptView("摇一摇关闭")
+            QNTool.showPromptView(NSLocalizedString("摇一摇关闭", tableName: "Localization",comment:"jj"))
         }
         
     }

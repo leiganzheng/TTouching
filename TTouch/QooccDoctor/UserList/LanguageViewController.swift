@@ -17,7 +17,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
     var flags:NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "语言"
+        self.title = NSLocalizedString("语言", tableName: "Localization",comment:"jj")
         self.titles = ["简体中文","繁体中文","English"]
         self.language = ["zh-Hans","zh-Hant","en"]
         let l = QNTool.userLanguage()
@@ -27,6 +27,8 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
              self.flags = [false,true,false]
         }else if (l == "en"){
              self.flags = [false,false,true]
+        }else{
+            self.flags = [false,false,true]
         }
         
     }
@@ -74,7 +76,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         let lanuageStr = self.language[indexPath.row] as! NSString
         QNTool.setUserLanguage(lanuageStr)
         //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
-//        NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
         
     }
 
