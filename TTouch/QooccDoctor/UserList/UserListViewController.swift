@@ -33,7 +33,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
+        
         self.view.backgroundColor = defaultBackgroundColor
         // 让导航栏支持右滑返回功能 
         self.navigationController?.navigationBar.translucent = false
@@ -327,7 +327,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 200, 44))
 //        searchButton.setTitle("晴26℃|PM2.5:20", forState: UIControlState.Normal)
-//        searchButton.setTitle("Hi~Jacky", forState: UIControlState.Normal)
+        searchButton.setTitle(NSLocalizedString("主页", tableName: "Localization",comment:"jj"), forState: UIControlState.Normal)
         
 //        searchButton.setImage(UIImage(named: "navigation_Setup_icon"), forState: UIControlState.Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in

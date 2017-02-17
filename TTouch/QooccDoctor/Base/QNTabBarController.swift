@@ -41,16 +41,16 @@ class QNTabBarController: UITabBarController {
         self.tabBar.translucent = false
         self.tabBar.barTintColor = defaultLineColor
         self.tabBar.tintColor = UINavigationBar.appearance().tintColor
-//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UINavigationBar.appearance().tintColor, UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
-//        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UINavigationBar.appearance().tintColor, UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UIColor.blackColor(), UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objects: [UIColor(red: 141/255.0, green: 110/255.0, blue: 99/255.0, alpha: 1.0), UIFont.systemFontOfSize(10)], forKeys: [NSForegroundColorAttributeName,NSFontAttributeName]) as? [String : AnyObject], forState: .Selected)
 
         // 图标配置
         if let _ = self.tabBar.items {
-            self.itemConfig(QNTabBarItem.Main)
-            self.itemConfig(QNTabBarItem.Location)
-            self.itemConfig(QNTabBarItem.Favite)
-            self.itemConfig(QNTabBarItem.Voice)
-            self.itemConfig(QNTabBarItem.Shake)
+            self.itemConfig(QNTabBarItem.Main, title: NSLocalizedString("主页", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Location, title: NSLocalizedString("定位", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Favite, title: NSLocalizedString("收藏", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Voice, title: NSLocalizedString("语音", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Shake, title: NSLocalizedString("摇摇", tableName: "Localization",comment:"jj"))
         }
 ////        self.messageCountChanged()
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("messageCountChanged"), name: QNNotificationMessageCountChanged, object: nil)
@@ -75,13 +75,14 @@ class QNTabBarController: UITabBarController {
     
     :returns: 被配置的Item
     */
-    private func itemConfig(qnItem: QNTabBarItem, haveDot: Bool = false) -> UITabBarItem? {
+    private func itemConfig(qnItem: QNTabBarItem, haveDot: Bool = false,title:NSString) -> UITabBarItem? {
         if let item = self.tabBar.items?[qnItem.rawValue] {
             let imageName = qnItem.imageName
             if let image = UIImage(named: imageName + "1"),
                 let selectedImage = UIImage(named: imageName + "2") {
                 if !haveDot {
                     item.image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.title = title as String
                     item.selectedImage = selectedImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 }
                 else {
@@ -93,7 +94,9 @@ class QNTabBarController: UITabBarController {
         }
         return nil
     }
-    
+    func refrushItem(){
+        
+    }
     private func imageAddDotView(image: UIImage) -> UIImage {
         let imageView = UIImageView(image: image)
         
