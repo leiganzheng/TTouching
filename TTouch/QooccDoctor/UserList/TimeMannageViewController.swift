@@ -11,6 +11,7 @@ import ReactiveCocoa
 
 class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var settLB: UILabel!
     @IBOutlet weak var myTableView: UITableView!
     var data:NSMutableArray!
     override func viewDidLoad() {

@@ -16,6 +16,7 @@
 		5C55FAE2E3D867D24CF06ECC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0462F1F9121DDCE3F3E669 /* Pods.framework */; };
 		716F20191D0F062900E42F06 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F20181D0F062900E42F06 /* SecurityViewController.swift */; };
 		71744F381D636C3F0010D7D0 /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 71744F371D636C3F0010D7D0 /* glass.wav */; };
+		718D006D1E572578008912F0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D006C1E572578008912F0 /* SettingViewController.swift */; };
 		719E019B1D4A599700E3161D /* SocketManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719E019A1D4A599700E3161D /* SocketManagerTool.swift */; };
 		71B797F71DFBDF5D0041E0A7 /* NSData+THCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B797F61DFBDF5D0041E0A7 /* NSData+THCategory.m */; };
 		71BEE5661CFC989B00087201 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEE5651CFC989B00087201 /* CollectionViewController.swift */; };
@@ -181,6 +182,7 @@
 		708B5DB2985A7A2B2E8DC727 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		716F20181D0F062900E42F06 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		71744F371D636C3F0010D7D0 /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
+		718D006C1E572578008912F0 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		719E019A1D4A599700E3161D /* SocketManagerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManagerTool.swift; sourceTree = "<group>"; };
 		71B797F51DFBDF5D0041E0A7 /* NSData+THCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+THCategory.h"; sourceTree = "<group>"; };
 		71B797F61DFBDF5D0041E0A7 /* NSData+THCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+THCategory.m"; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 				71C2E0451D392D5600B1DCC4 /* LocationViewController.swift */,
 				71C2E0471D392DDD00B1DCC4 /* VoiceViewController.swift */,
 				71C2E0491D3FBE6700B1DCC4 /* TimeSelectedViewController.swift */,
+				718D006C1E572578008912F0 /* SettingViewController.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				BB1063E81D4B49960044EDB4 /* yudpsocket.swift in Sources */,
 				BB38E8361D2CDE8000190A49 /* ChangeNickViewController.swift in Sources */,
 				BB319C2C1D2646770071F443 /* YaoDBModel.swift in Sources */,
+				718D006D1E572578008912F0 /* SettingViewController.swift in Sources */,
 				BB99BA661D63EEAB0079359D /* HuiLuSelectViewController.swift in Sources */,
 				BB99BA731D63FC6D0079359D /* MSixTableViewCell.swift in Sources */,
 				71D76E3C1D24191E000E0A34 /* ThreeOrSixViewController.swift in Sources */,

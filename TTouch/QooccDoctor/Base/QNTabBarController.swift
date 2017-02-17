@@ -95,7 +95,14 @@ class QNTabBarController: UITabBarController {
         return nil
     }
     func refrushItem(){
-        
+        if let _ = self.tabBar.items {
+            self.itemConfig(QNTabBarItem.Main, title: NSLocalizedString("主页", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Location, title: NSLocalizedString("定位", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Favite, title: NSLocalizedString("收藏", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Voice, title: NSLocalizedString("语音", tableName: "Localization",comment:"jj"))
+            self.itemConfig(QNTabBarItem.Shake, title: NSLocalizedString("摇摇", tableName: "Localization",comment:"jj"))
+        }
+
     }
     private func imageAddDotView(image: UIImage) -> UIImage {
         let imageView = UIImageView(image: image)

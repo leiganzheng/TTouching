@@ -42,17 +42,17 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.imageView.image = UIImage(named: "LOGO")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.imageView.tintColor = appThemeColor
         self.imageView.tintAdjustmentMode = .Normal
-        self.remberPBtn.setTitle(NSLocalizedString("记住密码", tableName: "Localization",comment:"jj"), forState: .Normal)
-        self.loginBtn.setTitle(NSLocalizedString("登入", tableName: "Localization",comment:"jj"), forState: .Normal)
-        self.registerBtn.setTitle(NSLocalizedString("注册", tableName: "Localization",comment:"jj"), forState: .Normal)
-        self.noLoginBtn.setTitle(NSLocalizedString("无法登录", tableName: "Localization",comment:"jj"), forState: .Normal)
+//        self.remberPBtn.setTitle(NSLocalizedString("记住密码", tableName: "Localization",comment:"jj"), forState: .Normal)
+//        self.loginBtn.setTitle(NSLocalizedString("登入", tableName: "Localization",comment:"jj"), forState: .Normal)
+//        self.registerBtn.setTitle(NSLocalizedString("注册", tableName: "Localization",comment:"jj"), forState: .Normal)
+//        self.noLoginBtn.setTitle(NSLocalizedString("无法登录", tableName: "Localization",comment:"jj"), forState: .Normal)
         RegisterViewController.configTextField(self.accountTextField)
         self.accountTextField.text = g_Account
         
         self.user = UILabel(frame: CGRectMake(0, 0, 70, 20))
 //        user.text = "用户:"
         let usView = UIView.init(frame: CGRectMake(0, 0, 85, 20))
-        self.user.text = NSLocalizedString("用户", tableName: "Localization",comment:"jj") + ":"
+//        self.user.text = NSLocalizedString("用户", tableName: "Localization",comment:"jj") + ":"
     
         usView.addSubview(self.user)
         self.accountTextField.leftView = usView
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.pass = UILabel(frame: CGRectMake(0, 0, 80, 20))
 //        pass.text = "密码:"
         let usView1 = UIView.init(frame: CGRectMake(0, 0, 85, 20))
-        self.pass.text = NSLocalizedString("密码", tableName: "Localization",comment:"jj") + ":"
+//        self.pass.text = NSLocalizedString("密码", tableName: "Localization",comment:"jj") + ":"
         usView1.addSubview(self.pass)
         self.passwordTextField.leftView = usView1
         self.passwordTextField.text = "T-Touching"
@@ -83,18 +83,21 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         }
         self.view.addGestureRecognizer(tap)
         
-        let lArray = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages")
-        let currentLanguage = lArray?.objectAtIndex(0) as! String
-        self.settingLangue(currentLanguage)
+       
          IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
+        self.resflush()
         
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+
+        let l = QNTool.userLanguage()
+        self.settingLangue(l as String)
+
     }
     
     // MARK: UITextFieldDelegate
@@ -167,18 +170,31 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.EngBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
         self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
         self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        QNTool.setUserLanguage("en")
+        self.resflush()
     }
     @IBAction func simplifiedAction(sender: AnyObject) {
         self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
         self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
         self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        QNTool.setUserLanguage("zh-Hans")
+        self.resflush()
     }
     @IBAction func traditionalAction(sender: AnyObject) {
         self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
         self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
         self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        QNTool.setUserLanguage("zh-Hant")
+        self.resflush()
     }
-
+    func resflush(){
+        self.remberPBtn.setTitle(NSLocalizedString("记住密码", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.loginBtn.setTitle(NSLocalizedString("登入", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.registerBtn.setTitle(NSLocalizedString("注册", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.noLoginBtn.setTitle(NSLocalizedString("无法登录", tableName: "Localization",comment:"jj"), forState: .Normal)
+        self.user.text = NSLocalizedString("用户", tableName: "Localization",comment:"jj") + ":"
+        self.pass.text = NSLocalizedString("密码", tableName: "Localization",comment:"jj") + ":"
+    }
     @IBAction func loginAction(sender: AnyObject) {
         let actionSheet = UIActionSheet(title: nil, delegate: nil, cancelButtonTitle: "取消", destructiveButtonTitle: nil)
         actionSheet.addButtonWithTitle("找回登入密码")
@@ -195,12 +211,12 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     }
     private func settingLangue(langue: String){
 //        zh-Hans-CN、zh-Hant-CN、en-CN
-        if langue == "zh-Hans-CN" {
+        if langue == "zh-Hans" {
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
 
-        }else if langue == "zh-Hant-CN" {
+        }else if langue == "zh-Hant" {
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)

@@ -11,9 +11,10 @@ import IQKeyboardManager
 let kKeyIsFirstStartApp = ("IsFirstStartApp" as NSString).encrypt(g_SecretKey) // 第一次启动判断的Key
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate,UIAlertViewDelegate{
 
     var window: UIWindow?
+    var inder:String?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("\n<\(APP_NAME)> 开始运行\nversion: \(APP_VERSION)(\(APP_VERSION_BUILD))\nApple ID: \(APP_ID)\nBundle ID: \(APP_BUNDLE_ID)\n")
         // Override point for customization after application launch.
@@ -43,7 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let def = NSUserDefaults.standardUserDefaults()
         let languages = def.valueForKey("AppleLanguages")
         let current = languages?.objectAtIndex(0) as! NSString
-        def.setValue(current, forKey: "userLanguage")
+        let temp = def.valueForKey("userLanguage")
+        if temp == nil {
+            def.setValue(current, forKey: "userLanguage")
+        }
+        
         NSBundle.setLanguage(current as String)
         def.synchronize()//持久化，不加的话不会保存
         self.window?.canBecomeFirstResponder()
@@ -67,13 +72,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         if application.applicationState == .Active {
             if let dict = notification.userInfo {
                 let identifier = dict["identifier"] as! String
-                
-                let alert = UIAlertView(title: "闹钟", message: "是时候看看闹钟了"+identifier, delegate: nil, cancelButtonTitle: "OK")
+                self.inder = identifier
+                let alert = UIAlertView(title: NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), message: NSLocalizedString("是时候看看闹钟了", tableName: "Localization",comment:"jj")+identifier, delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"),otherButtonTitles:"OK")
+                alert.delegate = self
                 alert.show()
             }
         }
     }
-    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            var dev_addr = 0
+            var status = 97
+            if getObjectFromUserDefaults("KZoneS" + self.inder!) != nil {
+                let zoneStr = getObjectFromUserDefaults("KZoneS" + self.inder!) as! String
+                dev_addr = Int(zoneStr)!
+            }
+            if getObjectFromUserDefaults("KSceneS" + self.inder!) != nil {
+                let scene = getObjectFromUserDefaults("KSceneS" + self.inder!) as! Int
+                status = scene
+            }
+            let command:Int = 36
+            let dict = ["command": command, "dev_addr" : dev_addr, "dev_type": 2, "work_status":status]
+            QNTool.openSence(dict)
+            
+
+        }
+    }
 
 }
 

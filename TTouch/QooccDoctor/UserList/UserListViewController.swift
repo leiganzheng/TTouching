@@ -33,7 +33,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
         self.view.backgroundColor = defaultBackgroundColor
         // 让导航栏支持右滑返回功能 
         self.navigationController?.navigationBar.translucent = false
@@ -121,8 +121,14 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         let tap = UITapGestureRecognizer(target: self, action: #selector(UserListViewController.tapAction))
         tap.delegate = self
         self.tapV.addGestureRecognizer(tap)
-    
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: "changeLanguage", object: nil)
     }
+    func change() {
+        let tabVc = self.tabBarController as! QNTabBarController
+        tabVc.refrushItem()
+        self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
+    }
+
     func tapAction() {
         if self.rightVC != nil && self.rightVC.view.frame.origin.x ==  screenWidth-160{
             self.animationWith((self.rightVC)!, x: self.rightVC.view.frame.origin.x == screenWidth-160 ? screenWidth+10 : screenWidth-160)
@@ -335,7 +341,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
             return RACSignal.empty()
             })
 
-        self.navigationItem.titleView = searchButton
+//        self.navigationItem.titleView = searchButton
     }
     func animationWith(vc: UIView,alpha:CGFloat) {
        UIView.animateWithDuration(0.4, animations: {

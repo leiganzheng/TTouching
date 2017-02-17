@@ -46,10 +46,19 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            self?.handleConfirmButtonTapped()
-            self?.dismissViewControllerAnimated(true, completion: { 
-                self?.bock!((self?.targetAlarm)!)
-            })
+//            let zoneStr = getObjectFromUserDefaults("KZoneS" + (self?.targetAlarm.identifier!)!) as! NSString
+            
+            if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
+                self!.handleConfirmButtonTapped()
+               self!.dismissViewControllerAnimated(true, completion: {
+                    self?.bock!((self?.targetAlarm)!)
+                })
+            }else{
+                QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
+//
+            }
+            
+           
             
             return RACSignal.empty()
             })
@@ -116,6 +125,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                     self.datePicker!.date = NSDate()
                 }
             }
+            self.makeC()
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
 
@@ -152,9 +162,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 }
                 
                 let flagLb = UILabel(frame: CGRectMake(screenWidth-44-44, 0, 44, 44))
+                flagLb.textAlignment = .Right
                 flagLb.tag = 100;
                 if indexPath.row == 1 {
-                    flagLb.text = "闹钟1"
+                    flagLb.text = self.targetAlarm.descriptionText
                 }
                 cell.contentView.addSubview(flagLb)
                 
@@ -174,6 +185,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.makeC()
         if indexPath.section == 1 && indexPath.row == 0 {
             let vc = TimeSelectedViewController()
             vc.targetAlarm = self.targetAlarm
@@ -192,7 +204,9 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.section == 1 && indexPath.row == 2 {
-            
+            let vc = SettingViewController.CreateFromStoryboard("Main") as! SettingViewController
+            vc.tarAlarm = self.targetAlarm
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -209,13 +223,21 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             }
         }
     }
-
+    func makeC(){
+        let alarm = self.targetAlarm
+        alarm.alarmDate = self.datePicker!.date
+        let tag = self.targetAlarm.selectedDay
+        alarm.selectedDay = tag
+        alarm.descriptionText = self.targetAlarm.descriptionText
+        alarm.alarmOn = false
+        alarm.identifier = alarm.alarmDate?.description
+    }
      func handleConfirmButtonTapped() {
         let alarm = self.targetAlarm
         alarm.alarmDate = self.datePicker!.date
         let tag = self.targetAlarm.selectedDay
         alarm.selectedDay = tag
-        alarm.descriptionText = String(format: "%02x", tag)
+        alarm.descriptionText = self.targetAlarm.descriptionText
         alarm.alarmOn = false
         alarm.identifier = alarm.alarmDate?.description
         if self.isAddingAlarm {

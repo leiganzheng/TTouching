@@ -77,7 +77,7 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         QNTool.setUserLanguage(lanuageStr)
         //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
         NSNotificationCenter.defaultCenter().postNotificationName("changeLanguage", object: nil)
-        
+        self.title = NSLocalizedString("语言", tableName: "Localization",comment:"jj")
     }
 
 }
