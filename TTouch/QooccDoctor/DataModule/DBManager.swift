@@ -175,7 +175,7 @@ class DBManager: NSObject {
             while rs.next() {
                 
                 let address:String = rs.stringForColumn("address")
-                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+//                let dev_type:Int = Int(rs.intForColumn("dev_type"))
                 let s1:String = rs.stringForColumn("scene1")
                 let s2:String = rs.stringForColumn("scene2")
                 let s3:String = rs.stringForColumn("scene3")
@@ -218,8 +218,8 @@ class DBManager: NSObject {
         
         dbBase.open();
         
-        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
-        if !self.dbBase .executeUpdate("update \(self.TableOneName) set dev_type = (?),work_status = (?),work_status1 = (?),work_status2 = (?),dev_name = (?),dev_status = (?),dev_area = (?),belong_area = (?),is_favourited = (?),icon_url = (?) WHERE address = ? ", d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!) {
+//        let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
+        if !self.dbBase .executeUpdate("update \(self.TableOneName) set dev_type = (?),work_status = (?),work_status1 = (?),work_status2 = (?),dev_name = (?),dev_status = (?),dev_area = (?),belong_area = (?),is_favourited = (?),icon_url = (?) WHERE address = ? ",d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!, d.address!) {
             print("修改1条数据失败！: \(dbBase.lastErrorMessage())")
         }else{
             print("修改1条数据成功！: ")
@@ -512,7 +512,7 @@ class DBManager: NSObject {
     func selectWorkImage(type:Int) -> NSData {
         dbBase.open();
         var temp:NSData = NSData()
-        if let rs = dbBase.executeQuery("select dev_type,icon_urlfrom \(TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select dev_type,icon_url from \(TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
             while rs.next() {
                 let dev_type:Int = Int(rs.intForColumn("dev_type"))
                 if type == dev_type {

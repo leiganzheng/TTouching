@@ -15,6 +15,8 @@ class MDoubleTableViewCell: UITableViewCell {
     @IBOutlet weak var slider2: UISlider!
     @IBOutlet weak var title1: UILabel!
     @IBOutlet weak var title2: UILabel!
+    @IBOutlet weak var switch1: UISwitch!
+    @IBOutlet weak var switch2: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

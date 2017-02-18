@@ -158,7 +158,11 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                     cell.title1.text = "\((d.work_status)!)%"
                     cell.title2.text = "\((d.work_status1)!)%"
                 }
-
+                cell.switch1.on = cell.slider1.value != 0
+                cell.switch2.on = cell.slider2.value != 0
+                
+                cell.switch1.addTarget(self, action: #selector(SixPaternViewController.swithDValueChanged1(_:)), forControlEvents: .ValueChanged)
+                cell.switch2.addTarget(self, action: #selector(SixPaternViewController.swithDValueChanged2(_:)), forControlEvents: .ValueChanged)
                 return cell
             }else if d.dev_type == 5{//三回路开关控制端
                 let cellIdentifier = "MThreeTableViewCell"
@@ -478,6 +482,46 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         
     }
     //MARK:- Private Method
+    func swithDValueChanged1(switchBtn: UISwitch) {
+        let tempCell = switchBtn.superview?.superview as! MDoubleTableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        if switchBtn.on {
+            if  tempCell.slider1.value == 0{
+                QNTool.openLight(d, value: 100)
+                tempCell.slider1.value = 100
+                tempCell.title1.text = "100%"
+            }else{
+                QNTool.openLight(d, value: Int(tempCell.slider1.value))
+            }
+            
+        }else{
+            QNTool.openLight(d, value: 0)
+            tempCell.slider1.value = 0
+            tempCell.title1.text = "0%"
+        }
+    }
+    func swithDValueChanged2(switchBtn: UISwitch) {
+        let tempCell = switchBtn.superview?.superview as! MDoubleTableViewCell
+        let indexPath = self.myTableView.indexPathForCell(tempCell)
+        let d = self.data[(indexPath?.row)!] as! Device
+        if switchBtn.on {
+            if  tempCell.slider2.value == 0{
+                QNTool.openLight(d, value: 100)
+                tempCell.slider2.value = 100
+                tempCell.title2.text = "100%"
+            }else{
+                QNTool.openLight(d, value: Int(tempCell.slider2.value))
+            }
+            
+        }else{
+            QNTool.openLight(d, value: 0)
+            tempCell.slider2.value = 0
+            tempCell.title2.text = "0%"
+        }
+        
+    }
+
     func sliderValueChanged(switchBtn: UISwitch) {
         let tempCell = switchBtn.superview?.superview as! MSigleTableViewCell
         let indexPath = self.myTableView.indexPathForCell(tempCell)
