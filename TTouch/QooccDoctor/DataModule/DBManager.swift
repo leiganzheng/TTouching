@@ -56,7 +56,6 @@ class DBManager: NSObject {
         
         if let rs = dbBase.executeQuery("select address from \(self.TableOneName)", withArgumentsInArray: nil) {
             while rs.next() {
-
                 let adrr:String = rs.stringForColumn("address")
                 if adrr == address {
                   return true
@@ -229,7 +228,7 @@ class DBManager: NSObject {
     }
     func add(d:Device) {
         
-        dbBase.open();
+        dbBase.open()
         
         let arr:[AnyObject] = [d.address!,d.dev_type!,d.work_status!,d.work_status1!,d.work_status2!,d.dev_name!,d.dev_status!,d.dev_area!,d.belong_area!,d.is_favourited!,d.icon_url!];
         

@@ -491,14 +491,14 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 QNTool.openLight(d, value: 100)
                 tempCell.slider1.value = 100
                 tempCell.title1.text = "100%"
-            }else{
-                QNTool.openLight(d, value: Int(tempCell.slider1.value))
             }
+                 QNTool.openDLight(d, slider: tempCell.slider1)
             
         }else{
-            QNTool.openLight(d, value: 0)
+            
             tempCell.slider1.value = 0
             tempCell.title1.text = "0%"
+            QNTool.openDLight(d, slider: tempCell.slider1)
         }
     }
     func swithDValueChanged2(switchBtn: UISwitch) {
@@ -510,14 +510,14 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
                 QNTool.openLight(d, value: 100)
                 tempCell.slider2.value = 100
                 tempCell.title2.text = "100%"
-            }else{
-                QNTool.openLight(d, value: Int(tempCell.slider2.value))
             }
+                 QNTool.openDLight(d, slider: tempCell.slider2)
             
         }else{
-            QNTool.openLight(d, value: 0)
+           
             tempCell.slider2.value = 0
             tempCell.title2.text = "0%"
+             QNTool.openDLight(d, slider: tempCell.slider2)
         }
         
     }

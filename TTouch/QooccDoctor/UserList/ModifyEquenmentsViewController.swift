@@ -42,7 +42,7 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
             return
         }
         if self.newPas.text == self.newMpas.text {
-            let dict = ["command": 33,"permit_old" : QNTool.UTF8TOGB2312(self.oldpass.text!),"permit_ new":QNTool.UTF8TOGB2312(self.newPas.text!)]
+            let dict = ["command": 33,"permit_old" : QNTool.UTF8TOGB2312(self.oldpass.text!),"permit_new":QNTool.UTF8TOGB2312(self.newPas.text!)]
             self.sockertManger.sendMsg(dict, completion: { (result) in
                 if result is NSDictionary {
                 let d = result as! NSDictionary

@@ -59,7 +59,8 @@ class GateWayDetailViewController: UIViewController , QNInterceptorProtocol,QNIn
         lb.textAlignment = .Right
         lb.text = self.dataS![indexPath.row] as? String
         if indexPath.row == 1 {
-            lb.text =  String().stringByAppendingFormat("%x",(self.dataS![indexPath.row] as? String)!)
+            let temp = self.dataS![indexPath.row] as? String
+            lb.text = temp?.uppercaseString
         }
         
         cell.accessoryView = lb
