@@ -410,7 +410,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                 [
                 "dev_addr": 40807,
                 "dev_type": 2,
-                "work_status": 0,
+                "work_status": 97,
                 "dev_name": "研发办公室",
                 "dev_status": 1,
                 "dev_area": 40807
@@ -674,10 +674,10 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
         let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
         let tempData:NSData = NSData(bytes: dataArr, length: 84)
         self.paraterData(tempData)
-        
-        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-        let tempData1:NSData = NSData(bytes: dataArr1, length: 84)
-        self.paraterData(tempData1)
+//
+//        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+//        let tempData1:NSData = NSData(bytes: dataArr1, length: 84)
+//        self.paraterData(tempData1)
 
 
 //

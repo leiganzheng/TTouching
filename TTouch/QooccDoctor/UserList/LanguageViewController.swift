@@ -21,11 +21,11 @@ class LanguageViewController: UIViewController , QNInterceptorProtocol, UITableV
         self.titles = ["简体中文","繁体中文","English"]
         self.language = ["zh-Hans","zh-Hant","en"]
         let l = QNTool.userLanguage()
-        if l == "zh-Hans" {
+        if (l.hasPrefix("zh-Hans")){
             self.flags = [true,false,false]
-        }else if (l == "zh-Hant"){
+        }else if (l.hasPrefix("zh-Hant")){
              self.flags = [false,true,false]
-        }else if (l == "en"){
+        }else if (l.hasPrefix("en")){
              self.flags = [false,false,true]
         }else{
             self.flags = [false,false,true]

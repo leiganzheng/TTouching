@@ -25,7 +25,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
         self.myTableView?.showsVerticalScrollIndicator = false
         self.myTableView?.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
         self.view.addSubview(self.myTableView!)
-        self.fetchData()
+//        self.fetchData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,7 +60,13 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
             tableView.separatorStyle = .None
+            for v in cell.contentView.subviews {
+                if  v is UILabel && v.tag == 100{
+                    v.removeFromSuperview()
+                }
+            }
             let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
+            lb.tag = 100
             lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
             lb.textAlignment = .Center
             cell.contentView.addSubview(lb)

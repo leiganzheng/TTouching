@@ -211,19 +211,25 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
     }
     private func settingLangue(langue: String){
 //        zh-Hans-CN、zh-Hant-CN、en-CN
-        if langue == "zh-Hans" {
+        
+        if langue.hasPrefix("zh-Hans") {
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
 
-        }else if langue == "zh-Hant" {
+        }else if langue.hasPrefix("zh-Hant"){
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
-        }else{
+        }else if langue.hasPrefix("en"){
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+        }else{
+            self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
+            self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+
         }
     }
     // 判断输入的合法性
