@@ -161,7 +161,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
 
                 }
                 
-                let flagLb = UILabel(frame: CGRectMake(screenWidth-44-44, 0, 44, 44))
+                let flagLb = UILabel(frame: CGRectMake(screenWidth-44-120, 0, 120, 44))
                 flagLb.textAlignment = .Right
                 flagLb.tag = 100;
                 if indexPath.row == 1 {
