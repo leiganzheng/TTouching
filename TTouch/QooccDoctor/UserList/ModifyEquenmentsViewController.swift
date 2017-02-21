@@ -49,6 +49,7 @@ class ModifyEquenmentsViewController: UIViewController,QNInterceptorProtocol {
                 let status = d.objectForKey("status") as! Int
                 if (status == 1){
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("修改成功", tableName: "Localization",comment:"jj"))
+                    self.navigationController?.popViewControllerAnimated(true)
                 }else if(status  == -1){
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("旧密码错误", tableName: "Localization",comment:"jj"))
                 }else if(status  == -2){

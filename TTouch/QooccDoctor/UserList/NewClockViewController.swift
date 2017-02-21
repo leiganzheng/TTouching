@@ -46,21 +46,21 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-//            let zoneStr = getObjectFromUserDefaults("KZoneS" + (self?.targetAlarm.identifier!)!) as! NSString
-            
-            if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
-                self!.handleConfirmButtonTapped()
-               self!.dismissViewControllerAnimated(true, completion: {
-                    self?.bock!((self?.targetAlarm)!)
-                })
+            if  (self!.targetAlarm?.selectedDay != 0)  {
+                if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
+                    self!.handleConfirmButtonTapped()
+                    self!.dismissViewControllerAnimated(true, completion: {
+                        self?.bock!((self?.targetAlarm)!)
+                    })
+                }else{
+                    QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
+                }
+
             }else{
-                QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
-//
+                QNTool.showPromptView(NSLocalizedString("未配置重复", tableName: "Localization",comment:"jj"))
+                
             }
-            
-           
-            
-            return RACSignal.empty()
+                        return RACSignal.empty()
             })
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
         
@@ -161,11 +161,23 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
 
                 }
                 
-                let flagLb = UILabel(frame: CGRectMake(screenWidth-44-120, 0, 120, 44))
+                let flagLb = UILabel(frame: CGRectMake(screenWidth-44-200, 0, 200, 44))
                 flagLb.textAlignment = .Right
                 flagLb.tag = 100;
                 if indexPath.row == 1 {
                     flagLb.text = self.targetAlarm.descriptionText
+                }else if(indexPath.row == 2){
+                    var temp:String = ""
+                    if getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) != nil {
+                        let zoneStr = getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) as! String
+                        temp = zoneStr + "  "
+                    }
+                    if getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) != nil {
+                        let scene = getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) as! String
+                        temp  = temp + scene
+                    }
+
+                    flagLb.text = temp
                 }
                 cell.contentView.addSubview(flagLb)
                 
@@ -206,6 +218,12 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         }else if indexPath.section == 1 && indexPath.row == 2 {
             let vc = SettingViewController.CreateFromStoryboard("Main") as! SettingViewController
             vc.tarAlarm = self.targetAlarm
+            vc.bock = {(flagStr) -> Void in
+                let cell = tableView.cellForRowAtIndexPath(indexPath)
+                let lb = cell?.contentView.viewWithTag(100) as! UILabel
+                lb.text = flagStr as? String
+                
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -233,18 +251,18 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         alarm.identifier = alarm.alarmDate?.description
     }
      func handleConfirmButtonTapped() {
-        let alarm = self.targetAlarm
-        alarm.alarmDate = self.datePicker!.date
-        let tag = self.targetAlarm.selectedDay
-        alarm.selectedDay = tag
-        alarm.descriptionText = self.targetAlarm.descriptionText
-        alarm.alarmOn = false
-        alarm.identifier = alarm.alarmDate?.description
-        if self.isAddingAlarm {
-            DCAlarmManager.sharedInstance.alarmArray.addObject(alarm)
-        }
-        
-        DCAlarmManager.sharedInstance.save()
+            let alarm = self.targetAlarm
+            alarm.alarmDate = self.datePicker!.date
+            let tag = self.targetAlarm.selectedDay
+            alarm.selectedDay = tag
+            alarm.descriptionText = self.targetAlarm.descriptionText
+            alarm.alarmOn = false
+            alarm.identifier = alarm.alarmDate?.description
+            if self.isAddingAlarm {
+                DCAlarmManager.sharedInstance.alarmArray.addObject(alarm)
+            }
+            
+            DCAlarmManager.sharedInstance.save()
         
     }
     

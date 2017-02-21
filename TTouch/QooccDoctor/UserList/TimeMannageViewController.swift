@@ -33,6 +33,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
         self.myTableView.backgroundColor = UIColor.clearColor()
+        self.myTableView.separatorStyle = .SingleLine
         self.view.backgroundColor = defaultBackgroundGrayColor
         self.data = DCAlarmManager.sharedInstance.alarmArray //swift的数组是struct，是值类型，写的时候要特别注意
     }

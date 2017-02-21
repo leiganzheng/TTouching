@@ -25,7 +25,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         super.viewDidLoad()
         self.title = NSLocalizedString("设备管理", tableName: "Localization",comment:"jj")
         self.fetchData()
-//        self.test1()
+//        self.test()
 //        if g_ip == "192.168.1.101" {
 //            self.test1()
 //        }else{

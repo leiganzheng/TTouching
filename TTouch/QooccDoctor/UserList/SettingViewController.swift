@@ -8,7 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
-
+    typealias callBlockSetting = (AnyObject) -> Void
 class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
@@ -24,14 +24,16 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
     
     var flagon: Bool = true
     var zoneStr:String = ""
+    var zoneStrT:String = ""
+    var sceneStr:String = ""
     var scene:Int = 0
     var tarAlarm: DCAlarm!
 
+    var bock:callBlockSetting?
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        self.title = NSLocalizedString("配置", tableName: "Localization",comment:"jj")
         lbzone.text = NSLocalizedString("选择区域", tableName: "Localization",comment:"jj")
         sceneLb.text = NSLocalizedString("情景选择", tableName: "Localization",comment:"jj")
         //Right
@@ -40,17 +42,15 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             if (self.zoneStr != "") && (self.scene != 0) {
-//                if self.tarAlarm != nil {
-//                    if (getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil){
-                        saveObjectToUserDefaults("KZoneS" + self.tarAlarm.identifier!, value: self.zoneStr)
-                        saveObjectToUserDefaults("KSceneS" + self.tarAlarm.identifier!, value: self.scene)
-                        QNTool.showPromptView(NSLocalizedString("成功", tableName: "Localization",comment:"jj"))
-//                    }else{
-//                        QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
-//                    }
-
-//                }
-                
+                saveObjectToUserDefaults("KZoneS" + self.tarAlarm.identifier!, value: self.zoneStr)
+                saveObjectToUserDefaults("KZoneS1" + self.tarAlarm.identifier!, value: self.zoneStrT)
+                saveObjectToUserDefaults("KSceneS" + self.tarAlarm.identifier!, value: self.scene)
+                saveObjectToUserDefaults("KSceneS1" + self.tarAlarm.identifier!, value: self.sceneStr)
+                QNTool.showPromptView(NSLocalizedString("成功", tableName: "Localization",comment:"jj"), {
+                    self.bock!(self.zoneStrT + " " + self.sceneStr )
+                    self.navigationController?.popViewControllerAnimated(true)
+                   
+                })
             }
             return RACSignal.empty()
         })
@@ -119,12 +119,15 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
             let cell:UICollectionViewCell  = self.zoneCollectionView.dequeueReusableCellWithReuseIdentifier("ZoneCell", forIndexPath: indexPath)
             let flag = self.flags[indexPath.row] as! Bool
             let icon = (flag==true) ? "pic_hd" : "navigation_Options_icon"
+            
             let d = self.dataArr[indexPath.row] as! Device
             let lb = cell.viewWithTag(101) as! UILabel
             lb.text = d.dev_name
             let img = cell.viewWithTag(100) as! UIImageView
             img.image = UIImage(named: icon)
-            
+            if flag {
+                self.zoneStrT = d.dev_name!
+            }
             
             return cell
         }else if (collectionView == self.sceneCollectionView){
@@ -133,6 +136,9 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
             let lb = cell.viewWithTag(101) as! UILabel
             lb.text = str
             let flag = self.flags1[indexPath.row] as! Bool
+            if flag {
+                self.sceneStr = str
+            }
             let color = (flag==true) ? UIColor.blueColor() : UIColor.darkGrayColor()
             lb.textColor = color
             return cell
@@ -146,6 +152,7 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         if (collectionView == self.zoneCollectionView) {
             let d = self.dataArr[indexPath.row] as! Device
             self.zoneStr = d.address!
+            self.zoneStrT = d.dev_name!
             self.fetchScene(d.address!)
             if self.flags.count == 1 {
                 self.flags.replaceObjectAtIndex(0 , withObject: !(self.flags.objectAtIndex(0) as! Bool))
@@ -163,6 +170,8 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         }else if (collectionView == self.sceneCollectionView){
             let str = self.sceneArrdata[indexPath.row] as! Int
             self.scene = str
+            let str1 = self.sceneArr[indexPath.row] as! String
+            self.sceneStr = str1
             if self.flags1.count == 1 {
                 self.flags1.replaceObjectAtIndex(0 , withObject: !(self.flags1.objectAtIndex(0) as! Bool))
             }else {
@@ -190,17 +199,7 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         return UIEdgeInsetsMake(4, 4, 2, 4)
     }
     //MARK:- private method
-    @IBAction func switchAction(sender: UISwitch) {
-        //        self.tempDic.setObject(sender.on, forKey: "KSwitch")
-        //        saveObjectToUserDefaults("KSwitch", value: sender.on)
-        self.flagon = sender.on
-        if sender.on {
-            QNTool.showPromptView(NSLocalizedString("摇一摇开启", tableName: "Localization",comment:"jj"))
-        }else{
-            QNTool.showPromptView(NSLocalizedString("摇一摇关闭", tableName: "Localization",comment:"jj"))
-        }
-        
-    }
+
     func fetchScene(addr:String){
         self.sceneArr.removeAllObjects()
         self.flags1.removeAllObjects()
@@ -208,10 +207,26 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
         
         for (_, element): (Int, String) in arr.enumerate(){
-            self.flags1.addObject(false)
+            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
+                if addr == address {
+                    if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
+                        if element ==  getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!)  as! String {
+                            self.flags1.addObject(true)
+                        }else{
+                            self.flags1.addObject(false)
+                        }
+                    }
+                }else{
+                    self.flags1.addObject(false)
+                }
+            }else{
+                self.flags1.addObject(false)
+            }
+            
+           
             self.sceneArr.addObject(element)
             
-            //            print("Device:\(element.address!)", terminator: "");
         }
         self.sceneCollectionView.reloadData()
     }
@@ -228,10 +243,10 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
             
             print("Device:\(element.address!)", terminator: "");
         }
-        if getObjectFromUserDefaults("KZoneS") != nil {
+        if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
             for index in 0 ..< self.dataArr.count {
                 let d = self.dataArr[index] as! Device
-                if d.address == getObjectFromUserDefaults("KZoneS") as? String {
+                if d.address == getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as? String {
                     self.flags.replaceObjectAtIndex(index, withObject: true)
                 }else{
                     self.flags.replaceObjectAtIndex(index, withObject: false)
@@ -239,10 +254,10 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
             }
             
         }
-        if getObjectFromUserDefaults("KSceneS") != nil  {
+        if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
             for index1 in 0 ..< self.sceneArrdata.count {
                 let d = self.sceneArrdata[index1] as! Int
-                if d ==  getObjectFromUserDefaults("KSceneS")  as! Int {
+                if d ==  getObjectFromUserDefaults("KSceneS" + self.tarAlarm.identifier!)  as! Int {
                     self.flags1.replaceObjectAtIndex(index1, withObject: true)
                 }else{
                     self.flags1.replaceObjectAtIndex(index1, withObject: false)
@@ -253,7 +268,13 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         
         self.zoneCollectionView.reloadData()
         if self.dataArr.count>0 {
-            self.fetchScene((self.dataArr[0] as! Device).address!)
+            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
+               self.fetchScene(address)
+            }else{
+                self.fetchScene((self.dataArr[0] as! Device).address!)
+            }
+            
         }
     }
     

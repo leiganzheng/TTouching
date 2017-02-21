@@ -117,7 +117,7 @@ class TimeSelectedViewController: UIViewController ,QNInterceptorProtocol, QNInt
 //        DCAlarmManager.sharedInstance.selectedDay = self.selectedButtonTag
         self.targetAlarm?.selectedDay = self.selectedButtonTag
         self.weekBlock!(self.targetAlarm!)
-        let aaa = String(format: "%02x", resultTag)
+//        let aaa = String(format: "%02x", resultTag)
 //        NSLog("self.selectedButtonTag is \(aaa)")
     }
 

@@ -205,9 +205,25 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         
         for (_, element): (Int, String) in arr.enumerate(){
                 self.flags1.addObject(false)
+            if getObjectFromUserDefaults("KZoneS") != nil {
+                let address = getObjectFromUserDefaults("KZoneS" ) as! String
+                if addr == address {
+                    if getObjectFromUserDefaults("KScene" ) != nil  {
+                        if element ==  getObjectFromUserDefaults("KScene")  as! String {
+                            self.flags1.addObject(true)
+                        }else{
+                            self.flags1.addObject(false)
+                        }
+                    }
+                }else{
+                    self.flags1.addObject(false)
+                }
+            }else{
+                self.flags1.addObject(false)
+            }
+
                 self.sceneArr.addObject(element)
             
-//            print("Device:\(element.address!)", terminator: "");
         }
         self.sceneCollectionView.reloadData()
     }
@@ -249,7 +265,12 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
 
         self.zoneCollectionView.reloadData()
         if self.dataArr.count>0 {
-            self.fetchScene((self.dataArr[0] as! Device).address!)
+            if getObjectFromUserDefaults("KZoneS") != nil {
+                let address = getObjectFromUserDefaults("KZoneS") as! String
+                self.fetchScene(address)
+            }else{
+                self.fetchScene((self.dataArr[0] as! Device).address!)
+            }
         }
     }
 

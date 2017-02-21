@@ -93,6 +93,7 @@
 "重复"="Repeat";
 "标签"="Label";
 "配置"="Configure";
+"未配置重复"="not configure repeat";
 
 "昵称长度不得大于8个字"="Nickname length should not be greater than 8 words";
 "请输入标签"="Please enter a label";
@@ -110,5 +111,4 @@
 "新密码"="new password";
 "是时候看看闹钟了"="It's time to look at the alarm clock";
 "未配置"="not configured";
-
 
