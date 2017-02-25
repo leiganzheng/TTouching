@@ -26,6 +26,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
     var flagon: Bool = true
     var zoneStr:String = ""
     var scene:Int = 0
+    var scene1:String = ""
     
     override func viewDidLoad() {
        
@@ -42,6 +43,8 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
                 saveObjectToUserDefaults("KZone", value: self.zoneStr)
                 saveObjectToUserDefaults("KScene", value: self.scene)
                 saveObjectToUserDefaults("KSwitch", value: self.flagon)
+                saveObjectToUserDefaults("KZoneS", value: self.zoneStr)
+                saveObjectToUserDefaults("KScene1", value: self.scene1)
                 QNTool.showPromptView(NSLocalizedString("保存成功，可以使用摇一摇了", tableName: "Localization",comment:"jj"))
             }else{
                 QNTool.showPromptView(NSLocalizedString("请开启摇一摇、选择区域和场景", tableName: "Localization",comment:"jj"))
@@ -128,6 +131,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             let str = self.sceneArr[indexPath.row] as! String
             let lb = cell.viewWithTag(101) as! UILabel
             lb.text = str
+            
             let flag = self.flags1[indexPath.row] as! Bool
             let color = (flag==true) ? UIColor.blueColor() : UIColor.darkGrayColor()
             lb.textColor = color
@@ -158,7 +162,9 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             self.zoneCollectionView.reloadData()
         }else if (collectionView == self.sceneCollectionView){
             let str = self.sceneArrdata[indexPath.row] as! Int
+            let str1 = self.sceneArr[indexPath.row] as! String
             self.scene = str
+            self.scene1 = str1
             if self.flags1.count == 1 {
                 self.flags1.replaceObjectAtIndex(0 , withObject: !(self.flags1.objectAtIndex(0) as! Bool))
             }else {
@@ -204,12 +210,11 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
         let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
         
         for (_, element): (Int, String) in arr.enumerate(){
-                self.flags1.addObject(false)
             if getObjectFromUserDefaults("KZoneS") != nil {
                 let address = getObjectFromUserDefaults("KZoneS" ) as! String
                 if addr == address {
-                    if getObjectFromUserDefaults("KScene" ) != nil  {
-                        if element ==  getObjectFromUserDefaults("KScene")  as! String {
+                    if getObjectFromUserDefaults("KScene1" ) != nil  {
+                        if element ==  getObjectFromUserDefaults("KScene1")  as! String {
                             self.flags1.addObject(true)
                         }else{
                             self.flags1.addObject(false)
@@ -222,7 +227,7 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
                 self.flags1.addObject(false)
             }
 
-                self.sceneArr.addObject(element)
+            self.sceneArr.addObject(element)
             
         }
         self.sceneCollectionView.reloadData()
@@ -251,17 +256,17 @@ class ShakeViewController: UIViewController,QNInterceptorProtocol, UICollectionV
             }
 
         }
-        if getObjectFromUserDefaults("KScene") != nil  {
-            for index1 in 0 ..< self.sceneArrdata.count {
-                let d = self.sceneArrdata[index1] as! Int
-                if d ==  getObjectFromUserDefaults("KScene")  as! Int {
-                    self.flags1.replaceObjectAtIndex(index1, withObject: true)
-                }else{
-                    self.flags1.replaceObjectAtIndex(index1, withObject: false)
-                }
-            }
-            self.sceneCollectionView.reloadData()
-        }
+//        if getObjectFromUserDefaults("KScene") != nil  {
+//            for index1 in 0 ..< self.sceneArrdata.count {
+//                let d = self.sceneArrdata[index1] as! Int
+//                if d ==  getObjectFromUserDefaults("KScene")  as! Int {
+//                    self.flags1.replaceObjectAtIndex(index1, withObject: true)
+//                }else{
+//                    self.flags1.replaceObjectAtIndex(index1, withObject: false)
+//                }
+//            }
+//            self.sceneCollectionView.reloadData()
+//        }
 
         self.zoneCollectionView.reloadData()
         if self.dataArr.count>0 {

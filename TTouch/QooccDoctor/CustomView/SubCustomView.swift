@@ -162,6 +162,15 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 let temp = vc as! UserListViewController
                 temp.myTableView.reloadData()
             }
+            if  vc is MainControViewController {
+                let temp = vc as! MainControViewController
+                temp.myCustomTableView.reloadData()
+            }
+            if  vc is SixViewController {
+                let temp = vc as! SixViewController
+                temp.myCustomTableView.reloadData()
+            }
+
         }else if(self.device?.dev_type == 2){
             let command:Int = 36
             let dev_addr = Int(device!.address!)
@@ -197,6 +206,14 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
             if  vc is UserListViewController {
                 let temp = vc as! UserListViewController
                 temp.myTableView.reloadData()
+            }
+            if  vc is MainControViewController {
+                let temp = vc as! MainControViewController
+                temp.myCustomTableView.reloadData()
+            }
+            if  vc is SixViewController {
+                let temp = vc as! SixViewController
+                temp.myCustomTableView.reloadData()
             }
         }
 

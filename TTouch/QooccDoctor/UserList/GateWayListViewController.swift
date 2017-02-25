@@ -178,7 +178,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
             DBManager.shareInstance().updateIp("T_Device" + tempFlag, name2: "T_DeviceDouble" + tempFlag,name3: "T_Scene" + tempFlag)
         }
         
-//        self.test()
+        self.test()
         self.fetchList(ip)
     }
     func paraterData(data:NSData){
@@ -678,9 +678,9 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
 
 
     func fectchData() {
-//        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//        let tempData:NSData = NSData(bytes: dataArr, length: 84)
-//        self.paraterData(tempData)
+        let dataArr:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
+        let tempData:NSData = NSData(bytes: dataArr, length: 84)
+        self.paraterData(tempData)
 ////
 //        let dataArr1:[UInt8] = [254, 84, 51, 0, 0, 192, 168, 1, 101, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
 //        let tempData1:NSData = NSData(bytes: dataArr1, length: 84)
