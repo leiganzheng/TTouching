@@ -42,6 +42,18 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        for alarm in self.data {
+            let tempAlarm = alarm as! DCAlarm
+            if tempAlarm.alarmOn {
+                tempAlarm.turnOnAlarm()
+            }else{
+                tempAlarm.turnOffAlarm()
+            }
+             DCAlarmManager.sharedInstance.save()
+        }
+    }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 132
@@ -59,12 +71,14 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         cell.contentView.backgroundColor = UIColor.whiteColor()
         let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm
         let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "zh_CN")
+        dateFormatter.dateStyle = .ShortStyle
         dateFormatter.dateFormat = "HH:mm"
         if let date = alarm!.alarmDate {
             cell.time.setTitle(dateFormatter.stringFromDate(date), forState: .Normal)
         }
         cell.selectedBtn.addTarget(self, action: #selector(TimeMannageViewController.handleSwitchTapped(_:)), forControlEvents: .ValueChanged)
-        
+        cell.selectedBtn.on = (alarm?.alarmOn)!
         cell.name.setTitle(NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), forState: .Normal)
         return cell
     }

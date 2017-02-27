@@ -46,21 +46,32 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            if  (self!.targetAlarm?.selectedDay != 0)  {
-                if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
-                    self!.handleConfirmButtonTapped()
-                    self!.dismissViewControllerAnimated(true, completion: {
-                        self?.bock!((self?.targetAlarm)!)
-                    })
+            if (self?.isAddingAlarm ==  true) {
+                if  (self!.targetAlarm?.selectedDay != 0)  {
+                    if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
+                        self!.makeC()
+                        self!.handleConfirmButtonTapped()
+                        self!.dismissViewControllerAnimated(true, completion: {
+                            self?.bock!((self?.targetAlarm)!)
+                        })
+                    }else{
+                        QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
+                    }
+                    
                 }else{
-                    QNTool.showPromptView(NSLocalizedString("未配置", tableName: "Localization",comment:"jj"))
+                    QNTool.showPromptView(NSLocalizedString("未配置重复", tableName: "Localization",comment:"jj"))
+                    
                 }
 
             }else{
-                QNTool.showPromptView(NSLocalizedString("未配置重复", tableName: "Localization",comment:"jj"))
-                
+                self!.makeC()
+                self!.handleConfirmButtonTapped()
+                self!.dismissViewControllerAnimated(true, completion: {
+                    self?.bock!((self?.targetAlarm)!)
+                })
             }
-                        return RACSignal.empty()
+            
+                return RACSignal.empty()
             })
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
         
@@ -76,6 +87,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         self.titles = [[""],[NSLocalizedString("重复", tableName: "Localization",comment:"jj"),NSLocalizedString("标签", tableName: "Localization",comment:"jj"),NSLocalizedString("配置", tableName: "Localization",comment:"jj")]]
         self.myTableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = defaultBackgroundGrayColor
+        
         
     }
 
@@ -114,6 +126,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             }
             self.datePicker = UIDatePicker(frame: CGRectMake(0, 0, self.view.bounds.size.width, 240))
             self.datePicker!.backgroundColor = UIColor.whiteColor()
+            datePicker!.locale = NSLocale(localeIdentifier: "zh_CN")
             self.datePicker?.datePickerMode = .Time
             self.view.addSubview(self.datePicker!)
 //            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
@@ -168,16 +181,20 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                     flagLb.text = self.targetAlarm.descriptionText
                 }else if(indexPath.row == 2){
                     var temp:String = ""
-                    if getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) != nil {
-                        let zoneStr = getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) as! String
-                        temp = zoneStr + "  "
+                    if self.isAddingAlarm {
+                        
+                    }else{
+                        if getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) != nil {
+                            let zoneStr = getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) as! String
+                            temp = zoneStr + "  "
+                        }
+                        if getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) != nil {
+                            let scene = getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) as! String
+                            temp  = temp + scene
+                        }
+                        
+                        flagLb.text = temp
                     }
-                    if getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) != nil {
-                        let scene = getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) as! String
-                        temp  = temp + scene
-                    }
-
-                    flagLb.text = temp
                 }
                 cell.contentView.addSubview(flagLb)
                 
@@ -197,12 +214,13 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.makeC()
+//       self.makeC()
         if indexPath.section == 1 && indexPath.row == 0 {
             let vc = TimeSelectedViewController()
             vc.targetAlarm = self.targetAlarm
             vc.weekBlock =  {(Alarm) -> Void in
                 self.targetAlarm = Alarm
+                
                 self.myTableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
