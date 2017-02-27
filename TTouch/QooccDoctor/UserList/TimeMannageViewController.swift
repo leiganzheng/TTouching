@@ -13,6 +13,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
 
     @IBOutlet weak var settLB: UILabel!
     @IBOutlet weak var myTableView: UITableView!
+    var index:Int = -1
     var data:NSMutableArray!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
             let vc = NewClockViewController.loadFromStroyboardWithTargetAlarm(nil)
             vc.bock =  {(Alarm) -> Void in
+                if self?.index != -1 {
+                    self?.data.exchangeObjectAtIndex(self?.index, withObjectAtIndex: Alarm as DCAlarm)
+                }
                 (self?.myTableView.reloadData())!
             }
             self?.presentViewController(UINavigationController(rootViewController:vc ), animated: true, completion: nil)
@@ -108,6 +112,7 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         let cell = sender.superview?.superview as! UITableViewCell
         let indexPath = self.myTableView.indexPathForCell(cell)
         let alarm = self.data?.objectAtIndex(indexPath!.row) as? DCAlarm
+        self.index = indexPath?.row
         if let tempAlarm = alarm {
             if sender.on {
                 tempAlarm.turnOnAlarm()

@@ -265,7 +265,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let tag = self.targetAlarm.selectedDay
         alarm.selectedDay = tag
         alarm.descriptionText = self.targetAlarm.descriptionText
-        alarm.alarmOn = false
+        alarm.alarmOn = self.targetAlarm.alarmOn
         alarm.identifier = alarm.alarmDate?.description
     }
      func handleConfirmButtonTapped() {
@@ -274,7 +274,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             let tag = self.targetAlarm.selectedDay
             alarm.selectedDay = tag
             alarm.descriptionText = self.targetAlarm.descriptionText
-            alarm.alarmOn = false
+            alarm.alarmOn = self.targetAlarm.alarmOn
             alarm.identifier = alarm.alarmDate?.description
             if self.isAddingAlarm {
                 DCAlarmManager.sharedInstance.alarmArray.addObject(alarm)
