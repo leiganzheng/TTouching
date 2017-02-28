@@ -16,6 +16,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     private(set) var datePicker:UIDatePicker?
     var myTableView: UITableView!
     var titles:NSArray!
+    var timeIndex:Int?
     var bock:NewClockBlock?
     private var buttonTagArray: [Int] {
         return [1, 2, 3, 4, 5, 6, 7]
@@ -25,7 +26,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     private var isAddingAlarm: Bool = false
     
     private var targetAlarm: DCAlarm!
-    
+    var zoneStr:String = ""
+    var zoneStrT:String = ""
+    var sceneStr:String = ""
+    var scene:Int = 0
     
     class func loadFromStroyboardWithTargetAlarm(alarm: DCAlarm?) -> NewClockViewController {
         let viewController = NewClockViewController()
@@ -46,11 +50,17 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
-            if (self?.isAddingAlarm ==  true) {
+                if (self?.isAddingAlarm ==  true) {
                 if  (self!.targetAlarm?.selectedDay != 0)  {
-                    if (getObjectFromUserDefaults("KZoneS" + (self!.targetAlarm.identifier)!) != nil) {
+                    if (self?.zoneStrT != "") {
+                        saveObjectToUserDefaults("KZoneS" + self!.targetAlarm.identifier!, value: self!.zoneStr)
+                        saveObjectToUserDefaults("KZoneS1" + self!.targetAlarm.identifier!, value: self!.zoneStrT)
+                        saveObjectToUserDefaults("KSceneS" + self!.targetAlarm.identifier!, value: self!.scene)
+                        saveObjectToUserDefaults("KSceneS1" + self!.targetAlarm.identifier!, value: self!.sceneStr)
+
                         self!.makeC()
                         self!.handleConfirmButtonTapped()
+                        
                         self!.dismissViewControllerAnimated(true, completion: {
                             self?.bock!((self?.targetAlarm)!)
                         })
@@ -66,6 +76,11 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             }else{
                 self!.makeC()
                 self!.handleConfirmButtonTapped()
+                    saveObjectToUserDefaults("KZoneS" + self!.targetAlarm.identifier!, value: self!.zoneStr)
+                    saveObjectToUserDefaults("KZoneS1" + self!.targetAlarm.identifier!, value: self!.zoneStrT)
+                    saveObjectToUserDefaults("KSceneS" + self!.targetAlarm.identifier!, value: self!.scene)
+                    saveObjectToUserDefaults("KSceneS1" + self!.targetAlarm.identifier!, value: self!.sceneStr)
+
                 self!.dismissViewControllerAnimated(true, completion: {
                     self?.bock!((self?.targetAlarm)!)
                 })
@@ -129,7 +144,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             datePicker!.locale = NSLocale(localeIdentifier: "zh_CN")
             self.datePicker?.datePickerMode = .Time
             self.view.addSubview(self.datePicker!)
-//            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
+            self.datePicker?.addTarget(self, action: #selector(NewClockViewController.dateSelect), forControlEvents: .ValueChanged)
           
             if let alarm = self.targetAlarm {
                 if let date = alarm.alarmDate {
@@ -187,10 +202,20 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                         if getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) != nil {
                             let zoneStr = getObjectFromUserDefaults("KZoneS1" + self.targetAlarm.identifier!) as! String
                             temp = zoneStr + "  "
+                            self.zoneStrT = zoneStr
                         }
                         if getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) != nil {
                             let scene = getObjectFromUserDefaults("KSceneS1" + self.targetAlarm.identifier!) as! String
                             temp  = temp + scene
+                            self.sceneStr = scene
+                        }
+                        if getObjectFromUserDefaults("KZoneS" + self.targetAlarm.identifier!) != nil {
+                            let zone = getObjectFromUserDefaults("KZoneS" + self.targetAlarm.identifier!) as! String
+                            self.zoneStr = zone
+                        }
+                        if getObjectFromUserDefaults("KSceneS" + self.targetAlarm.identifier!) != nil {
+                            let scene = getObjectFromUserDefaults("KSceneS" + self.targetAlarm.identifier!) as! Int
+                            self.scene = scene
                         }
                         
                         flagLb.text = temp
@@ -236,10 +261,16 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         }else if indexPath.section == 1 && indexPath.row == 2 {
             let vc = SettingViewController.CreateFromStoryboard("Main") as! SettingViewController
             vc.tarAlarm = self.targetAlarm
-            vc.bock = {(flagStr) -> Void in
+            vc.zoneStr = self.zoneStr
+            vc.sceneStr = self.sceneStr
+            vc.bock = {(zoneStr,sceneStr,zone,scene) -> Void in
                 let cell = tableView.cellForRowAtIndexPath(indexPath)
                 let lb = cell?.contentView.viewWithTag(100) as! UILabel
-                lb.text = flagStr as? String
+                lb.text = zoneStr + " " + sceneStr
+                self.zoneStr = zone
+                self.scene = scene
+                self.zoneStrT = zoneStr
+                self.sceneStr = sceneStr
                 
             }
             self.navigationController?.pushViewController(vc, animated: true)
@@ -248,6 +279,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
 
     // MARK: - Private Method
     func dateSelect()  {
+        self.targetAlarm.alarmDate = self.datePicker!.date
 //        self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
     }
     func setupDefault() {
@@ -278,6 +310,8 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             alarm.identifier = alarm.alarmDate?.description
             if self.isAddingAlarm {
                 DCAlarmManager.sharedInstance.alarmArray.addObject(alarm)
+            }else{
+               DCAlarmManager.sharedInstance.alarmArray.replaceObjectAtIndex(self.timeIndex!, withObject: alarm)
             }
             
             DCAlarmManager.sharedInstance.save()

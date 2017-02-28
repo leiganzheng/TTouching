@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIAlertViewDelegate{
         NSBundle.setLanguage(current as String)
         def.synchronize()//持久化，不加的话不会保存
         self.window?.canBecomeFirstResponder()
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
         return true
     }
 
@@ -73,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIAlertViewDelegate{
             if let dict = notification.userInfo {
                 let identifier = dict["identifier"] as! String
                 self.inder = identifier
-                let alert = UIAlertView(title: NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), message: NSLocalizedString("是时候看看闹钟了", tableName: "Localization",comment:"jj"), delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"),otherButtonTitles:"OK")
+                let alert = UIAlertView(title: NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), message: NSLocalizedString("是时候看看闹钟了", tableName: "Localization",comment:"jj"), delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"),otherButtonTitles:NSLocalizedString("确定", tableName: "Localization",comment:"jj"))
                 alert.delegate = self
                 alert.show()
             }

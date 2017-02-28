@@ -8,7 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
-    typealias callBlockSetting = (AnyObject) -> Void
+    typealias callBlockSetting = (String,String,String,Int) -> Void
 class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
@@ -42,15 +42,16 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
             if (self.zoneStr != "") && (self.scene != 0) {
-                saveObjectToUserDefaults("KZoneS" + self.tarAlarm.identifier!, value: self.zoneStr)
-                saveObjectToUserDefaults("KZoneS1" + self.tarAlarm.identifier!, value: self.zoneStrT)
-                saveObjectToUserDefaults("KSceneS" + self.tarAlarm.identifier!, value: self.scene)
-                saveObjectToUserDefaults("KSceneS1" + self.tarAlarm.identifier!, value: self.sceneStr)
-                QNTool.showPromptView(NSLocalizedString("成功", tableName: "Localization",comment:"jj"), {
-                    self.bock!(self.zoneStrT + " " + self.sceneStr )
-                    self.navigationController?.popViewControllerAnimated(true)
-                   
-                })
+//                saveObjectToUserDefaults("KZoneS" + self.tarAlarm.identifier!, value: self.zoneStr)
+//                saveObjectToUserDefaults("KZoneS1" + self.tarAlarm.identifier!, value: self.zoneStrT)
+//                saveObjectToUserDefaults("KSceneS" + self.tarAlarm.identifier!, value: self.scene)
+//                saveObjectToUserDefaults("KSceneS1" + self.tarAlarm.identifier!, value: self.sceneStr)
+//                QNTool.showPromptView(NSLocalizedString("成功", tableName: "Localization",comment:"jj"), {
+//                   
+//                })
+                self.bock!(self.zoneStrT, self.sceneStr,self.zoneStr,self.scene )
+                self.navigationController?.popViewControllerAnimated(true)
+
             }
             return RACSignal.empty()
         })
@@ -65,12 +66,12 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         self.sceneArrdata = [97,98,99,100,110,111]
         self.flags1 = [false,false,false,false,false,false]
 
-        if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
-            self.zoneStr = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
-        }
-        if getObjectFromUserDefaults("KSceneS" + self.tarAlarm.identifier!) != nil {
-            self.scene = getObjectFromUserDefaults("KSceneS"  + self.tarAlarm.identifier!) as! Int
-        }
+//        if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+//            self.zoneStr = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
+//        }
+//        if getObjectFromUserDefaults("KSceneS" + self.tarAlarm.identifier!) != nil {
+//            self.scene = getObjectFromUserDefaults("KSceneS"  + self.tarAlarm.identifier!) as! Int
+//        }
         
         self.zoneCollectionView.delegate = self
         self.zoneCollectionView.dataSource = self
@@ -207,22 +208,39 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
         let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
         
         for (_, element): (Int, String) in arr.enumerate(){
-            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
-                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
-                if addr == address {
-                    if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
-                        if element ==  getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!)  as! String {
-                            self.flags1.addObject(true)
-                        }else{
-                            self.flags1.addObject(false)
-                        }
+//            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+//                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
+//                if addr == address {
+//                    if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
+//                        if element ==  getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!)  as! String {
+//                            self.flags1.addObject(true)
+//                        }else{
+//                            self.flags1.addObject(false)
+//                        }
+//                    }
+//                }else{
+////                    if self.sceneStr != "" {
+////                        if element == self.sceneStr {
+////                             self.flags1.addObject(true)
+////                        }else{
+////                             self.flags1.addObject(false)
+////                        }
+////                    }else{
+//                        self.flags1.addObject(false)
+////                    }
+//                }
+//            }else{
+                if self.sceneStr != "" {
+                    if element == self.sceneStr {
+                        self.flags1.addObject(true)
+                    }else{
+                        self.flags1.addObject(false)
                     }
                 }else{
                     self.flags1.addObject(false)
                 }
-            }else{
-                self.flags1.addObject(false)
-            }
+//                self.flags1.addObject(false)
+//            }
             
            
             self.sceneArr.addObject(element)
@@ -243,34 +261,46 @@ class SettingViewController: UIViewController,QNInterceptorProtocol, UICollectio
             
             print("Device:\(element.address!)", terminator: "");
         }
-        if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
-            for index in 0 ..< self.dataArr.count {
-                let d = self.dataArr[index] as! Device
-                if d.address == getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as? String {
-                    self.flags.replaceObjectAtIndex(index, withObject: true)
-                }else{
-                    self.flags.replaceObjectAtIndex(index, withObject: false)
+//        if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+//            for index in 0 ..< self.dataArr.count {
+//                let d = self.dataArr[index] as! Device
+//                if d.address == getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as? String {
+//                    self.flags.replaceObjectAtIndex(index, withObject: true)
+//                }else{
+//                    self.flags.replaceObjectAtIndex(index, withObject: false)
+//                }
+//            }
+//            
+//        }else{
+            if self.zoneStr != "" {
+                for index in 0 ..< self.dataArr.count {
+                    let d = self.dataArr[index] as! Device
+                    if d.address == self.zoneStr {
+                        self.flags.replaceObjectAtIndex(index, withObject: true)
+                    }else{
+                        self.flags.replaceObjectAtIndex(index, withObject: false)
+                    }
                 }
             }
-            
-        }
-        if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
-            for index1 in 0 ..< self.sceneArrdata.count {
-                let d = self.sceneArrdata[index1] as! Int
-                if d ==  getObjectFromUserDefaults("KSceneS" + self.tarAlarm.identifier!)  as! Int {
-                    self.flags1.replaceObjectAtIndex(index1, withObject: true)
-                }else{
-                    self.flags1.replaceObjectAtIndex(index1, withObject: false)
-                }
-            }
-            self.sceneCollectionView.reloadData()
-        }
+//        }
+//        if getObjectFromUserDefaults("KSceneS1" + self.tarAlarm.identifier!) != nil  {
+//            for index1 in 0 ..< self.sceneArrdata.count {
+//                let d = self.sceneArrdata[index1] as! Int
+//                if d ==  getObjectFromUserDefaults("KSceneS" + self.tarAlarm.identifier!)  as! Int {
+//                    self.flags1.replaceObjectAtIndex(index1, withObject: true)
+//                }else{
+//                    self.flags1.replaceObjectAtIndex(index1, withObject: false)
+//                }
+//            }
+//            self.sceneCollectionView.reloadData()
+//        }
         
         self.zoneCollectionView.reloadData()
         if self.dataArr.count>0 {
-            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
-                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
-               self.fetchScene(address)
+            if self.zoneStr != "" {
+//            if getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) != nil {
+//                let address = getObjectFromUserDefaults("KZoneS" + self.tarAlarm.identifier!) as! String
+               self.fetchScene(self.zoneStr)
             }else{
                 self.fetchScene((self.dataArr[0] as! Device).address!)
             }

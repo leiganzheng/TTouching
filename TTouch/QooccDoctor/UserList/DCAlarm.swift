@@ -100,7 +100,7 @@ extension DCAlarm {
         localNotification.repeatInterval = selectedDay == 0 ? NSCalendarUnit(rawValue: 0) : repeateInterval
         localNotification.timeZone = NSTimeZone.systemTimeZone()
         localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.alertBody = "本地推送内容"
+        localNotification.alertBody = "查看定时"
         localNotification.userInfo = [
             "identifier" : self.identifier!, //注意，这里不同日子同一时刻的通知公用一个identifier
             "fireDay" : fireDate!]
