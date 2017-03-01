@@ -1489,7 +1489,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/UserList/EquementControViewController.swift"
-                  timestampString = "509991091.738775"
+                  timestampString = "510073898.301127"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -1504,7 +1504,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/UserList/EquementControViewController.swift"
-                  timestampString = "509991091.738961"
+                  timestampString = "510073898.301264"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -1519,7 +1519,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/UserList/EquementControViewController.swift"
-                  timestampString = "509991091.739131"
+                  timestampString = "510073898.301448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
@@ -2000,11 +2000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "openDLight(_:slider:)"
             landmarkType = "5">
             <Locations>
@@ -2016,12 +2016,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.743744"
+                  timestampString = "510073898.304848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "635"
-                  endingLineNumber = "635"
-                  offsetFromSymbolStart = "12932">
+                  startingLineNumber = "636"
+                  endingLineNumber = "636"
+                  offsetFromSymbolStart = "14151">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2031,11 +2031,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.744046"
+                  timestampString = "510073898.305003"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "636"
-                  endingLineNumber = "636"
+                  startingLineNumber = "637"
+                  endingLineNumber = "637"
                   offsetFromSymbolStart = "23">
                </Location>
             </Locations>
@@ -2048,11 +2048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "openDLight(_:slider:)"
             landmarkType = "5">
             <Locations>
@@ -2064,12 +2064,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.745132"
+                  timestampString = "510073898.305893"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "653"
-                  endingLineNumber = "653"
-                  offsetFromSymbolStart = "13093">
+                  startingLineNumber = "654"
+                  endingLineNumber = "654"
+                  offsetFromSymbolStart = "14312">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2079,11 +2079,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.745312"
+                  timestampString = "510073898.306021"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "653"
-                  endingLineNumber = "653"
+                  startingLineNumber = "654"
+                  endingLineNumber = "654"
                   offsetFromSymbolStart = "585">
                </Location>
             </Locations>
@@ -2096,11 +2096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "openDLight(_:slider:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2112,11 +2112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "648"
-            endingLineNumber = "648"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
             landmarkName = "openDLight(_:slider:)"
             landmarkType = "5">
             <Locations>
@@ -2128,12 +2128,12 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.747024"
+                  timestampString = "510073898.30748"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "653"
-                  endingLineNumber = "653"
-                  offsetFromSymbolStart = "13093">
+                  startingLineNumber = "654"
+                  endingLineNumber = "654"
+                  offsetFromSymbolStart = "14312">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2143,11 +2143,11 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.747172"
+                  timestampString = "510073898.307625"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "653"
-                  endingLineNumber = "653"
+                  startingLineNumber = "654"
+                  endingLineNumber = "654"
                   offsetFromSymbolStart = "585">
                </Location>
             </Locations>
@@ -2160,11 +2160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "662"
-            endingLineNumber = "662"
+            startingLineNumber = "663"
+            endingLineNumber = "663"
             landmarkName = "openCutain(_:value:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2176,11 +2176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505581746.329634"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "665"
-            endingLineNumber = "665"
+            startingLineNumber = "666"
+            endingLineNumber = "666"
             landmarkName = "openCutain(_:value:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2309,7 +2309,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "fetchData()"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2325,7 +2325,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "fetchData()"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -2476,7 +2476,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
@@ -2501,7 +2501,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
             endingLineNumber = "195"
-            landmarkName = "sliderValueChanged(_:)"
+            landmarkName = "fetchData()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2517,8 +2517,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "ThreeOrSixViewController"
-            landmarkType = "3">
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2624,7 +2624,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.754219"
+                  timestampString = "510073898.315192"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "450"
@@ -2639,7 +2639,7 @@
                   moduleName = "QooccDoctor"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karashock/TTouching/TTouch/QooccDoctor/Tools/QNTool.swift"
-                  timestampString = "509991091.754439"
+                  timestampString = "510073898.315373"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "451"
@@ -2661,7 +2661,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
             endingLineNumber = "164"
-            landmarkName = "sliderValueChanged(_:)"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2672,11 +2672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505657645.83303"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "860"
-            endingLineNumber = "860"
+            startingLineNumber = "861"
+            endingLineNumber = "861"
             landmarkName = "openCutain(_:value:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2736,11 +2736,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "506433443.164561"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
             landmarkName = "openCutain(_:value:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2752,11 +2752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/Tools/QNTool.swift"
-            timestampString = "505663394.319729"
+            timestampString = "510073898.023364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "861"
-            endingLineNumber = "861"
+            startingLineNumber = "862"
+            endingLineNumber = "862"
             landmarkName = "openCutain(_:value:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2796,7 +2796,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
@@ -2816,12 +2816,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
-            timestampString = "505666130.876358"
+            timestampString = "510073616.227329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
-            landmarkName = "valueChangedOfButton(_:)"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
+            landmarkName = "valueChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3436,7 +3436,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/AppDelegate.swift"
@@ -3445,14 +3445,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
+            landmarkName = "applicationDidBecomeActive(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/AppDelegate.swift"
@@ -3461,7 +3461,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "application(_:didReceiveLocalNotification:)"
+            landmarkName = "deleteNoNoif()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3477,7 +3477,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
+            landmarkName = "application(_:didReceiveLocalNotification:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3564,7 +3564,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QooccDoctor/AppDelegate.swift"
@@ -3573,7 +3573,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
+            landmarkName = "application(_:didReceiveLocalNotification:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3589,7 +3589,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
+            landmarkName = "application(_:didReceiveLocalNotification:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3605,7 +3605,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "alertView(_:clickedButtonAtIndex:)"
+            landmarkName = "application(_:didReceiveLocalNotification:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3638,6 +3638,54 @@
             startingLineNumber = "249"
             endingLineNumber = "249"
             landmarkName = "fetchScene(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/EquementMannager/SixPaternViewController.swift"
+            timestampString = "510073616.227329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
+            landmarkName = "valueChanged(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/DataModule/DBManager.swift"
+            timestampString = "510072874.999973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "updateStatus(_:type:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QooccDoctor/Tools/QNTool.swift"
+            timestampString = "510073889.076315"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
+            landmarkName = "openDLight(_:slider:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

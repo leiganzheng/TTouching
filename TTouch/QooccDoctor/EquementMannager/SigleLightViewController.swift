@@ -128,7 +128,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
          tempCell.valueLB.text = "\(Int(slider.value))%"
         QNTool.openLight(d, value: Int(slider.value))
     
-
+        self.fetchData()
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)

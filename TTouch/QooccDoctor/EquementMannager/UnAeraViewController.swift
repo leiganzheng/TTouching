@@ -500,6 +500,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.title1.text = "0%"
             QNTool.openDLight(d, slider: tempCell.slider1)
         }
+        self.fetchData()
     }
     func swithDValueChanged2(switchBtn: UISwitch) {
         let tempCell = switchBtn.superview?.superview as! MDoubleTableViewCell
@@ -519,7 +520,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.title2.text = "0%"
              QNTool.openDLight(d, slider: tempCell.slider2)
         }
-        
+        self.fetchData()
     }
 
     func sliderValueChanged(switchBtn: UISwitch) {
@@ -540,6 +541,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.slider.value = 0
             tempCell.valueLB.text = "0%"
         }
+        self.fetchData()
     }
     func valueChanged(slider: UISlider) {
         /*"dev_addr": 38585,
@@ -555,7 +557,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let d = self.data[(indexPath?.row)!] as! Device
         tempCell.valueLB.text = "\(Int(slider.value))%"
         QNTool.openLight(d, value: Int(slider.value))
-        
+        self.fetchData()
     }
     func dSliderValueChanged(slider: UISlider) {
         //双回路调光控制端 work_status设备操作码,范围是 0 ~ 299,表示调光百分比; 0:同时关闭两回路;99:两回路最大调光亮度; 100:关闭左回路;199:左回路最大调光亮度; 200:关闭右回路;299:右回路最大调光亮度; 例:左回路 60%亮度:160;右回路 70%亮度:270。
@@ -570,6 +572,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         }
 
         QNTool.openDLight(d, slider: slider)
+        self.fetchData()
     }
     func open1(sender: UIButton){
         

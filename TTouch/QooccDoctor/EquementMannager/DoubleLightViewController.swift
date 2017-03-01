@@ -179,6 +179,7 @@ class DoubleLightViewController: UIViewController ,QNInterceptorProtocol, UITabl
             tempCell.title2.text = "\(Int(slider.value))%"
         }
         QNTool.openDLight(d, slider: slider)
+        self.fetchData()
     }
 
     
