@@ -52,8 +52,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIAlertViewDelegate{
         NSBundle.setLanguage(current as String)
         def.synchronize()//持久化，不加的话不会保存
         self.window?.canBecomeFirstResponder()
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+//        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        self.deleteNoNoif()
         return true
+    }
+    func deleteNoNoif(){
+        if let locals = UIApplication.sharedApplication().scheduledLocalNotifications {
+            for localNoti in locals {
+                if let dict = localNoti.userInfo {
+                    for al in DCAlarmManager.sharedInstance.alarmArray {
+                        if dict.keys.contains("identifier") && dict["identifier"] is String && (dict["identifier"] as! String) == (al as! DCAlarm).identifier {
+                            
+                        }else{
+                            UIApplication.sharedApplication().cancelLocalNotification(localNoti)
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

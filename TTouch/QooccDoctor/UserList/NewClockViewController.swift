@@ -26,6 +26,10 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     private var isAddingAlarm: Bool = false
     
     private var targetAlarm: DCAlarm!
+    private var ind: String!
+    private var hisDate: NSDate!
+    private var hisSeltect: Int!
+    
     var zoneStr:String = ""
     var zoneStrT:String = ""
     var sceneStr:String = ""
@@ -39,6 +43,9 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
         } else {
             viewController.isAddingAlarm = false
             viewController.targetAlarm = alarm
+            viewController.hisDate = alarm?.alarmDate
+            viewController.hisSeltect = alarm?.selectedDay
+            viewController.ind = alarm?.identifier
         }
         return viewController
     }
@@ -46,21 +53,21 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let searchButton:UIButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
         searchButton.setTitle(NSLocalizedString("保存", tableName: "Localization",comment:"jj"), forState: .Normal)
         searchButton.rac_command = RACCommand(signalBlock: { [weak self](input) -> RACSignal! in
                 if (self?.isAddingAlarm ==  true) {
                 if  (self!.targetAlarm?.selectedDay != 0)  {
                     if (self?.zoneStrT != "") {
+                        
+                        self!.makeC()
+                        self!.handleConfirmButtonTapped()
                         saveObjectToUserDefaults("KZoneS" + self!.targetAlarm.identifier!, value: self!.zoneStr)
                         saveObjectToUserDefaults("KZoneS1" + self!.targetAlarm.identifier!, value: self!.zoneStrT)
                         saveObjectToUserDefaults("KSceneS" + self!.targetAlarm.identifier!, value: self!.scene)
                         saveObjectToUserDefaults("KSceneS1" + self!.targetAlarm.identifier!, value: self!.sceneStr)
 
-                        self!.makeC()
-                        self!.handleConfirmButtonTapped()
-                        
                         self!.dismissViewControllerAnimated(true, completion: {
                             self?.bock!((self?.targetAlarm)!)
                         })
@@ -76,6 +83,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             }else{
                 self!.makeC()
                 self!.handleConfirmButtonTapped()
+                    self?.deleteNotification((self?.ind)!)
                     saveObjectToUserDefaults("KZoneS" + self!.targetAlarm.identifier!, value: self!.zoneStr)
                     saveObjectToUserDefaults("KZoneS1" + self!.targetAlarm.identifier!, value: self!.zoneStrT)
                     saveObjectToUserDefaults("KSceneS" + self!.targetAlarm.identifier!, value: self!.scene)
@@ -279,6 +287,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
 
     // MARK: - Private Method
     func dateSelect()  {
+//        self.makeC()
         self.targetAlarm.alarmDate = self.datePicker!.date
 //        self.dict.setValue(QNFormatTool.dateString((self.datePicker?.date)!,format:"HH:mm"), forKey: "time")
     }
@@ -290,6 +299,39 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 self.datePicker!.date = NSDate()
             }
         }
+    }
+     func deleteNotification(id: String) {
+        if !self.isAddingAlarm {
+            if let locals = UIApplication.sharedApplication().scheduledLocalNotifications {
+                for localNoti in locals {
+                    if let dict = localNoti.userInfo {
+                        
+                        if dict.keys.contains("identifier") && dict["identifier"] is String && (dict["identifier"] as! String) == id {
+                            // 取消通知
+                            UIApplication.sharedApplication().cancelLocalNotification(localNoti)
+//                            let calendar = NSCalendar.currentCalendar()
+//                            let type: NSCalendarUnit = [NSCalendarUnit.Year , NSCalendarUnit.Month , NSCalendarUnit.Day , NSCalendarUnit.Hour , NSCalendarUnit.Minute , NSCalendarUnit.Second , NSCalendarUnit.Weekday]
+//                            let dateComponents = calendar.components(type, fromDate: self.hisDate)
+//                            dateComponents.second = 0
+//                            let newDate = calendar.dateFromComponents(dateComponents)
+//                            let diffComponents = NSDateComponents()
+//                            var newWeekDay = self.hisSeltect + 1//苹果默认周日是1，依次往后排；而app里定义的是周一是1，依次往后排
+//                            if newWeekDay == 8 {
+//                                newWeekDay = 1
+//                            }
+//                            diffComponents.day = newWeekDay - dateComponents.weekday//计算出所选的周几与当前时间的间隔
+//                            let fireDate = calendar.dateByAddingComponents(diffComponents, toDate: newDate!, options: .WrapComponents)
+//                            if dict.keys.contains("fireDay") && dict["fireDay"] is NSDate && (dict["fireDay"] as! NSDate) == fireDate {
+//                                UIApplication.sharedApplication().cancelLocalNotification(localNoti)
+//                            }
+                            
+                        }
+                    }
+                }
+            }
+
+        }
+        
     }
     func makeC(){
         let alarm = self.targetAlarm
