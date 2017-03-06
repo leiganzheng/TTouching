@@ -14,6 +14,7 @@ class DCAlarm: NSObject, NSCoding {
     var identifier: String?
     var selectedDay: Int = 0
     var alarmOn: Bool = false
+    var msg:String?
     
     override init() {
         super.init()
@@ -26,6 +27,7 @@ class DCAlarm: NSObject, NSCoding {
         identifier = aDecoder.decodeObjectForKey("identifier") as? String
         selectedDay = (aDecoder.decodeObjectForKey("selectedDay") as! NSNumber).integerValue
         alarmOn = aDecoder.decodeBoolForKey("alarmOn") as Bool
+        msg = aDecoder.decodeObjectForKey("msg") as? String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -34,6 +36,7 @@ class DCAlarm: NSObject, NSCoding {
         aCoder.encodeObject(identifier, forKey: "identifier")
         aCoder.encodeObject(NSNumber(integer: selectedDay), forKey: "selectedDay")
         aCoder.encodeBool(alarmOn, forKey: "alarmOn")
+        aCoder.encodeObject(msg, forKey: "msg")
     }
     
     
@@ -103,7 +106,7 @@ extension DCAlarm {
         localNotification.alertBody = "查看定时"
         localNotification.userInfo = [
             "identifier" : self.identifier!, //注意，这里不同日子同一时刻的通知公用一个identifier
-            "fireDay" : fireDate!]
+            "fireDay" : fireDate!,"msg":msg!]
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     

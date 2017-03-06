@@ -54,14 +54,15 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
             }
              DCAlarmManager.sharedInstance.save()
         }
+        self.myTableView.reloadData()
     }
     //MARK:- UITableViewDelegate or UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 132
+        return self.data.count == 0 ? 72 : 132
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return self.data.count == 0 ? 1 : self.data.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if self.data.count == 0 {

@@ -90,8 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UIAlertViewDelegate{
         if application.applicationState == .Active {
             if let dict = notification.userInfo {
                 let identifier = dict["identifier"] as! String
+                let msg = dict["msg"] as! String
                 self.inder = identifier
-                let alert = UIAlertView(title: NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), message: NSLocalizedString("是时候看看闹钟了", tableName: "Localization",comment:"jj"), delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"),otherButtonTitles:NSLocalizedString("确定", tableName: "Localization",comment:"jj"))
+                let alert = UIAlertView(title: NSLocalizedString("定时", tableName: "Localization",comment:"jj"), message: NSLocalizedString("点击确定，开启:" + " " + msg, tableName: "Localization",comment:"jj"), delegate: nil, cancelButtonTitle: NSLocalizedString("取消", tableName: "Localization",comment:"jj"),otherButtonTitles:NSLocalizedString("确定", tableName: "Localization",comment:"jj"))
                 alert.delegate = self
                 alert.show()
             }

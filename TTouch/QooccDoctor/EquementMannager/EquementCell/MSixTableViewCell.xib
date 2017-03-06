@@ -16,11 +16,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9y-0C-CGd">
-                        <rect key="frame" x="115" y="10" width="90" height="34"/>
+                        <rect key="frame" x="110" y="10" width="100" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="90" id="UpN-E9-kgG"/>
+                            <constraint firstAttribute="width" constant="100" id="UpN-E9-kgG"/>
                             <constraint firstAttribute="height" constant="34" id="b17-Ak-wqs"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="六回路">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>

@@ -60,7 +60,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 if (self?.isAddingAlarm ==  true) {
                 if  (self!.targetAlarm?.selectedDay != 0)  {
                     if (self?.zoneStrT != "") {
-                        
+                        self?.targetAlarm.msg = (self?.zoneStrT)! + "-" + (self?.sceneStr)!
                         self!.makeC()
                         self!.handleConfirmButtonTapped()
                         saveObjectToUserDefaults("KZoneS" + self!.targetAlarm.identifier!, value: self!.zoneStr)
@@ -81,6 +81,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                 }
 
             }else{
+                    self?.targetAlarm.msg = (self?.zoneStrT)! + "-" + (self?.sceneStr)!
                 self!.makeC()
                 self!.handleConfirmButtonTapped()
                     self?.deleteNotification((self?.ind)!)
@@ -188,7 +189,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
                             button.setTitle(self.tagArray[i-1] as String, forState: .Normal)
                             button.titleLabel?.font = UIFont.systemFontOfSize(12)
                             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-                            
+                            button.userInteractionEnabled = false
                             cell.contentView.addSubview(button)
 
                         }
@@ -335,6 +336,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
     }
     func makeC(){
         let alarm = self.targetAlarm
+        alarm.msg = self.targetAlarm.msg
         alarm.alarmDate = self.datePicker!.date
         let tag = self.targetAlarm.selectedDay
         alarm.selectedDay = tag
@@ -346,6 +348,7 @@ class NewClockViewController: UIViewController,QNInterceptorProtocol,UITableView
             let alarm = self.targetAlarm
             alarm.alarmDate = self.datePicker!.date
             let tag = self.targetAlarm.selectedDay
+            alarm.msg = self.targetAlarm.msg
             alarm.selectedDay = tag
             alarm.descriptionText = self.targetAlarm.descriptionText
             alarm.alarmOn = self.targetAlarm.alarmOn

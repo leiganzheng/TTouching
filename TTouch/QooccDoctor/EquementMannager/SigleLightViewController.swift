@@ -70,7 +70,10 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
                 btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
                     let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
+                    
                     QNTool.modifyEqument(save_dev,name:textField.text!)
+                    DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
+                    self.fetchData()
                 }
                 
             }

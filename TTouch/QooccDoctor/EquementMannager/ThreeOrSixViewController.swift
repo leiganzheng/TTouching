@@ -80,7 +80,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             return RACSignal.empty()
             
             })
-        let tempT = self.flag == true ? "六回路" :  "三回路"
+        let tempT = d?.dev_name
         cell.name.setTitle(tempT, forState: .Normal)
 //        cell.name.rac_command = RACCommand(signalBlock: { (input) -> RACSignal! in
 //            
@@ -119,6 +119,8 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
                 if textField.text != nil {
                     let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
                     QNTool.modifyEqument(save_dev,name:textField.text!)
+                    DBManager.shareInstance().updateName(textField.text!, type: (d?.address)!)
+                    self.fetchData()
                 }
                 
             }
@@ -264,8 +266,7 @@ class ThreeOrSixViewController: UIViewController ,QNInterceptorProtocol, UITable
             work_status = QNTool.binary2dec(value as String)
         }
         
-//        DBManager.shareInstance().updateStatus(work_status, type: d.address!)
-//        self.fetchData()
+        DBManager.shareInstance().updateStatus(work_status, type: d.address!)
         dict = ["command": command,"dev_addr" : dev_addr!,"dev_type":dev_type,"work_status":work_status ]
         self.sockertManger.sendMsg(dict, completion: { (result) in
             DBManager.shareInstance().updateStatus(work_status, type: d.address!)

@@ -24,8 +24,8 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("设备管理", tableName: "Localization",comment:"jj")
-//        self.fetchData()
-        self.test()
+        self.fetchData()
+//        self.test()
 //        if g_ip == "192.168.1.101" {
 //            self.test1()
 //        }else{
@@ -522,21 +522,21 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let is_favourited = 1
         var image:NSData = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
         if (dev_type == 1) {//总控
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
             }else{
                 image = tp
             }
         }else if(dev_type == 2){//六情景
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
             }else{
                 image = tp
             }
         }else if(dev_type == 3){//单回路调光
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
             }else{
@@ -544,7 +544,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }
             
         }else if(dev_type == 6){//6回路开关
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_6ch-roads_icon" )!, 1)!
             }else{
@@ -552,7 +552,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }
             
         }else if(dev_type == 5){//3回路开关
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
             }else{
@@ -561,7 +561,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             
         }
         else if(dev_type == 7){//窗帘控制
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
             }else{
@@ -569,7 +569,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             }
             
         }else if(dev_type == 4){//双回路调光
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
             }else{
@@ -579,7 +579,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             
         }
         else if(dev_type == 8){//单回路调光控制端(旧版)
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
             }else{
@@ -588,7 +588,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             
             
         }else if(dev_type == 9){//双回路调光控制端(旧版)
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
             }else{
@@ -597,7 +597,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             
             
         }else if(dev_type == 10){//三/六回路开关控制端
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             }else{
@@ -606,7 +606,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
             
             
         }else if(dev_type == 11){//干接点
-            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            let tp = DBManager.shareInstance().selectWorkImage(String(addr))
             if tp.length == 0 {
                 image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
             }else{

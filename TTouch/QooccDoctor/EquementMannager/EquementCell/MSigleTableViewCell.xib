@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -36,11 +36,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnl-y0-1Rj">
-                        <rect key="frame" x="146" y="11" width="90" height="34"/>
+                        <rect key="frame" x="131" y="11" width="120" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="Loh-ts-Pxw"/>
-                            <constraint firstAttribute="width" constant="90" id="lp9-l9-Nvz"/>
+                            <constraint firstAttribute="width" constant="120" id="lp9-l9-Nvz"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="单回路调光">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>

@@ -50,9 +50,9 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
     //连接服务器按钮事件
     func senderData(pass:NSString) {
         
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
-        return
+//        self.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(MannageEquementViewController.CreateFromStoryboard("Main") as! UIViewController, animated: true)
+//        return
         let dict = ["command": 32,"permit" : pass]
         sockertManger.sendMsg(dict) { (result) in
             let d = result as! NSDictionary
@@ -66,7 +66,7 @@ class EquementsViewController: UIViewController,QNInterceptorProtocol{
             }else{
                 QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("验证失败", tableName: "Localization",comment:"jj"))
             }
-            print(result)
+//            print(result)
         }
     }
 

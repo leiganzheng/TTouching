@@ -508,12 +508,12 @@ class DBManager: NSObject {
         dbBase.close();
         return temp
     }
-    func selectWorkImage(type:Int) -> NSData {
+    func selectWorkImage(type:String) -> NSData {
         dbBase.open();
         var temp:NSData = NSData()
-        if let rs = dbBase.executeQuery("select dev_type,icon_url from \(TableOneName)  GROUP BY dev_type", withArgumentsInArray: nil) {
+        if let rs = dbBase.executeQuery("select address,icon_url from \(TableOneName)", withArgumentsInArray: nil) {
             while rs.next() {
-                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                let dev_type:String = String(rs.intForColumn("address"))
                 if type == dev_type {
                     temp = rs.dataForColumn("icon_url")!
                 }
