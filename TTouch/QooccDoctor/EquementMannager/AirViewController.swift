@@ -90,7 +90,7 @@ class AirViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
                 }
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
-                
+                textField.text = d?.dev_name
             }
             alertController.addAction(cancelAction)
             alertController.addAction(otherAction)

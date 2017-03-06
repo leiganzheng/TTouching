@@ -105,7 +105,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
-                
+                textField.text = self.device!.dev_name
             }
             alertController.addAction(cancelAction)
             alertController.addAction(otherAction)
@@ -170,6 +170,10 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 let temp = vc as! SixViewController
                 temp.myCustomTableView.reloadData()
             }
+            if  vc is CollectionViewController {
+                let temp = vc as! CollectionViewController
+                temp.myTableView.reloadData()
+            }
 
         }else if(self.device?.dev_type == 2){
             let command:Int = 36
@@ -214,6 +218,10 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
             if  vc is SixViewController {
                 let temp = vc as! SixViewController
                 temp.myCustomTableView.reloadData()
+            }
+            if  vc is CollectionViewController {
+                let temp = vc as! CollectionViewController
+                temp.myTableView.reloadData()
             }
         }
 

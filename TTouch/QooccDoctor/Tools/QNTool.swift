@@ -358,6 +358,11 @@ extension QNTool {
 // MARK: -
 extension QNTool {
     class func modifyEqument(arr:NSArray,name:String) {//修改各设备的信息
+        if name.characters.count > 16  {
+            QNTool.showErrorPromptView(nil, error: nil, errorMsg: NSLocalizedString("字符数不正确,请小于16字符", tableName: "Localization",comment:"jj"))
+            return
+        }
+        
         let dict = ["command": 31,"save_dev": arr]
         let sockertManger = SocketManagerTool.shareInstance()
         sockertManger.sendMsg(dict) { (result) in
@@ -446,7 +451,7 @@ extension QNTool {
 //                msg = "最大亮度"
                 
             }
-//            DBManager.shareInstance().updateStatus(value, type: d.address!)
+            DBManager.shareInstance().updateStatus(value, type: d.address!)
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 DBManager.shareInstance().updateStatus(value, type: d.address!)
 //                let d = result as! NSDictionary
@@ -485,6 +490,7 @@ extension QNTool {
 //                msg = "最大亮度"
                 
             }
+            DBManager.shareInstance().updateStatus(value, type: d.address!)
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 DBManager.shareInstance().updateStatus(value, type: d.address!)
 //                let d = result as! NSDictionary
@@ -523,8 +529,8 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-//                DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
-//                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+                DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
+                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
@@ -550,8 +556,8 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-//                DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
-//                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+                DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
+                DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
@@ -588,8 +594,8 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-//                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
-//                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
+                DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
+                DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
@@ -632,7 +638,7 @@ extension QNTool {
                     msg = "最大亮度"
                     
                 }
-//                DBManager.shareInstance().updateStatus2(Int(slider.value), type: d.address!)
+                DBManager.shareInstance().updateStatus2(Int(slider.value), type: d.address!)
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(temValue), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(temValue), type: d.address!)

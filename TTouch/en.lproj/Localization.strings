@@ -69,6 +69,7 @@
 "修改设备管理密码"="Modify device management password";
 "旧密码错误"="Old password error";
 "字符数不正确"="Incorrect number of characters";
+"字符数不正确,请小于16字符"="Incorrect number of characters,please under 16 words";
 "修改失败"="Modify failed";
 
 "两次输入密码不一样"="Two input password is not the same";
@@ -80,7 +81,7 @@
 "失败"="fail";
 "获取设备、、、"="Get device、、、";
 "未分区的区域"="UN partitioned area";
-"闹钟"="alarm";
+"定时"="alarm";
 
 "保存"="Save";
 "周一"="Monday";

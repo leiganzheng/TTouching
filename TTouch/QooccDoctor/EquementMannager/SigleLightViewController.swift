@@ -66,8 +66,8 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
             }
             let otherAction = UIAlertAction(title: otherButtonTitle, style: .Default) { (action) in
                 let textField = (alertController.textFields?.first)! as UITextField
-                btn.setTitle(textField.text, forState: .Normal)
                 
+                btn.setTitle(textField.text, forState: .Normal)
                 if textField.text != nil {
                     let save_dev = [["dev_addr": (Int(d!.address!))!,"dev_type": (Int(d!.dev_type!)),"dev_name": QNTool.UTF8TOGB2312(textField.text!)]]
                     QNTool.modifyEqument(save_dev,name:textField.text!)
@@ -75,7 +75,7 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
                 
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
-                
+                textField.text = d?.dev_name
             }
             alertController.addAction(cancelAction)
             alertController.addAction(otherAction)

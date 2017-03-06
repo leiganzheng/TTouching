@@ -104,15 +104,22 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
                 })
             cell.contentView.addSubview(searchButton)
             searchButton.hidden = d.dev_type == 1
-            
             let temp = self.flags[indexPath.row] as! Bool
             
             if temp {
                 let v = SubCustomView(frame: CGRectMake(0, 72,screenWidth, 100))
+                v.vc = self
                 v.tag = indexPath.row + 100
                 v.device = d
                 v.flag = 0
-                v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
+                let arr = self.fetchScene(d.address!)
+                if  arr.count != 0{
+                    v.data = arr
+                }else{
+                    v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
+                    //                DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
+                }
+                
                 cell.contentView.addSubview(v)
                 cell.addLine(16, y: 126, width: screenWidth-32, height: 1)
                 cell.addLine(16, y: 188, width: screenWidth-32, height: 1)
@@ -122,6 +129,7 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
                 tempV?.removeFromSuperview()
                 
             }
+
             cell.addLine(0, y: 71, width: screenWidth, height: 1)
             return cell
         }
@@ -135,6 +143,18 @@ class CollectionViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     //MARK:- private method
+    func fetchScene(addr:String)->NSMutableArray{
+        let temp = NSMutableArray()
+        temp.removeAllObjects()
+        //查
+        let arr:Array<String> = DBManager.shareInstance().selectScene(addr)
+        
+        for (_, element): (Int, String) in arr.enumerate(){
+            temp.addObject(element)
+        }
+        return temp
+    }
+
     func fetchData(){
         self.data = NSMutableArray()
         self.data.removeAllObjects()

@@ -64,24 +64,53 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
         return self.data.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellId = "cell"
-        var cell: ClockTableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId) as! ClockTableViewCell
-        if cell == nil {
-            cell = ClockTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+        if self.data.count == 0 {
+            let cellIdentifier = "Cell"
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+            if cell == nil {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+            }
+            tableView.separatorStyle = .None
+            for v in cell.contentView.subviews {
+                if  v is UILabel && v.tag == 100{
+                    v.removeFromSuperview()
+                }
+            }
+            let lb = UILabel(frame: CGRectMake(screenWidth/2-100,0,200,72))
+            lb.tag = 100
+            lb.text = NSLocalizedString("暂无数据,下拉重试", tableName: "Localization",comment:"jj")
+            lb.textAlignment = .Center
+            cell.contentView.addSubview(lb)
+            return cell
+        }else{
+            let cellId = "cell"
+            var cell: ClockTableViewCell! = self.myTableView.dequeueReusableCellWithIdentifier(cellId) as! ClockTableViewCell
+            if cell == nil {
+                cell = ClockTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            }
+            cell.contentView.backgroundColor = UIColor.whiteColor()
+            let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.locale = NSLocale(localeIdentifier: "zh_CN")
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.dateFormat = "HH:mm"
+            if let date = alarm!.alarmDate {
+                cell.time.setTitle(dateFormatter.stringFromDate(date), forState: .Normal)
+            }
+            cell.selectedBtn.addTarget(self, action: #selector(TimeMannageViewController.handleSwitchTapped(_:)), forControlEvents: .ValueChanged)
+            cell.selectedBtn.on = (alarm?.alarmOn)!
+            cell.name.setTitle(NSLocalizedString("定时", tableName: "Localization",comment:"jj"), forState: .Normal)
+            self.tagWeek((alarm?.selectedDay)!, cell: cell)
+            cell.btn1.userInteractionEnabled = false
+            cell.btn2.userInteractionEnabled = false
+            cell.btn3.userInteractionEnabled = false
+            cell.btn4.userInteractionEnabled = false
+            cell.btn5.userInteractionEnabled = false
+            cell.btn6.userInteractionEnabled = false
+            cell.btn7.userInteractionEnabled = false
+            return cell
         }
-        cell.contentView.backgroundColor = UIColor.whiteColor()
-        let alarm = self.data?.objectAtIndex(indexPath.row) as? DCAlarm
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "zh_CN")
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.dateFormat = "HH:mm"
-        if let date = alarm!.alarmDate {
-            cell.time.setTitle(dateFormatter.stringFromDate(date), forState: .Normal)
-        }
-        cell.selectedBtn.addTarget(self, action: #selector(TimeMannageViewController.handleSwitchTapped(_:)), forControlEvents: .ValueChanged)
-        cell.selectedBtn.on = (alarm?.alarmOn)!
-        cell.name.setTitle(NSLocalizedString("闹钟", tableName: "Localization",comment:"jj"), forState: .Normal)
-        return cell
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.data!.objectAtIndex(indexPath.row)
@@ -119,6 +148,31 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
             self.presentViewController(UINavigationController(rootViewController:clockSettingViewController ), animated: true, completion: nil)
         }
 
+    }
+    func tagWeek(selectedDay:Int,cell:ClockTableViewCell){
+        for (var i = 1; i <= 7; i += 1) {
+            if Bool((1 << (i - 1)) & selectedDay) {
+                if i == 1 {
+                    cell.btn1.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 2){
+                    cell.btn2.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 3){
+                    cell.btn3.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 4){
+                    cell.btn4.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 5){
+                    cell.btn5.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 6){
+                    cell.btn6.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }else if (i == 7){
+                    cell.btn7.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                }
+                
+            }else{
+//                cell.btn1.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            }
+            
+        }
     }
     func handleSwitchTapped(sender: UISwitch) {
         

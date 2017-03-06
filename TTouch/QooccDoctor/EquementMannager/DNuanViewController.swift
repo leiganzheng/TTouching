@@ -74,7 +74,7 @@ class DNuanViewController: UIViewController ,QNInterceptorProtocol, UITableViewD
                 }
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
-                
+                textField.text = d?.dev_name
             }
             alertController.addAction(cancelAction)
             alertController.addAction(otherAction)
