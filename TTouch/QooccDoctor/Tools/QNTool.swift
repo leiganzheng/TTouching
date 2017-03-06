@@ -396,6 +396,9 @@ extension QNTool {
    class func openSence(dict: NSDictionary) {
 //    print(dict)
     SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+        if g_ip != nil && g_ip?.characters.count != 0 {
+            QNTool.reflushGateWay(g_ip!)
+        }
 //        if  result is  NSDictionary {
 //            let d = result as! NSDictionary
 //            let status = d["work_status"] as! Int
@@ -454,6 +457,9 @@ extension QNTool {
             DBManager.shareInstance().updateStatus(value, type: d.address!)
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 DBManager.shareInstance().updateStatus(value, type: d.address!)
+                if g_ip != nil && g_ip?.characters.count != 0 {
+                    QNTool.reflushGateWay(g_ip!)
+                }
 //                let d = result as! NSDictionary
 //                let status = d.objectForKey("work_status") as! Int
 //                if (status >= 0 && status <= 100){
@@ -493,6 +499,9 @@ extension QNTool {
             DBManager.shareInstance().updateStatus(value, type: d.address!)
              SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                 DBManager.shareInstance().updateStatus(value, type: d.address!)
+                if g_ip != nil && g_ip?.characters.count != 0 {
+                    QNTool.reflushGateWay(g_ip!)
+                }
 //                let d = result as! NSDictionary
 //                let status = d.objectForKey("work_status") as! Int
 //                if (status == 223 || status == 209 || status == 210 || status == 211 || status == 212 || status == 222){
@@ -534,6 +543,9 @@ extension QNTool {
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue >= 0 && status.intValue <= 99){
@@ -561,7 +573,9 @@ extension QNTool {
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(value), type: d.address!)
-
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue >= 0 && status.intValue <= 99){
@@ -599,6 +613,9 @@ extension QNTool {
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus1(Int(slider.value), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(slider.value), type: d.address!)
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 264 && status.intValue < 268){
@@ -642,6 +659,9 @@ extension QNTool {
                 SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
                     DBManager.shareInstance().updateStatus2(Int(temValue), type: d.address!)
                     DBManager.shareInstance().updateStatus(Int(temValue), type: d.address!)
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
 //                    let d = result as! NSDictionary
 //                    let status = d.objectForKey("work_status") as! NSNumber
 //                    if (status.intValue > 384 && status.intValue < 448){
@@ -675,6 +695,9 @@ extension QNTool {
                 let status = d.objectForKey("work_status") as! Int
                 if (status == 192){
                     QNTool.showPromptView("打开左路窗帘")
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
@@ -688,6 +711,9 @@ extension QNTool {
                 let status = d.objectForKey("work_status") as! Int
                 if (status == 192){
                     QNTool.showPromptView("短按左路窗帘开")
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
@@ -700,6 +726,9 @@ extension QNTool {
                 let status = d.objectForKey("work_status") as! Int
                 if (status == 224){
                     QNTool.showPromptView("长按左路窗帘开")
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
@@ -713,6 +742,9 @@ extension QNTool {
                 let status = d.objectForKey("work_status") as! Int
                 if (status == 144){
                     QNTool.showPromptView("暂停左路窗帘")
+                    if g_ip != nil && g_ip?.characters.count != 0 {
+                        QNTool.reflushGateWay(g_ip!)
+                    }
                 }else{
                     QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                 }
@@ -727,6 +759,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 128){
                         QNTool.showPromptView("关闭左路窗帘")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -743,6 +778,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 128){
                         QNTool.showPromptView("短按左路窗帘关")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -758,6 +796,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 160){
                         QNTool.showPromptView("长按左路窗帘关")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -773,6 +814,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 12){
                         QNTool.showPromptView("打开右路窗帘")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -788,6 +832,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 12){
                         QNTool.showPromptView("短按右路窗帘开")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -803,6 +850,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 14){
                         QNTool.showPromptView("长按右路窗帘开")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -818,6 +868,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 9){
                         QNTool.showPromptView("暂停右路窗帘")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -833,6 +886,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 8){
                         QNTool.showPromptView("关闭右路窗帘")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -848,6 +904,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 8){
                         QNTool.showPromptView("短按右路窗帘关")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -863,6 +922,9 @@ extension QNTool {
                     let status = d.objectForKey("work_status") as! Int
                     if (status == 10){
                         QNTool.showPromptView("长按右路窗帘关")
+                        if g_ip != nil && g_ip?.characters.count != 0 {
+                            QNTool.reflushGateWay(g_ip!)
+                        }
                     }else{
                         QNTool.showErrorPromptView(nil, error: nil, errorMsg: "请重试！")
                     }
@@ -900,6 +962,162 @@ extension QNTool {
          saveObjectToUserDefaults(d.address! + g_ip! + num, value: name)
     }
 }
+extension QNTool {
+    class func reflushGateWay(ip:String){
+        let dict = ["command": 30]
+        SocketManagerTool.shareInstance().sendMsg(dict, completion: { (result) in
+            QNTool.hiddenActivityView()
+            if result is NSDictionary {
+                let d = result as! NSDictionary
+                let devices = d.objectForKey("Device Information") as! NSArray
+                if (devices.count != 0) {
+                    let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
+                    let descs2 = NSArray(objects: typeDesc)
+                    let array = devices.sortedArrayUsingDescriptors(descs2 as! [NSSortDescriptor])
+                    for tempDict in array {
+                        self.exeDB(tempDict as! NSDictionary)
+                    }
+                }
+            }
+        })
+
+    }
+   class func exeDB(tempDic:NSDictionary){
+        var dev:Device? = nil
+        let addr = tempDic["dev_addr"] as! Int
+        let dev_type = tempDic["dev_type"] as! Int
+        let work_status = tempDic["work_status"] as! Int
+        
+        let work_status1 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 0)
+        let work_status2 = DBManager.shareInstance().selectWorkStatus(String(addr), flag: 1)
+        let name = tempDic["dev_name"] as! String
+        let dev_area = tempDic["dev_area"] as! Int
+        let dev_status = tempDic["dev_status"] as! Int
+        let belong_area = tempDic["dev_area"] as! Int
+        let is_favourited = 1
+        var image:NSData = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+        if (dev_type == 1) {//总控
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Room_MasterRoom_icon1" )!, 1)!
+            }else{
+                image = tp
+            }
+        }else if(dev_type == 2){//六情景
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+        }else if(dev_type == 3){//单回路调光
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+        }else if(dev_type == 6){//6回路开关
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_6ch-roads_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+        }else if(dev_type == 5){//3回路开关
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_3ch-roads_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+        }
+        else if(dev_type == 7){//窗帘控制
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Curtains_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+        }else if(dev_type == 4){//双回路调光
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+            
+        }
+        else if(dev_type == 8){//单回路调光控制端(旧版)
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_ 1ch-Dimmer_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+            
+        }else if(dev_type == 9){//双回路调光控制端(旧版)
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_2ch-Dimmers_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+            
+        }else if(dev_type == 10){//三/六回路开关控制端
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+            
+        }else if(dev_type == 11){//干接点
+            let tp = DBManager.shareInstance().selectWorkImage(dev_type)
+            if tp.length == 0 {
+                image = UIImageJPEGRepresentation(UIImage(named:"Manage_3or6ch-roads_icon" )!, 1)!
+            }else{
+                image = tp
+            }
+            
+            
+        }else if(dev_type == 12){//空调
+            //            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+            
+        }else if(dev_type == 13){//地暖
+            //            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+            
+        }else if(dev_type == 14){//新风
+            //            image = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
+            
+        }
+        dev = Device(address: String(addr), dev_type: dev_type, work_status:work_status,work_status1:work_status1,work_status2:work_status2, dev_name: name, dev_status: dev_status, dev_area: String(dev_area), belong_area: String(belong_area), is_favourited: is_favourited, icon_url: image)
+        
+        if dev != nil {
+            if DBManager.shareInstance().isDataExist((dev?.address!)!){
+                DBManager.shareInstance().update(dev!);
+            }else{
+                DBManager.shareInstance().add(dev!);
+            }
+            
+            if (dev_type == 4 || dev_type == 9){
+                DBManager.shareInstance().addLight(dev!);
+            }
+            
+        }
+        
+    }
+
+}
+
 extension QNTool {
     class func showM(d:Device,num:String,vc:UIViewController,touchView:UIView){
         let gesture = UILongPressGestureRecognizer()
