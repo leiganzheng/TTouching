@@ -488,7 +488,6 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let d = self.data[(indexPath?.row)!] as! Device
         if switchBtn.on {
             if  tempCell.slider1.value == 0{
-                QNTool.openLight(d, value: 100)
                 tempCell.slider1.value = 100
                 tempCell.title1.text = "100%"
             }
@@ -500,7 +499,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.title1.text = "0%"
             QNTool.openDLight(d, slider: tempCell.slider1)
         }
-        self.fetchData()
+//        self.fetchData()
     }
     func swithDValueChanged2(switchBtn: UISwitch) {
         let tempCell = switchBtn.superview?.superview as! MDoubleTableViewCell
@@ -508,7 +507,6 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
         let d = self.data[(indexPath?.row)!] as! Device
         if switchBtn.on {
             if  tempCell.slider2.value == 0{
-                QNTool.openLight(d, value: 100)
                 tempCell.slider2.value = 100
                 tempCell.title2.text = "100%"
             }
@@ -520,7 +518,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.title2.text = "0%"
              QNTool.openDLight(d, slider: tempCell.slider2)
         }
-        self.fetchData()
+//        self.fetchData()
     }
 
     func sliderValueChanged(switchBtn: UISwitch) {
@@ -541,7 +539,7 @@ class UnAeraViewController: UIViewController,QNInterceptorProtocol, UITableViewD
             tempCell.slider.value = 0
             tempCell.valueLB.text = "0%"
         }
-        self.fetchData()
+//        self.fetchData()
     }
     func valueChanged(slider: UISlider) {
         /*"dev_addr": 38585,

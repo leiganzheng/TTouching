@@ -502,19 +502,25 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let d = self.data[(indexPath?.row)!] as! Device
         if switchBtn.on {
             if  tempCell.slider1.value == 0{
-                QNTool.openLight(d, value: 100)
                 tempCell.slider1.value = 100
                 tempCell.title1.text = "100%"
             }
                 QNTool.openDLight(d, slider: tempCell.slider1)
-            
+//              self.fetchData()
         }else{
             
             tempCell.slider1.value = 0
             tempCell.title1.text = "0%"
             QNTool.openDLight(d, slider: tempCell.slider1)
+//            let time: NSTimeInterval = 1.0
+//            let delay = dispatch_time(DISPATCH_TIME_NOW,
+//                                      Int64(time * Double(NSEC_PER_SEC)))
+//            dispatch_after(delay, dispatch_get_main_queue()) {
+//                self.fetchData()
+//            }
+
         }
-        self.fetchData()
+      
     }
     func swithDValueChanged2(switchBtn: UISwitch) {
         let tempCell = switchBtn.superview?.superview as! MDoubleTableViewCell
@@ -522,19 +528,24 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let d = self.data[(indexPath?.row)!] as! Device
         if switchBtn.on {
             if  tempCell.slider2.value == 0{
-                QNTool.openLight(d, value: 100)
                 tempCell.slider2.value = 100
                 tempCell.title2.text = "100%"
             }
             QNTool.openDLight(d, slider: tempCell.slider2)
-            
+//              self.fetchData()
         }else{
             
             tempCell.slider2.value = 0
             tempCell.title2.text = "0%"
             QNTool.openDLight(d, slider: tempCell.slider2)
+//            let time: NSTimeInterval = 1.0
+//            let delay = dispatch_time(DISPATCH_TIME_NOW,
+//                                      Int64(time * Double(NSEC_PER_SEC)))
+//            dispatch_after(delay, dispatch_get_main_queue()) {
+//                self.fetchData()
+//            }
+
         }
-        self.fetchData()
 
     }
      func sliderValueChanged(switchBtn: UISwitch) {
@@ -543,18 +554,23 @@ class SixPaternViewController: UIViewController,QNInterceptorProtocol, UITableVi
         let d = self.data[(indexPath?.row)!] as! Device
         if switchBtn.on {
             if  tempCell.slider.value == 0{
-                QNTool.openLight(d, value: 100)
                 tempCell.slider.value = 100
                  tempCell.valueLB.text = "100%"
             }
             QNTool.openLight(d, value: Int(tempCell.slider.value))
-            
+//             self.fetchData()
         }else{
             QNTool.openLight(d, value: 0)
             tempCell.slider.value = 0
             tempCell.valueLB.text = "0%"
+//            let time: NSTimeInterval = 1.0
+//            let delay = dispatch_time(DISPATCH_TIME_NOW,
+//                                      Int64(time * Double(NSEC_PER_SEC)))
+//            dispatch_after(delay, dispatch_get_main_queue()) {
+//                 self.fetchData()
+//            }
         }
-        self.fetchData()
+       
     }
     func valueChanged(slider: UISlider) {
         /*"dev_addr": 38585,

@@ -333,14 +333,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                     "dev_status": 1,
                     "dev_area": 13014
                 ],
-                [
-                    "dev_addr": 25988,
-                    "dev_type": 9,
-                    "work_status": 0,
-                    "dev_name": "调光",
-                    "dev_status": 1,
-                    "dev_area": 13014
-                ],
+    
                 [
                     "dev_addr": 182700,
                     "dev_type": 12,
