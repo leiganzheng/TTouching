@@ -10,7 +10,7 @@
  *  此文件中放置整个App共享的数据
  */
 import UIKit
-import OpenUDID
+//import OpenUDID
 
 //MARK:- 账号 & 账号管理
 //MARK: 账号（登录成功的）
@@ -62,17 +62,17 @@ didSet {
 }
 
 //MARK:- UDID
-private var _udid: String?
-var g_UDID: String {
-    if _udid == nil {
-        var udid = OpenUDID.value() as NSString
-        if udid.length > 32 {
-            udid = udid.substringToIndex(32)
-        }
-        _udid = udid as String
-    }
-    return _udid!
-}
+//private var _udid: String?
+//var g_UDID: String {
+//    if _udid == nil {
+//        var udid = OpenUDID.value() as NSString
+//        if udid.length > 32 {
+//            udid = udid.substringToIndex(32)
+//        }
+//        _udid = udid as String
+//    }
+//    return _udid!
+//}
 
 //MARK:- DeviceToken
 private let kKeyDeviceToken = ("DeviceToken" as NSString).encrypt(g_SecretKey)
