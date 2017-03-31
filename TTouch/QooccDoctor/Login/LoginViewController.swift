@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.accountTextField.leftView = usView
         self.accountTextField.text = "T-Touching"
         self.accountTextField.leftViewMode = UITextFieldViewMode.Always
-
+        self.accountTextField.enabled = false
         RegisterViewController.configTextField(self.passwordTextField)
         self.passwordTextField.secureTextEntry = true
         
@@ -70,6 +70,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         usView1.addSubview(self.pass)
         self.passwordTextField.leftView = usView1
         self.passwordTextField.text = "T-Touching"
+        self.passwordTextField.enabled = false
         
         let passwordImageView = UIImageView(frame: CGRectMake(10, 0, 40, 20))
         passwordImageView.contentMode = UIViewContentMode.Center
@@ -84,7 +85,7 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
         self.view.addGestureRecognizer(tap)
         
        
-         IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
+//         IQKeyboardManager.sharedManager().disableInViewControllerClass(self.classForCoder)
         // 如果有本地账号了，就自动登录
 //        self.autoLogin()
         self.resflush()

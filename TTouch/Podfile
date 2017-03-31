@@ -1,5 +1,5 @@
 platform :ios, "8.0"
-#pod 'OpenUDID'
+pod 'OpenUDID'
 pod "REMenu"
 pod "Aspects"
 pod "IQKeyboardManager"
@@ -16,3 +16,11 @@ pod 'Alamofire'
 #pod 'Result', :git => 'https://github.com/antitypical/Result.git'
 pod 'Box'
 pod 'CocoaAsyncSocket'
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['ENABLE_BITCODE'] = 'NO'
+        end
+    end
+end
