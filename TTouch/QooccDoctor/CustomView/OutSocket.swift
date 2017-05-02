@@ -105,47 +105,8 @@ class OutSocket: NSObject, GCDAsyncUdpSocketDelegate {
         if data != nil {
             self.myResultBlock!(data)
         }
-//        print("incoming message: \(data)");
-//        print("incoming message1: \(address)");
-//        //把NSData的值存到byteArray中
-//        var ip:String = ""
-//        var macAddress:String = ""
-//        var version:String = ""
-//        var byteArray:[UInt8] = [UInt8]()
-//        
-//        for i in 0..<data.length {
-//            var temp:UInt8 = 0
-//            data.getBytes(&temp, range: NSRange(location: i,length:1 ))
-//            let str = String(temp)
-//            if i>=5 && i <= 8 {
-//                if i == 5 || i==9{
-//                    ip = ip + str
-//                }else{
-//                    ip = ip + "." + str
-//                }
-//                
-//            }
-//            if i>=9 && i<=14 {
-//                macAddress = macAddress + str
-//            }
-//            if i>=15&&i<=18 {
-//                version = version + str
-//            }
-//            if i>=19&&i<=82 {
-//                byteArray.append(temp)
-//            }
-//        }
-//        let tempName = NSString(bytes: byteArray, length: 65, encoding: 0)
-//        
-//        print("ip:\(ip)&&mac:\(macAddress)&&version:\(version)&&name:\(tempName!)")
-//        
-//       
-//        /*
-//         [254, 84, 51, 0, 0, 192, 168, 1, 100, 0, 26, 182, 2, 192, 143, 0, 0, 0, 0, 84, 45, 84, 111, 117, 99, 104, 105, 110, 103, 32, 71, 97, 116, 101, 119, 97, 121, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 217]
-//         ipByteArray:[192, 168, 1, 100]
-// */
-//    
-//        DBManager.shareInstance().ip = ip
+        print("incoming message: \(data)");
+        print("incoming message1: \(address)");
     }
 }
 extension String {

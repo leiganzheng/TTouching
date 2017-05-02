@@ -101,6 +101,7 @@ class LeftViewController: UIViewController, QNInterceptorProtocol, UITableViewDa
         }
         if indexPath.row == 5 {
             let vc = MusicViewController.CreateFromStoryboard("Main") as! MusicViewController
+            vc.flag = 0
 //            vc.customTitle = self.titles![indexPath.row] as? String
 //            vc.equementType = EquementSign.Security
             self.bock!(vc)

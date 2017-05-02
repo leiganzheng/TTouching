@@ -141,10 +141,16 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
         // 1 获取客户的发来的数据 ，把 NSData 转 NSString
         let readClientDataString =  String(data: data, encoding: enc)
+//        if readClientDataString?.characters.count == 0 {
+//            return
+//        }
         //处理gbk问题
         let newStr = readClientDataString?.stringByTrimmingCharactersInSet(NSCharacterSet.controlCharacterSet())
         
         if readClientDataString != nil {
+//            if newStr?.characters.count == 0 {
+//                return
+//            }
             self.mulData = nil
             //将数据转为UTF-8
             let  tempData = newStr?.dataUsingEncoding(NSUTF8StringEncoding)
@@ -158,7 +164,9 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                     print("JSON解析错误")
                     
                 }else{
-                    self.SBlock!(dictionary!)
+                    if self.SBlock != nil {
+                        self.SBlock!(dictionary!)
+                    }
                 }
                 
                 // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
@@ -169,6 +177,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
             }catch (let e) {
                 print(e)
                 // 直接出错了
+                
                 if self.SBlock != nil {
 //                    self.SBlock!("")
                     print("直接出错了")
@@ -185,7 +194,9 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
                     print("JSON解析错误")
                     
                 }else{
-                    self.SBlock!(dictionary!)
+                    if self.SBlock != nil {
+                        self.SBlock!(dictionary!)
+                    }
                 }
                 
                 // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装

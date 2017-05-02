@@ -124,9 +124,12 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: "changeLanguage", object: nil)
     }
     func change() {
-        let tabVc = self.tabBarController as! QNTabBarController
-        tabVc.refrushItem()
-        self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
+        if self.tabBarController != nil  {
+            let tabVc = self.tabBarController as! QNTabBarController
+            tabVc.refrushItem()
+            self.title = NSLocalizedString("主页", tableName: "Localization",comment:"jj")
+        }
+    
     }
 
     func tapAction() {
@@ -237,7 +240,7 @@ class UserListViewController: UIViewController, QNInterceptorProtocol, UITableVi
                 v.data = arr
             }else{
                 v.data = [NSLocalizedString("S1 场景一", tableName: "Localization",comment:"jj"),NSLocalizedString("S2 场景二", tableName: "Localization",comment:"jj"),NSLocalizedString("S3 场景三", tableName: "Localization",comment:"jj"),NSLocalizedString("S4 场景四", tableName: "Localization",comment:"jj"),NSLocalizedString("S5 全开模式", tableName: "Localization",comment:"jj"),NSLocalizedString("S6 关闭模式", tableName: "Localization",comment:"jj")]
-//                DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
+                DBManager.shareInstance().addScene(d, s1: v.data![0] as! String, s2: v.data![1] as! String, s3: v.data![2]as! String ,s4: v.data![3]as! String, s5: v.data![4]as! String, s6: v.data![5]as! String)
             }
             
             cell.contentView.addSubview(v)

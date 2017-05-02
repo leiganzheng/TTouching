@@ -911,7 +911,9 @@ extension QNTool {
             QNTool.hiddenActivityView()
             if result is NSDictionary {
                 let d = result as! NSDictionary
-                let devices = d.objectForKey("Device Information") as! NSArray
+                let deviceObj = d.objectForKey("Device Information")
+                if deviceObj != nil {
+                let devices = deviceObj as! NSArray
                 if (devices.count != 0) {
                     let typeDesc:NSSortDescriptor = NSSortDescriptor(key: "dev_type", ascending: true)
                     let descs2 = NSArray(objects: typeDesc)
@@ -919,6 +921,7 @@ extension QNTool {
                     for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)
                     }
+                }
                 }
             }
         })

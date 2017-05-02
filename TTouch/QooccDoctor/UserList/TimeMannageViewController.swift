@@ -116,26 +116,21 @@ class TimeMannageViewController: UIViewController,QNInterceptorProtocol,UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let item = self.data!.objectAtIndex(indexPath.row)
         self.data?.removeObject(item)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
-        tableView.reloadData()
+        self.myTableView.reloadData()
         DCAlarmManager.sharedInstance.save()
         self.deleteNotification(item as! DCAlarm)
     }
     func deleteNotification(al: DCAlarm) {
-            if let locals = UIApplication.sharedApplication().scheduledLocalNotifications {
-                for localNoti in locals {
-                    if let dict = localNoti.userInfo {
-                        
-                        if dict.keys.contains("identifier") && dict["identifier"] is String && (dict["identifier"] as! String) == al.identifier {
-                            // 取消通知
-                                UIApplication.sharedApplication().cancelLocalNotification(localNoti)
-                            
-                        }
+        if let locals = UIApplication.sharedApplication().scheduledLocalNotifications {
+            for localNoti in locals {
+                if let dict = localNoti.userInfo {
+                    if dict.keys.contains("identifier") && dict["identifier"] is String && (dict["identifier"] as! String) == al.identifier {
+                        // 取消通知
+                        UIApplication.sharedApplication().cancelLocalNotification(localNoti)
                     }
                 }
             }
-            
-        
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

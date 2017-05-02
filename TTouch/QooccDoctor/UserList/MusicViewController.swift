@@ -9,10 +9,14 @@
 import UIKit
 
 class MusicViewController: UIViewController,QNInterceptorProtocol {
-
+    var flag:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("音乐", tableName: "Localization",comment:"jj")
+        if flag == 0 {
+             self.title = NSLocalizedString("保全", tableName: "Localization",comment:"jj")
+        }else{
+             self.title = NSLocalizedString("音乐", tableName: "Localization",comment:"jj")
+        }
         // Do any additional setup after loading the view.
     }
 

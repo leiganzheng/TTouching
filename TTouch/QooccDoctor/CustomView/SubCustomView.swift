@@ -105,7 +105,7 @@ class SubCustomView: UIView ,UICollectionViewDelegate,UICollectionViewDataSource
                 
             }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
-                textField.text = self.device!.dev_name
+                textField.text = button.titleLabel?.text
             }
             alertController.addAction(cancelAction)
             alertController.addAction(otherAction)
