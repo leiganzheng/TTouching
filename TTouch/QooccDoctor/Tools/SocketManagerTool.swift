@@ -19,7 +19,7 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     var tempDic:NSDictionary!
     var mulData:NSMutableData?
     var mainQueue = dispatch_get_main_queue()
-    
+    var  connectTimer:NSTimer? // 计时器
     var SBlock :SocketBlock?
     
     override init(){
@@ -57,17 +57,26 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
         }
         
     }
-
     //连接服务器按钮事件
     func connectSocket(ip:String) {
-        do {
-            clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-            try clientSocket.connectToHost(ip, onPort: port)
-        }
-            
-        catch {
-            print("error")
-        }
+        if self.clientSocket == nil || self.clientSocket.isDisconnected {
+            do {
+                
+                clientSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+                try clientSocket.connectToHost(ip, onPort: port)
+            }
+                
+            catch {
+                print("error")
+            }
+        }else{
+                print("is connect")
+            }
+            //注册APP退到后台，之后每十分钟发送的通知，与VOIP无关，由于等待时间必须大于600s，不使用
+//            NSNotificationCenter.defaultCenter().addObserver(self, selector: "creatSocket", name: "CreatGcdSocket", object: nil);
+//        }else{
+//            print("is connect")
+//        }
     }
 
     
@@ -87,6 +96,40 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
             return NSData()
         }
     }
+    func heartbeat(){
+        if self.tempDic != nil {
+            clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        }
+    }
+    func runTimerWhenAppEnterBackGround() {
+        if self.connectTimer == nil {
+            self.connectTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "heartbeat", userInfo: nil, repeats: true)
+            let runLoop = NSRunLoop.currentRunLoop()
+            runLoop.addTimer(self.connectTimer!, forMode: NSRunLoopCommonModes)
+        }
+        self.connectTimer?.fire()
+        //配置所有添加RunLoop后台的NSTimer可用!
+        let app = UIApplication.sharedApplication()
+        
+        var  bgTask:UIBackgroundTaskIdentifier
+//        bgTask = app.beginBackgroundTaskWithExpirationHandler({
+//            dispatch_async(dispatch_get_main_queue(), { 
+//                if bgTask != UIBackgroundTaskInvalid {
+//                    bgTask = UIBackgroundTaskInvalid
+//                }
+//            })
+//        
+//        })
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)) { 
+//            dispatch_async(dispatch_get_main_queue(), {
+//                if bgTask != UIBackgroundTaskInvalid {
+//                    bgTask = UIBackgroundTaskInvalid
+//                }
+//            })
+//
+//        }
+ 
+    }
     
     //MARK:- GCDAsyncSocketDelegate
     func socket(sock:GCDAsyncSocket!, didConnectToHost host: String!, port:UInt16) {
@@ -101,9 +144,12 @@ class SocketManagerTool: NSObject ,GCDAsyncSocketDelegate{
     func socketDidDisconnect(sock:GCDAsyncSocket!, withError err: NSError!) {
 //        self.SBlock!("")
         print("与服务器断开连接")
-        if self.tempDic != nil {
-            clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
+        if g_ip != nil {
+            self.connectSocket(g_ip!)
         }
+//        if self.tempDic != nil {
+//            clientSocket.writeData(self.paramsToJsonDataParams(self.tempDic as! [String : AnyObject]), withTimeout: -1, tag: 0)
+//        }
         
     }
     func socket(sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
