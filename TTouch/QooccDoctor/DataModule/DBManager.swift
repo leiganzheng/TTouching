@@ -484,6 +484,26 @@ class DBManager: NSObject {
         
     }
     // MARK: >> 查
+    func selectWorkFav(address:String,flag:Int) -> Int {
+        dbBase.open();
+        var temp:Int = flag == 0 ? 1 : 0
+        if let rs = dbBase.executeQuery("select is_favourited,address from \(self.TableOneName)", withArgumentsInArray: nil) {
+            while rs.next() {
+                
+//                let dev_type:Int = Int(rs.intForColumn("dev_type"))
+                let dev_address:String = rs.stringForColumn("address")
+                if dev_address == address {
+                    temp = Int(rs.intForColumn("is_favourited"))
+                }
+                
+            }
+        } else {
+            print("查询失败 failed: \(dbBase.lastErrorMessage())")
+            
+        }
+        dbBase.close();
+        return temp
+    }
     func selectWorkStatus(address:String,flag:Int) -> Int {
         dbBase.open();
         var temp:Int = flag == 0 ? 100 : 200

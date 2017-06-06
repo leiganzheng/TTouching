@@ -519,7 +519,7 @@ class MannageEquementViewController: UIViewController  ,QNInterceptorProtocol, U
         let dev_area = tempDic["dev_area"] as! Int
         let dev_status = tempDic["dev_status"] as! Int
         let belong_area = tempDic["dev_area"] as! Int
-        let is_favourited = 1
+        let is_favourited = DBManager.shareInstance().selectWorkFav(String(addr), flag: 0)
         var image:NSData = UIImageJPEGRepresentation(UIImage(named:"Room_LivingRoom_icon" )!, 1)!
         if (dev_type == 1) {//总控
             let tp = DBManager.shareInstance().selectWorkImage(String(addr))

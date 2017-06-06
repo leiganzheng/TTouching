@@ -217,19 +217,29 @@ class LoginViewController: UIViewController, QNInterceptorNavigationBarHiddenPro
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            QNTool.setUserLanguage("zh-Hans")
+            self.resflush()
 
         }else if langue.hasPrefix("zh-Hant"){
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            QNTool.setUserLanguage("zh-Hant")
+            self.resflush()
+
         }else if langue.hasPrefix("en"){
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            QNTool.setUserLanguage("en")
+            self.resflush()
+
         }else{
             self.simplifiedBtn.setImage(UIImage(named: "navigation_Options_icon_s"), forState: .Normal)
             self.traditionalBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
             self.EngBtn.setImage(UIImage(named: "navigation_Options_icon"), forState: .Normal)
+            QNTool.setUserLanguage("zh-Hans")
+            self.resflush()
 
         }
     }

@@ -46,8 +46,8 @@ class SigleLightViewController: UIViewController ,QNInterceptorProtocol, UITable
         var cell: SingleTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? SingleTableViewCell
         if cell == nil {
             cell = SingleTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
+         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let d = self.data[indexPath.row] as? Device
         let color = d?.dev_status == 1 ? UIColor(red: 73/255.0, green: 218/255.0, blue: 99/255.0, alpha: 1.0) : UIColor.lightGrayColor()
         cell.isOpen.backgroundColor = color

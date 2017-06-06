@@ -45,7 +45,9 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
         var cell: MainTableViewCell! = self.myCustomTableView.dequeueReusableCellWithIdentifier(cellId) as? MainTableViewCell
         if cell == nil{
             cell = MainTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            
         }
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         let d = self.data[indexPath.row] as? Device
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
@@ -113,7 +115,7 @@ class MainControViewController: UIViewController ,QNInterceptorProtocol, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.myCustomTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
     //MARK:- private method

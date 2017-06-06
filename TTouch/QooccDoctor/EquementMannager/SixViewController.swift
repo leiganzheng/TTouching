@@ -47,6 +47,7 @@ class SixViewController: UIViewController ,QNInterceptorProtocol, UITableViewDat
         if cell == nil{
             cell = SixTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
+         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let d = self.data[indexPath.row] as? Device
         let btn = cell.name
         btn.setTitle(d?.dev_name!, forState: .Normal)
