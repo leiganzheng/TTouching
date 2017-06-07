@@ -663,7 +663,7 @@ class GateWayListViewController: UIViewController, QNInterceptorProtocol, QNInte
                     for tempDict in array {
                         self.exeDB(tempDict as! NSDictionary)
                     }
-                    self.myTableView.reloadData()
+//                    self.myTableView.reloadData()
                 }
             }
         })
